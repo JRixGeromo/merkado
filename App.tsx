@@ -1,11 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux'; // Import Redux provider
-import store from './src/store/store';  // Import the Redux store
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, Button, StyleSheet } from 'react-native';
 import ProductCard from './src/components/ProductCard'; // Example component
 import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks'; // Custom hooks for Redux
 import { toggleTheme } from './src/reducers/themeReducer'; // Import the toggleTheme action
-
 import CustomButton from './src/components/CustomButton'; // Reusable Button
 import TextInputWithIcon from './src/components/TextInputWithIcon'; // Reusable TextInput with Icon
 import DateTimePickerComponent from './src/components/DateTimePicker'; // Reusable DatePicker
@@ -28,64 +25,64 @@ const App = () => {
   const [selectedOption, setSelectedOption] = React.useState(dropdownOptions[0].value);
 
   return (
-    <View style={dynamicStyles.container}>
-      <Text style={dynamicStyles.title}>Welcome to the Themed App</Text>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={dynamicStyles.scrollView}>
+      <View style={dynamicStyles.container}>
+        <Text style={dynamicStyles.title}>Welcome to the Themed App</Text>
 
-      <ProductCard />
+        <ProductCard />
 
-      {/* Custom Button */}
-      <CustomButton
-        title="Custom Button"
-        onPress={() => alert('Custom Button Pressed')}
-        backgroundColor={theme === 'light' ? 'blue' : 'gray'}
-        color="#fff"
-      />
+        {/* Custom Button */}
+        <CustomButton
+          title="Custom Button"
+          onPress={() => alert('Custom Button Pressed')}
+          backgroundColor={theme === 'light' ? 'blue' : 'gray'}
+          color="#fff"
+        />
 
-      {/* TextInput with Icon */}
-      <TextInputWithIcon
-        placeholder="Enter your text"
-        iconName="person"  // Ionicons icon name
-        value={inputValue}
-        onChangeText={setInputValue}
-      />
+        {/* TextInput with Icon */}
+        <TextInputWithIcon
+          placeholder="Enter your text"
+          iconName="person"  // Ionicons icon name
+          value={inputValue}
+          onChangeText={setInputValue}
+        />
 
-      {/* Date Picker */}
-      <DateTimePickerComponent mode="date" onDateChange={setSelectedDate} />
-      <Text>Date Selected: {selectedDate.toLocaleDateString()}</Text>
+        {/* Date Picker */}
+        <DateTimePickerComponent mode="date" onDateChange={setSelectedDate} />
+        <Text>Date Selected: {selectedDate.toLocaleDateString()}</Text>
 
-      {/* Dropdown */}
-      <Dropdown
-        selectedValue={selectedOption}
-        onValueChange={setSelectedOption}
-        options={dropdownOptions}
-      />
-      <Text>Selected Option: {selectedOption}</Text>
+        {/* Dropdown */}
+        <Dropdown
+          selectedValue={selectedOption}
+          onValueChange={setSelectedOption}
+          options={dropdownOptions}
+        />
+        <Text>Selected Option: {selectedOption}</Text>
 
-      {/* Button to toggle theme */}
-      <Button title="Toggle Theme" onPress={() => dispatch(toggleTheme())} />
-    </View>
+        {/* Button to toggle theme */}
+        <Button title="Toggle Theme" onPress={() => dispatch(toggleTheme())} />
+      </View>
+    </ScrollView>
   );
 };
 
 // Define dynamic styles based on the theme
 const styles = (theme: 'light' | 'dark') =>
   StyleSheet.create({
-    container: {
+    scrollView: {
       flex: 1,
       backgroundColor: theme === 'light' ? '#F7F7F7' : '#181818',
+    },
+    container: {
+      flex: 1,
       padding: 20,
     },
     title: {
       color: theme === 'light' ? '#333' : '#FFF',
       fontSize: 24,
       fontWeight: '700',
+      marginBottom: 20,
     },
   });
 
-const AppWrapper = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
-
-export default AppWrapper;
+export default App;

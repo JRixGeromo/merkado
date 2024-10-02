@@ -28,4 +28,9 @@ export const commonStyles = StyleSheet.create({
     marginBottom: normalizeHeight(16),  // Use normalized margin
     width: '80%',  // Use percentage or normalizeWidth() if available
   },
+  icon: {
+    fontSize: normalizeFontSize(24),  // Define the font size for the icon
+    color: '#000',  // Define the color of the icon (black in this case)
+    margin: normalizeHeight(8),  // Define margin around the icon
+  },
 });
