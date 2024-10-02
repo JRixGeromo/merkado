@@ -7,6 +7,7 @@ import CustomButton from './src/components/CustomButton'; // Reusable Button
 import TextInputWithIcon from './src/components/TextInputWithIcon'; // Reusable TextInput with Icon
 import DateTimePickerComponent from './src/components/DateTimePicker'; // Reusable DatePicker
 import Dropdown from './src/components/Dropdown'; // Reusable Dropdown
+import Box from './src/components/Box';
 
 const dropdownOptions = [
   { label: 'Option 1', value: '1' },
@@ -30,6 +31,7 @@ const App = () => {
         <Text style={dynamicStyles.title}>Welcome to the Themed App</Text>
 
         <ProductCard />
+        
 
         {/* Custom Button */}
         <CustomButton
@@ -38,6 +40,15 @@ const App = () => {
           backgroundColor={theme === 'light' ? 'blue' : 'gray'}
           color="#fff"
         />
+
+        <Box>
+          <TextInputWithIcon
+            placeholder="Enter your text"
+            iconName="person"
+            value={inputValue}
+            onChangeText={setInputValue}
+          />
+        </Box>
 
         {/* TextInput with Icon */}
         <TextInputWithIcon
