@@ -1,118 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { Provider } from 'react-redux'; // Import Redux provider
+import store from './src/store/store';  // Import the Redux store
+import { View, Text, Button, StyleSheet } from 'react-native';
+import ProductCard from './src/components/ProductCard'; // Example component
+import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks'; // Custom hooks for Redux
+import { toggleTheme } from './src/reducers/themeReducer'; // Import the toggleTheme action
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import CustomButton from './src/components/CustomButton'; // Reusable Button
+import TextInputWithIcon from './src/components/TextInputWithIcon'; // Reusable TextInput with Icon
+import DateTimePickerComponent from './src/components/DateTimePicker'; // Reusable DatePicker
+import Dropdown from './src/components/Dropdown'; // Reusable Dropdown
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+const dropdownOptions = [
+  { label: 'Option 1', value: '1' },
+  { label: 'Option 2', value: '2' },
+  { label: 'Option 3', value: '3' },
+];
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  const theme = useAppSelector((state) => state.theme.theme);
+  const dispatch = useAppDispatch();
+  const dynamicStyles = styles(theme);
+
+  // Component state
+  const [inputValue, setInputValue] = React.useState('');
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedOption, setSelectedOption] = React.useState(dropdownOptions[0].value);
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={dynamicStyles.container}>
+      <Text style={dynamicStyles.title}>Welcome to the Themed App</Text>
+
+      <ProductCard />
+
+      {/* Custom Button */}
+      <CustomButton
+        title="Custom Button"
+        onPress={() => alert('Custom Button Pressed')}
+        backgroundColor={theme === 'light' ? 'blue' : 'gray'}
+        color="#fff"
+      />
+
+      {/* TextInput with Icon */}
+      <TextInputWithIcon
+        placeholder="Enter your text"
+        iconName="person"  // Ionicons icon name
+        value={inputValue}
+        onChangeText={setInputValue}
+      />
+
+      {/* Date Picker */}
+      <DateTimePickerComponent mode="date" onDateChange={setSelectedDate} />
+      <Text>Date Selected: {selectedDate.toLocaleDateString()}</Text>
+
+      {/* Dropdown */}
+      <Dropdown
+        selectedValue={selectedOption}
+        onValueChange={setSelectedOption}
+        options={dropdownOptions}
+      />
+      <Text>Selected Option: {selectedOption}</Text>
+
+      {/* Button to toggle theme */}
+      <Button title="Toggle Theme" onPress={() => dispatch(toggleTheme())} />
     </View>
   );
-}
+};
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+// Define dynamic styles based on the theme
+const styles = (theme: 'light' | 'dark') =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme === 'light' ? '#F7F7F7' : '#181818',
+      padding: 20,
+    },
+    title: {
+      color: theme === 'light' ? '#333' : '#FFF',
+      fontSize: 24,
+      fontWeight: '700',
+    },
+  });
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const AppWrapper = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+export default AppWrapper;
