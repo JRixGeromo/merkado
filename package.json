@@ -5,11 +5,15 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android --active-arch-only",
+    "build:prodwindows": "cd android && gradlew.bat clean && cross-env APP_ENV=production gradlew.bat assembleRelease",
+
+
+
+    
     "ios": "react-native run-ios",
     "web": "webpack serve --config webpack.config.ts",
     "build": "cd android && gradlew.bat clean && cross-env APP_ENV=test gradlew.bat assembleRelease",
     "build:production": "cd android && ./gradlew clean &&  ./gradlew assembleRelease",
-    "build:prodwindows": "cd android && ./gradlew clean && cross-env APP_ENV=production ./gradlew assembleRelease",
     "build:aab": "cd android && ./gradlew clean && APP_ENV=production ./gradlew bundleRelease",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
