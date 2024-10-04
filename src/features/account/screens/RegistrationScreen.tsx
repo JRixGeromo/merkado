@@ -27,31 +27,31 @@ const RegistrationScreen = () => {
   
         <TextInputWithIcon
           placeholder="Email"
-          iconName="email"  // Adjusted to match your convention
+          iconName="mail"  // Ionicons for email
           value={email}
           onChangeText={setEmail}
         />
-        
+
         <TextInputWithIcon
           placeholder="Password"
-          iconName="lock"  // Adjusted to match your convention
+          iconName="lock-closed"  // Ionicons for password
           secureTextEntry
           value={password}
           onChangeText={setPassword}
         />
-        
+
         <TextInputWithIcon
           placeholder="Confirm Password"
-          iconName="lock"  // Adjusted to match your convention
+          iconName="lock-closed"  // Same icon for confirm password
           secureTextEntry
           value={confirmPassword}
           onChangeText={setConfirmPassword}
         />
-        
+
         {/* Optional field for vendor registration */}
         <TextInputWithIcon
           placeholder="Location (Optional)"
-          iconName="location-pin"  // Adjusted to match your convention
+          iconName="location"  // Ionicons for location
           value={location}
           onChangeText={setLocation}
         />

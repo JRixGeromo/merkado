@@ -1,32 +1,42 @@
 import React, { useEffect, useState } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SplashScreen from './src/features/splash/screens/SplashScreen';  // Your Splash Screen component
-import LoginScreen from './src/features/account/screens/RegistrationScreen';  // Your login screen
-//import RegisterScreen from './src/screens/RegisterScreen';  // Your register screen
+import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks';
+import { toggleTheme } from './src/reducers/themeReducer';
+import SplashScreen from './src/features/splash/screens/SplashScreen';
+// import LoginScreen from './src/features/account/screens/LoginScreen';
+import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
+import styles from './src/styles/styles'; // Import the styles
 
 const Stack = createStackNavigator();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const theme = useAppSelector((state) => state.theme.theme);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // Simulate loading (e.g., fetching resources)
     setTimeout(() => {
-      setIsLoading(false);  // After 3 seconds, show the landing screen
+      setIsLoading(false);
     }, 3000);
   }, []);
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: true,
+          headerRight: () => (
+            <TouchableOpacity style={styles.button} onPress={() => dispatch(toggleTheme())}>
+              <Text style={styles.buttonText}>Toggle Theme</Text>
+            </TouchableOpacity>
+          ),
+        }}>
         {isLoading ? (
           <Stack.Screen name="Splash" component={SplashScreen} />
         ) : (
-          <>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            {/* <Stack.Screen name="Register" component={RegisterScreen} /> */}
-          </>
+          <Stack.Screen name="RegistrationScreen" component={RegistrationScreen} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
