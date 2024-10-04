@@ -4,21 +4,11 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "android": "react-native run-android --active-arch-only",
-    "build:prodwindows": "cd android && gradlew.bat clean && cross-env APP_ENV=production gradlew.bat assembleRelease",
-
-
-
-    
+    "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "web": "webpack serve --config webpack.config.ts",
-    "build": "cd android && gradlew.bat clean && cross-env APP_ENV=test gradlew.bat assembleRelease",
-    "build:production": "cd android && ./gradlew clean &&  ./gradlew assembleRelease",
-    "build:aab": "cd android && ./gradlew clean && APP_ENV=production ./gradlew bundleRelease",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "build:web": "webpack --config webpack.config.ts",
-    "start:web": "webpack serve --config webpack.config.ts"
+    "clean-build-android": "cd android && ./gradlew clean && ./gradlew assembleRelease",
+    "build-android": "cd android && ./gradlew assembleRelease",
+    "clean-android": "cd android && ./gradlew clean"
   },
   "dependencies": {
     "@prisma/client": "^5.20.0",
