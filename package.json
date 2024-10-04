@@ -6,9 +6,9 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean-build-android": "cd android && ./gradlew clean && ./gradlew assembleRelease",
-    "build-android": "cd android && ./gradlew assembleRelease",
-    "clean-android": "cd android && ./gradlew clean"
+    "clean-build-android": "cd android && gradlew.bat clean && gradlew.bat assembleRelease",
+    "build-android": "cd android && gradlew.bat assembleRelease",
+    "clean-android": "cd android && gradlew.bat clean"
   },
   "dependencies": {
     "@prisma/client": "^5.20.0",
