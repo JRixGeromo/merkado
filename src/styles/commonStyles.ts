@@ -2,6 +2,13 @@ import { StyleSheet, Platform } from 'react-native';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
 
 export const commonStyles = StyleSheet.create({
+  container: {
+    flex: 1,  // Takes up the full screen
+    justifyContent: 'center',  // Centers content vertically
+    alignItems: 'center',  // Centers content horizontally
+    backgroundColor: '#fff',  // White background (you can change this as needed)
+    padding: normalizeHeight(16),  // Normalized padding
+  },
   button: {
     padding: normalizeHeight(15), // Use normalized height instead of screen width-based padding
     borderRadius: 8,
@@ -43,5 +50,12 @@ export const commonStyles = StyleSheet.create({
     fontSize: normalizeFontSize(24),  // Define the font size for the icon
     color: '#000',  // Define the color of the icon (black in this case)
     margin: normalizeHeight(8),  // Define margin around the icon
+  },
+  title: {
+    fontSize: normalizeFontSize(24),  // Use a larger font size for titles
+    fontWeight: 'bold',  // Make the title bold
+    marginBottom: normalizeHeight(20),  // Add space below the title
+    textAlign: 'center',  // Center the title text
+    color: '#333',  // Darker text color for better readability
   },
 });

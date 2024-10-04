@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import themeReducer from '../reducers/themeReducer'; // Import the theme reducer
+import themeReducer from '../reducers/themeReducer';
+import authReducer from '../reducers/authReducer'; // Import the auth reducer
 
 // Create the Redux store
 const store = configureStore({
   reducer: {
     theme: themeReducer, // Register the theme reducer
+    auth: authReducer,   // Register the auth reducer
   },
 });
 
