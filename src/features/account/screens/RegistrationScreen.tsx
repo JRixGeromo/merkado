@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, Alert, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform  } from 'react-native';
 import Box from '../../../components/Box';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
@@ -38,6 +38,11 @@ const RegistrationScreen = () => {
   };
 
   return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <Box style={[commonStyles.container, { backgroundColor: theme === 'light' ? '#fff' : '#333' }]}>
       <Text style={[commonStyles.title, { color: theme === 'light' ? '#333' : '#fff' }]}>
         Register
@@ -97,6 +102,8 @@ const RegistrationScreen = () => {
         </Text>
       </TouchableOpacity>
     </Box>
+    </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -1,13 +1,35 @@
 import { StyleSheet, Platform } from 'react-native';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
+import { FlexAlignType } from 'react-native';
+
+const sharedBoxStyle = {
+  padding: normalizeHeight(16),  // Shared padding
+  borderRadius: 10,  // Rounded corners
+  shadowColor: '#000',  // Shadow properties
+  shadowOffset: { width: 0, height: 2 }, 
+  shadowOpacity: 0.1,
+  shadowRadius: 5,
+  elevation: 3,  // Shadow for Android
+  //alignSelf: 'center' as FlexAlignType, // Correctly typed alignSelf
+};
 
 export const commonStyles = StyleSheet.create({
   container: {
+    ...sharedBoxStyle,  // Apply shared styles
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: normalizeHeight(16),
+    backgroundColor: '#fff',  // Unique property for container
+    marginHorizontal: normalizeHeight(20),  // Space for container if needed
+  },
+  box: {
+    ...sharedBoxStyle,  // Apply shared styles
+    backgroundColor: '#f8f9fa',  // Light background for box
+    marginVertical: normalizeHeight(16), // Space around box
+    width: Platform.select({
+      web: '50%',  // Desktop width
+      default: '90%',  // Mobile width
+    }),
   },
   inputContainer: {
     flexDirection: 'row',
@@ -78,21 +100,6 @@ export const commonStyles = StyleSheet.create({
   buttonText: {
     fontSize: normalizeFontSize(16),
     color: '#fff',  // White text for buttons
-  },
-  box: {
-    padding: normalizeHeight(16),
-    backgroundColor: '#f8f9fa',
-    borderRadius: 12,  // Rounded corners for cards
-    marginVertical: normalizeHeight(16),
-    width: Platform.select({
-      web: '50%',
-      default: '80%',
-    }),
-    shadowColor: '#000',  // Shadow for product cards
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,  // Elevation for Android
   },
   dropdown: {
     borderWidth: 1,

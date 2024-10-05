@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { toggleTheme } from '../../../reducers/themeReducer';
 import Box from '../../../components/Box';
@@ -33,6 +33,11 @@ const LoginScreen = () => {
   };
 
   return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <Box style={[commonStyles.container, { backgroundColor: theme === 'light' ? '#fff' : '#333' }]}>
       {/* Welcome Text */}
       <Text style={[commonStyles.title, { color: theme === 'light' ? '#333' : '#fff' }]}>
@@ -101,6 +106,8 @@ const LoginScreen = () => {
         </Text>
       </TouchableOpacity>
     </Box>
+    </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
