@@ -170,6 +170,15 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.backgroundColor,
       padding: 10,
       borderRadius: 10,
+      alignItems: 'center', // Center the product name and image
+      justifyContent: 'center', // Vertically center the content
+      width: 120, // Set a fixed width for product boxes
+      height: 150, // Set a fixed height for product boxes
+      marginRight: 10, // Adjust spacing between boxes
+      shadowColor: '#000',
+      shadowOpacity: 0.1,
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 5,
     },
     productName: {
       fontSize: 16,
@@ -177,9 +186,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontWeight: 'bold',
     },
     productImage: {
-      width: 100,
-      height: 100,
-      resizeMode: 'cover',
+      width: 80, // Set a fixed width for the product image
+      height: 80, // Set a fixed height for the product image
+      resizeMode: 'contain', // Ensure the image doesn't stretch
+      marginBottom: 10, // Add space between the image and text
     },
     storeImage: {
       width: 100,
