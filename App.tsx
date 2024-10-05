@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; // Import bottom tab navigator
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks';
 import { toggleTheme } from './src/reducers/themeReducer';
 import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
-import Icon from 'react-native-vector-icons/Ionicons'; // Using Ionicons for icons
-import { RootStackParamList, RootTabParamList } from './src/navigationTypes'; // Add the correct typing
+import Icon from 'react-native-vector-icons/Ionicons';
+import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 
 // Ensure the Stack Navigator uses the correct type definition for screens
 const Stack = createStackNavigator<RootStackParamList>();
@@ -50,20 +50,45 @@ const App = () => {
         tabBarActiveTintColor: theme === 'light' ? '#4CAF50' : '#007AFF',
         tabBarInactiveTintColor: '#ccc',
         tabBarStyle: { backgroundColor: theme === 'light' ? '#fff' : '#333' },
+        headerRight: () => (
+          <View style={{ flexDirection: 'row', alignItems: 'center', paddingRight: 20 }}>
+            
+            {/* Notification Icon */}
+            <TouchableOpacity style={{ marginRight: 15 }}>
+              <Icon name="notifications-outline" size={24} color="#333" />
+            </TouchableOpacity>
+  
+            {/* Profile Icon */}
+            <TouchableOpacity style={{ marginRight: 15 }}>
+              <Icon name="person-outline" size={24} color="#333" />
+            </TouchableOpacity>
+  
+            {/* Theme Toggle (Rightmost) */}
+            <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
+              <Icon
+                name={theme === 'light' ? 'moon' : 'sunny'}
+                size={24}
+                color={theme === 'light' ? '#000' : '#ccc'}
+              />
+            </TouchableOpacity>
+            
+          </View>
+        ),
       })}
     >
-      {/* Tab Screens */}
-      <Tab.Screen name="Home" component={DashboardScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Savings" component={DummyScreen} />
-      <Tab.Screen name="Recipes" component={DummyScreen} />
-      <Tab.Screen name="Cart" component={DummyScreen} />
+      <Tab.Screen name="Home" component={DashboardScreen} options={{ headerTitle: 'Merkado' }} />
+      <Tab.Screen name="Savings" component={DummyScreen} options={{ headerTitle: 'Savings' }} />
+      <Tab.Screen name="Recipes" component={DummyScreen} options={{ headerTitle: 'Recipes' }} />
+      <Tab.Screen name="Cart" component={DummyScreen} options={{ headerTitle: 'Cart' }} />
     </Tab.Navigator>
   );
-
+  
+  
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
+          // Add theme toggle to every screen's header
           headerRight: () => (
             <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => dispatch(toggleTheme())}>
               <Icon
@@ -75,7 +100,6 @@ const App = () => {
           ),
         }}
       >
-        
           <Stack.Screen
             name="SplashScreen"
             component={SplashScreen}
@@ -102,7 +126,6 @@ const App = () => {
               options={{ headerShown: false }} // Hide the header for the dashboard with tabs
             />
           </>
-        
       </Stack.Navigator>
     </NavigationContainer>
   );

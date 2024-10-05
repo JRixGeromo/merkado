@@ -1,46 +1,56 @@
 import React from 'react';
-import { View, TextInput, Image, TouchableOpacity } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
-import { commonStyles } from '../../../styles/commonStyles';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, ScrollView, Image } from 'react-native';
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Access theme and dispatch
+import { toggleTheme } from '../../../reducers/themeReducer'; // Import theme toggle action
+import CustomButton from '../../../components/CustomButton'; // Reusable button
+import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 
-const Header = () => {
-  const theme = useAppSelector((state) => state.theme.theme); // Get the current theme
-  const styles = commonStyles(theme); // Generate dynamic styles
+const DashboardScreen = () => {
+  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const dispatch = useAppDispatch(); // Get dispatch for Redux actions
+  const styles = commonStyles(theme);  // Apply dynamic styles based on the theme
+  const { container, title, sectionTitle, storeBox, productBox, storeName, storeLocation, productName, productImage } = styles; // Destructure commonly used styles
 
   return (
-    <View style={[styles.container, { flexDirection: 'row', alignItems: 'center', padding: 10, justifyContent: 'space-between' }]}>
-      {/* Logo */}
-      <Image
-        source={require('../../../../assets/logo.jpg')} // Replace with your logo image
-        style={{ width: 120, height: 40, resizeMode: 'contain' }}
-      />
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={[container, { backgroundColor: theme === 'light' ? '#fff' : '#333' }]}>
+        <Text style={[title, { color: theme === 'light' ? '#333' : '#fff' }]}>
+          Welcome to the Dashboard
+        </Text>
 
-      {/* Search Bar */}
-      <TextInput
-        placeholder="What are you looking for?"
-        style={[
-          styles.input,
-          {
-            flex: 1,
-            marginHorizontal: 10,
-            padding: 10,
-            backgroundColor: theme === 'light' ? '#f3f3f3' : '#444',
-          },
-        ]}
-      />
+        {/* Button to toggle theme */}
+        <CustomButton
+          title="Toggle Theme"
+          onPress={() => dispatch(toggleTheme())} // Dispatch the theme toggle action
+          backgroundColor={theme === 'light' ? '#4CAF50' : '#1E90FF'} // Adjust button color based on theme
+          color="#fff"
+        />
 
-      {/* Icons */}
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <TouchableOpacity>
-          <Icon name="notifications-outline" size={24} color={theme === 'light' ? '#333' : '#fff'} style={{ marginRight: 10 }} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="person-outline" size={24} color={theme === 'light' ? '#333' : '#fff'} />
-        </TouchableOpacity>
+        {/* Featured Stores Section */}
+        <View style={styles.section}>
+          <Text style={[sectionTitle, { color: theme === 'light' ? '#333' : '#fff' }]}>
+            Featured Stores
+          </Text>
+          <View style={storeBox}>
+            <Image source={{ uri: 'https://example.com/store.jpg' }} style={styles.productImage} />
+            <Text style={storeName}>Trader Joe's</Text>
+            <Text style={storeLocation}>Walnut Creek, CA</Text>
+          </View>
+        </View>
+
+        {/* Featured Products Section */}
+        <View style={styles.section}>
+          <Text style={[sectionTitle, { color: theme === 'light' ? '#333' : '#fff' }]}>
+            Featured Products
+          </Text>
+          <View style={productBox}>
+            <Image source={{ uri: 'https://example.com/product.jpg' }} style={styles.productImage} />
+            <Text style={productName}>Beef Boneless</Text>
+          </View>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
-export default Header;
+export default DashboardScreen;

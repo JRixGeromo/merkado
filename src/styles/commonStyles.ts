@@ -139,6 +139,47 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textColor,  // Text color from selected theme
     },
-
+    section: {
+      marginTop: 20,
+    },
+    sectionTitle: {
+      fontSize: 18,
+      color: selectedTheme.textColor,
+      fontWeight: 'bold',
+      marginBottom: 10,
+    },
+    storeBox: {
+      backgroundColor: selectedTheme.backgroundColor,
+      padding: 10,
+      borderRadius: 10,
+      shadowColor: '#000',
+      shadowOpacity: 0.1,
+      shadowOffset: { width: 0, height: 2 },
+      marginBottom: 10,
+    },
+    storeName: {
+      fontSize: 16,
+      color: selectedTheme.textColor,
+      fontWeight: 'bold',
+    },
+    storeLocation: {
+      fontSize: 14,
+      color: selectedTheme.secondary,
+    },
+    productBox: {
+      backgroundColor: selectedTheme.backgroundColor,
+      padding: 10,
+      borderRadius: 10,
+    },
+    productName: {
+      fontSize: 16,
+      color: selectedTheme.textColor,
+      fontWeight: 'bold',
+    },
+    productImage: {
+      width: 100,
+      height: 100,
+      resizeMode: 'cover',
+    },
   });
 };
