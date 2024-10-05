@@ -8,6 +8,7 @@ import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes'; // Import your RootStackParamList
+import Icon from 'react-native-vector-icons/Ionicons'; // For the theme toggle icon
 
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
@@ -44,8 +45,8 @@ const RegistrationScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={[container, { backgroundColor: theme === 'light' ? '#fff' : '#333' }]}>
-          <Text style={[title, { color: theme === 'light' ? '#333' : '#fff' }]}>
+        <View style={[container]}>
+          <Text style={title}>
             Register
           </Text>
 
@@ -55,7 +56,7 @@ const RegistrationScreen = () => {
             iconName="mail" // Ionicons for email
             value={email}
             onChangeText={setEmail}
-            style={{ height: 50 }} 
+            style={{ height: 50 }}
           />
 
           {/* Password Input */}
@@ -65,7 +66,7 @@ const RegistrationScreen = () => {
             secureTextEntry
             value={password}
             onChangeText={setPassword}
-            style={{ height: 50 }} 
+            style={{ height: 50 }}
           />
 
           {/* Confirm Password Input */}
@@ -75,7 +76,7 @@ const RegistrationScreen = () => {
             secureTextEntry
             value={confirmPassword}
             onChangeText={setConfirmPassword}
-            style={{ height: 50 }} 
+            style={{ height: 50 }}
           />
 
           {/* Optional Location Input */}
@@ -84,20 +85,20 @@ const RegistrationScreen = () => {
             iconName="location" // Ionicons for location
             value={location}
             onChangeText={setLocation}
-            style={{ height: 50 }} 
+            style={{ height: 50 }}
           />
 
           {/* Register Button */}
           <CustomButton
             title="Register"
             onPress={handleRegister}
-            backgroundColor={theme === 'light' ? '#4CAF50' : '#1E90FF'} // Green for light, blue for dark
-            color="#fff"
+            backgroundColor={button?.backgroundColor} // Background color from commonStyles
+            color={buttonText?.color} // Text color from commonStyles
           />
 
           {/* Login Link */}
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={[{ marginTop: 20 }, { color: theme === 'light' ? '#4CAF50' : '#1E90FF' }]}>
+            <Text style={[{ marginTop: 20 }, buttonText]}>
               Already have an account? Login
             </Text>
           </TouchableOpacity>
