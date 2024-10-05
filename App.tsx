@@ -7,7 +7,6 @@ import { toggleTheme } from './src/reducers/themeReducer';
 import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
-import styles from './src/styles/styles'; // Import the styles
 import Icon from 'react-native-vector-icons/Ionicons'; // Using Ionicons for theme toggle icon
 
 const Stack = createStackNavigator();
@@ -18,14 +17,27 @@ const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    // Simulate loading time for splash screen
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Simulate loading time for splash screen
+    }, 3000);
   }, []);
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerRight: () => (
+            <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => dispatch(toggleTheme())}>
+              <Icon
+                name={theme === 'light' ? 'moon' : 'sunny'} // Moon icon for dark mode, sun for light mode
+                size={24}
+                color={theme === 'light' ? '#000' : '#ccc'} // Adjust icon color based on the theme
+              />
+            </TouchableOpacity>
+          ),
+        }}
+      >
         {isLoading ? (
           <Stack.Screen
             name="Splash"
@@ -39,15 +51,6 @@ const App = () => {
               component={LoginScreen}
               options={{
                 headerTitle: 'Login', // More user-friendly title
-                headerRight: () => (
-                  <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => dispatch(toggleTheme())}>
-                    <Icon
-                      name={theme === 'light' ? 'moon' : 'sunny'} // Moon icon for dark mode, sun for light mode
-                      size={24}
-                      color={theme === 'light' ? '#000' : '#fff'} // Adjust icon color based on the theme
-                    />
-                  </TouchableOpacity>
-                ),
               }}
             />
             <Stack.Screen
@@ -55,15 +58,6 @@ const App = () => {
               component={RegistrationScreen}
               options={{
                 headerTitle: 'Register', // More user-friendly title
-                headerRight: () => (
-                  <TouchableOpacity style={{ paddingRight: 20 }} onPress={() => dispatch(toggleTheme())}>
-                    <Icon
-                      name={theme === 'light' ? 'moon' : 'sunny'}
-                      size={24}
-                      color={theme === 'light' ? '#000' : '#fff'}
-                    />
-                  </TouchableOpacity>
-                ),
               }}
             />
           </>
