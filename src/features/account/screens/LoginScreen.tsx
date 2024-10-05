@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
-import { toggleTheme } from '../../../reducers/themeReducer'; // Import theme toggle action
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
+import { toggleTheme } from '../../../reducers/themeReducer';
 import Box from '../../../components/Box';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
-import { commonStyles } from '../../../styles/commonStyles'; // Common styles
+import { commonStyles } from '../../../styles/commonStyles';
+import Icon from 'react-native-vector-icons/FontAwesome';  // FontAwesome icons for social media
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
-  const dispatch = useAppDispatch(); // Get dispatch for Redux actions
+  const theme = useAppSelector((state) => state.theme.theme);
+  const dispatch = useAppDispatch();
 
   const handleLogin = () => {
     // Handle login logic
@@ -32,6 +33,7 @@ const LoginScreen = () => {
         iconName="mail" // Ionicons for email
         value={email}
         onChangeText={setEmail}
+        style={{ height: 50 }} 
       />
 
       {/* Password Input */}
@@ -41,6 +43,7 @@ const LoginScreen = () => {
         secureTextEntry
         value={password}
         onChangeText={setPassword}
+        style={{ height: 50 }} 
       />
 
       {/* Login Button */}
@@ -59,13 +62,26 @@ const LoginScreen = () => {
       {/* Or Login with Social */}
       <Text style={commonStyles.orText}>Or login with</Text>
 
-      {/* Social Login Button */}
-      <CustomButton
-        title="Login with Google"
-        onPress={() => console.log('Google Login Pressed')}
-        backgroundColor="#4285F4" // Blue color for the Google button
-        color="#fff"
-      />
+      {/* Social Login Buttons */}
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '80%' }}>
+        {/* Google Login Button */}
+        <TouchableOpacity
+          style={[commonStyles.socialButton, { backgroundColor: '#4285F4' }]} // Google button styling
+          onPress={() => console.log('Google Login Pressed')}
+        >
+          <Icon name="google" size={20} color="#fff" style={{ marginRight: 10 }} />
+          <Text style={{ color: '#fff' }}>Google</Text>
+        </TouchableOpacity>
+
+        {/* Facebook Login Button */}
+        <TouchableOpacity
+          style={[commonStyles.socialButton, { backgroundColor: '#3b5998' }]} // Facebook button styling
+          onPress={() => console.log('Facebook Login Pressed')}
+        >
+          <Icon name="facebook" size={20} color="#fff" style={{ marginRight: 10 }} />
+          <Text style={{ color: '#fff' }}>Facebook</Text>
+        </TouchableOpacity>
+      </View>
     </Box>
   );
 };

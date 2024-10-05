@@ -12,7 +12,7 @@ export const commonStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: normalizeHeight(3),
+    padding: normalizeHeight(5),
     borderRadius: 10,
     backgroundColor: '#F5F5F5',
     marginBottom: 15,
@@ -146,4 +146,18 @@ export const commonStyles = StyleSheet.create({
     color: '#333',
     marginTop: normalizeHeight(8),
   },
+  socialButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+    borderRadius: 8,
+    width: '48%', // Adjust width as necessary
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3, // Shadow for Android
+  },
+  
 });
