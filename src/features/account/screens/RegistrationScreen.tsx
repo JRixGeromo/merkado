@@ -7,6 +7,9 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // I
 import { toggleTheme } from '../../../reducers/themeReducer'; // Import theme toggle action
 import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../navigationTypes'; // Import your RootStackParamList
+
 
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +19,7 @@ const RegistrationScreen = () => {
 
   const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
 
   // Registration logic with validation
   const handleRegister = () => {
