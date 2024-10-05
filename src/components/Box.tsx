@@ -27,7 +27,7 @@ const styles = (theme: 'light' | 'dark') =>
   StyleSheet.create({
     box: {
       padding: normalizeHeight(16),
-      backgroundColor: theme === 'light' ? '#f8f9fa' : '#333', // Light/Dark mode color
+      //backgroundColor: theme === 'light' ? '#f8f9fa' : '#333', // Light/Dark mode color
       borderRadius: 8,
       marginVertical: normalizeHeight(16),
     },

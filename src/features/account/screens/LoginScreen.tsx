@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { toggleTheme } from '../../../reducers/themeReducer';
-import Box from '../../../components/Box';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { commonStyles } from '../../../styles/commonStyles';
@@ -11,7 +10,7 @@ import { useNavigation } from '@react-navigation/native'; // Import navigation h
 import { RootStackParamList } from '../../../navigationTypes'; // Define your navigation types
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Correct import for stack navigation
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'LoginScreen'>;
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -23,14 +22,15 @@ const LoginScreen = () => {
   const navigation = useNavigation<NavigationProp>(); // Use the correct type
 
   const handleLogin = () => {
-    // Handle login logic
     console.log('Login pressed');
   };
 
   const navigateToRegister = () => {
-    // Navigate to the Registration screen
     navigation.navigate('RegistrationScreen');
   };
+
+  const styles = commonStyles(theme);  // Dynamically create styles based on the theme
+  const { button, buttonText, socialButtonText, googleButton, facebookButton, title } = styles;
 
   return (
     <KeyboardAvoidingView
@@ -38,75 +38,64 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-    <Box style={[commonStyles.container, { backgroundColor: theme === 'light' ? '#fff' : '#333' }]}>
-      {/* Welcome Text */}
-      <Text style={[commonStyles.title, { color: theme === 'light' ? '#333' : '#fff' }]}>
-        Welcome Back
-      </Text>
+        <View style={styles.container}>
+          <Text style={title}>Welcome Back</Text>
 
-      {/* Email Input */}
-      <TextInputWithIcon
-        placeholder="Email"
-        iconName="mail" // Ionicons for email
-        value={email}
-        onChangeText={setEmail}
-        style={{ height: 50 }} 
-      />
+          <TextInputWithIcon
+            placeholder="Email"
+            iconName="mail"
+            value={email}
+            onChangeText={setEmail}
+            style={{ height: 50 }} 
+          />
 
-      {/* Password Input */}
-      <TextInputWithIcon
-        placeholder="Password"
-        iconName="lock-closed" // Ionicons for password
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-        style={{ height: 50 }} 
-      />
+          <TextInputWithIcon
+            placeholder="Password"
+            iconName="lock-closed"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+            style={{ height: 50 }} 
+          />
 
-      {/* Login Button */}
-      <CustomButton
-        title="Login"
-        onPress={handleLogin}
-        backgroundColor="#4CAF50" // Green color for the button
-        color="#fff"
-      />
+          <CustomButton
+            title="Login"
+            onPress={handleLogin}
+            backgroundColor={button?.backgroundColor}
+            color={buttonText?.color}
+          />
 
-      {/* Forgot Password */}
-      <TouchableOpacity>
-        <Text style={commonStyles.forgotPasswordText}>Forgot your password?</Text>
-      </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+          </TouchableOpacity>
 
-      {/* Or Login with Social */}
-      <Text style={commonStyles.orText}>Or login with</Text>
+          <Text style={styles.orText}>Or login with</Text>
 
-      {/* Social Login Buttons */}
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '80%' }}>
-        {/* Google Login Button */}
-        <TouchableOpacity
-          style={[commonStyles.socialButton, { backgroundColor: '#4285F4' }]} // Google button styling
-          onPress={() => console.log('Google Login Pressed')}
-        >
-          <Icon name="google" size={20} color="#fff" style={{ marginRight: 10 }} />
-          <Text style={{ color: '#fff' }}>Google</Text>
-        </TouchableOpacity>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '80%' }}>
+            <TouchableOpacity
+              style={[styles.socialButton, googleButton]}
+              onPress={() => console.log('Google Login Pressed')}
+            >
+              <Icon name="google" size={20} color={socialButtonText?.color} style={{ marginRight: 10 }} />
+              <Text style={socialButtonText}>Google</Text>
+            </TouchableOpacity>
 
-        {/* Facebook Login Button */}
-        <TouchableOpacity
-          style={[commonStyles.socialButton, { backgroundColor: '#3b5998' }]} // Facebook button styling
-          onPress={() => console.log('Facebook Login Pressed')}
-        >
-          <Icon name="facebook" size={20} color="#fff" style={{ marginRight: 10 }} />
-          <Text style={{ color: '#fff' }}>Facebook</Text>
-        </TouchableOpacity>
-      </View>
-         {/* Register Link */}
-         <TouchableOpacity onPress={navigateToRegister}>
-        <Text style={[commonStyles.forgotPasswordText, { marginTop: 20 }]}>
-          Don't have an account? <Text style={{ fontWeight: 'bold', color: '#4CAF50' }}>Register</Text>
-        </Text>
-      </TouchableOpacity>
-    </Box>
-    </ScrollView>
+            <TouchableOpacity
+              style={[styles.socialButton, facebookButton]}
+              onPress={() => console.log('Facebook Login Pressed')}
+            >
+              <Icon name="facebook" size={20} color={socialButtonText?.color} style={{ marginRight: 10 }} />
+              <Text style={socialButtonText}>Facebook</Text>
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity onPress={navigateToRegister}>
+            <Text style={[styles.forgotPasswordText, { marginTop: 20 }]}>
+              Don't have an account? <Text style={{ fontWeight: 'bold', color: title?.color }}>Register</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };

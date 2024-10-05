@@ -3,6 +3,7 @@ import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Default to Ionicons
 import { commonStyles } from '../styles/commonStyles';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
+import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selector for theme
 
 interface TextInputWithIconProps {
   placeholder: string;
@@ -26,31 +27,38 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   onChangeText,
   iconPack = Icon,
   secureTextEntry = false,
-  placeholderTextColor = '#7F7F7F',
+  placeholderTextColor,
   iconSize = normalizeFontSize(20),
   iconColor = '#000',
   style = {},
   inputStyle = {},
-  textColor = '#333',  // Default text color is set to dark grey
+  textColor,
 }) => {
+  const currentTheme = useAppSelector((state) => state.theme.theme);  // Access current theme (light/dark)
+  const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
+  
+  // Fallback to theme-based colors if not provided as props
+  const themeBasedIconColor = iconColor || commonStyle.iconColor.color;  // Ensure dynamicStyles.iconColor exists
+  const themeBasedPlaceholderColor = placeholderTextColor || commonStyle.placeholderTextColor.color;
+  const themeBasedTextColor = textColor || commonStyle.textColor.color;
+
   const IconComponent = iconPack;
 
   return (
-    <View style={[commonStyles.inputContainer, style]}>
-      {/* Icon with dynamic color and size */}
+    <View style={[commonStyle.inputContainer, style]}>
       <IconComponent
         name={iconName}
         size={iconSize}
-        color={iconColor}
+        color={themeBasedIconColor}
         style={{ marginRight: normalizeHeight(8) }}
       />
       <TextInput
-        style={[commonStyles.input, inputStyle, { color: textColor }]}  // Text color applied here
+        style={[commonStyle.input, inputStyle, { color: themeBasedTextColor }]}  // Apply theme-based text color
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor={themeBasedPlaceholderColor}  // Apply theme-based placeholder color
       />
     </View>
   );
