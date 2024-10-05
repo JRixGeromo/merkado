@@ -75,13 +75,12 @@ const App = () => {
           ),
         }}
       >
-        {isLoading ? (
+        
           <Stack.Screen
             name="SplashScreen"
             component={SplashScreen}
             options={{ headerShown: false }}
           />
-        ) : (
           <>
             <Stack.Screen
               name="LoginScreen"
@@ -103,7 +102,7 @@ const App = () => {
               options={{ headerShown: false }} // Hide the header for the dashboard with tabs
             />
           </>
-        )}
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
