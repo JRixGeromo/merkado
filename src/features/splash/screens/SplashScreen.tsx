@@ -25,7 +25,7 @@ const SplashScreen = () => {
       if (isAuthenticated) {
         navigation.navigate('DashboardScreen');
       } else {
-        navigation.navigate('LoginScreen');
+        navigation.navigate('Login');
       }
     }, 3000); // 3 seconds delay
 
