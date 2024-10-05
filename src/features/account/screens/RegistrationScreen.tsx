@@ -79,13 +79,6 @@ const RegistrationScreen = () => {
         backgroundColor="blue"
         color="#fff"
       />
-
-      {/* Theme Toggle Button */}
-      <TouchableOpacity style={commonStyles.button} onPress={() => dispatch(toggleTheme())}>
-        <Text style={commonStyles.buttonText}>
-          Toggle Theme
-        </Text>
-      </TouchableOpacity>
     </Box>
   );
 };

@@ -3,59 +3,147 @@ import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Imp
 
 export const commonStyles = StyleSheet.create({
   container: {
-    flex: 1,  // Takes up the full screen
-    justifyContent: 'center',  // Centers content vertically
-    alignItems: 'center',  // Centers content horizontally
-    backgroundColor: '#fff',  // White background (you can change this as needed)
-    padding: normalizeHeight(16),  // Normalized padding
-  },
-  button: {
-    padding: normalizeHeight(15), // Use normalized height instead of screen width-based padding
-    borderRadius: 8,
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    width: Platform.select({
-      web: '40%',  // Adjust for larger screen widths on desktop
-      default: '80%',  // Default for mobile
-    }),
+    backgroundColor: '#fff',
+    padding: normalizeHeight(16),
   },
-  buttonText: {
-    fontSize: normalizeFontSize(16), // Use normalized font size
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: normalizeHeight(3),
+    borderRadius: 10,
+    backgroundColor: '#F5F5F5',
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    width: '80%',  // Ensures a good width for the input field
+    height: normalizeHeight(45),  // Proper height for the input field
+    paddingHorizontal: 10,  // Padding inside the container
   },
   input: {
     flex: 1,
-    fontSize: normalizeFontSize(16),  // Use normalized font size for input
-    padding: normalizeHeight(10), // Add padding to inputs for better usability
+    fontSize: normalizeFontSize(16),
+    color: '#333',
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: normalizeFontSize(28),
+    fontWeight: 'bold',
+    marginBottom: normalizeHeight(20),
+    textAlign: 'center',
+    color: '#4CAF50',
+  },
+  forgotPasswordText: {
+    color: '#4CAF50',
+    marginBottom: 20,
+    textAlign: 'center',
+    fontSize: normalizeFontSize(12),
+  },
+  orText: {
+    fontSize: normalizeFontSize(14),
+    color: '#7F7F7F',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  heroContainer: {
+    height: normalizeHeight(200),
+    backgroundColor: '#E0F7FA',  // Light teal background for promotions or banners
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: normalizeHeight(16),
+  },
+  heroText: {
+    fontSize: normalizeFontSize(28),  // Large text for hero section
+    fontWeight: 'bold',
+    color: '#00796B',  // Darker teal for text
+    textAlign: 'center',
+  },
+  button: {
+    padding: normalizeHeight(15),
+    borderRadius: 8,
+    alignItems: 'center',
+    backgroundColor: '#00796B',  // Teal background for primary action buttons
+    width: Platform.select({
+      web: '40%',
+      default: '80%',
+    }),
+  },
+  buttonText: {
+    fontSize: normalizeFontSize(16),
+    color: '#fff',  // White text for buttons
   },
   box: {
-    padding: normalizeHeight(16),  // Use normalized padding
+    padding: normalizeHeight(16),
     backgroundColor: '#f8f9fa',
-    borderRadius: 8,
-    marginVertical: normalizeHeight(16), // Use normalized margin
+    borderRadius: 12,  // Rounded corners for cards
+    marginVertical: normalizeHeight(16),
     width: Platform.select({
-      web: '50%',  // Adjust width for desktop
-      default: '80%',  // Default width for mobile
+      web: '50%',
+      default: '80%',
     }),
+    shadowColor: '#000',  // Shadow for product cards
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,  // Elevation for Android
   },
   dropdown: {
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
-    marginBottom: normalizeHeight(16),  // Use normalized margin
+    marginBottom: normalizeHeight(16),
     width: Platform.select({
-      web: '50%',  // Adjust for desktop width
-      default: '80%',  // Default width for mobile
+      web: '50%',
+      default: '80%',
     }),
+    backgroundColor: '#FFF',
+    paddingHorizontal: normalizeHeight(10),
   },
   icon: {
-    fontSize: normalizeFontSize(24),  // Define the font size for the icon
-    color: '#000',  // Define the color of the icon (black in this case)
-    margin: normalizeHeight(8),  // Define margin around the icon
+    fontSize: normalizeFontSize(24),
+    color: '#000',
+    margin: normalizeHeight(8),
   },
-  title: {
-    fontSize: normalizeFontSize(24),  // Use a larger font size for titles
-    fontWeight: 'bold',  // Make the title bold
-    marginBottom: normalizeHeight(20),  // Add space below the title
-    textAlign: 'center',  // Center the title text
-    color: '#333',  // Darker text color for better readability
+  productTitle: {
+    fontSize: normalizeFontSize(18),
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: normalizeHeight(8),
+  },
+  productDescription: {
+    fontSize: normalizeFontSize(14),
+    color: '#666',  // Slightly lighter text for descriptions
+    marginBottom: normalizeHeight(8),
+  },
+  productPrice: {
+    fontSize: normalizeFontSize(16),
+    color: '#00796B',  // Teal color for prices
+    fontWeight: 'bold',
+  },
+  categoryCard: {
+    backgroundColor: '#FFF',
+    borderRadius: 12,
+    padding: normalizeHeight(10),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: normalizeHeight(12),
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  categoryText: {
+    fontSize: normalizeFontSize(14),
+    fontWeight: '500',
+    color: '#333',
+    marginTop: normalizeHeight(8),
   },
 });

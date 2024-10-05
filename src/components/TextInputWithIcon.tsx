@@ -1,17 +1,22 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Default to Ionicons
 import { commonStyles } from '../styles/commonStyles';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
 
 interface TextInputWithIconProps {
   placeholder: string;
-  iconName: string; // Icon name as a string
+  iconName: string;
   value: string;
   onChangeText: (text: string) => void;
-  iconPack?: typeof Icon; // Ensure iconPack is of the correct type
+  iconPack?: typeof Icon;
   secureTextEntry?: boolean;
-  style?: object;
+  placeholderTextColor?: string;
+  iconSize?: number;
+  iconColor?: string;
+  style?: StyleProp<ViewStyle>;
+  inputStyle?: StyleProp<TextStyle>;
+  textColor?: string;  // Add a prop to define text color
 }
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
@@ -19,27 +24,33 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   iconName,
   value,
   onChangeText,
-  iconPack = Icon, // Default to Ionicons if no iconPack is provided
+  iconPack = Icon,
   secureTextEntry = false,
+  placeholderTextColor = '#7F7F7F',
+  iconSize = normalizeFontSize(20),
+  iconColor = '#000',
   style = {},
+  inputStyle = {},
+  textColor = '#333',  // Default text color is set to dark grey
 }) => {
-  const IconComponent = iconPack; // No need for additional fallback, default is handled
+  const IconComponent = iconPack;
 
   return (
-    <View style={[commonStyles.box, style, { flexDirection: 'row', alignItems: 'center' }]}>
-      {/* Ensure the icon shows up by giving it a specific color */}
+    <View style={[commonStyles.inputContainer, style]}>
+      {/* Icon with dynamic color and size */}
       <IconComponent
         name={iconName}
-        size={normalizeFontSize(24)}
-        color="#000" // You can change this to the desired icon color
-        style={{ marginRight: normalizeHeight(8) }} // Adding a margin to space it from the TextInput
+        size={iconSize}
+        color={iconColor}
+        style={{ marginRight: normalizeHeight(8) }}
       />
       <TextInput
-        style={[commonStyles.input, { fontSize: normalizeFontSize(16) }]}
+        style={[commonStyles.input, inputStyle, { color: textColor }]}  // Text color applied here
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
+        placeholderTextColor={placeholderTextColor}
       />
     </View>
   );
