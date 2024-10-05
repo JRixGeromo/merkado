@@ -23,6 +23,7 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     console.log('Login pressed');
+    navigation.navigate('DashboardScreen'); // Ensure that 'DashboardScreen' is defined in your stack
   };
 
   const navigateToRegister = () => {

@@ -1,9 +1,17 @@
-// src/navigationTypes.ts (or inside your navigation setup file)
+// navigationTypes.ts
 
+// Stack Navigator Params
 export type RootStackParamList = {
-    SplashScreen: undefined;
-    DashboardScreen: undefined;
-    RegistrationScreen: undefined;
-    LoginScreen: undefined; // Assuming 'Login' is your screen name for the login screen
-  };
-  
+  SplashScreen: undefined;
+  LoginScreen: undefined;
+  RegistrationScreen: undefined;
+  DashboardScreen: undefined;
+};
+
+// Tab Navigator Params
+export type RootTabParamList = {
+  Home: undefined;
+  Savings: undefined;
+  Recipes: undefined;
+  Cart: undefined;
+};

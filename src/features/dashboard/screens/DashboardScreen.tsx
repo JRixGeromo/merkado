@@ -1,74 +1,46 @@
-import React, { useState } from 'react';
-
-import { View, Text } from 'react-native';
-import Box from '../../../components/Box';
-import CustomButton from '../../../components/CustomButton'; // Reusable Button
-import TextInputWithIcon from '../../../components/TextInputWithIcon'; // Reusable TextInput with Icon
-import DateTimePickerComponent from '../../../components/DateTimePicker'; // Reusable DatePicker
-import Dropdown from '../../../components/Dropdown'; // Reusable Dropdown
+import React from 'react';
+import { View, TextInput, Image, TouchableOpacity } from 'react-native';
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
 import { commonStyles } from '../../../styles/commonStyles';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const DashboardScreen = () => {
-    const [inputValue, setInputValue] = useState('');
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [selectedOption, setSelectedOption] = useState('');
-    
-    const dropdownOptions = [
-      { label: 'Option 1', value: '1' },
-      { label: 'Option 2', value: '2' },
-      { label: 'Option 3', value: '3' },
-    ];
-  
-    const handleProfilePress = () => {
-      alert('Navigating to Profile');
-    };
-  
-    const handleOrdersPress = () => {
-      alert('Navigating to Orders');
-    };
-  
-    return (
-      <Box style={commonStyles.container}>
-        <Text style={commonStyles.title}>Welcome to Your Dashboard</Text>
-  
-        {/* Custom Button for Profile */}
-        <CustomButton
-          title="View Profile"
-          onPress={handleProfilePress}
-          backgroundColor="blue"
-          color="#fff"
-        />
-  
-        {/* Custom Button for Orders */}
-        <CustomButton
-          title="View Orders"
-          onPress={handleOrdersPress}
-          backgroundColor="blue"
-          color="#fff"
-        />
-  
-        {/* TextInput with Icon */}
-        <Box>
-          <TextInputWithIcon
-            placeholder="Enter your text"
-            iconName="person"  // Ionicons icon name
-            value={inputValue}
-            onChangeText={setInputValue}
-          />
-        </Box>
-  
-        {/* Date Picker */}
-        <DateTimePickerComponent mode="date" onDateChange={setSelectedDate} />
-        <Text>Date Selected: {selectedDate.toLocaleDateString()}</Text>
-  
-        {/* Dropdown */}
-        <Dropdown
-          selectedValue={selectedOption}
-          onValueChange={setSelectedOption}
-          options={dropdownOptions}
-        />
-      </Box>
-    );
-  };
-  
-  export default DashboardScreen;
+const Header = () => {
+  const theme = useAppSelector((state) => state.theme.theme); // Get the current theme
+  const styles = commonStyles(theme); // Generate dynamic styles
+
+  return (
+    <View style={[styles.container, { flexDirection: 'row', alignItems: 'center', padding: 10, justifyContent: 'space-between' }]}>
+      {/* Logo */}
+      <Image
+        source={require('../../../../assets/logo.jpg')} // Replace with your logo image
+        style={{ width: 120, height: 40, resizeMode: 'contain' }}
+      />
+
+      {/* Search Bar */}
+      <TextInput
+        placeholder="What are you looking for?"
+        style={[
+          styles.input,
+          {
+            flex: 1,
+            marginHorizontal: 10,
+            padding: 10,
+            backgroundColor: theme === 'light' ? '#f3f3f3' : '#444',
+          },
+        ]}
+      />
+
+      {/* Icons */}
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <TouchableOpacity>
+          <Icon name="notifications-outline" size={24} color={theme === 'light' ? '#333' : '#fff'} style={{ marginRight: 10 }} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name="person-outline" size={24} color={theme === 'light' ? '#333' : '#fff'} />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default Header;
