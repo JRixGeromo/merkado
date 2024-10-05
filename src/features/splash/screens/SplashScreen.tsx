@@ -4,12 +4,16 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import Box from '../../../components/Box';
 import { RootState } from '../../../store/store'; // Adjust path to your store
+import { useAppSelector } from '../../../hooks/reduxHooks'; // To access the theme from Redux
 import { commonStyles } from '../../../styles/commonStyles';
 import { RootStackParamList } from '../../../navigationTypes';  // Import navigation types
 
 const SplashScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const styles = commonStyles(theme); // Dynamically create styles based on the theme
+
   const fadeAnim = new Animated.Value(0);  // Create an animated value for fade-in
 
   useEffect(() => {
@@ -34,30 +38,30 @@ const SplashScreen = () => {
   }, [isAuthenticated, navigation]);
 
   return (
-    <Box style={[commonStyles.container, styles.splashContainer]}>
+    <Box style={[styles.container, localStyles.splashContainer]}>
       {/* Optional background image */}
       <Image
         source={require('../../../../assets/splash_background.jpg')} // Adjust to your splash background
-        style={styles.backgroundImage}
+        style={localStyles.backgroundImage}
       />
 
       {/* Fade-in content */}
       <Animated.View style={{ opacity: fadeAnim }}>
         <Image
           source={require('../../../../assets/logo.jpg')}  // Adjust to your app's logo
-          style={styles.logo}
+          style={localStyles.logo}
         />
-        <Text style={[commonStyles.title, styles.splashText]}>Welcome to Merkado</Text>
+        <Text style={[styles.title, localStyles.splashText]}>Welcome to Merkado</Text>
       </Animated.View>
 
       {/* Custom loader */}
-      <ActivityIndicator size="large" color="#00796B" style={styles.loader} />
+      <ActivityIndicator size="large" color={theme === 'light' ? '#00796B' : '#fff'} style={localStyles.loader} />
     </Box>
   );
 };
 
-// Styles for SplashScreen
-const styles = StyleSheet.create({
+// Local styles for SplashScreen
+const localStyles = StyleSheet.create({
   splashContainer: {
     backgroundColor: '#fff',  // You can add a gradient or image here
     position: 'relative',  // For absolute positioning of background image
@@ -75,8 +79,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',  // Adjust based on your logo dimensions
   },
   splashText: {
-    color: '#00796B',  // A nice teal color to match your branding
     fontWeight: 'bold',
+    color: '#00796B',  // Static color, could be dynamic based on theme if needed
   },
   loader: {
     marginTop: 30,  // Add space between the text and loader
