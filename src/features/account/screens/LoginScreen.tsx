@@ -5,9 +5,9 @@ import { toggleTheme } from '../../../reducers/themeReducer';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { commonStyles } from '../../../styles/commonStyles';
-import Icon from 'react-native-vector-icons/FontAwesome';  // FontAwesome icons for social media
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native'; // Import navigation hook
-import { RootStackParamList } from '../../../navigationTypes'; // Define your navigation types
+import { RootStackParamList } from '../../../navigationTypes'; // Import your navigation types
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Correct import for stack navigation
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'LoginScreen'>;
@@ -19,11 +19,11 @@ const LoginScreen = () => {
   const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
-  const navigation = useNavigation<NavigationProp>(); // Use the correct type
+  const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
 
   const handleLogin = () => {
     console.log('Login pressed');
-    navigation.navigate('DashboardScreen'); // Ensure that 'DashboardScreen' is defined in your stack
+    navigation.navigate('DashboardScreen'); // Navigate to DashboardScreen after login
   };
 
   const navigateToRegister = () => {

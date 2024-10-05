@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, ActivityIndicator, Image, StyleSheet, Animated } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Import correct type
 import { useSelector } from 'react-redux';
 import Box from '../../../components/Box';
 import { RootState } from '../../../store/store'; // Adjust path to your store
@@ -8,8 +9,10 @@ import { useAppSelector } from '../../../hooks/reduxHooks'; // To access the the
 import { commonStyles } from '../../../styles/commonStyles';
 import { RootStackParamList } from '../../../navigationTypes';  // Import navigation types
 
+type SplashScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'SplashScreen'>;
+
 const SplashScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<SplashScreenNavigationProp>();
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
   const styles = commonStyles(theme); // Dynamically create styles based on the theme
@@ -29,7 +32,7 @@ const SplashScreen = () => {
       if (isAuthenticated) {
         navigation.navigate('DashboardScreen');
       } else {
-        navigation.navigate('LoginScreen');  // Use 'Login' instead of 'LoginScreen' if that's the defined screen
+        navigation.navigate('LoginScreen');  // Use 'LoginScreen' as it's defined in your stack
       }
     }, 3000); // 3 seconds delay
 

@@ -28,6 +28,7 @@ const App = () => {
     }, 3000);
   }, []);
 
+  // Main Tabs for Bottom Tab Navigation
   const MainTabs = () => (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -51,14 +52,13 @@ const App = () => {
         tabBarStyle: { backgroundColor: theme === 'light' ? '#fff' : '#333' },
       })}
     >
-      {/* Correct Tab.Screen components */}
-      <Tab.Screen name="Home" component={DashboardScreen} />
+      {/* Tab Screens */}
+      <Tab.Screen name="Home" component={DashboardScreen} options={{ headerShown: false }} />
       <Tab.Screen name="Savings" component={DummyScreen} />
       <Tab.Screen name="Recipes" component={DummyScreen} />
       <Tab.Screen name="Cart" component={DummyScreen} />
     </Tab.Navigator>
   );
-  
 
   return (
     <NavigationContainer>
@@ -99,8 +99,8 @@ const App = () => {
             />
             <Stack.Screen
               name="DashboardScreen"
-              component={MainTabs} // This is where you load the bottom tab navigator
-              options={{ headerShown: false }} // Hide header for the dashboard with tabs
+              component={MainTabs} // Load the bottom tab navigator for the dashboard
+              options={{ headerShown: false }} // Hide the header for the dashboard with tabs
             />
           </>
         )}
