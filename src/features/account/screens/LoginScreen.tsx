@@ -7,17 +7,29 @@ import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { commonStyles } from '../../../styles/commonStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';  // FontAwesome icons for social media
+import { useNavigation } from '@react-navigation/native'; // Import navigation hook
+import { RootStackParamList } from '../../../navigationTypes'; // Define your navigation types
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Correct import for stack navigation
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const theme = useAppSelector((state) => state.theme.theme);
-  const dispatch = useAppDispatch();
+  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const dispatch = useAppDispatch(); // Get dispatch for Redux actions
+
+  const navigation = useNavigation<NavigationProp>(); // Use the correct type
 
   const handleLogin = () => {
     // Handle login logic
     console.log('Login pressed');
+  };
+
+  const navigateToRegister = () => {
+    // Navigate to the Registration screen
+    navigation.navigate('RegistrationScreen');
   };
 
   return (
@@ -82,6 +94,12 @@ const LoginScreen = () => {
           <Text style={{ color: '#fff' }}>Facebook</Text>
         </TouchableOpacity>
       </View>
+         {/* Register Link */}
+         <TouchableOpacity onPress={navigateToRegister}>
+        <Text style={[commonStyles.forgotPasswordText, { marginTop: 20 }]}>
+          Don't have an account? <Text style={{ fontWeight: 'bold', color: '#4CAF50' }}>Register</Text>
+        </Text>
+      </TouchableOpacity>
     </Box>
   );
 };

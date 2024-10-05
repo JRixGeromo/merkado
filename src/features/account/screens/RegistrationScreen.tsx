@@ -6,6 +6,7 @@ import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
 import { toggleTheme } from '../../../reducers/themeReducer'; // Import theme toggle action
 import { commonStyles } from '../../../styles/commonStyles'; // Common styles
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
@@ -15,9 +16,10 @@ const RegistrationScreen = () => {
 
   const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
+  const navigation = useNavigation(); // Initialize navigation
 
+  // Registration logic with validation
   const handleRegister = () => {
-    // Add validation logic here
     if (!email || !password || !confirmPassword) {
       Alert.alert('Error', 'Please fill in all required fields.');
       return;
@@ -44,6 +46,7 @@ const RegistrationScreen = () => {
         iconName="mail" // Ionicons for email
         value={email}
         onChangeText={setEmail}
+        style={{ height: 50 }} 
       />
 
       {/* Password Input */}
@@ -53,6 +56,7 @@ const RegistrationScreen = () => {
         secureTextEntry
         value={password}
         onChangeText={setPassword}
+        style={{ height: 50 }} 
       />
 
       {/* Confirm Password Input */}
@@ -62,6 +66,7 @@ const RegistrationScreen = () => {
         secureTextEntry
         value={confirmPassword}
         onChangeText={setConfirmPassword}
+        style={{ height: 50 }} 
       />
 
       {/* Optional Location Input */}
@@ -70,15 +75,24 @@ const RegistrationScreen = () => {
         iconName="location" // Ionicons for location
         value={location}
         onChangeText={setLocation}
+        style={{ height: 50 }} 
       />
 
       {/* Register Button */}
       <CustomButton
         title="Register"
         onPress={handleRegister}
-        backgroundColor="blue"
+        backgroundColor={theme === 'light' ? '#4CAF50' : '#1E90FF'} // Green for light theme, blue for dark
         color="#fff"
       />
+
+
+      {/* Login Link */}
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={{ color: theme === 'light' ? '#4CAF50' : '#1E90FF', marginTop: 10 }}>
+          Already have an account? Login
+        </Text>
+      </TouchableOpacity>
     </Box>
   );
 };

@@ -8,8 +8,10 @@ import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import Icon from 'react-native-vector-icons/Ionicons'; // Using Ionicons for theme toggle icon
+import { RootStackParamList } from './src/navigationTypes'; // Add the correct typing
 
-const Stack = createStackNavigator();
+// Ensure the Stack Navigator uses the correct type definition for screens
+const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +34,7 @@ const App = () => {
               <Icon
                 name={theme === 'light' ? 'moon' : 'sunny'} // Moon icon for dark mode, sun for light mode
                 size={24}
-                color={theme === 'light' ? '#000' : '#ccc'} // Adjust icon color based on the theme
+                color={theme === 'light' ? '#000' : '#fff'} // More visible icon in dark mode
               />
             </TouchableOpacity>
           ),
@@ -40,7 +42,7 @@ const App = () => {
       >
         {isLoading ? (
           <Stack.Screen
-            name="Splash"
+            name="SplashScreen"
             component={SplashScreen}
             options={{ headerShown: false }} // No header on splash screen
           />
@@ -50,14 +52,14 @@ const App = () => {
               name="Login"
               component={LoginScreen}
               options={{
-                headerTitle: 'Login', // More user-friendly title
+                headerTitle: 'Login', // User-friendly title
               }}
             />
             <Stack.Screen
-              name="Registration"
+              name="RegistrationScreen"
               component={RegistrationScreen}
               options={{
-                headerTitle: 'Register', // More user-friendly title
+                headerTitle: 'Register', // User-friendly title
               }}
             />
           </>
