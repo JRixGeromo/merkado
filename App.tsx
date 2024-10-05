@@ -34,7 +34,7 @@ const App = () => {
               <Icon
                 name={theme === 'light' ? 'moon' : 'sunny'} // Moon icon for dark mode, sun for light mode
                 size={24}
-                color={theme === 'light' ? '#000' : '#fff'} // More visible icon in dark mode
+                color={theme === 'light' ? '#000' : '#ccc'} // More visible icon in dark mode
               />
             </TouchableOpacity>
           ),
