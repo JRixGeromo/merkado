@@ -4,6 +4,6 @@ export type RootStackParamList = {
     SplashScreen: undefined;
     DashboardScreen: undefined;
     RegistrationScreen: undefined;
-    Login: undefined; // Assuming 'Login' is your screen name for the login screen
+    LoginScreen: undefined; // Assuming 'Login' is your screen name for the login screen
   };
   

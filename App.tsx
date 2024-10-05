@@ -49,7 +49,7 @@ const App = () => {
         ) : (
           <>
             <Stack.Screen
-              name="Login"
+              name="LoginScreen"
               component={LoginScreen}
               options={{
                 headerTitle: 'Login', // User-friendly title
