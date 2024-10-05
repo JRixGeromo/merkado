@@ -33,7 +33,7 @@ const App = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
+  
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Savings') {
@@ -43,21 +43,22 @@ const App = () => {
           } else if (route.name === 'Cart') {
             iconName = focused ? 'cart' : 'cart-outline';
           }
-
-          // Return the appropriate icon based on route and focus state
+  
           return <Icon name={iconName as string} size={size} color={color} />;
         },
-        tabBarActiveTintColor: theme === 'light' ? '#4CAF50' : '#007AFF', // Active tab color
-        tabBarInactiveTintColor: '#ccc', // Inactive tab color
-        tabBarStyle: { backgroundColor: theme === 'light' ? '#fff' : '#333' }, // Dynamic theme
+        tabBarActiveTintColor: theme === 'light' ? '#4CAF50' : '#007AFF',
+        tabBarInactiveTintColor: '#ccc',
+        tabBarStyle: { backgroundColor: theme === 'light' ? '#fff' : '#333' },
       })}
     >
+      {/* Correct Tab.Screen components */}
       <Tab.Screen name="Home" component={DashboardScreen} />
-      <Tab.Screen name="Savings" component={DummyScreen} /> {/* Add your screen components */}
-      <Tab.Screen name="Recipes" component={DummyScreen} /> {/* Add your screen components */}
-      <Tab.Screen name="Cart" component={DummyScreen} /> {/* Add your screen components */}
+      <Tab.Screen name="Savings" component={DummyScreen} />
+      <Tab.Screen name="Recipes" component={DummyScreen} />
+      <Tab.Screen name="Cart" component={DummyScreen} />
     </Tab.Navigator>
   );
+  
 
   return (
     <NavigationContainer>
