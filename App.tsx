@@ -161,9 +161,7 @@ const App = () => {
           <Stack.Screen
             name="LoginScreen"
             component={LoginScreen}
-            options={{
-              headerTitle: 'Login',
-            }}
+            options={{ headerShown: false }} // This hides the entire header
           />
           <Stack.Screen
             name="RegistrationScreen"

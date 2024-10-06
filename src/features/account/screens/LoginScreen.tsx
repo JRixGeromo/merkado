@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BackHandler, Alert } from 'react-native';
 import {
   View,
   Text,
@@ -49,6 +50,20 @@ const LoginScreen = () => {
     facebookButton,
     title,
   } = styles;
+
+  useEffect(() => {
+    const backAction = () => {
+      // Prevent the user from going back to the splash screen
+      return true; // Return true to block the back button
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    );
+
+    return () => backHandler.remove(); // Clean up when the component unmounts
+  }, []);
 
   return (
     <KeyboardAvoidingView
