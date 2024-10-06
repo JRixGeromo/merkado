@@ -4,16 +4,16 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 const SHARED = {
-  borderRadius: 10, // Shared border radius
-  padding: normalizeHeight(16), // Shared padding
+  borderRadius: 10,  // Shared border radius
+  padding: normalizeHeight(16),  // Shared padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
     opacity: 0.1,
     radius: 5,
-    elevation: 3, // Android-specific shadow
+    elevation: 3,  // Android-specific shadow
   },
-  buttonPadding: normalizeHeight(15), // Button padding
+  buttonPadding: normalizeHeight(15),  // Button padding
 };
 
 // Dynamically generated styles based on theme
@@ -200,6 +200,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: 100,
       resizeMode: 'cover',
     },
+    promoImage: {
+      width: '100%',
+      height: 200,
+      borderRadius: SHARED.borderRadius,
+      resizeMode: 'cover',  // Cover the image within the bounds
+    },
     infoRow: {
       flexDirection: 'row', // Align icon and text in a row
       alignItems: 'center', // Vertically align items
@@ -266,6 +272,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flexDirection: 'row', // Align the text and the icon in a row
       justifyContent: 'space-between', // Space between the text and the toggle icon
       alignItems: 'center', // Vertically center the items
+    },
+    slide: {
+      borderRadius: SHARED.borderRadius,  // Rounded corners
+      overflow: 'hidden',  // Ensure the content inside doesn't exceed the boundary
+      shadowColor: SHARED.shadow.color,  // Apply shadow settings
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation,  // Apply Android-specific shadow
+      marginBottom: 20,  // Space between slides
     },
   });
 };
