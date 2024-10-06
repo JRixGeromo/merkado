@@ -4,13 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks';
-import { toggleTheme } from './src/reducers/themeReducer';
+import { loadTheme } from './src/reducers/themeReducer';
 import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import SettingsScreen from './src/features/settings/screens/SettingsScreen'; // New import
 import AccountScreen from './src/features/account/screens/AccountScreen'; // New import
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
@@ -24,11 +25,30 @@ const App = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const dispatch = useAppDispatch();
 
+  // Function to load the theme from AsyncStorage
+  const loadStoredTheme = async () => {
+    try {
+      const storedTheme = await AsyncStorage.getItem('user_theme');
+      if (storedTheme) {
+        // Load the theme into Redux state
+        dispatch(loadTheme(storedTheme as 'light' | 'dark'));
+      }
+    } catch (error) {
+      console.error('Failed to load theme from storage:', error);
+    }
+  };
+
   useEffect(() => {
-    // Simulate loading time for splash screen
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    const initializeApp = async () => {
+      await loadStoredTheme();  // Load the theme from AsyncStorage
+  
+      // Simulate loading time for splash screen
+      setTimeout(() => {
+        setIsLoading(false);  // Hide the splash screen after 3 seconds
+      }, 3000);
+    };
+  
+    initializeApp();  // Run the initialization function
   }, []);
 
   // Main Tabs for Bottom Tab Navigation
