@@ -1,6 +1,13 @@
 {
-    "welcome": "Welcome",
+    "welcomeBack": "Welcome Back",
+    "email": "Email",
+    "password": "Password",
     "login": "Login",
+    "forgotPassword": "Forgot your password?",
+    "orLoginWith": "Or login with",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccount": "Don't have an account?",
     "register": "Register"
   }
   

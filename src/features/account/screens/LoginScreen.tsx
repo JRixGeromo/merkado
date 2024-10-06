@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native'; // Import navigation hook
 import { RootStackParamList } from '../../../navigationTypes'; // Import your navigation types
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Correct import for stack navigation
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -31,6 +32,8 @@ const LoginScreen = () => {
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
+
+  const { t, i18n } = useTranslation(); // Initialize translation
 
   const handleLogin = () => {
     console.log('Login pressed');
@@ -72,10 +75,10 @@ const LoginScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
-          <Text style={title}>Welcome Back</Text>
+          <Text style={title}>{t('welcomeBack')}</Text>
 
           <TextInputWithIcon
-            placeholder="Email"
+            placeholder={t('email')}
             iconName="mail"
             value={email}
             onChangeText={setEmail}
@@ -83,7 +86,7 @@ const LoginScreen = () => {
           />
 
           <TextInputWithIcon
-            placeholder="Password"
+            placeholder={t('password')}
             iconName="lock-closed"
             secureTextEntry
             value={password}
@@ -92,17 +95,19 @@ const LoginScreen = () => {
           />
 
           <CustomButton
-            title="Login"
+            title={t('login')}
             onPress={handleLogin}
             backgroundColor={button?.backgroundColor}
             color={buttonText?.color}
           />
 
           <TouchableOpacity>
-            <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+            <Text style={styles.forgotPasswordText}>
+              {t('forgotPassword')}
+            </Text>
           </TouchableOpacity>
 
-          <Text style={styles.orText}>Or login with</Text>
+          <Text style={styles.orText}>{t('orLoginWith')}</Text>
 
           <View
             style={{
@@ -121,7 +126,7 @@ const LoginScreen = () => {
                 color={socialButtonText?.color}
                 style={{ marginRight: 10 }}
               />
-              <Text style={socialButtonText}>Google</Text>
+              <Text style={socialButtonText}>{t('google')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -134,15 +139,15 @@ const LoginScreen = () => {
                 color={socialButtonText?.color}
                 style={{ marginRight: 10 }}
               />
-              <Text style={socialButtonText}>Facebook</Text>
+              <Text style={socialButtonText}>{t('facebook')}</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity onPress={navigateToRegister}>
             <Text style={[styles.forgotPasswordText, { marginTop: 20 }]}>
-              Don't have an account?{' '}
+              {t('noAccount')}{' '}
               <Text style={{ fontWeight: 'bold', color: title?.color }}>
-                Register
+                {t('register')}
               </Text>
             </Text>
           </TouchableOpacity>

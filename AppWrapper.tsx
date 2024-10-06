@@ -3,7 +3,9 @@ import React from 'react';
 import { Provider } from 'react-redux'; // Import Redux provider
 import store from './src/store/store'; // Import your Redux store
 import App from './App'; // Ensure your main App component is imported
-import './src/i18n/i18n';  // Import the i18n setup to initialize translations
+
+// Your existing imports and code
+import './src/i18n/i18n';  // Ensure i18n is initialized globally
 
 const AppWrapper = () => (
   <Provider store={store}>

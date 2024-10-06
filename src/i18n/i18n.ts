@@ -62,6 +62,8 @@ i18n
     interpolation: {
       escapeValue: false,  // React already escapes values
     },
+    compatibilityJSON: 'v3',  // Fallback to simpler pluralization handling
+    saveMissing: true,  // Optional: useful for catching missing translations in your resources
   });
 
 export default i18n;

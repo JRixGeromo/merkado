@@ -1,6 +1,13 @@
 {
-    "welcome": "Maligayang Pagdating",
+    "welcomeBack": "Maligayang Pagbabalik",
+    "email": "Email",
+    "password": "Password",
     "login": "Mag-login",
-    "register": "Magparehistro"
+    "forgotPassword": "Nakalimutan mo ba ang password?",
+    "orLoginWith": "O mag-login gamit ang",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccount": "Wala pang account?",
+    "register": "Magrehistro"
   }
   

@@ -1,6 +1,13 @@
 {
-    "welcome": "Maayong Pag-abot",
-    "login": "Pag-login",
+    "welcomeBack": "Balik Welcome",
+    "email": "Email",
+    "password": "Password",
+    "login": "Mag-login",
+    "forgotPassword": "Nakalimot ka ba sa password?",
+    "orLoginWith": "O mag-login gamit ang",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccount": "Wala kay account?",
     "register": "Magparehistro"
   }
   
