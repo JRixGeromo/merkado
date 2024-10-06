@@ -17,7 +17,7 @@ interface TextInputWithIconProps {
   iconColor?: string;
   style?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
-  textColor?: string;  // Add a prop to define text color
+  textColor?: string; // Add a prop to define text color
 }
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
@@ -34,12 +34,13 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   inputStyle = {},
   textColor,
 }) => {
-  const currentTheme = useAppSelector((state) => state.theme.theme);  // Access current theme (light/dark)
+  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
-  
+
   // Fallback to theme-based colors if not provided as props
-  const themeBasedIconColor = iconColor || commonStyle.iconColor.color;  // Ensure dynamicStyles.iconColor exists
-  const themeBasedPlaceholderColor = placeholderTextColor || commonStyle.placeholderTextColor.color;
+  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; // Ensure dynamicStyles.iconColor exists
+  const themeBasedPlaceholderColor =
+    placeholderTextColor || commonStyle.placeholderTextColor.color;
   const themeBasedTextColor = textColor || commonStyle.textColor.color;
 
   const IconComponent = iconPack;
@@ -53,12 +54,12 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
         style={{ marginRight: normalizeHeight(8) }}
       />
       <TextInput
-        style={[commonStyle.input, inputStyle, { color: themeBasedTextColor }]}  // Apply theme-based text color
+        style={[commonStyle.input, inputStyle, { color: themeBasedTextColor }]} // Apply theme-based text color
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
-        placeholderTextColor={themeBasedPlaceholderColor}  // Apply theme-based placeholder color
+        placeholderTextColor={themeBasedPlaceholderColor} // Apply theme-based placeholder color
       />
     </View>
   );

@@ -1,29 +1,19 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
-import { theme } from '../styles/theme';  // Make sure this path is correct
+import { theme } from '../styles/theme'; // Make sure this path is correct
 
-// Shared styles for box components
-const sharedBoxStyle: ViewStyle = {
-  padding: normalizeHeight(16),  // Shared padding
-  borderRadius: 10,  // Rounded corners
-  shadowColor: '#000',  // Shadow properties
-  shadowOffset: { width: 0, height: 2 }, 
-  shadowOpacity: 0.1,
-  shadowRadius: 5,
-  elevation: 3,  // Shadow for Android
-};
-
-// Shared styles for button components
-const sharedButtonStyle: ViewStyle = {
-  padding: normalizeHeight(15),
-  borderRadius: 8,
-  alignItems: 'center',
-  justifyContent: 'center',  // Center the text/icon in the button
-  shadowColor: '#000',  // Shadow for depth
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.1,
-  shadowRadius: 3,
-  elevation: 3,  // Shadow for Android
+// Centralized constants for commonly used style properties
+const SHARED = {
+  borderRadius: 10, // Shared border radius
+  padding: normalizeHeight(16), // Shared padding
+  shadow: {
+    color: '#000',
+    offset: { width: 0, height: 2 },
+    opacity: 0.1,
+    radius: 5,
+    elevation: 3, // Android-specific shadow
+  },
+  buttonPadding: normalizeHeight(15), // Button padding
 };
 
 // Dynamically generated styles based on theme
@@ -32,50 +22,64 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
   return StyleSheet.create({
     container: {
-      ...sharedBoxStyle,  // Apply shared styles for box
+      ...SHARED, // Apply shared styles
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: selectedTheme.backgroundColor,  // Background color from selected theme
-      margin: normalizeHeight(20),  // Margin for the container
+      backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
+      margin: normalizeHeight(20), // Margin for the container
     },
     box: {
-      ...sharedBoxStyle,  // Apply shared styles for box
-      backgroundColor: selectedTheme.backgroundColor,  // Box background from selected theme
+      padding: SHARED.padding,
+      borderRadius: SHARED.borderRadius,
+      backgroundColor: selectedTheme.backgroundColor, // Box background from selected theme
+      shadowColor: SHARED.shadow.color, // Apply shadow settings
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
       width: Platform.select({
-        web: '50%',  // Width for desktop
-        default: '90%',  // Width for mobile
+        web: '50%', // Width for desktop
+        default: '90%', // Width for mobile
       }),
     },
     buttonText: {
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.buttonTextColor,  // Text color from selected theme
+      color: selectedTheme.buttonTextColor, // Text color from selected theme
     },
     button: {
-      ...sharedButtonStyle,  // Apply shared styles for button
-      backgroundColor: selectedTheme.primary,  // Primary button background color from theme
+      padding: SHARED.buttonPadding, // Button padding from shared settings
+      borderRadius: SHARED.borderRadius, // Border radius from shared settings
+      backgroundColor: selectedTheme.primary, // Primary button background color from theme
+      alignItems: 'center',
+      justifyContent: 'center', // Center the text/icon in the button
+      shadowColor: SHARED.shadow.color, // Shadow for depth
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Shadow for Android
       width: Platform.select({
-        web: '40%',  // Width for desktop
-        default: '80%',  // Width for mobile
+        web: '40%', // Width for desktop
+        default: '80%', // Width for mobile
       }),
     },
     socialButton: {
-      ...sharedButtonStyle,  // Apply shared styles for button
-      flexDirection: 'row',  // Row layout for icon + text
-      width: '48%',  // Width for social buttons
+      ...SHARED, // Reuse shared shadow and padding
+      flexDirection: 'row', // Row layout for icon + text
+      width: '48%', // Width for social buttons
     },
     googleButton: {
-      backgroundColor: selectedTheme.googleButtonColor,  // Google button color
+      backgroundColor: selectedTheme.googleButtonColor, // Google button color
     },
     facebookButton: {
-      backgroundColor: selectedTheme.facebookButtonColor,  // Facebook button color
+      backgroundColor: selectedTheme.facebookButtonColor, // Facebook button color
     },
     inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       padding: normalizeHeight(5),
-      borderRadius: 10,
-      backgroundColor: selectedTheme.backgroundColor,  // Input background from selected theme
+      borderRadius: SHARED.borderRadius,
+      backgroundColor: selectedTheme.backgroundColor, // Input background from selected theme
       marginBottom: 15,
       borderWidth: 1,
       borderColor: '#ddd',
@@ -86,7 +90,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     input: {
       flex: 1,
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.textColor,  // Input text color from selected theme
+      color: selectedTheme.textColor, // Input text color from selected theme
     },
     logo: {
       width: 120,
@@ -99,10 +103,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontWeight: 'bold',
       marginBottom: normalizeHeight(20),
       textAlign: 'center',
-      color: selectedTheme.primary,  // Title color from selected theme
+      color: selectedTheme.primary, // Title color from selected theme
     },
     forgotPasswordText: {
-      color: selectedTheme.secondary,  // Link color from selected theme
+      color: selectedTheme.secondary, // Link color from selected theme
       marginTop: 20,
       marginBottom: 20,
       textAlign: 'center',
@@ -110,16 +114,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     orText: {
       fontSize: normalizeFontSize(14),
-      color: selectedTheme.textColor,  // Text color for "Or login with"
+      color: selectedTheme.textColor, // Text color for "Or login with"
       marginBottom: 20,
       textAlign: 'center',
     },
     socialButtonText: {
-      color: selectedTheme.buttonTextColor,  // Social button text color from selected theme
+      color: selectedTheme.buttonTextColor, // Social button text color from selected theme
     },
     iconColor: {
-      color: '#000',  // Set a default color for the icon
-      fontSize: normalizeFontSize(24),  // Default size for icons
+      color: '#000', // Set a default color for the icon
+      fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
       color: '#999',
@@ -127,17 +131,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     textColor: {
       color: '#333',
     },
-    dropdown: {  // New dropdown style
-      backgroundColor: selectedTheme.backgroundColor,  // Dropdown background based on theme
-      borderColor: selectedTheme.primary,  // Border color matching the theme's primary color
+    dropdown: {
+      backgroundColor: selectedTheme.backgroundColor, // Dropdown background based on theme
+      borderColor: selectedTheme.primary, // Border color matching the theme's primary color
       borderWidth: 1,
-      borderRadius: 8,
+      borderRadius: SHARED.borderRadius,
       width: '80%',
       paddingHorizontal: 10,
     },
-    dropdownText: {  // Text style for Picker items
+    dropdownText: {
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.textColor,  // Text color from selected theme
+      color: selectedTheme.textColor, // Text color from selected theme
     },
     section: {
       marginTop: 20,
@@ -150,11 +154,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     storeBox: {
       backgroundColor: selectedTheme.backgroundColor,
-      padding: 10,
-      borderRadius: 10,
-      shadowColor: '#000',
-      shadowOpacity: 0.1,
-      shadowOffset: { width: 0, height: 2 },
+      padding: SHARED.padding,
+      borderRadius: SHARED.borderRadius,
+      shadowColor: SHARED.shadow.color,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowOffset: SHARED.shadow.offset,
       marginBottom: 10,
     },
     storeName: {
@@ -168,17 +172,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     productBox: {
       backgroundColor: selectedTheme.backgroundColor,
-      padding: 10,
-      borderRadius: 10,
+      padding: SHARED.padding,
+      borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center the product name and image
       justifyContent: 'center', // Vertically center the content
       width: 120, // Set a fixed width for product boxes
       height: 150, // Set a fixed height for product boxes
       marginRight: 10, // Adjust spacing between boxes
-      shadowColor: '#000',
-      shadowOpacity: 0.1,
-      shadowOffset: { width: 0, height: 2 },
-      shadowRadius: 5,
+      shadowColor: SHARED.shadow.color,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowOffset: SHARED.shadow.offset,
+      shadowRadius: SHARED.shadow.radius,
     },
     productName: {
       fontSize: 16,
@@ -195,6 +199,73 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       width: 100,
       height: 100,
       resizeMode: 'cover',
+    },
+    infoRow: {
+      flexDirection: 'row', // Align icon and text in a row
+      alignItems: 'center', // Vertically align items
+      marginVertical: 10, // Space between rows
+    },
+    infoText: {
+      marginLeft: 10, // Space between icon and text
+      fontSize: normalizeFontSize(16),
+      color: selectedTheme.textColor, // Dynamic text color
+    },
+    logoutButton: {
+      backgroundColor: selectedTheme.danger, // Logout button color (e.g., red for danger)
+      padding: SHARED.buttonPadding,
+      borderRadius: SHARED.borderRadius,
+      marginTop: 30,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '80%',
+      shadowColor: SHARED.shadow.color,
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Shadow for Android
+    },
+    logoutText: {
+      fontSize: normalizeFontSize(16),
+      color: '#fff', // Text color for logout button
+      fontWeight: 'bold',
+    },
+    card: {
+      backgroundColor: selectedTheme.cardBackground, // Background color for card
+      padding: SHARED.padding, // Padding inside each card
+      borderRadius: SHARED.borderRadius, // Card border radius
+      marginBottom: 20, // Spacing between cards
+      shadowColor: SHARED.shadow.color, // Shadow settings for the card
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
+    },
+    cardHeader: {
+      flexDirection: 'row', // Align icon and title in a row
+      alignItems: 'center', // Vertically align items in header
+      marginBottom: 10, // Margin between header and content
+    },
+    cardHeaderTitle: {
+      fontSize: normalizeFontSize(18), // Font size for header text
+      fontWeight: 'bold', // Bold text for header
+      color: selectedTheme.textColor, // Text color based on theme
+      marginLeft: 10, // Space between icon and text in header
+    },
+    cardText: {
+      fontSize: normalizeFontSize(16), // Font size for text inside card
+      color: selectedTheme.textColor, // Text color from selected theme
+      marginBottom: 5, // Space between lines of text
+    },
+    editLink: {
+      fontSize: normalizeFontSize(14), // Font size for the "Edit" link
+      color: selectedTheme.linkColor, // Link color based on theme
+      textAlign: 'right', // Align edit link to the right
+      marginTop: 10, // Space above the edit link
+    },
+    toggleButtonContainer: {
+      flexDirection: 'row', // Align the text and the icon in a row
+      justifyContent: 'space-between', // Space between the text and the toggle icon
+      alignItems: 'center', // Vertically center the items
     },
   });
 };

@@ -1,3 +1,5 @@
+// src/reducers/themeReducer.ts
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Explicitly define the type for the theme state
@@ -15,7 +17,7 @@ const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    toggleTheme: (state) => {
+    toggleTheme: state => {
       state.theme = state.theme === 'light' ? 'dark' : 'light'; // Toggle between light and dark
     },
   },

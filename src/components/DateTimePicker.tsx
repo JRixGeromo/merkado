@@ -10,11 +10,14 @@ interface DateTimePickerComponentProps {
   onDateChange: (date: Date) => void;
 }
 
-const DateTimePickerComponent: React.FC<DateTimePickerComponentProps> = ({ mode, onDateChange }) => {
+const DateTimePickerComponent: React.FC<DateTimePickerComponentProps> = ({
+  mode,
+  onDateChange,
+}) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
-  const theme = useAppSelector((state) => state.theme.theme); // Get the current theme
+  const theme = useAppSelector(state => state.theme.theme); // Get the current theme
   const styles = commonStyles(theme); // Dynamically create styles based on the theme
   const { box } = styles; // Destructure commonly used styles
 
@@ -26,8 +29,15 @@ const DateTimePickerComponent: React.FC<DateTimePickerComponentProps> = ({ mode,
   };
 
   return (
-    <View style={box}> {/* Apply destructured style */}
-      <Button onPress={() => setShow(true)} title="Pick Date/Time" color={theme === 'light' ? '#4CAF50' : '#1E90FF'} /> {/* Dynamic button color */}
+    <View style={box}>
+      {' '}
+      {/* Apply destructured style */}
+      <Button
+        onPress={() => setShow(true)}
+        title="Pick Date/Time"
+        color={theme === 'light' ? '#4CAF50' : '#1E90FF'}
+      />{' '}
+      {/* Dynamic button color */}
       {show && (
         <DateTimePicker
           value={date}

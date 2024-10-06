@@ -10,16 +10,12 @@ interface BoxProps {
 
 const Box: React.FC<BoxProps> = ({ children, style = {} }) => {
   // Access current theme from Redux store
-  const theme = useAppSelector((state) => state.theme.theme);
+  const theme = useAppSelector(state => state.theme.theme);
 
   // Define dynamic styles based on theme
   const dynamicStyles = styles(theme);
 
-  return (
-    <View style={[dynamicStyles.box, style]}>
-      {children}
-    </View>
-  );
+  return <View style={[dynamicStyles.box, style]}>{children}</View>;
 };
 
 // Define styles

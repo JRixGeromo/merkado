@@ -1,3 +1,5 @@
+
+// src/utils/responsive.ts
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 
 // Get the screen dimensions
@@ -17,7 +19,7 @@ export const normalizeFontSize = (size: number) => {
   // Adjust scaling for desktop (web) where screen sizes are generally much larger
   if (Platform.OS === 'web' && SCREEN_WIDTH > 1280) {
     // Increase font size proportionally for larger desktop screens
-    return Math.round(PixelRatio.roundToNearestPixel(newSize * 1.5)); 
+    return Math.round(PixelRatio.roundToNearestPixel(newSize * 1.5));
   }
 
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
@@ -30,7 +32,7 @@ export const normalizeHeight = (size: number) => {
   // Adjust scaling for desktop (web) where screen heights are generally much larger
   if (Platform.OS === 'web' && SCREEN_HEIGHT > 1024) {
     // Increase height proportionally for larger desktop screens
-    return Math.round(PixelRatio.roundToNearestPixel(newSize * 1.5)); 
+    return Math.round(PixelRatio.roundToNearestPixel(newSize * 1.5));
   }
 
   return Math.round(PixelRatio.roundToNearestPixel(newSize));

@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
-import { normalizeFontSize, normalizeHeight } from '../utils/responsive';  // Import the normalize function
+import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import the normalize function
 
 const styles = StyleSheet.create({
   // General screen container

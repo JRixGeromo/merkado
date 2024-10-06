@@ -1,5 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, Text, GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  GestureResponderEvent,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { commonStyles } from '../styles/commonStyles'; // Import your styles
 import { normalizeFontSize } from '../utils/responsive'; // Import for responsive text size
@@ -22,7 +28,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled = false,
   style = {},
 }) => {
-  const currentTheme = useAppSelector((state) => state.theme.theme); // 'light' or 'dark'
+  const currentTheme = useAppSelector(state => state.theme.theme); // 'light' or 'dark'
   const selectedTheme = appTheme[currentTheme]; // Now it accesses the full theme object (light or dark)
 
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
@@ -34,13 +40,22 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     <TouchableOpacity
       style={[
         commonStyle.button, // Use generated button style from commonStyles
-        { backgroundColor: buttonBackgroundColor, paddingVertical: 12, borderRadius: 8 },
+        {
+          backgroundColor: buttonBackgroundColor,
+          paddingVertical: 12,
+          borderRadius: 8,
+        },
         style,
       ]}
       onPress={onPress}
       disabled={disabled}
     >
-      <Text style={[commonStyle.buttonText, { color: buttonTextColor, fontSize: normalizeFontSize(18) }]}>
+      <Text
+        style={[
+          commonStyle.buttonText,
+          { color: buttonTextColor, fontSize: normalizeFontSize(18) },
+        ]}
+      >
         {title}
       </Text>
     </TouchableOpacity>

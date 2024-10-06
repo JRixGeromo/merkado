@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  Alert,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
@@ -16,9 +24,10 @@ const RegistrationScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [location, setLocation] = useState('');
 
-  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
 
   // Registration logic with validation
   const handleRegister = () => {
@@ -46,9 +55,7 @@ const RegistrationScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[container]}>
-          <Text style={title}>
-            Register
-          </Text>
+          <Text style={title}>Register</Text>
 
           {/* Email Input */}
           <TextInputWithIcon

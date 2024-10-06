@@ -1,4 +1,4 @@
-// navigationTypes.ts
+// src/navigationTypes.ts
 
 // Stack Navigator Params
 export type RootStackParamList = {
@@ -10,8 +10,9 @@ export type RootStackParamList = {
 
 // Tab Navigator Params
 export type RootTabParamList = {
-  Home: undefined;
-  Savings: undefined;
-  Recipes: undefined;
+  Dashboard: undefined;
+  Categories: undefined;
   Cart: undefined;
+  Chat: undefined;
+  Account: undefined;
 };

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { toggleTheme } from '../../../reducers/themeReducer';
 import CustomButton from '../../../components/CustomButton';
@@ -10,13 +17,16 @@ import { useNavigation } from '@react-navigation/native'; // Import navigation h
 import { RootStackParamList } from '../../../navigationTypes'; // Import your navigation types
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Correct import for stack navigation
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'LoginScreen'>;
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'LoginScreen'
+>;
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
@@ -30,8 +40,15 @@ const LoginScreen = () => {
     navigation.navigate('RegistrationScreen');
   };
 
-  const styles = commonStyles(theme);  // Dynamically create styles based on the theme
-  const { button, buttonText, socialButtonText, googleButton, facebookButton, title } = styles;
+  const styles = commonStyles(theme); // Dynamically create styles based on the theme
+  const {
+    button,
+    buttonText,
+    socialButtonText,
+    googleButton,
+    facebookButton,
+    title,
+  } = styles;
 
   return (
     <KeyboardAvoidingView
@@ -47,7 +64,7 @@ const LoginScreen = () => {
             iconName="mail"
             value={email}
             onChangeText={setEmail}
-            style={{ height: 50 }} 
+            style={{ height: 50 }}
           />
 
           <TextInputWithIcon
@@ -56,7 +73,7 @@ const LoginScreen = () => {
             secureTextEntry
             value={password}
             onChangeText={setPassword}
-            style={{ height: 50 }} 
+            style={{ height: 50 }}
           />
 
           <CustomButton
@@ -72,12 +89,23 @@ const LoginScreen = () => {
 
           <Text style={styles.orText}>Or login with</Text>
 
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '80%' }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '80%',
+            }}
+          >
             <TouchableOpacity
               style={[styles.socialButton, googleButton]}
               onPress={() => console.log('Google Login Pressed')}
             >
-              <Icon name="google" size={20} color={socialButtonText?.color} style={{ marginRight: 10 }} />
+              <Icon
+                name="google"
+                size={20}
+                color={socialButtonText?.color}
+                style={{ marginRight: 10 }}
+              />
               <Text style={socialButtonText}>Google</Text>
             </TouchableOpacity>
 
@@ -85,14 +113,22 @@ const LoginScreen = () => {
               style={[styles.socialButton, facebookButton]}
               onPress={() => console.log('Facebook Login Pressed')}
             >
-              <Icon name="facebook" size={20} color={socialButtonText?.color} style={{ marginRight: 10 }} />
+              <Icon
+                name="facebook"
+                size={20}
+                color={socialButtonText?.color}
+                style={{ marginRight: 10 }}
+              />
               <Text style={socialButtonText}>Facebook</Text>
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity onPress={navigateToRegister}>
             <Text style={[styles.forgotPasswordText, { marginTop: 20 }]}>
-              Don't have an account? <Text style={{ fontWeight: 'bold', color: title?.color }}>Register</Text>
+              Don't have an account?{' '}
+              <Text style={{ fontWeight: 'bold', color: title?.color }}>
+                Register
+              </Text>
             </Text>
           </TouchableOpacity>
         </View>

@@ -15,9 +15,11 @@ const dropdownOptions = [
 
 const ComponentShowcase: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedOption, setSelectedOption] = useState(dropdownOptions[0].value);
+  const [selectedOption, setSelectedOption] = useState(
+    dropdownOptions[0].value,
+  );
   const [inputValue, setInputValue] = useState('');
-  
+
   const handleDateChange = (date: Date) => setSelectedDate(date);
   const handleOptionChange = (value: string) => setSelectedOption(value);
   const handleInputChange = (text: string) => setInputValue(text);
@@ -29,7 +31,7 @@ const ComponentShowcase: React.FC = () => {
       {/* Text Input with Icon */}
       <TextInputWithIcon
         placeholder="Enter text"
-        iconName="person"  // Ionicons icon name
+        iconName="person" // Ionicons icon name
         value={inputValue}
         onChangeText={handleInputChange}
       />
@@ -42,14 +44,18 @@ const ComponentShowcase: React.FC = () => {
       <Text>Selected Option: {selectedOption}</Text>
       <Dropdown
         selectedValue={selectedOption}
-        onValueChange={(value) => handleOptionChange(value)}
+        onValueChange={value => handleOptionChange(value)}
         options={dropdownOptions}
       />
 
       {/* Custom Button */}
       <CustomButton
         title="Submit"
-        onPress={() => alert(`Submitted: ${inputValue}, ${selectedOption}, ${selectedDate.toLocaleDateString()}`)}
+        onPress={() =>
+          alert(
+            `Submitted: ${inputValue}, ${selectedOption}, ${selectedDate.toLocaleDateString()}`,
+          )
+        }
         backgroundColor="green"
         color="white"
       />

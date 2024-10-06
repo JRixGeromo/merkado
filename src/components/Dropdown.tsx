@@ -11,8 +11,12 @@ interface DropdownProps {
   options: { label: string; value: string }[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ selectedValue, onValueChange, options }) => {
-  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+const Dropdown: React.FC<DropdownProps> = ({
+  selectedValue,
+  onValueChange,
+  options,
+}) => {
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const styles = commonStyles(theme); // Dynamically create styles based on the theme
   const { dropdown } = styles; // Destructure styles
 
@@ -23,8 +27,12 @@ const Dropdown: React.FC<DropdownProps> = ({ selectedValue, onValueChange, optio
         onValueChange={onValueChange}
         style={{ color: theme === 'light' ? '#333' : '#fff' }} // Set text color based on theme
       >
-        {options.map((option) => (
-          <Picker.Item key={option.value} label={option.label} value={option.value} />
+        {options.map(option => (
+          <Picker.Item
+            key={option.value}
+            label={option.label}
+            value={option.value}
+          />
         ))}
       </Picker>
     </View>
