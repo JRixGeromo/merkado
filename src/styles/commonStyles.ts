@@ -211,6 +211,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Vertically align items
       marginVertical: 10, // Space between rows
     },
+    productPrice: {
+      fontSize: 14, // Slightly smaller font size for the price
+      color: selectedTheme.primary, // Highlight the price using the primary color
+      fontWeight: 'bold', // Make the price bold
+      marginTop: 4, // Add some space between the product name and the price
+    },
     infoText: {
       marginLeft: 10, // Space between icon and text
       fontSize: normalizeFontSize(16),

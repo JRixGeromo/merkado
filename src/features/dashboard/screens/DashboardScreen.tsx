@@ -1,10 +1,23 @@
 import React, { useRef, useEffect } from 'react';
-import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions, FlatList } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
-import Carousel from 'react-native-snap-carousel';  // Import carousel
+import Carousel from 'react-native-snap-carousel';
+import { useQuery, gql } from '@apollo/client';
 
 const { width: screenWidth } = Dimensions.get('window');
+
+// GraphQL query to fetch products
+const GET_PRODUCTS = gql`
+  query GetProducts {
+    products {
+      id
+      name
+      price
+      imageUrl
+    }
+  }
+`;
 
 const DashboardScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
@@ -21,10 +34,22 @@ const DashboardScreen = () => {
     { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
   ];
 
+  // Fetch products using Apollo Client
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
     <View style={styles.slide}>
       <Image source={{ uri: item.imageUrl }} style={styles.promoImage} />
+    </View>
+  );
+
+  // Render product item for FlatList
+  const renderProductItem = ({ item }: { item: { id: string; name: string; price: number; imageUrl: string } }) => (
+    <View style={styles.productBox}>
+      <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
+      <Text style={styles.productName}>{item.name}</Text>
+      <Text style={styles.productPrice}>₱{item.price}</Text>
     </View>
   );
 
@@ -44,7 +69,7 @@ const DashboardScreen = () => {
           <Text style={styles.sectionTitle}>Mga Promo</Text>
           <Carousel
             ref={carouselRef}  // Attach the carousel reference
-            data={promoImages}  // Use the typed promo images array
+            data={promoImages}  // Use the promo images array
             renderItem={renderPromoItem}
             sliderWidth={screenWidth}
             itemWidth={screenWidth * 0.8}
@@ -52,8 +77,27 @@ const DashboardScreen = () => {
             autoplay={true}  // Enable autoplay
             autoplayInterval={3000}  // Set autoplay interval to 3 seconds
             autoplayDelay={500}  // Delay autoplay start for 0.5 seconds
-            vertical={false}  // Horizontal carousel, explicitly set vertical to false
+            vertical={false}  // Horizontal carousel
           />
+        </View>
+
+        {/* Product List Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Mga Produkto</Text>
+          {loading ? (
+            <Text>Loading products...</Text>
+          ) : error ? (
+            <Text>Error loading products.</Text>
+          ) : (
+            <FlatList
+              data={data?.products}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={renderProductItem}
+              horizontal={true}  // Horizontal product list
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 16 }}
+            />
+          )}
         </View>
       </View>
     </ScrollView>
