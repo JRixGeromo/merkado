@@ -82,16 +82,15 @@ const LoginScreen = () => {
             iconName="mail"
             value={email}
             onChangeText={setEmail}
-            style={{ height: 50 }}
+            style={{ height: 45 }}
           />
-
           <TextInputWithIcon
             placeholder={t('password')}
             iconName="lock-closed"
             secureTextEntry
             value={password}
-            onChangeText={setPassword}
-            style={{ height: 50 }}
+            onChangeText={setEmail}
+            style={{ height: 45 }}
           />
 
           <CustomButton

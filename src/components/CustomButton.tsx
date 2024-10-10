@@ -42,7 +42,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         commonStyle.button, // Use generated button style from commonStyles
         {
           backgroundColor: buttonBackgroundColor,
-          paddingVertical: 12,
+          paddingVertical: 10,
           borderRadius: 8,
         },
         style,
@@ -53,7 +53,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       <Text
         style={[
           commonStyle.buttonText,
-          { color: buttonTextColor, fontSize: normalizeFontSize(18) },
+          { color: buttonTextColor, fontSize: normalizeFontSize(16) },
         ]}
       >
         {title}

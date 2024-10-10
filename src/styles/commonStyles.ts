@@ -5,7 +5,7 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 // Centralized constants for commonly used style properties
 const SHARED = {
   borderRadius: 10,  // Shared border radius
-  padding: normalizeHeight(16),  // Shared padding
+  padding: normalizeHeight(10),  // Shared padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
@@ -77,7 +77,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      padding: normalizeHeight(5),
+      padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
       backgroundColor: selectedTheme.backgroundColor, // Input background from selected theme
       marginBottom: 15,

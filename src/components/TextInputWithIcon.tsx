@@ -18,6 +18,7 @@ interface TextInputWithIconProps {
   style?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
   textColor?: string; // Add a prop to define text color
+  placeholderFontSize?: number; // Add prop to control placeholder font size
 }
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
@@ -33,6 +34,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   style = {},
   inputStyle = {},
   textColor,
+  placeholderFontSize = 14, // Default placeholder font size
 }) => {
   const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
@@ -54,7 +56,11 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
         style={{ marginRight: normalizeHeight(8) }}
       />
       <TextInput
-        style={[commonStyle.input, inputStyle, { color: themeBasedTextColor }]} // Apply theme-based text color
+        style={[
+          commonStyle.input,
+          inputStyle,
+          { color: themeBasedTextColor, fontSize: placeholderFontSize }, // Control placeholder font size here
+        ]}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
