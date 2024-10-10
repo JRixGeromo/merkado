@@ -70,7 +70,9 @@ const DashboardScreen = () => {
 
   // Ensure autoplay is started once the component is mounted
   useEffect(() => {
-    console.log(data);
+    if (data && data.products) {
+      console.log("Fetched Products:", data.products);
+    }
   }, [data]);
 
   return (

@@ -25,7 +25,8 @@ const retryLink = new RetryLink({
 });
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  //uri: 'http://localhost:5000/graphql',
+  uri: 'http://10.0.2.2:5000/graphql',
   //uri: 'http://172.18.8.113:5000/graphql',
   cache,
   link: retryLink,
