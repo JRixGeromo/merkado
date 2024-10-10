@@ -70,10 +70,10 @@ const DashboardScreen = () => {
 
   // Ensure autoplay is started once the component is mounted
   useEffect(() => {
-    if (data && data.products) {
-      console.log("Fetched Products:", data.products);
-    }
-  }, [data]);
+    console.log("Loading:", loading);
+    console.log("Error:", error);
+    console.log("Data:", data);
+  }, [loading, error, data]);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

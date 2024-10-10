@@ -1,5 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { RetryLink } from '@apollo/client/link/retry';
+import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistCache, AsyncStorageWrapper } from 'apollo3-cache-persist';
 
@@ -16,20 +15,11 @@ const setupCachePersistence = async () => {
 // Run persistence setup before creating the client
 setupCachePersistence().catch(console.error);
 
-// Add RetryLink to retry failed requests
-const retryLink = new RetryLink({
-  attempts: {
-    max: 3,  // Retry up to 3 times
-    retryIf: (error, _operation) => !!error,  // Retry if there's an error
-  },
-});
-
+// Use HttpLink directly without RetryLink
 const client = new ApolloClient({
-  //uri: 'http://localhost:5000/graphql',
+  //uri: 'http://localhost:5000/graphql', // Adjust as necessary
   uri: 'http://10.0.2.2:5000/graphql',
-  //uri: 'http://172.18.8.113:5000/graphql',
   cache,
-  link: retryLink,
 });
 
 export default client;
