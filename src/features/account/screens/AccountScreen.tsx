@@ -33,7 +33,6 @@ const AccountScreen = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 16 }}>
       <View style={styles.container}>
-        {/* Section for Account Information */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Icon name="person" size={20} color={styles.iconColor.color} />
@@ -48,8 +47,6 @@ const AccountScreen = () => {
             <Text style={styles.editLink}>{t('edit')}</Text>
           </TouchableOpacity>
         </View>
-
-        {/* Section for Payment Method */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Icon name="card" size={20} color={styles.iconColor.color} />
@@ -64,8 +61,6 @@ const AccountScreen = () => {
             <Text style={styles.editLink}>{t('edit')}</Text>
           </TouchableOpacity>
         </View>
-
-        {/* Theme Toggle Section */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Icon name="moon" size={20} color={styles.iconColor.color} />
@@ -82,8 +77,6 @@ const AccountScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* Language Selection Section */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Icon name="language" size={20} color={styles.iconColor.color} />
@@ -95,8 +88,6 @@ const AccountScreen = () => {
             <Button title="Bisaya" onPress={() => i18n.changeLanguage('bs')} />
           </View>
         </View>
-
-        {/* Logout Section */}
         <CustomButton
           title={t('logout')}
           onPress={() => {

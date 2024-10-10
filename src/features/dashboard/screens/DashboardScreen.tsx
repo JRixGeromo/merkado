@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, FlatList } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions, FlatList, ListRenderItem } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
@@ -14,10 +14,17 @@ const GET_PRODUCTS = gql`
       id
       name
       price
-      imageUrl
+     
     }
   }
 `;
+
+type Product = {
+  id: string;
+  name: string;
+  price: number;
+  imageUrl: string;
+};
 
 const DashboardScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
@@ -37,6 +44,7 @@ const DashboardScreen = () => {
   // Fetch products using Apollo Client
   const { loading, error, data } = useQuery(GET_PRODUCTS);
 
+
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
     <View style={styles.slide}>
@@ -44,8 +52,8 @@ const DashboardScreen = () => {
     </View>
   );
 
-  // Render product item for FlatList
-  const renderProductItem = ({ item }: { item: { id: string; name: string; price: number; imageUrl: string } }) => (
+  // Render product item for FlatList with correct typing
+  const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <View style={styles.productBox}>
       <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
       <Text style={styles.productName}>{item.name}</Text>
@@ -60,11 +68,14 @@ const DashboardScreen = () => {
     }
   }, []);
 
+  // Ensure autoplay is started once the component is mounted
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
-        
-        {/* Promo Slider Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Mga Promo</Text>
           <Carousel
@@ -81,18 +92,17 @@ const DashboardScreen = () => {
           />
         </View>
 
-        {/* Product List Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Mga Produkto</Text>
           {loading ? (
             <Text>Loading products...</Text>
           ) : error ? (
-            <Text>Error loading products.</Text>
+            <Text>Error loading products!</Text>
           ) : (
             <FlatList
-              data={data?.products}
+              data={data?.products as Product[]}  // Ensure proper typing for the data
               keyExtractor={(item) => item.id.toString()}
-              renderItem={renderProductItem}
+              renderItem={renderProductItem}  // Properly typed renderItem
               horizontal={true}  // Horizontal product list
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 16 }}

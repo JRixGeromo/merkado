@@ -56,54 +56,42 @@ const RegistrationScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[container]}>
           <Text style={title}>Register</Text>
-
-          {/* Email Input */}
           <TextInputWithIcon
             placeholder="Email"
             iconName="mail" // Ionicons for email
             value={email}
             onChangeText={setEmail}
-            style={{ height: 50 }}
+            style={{ height: 45 }}
           />
-
-          {/* Password Input */}
           <TextInputWithIcon
             placeholder="Password"
             iconName="lock-closed" // Ionicons for password
             secureTextEntry
             value={password}
             onChangeText={setPassword}
-            style={{ height: 50 }}
+            style={{ height: 45 }}
           />
-
-          {/* Confirm Password Input */}
           <TextInputWithIcon
             placeholder="Confirm Password"
             iconName="lock-closed" // Same icon for confirm password
             secureTextEntry
             value={confirmPassword}
             onChangeText={setConfirmPassword}
-            style={{ height: 50 }}
+            style={{ height: 45 }}
           />
-
-          {/* Optional Location Input */}
           <TextInputWithIcon
             placeholder="Location (Optional)"
             iconName="location" // Ionicons for location
             value={location}
             onChangeText={setLocation}
-            style={{ height: 50 }}
+            style={{ height: 45 }}
           />
-
-          {/* Register Button */}
           <CustomButton
             title="Register"
             onPress={handleRegister}
             backgroundColor={button?.backgroundColor} // Background color from commonStyles
             color={buttonText?.color} // Text color from commonStyles
           />
-
-          {/* Login Link */}
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={[{ marginTop: 20 }, buttonText]}>
               Already have an account? Login
