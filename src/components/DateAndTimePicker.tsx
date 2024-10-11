@@ -32,7 +32,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
   return (
-    <View style={{ margin: 20 }}>
+    <View style={{ marginTop: 20 }}>
       {/* Use TextInput for displaying selected date with calendar icon */}
       <TouchableOpacity
         style={[
