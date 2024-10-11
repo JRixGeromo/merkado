@@ -143,12 +143,16 @@ const RegistrationScreen = () => {
             options={genderOptions}
           />
           <DateAndTimePicker
-            onDateChange={(date) => console.log(date)} // Handle the date change
-            initialDate={new Date()} // Set an initial date if needed
-            placeholder="Birthdate (YYYY-MM-DD)" // Custom placeholder text
-            iconName="calendar" // Custom icon if desired
-            textColor="#000" // Ensure text color is black for visibility
+            onDateChange={(date) => console.log(date)}
+            iconName="calendar"
+            iconSize={20}
+            iconColor="#000"
+            placeholder="Select Your Birthdate"
+            inputStyle={{ height: 45 }} // Custom styles for the input
+            textColor="black" // Custom text color
+            placeholderFontSize={14} // Custom placeholder font size
           />
+
 
           <TextInputWithIcon
             placeholder="Email"

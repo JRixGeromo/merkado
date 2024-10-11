@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Modal, TouchableOpacity, TextInput } from 'react-native';
+import { View, Modal, TouchableOpacity, Text, TextInput } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons'; // Import the icon library
 import { commonStyles } from '../styles/commonStyles'; // Import your common styles
@@ -10,15 +10,27 @@ interface DateAndTimePickerProps {
   initialDate?: Date; // Optional initial date
   mode?: 'date' | 'datetime'; // Optional mode, default is 'date'
   placeholder?: string; // Placeholder for the input field
+  iconName: string; // Name of the icon to display
+  iconSize?: number; // Size of the icon
+  iconColor?: string; // Color of the icon
+  inputStyle?: object; // Additional styles for the TextInput
+  textColor?: string; // Color for the text input
+  placeholderFontSize?: number; // Font size for the placeholder
 }
 
 const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   onDateChange,
-  initialDate = new Date(),
+  initialDate, // Removed default value
   mode = 'date',
   placeholder = "Select Date", // Default placeholder text
+  iconName,
+  iconSize = 20, // Default icon size
+  iconColor = '#000', // Default icon color
+  inputStyle = {}, // Additional styles for the TextInput
+  textColor = 'black', // Default text color
+  placeholderFontSize = 14, // Default placeholder font size
 }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined); // Removed default date
   const [showCalendar, setShowCalendar] = useState(false); // Toggle calendar visibility
 
   const handleDayPress = (day: { dateString: string }) => {
@@ -33,18 +45,15 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
 
   return (
     <View style={{ marginTop: 20 }}>
-      {/* Use TextInput for displaying selected date with calendar icon */}
+      {/* TextInput for displaying selected date with calendar icon */}
       <TouchableOpacity
-        style={[
-          commonStyle.inputContainer,
-          { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff' }, // Ensure background is white
-        ]}
+        style={[commonStyle.inputContainer, { flexDirection: 'row', alignItems: 'center', padding: 15 }]}
         onPress={() => setShowCalendar(true)} // Show calendar on press
       >
         <Icon
-          name="calendar"
-          size={20}
-          color="#000" // Customize icon color if needed
+          name={iconName}
+          size={iconSize}
+          color={iconColor} // Use icon color passed as a prop
           style={{ marginRight: 10 }} // Add space between icon and input
         />
         <TextInput
@@ -53,7 +62,8 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           editable={false} // Make it read-only, only clickable to open calendar
           style={[
             commonStyle.input,
-            { flex: 1, color: 'black' }, // Ensure text color is black
+            inputStyle, // Apply additional styles passed as a prop
+            { color: textColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
           ]}
           placeholderTextColor="#888" // Placeholder color
         />
