@@ -74,12 +74,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     facebookButton: {
       backgroundColor: selectedTheme.facebookButtonColor, // Facebook button color
     },
-    inputContainer: {
+    inputContainer: { 
       flexDirection: 'row',
       alignItems: 'center',
       padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
-      backgroundColor: selectedTheme.backgroundColor, // Input background from selected theme
+      backgroundColor: selectedTheme.backgroundColor, // Check this color
       marginBottom: 15,
       borderWidth: 1,
       borderColor: '#ddd',
@@ -87,6 +87,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: normalizeHeight(45),
       paddingHorizontal: 10,
     },
+    
     input: {
       flex: 1,
       fontSize: normalizeFontSize(16),

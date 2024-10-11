@@ -10,28 +10,73 @@ import {
 } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
+import DateAndTimePicker from '../../../components/DateAndTimePicker'; // Import DatePicker
+import Dropdown from '../../../components/Dropdown'; // Import Dropdown for Gender
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
 import { toggleTheme } from '../../../reducers/themeReducer'; // Import theme toggle action
 import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes'; // Import your RootStackParamList
-import Icon from 'react-native-vector-icons/Ionicons'; // For the theme toggle icon
+import { gql, useMutation } from '@apollo/client'; // Import Apollo Client's useMutation
+
+// Define GraphQL mutation for registering a user
+const REGISTER_USER = gql`
+  mutation RegisterUser(
+    $email: String!, 
+    $password: String!, 
+    $firstName: String!, 
+    $lastName: String!, 
+    $birthdate: String, 
+    $gender: String, 
+    $location: String
+  ) {
+    registerUser(
+      email: $email, 
+      password: $password, 
+      firstName: $firstName, 
+      lastName: $lastName, 
+      birthdate: $birthdate, 
+      gender: $gender, 
+      location: $location
+    ) {
+      token
+      user {
+        id
+        email
+      }
+    }
+  }
+`;
 
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [location, setLocation] = useState('');
+  const [firstName, setFirstName] = useState(''); // New field
+  const [lastName, setLastName] = useState(''); // New field
+  const [birthdate, setBirthdate] = useState(new Date()); // New field
+  const [gender, setGender] = useState('male'); // New field with default value
 
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
 
+  // Use Apollo Client's useMutation hook
+  const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
+
+  // Gender options
+  const genderOptions = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+    { label: 'Other', value: 'other' },
+  ];
+
   // Registration logic with validation
-  const handleRegister = () => {
-    if (!email || !password || !confirmPassword) {
+  const handleRegister = async () => {
+    if (!email || !password || !confirmPassword || !firstName || !lastName) {
       Alert.alert('Error', 'Please fill in all required fields.');
       return;
     }
@@ -41,13 +86,35 @@ const RegistrationScreen = () => {
       return;
     }
 
-    // Proceed with the registration logic (e.g., API call)
-    Alert.alert('Success', 'Registration successful!');
+    try {
+      const { data } = await registerUser({
+        variables: {
+          email,
+          password,
+          firstName,
+          lastName,
+          birthdate: birthdate.toISOString().split('T')[0], // Format as YYYY-MM-DD
+          gender,
+          location: location || '', // Make location optional
+        },
+      });
+
+      if (data?.registerUser) {
+        Alert.alert('Success', 'Registration successful!');
+        navigation.navigate('DashboardScreen');
+      }
+    } catch (err) {
+      console.error('Registration error:', err);
+      Alert.alert('Error', 'Registration failed. Please try again.');
+    }
   };
 
   const styles = commonStyles(theme); // Dynamically create styles based on the theme
   const { button, buttonText, title, container } = styles; // Destructure commonly used styles
-
+  const handleDateChange = (date: Date) => {
+    setBirthdate(date); // Update the selected date
+    console.log('Selected date:', date); // Log the selected date
+  };
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -56,6 +123,33 @@ const RegistrationScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[container]}>
           <Text style={title}>Register</Text>
+          <TextInputWithIcon
+            placeholder="First Name"
+            iconName="person" // Ionicons for first name
+            value={firstName}
+            onChangeText={setFirstName}
+            style={{ height: 45 }}
+          />
+          <TextInputWithIcon
+            placeholder="Last Name"
+            iconName="person" // Ionicons for last name
+            value={lastName}
+            onChangeText={setLastName}
+            style={{ height: 45 }}
+          />
+          <Dropdown
+            selectedValue={gender}
+            onValueChange={(itemValue) => setGender(itemValue)}
+            options={genderOptions}
+          />
+          <DateAndTimePicker
+            onDateChange={(date) => console.log(date)} // Handle the date change
+            initialDate={new Date()} // Set an initial date if needed
+            placeholder="Birthdate (YYYY-MM-DD)" // Custom placeholder text
+            iconName="calendar" // Custom icon if desired
+            textColor="#000" // Ensure text color is black for visibility
+          />
+
           <TextInputWithIcon
             placeholder="Email"
             iconName="mail" // Ionicons for email
@@ -86,6 +180,13 @@ const RegistrationScreen = () => {
             onChangeText={setLocation}
             style={{ height: 45 }}
           />
+
+          {/* Display loading state */}
+          {loading && <Text style={buttonText}>Registering...</Text>}
+
+          {/* Display error message if registration failed */}
+          {error && <Text style={{ color: 'red' }}>Registration failed: {error.message}</Text>}
+
           <CustomButton
             title="Register"
             onPress={handleRegister}

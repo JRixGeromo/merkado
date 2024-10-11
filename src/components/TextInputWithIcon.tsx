@@ -8,8 +8,8 @@ import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selec
 interface TextInputWithIconProps {
   placeholder: string;
   iconName: string;
-  value: string;
-  onChangeText: (text: string) => void;
+  value?: string;  // Optional for cases like date picker
+  onChangeText?: (text: string) => void;  // Make this optional
   iconPack?: typeof Icon;
   secureTextEntry?: boolean;
   placeholderTextColor?: string;
@@ -17,8 +17,10 @@ interface TextInputWithIconProps {
   iconColor?: string;
   style?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
-  textColor?: string; // Add a prop to define text color
-  placeholderFontSize?: number; // Add prop to control placeholder font size
+  textColor?: string;
+  placeholderFontSize?: number;
+  onFocus?: () => void; // Make sure this prop exists
+  editable?: boolean;
 }
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
@@ -35,12 +37,14 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   inputStyle = {},
   textColor,
   placeholderFontSize = 14, // Default placeholder font size
+  onFocus, // Destructure onFocus
+  editable = true, // Set editable as true by default
 }) => {
   const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
   // Fallback to theme-based colors if not provided as props
-  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; // Ensure dynamicStyles.iconColor exists
+  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; 
   const themeBasedPlaceholderColor =
     placeholderTextColor || commonStyle.placeholderTextColor.color;
   const themeBasedTextColor = textColor || commonStyle.textColor.color;
@@ -66,6 +70,13 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         placeholderTextColor={themeBasedPlaceholderColor} // Apply theme-based placeholder color
+        onFocus={() => {
+          console.log('Input field focused'); // Log to verify if focus is triggered
+          if (onFocus) {
+            onFocus(); // Call the onFocus function passed as a prop
+          }
+        }}
+        editable={editable} // Add the editable prop
       />
     </View>
   );
