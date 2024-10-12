@@ -46,7 +46,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         {
           backgroundColor: buttonBackgroundColor, // Apply dynamic background color
           paddingVertical: 10, // Customize vertical padding
-          borderRadius: 8, // Customize border radius
           opacity: disabled ? 0.6 : 1, // Add a disabled effect by reducing opacity
         },
         style, // Apply any additional styles passed as props

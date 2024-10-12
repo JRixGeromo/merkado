@@ -44,7 +44,7 @@ const LoginScreen = () => {
     navigation.navigate('RegistrationScreen');
   };
 
-  const styles = commonStyles(theme); // Dynamically create styles based on the theme
+  const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
   const {
     button,
     buttonText,
@@ -52,7 +52,7 @@ const LoginScreen = () => {
     googleButton,
     facebookButton,
     title,
-  } = styles;
+  } = commonStyle;
 
   useEffect(() => {
     const backAction = () => {
@@ -74,7 +74,7 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={styles.container}>
+        <View style={commonStyle.container}>
           <Text style={title}>{t('welcomeBack')}</Text>
 
           <TextInputWithIcon
@@ -96,17 +96,16 @@ const LoginScreen = () => {
           <CustomButton
             title={t('login')}
             onPress={handleLogin}
-            backgroundColor={button?.backgroundColor}
             color={buttonText?.color}
           />
 
           <TouchableOpacity>
-            <Text style={styles.forgotPasswordText}>
+            <Text style={[commonStyle.linkText, {fontWeight: "bold"}]}>
               {t('forgotPassword')}
             </Text>
           </TouchableOpacity>
 
-          <Text style={styles.orText}>{t('orLoginWith')}</Text>
+          <Text style={commonStyle.orText}>{t('orLoginWith')}</Text>
 
           <View
             style={{
@@ -116,7 +115,7 @@ const LoginScreen = () => {
             }}
           >
             <TouchableOpacity
-              style={[styles.socialButton, googleButton]}
+              style={[commonStyle.socialButton, googleButton]}
               onPress={() => console.log('Google Login Pressed')}
             >
               <Icon
@@ -129,7 +128,7 @@ const LoginScreen = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[styles.socialButton, facebookButton]}
+              style={[commonStyle.socialButton, facebookButton]}
               onPress={() => console.log('Facebook Login Pressed')}
             >
               <Icon
@@ -143,9 +142,9 @@ const LoginScreen = () => {
           </View>
 
           <TouchableOpacity onPress={navigateToRegister}>
-            <Text style={[styles.forgotPasswordText, { marginTop: 20 }]}>
+            <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
               {t('noAccount')}{' '}
-              <Text style={{ fontWeight: 'bold', color: title?.color }}>
+              <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
                 {t('register')}
               </Text>
             </Text>

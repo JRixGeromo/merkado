@@ -4,7 +4,7 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 const SHARED = {
-  borderRadius: 10,  // Shared border radius
+  borderRadius: 5,  // Shared border radius
   padding: normalizeHeight(10),  // Shared padding
   shadow: {
     color: '#000',
@@ -84,7 +84,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderWidth: 1,
       borderColor: '#ddd',
       width: '80%',
-      height: normalizeHeight(45),
+      height: normalizeHeight(40),
       paddingHorizontal: 10,
     },
     
@@ -106,12 +106,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       textAlign: 'center',
       color: selectedTheme.primary, // Title color from selected theme
     },
-    forgotPasswordText: {
-      color: selectedTheme.secondary, // Link color from selected theme
+    linkText: {
+      color: selectedTheme.linkText, // Link color from selected theme
       marginTop: 20,
       marginBottom: 20,
       textAlign: 'center',
-      fontSize: normalizeFontSize(12),
+      fontSize: normalizeFontSize(14),
     },
     orText: {
       fontSize: normalizeFontSize(14),
@@ -119,6 +119,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 20,
       textAlign: 'center',
     },
+    paragraph: {
+      color: selectedTheme.paragraph, // Social button text color from selected theme
+    }, 
     socialButtonText: {
       color: selectedTheme.buttonTextColor, // Social button text color from selected theme
     },

@@ -111,8 +111,8 @@ const RegistrationScreen = () => {
     }
   };
 
-  const styles = commonStyles(theme); // Dynamically create styles based on the theme
-  const { button, buttonText, title, container } = styles; // Destructure commonly used styles
+  const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
+  const { button, buttonText, title, container, linkText, paragraph } = commonStyle; // Destructure commonly used styles
   const handleDateChange = (date: Date) => {
     setBirthdate(date); // Update the selected date
     console.log('Selected date:', date); // Log the selected date
@@ -149,7 +149,7 @@ const RegistrationScreen = () => {
               { label: 'Female', value: 'female' },
               { label: 'Other', value: 'other' },
             ]}
-            placeholder="Select Gender" // Placeholder text when no value is selected
+            placeholder="Gender" // Placeholder text when no value is selected
             iconName="person" // Icon to display inside the dropdown
             iconSize={20} // Size of the icon
             placeholderFontSize={14} // Font size of the placeholder text
@@ -159,7 +159,7 @@ const RegistrationScreen = () => {
               onDateChange={(date) => console.log(date)} // Correctly handle the date change
               iconName="calendar" // Example icon for the date picker
               iconSize={20} // Icon size
-              placeholder="Select Date" // Placeholder for date input
+              placeholder="Birth Date" // Placeholder for date input
               inputStyle={{ height: 40 }} // Example of styling the input
               placeholderFontSize={14} // Placeholder font size
             />
@@ -208,13 +208,12 @@ const RegistrationScreen = () => {
           <CustomButton
             title={t('register')}
             onPress={handleRegister}
-            backgroundColor={button?.backgroundColor}
             color={buttonText?.color}
           />
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={[styles.forgotPasswordText, { marginTop: 20 }]}>
+            <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
               {t('hasAccount')}
-              <Text style={{ fontWeight: 'bold', color: title?.color  }}>
+              <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
                 {" "}{t('login')}
               </Text>
             </Text>
