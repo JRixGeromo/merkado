@@ -8,18 +8,20 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
+  ActivityIndicator,  // Import ActivityIndicator
 } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import DateAndTimePicker from '../../../components/DateAndTimePicker'; // Import DatePicker
 import Dropdown from '../../../components/Dropdown'; // Import Dropdown for Gender
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
+import { useAppSelector } from '../../../hooks/reduxHooks'; // Import Redux hooks
 import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes'; // Import your RootStackParamList
 import { gql, useMutation } from '@apollo/client'; // Import Apollo Client's useMutation
 import { useTranslation } from 'react-i18next'; // Import the translation hook
+import { theme as appTheme } from '../../../styles/theme'; // Import your theme for direct use
 
 // Define GraphQL mutation for registering a user
 const REGISTER_USER = gql`
@@ -29,8 +31,7 @@ const REGISTER_USER = gql`
     $firstName: String!, 
     $lastName: String!, 
     $birthdate: String, 
-    $gender: String, 
-    $location: String
+    $gender: String
   ) {
     registerUser(
       email: $email, 
@@ -38,8 +39,7 @@ const REGISTER_USER = gql`
       firstName: $firstName, 
       lastName: $lastName, 
       birthdate: $birthdate, 
-      gender: $gender, 
-      location: $location
+      gender: $gender
     ) {
       token
       user {
@@ -54,7 +54,6 @@ const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [location, setLocation] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthdate, setBirthdate] = useState(new Date());
@@ -89,7 +88,6 @@ const RegistrationScreen = () => {
           lastName,
           birthdate: birthdate.toISOString().split('T')[0], // Format birthdate as YYYY-MM-DD
           gender: gender || 'OTHER', // Make sure gender is one of "MALE", "FEMALE", or "OTHER"
-          location: location || '', // Optional location
         },
       });
   
@@ -104,7 +102,8 @@ const RegistrationScreen = () => {
   };
 
   const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
-  const { button, buttonText, container } = commonStyle; // Destructure commonly used styles
+  const { buttonText, container } = commonStyle; // Destructure commonly used styles
+  const selectedTheme = appTheme[theme]; // Access the current theme (light or dark)
 
   return (
     <KeyboardAvoidingView
@@ -175,24 +174,30 @@ const RegistrationScreen = () => {
             onChangeText={setConfirmPassword}
             style={{ height: 45 }}
           />
-          <TextInputWithIcon
-            placeholder="Location (Optional)"
-            iconName="location"
-            value={location}
-            onChangeText={setLocation}
-            style={{ height: 45 }}
-          />
 
-          {loading && <Text style={buttonText}>Registering...</Text>}
+          {/* Display Activity Indicator when loading */}
+          {loading && (
+            <View style={{ marginTop: 20, marginBottom: 20 }}>
+              <ActivityIndicator
+              size="large"
+              color={selectedTheme.primary} // Use primary color directly from the theme
+              style={commonStyle.loader}
+            />
+            </View>
+          )}
 
+          {/* Button will show only when not loading */}
+          {!loading && (
+            <CustomButton
+              title={t('register')}
+              onPress={handleRegister}
+              color={buttonText?.color}
+            />
+          )}
+
+          {/* Display error message if registration failed */}
           {error && <Text style={{ color: 'red' }}>Registration failed: {error.message}</Text>}
           
-          <CustomButton
-            title={t('register')}
-            onPress={handleRegister}
-            color={buttonText?.color}
-          />
-
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
               {t('hasAccount')}
@@ -201,7 +206,6 @@ const RegistrationScreen = () => {
               </Text>
             </Text>
           </TouchableOpacity>
-
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

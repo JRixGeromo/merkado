@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
-import { toggleTheme, loadThemeFromStorage } from '../../../store/slices/themeSlice';  // Correct path to your theme slice
+import { toggleTheme } from '../../../store/slices/themeSlice';  // Correct path to your theme slice
 import CustomButton from '../../../components/CustomButton';
 import { commonStyles } from '../../../styles/commonStyles';
 import { useNavigation } from '@react-navigation/native';
