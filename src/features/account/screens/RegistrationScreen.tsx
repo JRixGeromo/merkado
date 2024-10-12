@@ -14,7 +14,6 @@ import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import DateAndTimePicker from '../../../components/DateAndTimePicker'; // Import DatePicker
 import Dropdown from '../../../components/Dropdown'; // Import Dropdown for Gender
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
-import { toggleTheme } from '../../../reducers/themeReducer'; // Import theme toggle action
 import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -56,26 +55,18 @@ const RegistrationScreen = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [location, setLocation] = useState('');
-  const [firstName, setFirstName] = useState(''); // New field
-  const [lastName, setLastName] = useState(''); // New field
-  const [birthdate, setBirthdate] = useState(new Date()); // New field
-  const [gender, setGender] = useState(''); // New field with default value
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [birthdate, setBirthdate] = useState(new Date());
+  const [gender, setGender] = useState('');
 
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const dispatch = useAppDispatch(); // Get dispatch for Redux actions
+  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
-  const { t, i18n } = useTranslation(); // Initialize translation
+  const { t } = useTranslation(); // Initialize translation
 
   // Use Apollo Client's useMutation hook
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
-
-  // Gender options
-  const genderOptions = [
-    { label: 'Male', value: 'male' },
-    { label: 'Female', value: 'female' },
-    { label: 'Other', value: 'other' },
-  ];
 
   // Registration logic with validation
   const handleRegister = async () => {
@@ -83,12 +74,12 @@ const RegistrationScreen = () => {
       Alert.alert('Error', 'Please fill in all required fields.');
       return;
     }
-
+  
     if (password !== confirmPassword) {
       Alert.alert('Error', 'Passwords do not match!');
       return;
     }
-
+  
     try {
       const { data } = await registerUser({
         variables: {
@@ -96,12 +87,12 @@ const RegistrationScreen = () => {
           password,
           firstName,
           lastName,
-          birthdate: birthdate.toISOString().split('T')[0], // Format as YYYY-MM-DD
-          gender,
-          location: location || '', // Make location optional
+          birthdate: birthdate.toISOString().split('T')[0], // Format birthdate as YYYY-MM-DD
+          gender: gender || 'OTHER', // Make sure gender is one of "MALE", "FEMALE", or "OTHER"
+          location: location || '', // Optional location
         },
       });
-
+  
       if (data?.registerUser) {
         Alert.alert('Success', 'Registration successful!');
         navigation.navigate('DashboardScreen');
@@ -113,11 +104,8 @@ const RegistrationScreen = () => {
   };
 
   const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
-  const { button, buttonText, title, container, linkText, paragraph } = commonStyle; // Destructure commonly used styles
-  const handleDateChange = (date: Date) => {
-    setBirthdate(date); // Update the selected date
-    console.log('Selected date:', date); // Log the selected date
-  };
+  const { button, buttonText, container } = commonStyle; // Destructure commonly used styles
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -131,82 +119,72 @@ const RegistrationScreen = () => {
           />
           <TextInputWithIcon
             placeholder="First Name"
-            iconName="person" // Ionicons for first name
+            iconName="person"
             value={firstName}
             onChangeText={setFirstName}
             style={{ height: 45 }}
-            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Last Name"
-            iconName="person" // Ionicons for last name
+            iconName="person"
             value={lastName}
             onChangeText={setLastName}
             style={{ height: 45 }}
-            iconSize={20}
           />
           <Dropdown
-            selectedValue={gender} // The currently selected value, controlled by the `gender` state
-            onValueChange={(itemValue) => setGender(itemValue)} // Callback to update the `gender` state when a new value is selected
-            options={[ // The list of options displayed in the dropdown
-              { label: 'Male', value: 'male' },
-              { label: 'Female', value: 'female' },
-              { label: 'Other', value: 'other' },
+            selectedValue={gender}
+            onValueChange={(itemValue) => setGender(itemValue)}
+            options={[
+              { label: 'Male', value: 'MALE' },
+              { label: 'Female', value: 'FEMALE' },
+              { label: 'Other', value: 'OTHER' },
             ]}
-            placeholder="Gender" // Placeholder text when no value is selected
-            iconName="person" // Icon to display inside the dropdown
-            iconSize={20} // Size of the icon
-            placeholderFontSize={14} // Font size of the placeholder text
+            placeholder="Gender"
+            iconName="person"
+            iconSize={20}
           />
 
-            <DateAndTimePicker
-              onDateChange={(date) => console.log(date)} // Correctly handle the date change
-              iconName="calendar" // Example icon for the date picker
-              iconSize={20} // Icon size
-              placeholder="Birth Date" // Placeholder for date input
-              inputStyle={{ height: 40 }} // Example of styling the input
-              placeholderFontSize={14} // Placeholder font size
-            />
+          <DateAndTimePicker
+            onDateChange={setBirthdate} // Correctly handle the date change
+            iconName="calendar"
+            iconSize={20}
+            placeholder="Birth Date"
+            inputStyle={{ height: 40 }}
+          />
 
           <TextInputWithIcon
             placeholder="Email"
-            iconName="mail" // Ionicons for email
+            iconName="mail"
             value={email}
             onChangeText={setEmail}
             style={{ height: 45 }}
-            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Password"
-            iconName="lock-closed" // Ionicons for password
+            iconName="lock-closed"
             secureTextEntry
             value={password}
             onChangeText={setPassword}
             style={{ height: 45 }}
-            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Confirm Password"
-            iconName="lock-closed" // Same icon for confirm password
+            iconName="lock-closed"
             secureTextEntry
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             style={{ height: 45 }}
-            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Location (Optional)"
-            iconName="location" // Ionicons for location
+            iconName="location"
             value={location}
             onChangeText={setLocation}
             style={{ height: 45 }}
-            iconSize={20}
           />
 
-          {/* Display loading state */}
           {loading && <Text style={buttonText}>Registering...</Text>}
 
-          {/* Display error message if registration failed */}
           {error && <Text style={{ color: 'red' }}>Registration failed: {error.message}</Text>}
           
           <CustomButton
@@ -214,6 +192,7 @@ const RegistrationScreen = () => {
             onPress={handleRegister}
             color={buttonText?.color}
           />
+
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
               {t('hasAccount')}
