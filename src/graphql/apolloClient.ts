@@ -17,8 +17,8 @@ setupCachePersistence().catch(console.error);
 
 // Use HttpLink directly without RetryLink
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql', // Adjust as necessary
-  //uri: 'http://10.0.2.2:5000/graphql',
+  //uri: 'http://localhost:5000/graphql', // Adjust as necessary
+  uri: 'http://10.0.2.2:5000/graphql',
   cache,
 });
 
