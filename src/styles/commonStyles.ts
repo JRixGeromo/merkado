@@ -29,6 +29,44 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
       margin: normalizeHeight(20), // Margin for the container
     },
+    splashContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
+      position: 'relative', // To position elements inside correctly
+    },
+    backgroundImage: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      width: '100%',
+      height: '100%',
+      resizeMode: 'stretch', // Try 'stretch' or 'cover' based on your needs
+      zIndex: -1, // Ensures the image stays in the background
+    },
+    logo: {
+      width: 150,
+      height: 150,
+      marginBottom: 20,
+      resizeMode: 'contain',
+    },
+    splashText: {
+      fontWeight: 'bold',
+      fontSize: normalizeFontSize(24),
+      color: selectedTheme.primary, // Dynamic primary color based on the theme
+      textAlign: 'center',
+    },
+    loader: {
+      marginTop: 30,
+    },
+    splashInner: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     box: {
       padding: SHARED.padding,
       borderRadius: SHARED.borderRadius,
@@ -92,12 +130,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textColor, // Input text color from selected theme
-    },
-    logo: {
-      width: 120,
-      height: 120,
-      resizeMode: 'contain',
-      marginBottom: 20,
     },
     title: {
       fontSize: normalizeFontSize(28),
@@ -339,9 +371,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 20,
       alignItems: 'center',
     },
-    tabBarActiveTintColor: {},
-    tabBarInactiveTintColor: {},
-    tabBarStyle: {},
-
+    
   });
 };

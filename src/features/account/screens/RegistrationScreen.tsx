@@ -124,7 +124,7 @@ const RegistrationScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[container]}>
-          <Text style={title}>Register</Text>
+          {/* <Text style={title}>Register</Text> */}
           <TextInputWithIcon
             placeholder="First Name"
             iconName="person" // Ionicons for first name
