@@ -42,6 +42,10 @@ const DashboardScreen = () => {
     }
   }, [status, dispatch]);
 
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
+
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
     <View style={styles.slide}>
