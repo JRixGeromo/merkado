@@ -40,8 +40,8 @@ const LOGIN_USER = gql`
 `;
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('xxxx@example.com');
+  const [password, setPassword] = useState('password123');
   const [loading, setLoading] = useState(false); // Add loading state
 
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
