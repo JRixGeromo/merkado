@@ -4,14 +4,13 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks';
-import { loadTheme } from './src/reducers/themeReducer';
+import { loadThemeFromStorage } from './src/store/slices/themeSlice';  // Correct path to your theme slice
 import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import SettingsScreen from './src/features/settings/screens/SettingsScreen'; 
 import AccountScreen from './src/features/account/screens/AccountScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles'; 
@@ -26,27 +25,20 @@ const App = () => {
   const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
   const dispatch = useAppDispatch();
 
-  const loadStoredTheme = async () => {
-    try {
-      const storedTheme = await AsyncStorage.getItem('user_theme');
-      if (storedTheme) {
-        dispatch(loadTheme(storedTheme as 'light' | 'dark'));
-      }
-    } catch (error) {
-      console.error('Failed to load theme from storage:', error);
-    }
-  };
-
+  // No need to manually load the theme here; let the thunk handle it
   useEffect(() => {
     const initializeApp = async () => {
-      await loadStoredTheme();
+      // Dispatch the thunk to load the theme from storage
+      await dispatch(loadThemeFromStorage());
+
+      // Simulate a loading delay (e.g., splash screen duration)
       setTimeout(() => {
         setIsLoading(false);
       }, 3000);
     };
 
     initializeApp();
-  }, []);
+  }, [dispatch]);
 
   const commonStyle = commonStyles(themeType); // Dynamically create styles based on the theme
 

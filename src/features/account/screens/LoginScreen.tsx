@@ -10,7 +10,6 @@ import {
   Image,
 } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
-import { toggleTheme } from '../../../reducers/themeReducer';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { commonStyles } from '../../../styles/commonStyles';
