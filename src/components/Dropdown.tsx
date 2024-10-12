@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { commonStyles } from '../styles/commonStyles';
@@ -18,75 +18,104 @@ interface DropdownProps {
   placeholderFontSize?: number; // Font size for the placeholder
   placeholderTextColor?: string; // Placeholder text color
 }
+
 const Dropdown: React.FC<DropdownProps> = ({
   selectedValue,
   onValueChange,
-  options,
+  options = [], // Provide a default value to avoid undefined
   placeholder = "Select an option", // Default placeholder
-  iconName = "person", // Default icon
-  iconSize = normalizeFontSize(20), // Default icon size
-  iconColor, // Use the color from the theme
-  inputStyle = {}, // Additional styles for the TextInput
-  textColor, // Use the text color from the theme
-  placeholderFontSize = 14, // Default placeholder font size
-  placeholderTextColor, // Use the color from the theme
+  iconName = "person",
+  iconSize = normalizeFontSize(20),
+  iconColor,
+  inputStyle = {},
+  textColor,
+  placeholderFontSize = 14,
+  placeholderTextColor,
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const currentTheme = useAppSelector(state => state.theme.theme);
+  const currentTheme = useAppSelector((state) => state.theme.theme);
   const commonStyle = commonStyles(currentTheme);
 
-  // Fallback to theme-based colors if not provided as props
-  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; 
-  const themeBasedTextColor = textColor || commonStyle.textColor.color;
-  const themeBasedPlaceholderColor = placeholderTextColor || commonStyle.placeholderTextColor.color;
+  // Memoize the theme-based styles
+  const themeBasedStyles = useMemo(() => {
+    return {
+      iconColor: iconColor || commonStyle.iconColor.color,
+      textColor: textColor || commonStyle.textColor.color,
+      placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
+      inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+    };
+  }, [iconColor, textColor, placeholderTextColor, commonStyle]);
+
+  const themeBasedIconColor = themeBasedStyles.iconColor;
+  const themeBasedTextColor = themeBasedStyles.textColor;
+  const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
+  const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
+
+  // Display the placeholder if no value is selected, otherwise display the selected value (capitalized)
+  const displayText = !selectedValue
+    ? placeholder
+    : selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1);
 
   return (
-    <View style={[commonStyle.inputContainer, { marginBottom: 15 }]}>
+    <View 
+      style={[
+        commonStyle.inputContainer, 
+        {
+          backgroundColor: themeBasedInputBackgroundColor,
+          borderWidth: 0,
+        },
+      ]}
+    >
       <TouchableOpacity
-        onPress={() => setShowModal(true)} // Show modal on press
-        accessibilityLabel="Select option" // Accessibility
+        onPress={() => setShowModal(true)}
+        accessibilityLabel="Select option"
       >
         <Icon
           name={iconName}
           size={iconSize}
-          color={themeBasedIconColor} // Use theme-based icon color
-          style={{ position: 'absolute', left: 0 }} // Position the icon inside the dropdown
+          color={themeBasedIconColor}
+          style={{ position: 'absolute', left: 0 }}
         />
-        <Text style={{
-          color: selectedValue ? themeBasedTextColor : themeBasedPlaceholderColor, // Use theme-based colors
-          fontSize: placeholderFontSize, // Use passed placeholder font size
-          marginLeft: iconSize + 15 // Adjust margin to make space for the icon
-        }}>
-          {selectedValue || placeholder} {/* Show placeholder if no value is selected */}
+        <Text
+          style={{
+            color: !selectedValue ? themeBasedPlaceholderColor : themeBasedTextColor,
+            fontSize: placeholderFontSize,
+            marginLeft: iconSize + 15,
+          }}
+        >
+          {displayText}
         </Text>
       </TouchableOpacity>
-      
+
       <Modal visible={showModal} animationType="slide" transparent={true}>
         <View
           style={[
             {
               flex: 1,
-              justifyContent: 'center', // Center vertically
-              alignItems: 'center', // Center horizontally
-              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
-            commonStyle.modalContainer, // Apply modal container style
-            commonStyle.modalOverlay,
+            commonStyle.modalContainer,
           ]}
         >
           <View style={[commonStyle.modalContent, { backgroundColor: commonStyle.card.backgroundColor }]}>
-            {options.map((option) => (
-              <TouchableOpacity
-                key={option.value}
-                onPress={() => {
-                  onValueChange(option.value); // Call the onValueChange prop with the selected value
-                  setShowModal(false);
-                }}
-                style={[commonStyle.option, { borderColor: commonStyle.modal.borderColor }]} // Use primary color for border
-              >
-                <Text style={[commonStyle.modalText]}>{option.label}</Text>
-              </TouchableOpacity>
-            ))}
+            {options.length > 0 ? (
+              options.map((option) => (
+                <TouchableOpacity
+                  key={option.value}
+                  onPress={() => {
+                    onValueChange(option.value); // Use value instead of label
+                    setShowModal(false);
+                  }}
+                  style={[commonStyle.option, { borderColor: commonStyle.modal.borderColor }]}
+                >
+                  <Text style={[commonStyle.modalText]}>{option.label}</Text>
+                </TouchableOpacity>
+              ))
+            ) : (
+              <Text style={[commonStyle.modalText]}>No options available</Text>
+            )}
             <TouchableOpacity onPress={() => setShowModal(false)} style={commonStyle.closeButton}>
               <Text style={[commonStyle.modalText]}>Close</Text>
             </TouchableOpacity>

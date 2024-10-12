@@ -36,7 +36,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   placeholder = 'Select Date', // Default placeholder text
   iconName,
   iconSize = normalizeFontSize(20),
-  iconColor = '#000', // Default icon color
+  iconColor, // Default icon color
   inputStyle = {}, // Additional styles for the TextInput
   textColor, // Use the text color from the theme
   placeholderFontSize = 14, // Default placeholder font size
@@ -56,15 +56,20 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   const currentTheme = useAppSelector((state) => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
-  // Fallback to theme-based colors if not provided as props
-  const themeBasedStyles = useMemo(
-    () => ({
+  // Memoize the theme-based styles
+  const themeBasedStyles = useMemo(() => {
+    return {
       iconColor: iconColor || commonStyle.iconColor.color,
       textColor: textColor || commonStyle.textColor.color,
       placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
-    }),
-    [iconColor, textColor, placeholderTextColor, commonStyle]
-  );
+      inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+    };
+  }, [iconColor, textColor, placeholderTextColor, commonStyle]);
+
+  const themeBasedIconColor = themeBasedStyles.iconColor;
+  const themeBasedTextColor = themeBasedStyles.textColor;
+  const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
+  const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
 
   // Format date to display based on passed or default date format
   const formattedDate = selectedDate ? format(selectedDate, dateFormat) : '';
@@ -73,8 +78,11 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     <View style={{ }}>
       <TouchableOpacity
         style={[
-          commonStyle.inputContainer,
-          { flexDirection: 'row', alignItems: 'center', padding: 15 },
+          commonStyle.inputContainer, 
+          {
+            backgroundColor: themeBasedInputBackgroundColor,
+            borderWidth: 0,
+          }
         ]}
         onPress={() => setShowCalendar(true)} // Show calendar on press
         accessibilityLabel="Open date picker" // Accessibility
@@ -83,8 +91,8 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
         <Icon
           name={iconName}
           size={iconSize}
-          color={themeBasedStyles.iconColor}
-          style={{ marginRight: 10 }} // Add space between icon and input
+          color={themeBasedIconColor}
+          style={{ marginRight: 4 }} // Add space between icon and input
         />
         <TextInput
           placeholder={placeholder} // Use the passed placeholder
@@ -93,9 +101,14 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           style={[
             commonStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
-            { color: themeBasedStyles.textColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
+            { 
+              color: themeBasedStyles.textColor, 
+              fontSize: placeholderFontSize, 
+              borderWidth: 0, // Remove the border if needed
+              paddingHorizontal: 10, // Add some padding inside the input field
+            },
           ]}
-          placeholderTextColor={themeBasedStyles.placeholderColor} // Placeholder color
+          placeholderTextColor={themeBasedPlaceholderColor} // Placeholder color
         />
       </TouchableOpacity>
 

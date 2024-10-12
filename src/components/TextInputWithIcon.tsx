@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'; // Default to Ionicons
 import { commonStyles } from '../styles/commonStyles';
@@ -45,19 +45,27 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
-  // Fallback to theme-based colors if not provided as props
-  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; 
-  const themeBasedPlaceholderColor =
-    placeholderTextColor || commonStyle.placeholderTextColor.color;
-  const themeBasedTextColor = textColor || commonStyle.textColor.color;
-  const themeBasedInputBackgroundColor = inputBackgroundColor || commonStyle.inputBackgroundColor.backgroundColor;
+
+    // Memoize the theme-based styles
+    const themeBasedStyles = useMemo(() => {
+      return {
+        iconColor: iconColor || commonStyle.iconColor.color,
+        textColor: textColor || commonStyle.textColor.color,
+        placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
+        inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+      };
+    }, [iconColor, textColor, placeholderTextColor, commonStyle]);
   
+    const themeBasedIconColor = themeBasedStyles.iconColor;
+    const themeBasedTextColor = themeBasedStyles.textColor;
+    const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
+    const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
+    
   const IconComponent = iconPack;
 
   return (
     <View style={[
       commonStyle.inputContainer, 
-      style, 
       {
         backgroundColor: themeBasedInputBackgroundColor, // Remove background color to make it blank/transparent
         borderWidth: 0, // Remove border to make it clean

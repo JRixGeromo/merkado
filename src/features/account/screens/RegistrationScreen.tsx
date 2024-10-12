@@ -58,7 +58,7 @@ const RegistrationScreen = () => {
   const [firstName, setFirstName] = useState(''); // New field
   const [lastName, setLastName] = useState(''); // New field
   const [birthdate, setBirthdate] = useState(new Date()); // New field
-  const [gender, setGender] = useState('male'); // New field with default value
+  const [gender, setGender] = useState(''); // New field with default value
 
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
@@ -142,28 +142,27 @@ const RegistrationScreen = () => {
             iconSize={20}
           />
           <Dropdown
-            selectedValue={gender}
-            onValueChange={(itemValue) => setGender(itemValue)}
-            options={[
+            selectedValue={gender} // The currently selected value, controlled by the `gender` state
+            onValueChange={(itemValue) => setGender(itemValue)} // Callback to update the `gender` state when a new value is selected
+            options={[ // The list of options displayed in the dropdown
               { label: 'Male', value: 'male' },
               { label: 'Female', value: 'female' },
               { label: 'Other', value: 'other' },
             ]}
-            placeholder="Select Gender"
-            iconName="person"
-            iconSize={20}
-            iconColor="#000"
-            placeholderFontSize={14}
+            placeholder="Select Gender" // Placeholder text when no value is selected
+            iconName="person" // Icon to display inside the dropdown
+            iconSize={20} // Size of the icon
+            placeholderFontSize={14} // Font size of the placeholder text
           />
-          <DateAndTimePicker
-            onDateChange={(date) => console.log(date)}
-            iconName="calendar"
-            iconSize={20}
-            iconColor="#000"
-            placeholder="Select Your Birthdate"
-            inputStyle={{ height: 45 }} // Custom styles for the input
-            placeholderFontSize={14} // Custom placeholder font size
-          />
+
+            <DateAndTimePicker
+              onDateChange={(date) => console.log(date)} // Correctly handle the date change
+              iconName="calendar" // Example icon for the date picker
+              iconSize={20} // Icon size
+              placeholder="Select Date" // Placeholder for date input
+              inputStyle={{ height: 40 }} // Example of styling the input
+              placeholderFontSize={14} // Placeholder font size
+            />
 
           <TextInputWithIcon
             placeholder="Email"
