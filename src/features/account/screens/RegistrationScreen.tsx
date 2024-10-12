@@ -14,7 +14,7 @@ import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import DateAndTimePicker from '../../../components/DateAndTimePicker'; // Import DatePicker
 import Dropdown from '../../../components/Dropdown'; // Import Dropdown for Gender
-import { useAppSelector } from '../../../hooks/reduxHooks'; // Import Redux hooks
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
 import { commonStyles } from '../../../styles/commonStyles'; // Common styles
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -22,6 +22,7 @@ import { RootStackParamList } from '../../../navigationTypes'; // Import your Ro
 import { gql, useMutation } from '@apollo/client'; // Import Apollo Client's useMutation
 import { useTranslation } from 'react-i18next'; // Import the translation hook
 import { theme as appTheme } from '../../../styles/theme'; // Import your theme for direct use
+import { setUser } from '../../../store/slices/authSlice'; // Import setUser action
 
 // Define GraphQL mutation for registering a user
 const REGISTER_USER = gql`
@@ -50,7 +51,6 @@ const REGISTER_USER = gql`
   }
 `;
 
-
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -61,6 +61,7 @@ const RegistrationScreen = () => {
   const [gender, setGender] = useState('');
 
   const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const dispatch = useAppDispatch(); // Use Redux dispatch
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
   const { t } = useTranslation(); // Initialize translation
@@ -74,12 +75,12 @@ const RegistrationScreen = () => {
       Alert.alert('Error', 'Please fill in all required fields.');
       return;
     }
-  
+
     if (password !== confirmPassword) {
       Alert.alert('Error', 'Passwords do not match!');
       return;
     }
-    
+
     try {
       const { data } = await registerUser({
         variables: {
@@ -91,8 +92,13 @@ const RegistrationScreen = () => {
           gender: gender || 'OTHER', // Make sure gender is one of "MALE", "FEMALE", or "OTHER"
         },
       });
-  
+
       if (data?.registerUser) {
+        const { user, token } = data.registerUser;
+        
+        // Store user data and token in Redux
+        dispatch(setUser({ user, token }));
+
         Alert.alert('Success', 'Registration successful!');
         navigation.navigate('DashboardScreen');
       }
@@ -180,10 +186,10 @@ const RegistrationScreen = () => {
           {loading && (
             <View style={{ marginTop: 20, marginBottom: 20 }}>
               <ActivityIndicator
-              size="large"
-              color={selectedTheme.primary} // Use primary color directly from the theme
-              style={commonStyle.loader}
-            />
+                size="large"
+                color={selectedTheme.primary} // Use primary color directly from the theme
+                style={commonStyle.loader}
+              />
             </View>
           )}
 

@@ -8,36 +8,84 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { commonStyles } from '../../../styles/commonStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native'; // Import navigation hook
-import { RootStackParamList } from '../../../navigationTypes'; // Import your navigation types
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Correct import for stack navigation
-import { useTranslation } from 'react-i18next'; // Import the translation hook
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigationTypes';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
+import { gql, useMutation } from '@apollo/client';
+import { setUser } from '../../../store/slices/authSlice'; // Import the setUser action
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'LoginScreen'
 >;
 
+const LOGIN_USER = gql`
+  mutation LoginUser($email: String!, $password: String!) {
+    loginUser(email: $email, password: $password) {
+      token
+      user {
+        id
+        email
+      }
+    }
+  }
+`;
+
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
+  const { t } = useTranslation(); // Initialize translation
 
-  const { t, i18n } = useTranslation(); // Initialize translation
+  // Apollo useMutation hook for login
+  const [loginUser] = useMutation(LOGIN_USER);
 
-  const handleLogin = () => {
-    console.log('Login pressed');
-    navigation.navigate('DashboardScreen'); // Navigate to DashboardScreen after login
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert(t('error'), t('fillFields')); // Translation for error message
+      return;
+    }
+
+    setLoading(true); // Set loading to true while the request is being made
+    try {
+      const { data } = await loginUser({
+        variables: {
+          email,
+          password,
+        },
+      });
+
+      if (data?.loginUser) {
+        // Dispatch the setUser action to store the user in Redux
+        dispatch(
+          setUser({
+            user: data.loginUser.user,
+            token: data.loginUser.token,
+          })
+        );
+
+        Alert.alert(t('success'), t('loginSuccess'));
+        navigation.navigate('DashboardScreen'); // Navigate to the dashboard screen
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      Alert.alert(t('error'), t('loginFailed')); // Show translated error message
+    } finally {
+      setLoading(false); // Set loading to false once the request is completed
+    }
   };
 
   const navigateToRegister = () => {
@@ -56,8 +104,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     const backAction = () => {
-      // Prevent the user from going back to the splash screen
-      return true; // Return true to block the back button
+      return true; // Prevent the user from going back to the splash screen
     };
 
     const backHandler = BackHandler.addEventListener(
@@ -75,12 +122,11 @@ const LoginScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={commonStyle.container}>
-
           <Image
-            source={require('../../../../assets/logo.png')} // Adjust the path to your logo
-            style={commonStyle.logo} // Add any custom styles for the logo image
+            source={require('../../../../assets/logo.png')}
+            style={commonStyle.logo}
           />
-          
+
           <Text style={title}>{t('welcomeBack')}</Text>
 
           <TextInputWithIcon
@@ -95,18 +141,23 @@ const LoginScreen = () => {
             iconName="lock-closed"
             secureTextEntry
             value={password}
-            onChangeText={setEmail}
+            onChangeText={setPassword}
             style={{ height: 45 }}
           />
 
-          <CustomButton
-            title={t('login')}
-            onPress={handleLogin}
-            color={buttonText?.color}
-          />
+          {/* Loading indicator */}
+          {loading ? (
+            <ActivityIndicator size="large" color={buttonText.color} />
+          ) : (
+            <CustomButton
+              title={t('login')}
+              onPress={handleLogin}
+              color={buttonText?.color}
+            />
+          )}
 
           <TouchableOpacity>
-            <Text style={[commonStyle.linkText, {fontWeight: "bold"}]}>
+            <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
               {t('forgotPassword')}
             </Text>
           </TouchableOpacity>
