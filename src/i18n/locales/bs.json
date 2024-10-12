@@ -1,5 +1,6 @@
 {
   "appName": "Merkado",
+  "firstWelcome": "Welcome sa Merkado",
   "welcomeBack": "Maayong Pagbalik",
   "email": "Email",
   "password": "Password",
@@ -16,7 +17,7 @@
   "featured": "Mga Gipakita",
   "promos": "Mga Promo",
   "error": "Sayop",
-  "fillFields": "Palihug sulata ang tanang mga field",
+  "fillFields": "Palihug sulati ang tanang mga field",
   "success": "Malampuson",
   "loginSuccess": "Malampuson nga pag-login",
   "loginFailed": "Napakyas ang pag-login. Palihug sulayi pag-usab.",
