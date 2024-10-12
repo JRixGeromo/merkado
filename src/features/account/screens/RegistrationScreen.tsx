@@ -45,10 +45,6 @@ const REGISTER_USER = gql`
       user {
         id
         email
-        firstName
-        lastName
-        birthdate
-        gender
       }
     }
   }
