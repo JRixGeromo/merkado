@@ -132,18 +132,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     textColor: {
       color: '#333',
     },
-    dropdown: {
-      backgroundColor: selectedTheme.backgroundColor, // Dropdown background based on theme
-      borderColor: selectedTheme.primary, // Border color matching the theme's primary color
-      borderWidth: 1,
-      borderRadius: SHARED.borderRadius,
-      width: '80%',
-      paddingHorizontal: 10,
-    },
-    dropdownText: {
-      fontSize: normalizeFontSize(16),
-      color: selectedTheme.textColor, // Text color from selected theme
-    },
     section: {
       marginTop: 20,
     },
@@ -289,6 +277,55 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       shadowRadius: SHARED.shadow.radius,
       elevation: SHARED.shadow.elevation,  // Apply Android-specific shadow
       marginBottom: 20,  // Space between slides
+    },
+
+    todayTextColor: {
+      color: selectedTheme.primary, // Primary color for today's date
+    },
+    selectedDayBackgroundColor: {
+      backgroundColor: selectedTheme.primary, // Background for selected day
+    },
+    dayTextColor: {
+      color: selectedTheme.textColor, // Text color for day numbers
+    },
+    textDisabledColor: {
+      color: '#d9e1e8', // Disabled text color for unselectable days
+    },
+    monthTextColor: {
+      color: selectedTheme.textColor, // Color for the month header
+    },
+    arrowColor: {
+      color: selectedTheme.primary, // Color for navigation arrows
+    },
+    dropdown: {
+      backgroundColor: selectedTheme.backgroundColor, // Background for dropdown based on theme
+      borderColor: selectedTheme.primary, // Border color matching the theme's primary color
+      borderWidth: 1,
+      borderRadius: SHARED.borderRadius,
+      width: '80%',
+      paddingHorizontal: 10,
+    },
+    dropdownText: {
+      fontSize: normalizeFontSize(16),
+      color: selectedTheme.textColor, // Text color from selected theme
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    modalContent: {
+      borderRadius: 10,
+      padding: 20,
+      backgroundColor: selectedTheme.cardBackground, // Ensure the background color is from the theme
+    },
+    option: {
+      padding: 10,
+      borderBottomWidth: 1,
+      borderColor: selectedTheme.primary, // Use the primary color for the border
+    },
+    closeButton: {
+      marginTop: 20,
+      alignItems: 'center',
     },
   });
 };

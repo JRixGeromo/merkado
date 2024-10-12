@@ -4,6 +4,7 @@ import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { commonStyles } from '../styles/commonStyles';
 import { useAppSelector } from '../hooks/reduxHooks';
+import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
 
 interface DateAndTimePickerProps {
   onDateChange: (date: Date) => void;
@@ -16,37 +17,39 @@ interface DateAndTimePickerProps {
   inputStyle?: object; // Additional styles for the TextInput
   textColor?: string; // Color for the text input
   placeholderFontSize?: number; // Font size for the placeholder
+  placeholderTextColor?: string;
 }
 
 const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   onDateChange,
-  initialDate = new Date(), // Use new Date() as default if not provided
+  initialDate, // No default value, allows placeholder to show
   mode = 'date',
-  placeholder = "Select Date",
+  placeholder = "Select Date", // Default placeholder text
   iconName,
-  iconSize = 20,
-  iconColor = '#000',
-  inputStyle = {},
-  textColor = 'black',
-  placeholderFontSize = 14,
+  iconSize = normalizeFontSize(20),
+  iconColor = '#000', // Default icon color
+  inputStyle = {}, // Additional styles for the TextInput
+  textColor = 'black', // Default text color
+  placeholderFontSize = 14, // Default placeholder font size
+  placeholderTextColor = "#999"
 }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate);
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined); // Start with no initial date
+  const [showCalendar, setShowCalendar] = useState(false); // Toggle calendar visibility
 
   const handleDayPress = (day: { dateString: string }) => {
     const date = new Date(day.dateString);
-    setSelectedDate(date);
-    onDateChange(date);
-    setShowCalendar(false);
+    setSelectedDate(date); // Update the selected date
+    onDateChange(date); // Pass the selected date back to the parent component
+    setShowCalendar(false); // Close the calendar after selection
   };
 
-  const currentTheme = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(currentTheme);
+  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
+  const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
   return (
     <View style={{ marginTop: 20 }}>
       <TouchableOpacity
-        style={[commonStyle.inputContainer, { flexDirection: 'row', alignItems: 'center', padding: 15 }]}
+        style={[commonStyle.inputContainer, { flexDirection: 'row', alignItems: 'center', padding: 15 }]} // Apply inputContainer styles
         onPress={() => setShowCalendar(true)} // Show calendar on press
         accessibilityLabel="Select date" // Accessibility
       >
@@ -54,18 +57,18 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           name={iconName}
           size={iconSize}
           color={iconColor}
-          style={{ marginRight: 10 }}
+          style={{ marginRight: 10 }} // Add space between icon and input
         />
         <TextInput
-          placeholder={placeholder}
-          value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''}
-          editable={false} // Read-only to open calendar
+          placeholder={placeholder} // Use the passed placeholder
+          value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''} // Format date to display
+          editable={false} // Make it read-only, only clickable to open calendar
           style={[
-            commonStyle.input,
-            inputStyle,
-            { color: textColor, fontSize: placeholderFontSize },
+            commonStyle.input, // Apply input styles
+            inputStyle, // Additional styles passed as a prop
+            { color: textColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
           ]}
-          placeholderTextColor="#888" // Placeholder color
+          placeholderTextColor={placeholderTextColor} // Placeholder color
         />
       </TouchableOpacity>
 
@@ -78,16 +81,16 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                 [selectedDate?.toISOString().split('T')[0] || '']: {
                   selected: true,
                   marked: true,
-                  selectedColor: '#00adf5',
+                  selectedColor: '#00adf5', // Customize selected color
                 },
               }}
               theme={{
-                todayTextColor: '#00adf5',
-                selectedDayBackgroundColor: '#00adf5',
-                dayTextColor: '#2d4150',
-                textDisabledColor: '#d9e1e8',
-                monthTextColor: 'black',
-                arrowColor: 'orange',
+                todayTextColor: commonStyle.todayTextColor.color, // Use primary color from theme
+                selectedDayBackgroundColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use primary color from theme
+                dayTextColor: commonStyle.dayTextColor.color, // Use text color from theme
+                textDisabledColor: commonStyle.textDisabledColor.color, // Disabled text color
+                monthTextColor: commonStyle.monthTextColor.color, // Month text color
+                arrowColor: commonStyle.arrowColor.color, // Use primary color from theme
               }}
             />
             <TouchableOpacity

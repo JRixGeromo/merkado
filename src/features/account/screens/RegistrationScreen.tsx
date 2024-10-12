@@ -129,6 +129,7 @@ const RegistrationScreen = () => {
             value={firstName}
             onChangeText={setFirstName}
             style={{ height: 45 }}
+            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Last Name"
@@ -136,11 +137,22 @@ const RegistrationScreen = () => {
             value={lastName}
             onChangeText={setLastName}
             style={{ height: 45 }}
+            iconSize={20}
           />
           <Dropdown
             selectedValue={gender}
             onValueChange={(itemValue) => setGender(itemValue)}
-            options={genderOptions}
+            options={[
+              { label: 'Male', value: 'male' },
+              { label: 'Female', value: 'female' },
+              { label: 'Other', value: 'other' },
+            ]}
+            placeholder="Select Gender"
+            iconName="person"
+            iconSize={20}
+            iconColor="#000"
+            textColor="black"
+            placeholderFontSize={14}
           />
           <DateAndTimePicker
             onDateChange={(date) => console.log(date)}
@@ -159,6 +171,7 @@ const RegistrationScreen = () => {
             value={email}
             onChangeText={setEmail}
             style={{ height: 45 }}
+            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Password"
@@ -167,6 +180,7 @@ const RegistrationScreen = () => {
             value={password}
             onChangeText={setPassword}
             style={{ height: 45 }}
+            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Confirm Password"
@@ -175,6 +189,7 @@ const RegistrationScreen = () => {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             style={{ height: 45 }}
+            iconSize={20}
           />
           <TextInputWithIcon
             placeholder="Location (Optional)"
@@ -182,6 +197,7 @@ const RegistrationScreen = () => {
             value={location}
             onChangeText={setLocation}
             style={{ height: 45 }}
+            iconSize={20}
           />
 
           {/* Display loading state */}
