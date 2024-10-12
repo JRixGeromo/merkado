@@ -55,30 +55,24 @@ const SplashScreen = () => {
 
   return (
     <Box style={commonStyle.splashContainer}>
-      {/* Optional background image */}
+    <Animated.View style={[{ opacity: fadeAnim }, { alignItems: 'center', justifyContent: 'center', width: '100%' }]}>
       <Image
-        source={require('../../../../assets/splash_background.jpg')}
-        style={commonStyle.fullScreenBackgroundImage}
+        source={require('../../../../assets/logo.png')} // Logo path
+        style={commonStyle.logo}
       />
+      <Text style={commonStyle.splashText}>
+        Welcome to Merkado
+      </Text>
+    </Animated.View>
 
-      {/* Fade-in content */}
-      <Animated.View style={{ opacity: fadeAnim }}>
-        <Image
-          source={require('../../../../assets/logo.png')}
-          style={commonStyle.logo}
-        />
-        <Text style={[commonStyle.title, commonStyle.splashText]}>
-          Welcome to Merkado
-        </Text>
-      </Animated.View>
 
-      {/* Custom loader */}
-      <ActivityIndicator
-        size="large"
-        color={selectedTheme.primary} // Use primary color directly from the theme
-        style={commonStyle.loader}
-      />
-    </Box>
+    {/* Custom loader */}
+    <ActivityIndicator
+      size="large"
+      color={selectedTheme.primary} // Use primary color directly from the theme
+      style={commonStyle.loader}
+    />
+  </Box>
   );
 };
 

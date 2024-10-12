@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
 import { useQuery, gql } from '@apollo/client';
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -33,6 +34,7 @@ const DashboardScreen = () => {
 
   // Reference for the carousel
   const carouselRef = useRef<Carousel<any>>(null);
+  const { t, i18n } = useTranslation(); // Initialize translation
 
   // Promo images array
   const promoImages = [
@@ -79,7 +81,7 @@ const DashboardScreen = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Mga Promo</Text>
+          <Text style={styles.sectionTitle}>{t('promos')}</Text>
           <Carousel
             ref={carouselRef}  // Attach the carousel reference
             data={promoImages}  // Use the promo images array
@@ -95,7 +97,7 @@ const DashboardScreen = () => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Mga Produkto</Text>
+          <Text style={styles.sectionTitle}>{t('products')}</Text>
           {loading ? (
             <Text>Loading products...</Text>
           ) : error ? (

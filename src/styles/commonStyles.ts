@@ -29,30 +29,30 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
       margin: normalizeHeight(20), // Margin for the container
     },
-    splashContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
-    },
     fullScreenBackgroundImage: {
       position: 'absolute',
       resizeMode: 'cover', // Ensure the image covers the entire screen
     },
+    splashContainer: {
+      flex: 1,
+      justifyContent: 'center', // Centers content vertically
+      alignItems: 'center', // Centers content horizontally
+      backgroundColor: selectedTheme.backgroundColor, // Background color from the theme
+    },
     logo: {
-      width: 150,
-      height: 150,
-      //marginBottom: 20,
-      resizeMode: 'contain', // Ensure the logo fits without stretching
+      width: 150, // Adjust width based on design
+      height: 150, // Adjust height based on design
+      resizeMode: 'contain', // Keep the logo aspect ratio
+      marginBottom: 20, // Add space between logo and text
     },
     splashText: {
+      fontSize: 24,
       fontWeight: 'bold',
-      color: selectedTheme.primary, // Use primary color from theme for the text
-      fontSize: 24, // You can adjust this size
+      color: selectedTheme.primary, // Use primary color from the theme
+      marginTop: 10, // Add margin between the logo and the text
     },
     loader: {
       marginTop: 30, // Add space between the text and loader
-      color: selectedTheme.loader, // Use primary color from theme for the text
     },
     box: {
       padding: SHARED.padding,
