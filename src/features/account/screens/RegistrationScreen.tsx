@@ -31,7 +31,7 @@ const REGISTER_USER = gql`
     $firstName: String!, 
     $lastName: String!, 
     $birthdate: String, 
-    $gender: String
+    $gender: Gender!
   ) {
     registerUser(
       email: $email, 
@@ -45,10 +45,15 @@ const REGISTER_USER = gql`
       user {
         id
         email
+        firstName
+        lastName
+        birthdate
+        gender
       }
     }
   }
 `;
+
 
 const RegistrationScreen = () => {
   const [email, setEmail] = useState('');
@@ -78,7 +83,7 @@ const RegistrationScreen = () => {
       Alert.alert('Error', 'Passwords do not match!');
       return;
     }
-  
+    
     try {
       const { data } = await registerUser({
         variables: {
