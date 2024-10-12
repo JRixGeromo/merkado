@@ -15,7 +15,6 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { RootStackParamList } from '../../../navigationTypes';
 import { theme as appTheme } from '../../../styles/theme'; // Import your theme for direct use
-//import { useTranslation } from 'react-i18next';
 
 type SplashScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -31,8 +30,6 @@ const SplashScreen = () => {
   const theme = useAppSelector(state => state.theme.theme) as "light" | "dark"; // Explicitly define the type
   const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
   const selectedTheme = appTheme[theme]; // Access the current theme (light or dark)
-  //const { t } = useTranslation();
-  
   const fadeAnim = new Animated.Value(0); // Create an animated value for fade-in
 
   useEffect(() => {
@@ -63,11 +60,9 @@ const SplashScreen = () => {
         style={commonStyle.logo}
       />
       <Text style={commonStyle.splashText}>
-        {/* {t('firstWelcome')} */}
         Welcome to Merkado
       </Text>
     </Animated.View>
-
 
     {/* Custom loader */}
     <ActivityIndicator

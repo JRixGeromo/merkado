@@ -86,6 +86,7 @@ const AccountScreen = () => {
             <Button title="English" onPress={() => i18n.changeLanguage('en')} />
             <Button title="Tagalog" onPress={() => i18n.changeLanguage('tl')} />
             <Button title="Bisaya" onPress={() => i18n.changeLanguage('bs')} />
+            <Button title="Ilonggo" onPress={() => i18n.changeLanguage('il')} />
           </View>
         </View>
         <CustomButton

@@ -141,7 +141,7 @@ const RegistrationScreen = () => {
               { label: t('other'), value: 'OTHER' },
             ]}
             placeholder={t('gender')}
-            iconName="transgender"
+            iconName="male"
             iconSize={20}
           />
 
