@@ -339,5 +339,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 20,
       alignItems: 'center',
     },
+    tabBarActiveTintColor: {},
+    tabBarInactiveTintColor: {},
+    tabBarStyle: {},
+
   });
 };
