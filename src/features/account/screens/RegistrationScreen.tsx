@@ -8,38 +8,37 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
-  ActivityIndicator,  // Import ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
-import DateAndTimePicker from '../../../components/DateAndTimePicker'; // Import DatePicker
-import Dropdown from '../../../components/Dropdown'; // Import Dropdown for Gender
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks'; // Import Redux hooks
-import { commonStyles } from '../../../styles/commonStyles'; // Common styles
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import DateAndTimePicker from '../../../components/DateAndTimePicker';
+import Dropdown from '../../../components/Dropdown';
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
+import { commonStyles } from '../../../styles/commonStyles';
+import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigationTypes'; // Import your RootStackParamList
-import { gql, useMutation } from '@apollo/client'; // Import Apollo Client's useMutation
-import { useTranslation } from 'react-i18next'; // Import the translation hook
-import { theme as appTheme } from '../../../styles/theme'; // Import your theme for direct use
-import { setUser } from '../../../store/slices/authSlice'; // Import setUser action
+import { RootStackParamList } from '../../../navigationTypes';
+import { gql, useMutation } from '@apollo/client';
+import { useTranslation } from 'react-i18next';
+import { theme as appTheme } from '../../../styles/theme';
+import { setUser } from '../../../store/slices/authSlice';
 
-// Define GraphQL mutation for registering a user
 const REGISTER_USER = gql`
   mutation RegisterUser(
-    $email: String!, 
-    $password: String!, 
-    $firstName: String!, 
-    $lastName: String!, 
-    $birthdate: String, 
+    $email: String!,
+    $password: String!,
+    $firstName: String!,
+    $lastName: String!,
+    $birthdate: String,
     $gender: Gender!
   ) {
     registerUser(
-      email: $email, 
-      password: $password, 
-      firstName: $firstName, 
-      lastName: $lastName, 
-      birthdate: $birthdate, 
+      email: $email,
+      password: $password,
+      firstName: $firstName,
+      lastName: $lastName,
+      birthdate: $birthdate,
       gender: $gender
     ) {
       token
@@ -58,26 +57,24 @@ const RegistrationScreen = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthdate, setBirthdate] = useState(new Date());
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('OTHER'); // Default value for gender
 
-  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
-  const dispatch = useAppDispatch(); // Use Redux dispatch
+  const theme = useAppSelector((state) => state.theme.theme);
+  const dispatch = useAppDispatch();
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
-  const { t } = useTranslation(); // Initialize translation
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { t } = useTranslation();
 
-  // Use Apollo Client's useMutation hook
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
-  // Registration logic with validation
   const handleRegister = async () => {
     if (!email || !password || !confirmPassword || !firstName || !lastName) {
-      Alert.alert('Error', 'Please fill in all required fields.');
+      Alert.alert(t('error'), t('fillFields'));
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match!');
+      Alert.alert(t('error'), t('passwordsDoNotMatch'));
       return;
     }
 
@@ -88,29 +85,27 @@ const RegistrationScreen = () => {
           password,
           firstName,
           lastName,
-          birthdate: birthdate.toISOString().split('T')[0], // Format birthdate as YYYY-MM-DD
-          gender: gender || 'OTHER', // Make sure gender is one of "MALE", "FEMALE", or "OTHER"
+          birthdate: birthdate.toISOString().split('T')[0],
+          gender,
         },
       });
 
       if (data?.registerUser) {
         const { user, token } = data.registerUser;
-        
-        // Store user data and token in Redux
         dispatch(setUser({ user, token }));
 
-        Alert.alert('Success', 'Registration successful!');
+        Alert.alert(t('success'), t('registrationSuccess'));
         navigation.navigate('DashboardScreen');
       }
     } catch (err) {
       console.error('Registration error:', err);
-      Alert.alert('Error', 'Registration failed. Please try again.');
+      Alert.alert(t('error'), t('registrationFailed'));
     }
   };
 
-  const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
-  const { buttonText, container } = commonStyle; // Destructure commonly used styles
-  const selectedTheme = appTheme[theme]; // Access the current theme (light or dark)
+  const commonStyle = commonStyles(theme);
+  const { buttonText, container } = commonStyle;
+  const selectedTheme = appTheme[theme];
 
   return (
     <KeyboardAvoidingView
@@ -120,18 +115,18 @@ const RegistrationScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[container]}>
           <Image
-            source={require('../../../../assets/logo.png')} // Adjust the path to your logo
-            style={commonStyle.logo} // Add any custom styles for the logo image
+            source={require('../../../../assets/logo.png')}
+            style={commonStyle.logo}
           />
           <TextInputWithIcon
-            placeholder="First Name"
+            placeholder={t('firstName')}
             iconName="person"
             value={firstName}
             onChangeText={setFirstName}
             style={{ height: 45 }}
           />
           <TextInputWithIcon
-            placeholder="Last Name"
+            placeholder={t('lastName')}
             iconName="person"
             value={lastName}
             onChangeText={setLastName}
@@ -141,32 +136,32 @@ const RegistrationScreen = () => {
             selectedValue={gender}
             onValueChange={(itemValue) => setGender(itemValue)}
             options={[
-              { label: 'Male', value: 'MALE' },
-              { label: 'Female', value: 'FEMALE' },
-              { label: 'Other', value: 'OTHER' },
+              { label: t('male'), value: 'MALE' },
+              { label: t('female'), value: 'FEMALE' },
+              { label: t('other'), value: 'OTHER' },
             ]}
-            placeholder="Gender"
+            placeholder={t('gender')}
             iconName="person"
             iconSize={20}
           />
 
           <DateAndTimePicker
-            onDateChange={setBirthdate} // Correctly handle the date change
+            onDateChange={setBirthdate}
             iconName="calendar"
             iconSize={20}
-            placeholder="Birth Date"
+            placeholder={t('birthDate')}
             inputStyle={{ height: 40 }}
           />
 
           <TextInputWithIcon
-            placeholder="Email"
+            placeholder={t('email')}
             iconName="mail"
             value={email}
             onChangeText={setEmail}
             style={{ height: 45 }}
           />
           <TextInputWithIcon
-            placeholder="Password"
+            placeholder={t('password')}
             iconName="lock-closed"
             secureTextEntry
             value={password}
@@ -174,7 +169,7 @@ const RegistrationScreen = () => {
             style={{ height: 45 }}
           />
           <TextInputWithIcon
-            placeholder="Confirm Password"
+            placeholder={t('confirmPassword')}
             iconName="lock-closed"
             secureTextEntry
             value={confirmPassword}
@@ -182,18 +177,16 @@ const RegistrationScreen = () => {
             style={{ height: 45 }}
           />
 
-          {/* Display Activity Indicator when loading */}
           {loading && (
             <View style={{ marginTop: 20, marginBottom: 20 }}>
               <ActivityIndicator
                 size="large"
-                color={selectedTheme.primary} // Use primary color directly from the theme
+                color={selectedTheme.primary}
                 style={commonStyle.loader}
               />
             </View>
           )}
 
-          {/* Button will show only when not loading */}
           {!loading && (
             <CustomButton
               title={t('register')}
@@ -202,14 +195,13 @@ const RegistrationScreen = () => {
             />
           )}
 
-          {/* Display error message if registration failed */}
-          {error && <Text style={{ color: 'red' }}>Registration failed: {error.message}</Text>}
+          {error && <Text style={{ color: 'red' }}>{t('registrationFailed')}</Text>}
           
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
-              {t('hasAccount')}
+              {t('hasAccount')}{' '}
               <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
-                {" "}{t('login')}
+                {t('login')}
               </Text>
             </Text>
           </TouchableOpacity>
