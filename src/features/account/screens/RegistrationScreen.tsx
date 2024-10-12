@@ -153,7 +153,6 @@ const RegistrationScreen = () => {
             placeholderFontSize={14} // Custom placeholder font size
           />
 
-
           <TextInputWithIcon
             placeholder="Email"
             iconName="mail" // Ionicons for email

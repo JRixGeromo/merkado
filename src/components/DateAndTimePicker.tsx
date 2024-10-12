@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Modal, TouchableOpacity, Text, TextInput } from 'react-native';
 import { Calendar } from 'react-native-calendars';
-import Icon from 'react-native-vector-icons/Ionicons'; // Import the icon library
-import { commonStyles } from '../styles/commonStyles'; // Import your common styles
-import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selector for theme
+import Icon from 'react-native-vector-icons/Ionicons';
+import { commonStyles } from '../styles/commonStyles';
+import { useAppSelector } from '../hooks/reduxHooks';
 
 interface DateAndTimePickerProps {
   onDateChange: (date: Date) => void;
@@ -20,50 +20,50 @@ interface DateAndTimePickerProps {
 
 const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   onDateChange,
-  initialDate, // Removed default value
+  initialDate = new Date(), // Use new Date() as default if not provided
   mode = 'date',
-  placeholder = "Select Date", // Default placeholder text
+  placeholder = "Select Date",
   iconName,
-  iconSize = 20, // Default icon size
-  iconColor = '#000', // Default icon color
-  inputStyle = {}, // Additional styles for the TextInput
-  textColor = 'black', // Default text color
-  placeholderFontSize = 14, // Default placeholder font size
+  iconSize = 20,
+  iconColor = '#000',
+  inputStyle = {},
+  textColor = 'black',
+  placeholderFontSize = 14,
 }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined); // Removed default date
-  const [showCalendar, setShowCalendar] = useState(false); // Toggle calendar visibility
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const handleDayPress = (day: { dateString: string }) => {
     const date = new Date(day.dateString);
-    setSelectedDate(date); // Update the selected date
-    onDateChange(date); // Pass the selected date back to the parent component
-    setShowCalendar(false); // Close the calendar after selection
+    setSelectedDate(date);
+    onDateChange(date);
+    setShowCalendar(false);
   };
 
-  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
-  const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
+  const currentTheme = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(currentTheme);
 
   return (
     <View style={{ marginTop: 20 }}>
-      {/* TextInput for displaying selected date with calendar icon */}
       <TouchableOpacity
         style={[commonStyle.inputContainer, { flexDirection: 'row', alignItems: 'center', padding: 15 }]}
         onPress={() => setShowCalendar(true)} // Show calendar on press
+        accessibilityLabel="Select date" // Accessibility
       >
         <Icon
           name={iconName}
           size={iconSize}
-          color={iconColor} // Use icon color passed as a prop
-          style={{ marginRight: 10 }} // Add space between icon and input
+          color={iconColor}
+          style={{ marginRight: 10 }}
         />
         <TextInput
-          placeholder={placeholder} // Use the passed placeholder
-          value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''} // Format date to display
-          editable={false} // Make it read-only, only clickable to open calendar
+          placeholder={placeholder}
+          value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''}
+          editable={false} // Read-only to open calendar
           style={[
             commonStyle.input,
-            inputStyle, // Apply additional styles passed as a prop
-            { color: textColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
+            inputStyle,
+            { color: textColor, fontSize: placeholderFontSize },
           ]}
           placeholderTextColor="#888" // Placeholder color
         />
@@ -78,7 +78,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                 [selectedDate?.toISOString().split('T')[0] || '']: {
                   selected: true,
                   marked: true,
-                  selectedColor: '#00adf5', // Customize selected color
+                  selectedColor: '#00adf5',
                 },
               }}
               theme={{
