@@ -30,5 +30,12 @@
   "gender": "Gender",
   "male": "Male",
   "female": "Female",
-  "other": "Other"
+  "other": "Other",
+  "dashboard": "Dashboard",
+  "cart": "Cart",
+  "chat": "Chat",
+  "account": "Account",
+  "settings": "Settings",
+  "logout": "Logout",
+  "loading": "Loading..."
 }

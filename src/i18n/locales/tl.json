@@ -30,5 +30,12 @@
   "gender": "Kasarian",
   "male": "Lalaki",
   "female": "Babae",
-  "other": "Iba pa"
+  "other": "Iba pa",
+  "dashboard": "Pangunahing Talaan",
+  "cart": "Kariton",
+  "chat": "Usapan",
+  "account": "Aking Account",
+  "settings": "Mga Setting",
+  "logout": "Mag-logout",
+  "loading": "Naglo-load..."
 }

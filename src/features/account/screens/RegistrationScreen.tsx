@@ -57,7 +57,7 @@ const RegistrationScreen = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthdate, setBirthdate] = useState(new Date());
-  const [gender, setGender] = useState('OTHER'); // Default value for gender
+  const [gender, setGender] = useState(''); // Default value for gender
 
   const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
@@ -141,7 +141,7 @@ const RegistrationScreen = () => {
               { label: t('other'), value: 'OTHER' },
             ]}
             placeholder={t('gender')}
-            iconName="person"
+            iconName="transgender"
             iconSize={20}
           />
 

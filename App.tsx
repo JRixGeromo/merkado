@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles'; 
 import { theme } from './src/styles/theme'; // Import the theme object
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -24,8 +25,8 @@ const App = () => {
   const themeType = useAppSelector(state => state.theme.theme); // Access theme from Redux
   const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
   const dispatch = useAppDispatch();
+  const { t } = useTranslation(); // Initialize translation hook
 
-  // No need to manually load the theme here; let the thunk handle it
   useEffect(() => {
     const initializeApp = async () => {
       // Dispatch the thunk to load the theme from storage
@@ -73,27 +74,27 @@ const App = () => {
       <Tab.Screen
         name="Dashboard"
         component={DashboardScreen}
-        options={{ headerTitle: 'MerkadoDash' }}
+        options={{ headerTitle: t('dashboard') }} // Translated title
       />
       <Tab.Screen
         name="Categories"
         component={DummyScreen}
-        options={{ headerTitle: 'Categories' }}
+        options={{ headerTitle: t('categories') }} // Translated title
       />
       <Tab.Screen
         name="Cart"
         component={DummyScreen}
-        options={{ headerTitle: 'Cart' }}
+        options={{ headerTitle: t('cart') }} // Translated title
       />
       <Tab.Screen
         name="Chat"
         component={DummyScreen} 
-        options={{ headerTitle: 'Chat' }}
+        options={{ headerTitle: t('chat') }} // Translated title
       />
       <Tab.Screen
         name="Account"
         component={AccountScreen} 
-        options={{ headerTitle: 'Account' }}
+        options={{ headerTitle: t('account') }} // Translated title
       />
     </Tab.Navigator>
   );
@@ -102,32 +103,32 @@ const App = () => {
   return (
     <NavigationContainer theme={themeType === 'light' ? DefaultTheme : DarkTheme}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
+        <>
           <Stack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
+            name="LoginScreen"
+            component={LoginScreen}
             options={{ headerShown: false }}
           />
-          <>
-            <Stack.Screen
-              name="LoginScreen"
-              component={LoginScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="RegistrationScreen"
-              component={RegistrationScreen}
-              options={{
-                headerTitle: 'Register',
-                headerStyle: { backgroundColor: selectedTheme.backgroundColor }, // Dynamic header background
-                headerTintColor: selectedTheme.textColor, // Dynamic text color for header
-              }}
-            />
-            <Stack.Screen
-              name="DashboardScreen"
-              component={MainTabs}
-              options={{ headerShown: false }}
-            />
-          </>
+          <Stack.Screen
+            name="RegistrationScreen"
+            component={RegistrationScreen}
+            options={{
+              headerTitle: t('register'), // Translated title
+              headerStyle: { backgroundColor: selectedTheme.backgroundColor }, // Dynamic header background
+              headerTintColor: selectedTheme.textColor, // Dynamic text color for header
+            }}
+          />
+          <Stack.Screen
+            name="DashboardScreen"
+            component={MainTabs}
+            options={{ headerShown: false }}
+          />
+        </>
       </Stack.Navigator>
     </NavigationContainer>
   );

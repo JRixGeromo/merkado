@@ -30,5 +30,12 @@
   "gender": "Kasarian",
   "male": "Lalaki",
   "female": "Babae",
-  "other": "Uban pa"
+  "other": "Uban pa",
+  "dashboard": "Panguna nga Talaan",
+  "cart": "Kariton",
+  "chat": "Panag-istoryahanay",
+  "account": "Aking Account",
+  "settings": "Mga Setting",
+  "logout": "Pag-log out",
+  "loading": "Nag-load..."
 }
