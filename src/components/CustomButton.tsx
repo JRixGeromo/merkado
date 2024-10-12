@@ -28,32 +28,40 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled = false,
   style = {},
 }) => {
-  const currentTheme = useAppSelector(state => state.theme.theme); // 'light' or 'dark'
-  const selectedTheme = appTheme[currentTheme]; // Now it accesses the full theme object (light or dark)
+  const currentTheme = useAppSelector((state) => state.theme.theme); // Access the current theme
+  const selectedTheme = appTheme[currentTheme]; // Access light or dark theme
 
-  const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
+  const commonStyle = commonStyles(currentTheme); // Generate common styles based on the theme
 
-  const buttonBackgroundColor = backgroundColor || selectedTheme.primary; // Fallback to theme primary color
-  const buttonTextColor = color || selectedTheme.buttonTextColor;
+  // Fallback to theme-based colors if not provided as props
+  const buttonBackgroundColor =
+    backgroundColor || selectedTheme.buttonBackgroundColor; // Fallback to theme primary color
+  const buttonTextColor =
+    color || selectedTheme.buttonTextColor; // Fallback to theme text color
 
   return (
     <TouchableOpacity
       style={[
-        commonStyle.button, // Use generated button style from commonStyles
+        commonStyle.button, // Use the common button styles
         {
-          backgroundColor: buttonBackgroundColor,
-          paddingVertical: 10,
-          borderRadius: 8,
+          backgroundColor: buttonBackgroundColor, // Apply dynamic background color
+          paddingVertical: 10, // Customize vertical padding
+          borderRadius: 8, // Customize border radius
+          opacity: disabled ? 0.6 : 1, // Add a disabled effect by reducing opacity
         },
-        style,
+        style, // Apply any additional styles passed as props
       ]}
       onPress={onPress}
       disabled={disabled}
+      accessibilityLabel={title} // Add accessibility label for better screen reader support
     >
       <Text
         style={[
-          commonStyle.buttonText,
-          { color: buttonTextColor, fontSize: normalizeFontSize(16) },
+          commonStyle.buttonText, // Use common text styles for buttons
+          {
+            color: buttonTextColor, // Apply dynamic text color
+            fontSize: normalizeFontSize(16), // Adjust font size responsively
+          },
         ]}
       >
         {title}
@@ -61,4 +69,5 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     </TouchableOpacity>
   );
 };
+
 export default CustomButton;

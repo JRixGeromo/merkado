@@ -62,7 +62,18 @@ const Dropdown: React.FC<DropdownProps> = ({
       </TouchableOpacity>
       
       <Modal visible={showModal} animationType="slide" transparent={true}>
-        <View style={[commonStyle.modalContainer, { backgroundColor: commonStyle.modal.backgroundColor }]}>
+        <View
+          style={[
+            {
+              flex: 1,
+              justifyContent: 'center', // Center vertically
+              alignItems: 'center', // Center horizontally
+              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+            },
+            commonStyle.modalContainer, // Apply modal container style
+            commonStyle.modalOverlay,
+          ]}
+        >
           <View style={[commonStyle.modalContent, { backgroundColor: commonStyle.card.backgroundColor }]}>
             {options.map((option) => (
               <TouchableOpacity
@@ -73,11 +84,11 @@ const Dropdown: React.FC<DropdownProps> = ({
                 }}
                 style={[commonStyle.option, { borderColor: commonStyle.modal.borderColor }]} // Use primary color for border
               >
-                <Text style={[ commonStyle.modalText ]}>{option.label}</Text>
+                <Text style={[commonStyle.modalText]}>{option.label}</Text>
               </TouchableOpacity>
             ))}
             <TouchableOpacity onPress={() => setShowModal(false)} style={commonStyle.closeButton}>
-              <Text style={[ commonStyle.modalText ]}>Close</Text>
+              <Text style={[commonStyle.modalText]}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>

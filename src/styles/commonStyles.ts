@@ -123,7 +123,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.buttonTextColor, // Social button text color from selected theme
     },
     iconColor: {
-      color: '#000', // Set a default color for the icon
+      color: selectedTheme.iconColor, // Set a default color for the icon
       fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
@@ -305,6 +305,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       width: '80%',
       paddingHorizontal: 10,
     },
+    modalOverlay: {
+      backgroundColor: selectedTheme.modalOverlay, // Add modal overlay color from theme
+    },
     modalText: {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textColor, // Text color from selected theme
@@ -322,6 +325,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: 10,
       borderBottomWidth: 1,
       borderColor: selectedTheme.primary, // Use the primary color for the border
+    },
+    buttonBackgroundColor: { 
+      backgroundColor: selectedTheme.buttonBackgroundColor, // Ensure the background color is from the theme
+    },
+    inputBackgroundColor: { 
+      backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
     },
     closeButton: {
       marginTop: 20,

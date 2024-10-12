@@ -18,6 +18,7 @@ interface TextInputWithIconProps {
   style?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
   textColor?: string;
+  inputBackgroundColor?: string;
   placeholderFontSize?: number;
   onFocus?: () => void; // Make sure this prop exists
   editable?: boolean;
@@ -32,10 +33,11 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   secureTextEntry = false,
   placeholderTextColor,
   iconSize = normalizeFontSize(20),
-  iconColor = '#000',
+  iconColor,
   style = {},
   inputStyle = {},
   textColor,
+  inputBackgroundColor,
   placeholderFontSize = 14, // Default placeholder font size
   onFocus, // Destructure onFocus
   editable = true, // Set editable as true by default
@@ -48,11 +50,19 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   const themeBasedPlaceholderColor =
     placeholderTextColor || commonStyle.placeholderTextColor.color;
   const themeBasedTextColor = textColor || commonStyle.textColor.color;
-
+  const themeBasedInputBackgroundColor = inputBackgroundColor || commonStyle.inputBackgroundColor.backgroundColor;
+  
   const IconComponent = iconPack;
 
   return (
-    <View style={[commonStyle.inputContainer, style]}>
+    <View style={[
+      commonStyle.inputContainer, 
+      style, 
+      {
+        backgroundColor: themeBasedInputBackgroundColor, // Remove background color to make it blank/transparent
+        borderWidth: 0, // Remove border to make it clean
+      }
+    ]}>
       <IconComponent
         name={iconName}
         size={iconSize}
@@ -63,7 +73,11 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
         style={[
           commonStyle.input,
           inputStyle,
-          { color: themeBasedTextColor, fontSize: placeholderFontSize }, // Control placeholder font size here
+          { 
+            color: themeBasedTextColor, 
+            fontSize: placeholderFontSize, 
+            backgroundColor: 'transparent' // Ensure the input itself has no background
+          },
         ]}
         placeholder={placeholder}
         value={value}

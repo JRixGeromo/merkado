@@ -19,6 +19,7 @@ import { useNavigation } from '@react-navigation/native'; // Import useNavigatio
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes'; // Import your RootStackParamList
 import { gql, useMutation } from '@apollo/client'; // Import Apollo Client's useMutation
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 // Define GraphQL mutation for registering a user
 const REGISTER_USER = gql`
@@ -63,6 +64,7 @@ const RegistrationScreen = () => {
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Use correct type
+  const { t, i18n } = useTranslation(); // Initialize translation
 
   // Use Apollo Client's useMutation hook
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
@@ -203,18 +205,22 @@ const RegistrationScreen = () => {
 
           {/* Display error message if registration failed */}
           {error && <Text style={{ color: 'red' }}>Registration failed: {error.message}</Text>}
-
+          
           <CustomButton
-            title="Register"
+            title={t('register')}
             onPress={handleRegister}
-            backgroundColor={button?.backgroundColor} // Background color from commonStyles
-            color={buttonText?.color} // Text color from commonStyles
+            backgroundColor={button?.backgroundColor}
+            color={buttonText?.color}
           />
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={[{ marginTop: 20 }, buttonText]}>
-              Already have an account? Login
+            <Text style={[styles.forgotPasswordText, { marginTop: 20 }]}>
+              {t('hasAccount')}
+              <Text style={{ fontWeight: 'bold', color: title?.color  }}>
+                {" "}{t('login')}
+              </Text>
             </Text>
           </TouchableOpacity>
+
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

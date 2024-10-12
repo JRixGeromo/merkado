@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
-import { View, Modal, TouchableOpacity, Text, TextInput } from 'react-native';
+import React, { useState, useMemo } from 'react';
+import {
+  View,
+  Modal,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { commonStyles } from '../styles/commonStyles';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { normalizeFontSize } from '../utils/responsive';
+import { format } from 'date-fns';
 
 interface DateAndTimePickerProps {
   onDateChange: (date: Date) => void;
@@ -18,13 +26,14 @@ interface DateAndTimePickerProps {
   textColor?: string; // Color for the text input
   placeholderFontSize?: number; // Font size for the placeholder
   placeholderTextColor?: string; // Placeholder text color
+  dateFormat?: string; // Date format
 }
 
 const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   onDateChange,
   initialDate,
   mode = 'date',
-  placeholder = "Select Date", // Default placeholder text
+  placeholder = 'Select Date', // Default placeholder text
   iconName,
   iconSize = normalizeFontSize(20),
   iconColor = '#000', // Default icon color
@@ -32,6 +41,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   textColor, // Use the text color from the theme
   placeholderFontSize = 14, // Default placeholder font size
   placeholderTextColor, // Use the color from the theme
+  dateFormat = 'yyyy-MM-dd', // Default date format
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate); // Start with no initial date
   const [showCalendar, setShowCalendar] = useState(false); // Toggle calendar visibility
@@ -43,70 +53,100 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     setShowCalendar(false); // Close the calendar after selection
   };
 
-  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
+  const currentTheme = useAppSelector((state) => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
   // Fallback to theme-based colors if not provided as props
-  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; 
-  const themeBasedTextColor = textColor || commonStyle.textColor.color;
-  const themeBasedPlaceholderColor = placeholderTextColor || commonStyle.placeholderTextColor.color;
-  
+  const themeBasedStyles = useMemo(
+    () => ({
+      iconColor: iconColor || commonStyle.iconColor.color,
+      textColor: textColor || commonStyle.textColor.color,
+      placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
+    }),
+    [iconColor, textColor, placeholderTextColor, commonStyle]
+  );
+
+  // Format date to display based on passed or default date format
+  const formattedDate = selectedDate ? format(selectedDate, dateFormat) : '';
+
   return (
-    <View style={{ marginTop: 20 }}>
+    <View style={{ }}>
       <TouchableOpacity
-        style={[commonStyle.inputContainer, { flexDirection: 'row', alignItems: 'center', padding: 15 }]} // Apply inputContainer styles
+        style={[
+          commonStyle.inputContainer,
+          { flexDirection: 'row', alignItems: 'center', padding: 15 },
+        ]}
         onPress={() => setShowCalendar(true)} // Show calendar on press
-        accessibilityLabel="Select date" // Accessibility
+        accessibilityLabel="Open date picker" // Accessibility
+        accessibilityHint="Opens the calendar to select a date"
       >
         <Icon
           name={iconName}
           size={iconSize}
-          color={themeBasedIconColor}
+          color={themeBasedStyles.iconColor}
           style={{ marginRight: 10 }} // Add space between icon and input
         />
         <TextInput
           placeholder={placeholder} // Use the passed placeholder
-          value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''} // Format date to display
+          value={formattedDate} // Display formatted date
           editable={false} // Make it read-only, only clickable to open calendar
           style={[
             commonStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
-            { color: themeBasedTextColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
+            { color: themeBasedStyles.textColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
           ]}
-          placeholderTextColor={themeBasedPlaceholderColor} // Placeholder color
+          placeholderTextColor={themeBasedStyles.placeholderColor} // Placeholder color
         />
       </TouchableOpacity>
 
       <Modal visible={showCalendar} animationType="slide" transparent={true}>
-        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: commonStyle.modal.backgroundColor  }}>
-          <View style={{ backgroundColor: commonStyle.card.backgroundColor, borderRadius: 10, padding: 20 }}>
-            <Calendar
-              onDayPress={handleDayPress}
-              markedDates={{
-                [selectedDate?.toISOString().split('T')[0] || '']: {
-                  selected: true,
-                  marked: true,
-                  selectedColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use theme color
-                },
+        <TouchableWithoutFeedback onPress={() => setShowCalendar(false)}>
+          <View
+            style={[commonStyle.modalOverlay,{
+              flex: 1,
+              justifyContent: 'center', // Center vertically
+              alignItems: 'center', // Center horizontally
+            }]}
+          >
+            <View
+              style={{
+                backgroundColor: commonStyle.card.backgroundColor,
+                borderRadius: 10,
+                padding: 20,
+                width: '80%', // Adjust the width as needed
               }}
-              theme={{
-                todayTextColor: commonStyle.todayTextColor.color, // Use primary color from theme
-                selectedDayBackgroundColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use primary color from theme
-                dayTextColor: commonStyle.dayTextColor.color, // Use text color from theme
-                textDisabledColor: commonStyle.textDisabledColor.color, // Disabled text color
-                monthTextColor: commonStyle.monthTextColor.color, // Month text color
-                arrowColor: commonStyle.arrowColor.color, // Use primary color from theme
-              }}
-            />
-            <TouchableOpacity
-              onPress={() => setShowCalendar(false)} // Close calendar
-              style={{ marginTop: 20, alignItems: 'center' }}
             >
-              <Text style={[ commonStyle.modalText ]}>Close</Text>
-            </TouchableOpacity>
+              <Calendar
+                onDayPress={handleDayPress}
+                markedDates={{
+                  [selectedDate?.toISOString().split('T')[0] || '']: {
+                    selected: true,
+                    marked: true,
+                    selectedColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use theme color
+                  },
+                }}
+                theme={{
+                  todayTextColor: commonStyle.todayTextColor.color, // Use primary color from theme
+                  selectedDayBackgroundColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use primary color from theme
+                  dayTextColor: commonStyle.dayTextColor.color, // Use text color from theme
+                  textDisabledColor: commonStyle.textDisabledColor.color, // Disabled text color
+                  monthTextColor: commonStyle.monthTextColor.color, // Month text color
+                  arrowColor: commonStyle.arrowColor.color, // Use primary color from theme
+                  calendarBackground: commonStyle.card.backgroundColor, // Set background color for the calendar from the theme
+                }}
+              />
+              <TouchableOpacity
+                onPress={() => setShowCalendar(false)} // Close calendar
+                style={{ marginTop: 20, alignItems: 'center' }}
+                accessibilityLabel="Close calendar"
+              >
+                <Text style={commonStyle.modalText}>Close</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
+
     </View>
   );
 };
