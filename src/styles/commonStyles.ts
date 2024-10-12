@@ -119,7 +119,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textColor, // Input text color from selected theme
     },
     title: {
-      fontSize: normalizeFontSize(28),
+      fontSize: normalizeFontSize(26),
       fontWeight: 'bold',
       marginBottom: normalizeHeight(20),
       textAlign: 'center',
