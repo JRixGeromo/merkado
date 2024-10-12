@@ -127,10 +127,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
-      color: '#999',
+      color: selectedTheme.placeholderTextColor, // Text color for "Or login with"
     },
     textColor: {
-      color: '#333',
+      color: selectedTheme.textColor, // Text color for "Or login with"
     },
     section: {
       marginTop: 20,
@@ -297,7 +297,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     arrowColor: {
       color: selectedTheme.primary, // Color for navigation arrows
     },
-    dropdown: {
+    modal: {
       backgroundColor: selectedTheme.backgroundColor, // Background for dropdown based on theme
       borderColor: selectedTheme.primary, // Border color matching the theme's primary color
       borderWidth: 1,
@@ -305,7 +305,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       width: '80%',
       paddingHorizontal: 10,
     },
-    dropdownText: {
+    modalText: {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textColor, // Text color from selected theme
     },

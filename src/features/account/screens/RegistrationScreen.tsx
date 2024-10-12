@@ -151,7 +151,6 @@ const RegistrationScreen = () => {
             iconName="person"
             iconSize={20}
             iconColor="#000"
-            textColor="black"
             placeholderFontSize={14}
           />
           <DateAndTimePicker
@@ -161,7 +160,6 @@ const RegistrationScreen = () => {
             iconColor="#000"
             placeholder="Select Your Birthdate"
             inputStyle={{ height: 45 }} // Custom styles for the input
-            textColor="black" // Custom text color
             placeholderFontSize={14} // Custom placeholder font size
           />
 

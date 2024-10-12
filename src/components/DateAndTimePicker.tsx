@@ -4,7 +4,7 @@ import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { commonStyles } from '../styles/commonStyles';
 import { useAppSelector } from '../hooks/reduxHooks';
-import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
+import { normalizeFontSize } from '../utils/responsive';
 
 interface DateAndTimePickerProps {
   onDateChange: (date: Date) => void;
@@ -17,23 +17,23 @@ interface DateAndTimePickerProps {
   inputStyle?: object; // Additional styles for the TextInput
   textColor?: string; // Color for the text input
   placeholderFontSize?: number; // Font size for the placeholder
-  placeholderTextColor?: string;
+  placeholderTextColor?: string; // Placeholder text color
 }
 
 const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   onDateChange,
-  initialDate, // No default value, allows placeholder to show
+  initialDate,
   mode = 'date',
   placeholder = "Select Date", // Default placeholder text
   iconName,
   iconSize = normalizeFontSize(20),
   iconColor = '#000', // Default icon color
   inputStyle = {}, // Additional styles for the TextInput
-  textColor = 'black', // Default text color
+  textColor, // Use the text color from the theme
   placeholderFontSize = 14, // Default placeholder font size
-  placeholderTextColor = "#999"
+  placeholderTextColor, // Use the color from the theme
 }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined); // Start with no initial date
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate); // Start with no initial date
   const [showCalendar, setShowCalendar] = useState(false); // Toggle calendar visibility
 
   const handleDayPress = (day: { dateString: string }) => {
@@ -46,6 +46,11 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
+  // Fallback to theme-based colors if not provided as props
+  const themeBasedIconColor = iconColor || commonStyle.iconColor.color; 
+  const themeBasedTextColor = textColor || commonStyle.textColor.color;
+  const themeBasedPlaceholderColor = placeholderTextColor || commonStyle.placeholderTextColor.color;
+  
   return (
     <View style={{ marginTop: 20 }}>
       <TouchableOpacity
@@ -56,7 +61,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
         <Icon
           name={iconName}
           size={iconSize}
-          color={iconColor}
+          color={themeBasedIconColor}
           style={{ marginRight: 10 }} // Add space between icon and input
         />
         <TextInput
@@ -66,22 +71,22 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           style={[
             commonStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
-            { color: textColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
+            { color: themeBasedTextColor, fontSize: placeholderFontSize }, // Control text color and placeholder font size
           ]}
-          placeholderTextColor={placeholderTextColor} // Placeholder color
+          placeholderTextColor={themeBasedPlaceholderColor} // Placeholder color
         />
       </TouchableOpacity>
 
       <Modal visible={showCalendar} animationType="slide" transparent={true}>
-        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <View style={{ backgroundColor: 'white', borderRadius: 10, padding: 20 }}>
+        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: commonStyle.modal.backgroundColor  }}>
+          <View style={{ backgroundColor: commonStyle.card.backgroundColor, borderRadius: 10, padding: 20 }}>
             <Calendar
               onDayPress={handleDayPress}
               markedDates={{
                 [selectedDate?.toISOString().split('T')[0] || '']: {
                   selected: true,
                   marked: true,
-                  selectedColor: '#00adf5', // Customize selected color
+                  selectedColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use theme color
                 },
               }}
               theme={{
@@ -97,7 +102,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
               onPress={() => setShowCalendar(false)} // Close calendar
               style={{ marginTop: 20, alignItems: 'center' }}
             >
-              <Text style={{ color: 'blue' }}>Close</Text>
+              <Text style={[ commonStyle.modalText ]}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>
