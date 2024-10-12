@@ -34,38 +34,25 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
-      position: 'relative', // To position elements inside correctly
     },
-    backgroundImage: {
+    fullScreenBackgroundImage: {
       position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      width: '100%',
-      height: '100%',
-      resizeMode: 'stretch', // Try 'stretch' or 'cover' based on your needs
-      zIndex: -1, // Ensures the image stays in the background
+      resizeMode: 'cover', // Ensure the image covers the entire screen
     },
     logo: {
       width: 150,
       height: 150,
       marginBottom: 20,
-      resizeMode: 'contain',
+      resizeMode: 'contain', // Ensure the logo fits without stretching
     },
     splashText: {
       fontWeight: 'bold',
-      fontSize: normalizeFontSize(24),
-      color: selectedTheme.primary, // Dynamic primary color based on the theme
-      textAlign: 'center',
+      color: selectedTheme.primary, // Use primary color from theme for the text
+      fontSize: 24, // You can adjust this size
     },
     loader: {
-      marginTop: 30,
-    },
-    splashInner: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      marginTop: 30, // Add space between the text and loader
+      color: selectedTheme.loader, // Use primary color from theme for the text
     },
     box: {
       padding: SHARED.padding,

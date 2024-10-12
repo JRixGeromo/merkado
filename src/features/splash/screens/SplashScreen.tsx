@@ -58,7 +58,7 @@ const SplashScreen = () => {
       {/* Optional background image */}
       <Image
         source={require('../../../../assets/splash_background.jpg')}
-        style={commonStyle.backgroundImage}
+        style={commonStyle.fullScreenBackgroundImage}
       />
 
       {/* Fade-in content */}

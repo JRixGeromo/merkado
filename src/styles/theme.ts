@@ -18,6 +18,7 @@ export interface ThemeType {
   cardBackground: string; // Background color for card-like containers
   linkColor: string; // Color for clickable links
   modalOverlay: string; // Add modal overlay color
+  loader: string; // Add modal overlay color
 }
 
 const lightTheme: ThemeType = {
@@ -38,6 +39,7 @@ const lightTheme: ThemeType = {
   cardBackground: '#f8f9fa', // Light card background
   linkColor: '#1E90FF', // Link color in light mode (same as secondary)
   modalOverlay: 'rgba(0, 0, 0, 0.5)', // Dark overlay for light theme
+  loader: "#000",
 };
 
 const darkTheme: ThemeType = {
@@ -58,6 +60,7 @@ const darkTheme: ThemeType = {
   cardBackground: '#444', // Dark card background
   linkColor: '#4CAF50', // Link color in dark mode (same as secondary)
   modalOverlay: 'rgba(255, 255, 255, 0.3)', // Light overlay for dark theme
+  loader: "#fff",
 };
 
 export const theme = {

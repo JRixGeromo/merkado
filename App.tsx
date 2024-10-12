@@ -110,13 +110,11 @@ const App = () => {
   return (
     <NavigationContainer theme={themeType === 'light' ? DefaultTheme : DarkTheme}>
       <Stack.Navigator>
-        {isLoading ? (
           <Stack.Screen
             name="SplashScreen"
             component={SplashScreen}
             options={{ headerShown: false }}
           />
-        ) : (
           <>
             <Stack.Screen
               name="LoginScreen"
@@ -138,7 +136,6 @@ const App = () => {
               options={{ headerShown: false }}
             />
           </>
-        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
