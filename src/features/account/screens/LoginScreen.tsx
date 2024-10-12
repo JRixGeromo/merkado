@@ -7,6 +7,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { toggleTheme } from '../../../reducers/themeReducer';
@@ -75,6 +76,12 @@ const LoginScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={commonStyle.container}>
+
+          <Image
+            source={require('../../../../assets/logo.png')} // Adjust the path to your logo
+            style={commonStyle.logo} // Add any custom styles for the logo image
+          />
+          
           <Text style={title}>{t('welcomeBack')}</Text>
 
           <TextInputWithIcon

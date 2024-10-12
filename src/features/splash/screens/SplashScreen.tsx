@@ -64,7 +64,7 @@ const SplashScreen = () => {
       {/* Fade-in content */}
       <Animated.View style={{ opacity: fadeAnim }}>
         <Image
-          source={require('../../../../assets/logo.jpg')}
+          source={require('../../../../assets/logo.png')}
           style={commonStyle.logo}
         />
         <Text style={[commonStyle.title, commonStyle.splashText]}>

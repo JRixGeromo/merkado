@@ -7,6 +7,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from 'react-native';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
@@ -124,7 +125,10 @@ const RegistrationScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[container]}>
-          {/* <Text style={title}>Register</Text> */}
+          <Image
+            source={require('../../../../assets/logo.png')} // Adjust the path to your logo
+            style={commonStyle.logo} // Add any custom styles for the logo image
+          />
           <TextInputWithIcon
             placeholder="First Name"
             iconName="person" // Ionicons for first name
