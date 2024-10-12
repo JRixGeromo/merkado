@@ -3,23 +3,12 @@ import { View, Text, ScrollView, Image, Dimensions, FlatList, ListRenderItem } f
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
-import { useQuery, gql } from '@apollo/client';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
+import { fetchProducts } from '../../../store/slices/productSlice'; // Import the fetchProducts action
 
 const { width: screenWidth } = Dimensions.get('window');
 
-// GraphQL query to fetch products
-const GET_PRODUCTS = gql`
-  query GetProducts {
-    products {
-      id
-      name
-      price
-     
-    }
-  }
-`;
-
+// Product type definition
 type Product = {
   id: string;
   name: string;
@@ -28,9 +17,12 @@ type Product = {
 };
 
 const DashboardScreen = () => {
-  const theme = useAppSelector(state => state.theme.theme);
+  const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
   const styles = commonStyles(theme);
+
+  // Access product state from Redux
+  const { products, status, error } = useAppSelector((state) => state.products);
 
   // Reference for the carousel
   const carouselRef = useRef<Carousel<any>>(null);
@@ -43,9 +35,12 @@ const DashboardScreen = () => {
     { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
   ];
 
-  // Fetch products using Apollo Client
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
-
+  // Fetch products using Redux on component mount
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts()); // Dispatch fetchProducts action
+    }
+  }, [status, dispatch]);
 
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
@@ -70,13 +65,6 @@ const DashboardScreen = () => {
     }
   }, []);
 
-  // Ensure autoplay is started once the component is mounted
-  useEffect(() => {
-    console.log("Loading:", loading);
-    console.log("Error:", error);
-    console.log("Data:", data);
-  }, [loading, error, data]);
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
@@ -98,13 +86,13 @@ const DashboardScreen = () => {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{t('products')}</Text>
-          {loading ? (
+          {status === 'loading' ? (
             <Text>Loading products...</Text>
-          ) : error ? (
-            <Text>Error loading products!</Text>
+          ) : status === 'failed' ? (
+            <Text>Error: {error}</Text>
           ) : (
             <FlatList
-              data={data?.products as Product[]}  // Ensure proper typing for the data
+              data={products}  // Use Redux products
               keyExtractor={(item) => item.id.toString()}
               renderItem={renderProductItem}  // Properly typed renderItem
               horizontal={true}  // Horizontal product list

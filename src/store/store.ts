@@ -1,14 +1,14 @@
-// src/store/store.ts
-
 import { configureStore } from '@reduxjs/toolkit';
-import themeReducer from '../reducers/themeReducer';
-import authReducer from '../reducers/authReducer'; // Import the auth reducer
+import themeReducer from './slices/themeSlice';
+import authReducer from './slices/authSlice';
+import productReducer from './slices/productSlice'; // Import the product slice
 
 // Create the Redux store
 const store = configureStore({
   reducer: {
-    theme: themeReducer, // Register the theme reducer
-    auth: authReducer, // Register the auth reducer
+    theme: themeReducer,    // Theme state
+    auth: authReducer,      // Authentication state
+    products: productReducer, // Product state (ensure this is added)
   },
 });
 

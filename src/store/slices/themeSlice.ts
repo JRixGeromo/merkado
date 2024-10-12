@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Define the type for the theme state
@@ -14,26 +14,33 @@ const initialState: ThemeState = {
 // Define AsyncStorage key for the theme
 const STORAGE_KEY = 'user_theme';
 
+// Async thunk to load the theme from AsyncStorage
+export const loadThemeFromStorage = createAsyncThunk('theme/loadThemeFromStorage', async () => {
+  const savedTheme = await AsyncStorage.getItem(STORAGE_KEY);
+  return (savedTheme as 'light' | 'dark') || 'light'; // Fallback to 'light' if no theme is saved
+});
+
 // Create a slice for theme state
 const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
     // Toggle between light and dark themes and persist the choice
-    toggleTheme: state => {
+    toggleTheme: (state) => {
       state.theme = state.theme === 'light' ? 'dark' : 'light';
       // Save the theme to AsyncStorage
       AsyncStorage.setItem(STORAGE_KEY, state.theme);
     },
-    // Load the theme from storage into the state
-    loadTheme: (state, action: PayloadAction<'light' | 'dark'>) => {
-      state.theme = action.payload;
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(loadThemeFromStorage.fulfilled, (state, action: PayloadAction<'light' | 'dark'>) => {
+      state.theme = action.payload; // Update theme after it is loaded from AsyncStorage
+    });
   },
 });
 
-// Export actions
-export const { toggleTheme, loadTheme } = themeSlice.actions;
+// Export the actions
+export const { toggleTheme } = themeSlice.actions;
 
-// Export reducer
+// Export the reducer
 export default themeSlice.reducer;
