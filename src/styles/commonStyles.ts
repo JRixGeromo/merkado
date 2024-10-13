@@ -256,7 +256,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.cardBackground, // Background color for card
       padding: SHARED.padding, // Padding inside each card
       borderRadius: SHARED.borderRadius, // Card border radius
-      marginBottom: 20, // Spacing between cards
+      marginVertical: 5, // Equal margin on top and bottom
+      marginHorizontal: 10, // Equal margin on left and right
       shadowColor: SHARED.shadow.color, // Shadow settings for the card
       shadowOffset: SHARED.shadow.offset,
       shadowOpacity: SHARED.shadow.opacity,
