@@ -1,5 +1,12 @@
 {
   "appName": "Merkado",
+  "accountInformation": "Account Information",
+  "theme": "Tema",
+  "preferences": "Preferences",
+  "location": "Location",
+  "language": "Language",
+  "paymentMethod": "Payment Method",
+  "endingIn": "Ending In",
   "firstWelcome": "Welcome sa Merkado",
   "welcomeBack": "Maayong Pagbalik",
   "email": "Email",

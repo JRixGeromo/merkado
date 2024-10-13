@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react'; 
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { commonStyles } from '../styles/commonStyles';
@@ -17,6 +17,9 @@ interface DropdownProps {
   textColor?: string; // Default text color
   placeholderFontSize?: number; // Font size for the placeholder
   placeholderTextColor?: string; // Placeholder text color
+  customBackground?: string; // Placeholder text color
+  joinLabelVaue?: boolean; // Flag to join label and value
+  showIcon?: boolean;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -31,6 +34,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   textColor,
   placeholderFontSize = 14,
   placeholderTextColor,
+  customBackground,
+  joinLabelVaue = false, // Default is false
+  showIcon = false,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const currentTheme = useAppSelector((state) => state.theme.theme);
@@ -42,7 +48,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       iconColor: iconColor || commonStyle.iconColor.color,
       textColor: textColor || commonStyle.textColor.color,
       placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
-      inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+      inputBackgroundColor: customBackground || commonStyle.inputBackgroundColor.backgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor, commonStyle]);
 
@@ -52,9 +58,13 @@ const Dropdown: React.FC<DropdownProps> = ({
   const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
 
   // Display the placeholder if no value is selected, otherwise display the selected value (capitalized)
+  const selectedOption = options.find(option => option.value === selectedValue);
+
   const displayText = !selectedValue
     ? placeholder
-    : selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1);
+    : joinLabelVaue && selectedOption
+      ? `${selectedOption.label} (${selectedOption.value})` // Join label and value
+      : selectedOption?.label || placeholder;
 
   return (
     <View 
@@ -70,17 +80,18 @@ const Dropdown: React.FC<DropdownProps> = ({
         onPress={() => setShowModal(true)}
         accessibilityLabel="Select option"
       >
-        <Icon
+        {showIcon && <Icon
           name={iconName}
           size={iconSize}
           color={themeBasedIconColor}
           style={{ position: 'absolute', left: 0 }}
-        />
+        /> }
+        
         <Text
           style={{
             color: !selectedValue ? themeBasedPlaceholderColor : themeBasedTextColor,
             fontSize: placeholderFontSize,
-            marginLeft: iconSize + 15,
+            marginLeft: showIcon ? iconSize + 15 : 0,
           }}
         >
           {displayText}

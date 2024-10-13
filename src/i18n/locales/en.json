@@ -1,5 +1,12 @@
 {
   "appName": "Merch",
+  "accountInformation": "Account Information",
+  "theme": "Theme",
+  "preferences": "Preferences",
+  "location": "Location",
+  "language": "Language",
+  "paymentMethod": "Payment Method",
+  "endingIn": "Ending In",
   "firstWelcome": "Welcome to Merch",
   "welcomeBack": "Welcome Back",
   "email": "Email",

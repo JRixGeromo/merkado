@@ -7,7 +7,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import en from './locales/en.json';
 import tl from './locales/tl.json'; // Tagalog translations
 import bs from './locales/bs.json'; // Bisaya translations
-import il from './locales/il.json'; // Bisaya translations
+import il from './locales/il.json'; // Hiligaynon/Ilonggo translations
+import mb from './locales/mb.json'; // Masbateño translations
+
 
 // Language detector using AsyncStorage and react-native-localize
 const languageDetector: LanguageDetectorAsyncModule = {
@@ -59,7 +61,8 @@ i18n
       en: { translation: en },
       tl: { translation: tl },  // Tagalog
       bs: { translation: bs },  // Bisaya
-      il: { translation: il },  // Bisaya
+      il: { translation: il },  // Iloilo
+      mb: { translation: mb },  // Masbate
     },
     interpolation: {
       escapeValue: false,  // React already escapes values

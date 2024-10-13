@@ -1,25 +1,27 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
-import { toggleTheme } from '../../../store/slices/themeSlice';  // Correct path to your theme slice
+import { toggleTheme } from '../../../store/slices/themeSlice';
 import CustomButton from '../../../components/CustomButton';
+import Dropdown from '../../../components/Dropdown'; // Import Dropdown component
 import { commonStyles } from '../../../styles/commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
-import { useTranslation } from 'react-i18next'; // Import useTranslation
+import { useTranslation } from 'react-i18next';
+import { theme as appTheme } from '../../../styles/theme';
 
 const AccountScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const dispatch = useAppDispatch();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const styles = commonStyles(theme);
 
-  // Access translations
-  const { t, i18n } = useTranslation(); // Access i18n for language switching
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
 
-  // Mock Data for Account Info
+  const { t, i18n } = useTranslation();
+
   const accountInfo = {
     name: 'John Doe',
     email: 'john.doe@example.com',
@@ -28,77 +30,104 @@ const AccountScreen = () => {
       type: 'Mastercard',
       last4: '0123',
     },
+    profileImage: require('../../../../assets/logo.png'),
   };
 
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+
+  const languageOptions = [
+    { label: 'English', value: 'en' },
+    { label: 'Tagalog', value: 'tl' },
+    { label: 'Bisaya', value: 'bs' },
+    { label: 'Hiligaynon', value: 'il' },
+    { label: 'Masbateño', value: 'mb' },
+  ];
+
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 16 }}>
-      <View style={styles.container}>
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <Icon name="person" size={20} color={styles.iconColor.color} />
-            <Text style={styles.cardHeaderTitle}>{t('accountInformation')}</Text>
-          </View>
-          <Text style={styles.cardText}>{t('name')}: {accountInfo.name}</Text>
-          <Text style={styles.cardText}>{t('email')}: {accountInfo.email}</Text>
-          <Text style={styles.cardText}>{t('location')}: {accountInfo.location}</Text>
-          <TouchableOpacity 
-           //onPress={() => navigation.navigate('EditAccountScreen')}
-          >
-            <Text style={styles.editLink}>{t('edit')}</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <Icon name="card" size={20} color={styles.iconColor.color} />
-            <Text style={styles.cardHeaderTitle}>{t('paymentMethod')}</Text>
-          </View>
-          <Text style={styles.cardText}>
-            {accountInfo.paymentMethod.type} {t('endingIn')} {accountInfo.paymentMethod.last4}
-          </Text>
-          <TouchableOpacity 
-            //onPress={() => navigation.navigate('PaymentMethodScreen')}
-          >
-            <Text style={styles.editLink}>{t('edit')}</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <Icon name="moon" size={20} color={styles.iconColor.color} />
-            <Text style={styles.cardHeaderTitle}>{t('preferences')}</Text>
-          </View>
-          <View style={styles.toggleButtonContainer}>
-            <Text style={styles.cardText}>{t('darkMode')}</Text>
-            <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
-              <Icon
-                name={theme === 'dark' ? 'moon' : 'sunny'}
-                size={24}
-                color={styles.iconColor.color}
-              />
+    <View style={{ flex: 1 }}>
+      {/* Fixed Profile Header */}
+      <View style={commonStyle.profileHeader}>
+        <Image
+          source={accountInfo.profileImage}
+          style={[commonStyle.profileImage, { width: 100, height: 100, borderRadius: 50 }]}
+        />
+        <Text style={commonStyle.profileName}>{accountInfo.name}</Text>
+        <Text style={commonStyle.profileEmail}>{accountInfo.email}</Text>
+      </View>
+
+      {/* Scrollable Content */}
+      <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
+        {/* Account Information Card */}
+        <View style={commonStyle.section}>
+          <View style={commonStyle.card}>
+            <View style={commonStyle.cardHeader}>
+              <Icon name="person" size={24} color={selectedTheme.iconColor} />
+              <Text style={commonStyle.cardHeaderTitle}>{t('accountInformation')}</Text>
+            </View>
+            <Text style={commonStyle.cardText}>{t('location')}: {accountInfo.location}</Text>
+            <TouchableOpacity>
+              <Text style={commonStyle.editLink}>{t('edit')}</Text>
             </TouchableOpacity>
           </View>
-        </View>
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <Icon name="language" size={20} color={styles.iconColor.color} />
-            <Text style={styles.cardHeaderTitle}>{t('language')}</Text>
+
+          {/* Payment Method Card */}
+          <View style={commonStyle.card}>
+            <View style={commonStyle.cardHeader}>
+              <Icon name="card" size={24} color={selectedTheme.iconColor} />
+              <Text style={commonStyle.cardHeaderTitle}>{t('paymentMethod')}</Text>
+            </View>
+            <Text style={commonStyle.cardText}>
+              {accountInfo.paymentMethod.type} {t('endingIn')} {accountInfo.paymentMethod.last4}
+            </Text>
+            <TouchableOpacity>
+              <Text style={commonStyle.editLink}>{t('edit')}</Text>
+            </TouchableOpacity>
           </View>
-          <View>
-            <Button title="English" onPress={() => i18n.changeLanguage('en')} />
-            <Button title="Tagalog" onPress={() => i18n.changeLanguage('tl')} />
-            <Button title="Bisaya" onPress={() => i18n.changeLanguage('bs')} />
-            <Button title="Ilonggo" onPress={() => i18n.changeLanguage('il')} />
+
+          {/* Preferences Card */}
+          <View style={commonStyle.card}>
+            <View style={commonStyle.cardHeader}>
+              <Icon name="settings-outline" size={24} color={selectedTheme.iconColor} />
+              <Text style={commonStyle.cardHeaderTitle}>{t('preferences')}</Text>
+            </View>
+
+            {/* Dark Mode Toggle */}
+            <View style={[commonStyle.toggleButtonContainer, {marginTop: 10}]}>
+              <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
+                <Text style={commonStyle.cardText}>{t('theme')}</Text>
+              </TouchableOpacity>
+                <Icon
+                  name={theme === 'dark' ? 'moon' : 'sunny'}
+                  size={24}
+                  color={selectedTheme.iconColor}
+                />
+              
+            </View>
+
+            {/* Language Selection Dropdown */}
+            <View style={commonStyle.languageContainer}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Dropdown
+                  selectedValue={selectedLanguage}
+                  onValueChange={(value) => {
+                    setSelectedLanguage(value);
+                    i18n.changeLanguage(value);
+                  }}
+                  options={languageOptions}
+                  placeholder={t(`Current Language: ${selectedLanguage}`)} // Showing selected language as placeholder
+                  iconName="globe"
+                  textColor={selectedTheme.textColor}
+                  customBackground="transparent"
+                  joinLabelVaue={true} // Join the label and value in the dropdown text
+                />
+                <Icon name="globe" size={24} color={selectedTheme.iconColor} />
+              </View>
+            </View>
           </View>
+
         </View>
-        <CustomButton
-          title={t('logout')}
-          onPress={() => {
-            // Implement logout logic
-          }}
-          backgroundColor={styles.button.backgroundColor}
-          color={styles.buttonText.color}
-        />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

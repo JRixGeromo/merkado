@@ -275,9 +275,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginLeft: 10, // Space between icon and text in header
     },
     cardText: {
-      fontSize: normalizeFontSize(16), // Font size for text inside card
+      fontSize: normalizeFontSize(14), // Font size for text inside card
       color: selectedTheme.textColor, // Text color from selected theme
-      marginBottom: 5, // Space between lines of text
+      marginTop: 5, // Space between lines of text
+      marginLeft: 10, // Space between icon and text in header
     },
     editLink: {
       fontSize: normalizeFontSize(14), // Font size for the "Edit" link
@@ -358,6 +359,40 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 20,
       alignItems: 'center',
     },
-    
+
+    profileHeader: {
+      alignItems: 'center',
+      marginBottom: 30,
+    },
+    profileImage: {
+      width: 100,
+      height: 100,
+      borderRadius: 50,
+      resizeMode: 'cover',
+    },
+    profileName: {
+      fontSize: normalizeFontSize(18),
+      fontWeight: 'bold',
+      color: selectedTheme.textColor,
+      marginBottom: 4,
+    },
+    profileEmail: {
+      fontSize: normalizeFontSize(16),
+      color: selectedTheme.primary,
+    },
+    languageButtons: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginTop: 10,
+    },
+    languageButtonsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+    },
+    languageContainer: {
+      marginTop: 10, // Add spacing at the top for the language container
+      backgroundColor: selectedTheme.cardBackground, // Background color from theme
+    },
   });
 };
