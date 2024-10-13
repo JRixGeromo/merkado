@@ -17,11 +17,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const menuItems = [
-    { label: 'View Profile', icon: 'person-outline', action: 'ViewProfileScreen' as keyof RootStackParamList },
-    { label: 'Edit Profile', icon: 'create-outline', action: 'EditProfileScreen' as keyof RootStackParamList },
-    { label: 'Change Password', icon: 'lock-closed-outline', action: 'ChangePasswordScreen' as keyof RootStackParamList },
-    { label: 'Manage Addresses', icon: 'location-outline', action: 'ManageAddressesScreen' as keyof RootStackParamList },
-    { label: 'Payment Methods', icon: 'card-outline', action: 'PaymentMethodsScreen' as keyof RootStackParamList },
+    { label: 'Account Setting', icon: 'cog-outline', action: 'AccountScreen' as keyof RootStackParamList },
     { label: 'Product Categories', icon: 'list-outline', action: 'ProductCategoriesScreen' as keyof RootStackParamList },
     { label: 'Products', icon: 'cube-outline', action: 'ProductsScreen' as keyof RootStackParamList },
     { label: 'Favorites', icon: 'heart-outline', action: 'FavoritesScreen' as keyof RootStackParamList },

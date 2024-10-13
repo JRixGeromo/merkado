@@ -4,6 +4,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks';
+
 import { loadThemeFromStorage } from './src/store/slices/themeSlice';  // Correct path to your theme slice
 import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
@@ -14,6 +15,7 @@ import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 
 import OrdersScreen from './src/features/orders/screens/OrdersScreen';
+import AccountScreen from './src/features/account/screens/AccountScreen';
 import LogoutScreen from './src/features/account/screens/LogoutScreen';
 import ViewProfileScreen from './src/features/account/screens/ViewProfileScreen';
 import EditProfileScreen from './src/features/account/screens/EditProfileScreen';
@@ -137,6 +139,7 @@ const App = () => {
             component={MainTabs}
             options={{ headerShown: false }}
           />
+        <Stack.Screen name="AccountScreen" component={AccountScreen} />
         <Stack.Screen name="ViewProfileScreen" component={ViewProfileScreen} />
         <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
         <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
