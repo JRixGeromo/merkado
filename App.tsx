@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,9 +9,9 @@ import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
-import SettingsScreen from './src/features/settings/screens/SettingsScreen'; 
 import AccountScreen from './src/features/account/screens/AccountScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DropdownMenu from './src/components/DropdownMenu'; // Import DropdownMenu here
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles'; 
 import { theme } from './src/styles/theme'; // Import the theme object
@@ -25,13 +25,9 @@ const App = () => {
   const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
   const dispatch = useAppDispatch();
 
-  // No need to manually load the theme here; let the thunk handle it
   useEffect(() => {
     const initializeApp = async () => {
-      // Dispatch the thunk to load the theme from storage
       await dispatch(loadThemeFromStorage());
-
-      // Simulate a loading delay (e.g., splash screen duration)
       setTimeout(() => {
         setIsLoading(false);
       }, 3000);
@@ -40,9 +36,8 @@ const App = () => {
     initializeApp();
   }, [dispatch]);
 
-  const commonStyle = commonStyles(themeType); // Dynamically create styles based on the theme
+  const commonStyle = commonStyles(themeType);
 
-  // Main Tabs for Bottom Tab Navigation
   const MainTabs = () => (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -63,71 +58,51 @@ const App = () => {
 
           return <Icon name={iconName as string} size={size} color={color} />;
         },
-        tabBarActiveTintColor: selectedTheme.iconColor, // Dynamic primary color from theme
-        tabBarInactiveTintColor: selectedTheme.iconColor, // Dynamic inactive color from theme
+        tabBarActiveTintColor: selectedTheme.iconColor,
+        tabBarInactiveTintColor: selectedTheme.iconColor,
         tabBarStyle: {
-          backgroundColor: selectedTheme.backgroundColor, // Use background from theme
+          backgroundColor: selectedTheme.backgroundColor,
         },
+        headerRight: () => <DropdownMenu /> // Add the dropdown menu here
       })}
     >
-      <Tab.Screen
-        name="Dashboard"
-        component={DashboardScreen}
-        options={{ headerTitle: 'MerkadoDash' }}
-      />
-      <Tab.Screen
-        name="Categories"
-        component={DummyScreen}
-        options={{ headerTitle: 'Categories' }}
-      />
-      <Tab.Screen
-        name="Cart"
-        component={DummyScreen}
-        options={{ headerTitle: 'Cart' }}
-      />
-      <Tab.Screen
-        name="Chat"
-        component={DummyScreen} 
-        options={{ headerTitle: 'Chat' }}
-      />
-      <Tab.Screen
-        name="Account"
-        component={AccountScreen} 
-        options={{ headerTitle: 'Account' }}
-      />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Categories" component={DummyScreen} />
+      <Tab.Screen name="Cart" component={DummyScreen} />
+      <Tab.Screen name="Chat" component={DummyScreen} />
+      <Tab.Screen name="Account" component={AccountScreen} />
     </Tab.Navigator>
   );
 
-  // Use dynamic theming for the navigation container
   return (
     <NavigationContainer theme={themeType === 'light' ? DefaultTheme : DarkTheme}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
+        <>
           <Stack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
+            name="LoginScreen"
+            component={LoginScreen}
             options={{ headerShown: false }}
           />
-          <>
-            <Stack.Screen
-              name="LoginScreen"
-              component={LoginScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="RegistrationScreen"
-              component={RegistrationScreen}
-              options={{
-                headerTitle: 'Register',
-                headerStyle: { backgroundColor: selectedTheme.backgroundColor }, // Dynamic header background
-                headerTintColor: selectedTheme.textColor, // Dynamic text color for header
-              }}
-            />
-            <Stack.Screen
-              name="DashboardScreen"
-              component={MainTabs}
-              options={{ headerShown: false }}
-            />
-          </>
+          <Stack.Screen
+            name="RegistrationScreen"
+            component={RegistrationScreen}
+            options={{
+              headerTitle: 'Register',
+              headerStyle: { backgroundColor: selectedTheme.backgroundColor },
+              headerTintColor: selectedTheme.textColor,
+            }}
+          />
+          <Stack.Screen
+            name="DashboardScreen"
+            component={MainTabs}
+            options={{ headerShown: false }}
+          />
+        </>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -11,6 +11,7 @@ export interface ThemeType {
   backgroundColor: string;
   buttonTextColor: string;
   buttonBackgroundColor: string;
+  borderColor: string;
   iconColor: string;
   placeholderTextColor: string;
   inputBackgroundColor: string;
@@ -32,6 +33,7 @@ const lightTheme: ThemeType = {
   backgroundColor: '#fff', // Light background
   buttonTextColor: '#fff', // Button text color
   buttonBackgroundColor: '#4CAF50', // Button  color
+  borderColor: '#4CAF50', // Button  color
   iconColor: "#4CAF50",
   placeholderTextColor: '#999', // Placeholder text
   inputBackgroundColor: '#cce3de',
@@ -53,6 +55,7 @@ const darkTheme: ThemeType = {
   backgroundColor: '#333', // Dark background
   buttonTextColor: '#fff', // Button text color
   buttonBackgroundColor: '#008000', // Button color
+  borderColor: '#4CAF50', // Button  color
   iconColor: "#4CAF50",
   placeholderTextColor: '#ccc', // Lighter placeholder text for dark mode
   inputBackgroundColor: '#000',

@@ -395,5 +395,49 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 10, // Add spacing at the top for the language container
       backgroundColor: selectedTheme.cardBackground, // Background color from theme
     },
+
+    headerContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      backgroundColor: selectedTheme.backgroundColor,
+      borderBottomColor: selectedTheme.borderColor,
+      borderBottomWidth: 1,
+    },
+    headerTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: selectedTheme.textColor,
+    },
+    overlay: {
+      flex: 1,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background for the overlay
+      justifyContent: 'center', // Center content
+      alignItems: 'center', // Align items in center
+    },
+    dropdownMenu: {
+      backgroundColor: selectedTheme.cardBackground, // Background color for the dropdown
+      borderRadius: 10,
+      padding: 10,
+      width: 220, // Make the dropdown wider
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+      elevation: 5, // For Android
+    },
+    dropdownItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 10,
+      borderBottomWidth: 1,
+      borderColor: selectedTheme.primary, // Border color based on theme
+    },
+    dropdownText: {
+      color: selectedTheme.textColor,
+      marginLeft: 10,
+    },
   });
 };
