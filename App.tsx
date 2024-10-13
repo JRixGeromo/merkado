@@ -9,6 +9,7 @@ import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
+import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import OrdersScreen from './src/features/orders/screens/OrdersScreen';
 import LogoutScreen from './src/features/account/screens/LogoutScreen';
 import ViewProfileScreen from './src/features/account/screens/ViewProfileScreen';
@@ -72,7 +73,7 @@ const App = () => {
             iconName = focused ? 'cart' : 'cart-outline';
           } else if (route.name === 'Chat') {
             iconName = focused ? 'chatbubble' : 'chatbubble-outline';
-          } else if (route.name === 'Orders') {
+          } else if (route.name === 'Transactions') {
             iconName = focused ? 'clipboard' : 'clipboard-outline'; // Changed to clipboard for orders
           }
   
@@ -93,7 +94,7 @@ const App = () => {
       <Tab.Screen name="Categories" component={DummyScreen} />
       <Tab.Screen name="Cart" component={DummyScreen} />
       <Tab.Screen name="Chat" component={DummyScreen} />
-      <Tab.Screen name="Orders" component={OrdersScreen} />
+      <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
   );
   

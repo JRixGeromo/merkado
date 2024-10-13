@@ -36,5 +36,5 @@ export type RootTabParamList = {
   Categories: undefined;
   Cart: undefined;
   Chat: undefined;
-  Orders: undefined;
+  Transactions: undefined;
 };
