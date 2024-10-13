@@ -381,6 +381,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.primary,
     },
+    profileBirthDate: {
+      fontSize: normalizeFontSize(16), // Adjust size based on design
+      color: selectedTheme.textColor, // Use the dynamic theme's text color
+      marginTop: 10, // Add some spacing between elements
+    },
     languageButtons: {
       flexDirection: 'row',
       justifyContent: 'space-around',

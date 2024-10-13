@@ -9,7 +9,27 @@ import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
-import AccountScreen from './src/features/account/screens/AccountScreen';
+import OrdersScreen from './src/features/orders/screens/OrdersScreen';
+import LogoutScreen from './src/features/account/screens/LogoutScreen';
+import ViewProfileScreen from './src/features/account/screens/ViewProfileScreen';
+import EditProfileScreen from './src/features/account/screens/EditProfileScreen';
+import ChangePasswordScreen from './src/features/account/screens/ChangePasswordScreen';
+import ManageAddressesScreen from './src/features/account/screens/ManageAddressesScreen';
+import PaymentMethodsScreen from './src/features/account/screens/PaymentMethodsScreen';
+import ProductCategoriesScreen from './src/features/categories/screens/ProductCategoriesScreen';
+import ProductsScreen from './src/features/products/screens/ProductsScreen';
+import FavoritesScreen from './src/features/favorites/screens/FavoritesScreen';
+import LiveShowsScreen from './src/features/shows/screens/LiveShowsScreen';
+import OfflineShowsScreen from './src/features/shows/screens/OfflineShowsScreen';
+import MarketingCampaignsScreen from './src/features/campaigns/screens/MarketingCampaignsScreen';
+import ManageVendorsScreen from './src/features/vendors/screens/ManageVendorsScreen';
+import WishesScreen from './src/features/wishes/screens/WishesScreen';
+import RatingsReviewsScreen from './src/features/ratings/screens/RatingsReviewsScreen';
+import ReactionsScreen from './src/features/reactions/screens/ReactionsScreen';
+import FollowersScreen from './src/features/followers/screens/FollowersScreen';
+import SocialAccountsScreen from './src/features/socialAccounts/screens/SocialAccountsScreen';
+import HelpCenterScreen from './src/features/helpCenter/screens/HelpCenterScreen';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import DropdownMenu from './src/components/DropdownMenu'; // Import DropdownMenu here
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
@@ -40,10 +60,10 @@ const App = () => {
 
   const MainTabs = () => (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      screenOptions={({ route, navigation }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
+  
           if (route.name === 'Dashboard') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Categories') {
@@ -52,10 +72,10 @@ const App = () => {
             iconName = focused ? 'cart' : 'cart-outline';
           } else if (route.name === 'Chat') {
             iconName = focused ? 'chatbubble' : 'chatbubble-outline';
-          } else if (route.name === 'Account') {
-            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'Orders') {
+            iconName = focused ? 'clipboard' : 'clipboard-outline'; // Changed to clipboard for orders
           }
-
+  
           return <Icon name={iconName as string} size={size} color={color} />;
         },
         tabBarActiveTintColor: selectedTheme.iconColor,
@@ -63,17 +83,20 @@ const App = () => {
         tabBarStyle: {
           backgroundColor: selectedTheme.backgroundColor,
         },
-        headerRight: () => <DropdownMenu /> // Add the dropdown menu here
+        headerRight: () => (
+          <DropdownMenu navigation={navigation} /> // Ensure DropdownMenu is outside the Navigator
+        ),
       })}
     >
+      {/* Only Screen components should be passed here */}
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Categories" component={DummyScreen} />
       <Tab.Screen name="Cart" component={DummyScreen} />
       <Tab.Screen name="Chat" component={DummyScreen} />
-      <Tab.Screen name="Account" component={AccountScreen} />
+      <Tab.Screen name="Orders" component={OrdersScreen} />
     </Tab.Navigator>
   );
-
+  
   return (
     <NavigationContainer theme={themeType === 'light' ? DefaultTheme : DarkTheme}>
       <Stack.Navigator>
@@ -82,7 +105,6 @@ const App = () => {
           component={SplashScreen}
           options={{ headerShown: false }}
         />
-        <>
           <Stack.Screen
             name="LoginScreen"
             component={LoginScreen}
@@ -102,7 +124,25 @@ const App = () => {
             component={MainTabs}
             options={{ headerShown: false }}
           />
-        </>
+        <Stack.Screen name="ViewProfileScreen" component={ViewProfileScreen} />
+        <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+        <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
+        <Stack.Screen name="ManageAddressesScreen" component={ManageAddressesScreen} />
+        <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} />
+        <Stack.Screen name="ProductCategoriesScreen" component={ProductCategoriesScreen} />
+        <Stack.Screen name="ProductsScreen" component={ProductsScreen} />
+        <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
+        <Stack.Screen name="LiveShowsScreen" component={LiveShowsScreen} />
+        <Stack.Screen name="OfflineShowsScreen" component={OfflineShowsScreen} />
+        <Stack.Screen name="MarketingCampaignsScreen" component={MarketingCampaignsScreen} />
+        <Stack.Screen name="ManageVendorsScreen" component={ManageVendorsScreen} />
+        <Stack.Screen name="WishesScreen" component={WishesScreen} />
+        <Stack.Screen name="RatingsReviewsScreen" component={RatingsReviewsScreen} />
+        <Stack.Screen name="ReactionsScreen" component={ReactionsScreen} />
+        <Stack.Screen name="FollowersScreen" component={FollowersScreen} />
+        <Stack.Screen name="SocialAccountsScreen" component={SocialAccountsScreen} />
+        <Stack.Screen name="HelpCenterScreen" component={HelpCenterScreen} />
+        <Stack.Screen name="LogoutScreen" component={LogoutScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
