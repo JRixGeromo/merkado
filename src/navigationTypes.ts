@@ -33,8 +33,8 @@ export type RootStackParamList = {
 // Tab Navigator Params
 export type RootTabParamList = {
   Dashboard: undefined;
-  Categories: undefined;
-  Cart: undefined;
+  Marketplace: undefined;
+  MyProducts: undefined;
   Chat: undefined;
   Transactions: undefined;
 };

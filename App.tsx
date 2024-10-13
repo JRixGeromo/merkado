@@ -9,7 +9,10 @@ import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
+import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
+import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
+
 import OrdersScreen from './src/features/orders/screens/OrdersScreen';
 import LogoutScreen from './src/features/account/screens/LogoutScreen';
 import ViewProfileScreen from './src/features/account/screens/ViewProfileScreen';
@@ -18,7 +21,6 @@ import ChangePasswordScreen from './src/features/account/screens/ChangePasswordS
 import ManageAddressesScreen from './src/features/account/screens/ManageAddressesScreen';
 import PaymentMethodsScreen from './src/features/account/screens/PaymentMethodsScreen';
 import ProductCategoriesScreen from './src/features/categories/screens/ProductCategoriesScreen';
-import ProductsScreen from './src/features/products/screens/ProductsScreen';
 import FavoritesScreen from './src/features/favorites/screens/FavoritesScreen';
 import LiveShowsScreen from './src/features/shows/screens/LiveShowsScreen';
 import OfflineShowsScreen from './src/features/shows/screens/OfflineShowsScreen';
@@ -67,14 +69,14 @@ const App = () => {
   
           if (route.name === 'Dashboard') {
             iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Categories') {
-            iconName = focused ? 'list' : 'list-outline';
-          } else if (route.name === 'Cart') {
-            iconName = focused ? 'cart' : 'cart-outline';
+          } else if (route.name === 'Marketplace') {
+            iconName = focused ? 'storefront' : 'storefront-outline';
+          } else if (route.name === 'MyProducts') {
+            iconName = focused ? 'cube' : 'cube-outline';
           } else if (route.name === 'Chat') {
             iconName = focused ? 'chatbubble' : 'chatbubble-outline';
           } else if (route.name === 'Transactions') {
-            iconName = focused ? 'clipboard' : 'clipboard-outline'; // Changed to clipboard for orders
+            iconName = focused ? 'receipt' : 'receipt-outline';
           }
   
           return <Icon name={iconName as string} size={size} color={color} />;
@@ -85,14 +87,24 @@ const App = () => {
           backgroundColor: selectedTheme.backgroundColor,
         },
         headerRight: () => (
-          <DropdownMenu navigation={navigation} /> // Ensure DropdownMenu is outside the Navigator
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 15 }}>
+            {/* Cart Icon */}
+            <Icon
+              name="cart-outline"
+              size={25}
+              color={selectedTheme.iconColor}
+              onPress={() => navigation.navigate('CartScreen')}
+              style={{ marginRight: 20 }}  // Add space between cart and dropdown menu
+            />
+            {/* Dropdown Menu */}
+            <DropdownMenu navigation={navigation} />
+          </View>
         ),
       })}
     >
-      {/* Only Screen components should be passed here */}
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
-      <Tab.Screen name="Categories" component={DummyScreen} />
-      <Tab.Screen name="Cart" component={DummyScreen} />
+      <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
+      <Tab.Screen name="MyProducts" component={MyProductsScreen} />
       <Tab.Screen name="Chat" component={DummyScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
@@ -131,7 +143,6 @@ const App = () => {
         <Stack.Screen name="ManageAddressesScreen" component={ManageAddressesScreen} />
         <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} />
         <Stack.Screen name="ProductCategoriesScreen" component={ProductCategoriesScreen} />
-        <Stack.Screen name="ProductsScreen" component={ProductsScreen} />
         <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
         <Stack.Screen name="LiveShowsScreen" component={LiveShowsScreen} />
         <Stack.Screen name="OfflineShowsScreen" component={OfflineShowsScreen} />

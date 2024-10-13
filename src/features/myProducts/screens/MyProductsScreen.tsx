@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 
-const ProductsScreen = () => {
+const MyProductsScreen = () => {
   const themeType = useAppSelector((state) => state.theme.theme);
   const commonStyle = commonStyles(themeType);
 
@@ -15,4 +15,4 @@ const ProductsScreen = () => {
   );
 };
 
-export default ProductsScreen;
+export default MyProductsScreen;
