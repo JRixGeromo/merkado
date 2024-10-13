@@ -114,7 +114,7 @@ const AccountScreen = () => {
                     i18n.changeLanguage(value);
                   }}
                   options={languageOptions}
-                  placeholder={t(`Current Language: ${selectedLanguage}`)} // Showing selected language as placeholder
+                  placeholder={t('Select Language')} // Just use "Select Language" here
                   iconName="globe"
                   textColor={selectedTheme.textColor}
                   customBackground="transparent"
