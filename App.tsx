@@ -67,6 +67,7 @@ const App = () => {
         tabBarLabelStyle: {
           fontFamily: selectedTheme.tabFont, // Apply the custom font
           fontSize: 10, // You can adjust the size to your liking
+          color:  selectedTheme.tabColor
         },
         // Add the custom header for the Dashboard screen
         headerTitle: route.name === 'Dashboard' ? () => (

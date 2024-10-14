@@ -20,6 +20,7 @@ export interface ThemeType {
   loader: string;
   screenHeaderFont: string;
   tabFont: string;
+  tabColor: string;
   headingFont: string; // New: Font for headers and titles
   bodyFont: string; // New: Font for body text
   buttonFont: string; // New: Font for buttons
@@ -47,6 +48,7 @@ const lightTheme: ThemeType = {
   loader: "#000",
   screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
   tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
+  tabColor: "#000",
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
@@ -72,8 +74,9 @@ const darkTheme: ThemeType = {
   linkColor: '#4CAF50',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#fff",
-  screenHeaderFont: 'RobotoCondensed-Light',  // Bold font for screen title
+  screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
   tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
+  tabColor: "#d3d3d3",
   headingFont: 'Poppins-Bold',  // Bold font for headers
   bodyFont: 'Roboto-Regular',   // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
