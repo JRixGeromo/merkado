@@ -36,6 +36,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       resizeMode: 'contain', // Ensures the logo scales appropriately
       marginRight: 10, // Adds spacing between logo and title
     },
+    tabBarLabelStyle: {
+      fontFamily: selectedTheme.tabFont, // Apply the custom font
+      fontSize: normalizeHeight(10), // You can adjust the size to your liking
+      color:  selectedTheme.tabColor
+    },
     screenHeaderTitle: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.screenHeaderFont,
