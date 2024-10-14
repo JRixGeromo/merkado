@@ -62,8 +62,8 @@ const lightTheme: ThemeType = {
 
 const darkTheme: ThemeType = {
   primary: '#fff',
-  secondary: '#4CAF50',
-  linkText: '#4CAF50',
+  secondary: '#7cb518',
+  linkText: '#7cb518',
   paragraph: '#fff',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
@@ -71,13 +71,13 @@ const darkTheme: ThemeType = {
   backgroundColor: '#333',
   buttonTextColor: '#fff',
   buttonBackgroundColor: '#008000',
-  borderColor: '#4CAF50',
-  iconColor: "#4CAF50",
+  borderColor: '#7cb518',
+  iconColor: "#7cb518",
   placeholderTextColor: '#ccc',
   inputBackgroundColor: '#000',
   danger: '#ff4d4f',
   cardBackground: '#444',
-  linkColor: '#4CAF50',
+  linkColor: '#7cb518',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#fff",
   screenHeaderFont: 'Poppins-Regular',  // Bold font for headers

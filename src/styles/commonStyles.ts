@@ -38,7 +38,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
-      fontSize: normalizeHeight(12), // You can adjust the size to your liking
+      fontSize: normalizeHeight(10), // You can adjust the size to your liking
       color:  selectedTheme.tabColor
     },
     screenHeaderTitle: {
