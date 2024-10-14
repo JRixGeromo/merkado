@@ -19,6 +19,7 @@ export interface ThemeType {
   modalOverlay: string;
   loader: string;
   screenHeaderFont: string;
+  tabFont: string;
   headingFont: string; // New: Font for headers and titles
   bodyFont: string; // New: Font for body text
   buttonFont: string; // New: Font for buttons
@@ -45,6 +46,7 @@ const lightTheme: ThemeType = {
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   loader: "#000",
   screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
+  tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
@@ -71,6 +73,7 @@ const darkTheme: ThemeType = {
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#fff",
   screenHeaderFont: 'RobotoCondensed-Light',  // Bold font for screen title
+  tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
   headingFont: 'Poppins-Bold',  // Bold font for headers
   bodyFont: 'Roboto-Regular',   // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons

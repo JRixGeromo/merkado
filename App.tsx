@@ -64,6 +64,10 @@ const App = () => {
         tabBarActiveTintColor: selectedTheme.iconColor,
         tabBarInactiveTintColor: selectedTheme.iconColor,
         tabBarStyle: commonStyle.tabBarStyle, // Moved to commonStyles
+        tabBarLabelStyle: {
+          fontFamily: selectedTheme.tabFont, // Apply the custom font
+          fontSize: 10, // You can adjust the size to your liking
+        },
         // Add the custom header for the Dashboard screen
         headerTitle: route.name === 'Dashboard' ? () => (
           <View style={commonStyle.headerContainer}>
