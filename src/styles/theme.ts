@@ -24,6 +24,9 @@ export interface ThemeType {
   headingFont: string; // New: Font for headers and titles
   bodyFont: string; // New: Font for body text
   buttonFont: string; // New: Font for buttons
+  alternativeFont1: string; // New: Font for buttons
+  alternativeFont2: string; // New: Font for buttons
+  alternativeFont3: string; // New: Font for buttons
 }
 
 const lightTheme: ThemeType = {
@@ -52,6 +55,9 @@ const lightTheme: ThemeType = {
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
+  alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
+  alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons
+  alternativeFont3: 'GreatVibes-Regular', // Bold font for buttons
 };
 
 const darkTheme: ThemeType = {
@@ -80,6 +86,9 @@ const darkTheme: ThemeType = {
   headingFont: 'Poppins-Bold',  // Bold font for headers
   bodyFont: 'Roboto-Regular',   // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
+  alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
+  alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons
+  alternativeFont3: 'GreatVibes-Regular', // Bold font for buttons
 };
 
 export const theme = {
