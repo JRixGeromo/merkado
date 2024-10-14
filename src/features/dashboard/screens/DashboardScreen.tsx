@@ -5,7 +5,7 @@ import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
 import { fetchProducts } from '../../../store/slices/productSlice'; // Import the fetchProducts action
-
+import { theme } from '../../../../src/styles/theme'; // Import the theme object
 const { width: screenWidth } = Dimensions.get('window');
 
 // Product type definition
@@ -17,10 +17,11 @@ type Product = {
 };
 
 const DashboardScreen = () => {
-  const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
-  const styles = commonStyles(theme);
-
+  
+  const themeType = useAppSelector(state => state.theme.theme); // Access theme from Redux
+  const styles = commonStyles(themeType);
+  const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
   // Access product state from Redux
   const { products, status, error } = useAppSelector((state) => state.products);
 
@@ -89,7 +90,7 @@ const DashboardScreen = () => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{t('products')}</Text>
+          <Text style={styles.headerTitle}>{t('products')}</Text>
           {status === 'loading' ? (
             <Text>Loading products...</Text>
           ) : status === 'failed' ? (

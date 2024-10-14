@@ -21,6 +21,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+
     container: {
       ...SHARED, // Apply shared styles
       flex: 1,
@@ -28,6 +29,38 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
       backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
       margin: normalizeHeight(20), // Margin for the container
+    },
+    headerLogo: {
+      width: 30, // Adjust the width to fit your design
+      height: 30, // Adjust the height to fit your design
+      resizeMode: 'contain', // Ensures the logo scales appropriately
+      marginRight: 10, // Adds spacing between logo and title
+    },
+    screenHeaderTitle: {
+      fontSize: normalizeFontSize(16),
+      fontFamily: selectedTheme.screenHeaderFont,
+      color: selectedTheme.textColor,
+    },
+    headerTitle: {
+      fontSize: normalizeFontSize(20),
+      fontFamily: selectedTheme.headingFont,
+      color: selectedTheme.textColor,
+    },
+    headerRightContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 15,
+    },
+    headerIcon: {
+      marginRight: 20,
+    },
+    tabBarStyle: {
+      backgroundColor: selectedTheme.backgroundColor,
+    },
+    headerContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     fullScreenBackgroundImage: {
       position: 'absolute',
@@ -67,10 +100,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
         web: '50%', // Width for desktop
         default: '90%', // Width for mobile
       }),
-    },
-    buttonText: {
-      fontSize: normalizeFontSize(16),
-      color: selectedTheme.buttonTextColor, // Text color from selected theme
     },
     button: {
       padding: SHARED.buttonPadding, // Button padding from shared settings
@@ -118,19 +147,40 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textColor, // Input text color from selected theme
     },
+
+    
+
+    buttonText: {
+      fontSize: normalizeFontSize(16),
+      fontFamily: selectedTheme.buttonFont,  // Apply button font from theme
+      color: selectedTheme.buttonTextColor,
+    },
+    bodyText: {
+      fontSize: normalizeFontSize(16),
+      fontFamily: selectedTheme.bodyFont,  // Apply body font from theme
+      color: selectedTheme.textColor,
+    },
     title: {
       fontSize: normalizeFontSize(26),
+      fontFamily: selectedTheme.headingFont, // Apply heading font from theme
       fontWeight: 'bold',
-      marginBottom: normalizeHeight(20),
+      color: selectedTheme.primary,
       textAlign: 'center',
-      color: selectedTheme.primary, // Title color from selected theme
+    },
+    cardHeaderTitle: {
+      fontSize: normalizeFontSize(18),
+      fontFamily: selectedTheme.headingFont, // Use the heading font for card titles
+      color: selectedTheme.textColor,
+    },
+    paragraph: {
+      fontSize: normalizeFontSize(14),
+      fontFamily: selectedTheme.bodyFont,  // Apply body font for paragraphs
+      color: selectedTheme.paragraph,
     },
     linkText: {
-      color: selectedTheme.linkText, // Link color from selected theme
-      marginTop: 20,
-      marginBottom: 20,
-      textAlign: 'center',
       fontSize: normalizeFontSize(14),
+      fontFamily: selectedTheme.bodyFont,  // Use body font for links
+      color: selectedTheme.linkColor,
     },
     orText: {
       fontSize: normalizeFontSize(14),
@@ -138,11 +188,20 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 20,
       textAlign: 'center',
     },
-    paragraph: {
-      color: selectedTheme.paragraph, // Social button text color from selected theme
-    }, 
     socialButtonText: {
       color: selectedTheme.buttonTextColor, // Social button text color from selected theme
+    },
+    cardText: {
+      fontSize: normalizeFontSize(14), // Font size for text inside card
+      color: selectedTheme.textColor, // Text color from selected theme
+      marginTop: 5, // Space between lines of text
+      marginLeft: 10, // Space between icon and text in header
+    },
+    editLink: {
+      fontSize: normalizeFontSize(14), // Font size for the "Edit" link
+      color: selectedTheme.linkColor, // Link color based on theme
+      textAlign: 'right', // Align edit link to the right
+      marginTop: 10, // Space above the edit link
     },
     iconColor: {
       color: selectedTheme.iconColor, // Set a default color for the icon
@@ -269,24 +328,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Vertically align items in header
       marginBottom: 10, // Margin between header and content
     },
-    cardHeaderTitle: {
-      fontSize: normalizeFontSize(18), // Font size for header text
-      fontWeight: 'bold', // Bold text for header
-      color: selectedTheme.textColor, // Text color based on theme
-      marginLeft: 10, // Space between icon and text in header
-    },
-    cardText: {
-      fontSize: normalizeFontSize(14), // Font size for text inside card
-      color: selectedTheme.textColor, // Text color from selected theme
-      marginTop: 5, // Space between lines of text
-      marginLeft: 10, // Space between icon and text in header
-    },
-    editLink: {
-      fontSize: normalizeFontSize(14), // Font size for the "Edit" link
-      color: selectedTheme.linkColor, // Link color based on theme
-      textAlign: 'right', // Align edit link to the right
-      marginTop: 10, // Space above the edit link
-    },
     toggleButtonContainer: {
       flexDirection: 'row', // Align the text and the icon in a row
       justifyContent: 'space-between', // Space between the text and the toggle icon
@@ -400,22 +441,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 10, // Add spacing at the top for the language container
       backgroundColor: selectedTheme.cardBackground, // Background color from theme
     },
-
-    headerContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingHorizontal: 15,
-      paddingVertical: 10,
-      backgroundColor: selectedTheme.backgroundColor,
-      borderBottomColor: selectedTheme.borderColor,
-      borderBottomWidth: 1,
-    },
-    headerTitle: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: selectedTheme.textColor,
-    },
     overlay: {
       flex: 1,
       backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background for the overlay
@@ -444,5 +469,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textColor,
       marginLeft: 10,
     },
+    
   });
 };

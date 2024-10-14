@@ -1,5 +1,3 @@
-// src/styles/theme.ts
-
 export interface ThemeType {
   primary: string;
   secondary: string;
@@ -15,55 +13,67 @@ export interface ThemeType {
   iconColor: string;
   placeholderTextColor: string;
   inputBackgroundColor: string;
-  danger: string; // Add danger color for destructive actions
-  cardBackground: string; // Background color for card-like containers
-  linkColor: string; // Color for clickable links
-  modalOverlay: string; // Add modal overlay color
-  loader: string; // Add modal overlay color
+  danger: string;
+  cardBackground: string;
+  linkColor: string;
+  modalOverlay: string;
+  loader: string;
+  screenHeaderFont: string;
+  headingFont: string; // New: Font for headers and titles
+  bodyFont: string; // New: Font for body text
+  buttonFont: string; // New: Font for buttons
 }
 
 const lightTheme: ThemeType = {
-  primary: '#4CAF50', // Green
-  secondary: '#fff', // White
-  linkText: '#4CAF50', // Green
-  paragraph: '#000', // White
-  googleButtonColor: '#4285F4', // Google blue
-  facebookButtonColor: '#3b5998', // Facebook blue
-  textColor: '#333', // Dark text color for light mode
-  backgroundColor: '#fff', // Light background
-  buttonTextColor: '#fff', // Button text color
-  buttonBackgroundColor: '#4CAF50', // Button  color
-  borderColor: '#4CAF50', // Button  color
+  primary: '#4CAF50',
+  secondary: '#fff',
+  linkText: '#4CAF50',
+  paragraph: '#000',
+  googleButtonColor: '#4285F4',
+  facebookButtonColor: '#3b5998',
+  textColor: '#333',
+  backgroundColor: '#fff',
+  buttonTextColor: '#fff',
+  buttonBackgroundColor: '#4CAF50',
+  borderColor: '#4CAF50',
   iconColor: "#4CAF50",
-  placeholderTextColor: '#999', // Placeholder text
+  placeholderTextColor: '#999',
   inputBackgroundColor: '#cce3de',
-  danger: '#ff4d4f', // Red for danger actions like delete or logout
-  cardBackground: '#f8f9fa', // Light card background
-  linkColor: '#1E90FF', // Link color in light mode (same as secondary)
-  modalOverlay: 'rgba(0, 0, 0, 0.5)', // Dark overlay for light theme
+  danger: '#ff4d4f',
+  cardBackground: '#f8f9fa',
+  linkColor: '#1E90FF',
+  modalOverlay: 'rgba(0, 0, 0, 0.5)',
   loader: "#000",
+  screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
+  headingFont: 'Poppins-Bold', // Bold font for headers
+  bodyFont: 'Roboto-Regular',  // Regular font for body
+  buttonFont: 'Montserrat-Bold', // Bold font for buttons
 };
 
 const darkTheme: ThemeType = {
-  primary: '#fff', // White
-  secondary: '#4CAF50', // Green
-  linkText: '#4CAF50', // White
-  paragraph: '#fff', // White
-  googleButtonColor: '#4285F4', // Google blue
-  facebookButtonColor: '#3b5998', // Facebook blue
-  textColor: '#fff', // Light text color for dark mode
-  backgroundColor: '#333', // Dark background
-  buttonTextColor: '#fff', // Button text color
-  buttonBackgroundColor: '#008000', // Button color
-  borderColor: '#4CAF50', // Button  color
+  primary: '#fff',
+  secondary: '#4CAF50',
+  linkText: '#4CAF50',
+  paragraph: '#fff',
+  googleButtonColor: '#4285F4',
+  facebookButtonColor: '#3b5998',
+  textColor: '#fff',
+  backgroundColor: '#333',
+  buttonTextColor: '#fff',
+  buttonBackgroundColor: '#008000',
+  borderColor: '#4CAF50',
   iconColor: "#4CAF50",
-  placeholderTextColor: '#ccc', // Lighter placeholder text for dark mode
+  placeholderTextColor: '#ccc',
   inputBackgroundColor: '#000',
-  danger: '#ff4d4f', // Red for danger actions like delete or logout
-  cardBackground: '#444', // Dark card background
-  linkColor: '#4CAF50', // Link color in dark mode (same as secondary)
-  modalOverlay: 'rgba(255, 255, 255, 0.3)', // Light overlay for dark theme
+  danger: '#ff4d4f',
+  cardBackground: '#444',
+  linkColor: '#4CAF50',
+  modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#fff",
+  screenHeaderFont: 'RobotoCondensed-Light',  // Bold font for screen title
+  headingFont: 'Poppins-Bold',  // Bold font for headers
+  bodyFont: 'Roboto-Regular',   // Regular font for body
+  buttonFont: 'Montserrat-Bold', // Bold font for buttons
 };
 
 export const theme = {
