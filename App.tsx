@@ -116,7 +116,7 @@ const App = () => {
           options={{
             headerTitle: 'Register',
             headerStyle: { backgroundColor: selectedTheme.backgroundColor },
-            headerTintColor: selectedTheme.textColor,
+            headerTintColor: selectedTheme.primary,
           }}
         />
         <Stack.Screen

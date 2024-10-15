@@ -38,17 +38,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
       fontSize: normalizeHeight(10), // You can adjust the size to your liking
-      color:  selectedTheme.tabColor
+      color:  selectedTheme.secondary
     },
     screenHeaderTitle: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.tabFont,
-      color: selectedTheme.textColor,
+      color: selectedTheme.secondary,
     },
     headerTitle: {
       fontSize: normalizeFontSize(20),
       fontFamily: selectedTheme.headingFont,
-      color: selectedTheme.textColor,
+      color: selectedTheme.secondary,
     },
     headerRightContainer: {
       flexDirection: 'row',
@@ -149,7 +149,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     input: {
       flex: 1,
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.textColor, // Input text color from selected theme
+      color: selectedTheme.primary, // Input text color from selected theme
     },
 
     
@@ -157,12 +157,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     buttonText: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.buttonFont,  // Apply button font from theme
-      color: selectedTheme.buttonTextColor,
+      color: selectedTheme.primary,
     },
     bodyText: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.bodyFont,  // Apply body font from theme
-      color: selectedTheme.textColor,
+      color: selectedTheme.primary,
     },
     title: {
       fontSize: normalizeFontSize(26),
@@ -174,36 +174,36 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     cardHeaderTitle: {
       fontSize: normalizeFontSize(18),
       fontFamily: selectedTheme.headingFont, // Use the heading font for card titles
-      color: selectedTheme.textColor,
+      color: selectedTheme.primary,
     },
     paragraph: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,  // Apply body font for paragraphs
-      color: selectedTheme.paragraph,
+      color: selectedTheme.primary,
     },
     linkText: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,  // Use body font for links
-      color: selectedTheme.linkColor,
+      color: selectedTheme.link,
     },
     orText: {
       fontSize: normalizeFontSize(14),
-      color: selectedTheme.textColor, // Text color for "Or login with"
+      color: selectedTheme.primary, // Text color for "Or login with"
       marginBottom: 20,
       textAlign: 'center',
     },
     socialButtonText: {
-      color: selectedTheme.buttonTextColor, // Social button text color from selected theme
+      color: selectedTheme.primary, // Social button text color from selected theme
     },
     cardText: {
       fontSize: normalizeFontSize(14), // Font size for text inside card
-      color: selectedTheme.textColor, // Text color from selected theme
+      color: selectedTheme.primary, // Text color from selected theme
       marginTop: 5, // Space between lines of text
       marginLeft: 10, // Space between icon and text in header
     },
     editLink: {
       fontSize: normalizeFontSize(14), // Font size for the "Edit" link
-      color: selectedTheme.linkColor, // Link color based on theme
+      color: selectedTheme.link, // Link color based on theme
       textAlign: 'right', // Align edit link to the right
       marginTop: 10, // Space above the edit link
     },
@@ -212,18 +212,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
-      color: selectedTheme.placeholderTextColor, // Text color for "Or login with"
+      color: selectedTheme.primary, // Text color for "Or login with"
     },
     textColor: {
-      color: selectedTheme.textColor, // Text color for "Or login with"
+      color: selectedTheme.primary, // Text color for "Or login with"
     },
     section: {
-      marginTop: 20,
+      paddingTop: 20,
       marginBottom: 10,
+      backgroundColor: selectedTheme.fullBackgrounColor,
     },
     sectionTitle: {
       fontSize: normalizeFontSize(14), // Default size for icons
-      color: selectedTheme.textColor,
+      color: selectedTheme.secondary,
       fontFamily: selectedTheme.headingFont,
       //fontWeight: 'bold',
       marginBottom: 10,
@@ -288,13 +289,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.primary, // Background for selected day
     },
     dayTextColor: {
-      color: selectedTheme.textColor, // Text color for day numbers
+      color: selectedTheme.primary, // Text color for day numbers
     },
     textDisabledColor: {
       color: '#d9e1e8', // Disabled text color for unselectable days
     },
     monthTextColor: {
-      color: selectedTheme.textColor, // Color for the month header
+      color: selectedTheme.primary, // Color for the month header
     },
     arrowColor: {
       color: selectedTheme.primary, // Color for navigation arrows
@@ -312,7 +313,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     modalText: {
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.textColor, // Text color from selected theme
+      color: selectedTheme.primary, // Text color from selected theme
       fontFamily: selectedTheme.bodyFont,
     },
     modalContainer: {
@@ -353,7 +354,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     profileName: {
       fontSize: normalizeFontSize(18),
       fontFamily: selectedTheme.bodyFont,
-      color: selectedTheme.textColor,
+      color: selectedTheme.primary,
       marginBottom: 4,
     },
     profileEmail: {
@@ -363,7 +364,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     profileBirthDate: {
       fontSize: normalizeFontSize(16), // Adjust size based on design
-      color: selectedTheme.textColor, // Use the dynamic theme's text color
+      color: selectedTheme.primary, // Use the dynamic theme's text color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 10, // Add some spacing between elements
     },
@@ -406,7 +407,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderColor: selectedTheme.primary, // Border color based on theme
     },
     dropdownText: {
-      color: selectedTheme.textColor,
+      color: selectedTheme.secondary,
       fontFamily: selectedTheme.bodyFont,
       marginLeft: 10,
     },
@@ -423,7 +424,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignSelf: 'center',
     },
     searchText: {
-      color: selectedTheme.placeholderTextColor,
+      color: selectedTheme.primary,
       marginLeft: 10,
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,
@@ -443,7 +444,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     storeName: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.textColor,
+      color: selectedTheme.primary,
       fontFamily: selectedTheme.bodyFont,
     },
     storeLocation: {
@@ -476,7 +477,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     productName: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.textColor,
+      color: selectedTheme.primary,
       fontFamily: selectedTheme.bodyFont,
     },
     productImage: {
@@ -493,19 +494,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     productPrice: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.price, // Highlight the price using the primary color
+      color: selectedTheme.highlight, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     saleProductPrice: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.salePrice, // Highlight the price using the primary color
+      color: selectedTheme.primary, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     discountedProductPrice: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.discountedPrice, // Highlight the price using the primary color
+      color: selectedTheme.primary, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
@@ -523,7 +524,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     infoText: {
       marginLeft: 10, // Space between icon and text
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.textColor, // Dynamic text color
+      color: selectedTheme.secondary, // Dynamic text color
       fontFamily: selectedTheme.bodyFont,
     },
     categoryScroll: {
@@ -572,7 +573,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingLeft: 0, // Padding inside the search input
       borderRadius: 20, // Rounded corners inside the search input
       backgroundColor: selectedTheme.backgroundColor, // Background color of the input
-      color: selectedTheme.textColor, // Text color from theme
+      color: selectedTheme.primary, // Text color from theme
     },  
 
     sectionButton: {
@@ -587,13 +588,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
     },
     sectionButtonText: {
-      color: selectedTheme.buttonTextColor, // Theme-based text color
+      color: selectedTheme.primary, // Theme-based text color
       fontSize: 16,
     },
     modalTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: selectedTheme.textColor, // Theme-based text color for the title
+      color: selectedTheme.primary, // Theme-based text color for the title
       marginBottom: 15,
     },
     listItem: {

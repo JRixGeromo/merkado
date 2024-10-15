@@ -143,6 +143,7 @@ const RegistrationScreen = () => {
             placeholder={t('gender')}
             iconName="male"
             iconSize={20}
+            showIcon= {true}
           />
 
           <DateAndTimePicker

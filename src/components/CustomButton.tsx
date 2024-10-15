@@ -35,7 +35,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   const commonStyle = commonStyles(currentTheme); // Generate common styles based on the theme
   const buttonBackgroundColor =
     backgroundColor || selectedTheme.buttonBackgroundColor;
-  const buttonTextColor = color || selectedTheme.buttonTextColor;
+  const buttonTextColor = color || selectedTheme.primary;
   
   return (
     <TouchableOpacity
