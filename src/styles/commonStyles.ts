@@ -335,10 +335,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     inputBackgroundColor: { 
       backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
     },
-    closeButton: {
-      marginTop: 20,
-      alignItems: 'center',
-    },
+    // closeButton: {
+    //   marginTop: 20,
+    //   alignItems: 'center',
+    // },
 
     profileHeader: {
       alignItems: 'center',
@@ -526,6 +526,83 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textColor, // Dynamic text color
       fontFamily: selectedTheme.bodyFont,
     },
-    
+    categoryScroll: {
+      marginVertical: 10,
+    },
+    categoryButton: {
+      padding: 10,
+      borderRadius: 20,
+      backgroundColor: selectedTheme.primary,
+      marginRight: 10,
+    },
+    categoryText: {
+      color: '#fff',
+      fontWeight: 'bold',
+    },
+    searchContainer: {
+      flexDirection: 'row', // Align items horizontally
+      alignItems: 'center', // Center items vertically
+      paddingTop: 0,
+      paddingBottom: 0,
+      paddingLeft: 10,
+      paddingRight: 10,
+      marginTop: 2,
+      marginBottom: 2,
+      marginLeft: 10,
+      marginRight: 10,
+
+      backgroundColor: selectedTheme.backgroundColor, // Use theme background color
+      borderRadius: 30, // Rounded border for the search bar
+      borderWidth: 0.5,
+      borderColor: selectedTheme.borderColor, // Add border using theme color
+    },
+    iconButton: {
+      padding: 10, // Add some padding for the button
+      backgroundColor: selectedTheme.inputBackgroundColor, // Icon button background color from theme
+      borderRadius: 10, // Rounded corners for the icon button
+      borderWidth: 2, // Optional: Add a border around the icon
+      borderColor: selectedTheme.iconColor, // Border color from theme
+      marginRight: 10, // Space between icon and search input
+    },
+    searchInput: {
+      flex: 1, // Make the search input take up the remaining space
+      height: 40, // Height of the search input
+      borderColor: selectedTheme.borderColor, // Optional: Add border inside the input field
+      borderWidth: 0, // No extra border inside the input
+      paddingLeft: 0, // Padding inside the search input
+      borderRadius: 20, // Rounded corners inside the search input
+      backgroundColor: selectedTheme.backgroundColor, // Background color of the input
+      color: selectedTheme.textColor, // Text color from theme
+    },  
+
+    modalTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      marginBottom: 20,
+    },
+    sectionButtonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 20,
+    },
+    sectionButton: {
+      padding: 10,
+      backgroundColor: '#eee',
+      borderRadius: 5,
+    },
+    sectionContent: {
+      flex: 1,
+    },
+    listItem: {
+      padding: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+    },
+    closeButton: {
+      padding: 10,
+      alignItems: 'center',
+      backgroundColor: '#ddd',
+      marginTop: 10,
+    },
   });
 };

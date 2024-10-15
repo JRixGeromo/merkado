@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, FlatList, ListRenderItem, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions, FlatList, ListRenderItem, TouchableOpacity, TextInput } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
@@ -39,9 +39,9 @@ const DashboardScreen = () => {
   const [likedStores, setLikedStores] = useState<{ [key: string]: boolean }>({});
  // Dummy promo images array
  const promoImages = [
-    { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
-    { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
-    { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
+    { imageUrl: 'https://via.placeholder.com/100x100' },
+    { imageUrl: 'https://via.placeholder.com/100x100' },
+    { imageUrl: 'https://via.placeholder.com/100x100' },
   ];
 
   // Dummy featured stores data
@@ -136,14 +136,25 @@ const DashboardScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={styles.section}>
       {/* Search Bar */}
-      <View style={[styles.searchBar, styles.shadow]}>
-        <Text style={styles.searchText}>{t('What are you looking for?')}</Text>
-      </View>
+      <View style={styles.searchContainer}>
+          {/* Categories Icon Button */}
+          <TouchableOpacity style={styles.headerIcon}>
+            <Icon name="menu" size={24} color={selectedTheme.iconColor} />
+          </TouchableOpacity>
+
+          {/* Search Bar */}
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search"
+            placeholderTextColor="gray"
+          />
+        </View>
 
       {/* Promo Carousel */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>{t('Promotional Banners')}</Text>
+        <Text style={styles.sectionTitle}>{t('spotlightOffers')}</Text>
         <Carousel
           ref={carouselRef}
           data={promoImages}
@@ -182,6 +193,7 @@ const DashboardScreen = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 16 }}
         />
+      </View>
       </View>
     </ScrollView>
   );
