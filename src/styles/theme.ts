@@ -34,7 +34,7 @@ export interface ThemeType {
 
 const lightTheme: ThemeType = {
   primary: '#4CAF50',
-  secondary: '#fff',
+  secondary: '#000',
   price: '#fb5607',
   salePrice: '#7cb518',
   discountedPrice: '#7cb518',

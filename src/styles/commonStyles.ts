@@ -219,23 +219,15 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     section: {
       marginTop: 20,
+      marginBottom: 10,
     },
     sectionTitle: {
-      fontSize: 18,
+      fontSize: normalizeFontSize(16), // Default size for icons
       color: selectedTheme.textColor,
+      fontFamily: selectedTheme.alternativeFont1,
       fontWeight: 'bold',
       marginBottom: 10,
       marginLeft: 5,
-    },
-    infoRow: {
-      flexDirection: 'row', // Align icon and text in a row
-      alignItems: 'center', // Vertically align items
-      marginVertical: 10, // Space between rows
-    },
-    infoText: {
-      marginLeft: 10, // Space between icon and text
-      fontSize: normalizeFontSize(16),
-      color: selectedTheme.textColor, // Dynamic text color
     },
     logoutButton: {
       backgroundColor: selectedTheme.danger, // Logout button color (e.g., red for danger)
@@ -471,7 +463,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Center the product name and image
       justifyContent: 'center', // Vertically center the content
       width: 120, // Set a fixed width for product boxes
-      height: 150, // Set a fixed height for product boxes
+      height: 200, // Set a fixed height for product boxes
       marginRight: 10, // Adjust spacing between boxes
       shadowColor: SHARED.shadow.color,
       shadowOpacity: SHARED.shadow.opacity,
@@ -512,6 +504,22 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.discountedPrice, // Highlight the price using the primary color
       fontWeight: 'bold', // Make the price bold
       marginTop: 4, // Add some space between the product name and the price
+    },
+    likeRow: {
+      flexDirection: 'row',
+      alignItems: 'center', // Vertically align the heart icon and text
+      justifyContent: 'center', // Center them within the container
+      marginTop: 0, // Add space between this row and the rating
+    },
+    infoRow: {
+      flexDirection: 'row', // Align icon and text in a row
+      alignItems: 'center', // Vertically align items
+      marginVertical: 10, // Space between rows
+    },
+    infoText: {
+      marginLeft: 10, // Space between icon and text
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.textColor, // Dynamic text color
     },
     
   });
