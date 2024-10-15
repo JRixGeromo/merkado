@@ -404,7 +404,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
       paddingVertical: 10,
       borderBottomWidth: 1,
-      borderColor: selectedTheme.primary, // Border color based on theme
+      borderColor: selectedTheme.gray, // Border color based on theme
     },
     dropdownText: {
       color: selectedTheme.secondary,

@@ -12,7 +12,8 @@ export interface ThemeType {
   light: string;
   highlight: string;
   link: string;
-
+  gray: string;
+  
   fullBackgrounColor: string;
   googleButtonColor: string;
   facebookButtonColor: string;
@@ -49,6 +50,7 @@ const lightTheme: ThemeType = {
   light: '#ffffff',
   highlight: '#9d0208',
   link: '#38b000',
+  gray: '#e6e6ea',
 
   fullBackgrounColor: '#e0e1dd',
   googleButtonColor: '#4285F4',
@@ -88,6 +90,7 @@ const darkTheme: ThemeType = {
   light: '#ffffff',
   highlight: '#fcbf49',
   link: '#38b000',
+  gray: '#e6e6ea',
 
   fullBackgrounColor: '#000000',
   googleButtonColor: '#4285F4',
