@@ -19,13 +19,13 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const menuItems = [
     { label: 'Account Setting', icon: 'cog-outline', action: 'AccountScreen' as keyof RootStackParamList },
     { label: 'Product Categories', icon: 'list-outline', action: 'ProductCategoriesScreen' as keyof RootStackParamList },
-    { label: 'Products', icon: 'cube-outline', action: 'ProductsScreen' as keyof RootStackParamList },
+    { label: 'MyProducts', icon: 'cube-outline', action: 'MyProductsScreen' as keyof RootStackParamList },
     { label: 'Favorites', icon: 'heart-outline', action: 'FavoritesScreen' as keyof RootStackParamList },
     { label: 'Live Shows', icon: 'videocam-outline', action: 'LiveShowsScreen' as keyof RootStackParamList },
     { label: 'Offline Shows', icon: 'calendar-outline', action: 'OfflineShowsScreen' as keyof RootStackParamList },
     { label: 'Marketing Campaigns', icon: 'megaphone-outline', action: 'MarketingCampaignsScreen' as keyof RootStackParamList },
     { label: 'Manage Vendors', icon: 'storefront-outline', action: 'ManageVendorsScreen' as keyof RootStackParamList },
-    { label: 'Wishes', icon: 'heart-outline', action: 'Wishes' as keyof RootStackParamList },
+    { label: 'Wishes', icon: 'heart-outline', action: 'WishesScreen' as keyof RootStackParamList },  // Corrected to 'WishesScreen'
     { label: 'Ratings & Reviews', icon: 'star-outline', action: 'RatingsReviewsScreen' as keyof RootStackParamList },
     { label: 'Reactions', icon: 'thumbs-up-outline', action: 'ReactionsScreen' as keyof RootStackParamList },
     { label: 'Followers', icon: 'people-outline', action: 'FollowersScreen' as keyof RootStackParamList },
@@ -33,6 +33,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
     { label: 'Help Center', icon: 'help-circle-outline', action: 'HelpCenterScreen' as keyof RootStackParamList },
     { label: 'Logout', icon: 'log-out-outline', action: 'LogoutScreen' as keyof RootStackParamList },
   ];
+  
 
   return (
     <>

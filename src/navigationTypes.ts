@@ -7,14 +7,11 @@ export type RootStackParamList = {
   RegistrationScreen: undefined;
   DashboardScreen: undefined;
   AccountScreen: undefined;
-  SettingsScreen: undefined;
-  ViewProfileScreen: undefined;
-  EditProfileScreen: undefined;
   ChangePasswordScreen: undefined;
   ManageAddressesScreen: undefined;
   PaymentMethodsScreen: undefined;
   ProductCategoriesScreen: undefined;
-  ProductsScreen: undefined;
+  MyProductsScreen: undefined;
   OrdersScreen: undefined;
   FavoritesScreen: undefined;
   LiveShowsScreen: undefined;
