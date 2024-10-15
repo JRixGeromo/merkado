@@ -7,8 +7,10 @@ import MarketplaceModal from '../components/MarketplaceModal'; // Import reusabl
 import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
 import { useTranslation } from 'react-i18next'; // Import translation hook
 
+// Get screen dimensions for responsive design
 const { width: screenWidth } = Dimensions.get('window');
 
+// TypeScript types for products and stores
 type Product = {
   id: string;
   name: string;
@@ -16,48 +18,47 @@ type Product = {
   imageUrl: string;
   rating: number;
   likes: number;
+  onSale?: boolean; // Add an optional "onSale" flag
 };
 
 const MarketplaceScreen = () => {
-  const themeType = useAppSelector(state => state.theme.theme); // Get current theme
+  const themeType = useAppSelector((state) => state.theme.theme); // Get current theme
   const styles = commonStyles(themeType);
   const selectedTheme = theme[themeType];
   const { t } = useTranslation(); // Initialize translation
   
   const [isModalVisible, setModalVisible] = useState(false);
 
-  // Sample data for categories, vendors, featured, promos
+  // Sample data for categories, brands, vendors, featured, promos, onSaleProducts, newProducts
   const categories = ['Cosmetics', 'Beverages', 'Prepared Meals', 'Snacks'];
+  const brands = ['Brand 1', 'Brand 2', 'Brand 3']; // New brands section
   const vendors = ['Vendor 1', 'Vendor 2', 'Vendor 3'];
   const featured = ['Featured 1', 'Featured 2', 'Featured 3'];
   const promos = ['Promo 1', 'Promo 2', 'Promo 3'];
-
+  const onSaleProducts = ['Sale 1', 'Sale 2', 'Sale 3']; // Added onSale products
+  const newProducts = ['New 1', 'New 2', 'New 3']; // Added new products
+  
   // Function to toggle modal visibility
   const toggleModal = () => {
-    setModalVisible(prev => !prev);
+    setModalVisible(!isModalVisible);
   };
 
   const products: { [key: string]: Product[] } = {
     'Cosmetics': [
-      { id: '1', name: 'Lipstick', price: 500, imageUrl: 'https://via.placeholder.com/100', rating: 4.5, likes: 10 },
+      { id: '1', name: 'Lipstick', price: 500, imageUrl: 'https://via.placeholder.com/100', rating: 4.5, likes: 10, onSale: true },
       { id: '2', name: 'Foundation', price: 700, imageUrl: 'https://via.placeholder.com/100', rating: 4.2, likes: 15 },
-      { id: '3', name: 'Face Cream', price: 200, imageUrl: 'https://via.placeholder.com/100', rating: 4.0, likes: 15 },
     ],
     'Beverages': [
       { id: '3', name: 'Coke', price: 30, imageUrl: 'https://via.placeholder.com/100', rating: 4.7, likes: 25 },
       { id: '4', name: 'Pepsi', price: 25, imageUrl: 'https://via.placeholder.com/100', rating: 4.6, likes: 20 },
-      { id: '5', name: 'Sprite', price: 200, imageUrl: 'https://via.placeholder.com/100', rating: 4.0, likes: 15 },
     ],
     'Prepared Meals': [
       { id: '5', name: 'Fried Chicken', price: 120, imageUrl: 'https://via.placeholder.com/100', rating: 4.8, likes: 35 },
       { id: '6', name: 'Pasta', price: 150, imageUrl: 'https://via.placeholder.com/100', rating: 4.5, likes: 30 },
-      { id: '7', name: 'Bulad', price: 200, imageUrl: 'https://via.placeholder.com/100', rating: 4.0, likes: 15 },
     ],
     'Snacks': [
       { id: '7', name: 'Chips', price: 50, imageUrl: 'https://via.placeholder.com/100', rating: 4.2, likes: 18 },
       { id: '8', name: 'Energy Bar', price: 60, imageUrl: 'https://via.placeholder.com/100', rating: 4.1, likes: 12 },
-      { id: '9', name: 'Skyflakes', price: 200, imageUrl: 'https://via.placeholder.com/100', rating: 4.0, likes: 15 },
-      { id: '10', name: 'Mani', price: 200, imageUrl: 'https://via.placeholder.com/100', rating: 4.0, likes: 15 },
     ],
   };
 
@@ -101,29 +102,26 @@ const MarketplaceScreen = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.section}>
+        {/* Search Container */}
         <View style={styles.searchContainer}>
-          {/* Categories Icon Button */}
           <TouchableOpacity style={styles.headerIcon} onPress={toggleModal}>
             <Icon name="menu" size={24} color={selectedTheme.iconColor} />
           </TouchableOpacity>
-
-          {/* Search Bar */}
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search"
-            placeholderTextColor="gray"
-          />
-
-          {/* Reusable Modal Component */}
-          <MarketplaceModal
-            visible={isModalVisible}
-            onClose={toggleModal}
-            categories={categories}
-            vendors={vendors}
-            featured={featured}
-            promos={promos}
-          />
+          <TextInput style={styles.searchInput} placeholder="Search" placeholderTextColor="gray" />
         </View>
+
+        {/* Reusable Modal Component */}
+        <MarketplaceModal
+          visible={isModalVisible}
+          onClose={toggleModal}
+          categories={categories}
+          brands={brands}
+          vendors={vendors}
+          featured={featured}
+          promos={promos}
+          onSaleProducts={onSaleProducts}
+          newProducts={newProducts}
+        />
 
         {/* Featured Products Section */}
         {categories.map((category, index) => (

@@ -575,34 +575,60 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textColor, // Text color from theme
     },  
 
+    sectionButton: {
+      paddingTop: 4,
+      paddingBottom: 4,
+      paddingLeft: 8,
+      paddingRight: 8,
+      marginHorizontal: 5,
+      backgroundColor: selectedTheme.primary, // Theme-based background color
+      borderRadius: 10,
+      height: 30,
+      alignItems: 'center',
+    },
+    sectionButtonText: {
+      color: selectedTheme.buttonTextColor, // Theme-based text color
+      fontSize: 16,
+    },
     modalTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      marginBottom: 20,
+      color: selectedTheme.textColor, // Theme-based text color for the title
+      marginBottom: 15,
+    },
+    listItem: {
+      padding: 10,
+      borderBottomColor: selectedTheme.borderColor, // Theme-based border color
+      borderBottomWidth: 1,
+      backgroundColor: selectedTheme.backgroundColor, // Theme-based background color
+    },
+    modalContainerFull: {
+      flex: 1,
+      padding: 20,
+      backgroundColor: selectedTheme.backgroundColor, // Theme-based background for modal
+    },
+    closeButton: {
+      padding: 10,
+      backgroundColor: selectedTheme.danger, // Theme-based close button background
+      borderRadius: 20,
+      alignItems: 'center',
+    },
+    closeButtonText: {
+      color: '#fff',
+      fontSize: 16,
+    },
+    horizontalScroll: {
+      paddingHorizontal: 10,
+      marginVertical: 10,
     },
     sectionButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginBottom: 20,
     },
-    sectionButton: {
-      padding: 10,
-      backgroundColor: '#eee',
-      borderRadius: 5,
-    },
     sectionContent: {
       flex: 1,
     },
-    listItem: {
-      padding: 15,
-      borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
-    },
-    closeButton: {
-      padding: 10,
-      alignItems: 'center',
-      backgroundColor: '#ddd',
-      marginTop: 10,
-    },
+    
   });
 };

@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { commonStyles } from '../styles/commonStyles'; // Import your styles
+import { commonStyles } from '../styles/commonStyles'; // Import your style
 import { normalizeFontSize } from '../utils/responsive'; // Import for responsive text size
 import { theme as appTheme } from '../styles/theme'; // Import your theme and give it an alias to avoid conflicts
 
@@ -18,6 +18,7 @@ interface CustomButtonProps {
   color?: string;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
+  width?: number | string;  // Add an optional width prop
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -27,39 +28,37 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   color,
   disabled = false,
   style = {},
+  width = 'auto',  // Default width is auto, can be overridden
 }) => {
-  const currentTheme = useAppSelector((state) => state.theme.theme); // Access the current theme
-  const selectedTheme = appTheme[currentTheme]; // Access light or dark theme
-
+  const currentTheme = useAppSelector((state) => state.theme.theme);
+  const selectedTheme = appTheme[currentTheme];
   const commonStyle = commonStyles(currentTheme); // Generate common styles based on the theme
-
-  // Fallback to theme-based colors if not provided as props
   const buttonBackgroundColor =
-    backgroundColor || selectedTheme.buttonBackgroundColor; // Fallback to theme primary color
-  const buttonTextColor =
-    color || selectedTheme.buttonTextColor; // Fallback to theme text color
-
+    backgroundColor || selectedTheme.buttonBackgroundColor;
+  const buttonTextColor = color || selectedTheme.buttonTextColor;
+  
   return (
     <TouchableOpacity
       style={[
-        commonStyle.button, // Use the common button styles
+        commonStyle.button,
         {
-          backgroundColor: buttonBackgroundColor, // Apply dynamic background color
-          paddingVertical: 10, // Customize vertical padding
-          opacity: disabled ? 0.6 : 1, // Add a disabled effect by reducing opacity
+          backgroundColor: buttonBackgroundColor,
+          paddingVertical: 10,
+          opacity: disabled ? 0.6 : 1,
+          width,  // Apply custom width
         },
-        style, // Apply any additional styles passed as props
+        style,
       ]}
       onPress={onPress}
       disabled={disabled}
-      accessibilityLabel={title} // Add accessibility label for better screen reader support
+      accessibilityLabel={title}
     >
       <Text
         style={[
-          commonStyle.buttonText, // Use common text styles for buttons
+          commonStyle.buttonText,
           {
-            color: buttonTextColor, // Apply dynamic text color
-            fontSize: normalizeFontSize(16), // Adjust font size responsively
+            color: buttonTextColor,
+            fontSize: normalizeFontSize(16),
           },
         ]}
       >

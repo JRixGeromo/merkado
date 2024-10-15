@@ -1,37 +1,40 @@
-// src/components/MarketplaceModal.tsx
-
 import React, { useState } from 'react';
-import { View, Text, Modal, TouchableOpacity, FlatList, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Modal, FlatList } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { theme } from '../../../styles/theme'; // Import theme
-import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
 import { useTranslation } from 'react-i18next'; // Import translation hook
+import CustomButton from '../../../components/CustomButton'; // Import your CustomButton component
 
 type MarketplaceModalProps = {
-  visible: boolean; // Control modal visibility
-  onClose: () => void; // Callback function to close the modal
-  categories: string[]; // Array of categories
-  vendors: string[]; // Array of vendors
-  featured: string[]; // Array of featured items
-  promos: string[]; // Array of promos
+  visible: boolean;
+  onClose: () => void;
+  categories: string[];
+  brands: string[];
+  featured: string[];
+  promos: string[];
+  onSaleProducts: string[];
+  newProducts: string[];
+  vendors: string[];
 };
 
 const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   visible,
   onClose,
   categories,
-  vendors,
+  brands,
   featured,
   promos,
+  onSaleProducts,
+  newProducts,
+  vendors,
 }) => {
-  const [activeSection, setActiveSection] = useState<'categories' | 'vendors' | 'featured' | 'promos' | null>(null);
+  const [activeSection, setActiveSection] = useState<'categories' | 'brands' | 'vendors' | 'featured' | 'promos' | 'onSale' | 'newProducts' | null>('categories');
   const { t } = useTranslation();
 
   const themeType = useAppSelector((state) => state.theme.theme); // Get current theme
   const commonStyle = commonStyles(themeType);
-  const selectedTheme = theme[themeType];
-  
+
   // Render each item in the list
   const renderListItem = ({ item }: { item: string }) => (
     <View style={commonStyle.listItem}>
@@ -39,51 +42,76 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
     </View>
   );
 
+  // Function to render the correct content based on the active section
+  const getActiveSectionData = () => {
+    switch (activeSection) {
+      case 'categories':
+        return categories;
+      case 'brands':
+        return brands;
+      case 'vendors':
+        return vendors;
+      case 'featured':
+        return featured;
+      case 'promos':
+        return promos;
+      case 'onSale':
+        return onSaleProducts;
+      case 'newProducts':
+        return newProducts;
+      default:
+        return [];
+    }
+  };
+
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
-      <View style={commonStyle.modalContainer}>
-        <Text style={commonStyle.modalTitle}>{t('Marketplace Sections')}</Text>
+      <View style={commonStyle.modalContainerFull}>
+        <Text style={commonStyle.modalTitle}>{t('Search in merkado by')}</Text>
 
-        {/* Section Buttons */}
-        <View style={commonStyle.sectionButtonContainer}>
-          <TouchableOpacity style={commonStyle.sectionButton} onPress={() => setActiveSection('categories')}>
-            <Text>{t('Categories')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={commonStyle.sectionButton} onPress={() => setActiveSection('vendors')}>
-            <Text>{t('Vendors')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={commonStyle.sectionButton} onPress={() => setActiveSection('featured')}>
-            <Text>{t('Featured')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={commonStyle.sectionButton} onPress={() => setActiveSection('promos')}>
-            <Text>{t('Promos')}</Text>
-          </TouchableOpacity>
-        </View>
+        {/* Scrollable Section Buttons */}
+        <FlatList
+          horizontal
+          data={[
+            { key: 'categories', label: t('Categories') },
+            { key: 'brands', label: t('Brands') },
+            { key: 'vendors', label: t('Vendors') },
+            { key: 'featured', label: t('Featured') },
+            { key: 'promos', label: t('Promos') },
+            { key: 'onSale', label: t('On Sale') },
+            { key: 'newProducts', label: t('New Products') },
+          ]}
+          renderItem={({ item }) => (
+            <CustomButton
+              title={item.label}
+              onPress={() => setActiveSection(item.key as any)}
+              style={commonStyle.sectionButton}
+            />
+          )}
+          keyExtractor={(item) => item.key}
+          showsHorizontalScrollIndicator={false}
+          style={{ maxHeight: 60 }}  // Set the max height for the FlatList
+        />
+
 
         {/* Dynamic Content Based on Selected Section */}
-        <ScrollView style={commonStyle.sectionContent}>
-          {activeSection === 'categories' && (
-            <FlatList data={categories} renderItem={renderListItem} keyExtractor={(item) => item} />
-          )}
-          {activeSection === 'vendors' && (
-            <FlatList data={vendors} renderItem={renderListItem} keyExtractor={(item) => item} />
-          )}
-          {activeSection === 'featured' && (
-            <FlatList data={featured} renderItem={renderListItem} keyExtractor={(item) => item} />
-          )}
-          {activeSection === 'promos' && (
-            <FlatList data={promos} renderItem={renderListItem} keyExtractor={(item) => item} />
-          )}
-        </ScrollView>
+        <FlatList
+          data={getActiveSectionData()} // Dynamically render content
+          renderItem={renderListItem}
+          keyExtractor={(item) => item}
+          contentContainerStyle={{ paddingTop: 10 }} // Ensure content is aligned at the top
+        />
 
         {/* Close Button */}
-        <TouchableOpacity style={commonStyle.closeButton} onPress={onClose}>
-          <Text>{t('Close')}</Text>
-        </TouchableOpacity>
+        <CustomButton
+          title={t('Close')}
+          onPress={onClose}
+          backgroundColor={commonStyle.closeButton.backgroundColor} // Use theme for close button color
+          style={commonStyle.closeButton} // Apply any additional close button styles
+        />
       </View>
     </Modal>
   );
 };
 
 export default MarketplaceModal;
-

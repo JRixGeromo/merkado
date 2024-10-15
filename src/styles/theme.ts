@@ -1,29 +1,29 @@
 export interface ThemeType {
   primary: string;
   secondary: string;
-  price: string;
-  salePrice: string;
-  discountedPrice: string;
-  linkText: string;
-  paragraph: string;
+  success: string;
+  info: string;
+  warning: string;
+  error: string;
+  danger: string;
+  disabled: string;
+  dark: string;
+  black: string;
+  light: string;
+  highlight: string;
+  link: string;
+
   googleButtonColor: string;
   facebookButtonColor: string;
-  textColor: string;
   backgroundColor: string;
-  buttonTextColor: string;
   buttonBackgroundColor: string;
   borderColor: string;
   iconColor: string;
-  placeholderTextColor: string;
   inputBackgroundColor: string;
-  danger: string;
   cardBackground: string;
-  linkColor: string;
   modalOverlay: string;
   loader: string;
-  screenHeaderFont: string;
-  tabFont: string;
-  tabColor: string;
+  
   headingFont: string; // New: Font for headers and titles
   bodyFont: string; // New: Font for body text
   bodyFontSlim: string;
@@ -35,36 +35,33 @@ export interface ThemeType {
 
 const lightTheme: ThemeType = {
   primary: '#4CAF50',
-  secondary: '#000',
-  price: '#fb5607',
-  salePrice: '#7cb518',
-  discountedPrice: '#7cb518',
-  linkText: '#4CAF50',
-  paragraph: '#000',
+  secondary: '#dee2e6',
+  success: '#38b000',
+  info: '#219ebc',
+  warning: '#fb8500',
+  error: '#c1121f',
+  danger: '#fcbf49',
+  disabled: '#ced4da',
+  dark: '#343a40',
+  black: '#000000',
+  light: '#ffffff',
+  highlight: '#fcbf49',
+  link: '#38b000',
+
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  textColor: '#333',
   backgroundColor: '#fff',
-  buttonTextColor: '#fff',
   buttonBackgroundColor: '#4CAF50',
   borderColor: '#4CAF50',
   iconColor: "#70e000",
-  placeholderTextColor: '#999',
   inputBackgroundColor: '#edeec9',
-  danger: '#ff4d4f',
   cardBackground: '#f8f9fa',
-  linkColor: '#1E90FF',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   loader: "#000",
-  
-  screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
-  tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
-  tabColor: "#000",
   
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
   bodyFontSlim: 'RobotoCondensed-Light',  // Bold font for screen title
-  
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
   alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
   alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons
@@ -72,36 +69,35 @@ const lightTheme: ThemeType = {
 };
 
 const darkTheme: ThemeType = {
-  primary: '#fff',
-  secondary: '#7cb518',
-  price: '#fca311',
-  salePrice: '#7cb518',
-  discountedPrice: '#7cb518',
-  linkText: '#7cb518',
-  paragraph: '#fff',
+
+  primary: '#4CAF50',
+  secondary: '#dee2e6',
+  success: '#38b000',
+  info: '#219ebc',
+  warning: '#fb8500',
+  error: '#c1121f',
+  danger: '#fcbf49',
+  disabled: '#ced4da',
+  dark: '#343a40',
+  black: '#000000',
+  light: '#ffffff',
+  highlight: '#fcbf49',
+  link: '#38b000',
+
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  textColor: '#fff',
   backgroundColor: '#333',
-  buttonTextColor: '#fff',
   buttonBackgroundColor: '#008000',
   borderColor: '#7cb518',
   iconColor: "#7cb518",
-  placeholderTextColor: '#ccc',
   inputBackgroundColor: '#000',
-  danger: '#ff4d4f',
   cardBackground: '#444',
-  linkColor: '#7cb518',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#fff",
-  screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
-  tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
-  tabColor: "#000",
   
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
   bodyFontSlim: 'RobotoCondensed-Light',  // Bold font for screen title
-  
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
   alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
   alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons
