@@ -7,10 +7,8 @@ import MarketplaceModal from '../components/MarketplaceModal'; // Import reusabl
 import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
 import { useTranslation } from 'react-i18next'; // Import translation hook
 
-// Get screen dimensions for responsive design
 const { width: screenWidth } = Dimensions.get('window');
 
-// TypeScript types for products and stores
 type Product = {
   id: string;
   name: string;
@@ -21,7 +19,7 @@ type Product = {
 };
 
 const MarketplaceScreen = () => {
-  const themeType = useAppSelector((state) => state.theme.theme); // Get current theme
+  const themeType = useAppSelector(state => state.theme.theme); // Get current theme
   const styles = commonStyles(themeType);
   const selectedTheme = theme[themeType];
   const { t } = useTranslation(); // Initialize translation
@@ -33,9 +31,10 @@ const MarketplaceScreen = () => {
   const vendors = ['Vendor 1', 'Vendor 2', 'Vendor 3'];
   const featured = ['Featured 1', 'Featured 2', 'Featured 3'];
   const promos = ['Promo 1', 'Promo 2', 'Promo 3'];
+
   // Function to toggle modal visibility
   const toggleModal = () => {
-    setModalVisible(!isModalVisible);
+    setModalVisible(prev => !prev);
   };
 
   const products: { [key: string]: Product[] } = {
@@ -102,10 +101,9 @@ const MarketplaceScreen = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.section}>
-        {/* <Text style={styles.sectionTitle}>{t('Explore Marketplace')}</Text> */}
         <View style={styles.searchContainer}>
           {/* Categories Icon Button */}
-          <TouchableOpacity style={styles.headerIcon}>
+          <TouchableOpacity style={styles.headerIcon} onPress={toggleModal}>
             <Icon name="menu" size={24} color={selectedTheme.iconColor} />
           </TouchableOpacity>
 
