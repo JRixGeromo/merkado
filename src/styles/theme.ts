@@ -1,6 +1,9 @@
 export interface ThemeType {
   primary: string;
   secondary: string;
+  price: string;
+  salePrice: string;
+  discountedPrice: string;
   linkText: string;
   paragraph: string;
   googleButtonColor: string;
@@ -32,6 +35,9 @@ export interface ThemeType {
 const lightTheme: ThemeType = {
   primary: '#4CAF50',
   secondary: '#fff',
+  price: '#fb5607',
+  salePrice: '#7cb518',
+  discountedPrice: '#7cb518',
   linkText: '#4CAF50',
   paragraph: '#000',
   googleButtonColor: '#4285F4',
@@ -63,6 +69,9 @@ const lightTheme: ThemeType = {
 const darkTheme: ThemeType = {
   primary: '#fff',
   secondary: '#7cb518',
+  price: '#fca311',
+  salePrice: '#7cb518',
+  discountedPrice: '#7cb518',
   linkText: '#7cb518',
   paragraph: '#fff',
   googleButtonColor: '#4285F4',

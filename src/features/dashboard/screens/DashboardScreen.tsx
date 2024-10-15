@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { View, Text, ScrollView, Image, Dimensions, FlatList, ListRenderItem } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
-import { fetchProducts } from '../../../store/slices/productSlice'; // Import the fetchProducts action
-import { theme } from '../../../../src/styles/theme'; // Import the theme object
+import { theme } from '../../../styles/theme'; // Import the theme object
 const { width: screenWidth } = Dimensions.get('window');
 
 // Product type definition
@@ -16,36 +15,42 @@ type Product = {
   imageUrl: string;
 };
 
+// Store type definition
+type Store = {
+  id: string;
+  name: string;
+  location: string;
+  imageUrl: string;
+};
+
 const DashboardScreen = () => {
-  const dispatch = useAppDispatch();
-  
   const themeType = useAppSelector(state => state.theme.theme); // Access theme from Redux
   const styles = commonStyles(themeType);
   const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
-  // Access product state from Redux
-  const { products, status, error } = useAppSelector((state) => state.products);
+  const { t } = useTranslation(); // Initialize translation
 
-  // Reference for the carousel
   const carouselRef = useRef<Carousel<any>>(null);
-  const { t, i18n } = useTranslation(); // Initialize translation
 
-  // Promo images array
+  // Dummy promo images array
   const promoImages = [
     { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
     { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
     { imageUrl: 'https://athleticahq.com/images/icons/store.png' },
   ];
 
-  // Fetch products using Redux on component mount
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchProducts()); // Dispatch fetchProducts action
-    }
-  }, [status, dispatch]);
+  // Dummy featured stores data
+  const featuredStores: Store[] = [
+    { id: '1', name: 'Trader Joe\'s', location: 'Springfield, CA', imageUrl: 'https://via.placeholder.com/100x100' },
+    { id: '2', name: 'Costco', location: 'Walnut Creek, CA', imageUrl: 'https://via.placeholder.com/100x100' },
+    { id: '3', name: 'Vons', location: 'Oakland, CA', imageUrl: 'https://via.placeholder.com/100x100' },
+  ];
 
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+  // Dummy featured products data
+  const featuredProducts: Product[] = [
+    { id: '1', name: 'Beef Boneless', price: 500, imageUrl: 'https://via.placeholder.com/100x100' },
+    { id: '2', name: 'Milk Lakeland', price: 80, imageUrl: 'https://via.placeholder.com/100x100' },
+    { id: '3', name: 'Simba Teff Flour', price: 120, imageUrl: 'https://via.placeholder.com/100x100' },
+  ];
 
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
@@ -54,7 +59,16 @@ const DashboardScreen = () => {
     </View>
   );
 
-  // Render product item for FlatList with correct typing
+  // Render store item for FlatList
+  const renderStoreItem: ListRenderItem<Store> = ({ item }) => (
+    <View style={styles.productBox}>
+      <Image source={{ uri: item.imageUrl }} style={styles.storeImage} />
+      <Text style={styles.storeName}>{item.name}</Text>
+      <Text style={styles.storeLocation}>{item.location}</Text>
+    </View>
+  );
+
+  // Render product item for FlatList
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <View style={styles.productBox}>
       <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
@@ -63,49 +77,54 @@ const DashboardScreen = () => {
     </View>
   );
 
-  // Ensure autoplay is started once the component is mounted
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.startAutoplay();  // Start autoplay manually
-    }
-  }, []);
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.container}>
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{t('promos')}</Text>
-          <Carousel
-            ref={carouselRef}  // Attach the carousel reference
-            data={promoImages}  // Use the promo images array
-            renderItem={renderPromoItem}
-            sliderWidth={screenWidth}
-            itemWidth={screenWidth * 0.8}
-            loop={true}
-            autoplay={true}  // Enable autoplay
-            autoplayInterval={3000}  // Set autoplay interval to 3 seconds
-            autoplayDelay={500}  // Delay autoplay start for 0.5 seconds
-            vertical={false}  // Horizontal carousel
-          />
-        </View>
+      {/* Search Bar */}
+      <View style={[styles.searchBar, styles.shadow]}>
+        <Text style={styles.searchText}>{t('What are you looking for?')}</Text>
+      </View>
 
-        <View style={styles.section}>
-          <Text style={styles.headerTitle}>{t('products')}</Text>
-          {status === 'loading' ? (
-            <Text>Loading products...</Text>
-          ) : status === 'failed' ? (
-            <Text>Error: {error}</Text>
-          ) : (
-            <FlatList
-              data={products}  // Use Redux products
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={renderProductItem}  // Properly typed renderItem
-              horizontal={true}  // Horizontal product list
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 16 }}
-            />
-          )}
-        </View>
+      {/* Promo Carousel */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>{t('Promotional Banners')}</Text>
+        <Carousel
+          ref={carouselRef}
+          data={promoImages}
+          renderItem={renderPromoItem}
+          sliderWidth={screenWidth}
+          itemWidth={screenWidth * 0.8}
+          loop={true}
+          autoplay={true}
+          autoplayInterval={3000}
+          autoplayDelay={500}
+          vertical={false}
+        />
+      </View>
+
+      {/* Featured Stores */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>{t('Featured Stores')}</Text>
+        <FlatList
+          data={featuredStores}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderStoreItem}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 16 }}
+        />
+      </View>
+
+      {/* Featured Products */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>{t('Featured Products')}</Text>
+        <FlatList
+          data={featuredProducts}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderProductItem}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 16 }}
+        />
       </View>
     </ScrollView>
   );

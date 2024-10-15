@@ -21,7 +21,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
-
     container: {
       ...SHARED, // Apply shared styles
       flex: 1,
@@ -226,71 +225,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textColor,
       fontWeight: 'bold',
       marginBottom: 10,
-    },
-    storeBox: {
-      backgroundColor: selectedTheme.backgroundColor,
-      padding: SHARED.padding,
-      borderRadius: SHARED.borderRadius,
-      shadowColor: SHARED.shadow.color,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowOffset: SHARED.shadow.offset,
-      marginBottom: 10,
-    },
-    storeName: {
-      fontSize: 16,
-      color: selectedTheme.textColor,
-      fontWeight: 'bold',
-    },
-    storeLocation: {
-      fontSize: 14,
-      color: selectedTheme.secondary,
-    },
-    productBox: {
-      backgroundColor: selectedTheme.backgroundColor,
-      padding: SHARED.padding,
-      borderRadius: SHARED.borderRadius,
-      alignItems: 'center', // Center the product name and image
-      justifyContent: 'center', // Vertically center the content
-      width: 120, // Set a fixed width for product boxes
-      height: 150, // Set a fixed height for product boxes
-      marginRight: 10, // Adjust spacing between boxes
-      shadowColor: SHARED.shadow.color,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowOffset: SHARED.shadow.offset,
-      shadowRadius: SHARED.shadow.radius,
-    },
-    productName: {
-      fontSize: 16,
-      color: selectedTheme.textColor,
-      fontWeight: 'bold',
-    },
-    productImage: {
-      width: 80, // Set a fixed width for the product image
-      height: 80, // Set a fixed height for the product image
-      resizeMode: 'contain', // Ensure the image doesn't stretch
-      marginBottom: 10, // Add space between the image and text
-    },
-    storeImage: {
-      width: 100,
-      height: 100,
-      resizeMode: 'cover',
-    },
-    promoImage: {
-      width: '100%',
-      height: 200,
-      borderRadius: SHARED.borderRadius,
-      resizeMode: 'cover',  // Cover the image within the bounds
+      marginLeft: 5,
     },
     infoRow: {
       flexDirection: 'row', // Align icon and text in a row
       alignItems: 'center', // Vertically align items
       marginVertical: 10, // Space between rows
-    },
-    productPrice: {
-      fontSize: 14, // Slightly smaller font size for the price
-      color: selectedTheme.primary, // Highlight the price using the primary color
-      fontWeight: 'bold', // Make the price bold
-      marginTop: 4, // Add some space between the product name and the price
     },
     infoText: {
       marginLeft: 10, // Space between icon and text
@@ -473,6 +413,105 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     dropdownText: {
       color: selectedTheme.textColor,
       marginLeft: 10,
+    },
+    // Add these to commonStyles in your existing StyleSheet
+
+    searchBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: selectedTheme.inputBackgroundColor,
+      borderRadius: SHARED.borderRadius,
+      padding: SHARED.padding,
+      marginVertical: 10,
+      width: '90%',
+      alignSelf: 'center',
+    },
+    searchText: {
+      color: selectedTheme.placeholderTextColor,
+      marginLeft: 10,
+      fontSize: normalizeFontSize(14),
+      fontFamily: selectedTheme.bodyFont,
+    },
+
+    shadow: {
+      shadowColor: SHARED.shadow.color, // Reuse shared shadow properties
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Android shadow
+    },
+    storeImage: {
+      width: 80,
+      height: 80,
+      resizeMode: 'contain',
+      marginBottom: 10,
+    },
+    storeName: {
+      fontSize: normalizeFontSize(10),
+      fontWeight: 'bold',
+      color: selectedTheme.textColor,
+    },
+    storeLocation: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.secondary,
+    },
+    storeBox: {
+      backgroundColor: selectedTheme.backgroundColor,
+      padding: SHARED.padding,
+      borderRadius: SHARED.borderRadius,
+      shadowColor: SHARED.shadow.color,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowOffset: SHARED.shadow.offset,
+      marginBottom: 10,
+    },
+    productBox: {
+      backgroundColor: selectedTheme.backgroundColor,
+      padding: SHARED.padding,
+      borderRadius: SHARED.borderRadius,
+      alignItems: 'center', // Center the product name and image
+      justifyContent: 'center', // Vertically center the content
+      width: 120, // Set a fixed width for product boxes
+      height: 150, // Set a fixed height for product boxes
+      marginRight: 10, // Adjust spacing between boxes
+      shadowColor: SHARED.shadow.color,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowOffset: SHARED.shadow.offset,
+      shadowRadius: SHARED.shadow.radius,
+    },
+    productName: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.textColor,
+      fontWeight: 'bold',
+    },
+    productImage: {
+      width: 80, // Set a fixed width for the product image
+      height: 80, // Set a fixed height for the product image
+      resizeMode: 'contain', // Ensure the image doesn't stretch
+      marginBottom: 10, // Add space between the image and text
+    },
+    promoImage: {
+      width: '100%',
+      height: 200,
+      borderRadius: SHARED.borderRadius,
+      resizeMode: 'cover',  // Cover the image within the bounds
+    },
+    productPrice: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.price, // Highlight the price using the primary color
+      fontWeight: 'bold', // Make the price bold
+      marginTop: 4, // Add some space between the product name and the price
+    },
+    saleProductPrice: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.salePrice, // Highlight the price using the primary color
+      fontWeight: 'bold', // Make the price bold
+      marginTop: 4, // Add some space between the product name and the price
+    },
+    discountedProductPrice: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.discountedPrice, // Highlight the price using the primary color
+      fontWeight: 'bold', // Make the price bold
+      marginTop: 4, // Add some space between the product name and the price
     },
     
   });
