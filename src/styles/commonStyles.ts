@@ -218,7 +218,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.placeHolderInfo, // Text color for "Or login with"
     },
     textColor: {
-      color: selectedTheme.primary, // Text color for "Or login with"
+      color: selectedTheme.secondary, // Text color for "Or login with"
     },
     section: {
       paddingTop: 20,

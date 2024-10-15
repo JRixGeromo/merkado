@@ -83,7 +83,7 @@ const darkTheme: ThemeType = {
   secondary: '#dee2e6',
   success: '#38b000',
   info: '#219ebc',
-  placeHolderInfo: '#e2e8dd',
+  placeHolderInfo: '#6f6866',
   warning: '#fb8500',
   error: '#c1121f',
   danger: '#fcbf49',

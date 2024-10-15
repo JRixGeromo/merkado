@@ -21,7 +21,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { gql, useMutation } from '@apollo/client';
 import { setUser } from '../../../store/slices/authSlice'; // Import the setUser action
-import { theme } from '../../../styles/theme'; // Import theme
+import { theme as appTheme } from '../../../styles/theme';
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -45,11 +45,9 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('password123');
   const [loading, setLoading] = useState(false); // Add loading state
 
-  const themeType = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
-  const commonStyle = commonStyles(themeType); // Dynamically create styles based on the theme
-  const selectedTheme = theme[themeType];
-  
+    
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
   const { t } = useTranslation(); // Initialize translation
@@ -108,6 +106,11 @@ const LoginScreen = () => {
 
     return () => backHandler.remove(); // Clean up when the component unmounts
   }, []);
+
+  
+  const commonStyle = commonStyles(theme);
+  const { buttonText, container } = commonStyle;
+  const selectedTheme = appTheme[theme];
 
   return (
     <KeyboardAvoidingView
