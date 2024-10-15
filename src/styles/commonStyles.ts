@@ -42,7 +42,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     screenHeaderTitle: {
       fontSize: normalizeFontSize(16),
-      fontFamily: selectedTheme.screenHeaderFont,
+      fontFamily: selectedTheme.tabFont,
       color: selectedTheme.textColor,
     },
     headerTitle: {
@@ -222,10 +222,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 10,
     },
     sectionTitle: {
-      fontSize: normalizeFontSize(16), // Default size for icons
+      fontSize: normalizeFontSize(14), // Default size for icons
       color: selectedTheme.textColor,
-      fontFamily: selectedTheme.alternativeFont1,
-      fontWeight: 'bold',
+      fontFamily: selectedTheme.headingFont,
+      //fontWeight: 'bold',
       marginBottom: 10,
       marginLeft: 5,
     },

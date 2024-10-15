@@ -92,8 +92,8 @@ const darkTheme: ThemeType = {
   screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
   tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
   tabColor: "#d3d3d3",
-  headingFont: 'Poppins-Bold',  // Bold font for headers
-  bodyFont: 'Roboto-Regular',   // Regular font for body
+  headingFont: 'Poppins-Bold', // Bold font for headers
+  bodyFont: 'Roboto-Regular',  // Regular font for body
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
   alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
   alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons
