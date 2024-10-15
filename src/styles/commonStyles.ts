@@ -90,6 +90,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     loader: {
       marginTop: 30, // Add space between the text and loader
+      color: selectedTheme.loader,
     },
     box: {
       padding: SHARED.padding,
@@ -179,12 +180,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     paragraph: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,  // Apply body font for paragraphs
-      color: selectedTheme.primary,
+      color: selectedTheme.secondary,
+      margin: 10,
     },
     linkText: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,  // Use body font for links
       color: selectedTheme.link,
+      margin: 10,
     },
     orText: {
       fontSize: normalizeFontSize(14),
@@ -193,7 +196,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       textAlign: 'center',
     },
     socialButtonText: {
-      color: selectedTheme.primary, // Social button text color from selected theme
+      color: selectedTheme.light // Social button text color from selected theme
     },
     cardText: {
       fontSize: normalizeFontSize(14), // Font size for text inside card
@@ -212,7 +215,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
-      color: selectedTheme.primary, // Text color for "Or login with"
+      color: selectedTheme.placeHolderInfo, // Text color for "Or login with"
     },
     textColor: {
       color: selectedTheme.primary, // Text color for "Or login with"

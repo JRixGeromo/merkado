@@ -3,6 +3,7 @@ export interface ThemeType {
   secondary: string;
   success: string;
   info: string;
+  placeHolderInfo: string;
   warning: string;
   error: string;
   danger: string;
@@ -41,6 +42,7 @@ const lightTheme: ThemeType = {
   secondary: '#000000',
   success: '#38b000',
   info: '#219ebc',
+  placeHolderInfo: '#9caea9',
   warning: '#fb8500',
   error: '#c1121f',
   danger: '#fcbf49',
@@ -81,6 +83,7 @@ const darkTheme: ThemeType = {
   secondary: '#dee2e6',
   success: '#38b000',
   info: '#219ebc',
+  placeHolderInfo: '#e2e8dd',
   warning: '#fb8500',
   error: '#c1121f',
   danger: '#fcbf49',

@@ -21,6 +21,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { gql, useMutation } from '@apollo/client';
 import { setUser } from '../../../store/slices/authSlice'; // Import the setUser action
+import { theme } from '../../../styles/theme'; // Import theme
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -44,8 +45,11 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('password123');
   const [loading, setLoading] = useState(false); // Add loading state
 
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const themeType = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
+  const commonStyle = commonStyles(themeType); // Dynamically create styles based on the theme
+  const selectedTheme = theme[themeType];
+  
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
   const { t } = useTranslation(); // Initialize translation
@@ -91,17 +95,7 @@ const LoginScreen = () => {
   const navigateToRegister = () => {
     navigation.navigate('RegistrationScreen');
   };
-
-  const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
-  const {
-    button,
-    buttonText,
-    socialButtonText,
-    googleButton,
-    facebookButton,
-    title,
-  } = commonStyle;
-
+  
   useEffect(() => {
     const backAction = () => {
       return true; // Prevent the user from going back to the splash screen
@@ -127,8 +121,8 @@ const LoginScreen = () => {
             style={commonStyle.logo}
           />
 
-          <Text style={title}>{t('welcomeBack')}</Text>
-
+          <Text style={commonStyle.title}>{t('welcomeBack')}</Text>
+          
           <TextInputWithIcon
             placeholder={t('email')}
             iconName="mail"
@@ -136,6 +130,7 @@ const LoginScreen = () => {
             onChangeText={setEmail}
             style={{ height: 45 }}
           />
+          
           <TextInputWithIcon
             placeholder={t('password')}
             iconName="lock-closed"
@@ -147,12 +142,12 @@ const LoginScreen = () => {
 
           {/* Loading indicator */}
           {loading ? (
-            <ActivityIndicator size="large" color={buttonText.color} />
+            <ActivityIndicator size="large" color={selectedTheme.loader} />
           ) : (
             <CustomButton
               title={t('login')}
               onPress={handleLogin}
-              color={buttonText?.color}
+              color={selectedTheme.light}
             />
           )}
 
@@ -162,7 +157,7 @@ const LoginScreen = () => {
             </Text>
           </TouchableOpacity>
 
-          <Text style={commonStyle.orText}>{t('orLoginWith')}</Text>
+          <Text style={commonStyle.paragraph}>{t('orLoginWith')}</Text>
 
           <View
             style={{
@@ -172,29 +167,29 @@ const LoginScreen = () => {
             }}
           >
             <TouchableOpacity
-              style={[commonStyle.socialButton, googleButton]}
+              style={[commonStyle.socialButton, commonStyle.googleButton]}
               onPress={() => console.log('Google Login Pressed')}
             >
               <Icon
                 name="google"
                 size={20}
-                color={socialButtonText?.color}
+                color={selectedTheme.light}
                 style={{ marginRight: 10 }}
               />
-              <Text style={socialButtonText}>{t('google')}</Text>
+              <Text style={commonStyle.socialButtonText}>{t('google')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={[commonStyle.socialButton, facebookButton]}
+              style={[commonStyle.socialButton, commonStyle.facebookButton]}
               onPress={() => console.log('Facebook Login Pressed')}
             >
               <Icon
                 name="facebook"
                 size={20}
-                color={socialButtonText?.color}
+                color={selectedTheme.light}
                 style={{ marginRight: 10 }}
               />
-              <Text style={socialButtonText}>{t('facebook')}</Text>
+              <Text style={commonStyle.socialButtonText}>{t('facebook')}</Text>
             </TouchableOpacity>
           </View>
 

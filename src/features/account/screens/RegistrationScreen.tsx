@@ -192,7 +192,7 @@ const RegistrationScreen = () => {
             <CustomButton
               title={t('register')}
               onPress={handleRegister}
-              color={buttonText?.color}
+              color={selectedTheme.light}
             />
           )}
 
