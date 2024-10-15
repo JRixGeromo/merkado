@@ -26,6 +26,7 @@ export interface ThemeType {
   tabColor: string;
   headingFont: string; // New: Font for headers and titles
   bodyFont: string; // New: Font for body text
+  bodyFontSlim: string;
   buttonFont: string; // New: Font for buttons
   alternativeFont1: string; // New: Font for buttons
   alternativeFont2: string; // New: Font for buttons
@@ -47,19 +48,23 @@ const lightTheme: ThemeType = {
   buttonTextColor: '#fff',
   buttonBackgroundColor: '#4CAF50',
   borderColor: '#4CAF50',
-  iconColor: "#4CAF50",
+  iconColor: "#70e000",
   placeholderTextColor: '#999',
-  inputBackgroundColor: '#cce3de',
+  inputBackgroundColor: '#edeec9',
   danger: '#ff4d4f',
   cardBackground: '#f8f9fa',
   linkColor: '#1E90FF',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   loader: "#000",
+  
   screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
   tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
   tabColor: "#000",
+  
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
+  bodyFontSlim: 'RobotoCondensed-Light',  // Bold font for screen title
+  
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
   alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
   alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons
@@ -91,9 +96,12 @@ const darkTheme: ThemeType = {
   loader: "#fff",
   screenHeaderFont: 'Poppins-Regular',  // Bold font for headers
   tabFont: 'RobotoCondensed-Light',  // Bold font for screen title
-  tabColor: "#d3d3d3",
+  tabColor: "#000",
+  
   headingFont: 'Poppins-Bold', // Bold font for headers
   bodyFont: 'Roboto-Regular',  // Regular font for body
+  bodyFontSlim: 'RobotoCondensed-Light',  // Bold font for screen title
+  
   buttonFont: 'Montserrat-Bold', // Bold font for buttons
   alternativeFont1: 'QwitcherGrypen-Regular', // Bold font for buttons
   alternativeFont2: 'LondrinaSketch-Regular', // Bold font for buttons

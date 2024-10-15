@@ -313,6 +313,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     modalText: {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textColor, // Text color from selected theme
+      fontFamily: selectedTheme.bodyFont,
     },
     modalContainer: {
       flex: 1,
@@ -351,17 +352,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     profileName: {
       fontSize: normalizeFontSize(18),
-      fontWeight: 'bold',
+      fontFamily: selectedTheme.bodyFont,
       color: selectedTheme.textColor,
       marginBottom: 4,
     },
     profileEmail: {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.primary,
+      fontFamily: selectedTheme.bodyFont,
     },
     profileBirthDate: {
       fontSize: normalizeFontSize(16), // Adjust size based on design
       color: selectedTheme.textColor, // Use the dynamic theme's text color
+      fontFamily: selectedTheme.bodyFont,
       marginTop: 10, // Add some spacing between elements
     },
     languageButtons: {
@@ -404,6 +407,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     dropdownText: {
       color: selectedTheme.textColor,
+      fontFamily: selectedTheme.bodyFont,
       marginLeft: 10,
     },
     // Add these to commonStyles in your existing StyleSheet
@@ -424,7 +428,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,
     },
-
     shadow: {
       shadowColor: SHARED.shadow.color, // Reuse shared shadow properties
       shadowOffset: SHARED.shadow.offset,
@@ -440,12 +443,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     storeName: {
       fontSize: normalizeFontSize(10),
-      fontWeight: 'bold',
       color: selectedTheme.textColor,
+      fontFamily: selectedTheme.bodyFont,
     },
     storeLocation: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.secondary,
+      fontFamily: selectedTheme.bodyFontSlim,
     },
     storeBox: {
       backgroundColor: selectedTheme.backgroundColor,
@@ -473,7 +477,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     productName: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textColor,
-      fontWeight: 'bold',
+      fontFamily: selectedTheme.bodyFont,
     },
     productImage: {
       width: 80, // Set a fixed width for the product image
@@ -490,19 +494,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     productPrice: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.price, // Highlight the price using the primary color
-      fontWeight: 'bold', // Make the price bold
+      fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     saleProductPrice: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.salePrice, // Highlight the price using the primary color
-      fontWeight: 'bold', // Make the price bold
+      fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     discountedProductPrice: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.discountedPrice, // Highlight the price using the primary color
-      fontWeight: 'bold', // Make the price bold
+      fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     likeRow: {
@@ -520,6 +524,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginLeft: 10, // Space between icon and text
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textColor, // Dynamic text color
+      fontFamily: selectedTheme.bodyFont,
     },
     
   });
