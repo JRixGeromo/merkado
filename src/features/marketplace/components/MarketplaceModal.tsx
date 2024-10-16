@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Modal, FlatList } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
-import { theme } from '../../../styles/theme'; // Import theme
+import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 import CustomButton from '../../../components/CustomButton'; // Import your CustomButton component
 
@@ -32,8 +32,9 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   const [activeSection, setActiveSection] = useState<'categories' | 'brands' | 'vendors' | 'featured' | 'promos' | 'onSale' | 'newProducts' | null>('categories');
   const { t } = useTranslation();
 
-  const themeType = useAppSelector((state) => state.theme.theme); // Get current theme
-  const commonStyle = commonStyles(themeType);
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
 
   // Render each item in the list
   const renderListItem = ({ item }: { item: string }) => (
@@ -85,14 +86,16 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
             <CustomButton
               title={item.label}
               onPress={() => setActiveSection(item.key as any)}
-              style={commonStyle.sectionButton}
+              backgroundColor={commonStyle.sectionButton.backgroundColor} // Set background color dynamically
+              style={[commonStyle.sectionButton, { marginHorizontal: 10 }]} // You can pass an array of styles
+              borderRadius={20} // Set borderRadius
+              color={selectedTheme.light}
             />
           )}
           keyExtractor={(item) => item.key}
           showsHorizontalScrollIndicator={false}
           style={{ maxHeight: 60 }}  // Set the max height for the FlatList
         />
-
 
         {/* Dynamic Content Based on Selected Section */}
         <FlatList
@@ -107,7 +110,8 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
           title={t('Close')}
           onPress={onClose}
           backgroundColor={commonStyle.closeButton.backgroundColor} // Use theme for close button color
-          style={commonStyle.closeButton} // Apply any additional close button styles
+          style={[commonStyle.closeButton, { marginTop: 20 }]} // Apply any additional close button styles
+          borderRadius={10} // You can set this dynamically too
         />
       </View>
     </Modal>

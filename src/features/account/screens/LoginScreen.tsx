@@ -46,14 +46,18 @@ const LoginScreen = () => {
   const [loading, setLoading] = useState(false); // Add loading state
 
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
+
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
-    
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
   const { t } = useTranslation(); // Initialize translation
 
   // Apollo useMutation hook for login
   const [loginUser] = useMutation(LOGIN_USER);
+
+  
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -108,10 +112,6 @@ const LoginScreen = () => {
   }, []);
 
   
-  const commonStyle = commonStyles(theme);
-  const { buttonText, container } = commonStyle;
-  const selectedTheme = appTheme[theme];
-
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}

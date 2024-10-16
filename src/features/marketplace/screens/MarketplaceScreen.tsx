@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, FlatList, Image, Dimensions, TouchableOpacity, ListRenderItem, TextInput } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
-import { theme } from '../../../styles/theme'; // Import theme
+import { theme as appTheme } from '../../../styles/theme';
 import MarketplaceModal from '../components/MarketplaceModal'; // Import reusable modal component
 import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
 import { useTranslation } from 'react-i18next'; // Import translation hook
@@ -22,9 +22,11 @@ type Product = {
 };
 
 const MarketplaceScreen = () => {
-  const themeType = useAppSelector((state) => state.theme.theme); // Get current theme
-  const styles = commonStyles(themeType);
-  const selectedTheme = theme[themeType];
+  
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
+
   const { t } = useTranslation(); // Initialize translation
   
   const [isModalVisible, setModalVisible] = useState(false);
@@ -75,18 +77,18 @@ const MarketplaceScreen = () => {
 
   // Render each product in the list
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
-    <View style={styles.productBox}>
-      <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
-      <Text style={styles.productName}>{item.name}</Text>
-      <Text style={styles.productPrice}>₱{item.price}</Text>
+    <View style={commonStyle.productBox}>
+      <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
+      <Text style={commonStyle.productName}>{item.name}</Text>
+      <Text style={commonStyle.productPrice}>₱{item.price}</Text>
 
-      <View style={styles.infoRow}>
+      <View style={commonStyle.infoRow}>
         <Icon name="star" size={16} color="gold" />
-        <Text style={styles.infoText}>{item.rating}</Text>
+        <Text style={commonStyle.infoText}>{item.rating}</Text>
       </View>
 
       {/* Wrap heart icon and likes count in a row */}
-      <View style={styles.likeRow}>
+      <View style={commonStyle.likeRow}>
         <TouchableOpacity onPress={() => toggleProductLike(item.id)}>
           <Icon
             name={likedProducts[item.id] ? 'heart' : 'heart-outline'}
@@ -94,20 +96,20 @@ const MarketplaceScreen = () => {
             color={likedProducts[item.id] ? 'red' : selectedTheme.iconColor}
           />
         </TouchableOpacity>
-        <Text style={styles.infoText}>{item.likes + (likedProducts[item.id] ? 1 : 0)} Likes</Text>
+        <Text style={commonStyle.infoText}>{item.likes + (likedProducts[item.id] ? 1 : 0)} Likes</Text>
       </View>
     </View>
   );
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.section}>
+      <View style={commonStyle.section}>
         {/* Search Container */}
-        <View style={styles.searchContainer}>
-          <TouchableOpacity style={styles.headerIcon} onPress={toggleModal}>
+        <View style={commonStyle.searchContainer}>
+          <TouchableOpacity style={commonStyle.headerIcon} onPress={toggleModal}>
             <Icon name="menu" size={24} color={selectedTheme.iconColor} />
           </TouchableOpacity>
-          <TextInput style={styles.searchInput} placeholder="Search" placeholderTextColor="gray" />
+          <TextInput style={commonStyle.searchInput} placeholder="Search" placeholderTextColor="gray" />
         </View>
 
         {/* Reusable Modal Component */}
@@ -125,8 +127,8 @@ const MarketplaceScreen = () => {
 
         {/* Featured Products Section */}
         {categories.map((category, index) => (
-          <View key={index} style={styles.section}>
-            <Text style={styles.sectionTitle}>{category}</Text>
+          <View key={index} style={commonStyle.section}>
+            <Text style={commonStyle.sectionTitle}>{category}</Text>
             <FlatList
               data={products[category]}
               renderItem={renderProductItem}

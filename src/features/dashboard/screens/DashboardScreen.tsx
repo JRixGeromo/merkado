@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
-import { theme } from '../../../styles/theme'; // Import the theme object
+import { theme as appTheme } from '../../../styles/theme';
 import Icon from 'react-native-vector-icons/Ionicons'; // Icon library for likes and ratings
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -29,9 +29,10 @@ type Store = {
   likes: number; // Number of likes
 };
 const DashboardScreen = () => {
-  const themeType = useAppSelector(state => state.theme.theme); // Access theme from Redux
-  const styles = commonStyles(themeType);
-  const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
+
   const { t } = useTranslation(); // Initialize translation
 
   const carouselRef = useRef<Carousel<any>>(null);
@@ -76,25 +77,25 @@ const DashboardScreen = () => {
 
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
-    <View style={styles.slide}>
-      <Image source={{ uri: item.imageUrl }} style={styles.promoImage} />
+    <View style={commonStyle.slide}>
+      <Image source={{ uri: item.imageUrl }} style={commonStyle.promoImage} />
     </View>
   );
 
   // Render store item for FlatList
   const renderStoreItem: ListRenderItem<Store> = ({ item }) => (
-    <View style={styles.productBox}>
-      <Image source={{ uri: item.imageUrl }} style={styles.storeImage} />
-      <Text style={styles.storeName}>{item.name}</Text>
-      <Text style={styles.storeLocation}>{item.location}</Text>
+    <View style={commonStyle.productBox}>
+      <Image source={{ uri: item.imageUrl }} style={commonStyle.storeImage} />
+      <Text style={commonStyle.storeName}>{item.name}</Text>
+      <Text style={commonStyle.storeLocation}>{item.location}</Text>
 
-      <View style={styles.infoRow}>
+      <View style={commonStyle.infoRow}>
         <Icon name="star" size={16} color="gold" />
-        <Text style={styles.infoText}>{item.rating}</Text>
+        <Text style={commonStyle.infoText}>{item.rating}</Text>
       </View>
 
       {/* Wrap heart icon and likes count in a row */}
-      <View style={styles.likeRow}>
+      <View style={commonStyle.likeRow}>
         <TouchableOpacity onPress={() => toggleStoreLike(item.id)}>
           <Icon
             name={likedStores[item.id] ? 'heart' : 'heart-outline'}
@@ -102,25 +103,25 @@ const DashboardScreen = () => {
             color={likedStores[item.id] ? 'red' : selectedTheme.iconColor}
           />
         </TouchableOpacity>
-        <Text style={styles.infoText}>{item.likes + (likedStores[item.id] ? 1 : 0)} Likes</Text>
+        <Text style={commonStyle.infoText}>{item.likes + (likedStores[item.id] ? 1 : 0)} Likes</Text>
       </View>
     </View>
   );
 
   // Render product item for FlatList
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
-    <View style={styles.productBox}>
-      <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
-      <Text style={styles.productName}>{item.name}</Text>
-      <Text style={styles.productPrice}>₱{item.price}</Text>
+    <View style={commonStyle.productBox}>
+      <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
+      <Text style={commonStyle.productName}>{item.name}</Text>
+      <Text style={commonStyle.productPrice}>₱{item.price}</Text>
 
-      <View style={styles.infoRow}>
+      <View style={commonStyle.infoRow}>
         <Icon name="star" size={16} color="gold" />
-        <Text style={styles.infoText}>{item.rating}</Text>
+        <Text style={commonStyle.infoText}>{item.rating}</Text>
       </View>
 
       {/* Wrap heart icon and likes count in a row */}
-      <View style={styles.likeRow}>
+      <View style={commonStyle.likeRow}>
         <TouchableOpacity onPress={() => toggleProductLike(item.id)}>
           <Icon
             name={likedProducts[item.id] ? 'heart' : 'heart-outline'}
@@ -128,7 +129,7 @@ const DashboardScreen = () => {
             color={likedProducts[item.id] ? 'red' : selectedTheme.iconColor}
           />
         </TouchableOpacity>
-        <Text style={styles.infoText}>{item.likes + (likedProducts[item.id] ? 1 : 0)} Likes</Text>
+        <Text style={commonStyle.infoText}>{item.likes + (likedProducts[item.id] ? 1 : 0)} Likes</Text>
       </View>
     </View>
   );
@@ -136,25 +137,25 @@ const DashboardScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={styles.section}>
+      <View style={commonStyle.section}>
       {/* Search Bar */}
-      <View style={styles.searchContainer}>
+      <View style={commonStyle.searchContainer}>
           {/* Categories Icon Button */}
-          <TouchableOpacity style={styles.headerIcon}>
+          <TouchableOpacity style={commonStyle.headerIcon}>
             <Icon name="menu" size={24} color={selectedTheme.iconColor} />
           </TouchableOpacity>
 
           {/* Search Bar */}
           <TextInput
-            style={styles.searchInput}
+            style={commonStyle.searchInput}
             placeholder="Search"
             placeholderTextColor="gray"
           />
         </View>
 
       {/* Promo Carousel */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>{t('spotlightOffers')}</Text>
+      <View style={commonStyle.section}>
+        <Text style={commonStyle.sectionTitle}>{t('spotlightOffers')}</Text>
         <Carousel
           ref={carouselRef}
           data={promoImages}
@@ -170,8 +171,8 @@ const DashboardScreen = () => {
       </View>
 
       {/* Featured Stores */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>{t('Featured Stores')}</Text>
+      <View style={commonStyle.section}>
+        <Text style={commonStyle.sectionTitle}>{t('Featured Stores')}</Text>
         <FlatList
           data={featuredStores}
           keyExtractor={(item) => item.id.toString()}
@@ -183,8 +184,8 @@ const DashboardScreen = () => {
       </View>
 
       {/* Featured Products */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>{t('Featured Products')}</Text>
+      <View style={commonStyle.section}>
+        <Text style={commonStyle.sectionTitle}>{t('Featured Products')}</Text>
         <FlatList
           data={featuredProducts}
           keyExtractor={(item) => item.id.toString()}

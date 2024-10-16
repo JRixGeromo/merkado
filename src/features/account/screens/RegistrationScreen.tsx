@@ -59,11 +59,15 @@ const RegistrationScreen = () => {
   const [birthdate, setBirthdate] = useState(new Date());
   const [gender, setGender] = useState(''); // Default value for gender
 
-  const theme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation();
+
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
+
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
@@ -103,17 +107,13 @@ const RegistrationScreen = () => {
     }
   };
 
-  const commonStyle = commonStyles(theme);
-  const { buttonText, container } = commonStyle;
-  const selectedTheme = appTheme[theme];
-
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={[container]}>
+        <View style={commonStyle.container}>
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}

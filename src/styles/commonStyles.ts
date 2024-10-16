@@ -586,7 +586,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingRight: 8,
       marginHorizontal: 5,
       backgroundColor: selectedTheme.primary, // Theme-based background color
-      borderRadius: 10,
       height: 30,
       alignItems: 'center',
     },
@@ -614,7 +613,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     closeButton: {
       padding: 10,
       backgroundColor: selectedTheme.danger, // Theme-based close button background
-      borderRadius: 20,
       alignItems: 'center',
     },
     closeButtonText: {

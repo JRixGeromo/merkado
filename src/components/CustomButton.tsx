@@ -18,7 +18,8 @@ interface CustomButtonProps {
   color?: string;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
-  width?: number | string;  // Add an optional width prop
+  width?: number | string;  // Optional width prop
+  borderRadius?: number; // Optional borderRadius prop
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -29,10 +30,14 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled = false,
   style = {},
   width = 'auto',  // Default width is auto, can be overridden
+  borderRadius = 15,  // Default borderRadius is 5, can be overridden
 }) => {
-  const currentTheme = useAppSelector((state) => state.theme.theme);
-  const selectedTheme = appTheme[currentTheme];
-  const commonStyle = commonStyles(currentTheme); // Generate common styles based on the theme
+  
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
+  const commonStyle = commonStyles(theme);
+  const selectedTheme = appTheme[theme];
+
+
   const buttonBackgroundColor =
     backgroundColor || selectedTheme.buttonBackgroundColor;
   const buttonTextColor = color || selectedTheme.primary;
@@ -46,6 +51,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
           paddingVertical: 10,
           opacity: disabled ? 0.6 : 1,
           width,  // Apply custom width
+          borderRadius,  // Apply custom borderRadius
         },
         style,
       ]}
