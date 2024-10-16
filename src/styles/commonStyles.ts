@@ -83,7 +83,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 20, // Add space between logo and text
     },
     splashText: {
-      fontSize: 24,
+      fontSize: normalizeFontSize(20),
       fontWeight: 'bold',
       color: selectedTheme.primary, // Use primary color from the theme
       marginTop: 10, // Add margin between the logo and the text
@@ -106,33 +106,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
         default: '90%', // Width for mobile
       }),
     },
-    button: {
-      padding: SHARED.buttonPadding, // Button padding from shared settings
-      borderRadius: SHARED.borderRadius, // Border radius from shared settings
-      backgroundColor: selectedTheme.primary, // Primary button background color from theme
-      alignItems: 'center',
-      justifyContent: 'center', // Center the text/icon in the button
-      shadowColor: SHARED.shadow.color, // Shadow for depth
-      shadowOffset: SHARED.shadow.offset,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation, // Shadow for Android
-      width: Platform.select({
-        web: '40%', // Width for desktop
-        default: '80%', // Width for mobile
-      }),
-    },
-    socialButton: {
-      ...SHARED, // Reuse shared shadow and padding
-      flexDirection: 'row', // Row layout for icon + text
-      width: '48%', // Width for social buttons
-    },
-    googleButton: {
-      backgroundColor: selectedTheme.googleButtonColor, // Google button color
-    },
-    facebookButton: {
-      backgroundColor: selectedTheme.facebookButtonColor, // Facebook button color
-    },
     inputContainer: { 
       flexDirection: 'row',
       alignItems: 'center',
@@ -146,19 +119,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: normalizeHeight(40),
       paddingHorizontal: 10,
     },
-    
     input: {
       flex: 1,
       fontSize: normalizeFontSize(16),
       color: selectedTheme.primary, // Input text color from selected theme
-    },
-
-    
-
-    buttonText: {
-      fontSize: normalizeFontSize(16),
-      fontFamily: selectedTheme.buttonFont,  // Apply button font from theme
-      color: selectedTheme.primary,
     },
     bodyText: {
       fontSize: normalizeFontSize(16),
@@ -195,9 +159,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 20,
       textAlign: 'center',
     },
-    socialButtonText: {
-      color: selectedTheme.light // Social button text color from selected theme
-    },
     cardText: {
       fontSize: normalizeFontSize(14), // Font size for text inside card
       color: selectedTheme.primary, // Text color from selected theme
@@ -233,20 +194,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 10,
       marginLeft: 5,
     },
-    logoutButton: {
-      backgroundColor: selectedTheme.danger, // Logout button color (e.g., red for danger)
-      padding: SHARED.buttonPadding,
-      borderRadius: SHARED.borderRadius,
-      marginTop: 30,
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '80%',
-      shadowColor: SHARED.shadow.color,
-      shadowOffset: SHARED.shadow.offset,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation, // Shadow for Android
-    },
     logoutText: {
       fontSize: normalizeFontSize(16),
       color: '#fff', // Text color for logout button
@@ -268,11 +215,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flexDirection: 'row', // Align icon and title in a row
       alignItems: 'center', // Vertically align items in header
       marginBottom: 10, // Margin between header and content
-    },
-    toggleButtonContainer: {
-      flexDirection: 'row', // Align the text and the icon in a row
-      justifyContent: 'space-between', // Space between the text and the toggle icon
-      alignItems: 'center', // Vertically center the items
     },
     slide: {
       borderRadius: SHARED.borderRadius,  // Rounded corners
@@ -333,17 +275,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderBottomWidth: 1,
       borderColor: selectedTheme.primary, // Use the primary color for the border
     },
-    buttonBackgroundColor: { 
-      backgroundColor: selectedTheme.buttonBackgroundColor, // Ensure the background color is from the theme
-    },
     inputBackgroundColor: { 
       backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
     },
-    // closeButton: {
-    //   marginTop: 20,
-    //   alignItems: 'center',
-    // },
-
     profileHeader: {
       alignItems: 'center',
       marginBottom: 30,
@@ -370,16 +304,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.primary, // Use the dynamic theme's text color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 10, // Add some spacing between elements
-    },
-    languageButtons: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginTop: 10,
-    },
-    languageButtonsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
     },
     languageContainer: {
       marginTop: 10, // Add spacing at the top for the language container
@@ -533,12 +457,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     categoryScroll: {
       marginVertical: 10,
     },
-    categoryButton: {
-      padding: 10,
-      borderRadius: 20,
-      backgroundColor: selectedTheme.primary,
-      marginRight: 10,
-    },
     categoryText: {
       color: '#fff',
       fontWeight: 'bold',
@@ -560,14 +478,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderWidth: 0.5,
       borderColor: selectedTheme.borderColor, // Add border using theme color
     },
-    iconButton: {
-      padding: 10, // Add some padding for the button
-      backgroundColor: selectedTheme.inputBackgroundColor, // Icon button background color from theme
-      borderRadius: 10, // Rounded corners for the icon button
-      borderWidth: 2, // Optional: Add a border around the icon
-      borderColor: selectedTheme.iconColor, // Border color from theme
-      marginRight: 10, // Space between icon and search input
-    },
     searchInput: {
       flex: 1, // Make the search input take up the remaining space
       height: 40, // Height of the search input
@@ -578,23 +488,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.backgroundColor, // Background color of the input
       color: selectedTheme.primary, // Text color from theme
     },  
-
-    sectionButton: {
-      paddingTop: 4,
-      paddingBottom: 4,
-      paddingLeft: 8,
-      paddingRight: 8,
-      marginHorizontal: 5,
-      backgroundColor: selectedTheme.primary, // Theme-based background color
-      height: 30,
-      alignItems: 'center',
-    },
-    sectionButtonText: {
-      color: selectedTheme.primary, // Theme-based text color
-      fontSize: 16,
-    },
     modalTitle: {
-      fontSize: 20,
+      fontSize: normalizeFontSize(10),
       fontWeight: 'bold',
       color: selectedTheme.primary, // Theme-based text color for the title
       marginBottom: 15,
@@ -610,27 +505,68 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: 20,
       backgroundColor: selectedTheme.backgroundColor, // Theme-based background for modal
     },
-    closeButton: {
-      padding: 10,
-      backgroundColor: selectedTheme.danger, // Theme-based close button background
-      alignItems: 'center',
-    },
-    closeButtonText: {
-      color: '#fff',
-      fontSize: 16,
-    },
+
     horizontalScroll: {
       paddingHorizontal: 10,
       marginVertical: 10,
+    },
+    sectionContent: {
+      flex: 1,
+    },
+    
+    ////
+    searchButton: {
+      paddingTop: 4,
+      paddingBottom: 4,
+      paddingLeft: 8,
+      paddingRight: 8,
+      backgroundColor: selectedTheme.primary, // Theme-based background color
+      height: 30,
+    },
+    button: {
+      padding: SHARED.buttonPadding, // Button padding from shared settings
+      borderRadius: SHARED.borderRadius, // Border radius from shared settings
+      backgroundColor: selectedTheme.primary, // Primary button background color from theme
+      alignItems: 'center',
+      justifyContent: 'center', // Center the text/icon in the button
+      shadowColor: SHARED.shadow.color, // Shadow for depth
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Shadow for Android
+      width: Platform.select({
+        web: '40%', // Width for desktop
+        default: '80%', // Width for mobile
+      }),
+    },
+    socialButton: {
+      ...SHARED, // Reuse shared shadow and padding
+      flexDirection: 'row', // Row layout for icon + text
+      width: '48%', // Width for social buttons
+    },
+    googleButton: {
+      backgroundColor: selectedTheme.googleButtonColor, // Google button color
+    },
+    facebookButton: {
+      backgroundColor: selectedTheme.facebookButtonColor, // Facebook button color
+    },
+
+    sectionButtonText: {
+      color: selectedTheme.primary, // Theme-based text color
+      fontSize: normalizeFontSize(10),
     },
     sectionButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginBottom: 20,
     },
-    sectionContent: {
-      flex: 1,
+    toggleButtonContainer: {
+      flexDirection: 'row', // Align the text and the icon in a row
+      justifyContent: 'space-between', // Space between the text and the toggle icon
+      alignItems: 'center', // Vertically center the items
     },
-    
+    socialButtonText: {
+      color: selectedTheme.light // Social button text color from selected theme
+    },
   });
 };

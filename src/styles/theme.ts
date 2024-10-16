@@ -1,70 +1,94 @@
 export interface ThemeType {
-  primary: string;
-  secondary: string;
-  success: string;
-  info: string;
-  placeHolderInfo: string;
-  warning: string;
-  error: string;
-  danger: string;
-  disabled: string;
-  dark: string;
-  black: string;
-  light: string;
-  highlight: string;
-  link: string;
-  gray: string;
-  
+  textPrimary: string;
+  textSecondary: string;
+  textPlaceHolderInfo: string;
+  textDisabled: string;
+  textDark: string;
+  textBlack: string;
+  textLight: string;
+  textLink: string;
+  textGray: string;
+
   fullBackgrounColor: string;
   googleButtonColor: string;
   facebookButtonColor: string;
-  backgroundColor: string;
-  buttonBackgroundColor: string;
-  borderColor: string;
+  
+  buttonPrimary: string;
+  buttonSecondary: string;
+  buttonSuccess: string;
+  buttonInfo: string;
+  buttonWarning: string;
+  buttonError: string;
+  buttonDanger: string;
+  buttonDisabled: string;
+  buttonDark: string;
+  buttonBlack: string;
+  buttonLight: string;
+  buttonHighlight: string;
+  buttonLink: string;
+  buttonGray: string;
+
+  
+  buttonBorderPrimary: string;
+  buttonBorderBlack: string;
+  buttonBorderGray: string;
+  buttonBorderLight: string;
+
   iconColor: string;
-  inputBackgroundColor: string;
   cardBackground: string;
   modalOverlay: string;
   loader: string;
   
-  headingFont: string; 
-  bodyFont: string; 
+  headingFont: string;
+  bodyFont: string;
   bodyFontSlim: string;
   buttonFont: string;
   tabFont: string;
+
   alternativeFont1: string;
   alternativeFont2: string;
   alternativeFont3: string;
 }
 
 const lightTheme: ThemeType = {
-  primary: '#4CAF50',
-  secondary: '#000000',
-  success: '#38b000',
-  info: '#219ebc',
-  placeHolderInfo: '#9caea9',
-  warning: '#fb8500',
-  error: '#c1121f',
-  danger: '#fcbf49',
-  disabled: '#ced4da',
-  dark: '#343a40',
-  black: '#000000',
-  light: '#ffffff',
-  highlight: '#9d0208',
-  link: '#38b000',
-  gray: '#e6e6ea',
+  textPrimary: '#4CAF50',
+  textSecondary: '#000000',
+  textPlaceHolderInfo: '#9caea9',
+  textDisabled: '#ced4da',
+  textDark: '#343a40',
+  textBlack: '#000000',
+  textLight: '#ffffff',
+  textLink: '#38b000',
+  textGray: '#38b000',
 
   fullBackgrounColor: '#e0e1dd',
   googleButtonColor: '#4285F4',
-  facebookButtonColor: '#3b5998',
-  backgroundColor: '#fff',
-  buttonBackgroundColor: '#4CAF50',
-  borderColor: '#4CAF50',
-  iconColor: "#70e000",
-  inputBackgroundColor: '#edeec9',
-  cardBackground: '#f8f9fa',
-  modalOverlay: 'rgba(0, 0, 0, 0.5)',
-  loader: "#000000",
+  facebookButtonColor: '#8d99ae',
+  
+  buttonPrimary: '#4CAF50',
+  buttonSecondary: '#ffffff',
+  buttonSuccess: '#8ac926',
+  buttonInfo: '#00a8e8',
+  buttonWarning: '#fb6107',
+  buttonError: '#ba181b',
+  buttonDanger: '#ba181b',
+  buttonDisabled: '#b8bdb5',
+  buttonDark: '#393d3f',
+  buttonBlack: '#000000',
+  buttonLight: '#ffffff',
+  buttonHighlight: '#f9c74f',
+  buttonLink: '#38b000',
+  buttonGray: '#e6e6ea',
+
+  buttonBorderPrimary: '#4CAF50',
+  buttonBorderBlack: '#393d3f',
+  buttonBorderGray: '#e6e6ea',
+  buttonBorderLight: '#ffffff',
+  
+  iconColor: "#7cb518",
+  cardBackground: '#444',
+  modalOverlay: 'rgba(255, 255, 255, 0.3)',
+  loader: "#ffffff",
   
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',  
@@ -75,34 +99,46 @@ const lightTheme: ThemeType = {
   alternativeFont1: 'QwitcherGrypen-Regular', 
   alternativeFont2: 'LondrinaSketch-Regular', 
   alternativeFont3: 'GreatVibes-Regular', 
+
 };
 
 const darkTheme: ThemeType = {
-
-  primary: '#f5f1ed',
-  secondary: '#dee2e6',
-  success: '#38b000',
-  info: '#219ebc',
-  placeHolderInfo: '#6f6866',
-  warning: '#fb8500',
-  error: '#c1121f',
-  danger: '#fcbf49',
-  disabled: '#ced4da',
-  dark: '#343a40',
-  black: '#000000',
-  light: '#ffffff',
-  highlight: '#fcbf49',
-  link: '#38b000',
-  gray: '#e6e6ea',
+  textPrimary: '#f5f1ed',
+  textSecondary: '#dee2e6',
+  textPlaceHolderInfo: '#6f6866',
+  textDisabled: '#ced4da',
+  textDark: '#343a40',
+  textBlack: '#000000',
+  textLight: '#ffffff',
+  textLink: '#38b000',
+  textGray: '#8d99ae',
 
   fullBackgrounColor: '#000000',
+
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  backgroundColor: '#333',
-  buttonBackgroundColor: '#008000',
-  borderColor: '#e6e6e6',
+  
+  buttonPrimary: '#4CAF50',
+  buttonSecondary: '#ffffff',
+  buttonSuccess: '#8ac926',
+  buttonInfo: '#00a8e8',
+  buttonWarning: '#fb6107',
+  buttonError: '#ba181b',
+  buttonDanger: '#ba181b',
+  buttonDisabled: '#b8bdb5',
+  buttonDark: '#393d3f',
+  buttonBlack: '#000000',
+  buttonLight: '#ffffff',
+  buttonHighlight: '#f9c74f',
+  buttonLink: '#38b000',
+  buttonGray: '#e6e6ea',
+  
+  buttonBorderPrimary: '#4CAF50',
+  buttonBorderBlack: '#393d3f',
+  buttonBorderGray: '#e6e6ea',
+  buttonBorderLight: '#ffffff',
+
   iconColor: "#7cb518",
-  inputBackgroundColor: '#000000',
   cardBackground: '#444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",

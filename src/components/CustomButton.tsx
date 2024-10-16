@@ -20,6 +20,7 @@ interface CustomButtonProps {
   style?: StyleProp<ViewStyle>;
   width?: number | string;  // Optional width prop
   borderRadius?: number; // Optional borderRadius prop
+  textSize?: number;  // Optional textSize prop for font size
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -31,24 +32,23 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   style = {},
   width = 'auto',  // Default width is auto, can be overridden
   borderRadius = 15,  // Default borderRadius is 5, can be overridden
+  textSize = 16,  // Default text size, can be overridden
 }) => {
-  
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
 
-
   const buttonBackgroundColor =
     backgroundColor || selectedTheme.buttonBackgroundColor;
   const buttonTextColor = color || selectedTheme.primary;
-  
+
   return (
     <TouchableOpacity
       style={[
         commonStyle.button,
         {
           backgroundColor: buttonBackgroundColor,
-          paddingVertical: 10,
+          paddingVertical: 8,
           opacity: disabled ? 0.6 : 1,
           width,  // Apply custom width
           borderRadius,  // Apply custom borderRadius
@@ -61,10 +61,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     >
       <Text
         style={[
-          commonStyle.buttonText,
           {
             color: buttonTextColor,
-            fontSize: normalizeFontSize(16),
+            fontSize: normalizeFontSize(textSize),  // Use dynamic text size
           },
         ]}
       >

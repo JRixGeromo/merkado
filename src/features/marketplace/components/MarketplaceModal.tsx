@@ -86,10 +86,11 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
             <CustomButton
               title={item.label}
               onPress={() => setActiveSection(item.key as any)}
-              backgroundColor={commonStyle.sectionButton.backgroundColor} // Set background color dynamically
-              style={[commonStyle.sectionButton, { marginHorizontal: 10 }]} // You can pass an array of styles
+              backgroundColor={selectedTheme.light} // Use theme for close button color
+              style={[commonStyle.searchButton, { marginHorizontal: 10 }]} // You can pass an array of styles
               borderRadius={20} // Set borderRadius
               color={selectedTheme.light}
+              textSize={12}  // Custom text size
             />
           )}
           keyExtractor={(item) => item.key}
@@ -109,9 +110,9 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
         <CustomButton
           title={t('Close')}
           onPress={onClose}
-          backgroundColor={commonStyle.closeButton.backgroundColor} // Use theme for close button color
-          style={[commonStyle.closeButton, { marginTop: 20 }]} // Apply any additional close button styles
+          backgroundColor={selectedTheme.highlight} // Use theme for close button color
           borderRadius={10} // You can set this dynamically too
+          color={selectedTheme.light}
         />
       </View>
     </Modal>
