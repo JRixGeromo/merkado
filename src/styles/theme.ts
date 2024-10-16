@@ -6,6 +6,7 @@ export interface ThemeType {
   textDark: string;
   textBlack: string;
   textLight: string;
+  textHighlight: string;
   textLink: string;
   textGray: string;
 
@@ -60,6 +61,7 @@ const lightTheme: ThemeType = {
   textDark: '#343a40',
   textBlack: '#000000',
   textLight: '#ffffff',
+  textHighlight: '#800e13',
   textLink: '#38b000',
   textGray: '#38b000',
 
@@ -90,7 +92,7 @@ const lightTheme: ThemeType = {
   
   tabBarBackgroundColor: '#ffffff',
   iconColor: "#7cb518",
-  cardBackground: '#444',
+  cardBackground: '#ffffff',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
   
@@ -114,6 +116,7 @@ const darkTheme: ThemeType = {
   textDark: '#e6e6e9',
   textBlack: '#000000',
   textLight: '#ffffff',
+  textHighlight: '#ff3f00',
   textLink: '#38b000',
   textGray: '#8d99ae',
 
@@ -144,7 +147,7 @@ const darkTheme: ThemeType = {
 
   tabBarBackgroundColor: '#333533',
   iconColor: "#7cb518",
-  cardBackground: '#444',
+  cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
   

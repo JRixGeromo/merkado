@@ -74,7 +74,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       justifyContent: 'center', // Centers content vertically
       alignItems: 'center', // Centers content horizontally
-      backgroundColor: selectedTheme.backgroundColor, // Background color from the theme
+      backgroundColor: selectedTheme.cardBackground, // Background color from the theme
     },
     logo: {
       width: 150, // Adjust width based on design
@@ -85,7 +85,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     splashText: {
       fontSize: normalizeFontSize(20),
       fontWeight: 'bold',
-      color: selectedTheme.primary, // Use primary color from the theme
+      color: selectedTheme.textPrimary, // Use primary color from the theme
       marginTop: 10, // Add margin between the logo and the text
     },
     loader: {
@@ -95,7 +95,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     box: {
       padding: SHARED.padding,
       borderRadius: SHARED.borderRadius,
-      backgroundColor: selectedTheme.backgroundColor, // Box background from selected theme
+      backgroundColor: selectedTheme.cardBackground, // Box background from selected theme
       shadowColor: SHARED.shadow.color, // Apply shadow settings
       shadowOffset: SHARED.shadow.offset,
       shadowOpacity: SHARED.shadow.opacity,
@@ -111,7 +111,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
       padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
-      backgroundColor: selectedTheme.backgroundColor, // Check this color
+      backgroundColor: selectedTheme.cardBackground, // Check this color
       marginBottom: 15,
       borderWidth: 1,
       borderColor: '#ddd',
@@ -122,24 +122,24 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     input: {
       flex: 1,
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.primary, // Input text color from selected theme
+      color: selectedTheme.textPrimary, // Input text color from selected theme
     },
     bodyText: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.bodyFont,  // Apply body font from theme
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
     },
     title: {
       fontSize: normalizeFontSize(26),
       fontFamily: selectedTheme.headingFont, // Apply heading font from theme
       fontWeight: 'bold',
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
       textAlign: 'center',
     },
     cardHeaderTitle: {
       fontSize: normalizeFontSize(18),
       fontFamily: selectedTheme.headingFont, // Use the heading font for card titles
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
     },
     paragraph: {
       fontSize: normalizeFontSize(14),
@@ -155,19 +155,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     orText: {
       fontSize: normalizeFontSize(14),
-      color: selectedTheme.primary, // Text color for "Or login with"
+      color: selectedTheme.textPrimary, // Text color for "Or login with"
       marginBottom: 20,
       textAlign: 'center',
     },
     cardText: {
       fontSize: normalizeFontSize(14), // Font size for text inside card
-      color: selectedTheme.primary, // Text color from selected theme
+      color: selectedTheme.textPrimary, // Text color from selected theme
       marginTop: 5, // Space between lines of text
       marginLeft: 10, // Space between icon and text in header
     },
     editLink: {
       fontSize: normalizeFontSize(14), // Font size for the "Edit" link
-      color: selectedTheme.link, // Link color based on theme
+      color: selectedTheme.textLink, // Link color based on theme
       textAlign: 'right', // Align edit link to the right
       marginTop: 10, // Space above the edit link
     },
@@ -188,7 +188,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     sectionTitle: {
       fontSize: normalizeFontSize(14), // Default size for icons
-      color: selectedTheme.secondary,
+      color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.headingFont,
       //fontWeight: 'bold',
       marginBottom: 10,
@@ -228,26 +228,26 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     todayTextColor: {
-      color: selectedTheme.primary, // Primary color for today's date
+      color: selectedTheme.textPrimary, // Primary color for today's date
     },
     selectedDayBackgroundColor: {
-      backgroundColor: selectedTheme.primary, // Background for selected day
+      backgroundColor: selectedTheme.textPrimary, // Background for selected day
     },
     dayTextColor: {
-      color: selectedTheme.primary, // Text color for day numbers
+      color: selectedTheme.textPrimary, // Text color for day numbers
     },
     textDisabledColor: {
       color: '#d9e1e8', // Disabled text color for unselectable days
     },
     monthTextColor: {
-      color: selectedTheme.primary, // Color for the month header
+      color: selectedTheme.textPrimary, // Color for the month header
     },
     arrowColor: {
-      color: selectedTheme.primary, // Color for navigation arrows
+      color: selectedTheme.textPrimary, // Color for navigation arrows
     },
     modal: {
-      backgroundColor: selectedTheme.backgroundColor, // Background for dropdown based on theme
-      borderColor: selectedTheme.primary, // Border color matching the theme's primary color
+      backgroundColor: selectedTheme.cardBackground, // Background for dropdown based on theme
+      borderColor: selectedTheme.textPrimary, // Border color matching the theme's primary color
       borderWidth: 1,
       borderRadius: SHARED.borderRadius,
       width: '80%',
@@ -258,7 +258,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     modalText: {
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.primary, // Text color from selected theme
+      color: selectedTheme.textPrimary, // Text color from selected theme
       fontFamily: selectedTheme.bodyFont,
     },
     modalContainer: {
@@ -273,7 +273,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     option: {
       padding: 10,
       borderBottomWidth: 1,
-      borderColor: selectedTheme.primary, // Use the primary color for the border
+      borderColor: selectedTheme.textPrimary, // Use the primary color for the border
     },
     inputBackgroundColor: { 
       backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
@@ -291,17 +291,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     profileName: {
       fontSize: normalizeFontSize(18),
       fontFamily: selectedTheme.bodyFont,
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
       marginBottom: 4,
     },
     profileEmail: {
       fontSize: normalizeFontSize(16),
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
     },
     profileBirthDate: {
       fontSize: normalizeFontSize(16), // Adjust size based on design
-      color: selectedTheme.primary, // Use the dynamic theme's text color
+      color: selectedTheme.textPrimary, // Use the dynamic theme's text color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 10, // Add some spacing between elements
     },
@@ -331,10 +331,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
       paddingVertical: 10,
       borderBottomWidth: 1,
-      borderColor: selectedTheme.gray, // Border color based on theme
+      borderColor: selectedTheme.buttonBorderGray, // Border color based on theme
     },
     dropdownText: {
-      color: selectedTheme.secondary,
+      color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
       marginLeft: 10,
     },
@@ -351,7 +351,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignSelf: 'center',
     },
     searchText: {
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
       marginLeft: 10,
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,
@@ -371,16 +371,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     storeName: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
     },
     storeLocation: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.secondary,
+      color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFontSlim,
     },
     storeBox: {
-      backgroundColor: selectedTheme.backgroundColor,
+      backgroundColor: selectedTheme.cardBackground,
       padding: SHARED.padding,
       borderRadius: SHARED.borderRadius,
       shadowColor: SHARED.shadow.color,
@@ -389,7 +389,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 10,
     },
     productBox: {
-      backgroundColor: selectedTheme.backgroundColor,
+      backgroundColor: selectedTheme.cardBackground,
       padding: SHARED.padding,
       borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center the product name and image
@@ -404,7 +404,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     productName: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.primary,
+      color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
     },
     productImage: {
@@ -421,19 +421,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     productPrice: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.highlight, // Highlight the price using the primary color
+      color: selectedTheme.textHighlight, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     saleProductPrice: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.primary, // Highlight the price using the primary color
+      color: selectedTheme.textHighlight, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
     discountedProductPrice: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.primary, // Highlight the price using the primary color
+      color: selectedTheme.textHighlight, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
     },
@@ -451,7 +451,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     infoText: {
       marginLeft: 10, // Space between icon and text
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.secondary, // Dynamic text color
+      color: selectedTheme.textSecondary, // Dynamic text color
       fontFamily: selectedTheme.bodyFont,
     },
     categoryScroll: {
@@ -473,37 +473,37 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginLeft: 10,
       marginRight: 10,
 
-      backgroundColor: selectedTheme.backgroundColor, // Use theme background color
+      backgroundColor: selectedTheme.cardBackground, // Use theme background color
       borderRadius: 30, // Rounded border for the search bar
       borderWidth: 0.5,
-      borderColor: selectedTheme.borderColor, // Add border using theme color
+      borderColor: selectedTheme.buttonBorderPrimary, // Add border using theme color
     },
     searchInput: {
       flex: 1, // Make the search input take up the remaining space
       height: 40, // Height of the search input
-      borderColor: selectedTheme.borderColor, // Optional: Add border inside the input field
+      borderColor: selectedTheme.buttonBorderPrimary, // Optional: Add border inside the input field
       borderWidth: 0, // No extra border inside the input
       paddingLeft: 0, // Padding inside the search input
       borderRadius: 20, // Rounded corners inside the search input
-      backgroundColor: selectedTheme.backgroundColor, // Background color of the input
-      color: selectedTheme.primary, // Text color from theme
+      backgroundColor: selectedTheme.cardBackground, // Background color of the input
+      color: selectedTheme.textPrimary, // Text color from theme
     },  
     modalTitle: {
       fontSize: normalizeFontSize(10),
       fontWeight: 'bold',
-      color: selectedTheme.primary, // Theme-based text color for the title
+      color: selectedTheme.textPrimary, // Theme-based text color for the title
       marginBottom: 15,
     },
     listItem: {
       padding: 10,
-      borderBottomColor: selectedTheme.borderColor, // Theme-based border color
+      borderBottomColor: selectedTheme.buttonBorderPrimary, // Theme-based border color
       borderBottomWidth: 1,
-      backgroundColor: selectedTheme.backgroundColor, // Theme-based background color
+      backgroundColor: selectedTheme.cardBackground, // Theme-based background color
     },
     modalContainerFull: {
       flex: 1,
       padding: 20,
-      backgroundColor: selectedTheme.backgroundColor, // Theme-based background for modal
+      backgroundColor: selectedTheme.cardBackground, // Theme-based background for modal
     },
 
     horizontalScroll: {
@@ -520,13 +520,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingBottom: 4,
       paddingLeft: 8,
       paddingRight: 8,
-      backgroundColor: selectedTheme.primary, // Theme-based background color
+      backgroundColor: selectedTheme.textPrimary, // Theme-based background color
       height: 30,
     },
     button: {
       padding: SHARED.buttonPadding, // Button padding from shared settings
       borderRadius: SHARED.borderRadius, // Border radius from shared settings
-      backgroundColor: selectedTheme.primary, // Primary button background color from theme
+      backgroundColor: selectedTheme.textPrimary, // Primary button background color from theme
       alignItems: 'center',
       justifyContent: 'center', // Center the text/icon in the button
       shadowColor: SHARED.shadow.color, // Shadow for depth
