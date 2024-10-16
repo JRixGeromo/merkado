@@ -35,6 +35,7 @@ export interface ThemeType {
   buttonBorderGray: string;
   buttonBorderLight: string;
 
+  tabBarBackgroundColor: string;
   iconColor: string;
   cardBackground: string;
   modalOverlay: string;
@@ -62,7 +63,7 @@ const lightTheme: ThemeType = {
   textLink: '#38b000',
   textGray: '#38b000',
 
-  fullBackgrounColor: '#ffffff',
+  fullBackgrounColor: '#eaeaea',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
   inputBackgroundColor: '#d6d6d6',
@@ -87,6 +88,7 @@ const lightTheme: ThemeType = {
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
   
+  tabBarBackgroundColor: '#ffffff',
   iconColor: "#7cb518",
   cardBackground: '#444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
@@ -140,6 +142,7 @@ const darkTheme: ThemeType = {
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
 
+  tabBarBackgroundColor: '#333533',
   iconColor: "#7cb518",
   cardBackground: '#444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',

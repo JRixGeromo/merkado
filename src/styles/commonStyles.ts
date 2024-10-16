@@ -37,12 +37,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
       fontSize: normalizeHeight(10), // You can adjust the size to your liking
-      color:  selectedTheme.secondary
+      color:  selectedTheme.textSecondary
     },
     screenHeaderTitle: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.tabFont,
-      color: selectedTheme.secondary,
+      color: selectedTheme.textSecondary,
     },
     headerTitle: {
       fontSize: normalizeFontSize(20),
@@ -59,7 +59,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginRight: 20,
     },
     tabBarStyle: {
-      backgroundColor: selectedTheme.backgroundColor,
+      backgroundColor: selectedTheme.tabBarBackgroundColor,
     },
     headerContainer: {
       flexDirection: 'row',

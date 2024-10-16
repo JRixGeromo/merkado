@@ -115,8 +115,8 @@ const App = () => {
           component={RegistrationScreen}
           options={{
             headerTitle: 'Register',
-            headerStyle: { backgroundColor: selectedTheme.backgroundColor },
-            headerTintColor: selectedTheme.primary,
+            headerStyle: { backgroundColor: selectedTheme.fullBackgrounColor },
+            headerTintColor: selectedTheme.textPrimary,
           }}
         />
         <Stack.Screen
