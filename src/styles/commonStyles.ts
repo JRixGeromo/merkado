@@ -26,8 +26,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: selectedTheme.backgroundColor, // Background color from selected theme
-      margin: normalizeHeight(20), // Margin for the container
+      backgroundColor: selectedTheme.fullBackgrounColor, // Background color from selected theme
     },
     headerLogo: {
       width: 30, // Adjust the width to fit your design
@@ -48,7 +47,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     headerTitle: {
       fontSize: normalizeFontSize(20),
       fontFamily: selectedTheme.headingFont,
-      color: selectedTheme.secondary,
+      color: selectedTheme.textPrimary,
+      marginBottom: 20,
     },
     headerRightContainer: {
       flexDirection: 'row',
@@ -144,13 +144,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     paragraph: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,  // Apply body font for paragraphs
-      color: selectedTheme.secondary,
+      color: selectedTheme.textDark,
       margin: 10,
     },
     linkText: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont,  // Use body font for links
-      color: selectedTheme.link,
+      color: selectedTheme.textLink,
       margin: 10,
     },
     orText: {
@@ -552,7 +552,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     sectionButtonText: {
-      color: selectedTheme.primary, // Theme-based text color
+      color: selectedTheme.textPrimary, // Theme-based text color
       fontSize: normalizeFontSize(10),
     },
     sectionButtonContainer: {
@@ -566,7 +566,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Vertically center the items
     },
     socialButtonText: {
-      color: selectedTheme.light // Social button text color from selected theme
+      color: selectedTheme.textLight // Social button text color from selected theme
     },
   });
 };

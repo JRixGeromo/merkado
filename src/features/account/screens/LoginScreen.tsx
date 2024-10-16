@@ -124,7 +124,7 @@ const LoginScreen = () => {
             style={commonStyle.logo}
           />
 
-          <Text style={commonStyle.title}>{t('welcomeBack')}</Text>
+          <Text style={commonStyle.headerTitle}>{t('welcomeBack')}</Text>
           
           <TextInputWithIcon
             placeholder={t('email')}
@@ -150,7 +150,8 @@ const LoginScreen = () => {
             <CustomButton
               title={t('login')}
               onPress={handleLogin}
-              color={selectedTheme.light}
+              color={selectedTheme.textLight}
+              backgroundColor={selectedTheme.buttonPrimary}
             />
           )}
 
@@ -176,7 +177,7 @@ const LoginScreen = () => {
               <Icon
                 name="google"
                 size={20}
-                color={selectedTheme.light}
+                color={selectedTheme.textLight}
                 style={{ marginRight: 10 }}
               />
               <Text style={commonStyle.socialButtonText}>{t('google')}</Text>
@@ -189,7 +190,7 @@ const LoginScreen = () => {
               <Icon
                 name="facebook"
                 size={20}
-                color={selectedTheme.light}
+                color={selectedTheme.textLight}
                 style={{ marginRight: 10 }}
               />
               <Text style={commonStyle.socialButtonText}>{t('facebook')}</Text>

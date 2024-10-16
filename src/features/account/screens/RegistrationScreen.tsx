@@ -182,7 +182,7 @@ const RegistrationScreen = () => {
             <View style={{ marginTop: 20, marginBottom: 20 }}>
               <ActivityIndicator
                 size="large"
-                color={selectedTheme.primary}
+                color={selectedTheme.textPrimary}
                 style={commonStyle.loader}
               />
             </View>
@@ -192,7 +192,8 @@ const RegistrationScreen = () => {
             <CustomButton
               title={t('register')}
               onPress={handleRegister}
-              color={selectedTheme.light}
+              color={selectedTheme.textLight}
+              backgroundColor={selectedTheme.buttonPrimary}
             />
           )}
 

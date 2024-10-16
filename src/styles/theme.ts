@@ -12,7 +12,8 @@ export interface ThemeType {
   fullBackgrounColor: string;
   googleButtonColor: string;
   facebookButtonColor: string;
-  
+  inputBackgroundColor: string;
+
   buttonPrimary: string;
   buttonSecondary: string;
   buttonSuccess: string;
@@ -61,10 +62,11 @@ const lightTheme: ThemeType = {
   textLink: '#38b000',
   textGray: '#38b000',
 
-  fullBackgrounColor: '#e0e1dd',
+  fullBackgrounColor: '#ffffff',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
-  
+  inputBackgroundColor: '#d6d6d6',
+
   buttonPrimary: '#4CAF50',
   buttonSecondary: '#ffffff',
   buttonSuccess: '#8ac926',
@@ -114,10 +116,10 @@ const darkTheme: ThemeType = {
   textGray: '#8d99ae',
 
   fullBackgrounColor: '#000000',
-
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  
+  inputBackgroundColor: '#8d99ae',
+
   buttonPrimary: '#4CAF50',
   buttonSecondary: '#ffffff',
   buttonSuccess: '#8ac926',
