@@ -107,9 +107,9 @@ const lightTheme: ThemeType = {
 const darkTheme: ThemeType = {
   textPrimary: '#f5f1ed',
   textSecondary: '#dee2e6',
-  textPlaceHolderInfo: '#6f6866',
+  textPlaceHolderInfo: '#9999a1',
   textDisabled: '#ced4da',
-  textDark: '#343a40',
+  textDark: '#e6e6e9',
   textBlack: '#000000',
   textLight: '#ffffff',
   textLink: '#38b000',
@@ -118,7 +118,7 @@ const darkTheme: ThemeType = {
   fullBackgrounColor: '#000000',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#8d99ae',
+  inputBackgroundColor: '#2d2d2d',
 
   buttonPrimary: '#4CAF50',
   buttonSecondary: '#ffffff',

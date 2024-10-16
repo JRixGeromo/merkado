@@ -176,10 +176,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
-      color: selectedTheme.placeHolderInfo, // Text color for "Or login with"
+      color: selectedTheme.textPlaceHolderInfo, // Text color for "Or login with"
     },
     textColor: {
-      color: selectedTheme.secondary, // Text color for "Or login with"
+      color: selectedTheme.textSecondary, // Text color for "Or login with"
     },
     section: {
       paddingTop: 20,
