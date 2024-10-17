@@ -331,7 +331,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
       paddingVertical: 10,
       borderBottomWidth: 1,
-      borderColor: selectedTheme.buttonBorderGray, // Border color based on theme
+      borderColor: selectedTheme.lineBorderColor, // Border color based on theme
     },
     dropdownText: {
       color: selectedTheme.textSecondary,
@@ -489,16 +489,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textPrimary, // Text color from theme
     },  
     modalTitle: {
-      fontSize: normalizeFontSize(10),
+      fontSize: normalizeFontSize(14),
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, // Theme-based text color for the title
+      color: selectedTheme.textSecondary, // Theme-based text color for the title
       marginBottom: 15,
     },
     listItem: {
       padding: 10,
-      borderBottomColor: selectedTheme.buttonBorderPrimary, // Theme-based border color
+      borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
       borderBottomWidth: 1,
       backgroundColor: selectedTheme.cardBackground, // Theme-based background color
+    },
+    listItemText: {
+      color: selectedTheme.textPrimary,
     },
     modalContainerFull: {
       flex: 1,
@@ -520,7 +523,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingBottom: 4,
       paddingLeft: 8,
       paddingRight: 8,
-      backgroundColor: selectedTheme.textPrimary, // Theme-based background color
       height: 30,
     },
     button: {

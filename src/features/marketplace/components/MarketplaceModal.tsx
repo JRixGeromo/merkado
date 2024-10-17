@@ -39,7 +39,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   // Render each item in the list
   const renderListItem = ({ item }: { item: string }) => (
     <View style={commonStyle.listItem}>
-      <Text>{item}</Text>
+      <Text style={commonStyle.listItemText}>{item}</Text>
     </View>
   );
 
@@ -86,11 +86,12 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
             <CustomButton
               title={item.label}
               onPress={() => setActiveSection(item.key as any)}
-              backgroundColor={selectedTheme.cardBackground} // Use theme for close button color
+              backgroundColor={selectedTheme.buttonPrimary} // Use theme for close button color
               style={[commonStyle.searchButton, { marginHorizontal: 10 }]} // You can pass an array of styles
               borderRadius={20} // Set borderRadius
-              color={selectedTheme.textPrimary}
+              color={selectedTheme.textLight}
               textSize={12}  // Custom text size
+              borderColor={selectedTheme.buttonBorderLight}
             />
           )}
           keyExtractor={(item) => item.key}
@@ -110,9 +111,9 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
         <CustomButton
           title={t('Close')}
           onPress={onClose}
-          backgroundColor={selectedTheme.cardBackground} // Use theme for close button color
+          backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
           borderRadius={10} // You can set this dynamically too
-          color={selectedTheme.textPrimary}
+          color={selectedTheme.textLight}
         />
       </View>
     </Modal>

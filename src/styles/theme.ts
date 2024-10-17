@@ -29,7 +29,8 @@ export interface ThemeType {
   buttonHighlight: string;
   buttonLink: string;
   buttonGray: string;
-
+  buttonCancel: string;
+  buttonClose: string;
   
   buttonBorderPrimary: string;
   buttonBorderBlack: string;
@@ -41,7 +42,8 @@ export interface ThemeType {
   cardBackground: string;
   modalOverlay: string;
   loader: string;
-  
+  lineBorderColor: string;
+
   headingFont: string;
   bodyFont: string;
   bodyFontSlim: string;
@@ -84,6 +86,8 @@ const lightTheme: ThemeType = {
   buttonHighlight: '#f9c74f',
   buttonLink: '#38b000',
   buttonGray: '#e6e6ea',
+  buttonCancel: '#e6e6ea',
+  buttonClose: '#fb8500',
 
   buttonBorderPrimary: '#4CAF50',
   buttonBorderBlack: '#393d3f',
@@ -95,7 +99,8 @@ const lightTheme: ThemeType = {
   cardBackground: '#ffffff',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
-  
+  lineBorderColor: "#cad2c5",
+
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',  
   bodyFontSlim: 'RobotoCondensed-Light',  
@@ -139,7 +144,9 @@ const darkTheme: ThemeType = {
   buttonHighlight: '#f9c74f',
   buttonLink: '#38b000',
   buttonGray: '#e6e6ea',
-  
+  buttonCancel: '#e6e6ea',
+  buttonClose: '#fb8500',
+
   buttonBorderPrimary: '#4CAF50',
   buttonBorderBlack: '#393d3f',
   buttonBorderGray: '#e6e6ea',
@@ -150,7 +157,8 @@ const darkTheme: ThemeType = {
   cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
-  
+  lineBorderColor: "#000000",
+
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',  
   bodyFontSlim: 'RobotoCondensed-Light',  
