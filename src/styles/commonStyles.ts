@@ -386,6 +386,29 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 6, // Add some margin after the image
     },
 
+    
+    storeImageWrapper: {
+      width: '100%',
+      height: '40%', // Fixed height equivalent to 35% of productBox height
+      position: 'relative',
+    },
+    
+
+    storeImage: {
+      width: '100%',
+      height: '100%', // Fill the wrapper container
+      resizeMode: 'cover', // Ensure the image covers the available space
+    },
+
+        
+    // storeImage: {
+    //   width: '100%', // Full width of the product box
+    //   height: '40%', // Ensure the image takes up 40% of the product box's height
+    //   resizeMode: 'cover', // Ensure the image covers the space
+    //   //borderRadius: SHARED.borderRadius,
+    // },
+    
+
     storeLocation: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textSecondary,
@@ -405,15 +428,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       shadowOffset: SHARED.shadow.offset,
       shadowRadius: SHARED.shadow.radius,
     },
-    
-    storeImage: {
-      width: '100%', // Full width of the product box
-      height: '40%', // Ensure the image takes up 40% of the product box's height
-      resizeMode: 'cover', // Ensure the image covers the space
-      //borderRadius: SHARED.borderRadius,
-    },
-    
-    imageWrapper: {
+
+    productImageWrapper: {
       width: '100%',
       height: '35%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',

@@ -85,16 +85,21 @@ const DashboardScreen = () => {
   // Render store item for FlatList
   const renderStoreItem: ListRenderItem<Store> = ({ item }) => (
     <View style={commonStyle.storeBox}>
-      <Image source={{ uri: item.imageUrl }} style={commonStyle.storeImage} />
+      <View style={commonStyle.storeImageWrapper}>
+        <Image source={{ uri: item.imageUrl }} style={commonStyle.storeImage} />
+        <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={() => console.log('Magnify pressed')}>
+          <Icon name="search" size={18} color="white" />
+        </TouchableOpacity>
+      </View>
+  
       <Text style={commonStyle.storeName}>{item.name}</Text>
       <Text style={commonStyle.storeLocation}>{item.location}</Text>
-
+  
       <View style={commonStyle.infoRow}>
-        <Icon name="star" size={16} color="gold" style={commonStyle.iconContainer}/>
+        <Icon name="star" size={16} color="gold" style={commonStyle.iconContainer} />
         <Text style={commonStyle.infoText}>{item.rating}</Text>
       </View>
-
-      {/* Wrap heart icon and likes count in a row */}
+  
       <View style={commonStyle.likeRow}>
         <TouchableOpacity onPress={() => toggleStoreLike(item.id)}>
           <Icon
@@ -103,9 +108,11 @@ const DashboardScreen = () => {
             color={likedStores[item.id] ? 'red' : selectedTheme.iconColor}
           />
         </TouchableOpacity>
-        <Text style={commonStyle.infoText}>{item.likes + (likedStores[item.id] ? 1 : 0)} Likes</Text>
+        <Text style={commonStyle.infoText}>
+          {item.likes + (likedStores[item.id] ? 1 : 0)} Likes
+        </Text>
       </View>
-      {/* Buttons with 50% width each */}
+  
       <View style={commonStyle.buttonRow}>
         <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.chatButton]}>
           <Icon name="chatbubble-outline" size={20} color={selectedTheme.textLight} />
@@ -116,10 +123,10 @@ const DashboardScreen = () => {
       </View>
     </View>
   );
-
+  
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <View style={commonStyle.productBox}>
-      <View style={commonStyle.imageWrapper}>
+      <View style={commonStyle.productImageWrapper}>
         <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
         <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={() => console.log('Magnify pressed')}>
           <Icon name="search" size={18} color="white" />

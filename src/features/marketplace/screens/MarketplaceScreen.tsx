@@ -78,7 +78,7 @@ const products: { [key: string]: Product[] } = {
   
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <View style={commonStyle.productBox}>
-      <View style={commonStyle.imageWrapper}>
+      <View style={commonStyle.productImageWrapper}>
         <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
         <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={() => console.log('Magnify pressed')}>
           <Icon name="search" size={18} color="white" />
