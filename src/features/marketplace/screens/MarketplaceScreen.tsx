@@ -44,25 +44,25 @@ const MarketplaceScreen = () => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-
   const products: { [key: string]: Product[] } = {
     'Cosmetics': [
-      { id: '1', name: 'Lipstick', price: 500, imageUrl: 'https://via.placeholder.com/100', rating: 4.5, likes: 10, onSale: true },
-      { id: '2', name: 'Foundation', price: 700, imageUrl: 'https://via.placeholder.com/100', rating: 4.2, likes: 15 },
+      { id: '1', name: 'Lipstick', price: 500, imageUrl: 'https://picsum.photos/100/100?random=1', rating: 4.5, likes: 10, onSale: true },
+      { id: '2', name: 'Foundation', price: 700, imageUrl: 'https://picsum.photos/100/100?random=2', rating: 4.2, likes: 15 },
     ],
     'Beverages': [
-      { id: '3', name: 'Coke', price: 30, imageUrl: 'https://via.placeholder.com/100', rating: 4.7, likes: 25 },
-      { id: '4', name: 'Pepsi', price: 25, imageUrl: 'https://via.placeholder.com/100', rating: 4.6, likes: 20 },
+      { id: '3', name: 'Coke', price: 30, imageUrl: 'https://picsum.photos/100/100?random=3', rating: 4.7, likes: 25 },
+      { id: '4', name: 'Pepsi', price: 25, imageUrl: 'https://picsum.photos/100/100?random=4', rating: 4.6, likes: 20 },
     ],
     'Prepared Meals': [
-      { id: '5', name: 'Fried Chicken', price: 120, imageUrl: 'https://via.placeholder.com/100', rating: 4.8, likes: 35 },
-      { id: '6', name: 'Pasta', price: 150, imageUrl: 'https://via.placeholder.com/100', rating: 4.5, likes: 30 },
+      { id: '5', name: 'Fried Chicken', price: 120, imageUrl: 'https://picsum.photos/100/100?random=5', rating: 4.8, likes: 35 },
+      { id: '6', name: 'Pasta', price: 150, imageUrl: 'https://picsum.photos/100/100?random=6', rating: 4.5, likes: 30 },
     ],
     'Snacks': [
-      { id: '7', name: 'Chips', price: 50, imageUrl: 'https://via.placeholder.com/100', rating: 4.2, likes: 18 },
-      { id: '8', name: 'Energy Bar', price: 60, imageUrl: 'https://via.placeholder.com/100', rating: 4.1, likes: 12 },
+      { id: '7', name: 'Chips', price: 50, imageUrl: 'https://picsum.photos/100/100?random=7', rating: 4.2, likes: 18 },
+      { id: '8', name: 'Energy Bar', price: 60, imageUrl: 'https://picsum.photos/100/100?random=8', rating: 4.1, likes: 12 },
     ],
   };
+  
 
   // State to manage liked products
   const [likedProducts, setLikedProducts] = useState<{ [key: string]: boolean }>({});

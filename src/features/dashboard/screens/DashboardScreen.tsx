@@ -47,16 +47,16 @@ const DashboardScreen = () => {
 
   // Dummy featured stores data
   const featuredStores: Store[] = [
-    { id: '1', name: 'Trader Joe\'s', location: 'Springfield, CA', imageUrl: 'https://via.placeholder.com/100x100', rating: 4.5, likes: 10 },
-    { id: '2', name: 'Costco', location: 'Walnut Creek, CA', imageUrl: 'https://via.placeholder.com/100x100', rating: 4.8, likes: 12 },
-    { id: '3', name: 'Vons', location: 'Oakland, CA', imageUrl: 'https://via.placeholder.com/100x100', rating: 4.2, likes: 5 },
+    { id: '1', name: 'Trader Joe\'s', location: 'Springfield, CA', imageUrl: 'https://picsum.photos/100/100?random=1', rating: 4.5, likes: 10 },
+    { id: '2', name: 'Costco', location: 'Walnut Creek, CA', imageUrl: 'https://picsum.photos/100/100?random=2', rating: 4.8, likes: 12 },
+    { id: '3', name: 'Vons', location: 'Oakland, CA', imageUrl: 'https://picsum.photos/100/100?random=3', rating: 4.2, likes: 5 },
   ];
 
   // Dummy featured products data
   const featuredProducts: Product[] = [
-    { id: '1', name: 'Beef Boneless', price: 500, imageUrl: 'https://via.placeholder.com/100x100', rating: 4.6, likes: 30 },
-    { id: '2', name: 'Milk Lakeland', price: 80, imageUrl: 'https://via.placeholder.com/100x100', rating: 4.0, likes: 22 },
-    { id: '3', name: 'Simba Teff Flour', price: 120, imageUrl: 'https://via.placeholder.com/100x100', rating: 3.9, likes: 15 },
+    { id: '1', name: 'Beef Boneless', price: 500, imageUrl: 'https://picsum.photos/100/100?random=4', rating: 4.6, likes: 30 },
+    { id: '2', name: 'Milk Lakeland', price: 80, imageUrl: 'https://picsum.photos/100/100?random=5', rating: 4.0, likes: 22 },
+    { id: '3', name: 'Simba Teff Flour', price: 120, imageUrl: 'https://picsum.photos/100/100?random=6', rating: 3.9, likes: 15 },
   ];
 
   // Handle like toggle for products
