@@ -412,6 +412,28 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       resizeMode: 'cover', // Ensure the image covers the space
       //borderRadius: SHARED.borderRadius,
     },
+    
+    imageWrapper: {
+      width: '100%',
+      height: '35%', // Fixed height equivalent to 35% of productBox height
+      position: 'relative',
+    },
+    
+    productImage: {
+      width: '100%',
+      height: '100%', // Fill the wrapper container
+      resizeMode: 'cover', // Ensure the image covers the available space
+    },
+    
+    magnifyingGlassButton: {
+      position: 'absolute',
+      top: 5,
+      right: 5,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background for visibility
+      padding: 5,
+      borderRadius: 15, // Make it circular
+    },
+
     productBox: {
       backgroundColor: selectedTheme.cardBackground,
       //padding: SHARED.padding,
@@ -426,14 +448,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       shadowOffset: SHARED.shadow.offset,
       shadowRadius: SHARED.shadow.radius,
     },
-    
-    productImage: {
-      width: '100%', // Full width of the product box
-      height: '35%', // Ensure the image takes up 40% of the product box's height
-      resizeMode: 'cover', // Ensure the image covers the space
-      //borderRadius: SHARED.borderRadius,
-    },
-    
 
     productName: {
       fontSize: normalizeFontSize(10),

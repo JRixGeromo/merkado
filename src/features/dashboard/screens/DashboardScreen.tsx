@@ -119,7 +119,13 @@ const DashboardScreen = () => {
 
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <View style={commonStyle.productBox}>
-      <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
+      <View style={commonStyle.imageWrapper}>
+        <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
+        <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={() => console.log('Magnify pressed')}>
+          <Icon name="search" size={18} color="white" />
+        </TouchableOpacity>
+      </View>
+  
       <Text style={commonStyle.productName}>{item.name}</Text>
       <Text style={commonStyle.productPrice}>₱{item.price}</Text>
   
@@ -141,7 +147,6 @@ const DashboardScreen = () => {
         </Text>
       </View>
   
-      {/* Buttons with 50% width each */}
       <View style={commonStyle.buttonRow}>
         <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.chatButton]}>
           <Icon name="chatbubble-outline" size={20} color={selectedTheme.textLight} />
@@ -152,6 +157,7 @@ const DashboardScreen = () => {
       </View>
     </View>
   );
+  
   
 
   return (
