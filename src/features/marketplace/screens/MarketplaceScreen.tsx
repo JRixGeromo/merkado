@@ -75,31 +75,43 @@ const MarketplaceScreen = () => {
     }));
   };
 
-  // Render each product in the list
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <View style={commonStyle.productBox}>
       <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
       <Text style={commonStyle.productName}>{item.name}</Text>
       <Text style={commonStyle.productPrice}>₱{item.price}</Text>
-
+  
       <View style={commonStyle.infoRow}>
-        <Icon name="star" size={16} color="gold" />
+        <Icon name="star" size={16} color="gold" style={commonStyle.iconContainer} />
         <Text style={commonStyle.infoText}>{item.rating}</Text>
       </View>
-
-      {/* Wrap heart icon and likes count in a row */}
+  
       <View style={commonStyle.likeRow}>
-        <TouchableOpacity onPress={() => toggleProductLike(item.id)}>
+        <TouchableOpacity onPress={() => toggleProductLike(item.id)} style={commonStyle.iconContainer}>
           <Icon
             name={likedProducts[item.id] ? 'heart' : 'heart-outline'}
             size={18}
             color={likedProducts[item.id] ? 'red' : selectedTheme.iconColor}
           />
         </TouchableOpacity>
-        <Text style={commonStyle.infoText}>{item.likes + (likedProducts[item.id] ? 1 : 0)} Likes</Text>
+        <Text style={commonStyle.infoText}>
+          {item.likes + (likedProducts[item.id] ? 1 : 0)} Likes
+        </Text>
+      </View>
+  
+      {/* Buttons with 50% width each */}
+      <View style={commonStyle.buttonRow}>
+        <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.chatButton]}>
+          <Icon name="chatbubble-outline" size={20} color={selectedTheme.textLight} />
+        </TouchableOpacity>
+        <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.cartButton]}>
+          <Icon name="cart-outline" size={20} color={selectedTheme.textLight} />
+        </TouchableOpacity>
       </View>
     </View>
   );
+  
+  
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

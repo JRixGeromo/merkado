@@ -363,17 +363,29 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       shadowRadius: SHARED.shadow.radius,
       elevation: SHARED.shadow.elevation, // Android shadow
     },
-    storeImage: {
-      width: 80,
-      height: 80,
-      resizeMode: 'contain',
-      marginBottom: 10,
+
+    likeRow: {
+      flexDirection: 'row', // Arrange items in a row
+      alignItems: 'center', // Vertically center items
+      justifyContent: 'space-between', // Distribute space between items
+      marginTop: 10, // Add some space above the row
+    },
+    
+    iconContainer: {
+      marginRight: 5, // Space between the heart icon and the likes count
+    },
+    
+    infoText: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.textPrimary, // Use primary text color from theme
     },
     storeName: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
+      marginTop: 6, // Add some margin after the image
     },
+
     storeLocation: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textSecondary,
@@ -381,50 +393,103 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     storeBox: {
       backgroundColor: selectedTheme.cardBackground,
-      padding: SHARED.padding,
-      borderRadius: SHARED.borderRadius,
-      shadowColor: SHARED.shadow.color,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowOffset: SHARED.shadow.offset,
-      marginBottom: 10,
-    },
-    productBox: {
-      backgroundColor: selectedTheme.cardBackground,
-      padding: SHARED.padding,
-      borderRadius: SHARED.borderRadius,
-      alignItems: 'center', // Center the product name and image
-      justifyContent: 'center', // Vertically center the content
-      width: 120, // Set a fixed width for product boxes
-      height: 200, // Set a fixed height for product boxes
-      marginRight: 10, // Adjust spacing between boxes
+      //padding: SHARED.padding,
+      //borderRadius: SHARED.borderRadius,
+      alignItems: 'center',
+      justifyContent: 'flex-start', // Align content to the top
+      width: 120, // Fixed width for product boxes
+      height: 225, // Total height for the product box
+      marginRight: 10,
       shadowColor: SHARED.shadow.color,
       shadowOpacity: SHARED.shadow.opacity,
       shadowOffset: SHARED.shadow.offset,
       shadowRadius: SHARED.shadow.radius,
     },
+    
+    storeImage: {
+      width: '100%', // Full width of the product box
+      height: '40%', // Ensure the image takes up 40% of the product box's height
+      resizeMode: 'cover', // Ensure the image covers the space
+      //borderRadius: SHARED.borderRadius,
+    },
+    productBox: {
+      backgroundColor: selectedTheme.cardBackground,
+      //padding: SHARED.padding,
+      //borderRadius: SHARED.borderRadius,
+      alignItems: 'center',
+      justifyContent: 'flex-start', // Align content to the top
+      width: 120, // Fixed width for product boxes
+      height: 225, // Total height for the product box
+      marginRight: 10,
+      shadowColor: SHARED.shadow.color,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowOffset: SHARED.shadow.offset,
+      shadowRadius: SHARED.shadow.radius,
+    },
+    
+    productImage: {
+      width: '100%', // Full width of the product box
+      height: '35%', // Ensure the image takes up 40% of the product box's height
+      resizeMode: 'cover', // Ensure the image covers the space
+      //borderRadius: SHARED.borderRadius,
+    },
+    
+
     productName: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
+      marginTop: 6, // Add some margin after the image
     },
-    productImage: {
-      width: 80, // Set a fixed width for the product image
-      height: 80, // Set a fixed height for the product image
-      resizeMode: 'contain', // Ensure the image doesn't stretch
-      marginBottom: 10, // Add space between the image and text
-    },
-    promoImage: {
-      width: '100%',
-      height: 200,
-      borderRadius: SHARED.borderRadius,
-      resizeMode: 'cover',  // Cover the image within the bounds
-    },
+    
     productPrice: {
-      fontSize: normalizeFontSize(10),
-      color: selectedTheme.textHighlight, // Highlight the price using the primary color
+      fontSize: normalizeFontSize(14),
+      color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
-      marginTop: 4, // Add some space between the product name and the price
+      marginTop: 4, // Space between the product name and price
     },
+    
+    infoRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 6, // Add some space between price and rating row
+    },
+
+    buttonRow: {
+      flexDirection: 'row', // Align buttons in a row
+      justifyContent: 'space-between', // Ensure space between buttons
+      marginTop: 10, // Add margin above the buttons
+      width: '100%', // Ensure the buttons span the entire width of the card
+    },
+    
+    fullWidthButton: {
+      flexDirection: 'row', // Arrange icon and text in a row
+      alignItems: 'center', // Center the content vertically
+      justifyContent: 'center', // Center the content horizontally
+      paddingVertical: 10, // Add vertical padding for better touch area
+      //borderRadius: 5, // Rounded corners
+      flex: 0.5, // Each button takes 50% of the width
+      //marginHorizontal: 2, // Small space between the two buttons
+    },
+    
+    chatButton: {
+      backgroundColor: selectedTheme.buttonDark, // Explicit background color for Chat button
+    },
+    
+    cartButton: {
+      backgroundColor: selectedTheme.buttonPrimary, // Explicit background color for Add to Cart button
+    },
+    
+        
+    followButton: {
+      backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
+    },
+
+    buttonText: {
+      color: 'white', // Button text color
+      marginLeft: 5, // Space between icon and text
+    },
+    
     saleProductPrice: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textHighlight, // Highlight the price using the primary color
@@ -436,23 +501,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textHighlight, // Highlight the price using the primary color
       fontFamily: selectedTheme.bodyFont,
       marginTop: 4, // Add some space between the product name and the price
-    },
-    likeRow: {
-      flexDirection: 'row',
-      alignItems: 'center', // Vertically align the heart icon and text
-      justifyContent: 'center', // Center them within the container
-      marginTop: 0, // Add space between this row and the rating
-    },
-    infoRow: {
-      flexDirection: 'row', // Align icon and text in a row
-      alignItems: 'center', // Vertically align items
-      marginVertical: 10, // Space between rows
-    },
-    infoText: {
-      marginLeft: 10, // Space between icon and text
-      fontSize: normalizeFontSize(10),
-      color: selectedTheme.textSecondary, // Dynamic text color
-      fontFamily: selectedTheme.bodyFont,
     },
     categoryScroll: {
       marginVertical: 10,

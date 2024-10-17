@@ -111,7 +111,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
         <CustomButton
           title={t('Close')}
           onPress={onClose}
-          backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
+          backgroundColor={selectedTheme.buttonDark} // Use theme for close button color
           borderRadius={10} // You can set this dynamically too
           color={selectedTheme.textLight}
         />
