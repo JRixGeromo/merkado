@@ -7,26 +7,32 @@ import MarketplaceModal from '../components/MarketplaceModal'; // Import reusabl
 import ContentCard from '../../../components/ContentCard';
 import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
 import { useTranslation } from 'react-i18next'; // Import translation hook
+import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';  // Use NativeStackNavigationProp
+import { RootStackParamList } from '../../../navigationTypes';  // Import RootStackParamList
 
 // Get screen dimensions for responsive design
 const { width: screenWidth } = Dimensions.get('window');
 
-// TypeScript types for products and stores
-type Product = {
+export type Product = {
   id: string;
   name: string;
+  description: string | null;
+  distance: string;
   price: number;
   imageUrl: string;
   rating: number;
   likes: number;
-  onSale?: boolean; // Add an optional "onSale" flag
+  onSale: boolean;
 };
+
 
 const MarketplaceScreen = () => {
   
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();  // Correct the type here
 
   const { t } = useTranslation(); // Initialize translation
   
@@ -48,24 +54,24 @@ const MarketplaceScreen = () => {
 
   const products: { [key: string]: Product[] } = {
     'Cosmetics': [
-      { id: '1', name: 'Lipstick', price: 500, imageUrl: 'https://picsum.photos/100/100?random=1', rating: 4.5, likes: 10, onSale: true },
-      { id: '2', name: 'Foundation', price: 700, imageUrl: 'https://picsum.photos/100/100?random=2', rating: 4.2, likes: 15 },
-      { id: '3', name: 'Eye Brow', price: 700, imageUrl: 'https://picsum.photos/100/100?random=3', rating: 4.2, likes: 15 },
+      { id: '1', name: 'Lipstick', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)', imageUrl: 'https://picsum.photos/100/100?random=1', rating: 4.5, likes: 10, onSale: true },
+      { id: '2', name: 'Foundation', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=2', rating: 4.2, likes: 15, onSale: false  },
+      { id: '3', name: 'Eye Brow', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=3', rating: 4.2, likes: 15, onSale: true  },
     ],
     'Beverages': [
-      { id: '4', name: 'Coke', price: 30, imageUrl: 'https://picsum.photos/100/100?random=4', rating: 4.7, likes: 25 },
-      { id: '5', name: 'Pepsi', price: 25, imageUrl: 'https://picsum.photos/100/100?random=5', rating: 4.6, likes: 20 },
-      { id: '6', name: 'Beer', price: 25, imageUrl: 'https://picsum.photos/100/100?random=6', rating: 4.6, likes: 20 },
+      { id: '4', name: 'Coke', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=4', rating: 4.7, likes: 25, onSale: true  },
+      { id: '5', name: 'Pepsi', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=5', rating: 4.6, likes: 20, onSale: false  },
+      { id: '6', name: 'Beer', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=6', rating: 4.6, likes: 20, onSale: true  },
     ],
     'Prepared Meals': [
-      { id: '7', name: 'Fried Chicken', price: 120, imageUrl: 'https://picsum.photos/100/100?random=7', rating: 4.8, likes: 35 },
-      { id: '8', name: 'Pasta', price: 150, imageUrl: 'https://picsum.photos/100/100?random=8', rating: 4.5, likes: 30 },
-      { id: '9', name: 'Lechon Baboy', price: 25, imageUrl: 'https://picsum.photos/100/100?random=9', rating: 4.6, likes: 20 },
+      { id: '7', name: 'Fried Chicken', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=7', rating: 4.8, likes: 35, onSale: false  },
+      { id: '8', name: 'Pasta', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=8', rating: 4.5, likes: 30, onSale: true  },
+      { id: '9', name: 'Lechon Baboy', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=9', rating: 4.6, likes: 20, onSale: true  },
     ],
     'Snacks': [
-      { id: '10', name: 'Chips', price: 50, imageUrl: 'https://picsum.photos/100/100?random=10', rating: 4.2, likes: 18 },
-      { id: '11', name: 'Energy Bar', price: 60, imageUrl: 'https://picsum.photos/100/100?random=11', rating: 4.1, likes: 12 },
-      { id: '12', name: 'Skyflakes', price: 25, imageUrl: 'https://picsum.photos/100/100?random=12', rating: 4.6, likes: 20 },
+      { id: '10', name: 'Chips', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=10', rating: 4.2, likes: 18, onSale: true  },
+      { id: '11', name: 'Energy Bar', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=11', rating: 4.1, likes: 12, onSale: true  },
+      { id: '12', name: 'Skyflakes', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)',imageUrl: 'https://picsum.photos/100/100?random=12', rating: 4.6, likes: 20, onSale: true  },
     ],
   };
 
@@ -87,11 +93,13 @@ const MarketplaceScreen = () => {
       type="product"
       imageUrl={item.imageUrl}
       name={item.name}
+      description={item.description}
+      distance={item.distance}
       price={item.price}
       rating={item.rating}
       likes={item.likes}
       isLiked={likedProducts[item.id]}
-      onMagnifyPress={() => console.log('Magnify pressed')}
+      onMagnifyPress={() => navigation.navigate('DetailsScreen', { item, type: 'product' })}  // Corrected navigation
       onLikePress={() => toggleProductLike(item.id)}
       buttonActions={[
         { iconName: 'chatbubble-outline', onPress: () => console.log('Chat Pressed'), buttonStyle: commonStyle.chatButton },

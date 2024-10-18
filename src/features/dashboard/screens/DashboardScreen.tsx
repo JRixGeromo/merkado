@@ -17,15 +17,19 @@ const { width: screenWidth } = Dimensions.get('window');
 export type Product = {
   id: string;
   name: string;
+  description: string | null;
+  distance: string;
   price: number;
   imageUrl: string;
   rating: number;
   likes: number;
+  onSale: boolean;
 };
 
 export type Store = {
   id: string;
   name: string;
+  distance: string;
   location: string;
   imageUrl: string;
   rating: number;
@@ -64,16 +68,16 @@ const DashboardScreen = () => {
 
   // Dummy featured stores data
   const featuredStores: Store[] = [
-    { id: '1', name: 'Trader Joe\'s', location: 'Springfield, CA', imageUrl: 'https://picsum.photos/100/100?random=1', rating: 4.5, likes: 10 },
-    { id: '2', name: 'Costco', location: 'Walnut Creek, CA', imageUrl: 'https://picsum.photos/100/100?random=2', rating: 4.8, likes: 12 },
-    { id: '3', name: 'Vons', location: 'Oakland, CA', imageUrl: 'https://picsum.photos/100/100?random=3', rating: 4.2, likes: 5 },
+    { id: '1', name: 'Trader Joe\'s', location: 'Springfield, CA', distance: 'PH-07(3km)', imageUrl: 'https://picsum.photos/100/100?random=1', rating: 4.5, likes: 10 },
+    { id: '2', name: 'Costco', location: 'Walnut Creek, CA', distance: 'PH-10(31km)', imageUrl: 'https://picsum.photos/100/100?random=2', rating: 4.8, likes: 12 },
+    { id: '3', name: 'Vons', location: 'Oakland, CA', distance: 'PH-05(23km)', imageUrl: 'https://picsum.photos/100/100?random=3', rating: 4.2, likes: 5 },
   ];
 
   // Dummy featured products data
   const featuredProducts: Product[] = [
-    { id: '1', name: 'Beef Boneless', price: 500, imageUrl: 'https://picsum.photos/100/100?random=4', rating: 4.6, likes: 30 },
-    { id: '2', name: 'Milk Lakeland', price: 80, imageUrl: 'https://picsum.photos/100/100?random=5', rating: 4.0, likes: 22 },
-    { id: '3', name: 'Simba Teff Flour', price: 120, imageUrl: 'https://picsum.photos/100/100?random=6', rating: 3.9, likes: 15 },
+    { id: '1', name: 'Beef Boneless', description: 'Beef Boneless', price: 500, distance: 'PH-03(32km)', imageUrl: 'https://picsum.photos/100/100?random=4', rating: 4.6, likes: 30, onSale: true },
+    { id: '2', name: 'Milk Lakeland', description: 'Beef Boneless', price: 80, distance: 'PH-07(31km)', imageUrl: 'https://picsum.photos/100/100?random=5', rating: 4.0, likes: 22, onSale: false },
+    { id: '3', name: 'Simba Teff Flour', description: 'Beef Boneless', price: 120, distance: 'PH-10(43km)', imageUrl: 'https://picsum.photos/100/100?random=6', rating: 3.9, likes: 15, onSale: true },
   ];
 
   // Handle like toggle for products
@@ -112,6 +116,8 @@ const DashboardScreen = () => {
       type="store"
       imageUrl={item.imageUrl}
       name={item.name}
+      description={null}
+      distance={item.distance}
       location={item.location}
       rating={item.rating}
       likes={item.likes}
@@ -130,6 +136,8 @@ const DashboardScreen = () => {
       type="product"
       imageUrl={item.imageUrl}
       name={item.name}
+      description={item.description}
+      distance={item.distance}
       price={item.price}
       rating={item.rating}
       likes={item.likes}

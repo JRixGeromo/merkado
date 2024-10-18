@@ -9,6 +9,8 @@ interface ContentCardProps {
   type: 'store' | 'product' | 'featured' | 'onSale'; // Define types of items
   imageUrl: string;
   name: string;
+  distance: string;
+  description: string | null;
   price?: number;
   location?: string;
   rating: number;
@@ -23,7 +25,9 @@ const ContentCard: React.FC<ContentCardProps> = ({
   type,
   imageUrl,
   name,
-  price,
+  description = null,
+  distance,
+  price = null,
   location,
   rating,
   likes,
