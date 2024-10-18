@@ -8,33 +8,35 @@ import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
 import { theme as appTheme } from '../../../styles/theme';
 import Icon from 'react-native-vector-icons/Ionicons'; // Icon library for likes and ratings
-
+import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';  // Use NativeStackNavigationProp
+import { RootStackParamList } from '../../../navigationTypes';  // Import RootStackParamList
 
 const { width: screenWidth } = Dimensions.get('window');
 
-// Product type definition
-type Product = {
+export type Product = {
   id: string;
   name: string;
   price: number;
   imageUrl: string;
-  rating: number; // Added rating field
-  likes: number; // Number of likes
+  rating: number;
+  likes: number;
 };
 
-// Store type definition
-type Store = {
+export type Store = {
   id: string;
   name: string;
   location: string;
   imageUrl: string;
-  rating: number; // Added rating field
-  likes: number; // Number of likes
+  rating: number;
+  likes: number;
 };
+
 const DashboardScreen = () => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();  // Correct the type here
 
   const { t } = useTranslation(); // Initialize translation
 
@@ -95,7 +97,7 @@ const DashboardScreen = () => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-  
+
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
     <View style={commonStyle.slide}>
@@ -103,6 +105,7 @@ const DashboardScreen = () => {
     </View>
   );
 
+  // Render store item for FlatList
   // Render store item for FlatList
   const renderStoreItem: ListRenderItem<Store> = ({ item }) => (
     <ContentCard
@@ -113,7 +116,7 @@ const DashboardScreen = () => {
       rating={item.rating}
       likes={item.likes}
       isLiked={likedStores[item.id]}
-      onMagnifyPress={() => console.log('Magnify pressed')}
+      onMagnifyPress={() => navigation.navigate('DetailsScreen', { item, type: 'store' })}  // Corrected navigation
       onLikePress={() => toggleStoreLike(item.id)}
       buttonActions={[
         { iconName: 'chatbubble-outline', onPress: () => console.log('Chat Pressed'), buttonStyle: commonStyle.chatButton },
@@ -121,8 +124,7 @@ const DashboardScreen = () => {
       ]}
     />
   );
-  
-  
+
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
     <ContentCard
       type="product"
@@ -132,7 +134,7 @@ const DashboardScreen = () => {
       rating={item.rating}
       likes={item.likes}
       isLiked={likedProducts[item.id]}
-      onMagnifyPress={() => console.log('Magnify pressed')}
+      onMagnifyPress={() => navigation.navigate('DetailsScreen', { item, type: 'product' })}  // Corrected navigation
       onLikePress={() => toggleProductLike(item.id)}
       buttonActions={[
         { iconName: 'chatbubble-outline', onPress: () => console.log('Chat Pressed'), buttonStyle: commonStyle.chatButton },

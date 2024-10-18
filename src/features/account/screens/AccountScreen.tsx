@@ -116,7 +116,7 @@ const AccountScreen = () => {
                   options={languageOptions}
                   placeholder={t('Select Language')} // Just use "Select Language" here
                   iconName="globe"
-                  textColor={selectedTheme.textColor}
+                  textColor={selectedTheme.textPrimary}
                   customBackground="transparent"
                   joinLabelVaue={true} // Join the label and value in the dropdown text
                 />

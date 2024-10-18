@@ -10,6 +10,7 @@ import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
+import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import AccountScreen from './src/features/account/screens/AccountScreen';
@@ -123,6 +124,15 @@ const App = () => {
           name="DashboardScreen"
           component={MainTabs}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="DetailsScreen"
+          component={DetailsScreen}
+          options={{
+            headerTitle: 'Details',
+            headerStyle: { backgroundColor: selectedTheme.fullBackgrounColor },
+            headerTintColor: selectedTheme.textPrimary,
+          }}
         />
         <Stack.Screen name="AccountScreen" component={AccountScreen} />
         {/* Add other Stack.Screen components here */}

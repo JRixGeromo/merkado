@@ -445,6 +445,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       resizeMode: 'cover', // Ensure the image covers the available space
     },
     
+    contentImageWrapper: {
+      width: '100%',
+      height: '30%', // Fixed height equivalent to 35% of productBox height
+      position: 'relative',
+    },
+
+    contentImage: {
+      width: '100%',
+      height: 200,
+      resizeMode: 'cover',
+      marginBottom: 16,
+    },
+
     magnifyingGlassButton: {
       position: 'absolute',
       top: 5,
@@ -470,11 +483,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     
     contentContainer: {
-      flex: 1, // Fills available space between image and button row
       justifyContent: 'flex-start', // Align content to the top of the container
       alignItems: 'center', // Center content horizontally
       width: '100%',
     },
+    
     
     infoRow: {
       flexDirection: 'row',
@@ -483,6 +496,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 6,
     },
   
+    reactionIcons: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      width: '100%',
+    },
+
     buttonRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -491,8 +510,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingBottom: 0,
       marginBottom: 0,
     },
-    
-  
+
     productName: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textPrimary,
@@ -525,6 +543,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.buttonPrimary, // Explicit background color for Add to Cart button
     },
     
+    commentButton: {
+      backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
+    },
         
     followButton: {
       backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
@@ -663,5 +684,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     socialButtonText: {
       color: selectedTheme.textLight // Social button text color from selected theme
     },
+   
   });
 };
