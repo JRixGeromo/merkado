@@ -40,10 +40,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
 
-  const buttonBackgroundColor =
-    backgroundColor || selectedTheme.buttonPrimary;
-  const buttonTextColor = color || selectedTheme.textPrimary;
-  const buttonBorderColor = borderColor || selectedTheme.buttonBorderPrimary; // Fallback to theme's button border color
+  const buttonBackgroundColor = backgroundColor || selectedTheme.buttonPrimary;
+  const buttonTextColor       = color || selectedTheme.textPrimary;
+  const buttonBorderColor     = borderColor || selectedTheme.buttonBorderPrimary; // Fallback to theme's button border color
 
   return (
     <TouchableOpacity

@@ -4,6 +4,7 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import MarketplaceModal from '../components/MarketplaceModal'; // Import reusable modal component
+import ContentCard from '../../../components/ContentCard';
 import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
 import { useTranslation } from 'react-i18next'; // Import translation hook
 
@@ -77,44 +78,21 @@ const products: { [key: string]: Product[] } = {
 
   
   const renderProductItem: ListRenderItem<Product> = ({ item }) => (
-    <View style={commonStyle.productBox}>
-      <View style={commonStyle.productImageWrapper}>
-        <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
-        <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={() => console.log('Magnify pressed')}>
-          <Icon name="search" size={18} color="white" />
-        </TouchableOpacity>
-      </View>
-  
-      <Text style={commonStyle.productName}>{item.name}</Text>
-      <Text style={commonStyle.productPrice}>₱{item.price}</Text>
-  
-      <View style={commonStyle.infoRow}>
-        <Icon name="star" size={16} color="gold" style={commonStyle.iconContainer} />
-        <Text style={commonStyle.infoText}>{item.rating}</Text>
-      </View>
-  
-      <View style={commonStyle.likeRow}>
-        <TouchableOpacity onPress={() => toggleProductLike(item.id)} style={commonStyle.iconContainer}>
-          <Icon
-            name={likedProducts[item.id] ? 'heart' : 'heart-outline'}
-            size={18}
-            color={likedProducts[item.id] ? 'red' : selectedTheme.iconColor}
-          />
-        </TouchableOpacity>
-        <Text style={commonStyle.infoText}>
-          {item.likes + (likedProducts[item.id] ? 1 : 0)} Likes
-        </Text>
-      </View>
-  
-      <View style={commonStyle.buttonRow}>
-        <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.chatButton]}>
-          <Icon name="chatbubble-outline" size={20} color={selectedTheme.textLight} />
-        </TouchableOpacity>
-        <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.cartButton]}>
-          <Icon name="cart-outline" size={20} color={selectedTheme.textLight} />
-        </TouchableOpacity>
-      </View>
-    </View>
+    <ContentCard
+      type="product"
+      imageUrl={item.imageUrl}
+      name={item.name}
+      price={item.price}
+      rating={item.rating}
+      likes={item.likes}
+      isLiked={likedProducts[item.id]}
+      onMagnifyPress={() => console.log('Magnify pressed')}
+      onLikePress={() => toggleProductLike(item.id)}
+      buttonActions={[
+        { iconName: 'chatbubble-outline', onPress: () => console.log('Chat Pressed'), buttonStyle: commonStyle.chatButton },
+        { iconName: 'cart-outline', onPress: () => console.log('Cart Pressed'), buttonStyle: commonStyle.cartButton },
+      ]}
+    />
   );
   
   

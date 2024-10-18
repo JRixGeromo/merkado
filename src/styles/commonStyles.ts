@@ -431,7 +431,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
     productImageWrapper: {
       width: '100%',
-      height: '35%', // Fixed height equivalent to 35% of productBox height
+      height: '40%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',
     },
     
@@ -452,51 +452,62 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
     productBox: {
       backgroundColor: selectedTheme.cardBackground,
-      //padding: SHARED.padding,
-      //borderRadius: SHARED.borderRadius,
-      alignItems: 'center',
-      justifyContent: 'flex-start', // Align content to the top
-      width: 120, // Fixed width for product boxes
-      height: 225, // Total height for the product box
+      width: 120,
+      height: 225,
       marginRight: 10,
       shadowColor: SHARED.shadow.color,
       shadowOpacity: SHARED.shadow.opacity,
       shadowOffset: SHARED.shadow.offset,
       shadowRadius: SHARED.shadow.radius,
+      paddingBottom: 0,
+      marginBottom: 0,
+      justifyContent: 'space-between', // Space between content and buttons
+      alignItems: 'center', // Center all content horizontally
     },
-
+    
+    contentContainer: {
+      flex: 1, // Fills available space between image and button row
+      justifyContent: 'flex-start', // Align content to the top of the container
+      alignItems: 'center', // Center content horizontally
+      width: '100%',
+    },
+    
+    infoRow: {
+      flexDirection: 'row',
+      alignItems: 'center', // Center items vertically
+      justifyContent: 'center', // Center the entire row horizontally
+      marginTop: 6,
+    },
+  
+    buttonRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+      marginTop: 10,
+      paddingBottom: 0,
+      marginBottom: 0,
+    },
+    
+  
     productName: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
-      marginTop: 6, // Add some margin after the image
+      marginTop: 3, // Add some margin after the image
     },
     
     productPrice: {
       fontSize: normalizeFontSize(14),
       color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
-      marginTop: 4, // Space between the product name and price
+      marginTop: 0, // Space between the product name and price
     },
-    
-    infoRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginTop: 6, // Add some space between price and rating row
-    },
-
-    buttonRow: {
-      flexDirection: 'row', // Align buttons in a row
-      justifyContent: 'space-between', // Ensure space between buttons
-      marginTop: 10, // Add margin above the buttons
-      width: '100%', // Ensure the buttons span the entire width of the card
-    },
-    
+  
     fullWidthButton: {
       flexDirection: 'row', // Arrange icon and text in a row
       alignItems: 'center', // Center the content vertically
       justifyContent: 'center', // Center the content horizontally
-      paddingVertical: 10, // Add vertical padding for better touch area
+      paddingVertical: 5, // Add vertical padding for better touch area
       //borderRadius: 5, // Rounded corners
       flex: 0.5, // Each button takes 50% of the width
       //marginHorizontal: 2, // Small space between the two buttons
