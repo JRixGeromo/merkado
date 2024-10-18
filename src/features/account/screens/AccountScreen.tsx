@@ -61,7 +61,7 @@ const AccountScreen = () => {
         <View style={commonStyle.section}>
           <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
-              <Icon name="person" size={24} color={selectedTheme.iconColor} />
+              <Icon name="person" size={24} color={selectedTheme.iconColorPrimary} />
               <Text style={commonStyle.cardHeaderTitle}>{t('accountInformation')}</Text>
             </View>
             <Text style={commonStyle.cardText}>{t('location')}: {accountInfo.location}</Text>
@@ -73,7 +73,7 @@ const AccountScreen = () => {
           {/* Payment Method Card */}
           <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
-              <Icon name="card" size={24} color={selectedTheme.iconColor} />
+              <Icon name="card" size={24} color={selectedTheme.iconColorPrimary} />
               <Text style={commonStyle.cardHeaderTitle}>{t('paymentMethod')}</Text>
             </View>
             <Text style={commonStyle.cardText}>
@@ -87,7 +87,7 @@ const AccountScreen = () => {
           {/* Preferences Card */}
           <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
-              <Icon name="settings-outline" size={24} color={selectedTheme.iconColor} />
+              <Icon name="settings-outline" size={24} color={selectedTheme.iconColorPrimary} />
               <Text style={commonStyle.cardHeaderTitle}>{t('preferences')}</Text>
             </View>
 
@@ -99,7 +99,7 @@ const AccountScreen = () => {
                 <Icon
                   name={theme === 'dark' ? 'moon' : 'sunny'}
                   size={24}
-                  color={selectedTheme.iconColor}
+                  color={selectedTheme.iconColorPrimary}
                 />
               
             </View>
@@ -120,7 +120,7 @@ const AccountScreen = () => {
                   customBackground="transparent"
                   joinLabelVaue={true} // Join the label and value in the dropdown text
                 />
-                <Icon name="globe" size={24} color={selectedTheme.iconColor} />
+                <Icon name="globe" size={24} color={selectedTheme.iconColorPrimary} />
               </View>
             </View>
           </View>

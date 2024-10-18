@@ -61,8 +61,8 @@ const App = () => {
 
           return <Icon name={iconName as string} size={size} color={color} />;
         },
-        tabBarActiveTintColor: selectedTheme.iconColor,
-        tabBarInactiveTintColor: selectedTheme.iconColor,
+        tabBarActiveTintColor: selectedTheme.iconColorPrimary,
+        tabBarInactiveTintColor: selectedTheme.iconColorPrimary,
         tabBarStyle: commonStyle.tabBarStyle, // Moved to commonStyles
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
         // Add the custom header for the Dashboard screen
@@ -80,7 +80,7 @@ const App = () => {
             <Icon
               name="cart-outline"
               size={25}
-              color={selectedTheme.iconColor}
+              color={selectedTheme.iconColorSecondary}
               onPress={() => navigation.navigate('CartScreen')}
               style={commonStyle.headerIcon} // Moved to commonStyles
             />

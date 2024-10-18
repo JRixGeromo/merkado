@@ -103,7 +103,7 @@ const products: { [key: string]: Product[] } = {
         {/* Search Container */}
         <View style={commonStyle.searchContainer}>
           <TouchableOpacity style={commonStyle.headerIcon} onPress={toggleModal}>
-            <Icon name="menu" size={24} color={selectedTheme.iconColor} />
+            <Icon name="menu" size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
           <TextInput style={commonStyle.searchInput} placeholder="Search" placeholderTextColor="gray" />
         </View>

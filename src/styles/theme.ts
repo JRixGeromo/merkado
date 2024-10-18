@@ -38,7 +38,8 @@ export interface ThemeType {
   buttonBorderLight: string;
 
   tabBarBackgroundColor: string;
-  iconColor: string;
+  iconColorPrimary: string;
+  iconColorSecondary: string;
   cardBackground: string;
   modalOverlay: string;
   loader: string;
@@ -87,7 +88,7 @@ const lightTheme: ThemeType = {
   buttonLink: '#38b000',
   buttonGray: '#e6e6ea',
   buttonCancel: '#e6e6ea',
-  buttonClose: '#fb8500',
+  buttonClose: '#343a40',
 
   buttonBorderPrimary: '#4CAF50',
   buttonBorderBlack: '#393d3f',
@@ -95,7 +96,8 @@ const lightTheme: ThemeType = {
   buttonBorderLight: '#ffffff',
   
   tabBarBackgroundColor: '#ffffff',
-  iconColor: "#7cb518",
+  iconColorPrimary: "#7cb518",
+  iconColorSecondary: "#f6aa1c",
   cardBackground: '#ffffff',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
@@ -145,7 +147,7 @@ const darkTheme: ThemeType = {
   buttonLink: '#38b000',
   buttonGray: '#e6e6ea',
   buttonCancel: '#e6e6ea',
-  buttonClose: '#fb8500',
+  buttonClose: '#343a40',
 
   buttonBorderPrimary: '#4CAF50',
   buttonBorderBlack: '#393d3f',
@@ -153,7 +155,8 @@ const darkTheme: ThemeType = {
   buttonBorderLight: '#ffffff',
 
   tabBarBackgroundColor: '#333533',
-  iconColor: "#7cb518",
+  iconColorPrimary: "#7cb518",
+  iconColorSecondary: "#f6aa1c",
   cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",

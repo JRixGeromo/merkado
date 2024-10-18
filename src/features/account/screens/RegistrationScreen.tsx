@@ -194,6 +194,7 @@ const RegistrationScreen = () => {
               onPress={handleRegister}
               color={selectedTheme.textLight}
               backgroundColor={selectedTheme.buttonPrimary}
+              borderRadius={2} // You can set this dynamically too
             />
           )}
 

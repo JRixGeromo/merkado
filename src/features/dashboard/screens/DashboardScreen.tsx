@@ -122,57 +122,14 @@ const DashboardScreen = () => {
     />
   );
 
-  // const renderProductItem: ListRenderItem<Product> = ({ item }) => (
-  //   <View style={commonStyle.productBox}>
-  //     <View style={commonStyle.productImageWrapper}>
-  //       <Image source={{ uri: item.imageUrl }} style={commonStyle.productImage} />
-  //       <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={() => console.log('Magnify pressed')}>
-  //         <Icon name="search" size={18} color="white" />
-  //       </TouchableOpacity>
-  //     </View>
-  
-  //     <Text style={commonStyle.productName}>{item.name}</Text>
-  //     <Text style={commonStyle.productPrice}>₱{item.price}</Text>
-  
-  //     <View style={commonStyle.infoRow}>
-  //       <Icon name="star" size={16} color="gold" style={commonStyle.iconContainer} />
-  //       <Text style={commonStyle.infoText}>{item.rating}</Text>
-  //     </View>
-  
-  //     <View style={commonStyle.likeRow}>
-  //       <TouchableOpacity onPress={() => toggleProductLike(item.id)} style={commonStyle.iconContainer}>
-  //         <Icon
-  //           name={likedProducts[item.id] ? 'heart' : 'heart-outline'}
-  //           size={18}
-  //           color={likedProducts[item.id] ? 'red' : selectedTheme.iconColor}
-  //         />
-  //       </TouchableOpacity>
-  //       <Text style={commonStyle.infoText}>
-  //         {item.likes + (likedProducts[item.id] ? 1 : 0)} Likes
-  //       </Text>
-  //     </View>
-  
-  //     <View style={commonStyle.buttonRow}>
-  //       <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.chatButton]}>
-  //         <Icon name="chatbubble-outline" size={20} color={selectedTheme.textLight} />
-  //       </TouchableOpacity>
-  //       <TouchableOpacity style={[commonStyle.fullWidthButton, commonStyle.cartButton]}>
-  //         <Icon name="cart-outline" size={20} color={selectedTheme.textLight} />
-  //       </TouchableOpacity>
-  //     </View>
-  //   </View>
-  // );
-  
-  
-
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1, backgroundColor: selectedTheme.fullBackgrounColor }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}  style={commonStyle.fullContainer}>
       <View style={commonStyle.section}>
       {/* Search Bar */}
       <View style={commonStyle.searchContainer}>
           {/* Categories Icon Button */}
           <TouchableOpacity style={commonStyle.headerIcon}>
-            <Icon name="menu" size={24} color={selectedTheme.iconColor} />
+            <Icon name="menu" size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
 
           {/* Search Bar */}

@@ -67,7 +67,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
             <Icon
               name={isLiked ? 'heart' : 'heart-outline'}
               size={18}
-              color={isLiked ? 'red' : selectedTheme.iconColor}
+              color={isLiked ? 'red' : selectedTheme.iconColorPrimary}
             />
           </TouchableOpacity>
           <Text style={commonStyle.infoText}>{likes + (isLiked ? 1 : 0)} Likes</Text>

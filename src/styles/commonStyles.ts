@@ -4,13 +4,13 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 const SHARED = {
-  borderRadius: 5,  // Shared border radius
+  borderRadius: 2,  // Shared border radius
   padding: normalizeHeight(10),  // Shared padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
     opacity: 0.1,
-    radius: 5,
+    radius: 2,
     elevation: 3,  // Android-specific shadow
   },
   buttonPadding: normalizeHeight(15),  // Button padding
@@ -21,6 +21,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+    fullContainer: {
+      flex: 1, 
+      backgroundColor: selectedTheme.fullBackgrounColor,
+    },
     container: {
       ...SHARED, // Apply shared styles
       flex: 1,
@@ -172,7 +176,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 10, // Space above the edit link
     },
     iconColor: {
-      color: selectedTheme.iconColor, // Set a default color for the icon
+      color: selectedTheme.iconColorPrimary, // Set a default color for the icon
       fontSize: normalizeFontSize(24), // Default size for icons
     },
     placeholderTextColor: {
