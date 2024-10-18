@@ -166,7 +166,7 @@ const DashboardScreen = () => {
   
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} style={{ flex: 1, backgroundColor: selectedTheme.fullBackgrounColor }}>
       <View style={commonStyle.section}>
       {/* Search Bar */}
       <View style={commonStyle.searchContainer}>

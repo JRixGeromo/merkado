@@ -67,7 +67,7 @@ const lightTheme: ThemeType = {
   textLink: '#38b000',
   textGray: '#38b000',
 
-  fullBackgrounColor: '#eaeaea',
+  fullBackgrounColor: '#eae0d5',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
   inputBackgroundColor: '#d6d6d6',
