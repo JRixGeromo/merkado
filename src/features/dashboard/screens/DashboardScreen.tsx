@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { View, Text, ScrollView, Image, Dimensions, FlatList, ListRenderItem, TouchableOpacity, TextInput } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
+import MarketplaceModal from '../../marketplace/components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
 import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
@@ -40,6 +41,18 @@ const DashboardScreen = () => {
   const carouselRef = useRef<Carousel<any>>(null);
   const [likedProducts, setLikedProducts] = useState<{ [key: string]: boolean }>({});
   const [likedStores, setLikedStores] = useState<{ [key: string]: boolean }>({});
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  // Sample data for categories, brands, vendors, featured, promos, onSaleProducts, newProducts
+  const categories = ['Cosmetics', 'Beverages', 'Prepared Meals', 'Snacks'];
+  const brands = ['Brand 1', 'Brand 2', 'Brand 3']; // New brands section
+  const vendors = ['Vendor 1', 'Vendor 2', 'Vendor 3'];
+  const featured = ['Featured 1', 'Featured 2', 'Featured 3'];
+  const promos = ['Promo 1', 'Promo 2', 'Promo 3'];
+  const onSaleProducts = ['Sale 1', 'Sale 2', 'Sale 3']; // Added onSale products
+  const newProducts = ['New 1', 'New 2', 'New 3']; // Added new products
+
  // Dummy promo images array
  const promoImages = [
     { imageUrl: 'https://via.placeholder.com/100x100' },
@@ -77,6 +90,12 @@ const DashboardScreen = () => {
     }));
   };
 
+    
+  // Function to toggle modal visibility
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+  
   // Render promo slider item
   const renderPromoItem = ({ item }: { item: { imageUrl: string } }) => (
     <View style={commonStyle.slide}>
@@ -125,20 +144,26 @@ const DashboardScreen = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}  style={commonStyle.fullContainer}>
       <View style={commonStyle.section}>
-      {/* Search Bar */}
+      {/* Search Container */}
       <View style={commonStyle.searchContainer}>
-          {/* Categories Icon Button */}
-          <TouchableOpacity style={commonStyle.headerIcon}>
+          <TouchableOpacity style={commonStyle.headerIcon} onPress={toggleModal}>
             <Icon name="menu" size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
-
-          {/* Search Bar */}
-          <TextInput
-            style={commonStyle.searchInput}
-            placeholder="Search"
-            placeholderTextColor="gray"
-          />
+          <TextInput style={commonStyle.searchInput} placeholder="Search" placeholderTextColor="gray" />
         </View>
+
+        {/* Reusable Modal Component */}
+        <MarketplaceModal
+          visible={isModalVisible}
+          onClose={toggleModal}
+          categories={categories}
+          brands={brands}
+          vendors={vendors}
+          featured={featured}
+          promos={promos}
+          onSaleProducts={onSaleProducts}
+          newProducts={newProducts}
+        />
 
       {/* Promo Carousel */}
       <View style={commonStyle.section}>
