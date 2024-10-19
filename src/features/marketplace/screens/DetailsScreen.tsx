@@ -276,6 +276,9 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
                     style={commonStyle.userImage}
                   />
                   <Text style={{color: selectedTheme.textSecondary, marginTop: 5 }}>{reply}</Text>
+                  <Text style={[commonStyle.font12, { color: selectedTheme.textGray, marginTop: 3 }]}>
+                    {dayjs(comment.time).fromNow()}
+                  </Text>
                 </View>
               ))}
 
