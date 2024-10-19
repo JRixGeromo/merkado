@@ -205,6 +205,10 @@ const DetailsScreen: React.FC = () => {
             { id: 7, text: 'Love this!', user: 'User7' },
           ].map((comment) => (
             <View key={comment.id} style={[styles.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
+              <Image
+                source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }} // Use user's image URL
+                style={styles.userImage}
+              />
               <View style={styles.commentWrapper}>
                 <Text style={[styles.commentTextWrapper, { color: selectedTheme.textSecondary }]}>
                   {comment.user}: {comment.text}
@@ -240,7 +244,11 @@ const DetailsScreen: React.FC = () => {
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
                 <View key={index} style={styles.replyContainer}>
-                  <Text style={[styles.replyText, {color: selectedTheme.textSecondary }]}>Reply: {reply}</Text>
+                  <Image
+                    source={{ uri: "https://randomuser.me/api/portraits/women/1.jpg" }} // Use user's image URL
+                    style={styles.userImage}
+                  />
+                  <Text style={[styles.replyText, {color: selectedTheme.textSecondary }]}>{reply}</Text>
                 </View>
               ))}
 
@@ -444,8 +452,13 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 5,
     paddingLeft: 10,
-    borderLeftWidth: 2,
+    borderLeftWidth: 0.5,
     borderLeftColor: '#ddd',
   },
-  
+  userImage: {
+    width: 30, // Width of the user image
+    height: 30, // Height of the user image
+    borderRadius: 20, // Half of width/height to make it a perfect circle
+    backgroundColor: '#ddd', // Placeholder color in case there's no image
+  },
 });
