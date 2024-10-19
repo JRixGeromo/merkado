@@ -34,6 +34,10 @@ const DetailsScreen: React.FC = () => {
   const [selectedCommentReactions, setSelectedCommentReactions] = useState<{ [key: number]: { label: string, emoji: string } }>({});
   const [selectedPostReaction, setSelectedPostReaction] = useState<string | null>(null); // Track post reaction
 
+  const [replyingTo, setReplyingTo] = useState<number | null>(null); // State to track the comment being replied to
+  const [replies, setReplies] = useState<{ [key: number]: string[] }>({}); // Stores replies per comment
+
+
   const handleSendComment = (comment: string) => {
     console.log('Sent comment:', comment);
     // Handle the comment send logic here, like making an API call
@@ -79,6 +83,17 @@ const DetailsScreen: React.FC = () => {
     { emoji: '🧂', label: 'TOO_SALTY' },
     { emoji: '🍭', label: 'TOO_SWEET' },
   ];
+
+
+
+  const handleReplySend = (commentId: number, reply: string) => {
+    setReplies((prevReplies) => ({
+      ...prevReplies,
+      [commentId]: [...(prevReplies[commentId] || []), reply],
+    }));
+    setReplyingTo(null); // Hide reply input after sending the reply
+  };
+
 
   return (
     <View style={[styles.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>
@@ -183,6 +198,11 @@ const DetailsScreen: React.FC = () => {
           {[
             { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post!', user: 'User1' },
             { id: 2, text: 'Love this!', user: 'User2' },
+            { id: 3, text: 'Love this!', user: 'User3' },
+            { id: 4, text: 'Love this!', user: 'User4' },
+            { id: 5, text: 'Love this!', user: 'User5' },
+            { id: 6, text: 'Love this!', user: 'User6' },
+            { id: 7, text: 'Love this!', user: 'User7' },
           ].map((comment) => (
             <View key={comment.id} style={[styles.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
               <View style={styles.commentWrapper}>
@@ -194,14 +214,6 @@ const DetailsScreen: React.FC = () => {
                 </TouchableOpacity>
               </View>
 
-              {/* Display the selected reaction below the comment if available */}
-              {selectedCommentReactions[comment.id] && (
-                <View style={styles.selectedReactionWrapper}>
-                  <Text style={styles.selectedReactionText}>
-                    {selectedCommentReactions[comment.id].emoji}
-                  </Text>
-                </View>
-              )}
 
               {/* Comment Reaction Bar */}
               {showCommentReactions[comment.id] && (
@@ -212,6 +224,43 @@ const DetailsScreen: React.FC = () => {
                   />
                 </View>
               )}
+
+              {/* Display the selected reaction below the comment if available */}
+              {selectedCommentReactions[comment.id] && (
+                <View style={styles.selectedReactionWrapper}>
+                  <Text style={styles.selectedReactionText}>
+                    {selectedCommentReactions[comment.id].emoji}
+                  </Text>
+                </View>
+              )}
+
+              {/* Reply codes start */}
+
+              {/* Display existing replies */}
+              {replies[comment.id]?.map((reply, index) => (
+                <View key={index} style={styles.replyContainer}>
+                  <Text style={[styles.replyText, {color: selectedTheme.textSecondary }]}>Reply: {reply}</Text>
+                </View>
+              ))}
+
+
+              {/* Show the reply input field if replying to this comment */}
+              {replyingTo === comment.id && (
+                <View style={styles.replyInputWrapper}>
+                  <CommentInput
+                    onSend={(reply) => handleReplySend(comment.id, reply)}
+                    onAddReaction={handleAddReaction}
+                    reactions={reactions}
+                  />
+                </View>
+              )}
+              
+              {/* Reply Button */}
+              <TouchableOpacity onPress={() => setReplyingTo(comment.id)}>
+                <Text style={[styles.replyText, {color: selectedTheme.textGray }]}>Reply</Text>
+              </TouchableOpacity>
+
+              {/* End: Reply codes */}
             </View>
           ))}
         </View>
@@ -369,5 +418,19 @@ const styles = StyleSheet.create({
     marginRight: 10, // Margin to create space between text and icon
     fontSize: 14, // Adjust text size
     lineHeight: 18, // Adjust line height for better readability
+  },
+  replyText: {
+    marginTop: 5,
+  },
+  replyInputWrapper: {
+    marginLeft: 20,
+    marginTop: 10,
+  },
+  replyContainer: {
+    marginLeft: 20,
+    marginTop: 5,
+    paddingLeft: 10,
+    borderLeftWidth: 2,
+    borderLeftColor: '#ddd',
   },
 });

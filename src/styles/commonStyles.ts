@@ -381,7 +381,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
     infoText: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.textPrimary, // Use primary text color from theme
+      color: selectedTheme.textGray, // Use primary text color from theme
     },
     storeName: {
       fontSize: normalizeFontSize(10),
@@ -508,7 +508,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
     productName: {
       fontSize: normalizeFontSize(10),
-      color: selectedTheme.textPrimary,
+      color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
       marginTop: 3, // Add some margin after the image
     },

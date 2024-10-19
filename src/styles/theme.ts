@@ -12,6 +12,8 @@ export interface ThemeType {
 
   fullBackgrounColor: string;
   fullContainerBackgrounColor: string;
+  formBackgrounColor: string;
+
   googleButtonColor: string;
   facebookButtonColor: string;
   inputBackgroundColor: string;
@@ -72,10 +74,12 @@ const lightTheme: ThemeType = {
   textLight: '#ffffff',
   textHighlight: '#800e13',
   textLink: '#38b000',
-  textGray: '#38b000',
+  textGray: '#8d99ae',
 
   fullBackgrounColor: '#edede9',
   fullContainerBackgrounColor: '#ffffff',
+  formBackgrounColor: '#ebebeb',
+
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
   inputBackgroundColor: '#d6d6d6',
@@ -93,7 +97,7 @@ const lightTheme: ThemeType = {
   buttonLight: '#ffffff',
   buttonHighlight: '#f9c74f',
   buttonLink: '#38b000',
-  buttonGray: '#e6e6ea',
+  buttonGray: '#8d99ae',
   buttonCancel: '#e6e6ea',
   buttonClose: '#343a40',
 
@@ -127,7 +131,7 @@ const lightTheme: ThemeType = {
 };
 
 const darkTheme: ThemeType = {
-  textPrimary: '#f5f1ed',
+  textPrimary: '#7cb518',
   textSecondary: '#dee2e6',
   textPlaceHolderInfo: '#9999a1',
   textDisabled: '#ced4da',
@@ -140,9 +144,11 @@ const darkTheme: ThemeType = {
 
   fullBackgrounColor: '#000000',
   fullContainerBackgrounColor: '#000000',
+  formBackgrounColor: '#2f2f2f',
+
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#2d2d2d',
+  inputBackgroundColor: '#000',
 
   buttonPrimary: '#606c38',
   buttonSecondary: '#ffffff',

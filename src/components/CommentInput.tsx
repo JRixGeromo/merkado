@@ -38,10 +38,10 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
   };
 
   return (
-    <View style={styles.commentContainer}>
-      <View style={styles.inputWrapper}>
+    <View style={[styles.commentContainer, {backgroundColor: selectedTheme.formBackgrounColor}]}>
+      <View style={[styles.inputWrapper, {backgroundColor: selectedTheme.inputBackgroundColor}]}>
         <TextInput
-          style={styles.commentInput}
+          style={[styles.commentInput, {color: selectedTheme.textSecondary}]}
           placeholder={placeholder}
           placeholderTextColor="#999"
           value={comment}
@@ -75,7 +75,7 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
 const styles = StyleSheet.create({
   commentContainer: {
     backgroundColor: '#333',
-    borderRadius: 20,
+    borderRadius: 2,
     padding: 15,
     marginBottom: 10,
     width: '100%', 
@@ -83,14 +83,12 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#222',
     borderRadius: 30,
     paddingLeft: 15,
     width: '100%',
   },
   commentInput: {
     flex: 1,
-    color: '#fff',
     paddingVertical: 10,
     fontSize: 16,
     paddingRight: 50,
