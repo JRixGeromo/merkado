@@ -192,7 +192,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
         {/* ReactionBar */}
         {showReactions && (
-          <View style={styles.reactionBarSection}>
+          <View style={commonStyle.reactionBarSection}>
             <ReactionBar
               reactions={reactions}
               onReactionPress={handleReactionPress}
@@ -201,12 +201,12 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
         )}
 
         {/* Comment Section */}
-        <View style={styles.commentSection}>
+        <View style={commonStyle.commentSection}>
           <CommentInput onSend={handleSendComment} onAddReaction={handleAddReaction} reactions={reactions}/>
         </View>
 
         {/* Existing Comments */}
-        <View style={styles.commentsList}>
+        <View style={commonStyle.commentsList}>
           {[
             { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! ', user: 'User1', time: new Date() },
             { id: 2, text: 'Love this!', user: 'User2', time: new Date() },
@@ -216,39 +216,39 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             { id: 6, text: 'Love this!', user: 'User6', time: new Date() },
             { id: 7, text: 'Love this!', user: 'User7', time: new Date() },
           ].map((comment) => (
-            <View key={comment.id} style={[styles.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
+            <View key={comment.id} style={[commonStyle.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
               <Image
                 source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }} // Use user's image URL
-                style={styles.userImage}
+                style={commonStyle.userImage}
               />
               
-              <View style={styles.commentWrapper}>
+              <View style={commonStyle.commentWrapper}>
                 {/* Comment Text */}
-                <Text style={[styles.commentTextWrapper, { color: selectedTheme.textSecondary }]}>
+                <Text style={[commonStyle.commentTextWrapper, commonStyle.font12, { color: selectedTheme.textSecondary }]}>
                   {comment.user}: {comment.text}
                 </Text>
 
                 {/* Display the selected reaction below the comment if available */}
                 {selectedCommentReactions[comment.id] && (
-                  <View style={styles.selectedReactionWrapper}>
-                    <Text style={styles.selectedReactionText}>
+                  <View style={commonStyle.selectedReactionWrapper}>
+                    <Text style={commonStyle.selectedReactionText}>
                       {selectedCommentReactions[comment.id].emoji}
                     </Text>
                   </View>
                 )}
 
                 {/* Time and Thumbs Up Row */}
-                <View style={styles.timeAndReactionWrapper}>
-                  <Text style={styles.timeText}>
+                <View style={commonStyle.timeAndReactionWrapper}>
+                  <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
-                  <Text style={styles.timeText}>
+                  <Text style={[commonStyle.font12, commonStyle.lPadding, { color: selectedTheme.textGray }]}>
                     |
                   </Text>
-                  <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={styles.thumbsUpIcon}>
+                  <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={commonStyle.lPadding}>
                     {/* <Icon name="thumbs-up-outline" size={18} color={selectedTheme.iconColorGray} /> */}
                     
-                    <Text style={styles.timeText}>
+                    <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                       Like
                     </Text>
                   </TouchableOpacity>
@@ -258,7 +258,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
               {/* Comment Reaction Bar */}
               {showCommentReactions[comment.id] && (
-                <View style={styles.reactionBarSection}>
+                <View style={commonStyle.reactionBarSection}>
                  <ReactionBar
                     reactions={reactions}
                     onReactionPress={(reaction) => handleCommentReactionPress(comment.id, reaction)} // Passing the full reaction object
@@ -269,19 +269,19 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
               {/* Reply codes start */}
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
-                <View key={index} style={styles.replyContainer}>
+                <View key={index} style={commonStyle.replyContainer}>
                   <Image
                     source={{ uri: "https://randomuser.me/api/portraits/women/1.jpg" }} // Use user's image URL
-                    style={styles.userImage}
+                    style={commonStyle.userImage}
                   />
-                  <Text style={[styles.replyText, {color: selectedTheme.textSecondary }]}>{reply}</Text>
+                  <Text style={{color: selectedTheme.textSecondary, marginTop: 5 }}>{reply}</Text>
                 </View>
               ))}
 
 
               {/* Show the reply input field if replying to this comment */}
               {replyingTo === comment.id && (
-                <View style={styles.replyInputWrapper}>
+                <View style={commonStyle.replyInputWrapper}>
                   <CommentInput
                     onSend={(reply) => handleReplySend(comment.id, reply)}
                     onAddReaction={handleAddReaction}
@@ -292,7 +292,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
               {/* Reply Button */}
               <TouchableOpacity onPress={() => setReplyingTo(comment.id)}>
-                <Text style={[styles.replyText, {color: selectedTheme.textGray }]}>Reply</Text>
+                <Text style={{color: selectedTheme.textGray, marginTop: 5 }}>Reply</Text>
               </TouchableOpacity>
 
               {/* End: Reply codes */}
@@ -306,182 +306,3 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
 export default DetailsScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  saleBanner: {
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-    backgroundColor: 'red',
-    padding: 5,
-    zIndex: 1, // Ensures it appears on top of the image
-    alignItems: 'center',
-  },
-  contentImageWrapper: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'cover',
-  },
-
-  infoSection: {
-    paddingHorizontal: 16,
-    marginTop: 10,
-  },
-  firstRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between', // Name takes 70% and reactions 30%
-    alignItems: 'center',
-  },
-  nameContainer: {
-    flex: 0.7, // Name takes 70% width
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  reactionIconContainer: {
-    flex: 0.3, // Reactions take 30% width
-    flexDirection: 'row',
-    justifyContent: 'flex-end', // Align reactions to the right
-  },
-  reactionSpacing: {
-    marginLeft: 15,
-  },
-  secondRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between', // Location takes 70% and comments count 30%
-    marginTop: 6,
-  },
-  location: {
-    flex: 0.7,
-    fontSize: 16,
-  },
-  description: {
-    flex: 0.7,
-    fontSize: 16,
-  },
-  commentCount: {
-    flex: 0.3,
-    textAlign: 'right', // Align comments count to the right
-    fontSize: 16,
-  },
-  reactionsContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    marginVertical: 16,
-    alignItems: 'center',
-  },
-  priceContainer: {
-    flex: 0.55, // Price takes 30% width
-    justifyContent: 'center',
-  },
-  priceText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  ratingAndIconsContainer: {
-    flex: 0.45, // Rating and reaction icons take 70% width
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  ratingRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  ratingText: {
-    fontSize: 16,
-    marginLeft: 8,
-  },
-  reactionIcons: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end', // Align to the right
-  },
-  reactionBar: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    paddingVertical: 5,
-  },
-
-  
-  reactionBarSection: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  selectedReactionWrapper: {
-    marginTop: 5, // Add some space between the comment and the reaction
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  selectedReactionText: {
-    fontSize: 20, // Adjust text size for reaction display
-    color: 'gray', // You can customize the color here
-  },
-
-  commentWrapper: {
-    flexDirection: 'column', // Align items in column (text above time)
-    justifyContent: 'flex-start',
-    position: 'relative', // Necessary for positioning thumbs-up icon
-    paddingRight: 40, // Create space for the thumbs-up icon
-  },
-  commentTextWrapper: {
-    fontSize: 14,
-    lineHeight: 18,
-  },
-  timeAndReactionWrapper: {
-    flexDirection: 'row', // Place time and thumbs-up in the same row
-    alignItems: 'center', // Vertically align items
-    marginTop: 5, // Add margin to space it from the comment
-  },
-  timeText: {
-    fontSize: 12,
-    color: 'gray', // Lighter color for time text
-    marginRight: 10, // Add space between the time and thumbs-up icon
-  },
-
-  thumbsUpIcon: {
-   
-  },
-
-  commentSection: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    alignItems: 'center',
-    marginBottom: 5,
-  },
-  commentsList: {
-    paddingHorizontal: 16, // Adjust padding for the comment list
-  },
-  commentContainer: {
-    padding: 10,
-    borderRadius: 2, // Rounded corners for the container
-    borderBottomWidth: 1,
-    marginBottom: 10, // Margin between comments
-    position: 'relative', // Necessary for positioning the thumbs-up icon
-  },
-  replyText: {
-    marginTop: 5,
-  },
-  replyInputWrapper: {
-    marginLeft: 20,
-    marginTop: 10,
-  },
-  replyContainer: {
-    marginLeft: 20,
-    marginTop: 5,
-    paddingLeft: 10,
-    //borderLeftWidth: 0.5,
-    //borderLeftColor: '#ddd',
-  },
-  userImage: {
-    width: 30, // Width of the user image
-    height: 30, // Height of the user image
-    borderRadius: 20, // Half of width/height to make it a perfect circle
-    backgroundColor: '#ddd', // Placeholder color in case there's no image
-  },
-
-});

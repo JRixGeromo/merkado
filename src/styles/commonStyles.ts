@@ -75,6 +75,61 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
     },
     
+    reactionBarSection: {
+      paddingHorizontal: 16,
+      alignItems: 'center',
+      marginBottom: 5,
+    },
+
+    commentSection: {
+      paddingHorizontal: 10,
+    },
+
+    commentContainer: {
+      padding: 10,
+      borderRadius: 2, // Rounded corners for the container
+      borderBottomWidth: 1,
+      marginBottom: 10, // Margin between comments
+      position: 'relative', // Necessary for positioning the thumbs-up icon
+    },
+
+    commentsList: {
+      paddingHorizontal: 10, // Adjust padding for the comment list
+    },
+
+    userImage: {
+      width: 30, // Width of the user image
+      height: 30, // Height of the user image
+      borderRadius: 20, // Half of width/height to make it a perfect circle
+    },
+
+    commentWrapper: {
+      flexDirection: 'column', // Align items in column (text above time)
+      justifyContent: 'flex-start',
+      position: 'relative', // Necessary for positioning thumbs-up icon
+      paddingRight: 40, // Create space for the thumbs-up icon
+    },
+    
+    commentTextWrapper: {
+      lineHeight: 18,
+    },
+
+    timeAndReactionWrapper: {
+      flexDirection: 'row', // Place time and thumbs-up in the same row
+      alignItems: 'center', // Vertically align items
+      marginTop: 5, // Add margin to space it from the comment
+    },
+  
+    replyContainer: {
+      marginLeft: 20,
+      marginTop: 5,
+      paddingLeft: 10,
+    
+    },
+    replyInputWrapper: {
+      marginLeft: 20,
+      marginTop: 10,
+    },
     font8: {
       fontSize: normalizeFontSize(8),
     },
