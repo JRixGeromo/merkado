@@ -111,24 +111,24 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
-          <View style={styles.saleBanner}>
-            <Text style={styles.saleText}>ON SALE! 50% off</Text>
+          <View style={commonStyle.saleBanner}>
+            <Text style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}>ON SALE! 50% off</Text>
           </View>
         )}
 
         {/* Product/Vendor Image */}
-        <View style={styles.contentImageWrapper}>
-          <Image source={{ uri: item.imageUrl }} style={styles.contentImage} />
+        <View style={commonStyle.bannerImageWrapper}>
+          <Image source={{ uri: item.imageUrl }} style={commonStyle.bannerContentImage} />
         </View>
 
         <View style={layoutStyle.columns}>
-          <View style={[layoutStyle.cols_75, commonStyle.paddingAll]}>
-            <Text style={{ color: selectedTheme.textPrimary }}>{item.name}</Text>
+          <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
+            <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
           </View>
           <View style={[layoutStyle.cols_25, commonStyle.rightAligned, commonStyle.rPadding]}>
             {selectedPostReaction && (
-              <View style={styles.selectedReactionWrapper}>
-                <Text style={styles.selectedReactionText}>
+              <View style={commonStyle.selectedReactionWrapper}>
+                <Text style={commonStyle.selectedReactionText}>
                   {selectedPostReaction}
                 </Text>
               </View>
@@ -139,58 +139,23 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_70, commonStyle.lPadding]}>
             {type === 'store' && item.location && (
-              <Text style={[styles.location, { color: selectedTheme.textSecondary }]}>
+              <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
                 {item.location}
               </Text>
             )}
             {type === 'product' && item.description && (
-              <Text style={[styles.description, { color: selectedTheme.textSecondary }]}>
+              <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
                 {item.description}
               </Text>
             )}
           </View>
           <View style={[layoutStyle.cols_30, commonStyle.rightAligned, commonStyle.rPadding]}>
-            <Text style={[styles.commentCount, { color: selectedTheme.textSecondary }]}>
+            <Text style={[commonStyle.font10, { color: selectedTheme.textSecondary }]}>
               46 {t('comments')}
             </Text>
           </View>
         </View>  
-        
-
-        {/* <View style={styles.infoSection}>
-
-          <View style={styles.firstRow}>
-            <View style={styles.nameContainer}>
-              <Text style={[styles.name, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
-            </View>
-            <View style={styles.reactionIconContainer}>
-              {selectedPostReaction && (
-                <View style={styles.selectedReactionWrapper}>
-                  <Text style={styles.selectedReactionText}>
-                    {selectedPostReaction}
-                  </Text>
-                </View>
-              )}
-            </View>
-          </View>
-
-          <View style={styles.secondRow}>
-            {type === 'store' && item.location && (
-              <Text style={[styles.location, { color: selectedTheme.textSecondary }]}>
-                {item.location}
-              </Text>
-            )}
-            {type === 'product' && item.description && (
-              <Text style={[styles.description, { color: selectedTheme.textSecondary }]}>
-                {item.description}
-              </Text>
-            )}
-            <Text style={[styles.commentCount, { color: selectedTheme.textSecondary }]}>
-              46 {t('comments')}
-            </Text>
-          </View>
-        </View> */}
-
+       
         {/* Price and Rating Section */}
         <View style={styles.reactionsContainer}>
           <View style={styles.priceContainer}>
@@ -353,20 +318,12 @@ const styles = StyleSheet.create({
     zIndex: 1, // Ensures it appears on top of the image
     alignItems: 'center',
   },
-  saleText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
   contentImageWrapper: {
     width: '100%',
     height: 200,
     resizeMode: 'cover',
   },
-  contentImage: {
-    width: '100%',
-    height: 200,
-  },
+
   infoSection: {
     paddingHorizontal: 16,
     marginTop: 10,

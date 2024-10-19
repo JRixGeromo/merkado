@@ -35,6 +35,70 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: 10,
     },
 
+    bannerImageWrapper: {
+      width: '100%',
+      height: 200,
+      resizeMode: 'cover',
+    },
+    bannerContentImage: {
+      width: '100%',
+      height: 200,
+    },
+
+    selectedReactionWrapper: {
+      marginTop: 5, // Add some space between the comment and the reaction
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    selectedReactionText: {
+      fontSize: 20, // Adjust text size for reaction display
+      color: 'gray', // You can customize the color here
+    },
+
+    saleBanner: {
+      position: 'absolute',
+      top: 0,
+      width: '100%',
+      backgroundColor: 'red',
+      padding: 5,
+      zIndex: 1, // Ensures it appears on top of the image
+      alignItems: 'center',
+    },
+    
+    font8: {
+      fontSize: normalizeFontSize(8),
+    },
+    font10: {
+      fontSize: normalizeFontSize(10),
+    },
+    font12: {
+      fontSize: normalizeFontSize(12),
+    },
+    font14: {
+      fontSize: normalizeFontSize(14),
+    },
+    font16: {
+      fontSize: normalizeFontSize(16),
+    },
+    font18: {
+      fontSize: normalizeFontSize(18),
+    },
+    font20: {
+      fontSize: normalizeFontSize(20),
+    },
+    font25: {
+      fontSize: normalizeFontSize(25),
+    },
+    font30: {
+      fontSize: normalizeFontSize(30),
+    },
+    font35: {
+      fontSize: normalizeFontSize(35),
+    },
+    font40: {
+      fontSize: normalizeFontSize(40),
+    },
+
     //////////
     fullContainer: {
       flex: 1,
@@ -461,6 +525,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: '30%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',
     },
+
 
     contentImage: {
       width: '100%',
