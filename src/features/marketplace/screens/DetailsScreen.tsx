@@ -26,7 +26,7 @@ const DetailsScreen: React.FC = () => {
   console.log(item.description);
 
   return (
-    <View style={[styles.container, { backgroundColor: selectedTheme.fullBackgrounColor }]}>
+    <View style={[styles.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         
@@ -50,8 +50,8 @@ const DetailsScreen: React.FC = () => {
               <Text style={[styles.name, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
             </View>
             <View style={styles.reactionIconContainer}>
-              <Icon name="heart-outline" size={24} color={selectedTheme.iconColorPrimary} />
-              <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorPrimary} />
+              <Icon name="heart-outline" size={24} color={selectedTheme.iconColorSmileys} />
+              <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorSmileys} />
             </View>
           </View>
 
@@ -63,7 +63,7 @@ const DetailsScreen: React.FC = () => {
             {type === 'product' && item.description && (
               <Text style={[styles.description, { color: selectedTheme.textSecondary }]}>{item.description}</Text>
             )}
-            <Text style={[styles.commentCount, { color: selectedTheme.textPrimary }]}>
+            <Text style={[styles.commentCount, { color: selectedTheme.textSecondary }]}>
               46 {t('comments')}
             </Text>
           </View>
@@ -76,13 +76,13 @@ const DetailsScreen: React.FC = () => {
             {type === 'product' ? (
               <Text>
                 {/* Price in red */}
-                <Text style={[styles.priceText, { color: 'red' }]}>₱{item.price} </Text>
+                <Text style={[styles.priceText, { color: selectedTheme.textHighlight }]}>₱{item.price} </Text>
 
                 {/* Distance in white */}
-                <Text style={[styles.priceText, { color: 'white' }]}>{item.distance}</Text>
+                <Text style={[styles.priceText, { color: selectedTheme.textSecondary }]}>{item.distance}</Text>
               </Text>
             ) : (
-              <Text style={[styles.priceText, { color: 'white' }]}>{item.distance}</Text>
+              <Text style={[styles.priceText, { color: selectedTheme.textSecondary }]}>{item.distance}</Text>
             )}
           </View>
 
@@ -90,12 +90,12 @@ const DetailsScreen: React.FC = () => {
           <View style={styles.ratingAndIconsContainer}>
             <View style={styles.ratingRow}>
               <Icon name="star" size={20} color="gold" />
-              <Text style={[styles.ratingText, { color: selectedTheme.textPrimary }]}>{item.rating}</Text>
+              <Text style={[styles.ratingText, { color: selectedTheme.textSecondary }]}>{item.rating}</Text>
             </View>
 
             <View style={styles.reactionIcons}>
               <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorPrimary} />
+                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorSmileys} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleReactionPress('chat')}>
                 <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary} style={styles.reactionSpacing}/>
@@ -112,7 +112,7 @@ const DetailsScreen: React.FC = () => {
           <View style={styles.reactionBar}>
             {['heart', 'happy', 'sad', 'angry', 'surprised'].map(reaction => (
               <TouchableOpacity key={reaction} onPress={() => handleReactionPress(reaction)}>
-                <Icon name={reaction} size={32} color={selectedTheme.iconColorPrimary} />
+                <Icon name={reaction} size={32} color={selectedTheme.iconColorSmileys} />
               </TouchableOpacity>
             ))}
           </View>
@@ -132,8 +132,8 @@ const DetailsScreen: React.FC = () => {
 
         {/* Existing Comments */}
         <View style={styles.commentsList}>
-          <Text style={[styles.commentText, { color: selectedTheme.textPrimary }]}>User1: Nice post!</Text>
-          <Text style={[styles.commentText, { color: selectedTheme.textPrimary }]}>User2: Love this!</Text>
+          <Text style={[styles.commentText, { color: selectedTheme.textSecondary }]}>User1: Nice post!</Text>
+          <Text style={[styles.commentText, { color: selectedTheme.textSecondary }]}>User2: Love this!</Text>
         </View>
       </ScrollView>
     </View>

@@ -11,6 +11,7 @@ export interface ThemeType {
   textGray: string;
 
   fullBackgrounColor: string;
+  fullContainerBackgrounColor: string;
   googleButtonColor: string;
   facebookButtonColor: string;
   inputBackgroundColor: string;
@@ -40,6 +41,8 @@ export interface ThemeType {
   tabBarBackgroundColor: string;
   iconColorPrimary: string;
   iconColorSecondary: string;
+  iconColorSmileys: string;
+
   cardBackground: string;
   modalOverlay: string;
   loader: string;
@@ -68,7 +71,8 @@ const lightTheme: ThemeType = {
   textLink: '#38b000',
   textGray: '#38b000',
 
-  fullBackgrounColor: '#eae0d5',
+  fullBackgrounColor: '#edede9',
+  fullContainerBackgrounColor: '#ffffff',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
   inputBackgroundColor: '#d6d6d6',
@@ -98,6 +102,8 @@ const lightTheme: ThemeType = {
   tabBarBackgroundColor: '#ffffff',
   iconColorPrimary: "#7cb518",
   iconColorSecondary: "#f6aa1c",
+  iconColorSmileys: "#fcbf49",
+
   cardBackground: '#ffffff',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
@@ -128,6 +134,7 @@ const darkTheme: ThemeType = {
   textGray: '#8d99ae',
 
   fullBackgrounColor: '#000000',
+  fullContainerBackgrounColor: '#000000',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
   inputBackgroundColor: '#2d2d2d',
@@ -157,6 +164,8 @@ const darkTheme: ThemeType = {
   tabBarBackgroundColor: '#333533',
   iconColorPrimary: "#7cb518",
   iconColorSecondary: "#f6aa1c",
+  iconColorSmileys: "#fcbf49",
+
   cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: "#ffffff",
