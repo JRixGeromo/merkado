@@ -8,25 +8,18 @@ interface Reaction {
 
 interface ReactionBarProps {
   reactions: Reaction[];
-  onReactionPress: (label: string, emoji: string) => void; // Updated to pass both label and emoji
-  iconSize?: number; // Optional: for customizing the size of the emojis
+  onReactionPress: (reaction: Reaction) => void; // Pass full reaction object
 }
 
-const ReactionBar: React.FC<ReactionBarProps> = ({
-  reactions,
-  onReactionPress,
-  iconSize = 32, // Default size if not provided
-}) => {
+const ReactionBar: React.FC<ReactionBarProps> = ({ reactions, onReactionPress }) => {
   return (
     <ScrollView horizontal={true} contentContainerStyle={styles.reactionBar}>
       {reactions.map((reaction) => (
         <TouchableOpacity
           key={reaction.label}
-          onPress={() => onReactionPress(reaction.label, reaction.emoji)} // Pass both label and emoji
+          onPress={() => onReactionPress(reaction)} // Pass the full reaction object
         >
-          <Text style={{ fontSize: iconSize, marginHorizontal: 5 }}>
-            {reaction.emoji}
-          </Text>
+          <Text style={{ fontSize: 32, marginHorizontal: 5 }}>{reaction.emoji}</Text>
         </TouchableOpacity>
       ))}
     </ScrollView>

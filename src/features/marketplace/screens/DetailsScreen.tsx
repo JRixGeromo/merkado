@@ -11,7 +11,8 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-import ReactionBar from '../../../components/ReactionBar'; // Import the ReactionBar component
+import ReactionBar from '../../../components/ReactionBar';
+import CommentInput from '../../../components/CommentInput';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
 
@@ -31,11 +32,22 @@ const DetailsScreen: React.FC = () => {
   const [showReactions, setShowReactions] = useState(false); // Post reactions
   const [showCommentReactions, setShowCommentReactions] = useState<{ [key: number]: boolean }>({});
   const [selectedCommentReactions, setSelectedCommentReactions] = useState<{ [key: number]: { label: string, emoji: string } }>({});
+  const [selectedPostReaction, setSelectedPostReaction] = useState<string | null>(null); // Track post reaction
 
-  const handleReactionPress = (reaction: string) => {
-    setShowReactions(false); // Hide the post reaction bar after a reaction is selected
+  const handleSendComment = (comment: string) => {
+    console.log('Sent comment:', comment);
+    // Handle the comment send logic here, like making an API call
   };
 
+  const handleAddReaction = (reaction: string) => {
+    console.log('Selected reaction:', reaction);
+    // Handle adding reaction logic here
+  };
+
+  const handleReactionPress = (reaction: { label: string, emoji: string }) => {
+    setSelectedPostReaction(reaction.emoji); // Use emoji where needed
+    setShowReactions(false); // Hide reaction bar
+  };
 
   const toggleCommentReactions = (commentId: number) => {
     setShowCommentReactions((prev) => ({
@@ -44,15 +56,12 @@ const DetailsScreen: React.FC = () => {
     })); // Toggle reaction bar for the specific comment
   };
 
-  const handleCommentReactionPress = (commentId: number, label: string, emoji: string) => {
-    // Set the selected reaction for the specific comment by saving both label and emoji
+  const handleCommentReactionPress = (commentId: number, reaction: { label: string, emoji: string }) => {
     setSelectedCommentReactions(prev => ({
       ...prev,
-      [commentId]: { label, emoji } // Store both label and emoji
+      [commentId]: reaction // Store both label and emoji
     }));
-  
-    // Optionally, hide the reaction bar after selecting a reaction
-    setShowCommentReactions(prev => ({ ...prev, [commentId]: false }));
+    setShowCommentReactions(prev => ({ ...prev, [commentId]: false })); // Hide reaction bar
   };
 
   const reactions = [
@@ -93,8 +102,14 @@ const DetailsScreen: React.FC = () => {
               <Text style={[styles.name, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
             </View>
             <View style={styles.reactionIconContainer}>
-              <Icon name="heart-outline" size={24} color={selectedTheme.iconColorSmileys} />
-              <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorSmileys} />
+              {/* Display selected reaction above the comment count */}
+              {selectedPostReaction && (
+                <View style={styles.selectedReactionWrapper}>
+                  <Text style={styles.selectedReactionText}>
+                    {selectedPostReaction}
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
 
@@ -138,7 +153,7 @@ const DetailsScreen: React.FC = () => {
               <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
                 <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleReactionPress('chat')}>
+              <TouchableOpacity>
                 <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={styles.reactionSpacing} />
               </TouchableOpacity>
               <TouchableOpacity>
@@ -148,23 +163,19 @@ const DetailsScreen: React.FC = () => {
           </View>
         </View>
 
-        {/* Reaction Bar */}
+        {/* ReactionBar */}
         {showReactions && (
           <View style={styles.reactionBarSection}>
-            <ReactionBar reactions={reactions} onReactionPress={handleReactionPress} />
+            <ReactionBar
+              reactions={reactions}
+              onReactionPress={handleReactionPress}
+            />
           </View>
         )}
 
         {/* Comment Section */}
         <View style={styles.commentSection}>
-          <TextInput
-            placeholder={t('Write a comment...')}
-            placeholderTextColor={selectedTheme.textSecondary}
-            style={[styles.commentInput, { color: selectedTheme.textPrimary }]}
-          />
-          <TouchableOpacity style={styles.sendButton}>
-            <Icon name="send-outline" size={24} color={selectedTheme.iconColorPrimary} />
-          </TouchableOpacity>
+          <CommentInput onSend={handleSendComment} onAddReaction={handleAddReaction} reactions={reactions}/>
         </View>
 
         {/* Existing Comments */}
@@ -188,7 +199,6 @@ const DetailsScreen: React.FC = () => {
                 <View style={styles.selectedReactionWrapper}>
                   <Text style={styles.selectedReactionText}>
                     {selectedCommentReactions[comment.id].emoji}
-                    {/* {selectedCommentReactions[comment.id].label} */}
                   </Text>
                 </View>
               )}
@@ -196,16 +206,15 @@ const DetailsScreen: React.FC = () => {
               {/* Comment Reaction Bar */}
               {showCommentReactions[comment.id] && (
                 <View style={styles.reactionBarSection}>
-                  <ReactionBar
+                 <ReactionBar
                     reactions={reactions}
-                    onReactionPress={(label, emoji) => handleCommentReactionPress(comment.id, label, emoji)}
+                    onReactionPress={(reaction) => handleCommentReactionPress(comment.id, reaction)} // Passing the full reaction object
                   />
                 </View>
               )}
             </View>
           ))}
         </View>
-
       </ScrollView>
     </View>
   );
@@ -333,7 +342,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   selectedReactionText: {
-    fontSize: 16, // Adjust text size for reaction display
+    fontSize: 20, // Adjust text size for reaction display
     color: 'gray', // You can customize the color here
   },
   commentSection: {
@@ -341,17 +350,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: 'center',
     marginBottom: 5,
-  },
-  commentInput: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    height: 40,
-  },
-  sendButton: {
-    marginLeft: 10,
   },
   commentsList: {
     paddingHorizontal: 16, // Adjust padding for the comment list
