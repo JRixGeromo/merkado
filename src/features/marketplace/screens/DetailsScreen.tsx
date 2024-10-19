@@ -196,7 +196,7 @@ const DetailsScreen: React.FC = () => {
         {/* Existing Comments */}
         <View style={styles.commentsList}>
           {[
-            { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post!', user: 'User1' },
+            { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post!', user: 'User1' },
             { id: 2, text: 'Love this!', user: 'User2' },
             { id: 3, text: 'Love this!', user: 'User3' },
             { id: 4, text: 'Love this!', user: 'User4' },
@@ -209,7 +209,8 @@ const DetailsScreen: React.FC = () => {
                 <Text style={[styles.commentTextWrapper, { color: selectedTheme.textSecondary }]}>
                   {comment.user}: {comment.text}
                 </Text>
-                <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)}>
+
+                <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={styles.thumbsUpIcon}>
                   <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
                 </TouchableOpacity>
               </View>
@@ -254,7 +255,7 @@ const DetailsScreen: React.FC = () => {
                   />
                 </View>
               )}
-              
+
               {/* Reply Button */}
               <TouchableOpacity onPress={() => setReplyingTo(comment.id)}>
                 <Text style={[styles.replyText, {color: selectedTheme.textGray }]}>Reply</Text>
@@ -379,6 +380,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingVertical: 5,
   },
+
+  
   reactionBarSection: {
     flexDirection: 'row',
     paddingHorizontal: 16,
@@ -404,23 +407,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16, // Adjust padding for the comment list
   },
   commentContainer: {
-    borderRadius: 10, // Rounded corners for the container
-    padding: 10, // Padding inside the container
+    padding: 10,
+    borderRadius: 2, // Rounded corners for the container
+    borderBottomWidth: 1,
     marginBottom: 10, // Margin between comments
+    //borderBottomColor: '#ddd',
+    position: 'relative', // Necessary for positioning the thumbs-up icon
   },
   commentWrapper: {
-    flexDirection: 'row', // Arrange text and icon in a row
+    flexDirection: 'row', // Display text in a row
+    flexWrap: 'wrap', // Wrap text if it's too long
     justifyContent: 'space-between', // Space between text and icon
-    alignItems: 'center', // Vertically center items
+    paddingRight: 40, // Create space for the thumbs-up icon
   },
+  thumbsUpIcon: {
+    position: 'absolute',
+    top: 10, // Align to the top right of the comment
+    right: 10, // Align to the right
+  },
+
+  replyText: {
+    marginTop: 5,
+  },
+
   commentTextWrapper: {
     flex: 1, // Text will take up the remaining space
     marginRight: 10, // Margin to create space between text and icon
     fontSize: 14, // Adjust text size
     lineHeight: 18, // Adjust line height for better readability
-  },
-  replyText: {
-    marginTop: 5,
   },
   replyInputWrapper: {
     marginLeft: 20,
@@ -433,4 +447,5 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     borderLeftColor: '#ddd',
   },
+  
 });
