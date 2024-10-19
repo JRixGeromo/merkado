@@ -1,4 +1,3 @@
-
 // src/utils/responsive.ts
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 

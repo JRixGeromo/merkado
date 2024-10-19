@@ -15,10 +15,13 @@ const initialState: ThemeState = {
 const STORAGE_KEY = 'user_theme';
 
 // Async thunk to load the theme from AsyncStorage
-export const loadThemeFromStorage = createAsyncThunk('theme/loadThemeFromStorage', async () => {
-  const savedTheme = await AsyncStorage.getItem(STORAGE_KEY);
-  return (savedTheme as 'light' | 'dark') || 'light'; // Fallback to 'light' if no theme is saved
-});
+export const loadThemeFromStorage = createAsyncThunk(
+  'theme/loadThemeFromStorage',
+  async () => {
+    const savedTheme = await AsyncStorage.getItem(STORAGE_KEY);
+    return (savedTheme as 'light' | 'dark') || 'light'; // Fallback to 'light' if no theme is saved
+  },
+);
 
 // Create a slice for theme state
 const themeSlice = createSlice({
@@ -26,16 +29,19 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     // Toggle between light and dark themes and persist the choice
-    toggleTheme: (state) => {
+    toggleTheme: state => {
       state.theme = state.theme === 'light' ? 'dark' : 'light';
       // Save the theme to AsyncStorage
       AsyncStorage.setItem(STORAGE_KEY, state.theme);
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(loadThemeFromStorage.fulfilled, (state, action: PayloadAction<'light' | 'dark'>) => {
-      state.theme = action.payload; // Update theme after it is loaded from AsyncStorage
-    });
+  extraReducers: builder => {
+    builder.addCase(
+      loadThemeFromStorage.fulfilled,
+      (state, action: PayloadAction<'light' | 'dark'>) => {
+        state.theme = action.payload; // Update theme after it is loaded from AsyncStorage
+      },
+    );
   },
 });
 

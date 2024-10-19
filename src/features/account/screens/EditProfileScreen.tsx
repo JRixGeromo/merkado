@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { theme as appTheme } from '../../../styles/theme';
 
 const EditProfileScreen = () => {
-  const theme = useAppSelector((state) => state.theme.theme);
+  const theme = useAppSelector(state => state.theme.theme);
   const { t } = useTranslation();
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];

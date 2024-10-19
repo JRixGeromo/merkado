@@ -29,7 +29,16 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   newProducts,
   vendors,
 }) => {
-  const [activeSection, setActiveSection] = useState<'categories' | 'brands' | 'vendors' | 'featured' | 'promos' | 'onSale' | 'newProducts' | null>('categories');
+  const [activeSection, setActiveSection] = useState<
+    | 'categories'
+    | 'brands'
+    | 'vendors'
+    | 'featured'
+    | 'promos'
+    | 'onSale'
+    | 'newProducts'
+    | null
+  >('categories');
   const { t } = useTranslation();
 
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
@@ -90,20 +99,20 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
               style={[commonStyle.searchButton, { marginHorizontal: 10 }]} // You can pass an array of styles
               borderRadius={20} // Set borderRadius
               color={selectedTheme.textLight}
-              textSize={12}  // Custom text size
+              textSize={12} // Custom text size
               borderColor={selectedTheme.buttonBorderLight}
             />
           )}
-          keyExtractor={(item) => item.key}
+          keyExtractor={item => item.key}
           showsHorizontalScrollIndicator={false}
-          style={{ maxHeight: 60 }}  // Set the max height for the FlatList
+          style={{ maxHeight: 60 }} // Set the max height for the FlatList
         />
 
         {/* Dynamic Content Based on Selected Section */}
         <FlatList
           data={getActiveSectionData()} // Dynamically render content
           renderItem={renderListItem}
-          keyExtractor={(item) => item}
+          keyExtractor={item => item}
           contentContainerStyle={{ paddingTop: 10 }} // Ensure content is aligned at the top
         />
 

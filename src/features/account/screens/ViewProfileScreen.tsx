@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { theme as appTheme } from '../../../styles/theme';
 
 const ViewProfileScreen = () => {
-  const theme = useAppSelector((state) => state.theme.theme);
+  const theme = useAppSelector(state => state.theme.theme);
   const { t } = useTranslation();
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
@@ -29,9 +29,7 @@ const ViewProfileScreen = () => {
         <Text style={commonStyle.profileName}>
           {profileData.firstName} {profileData.lastName}
         </Text>
-        <Text style={commonStyle.profileEmail}>
-          {profileData.email}
-        </Text>
+        <Text style={commonStyle.profileEmail}>{profileData.email}</Text>
         <Text style={commonStyle.profileBirthDate}>
           {t('birthDate')}: {profileData.birthDate}
         </Text>

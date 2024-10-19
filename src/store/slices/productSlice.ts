@@ -36,28 +36,34 @@ const GET_PRODUCTS = gql`
 `;
 
 // Async thunk to fetch products using Apollo Client
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const response = await client.query({
-    query: GET_PRODUCTS,
-    fetchPolicy: 'network-only', // Ensure fresh data is fetched from the server
-  });
-  return response.data.products;
-});
+export const fetchProducts = createAsyncThunk(
+  'products/fetchProducts',
+  async () => {
+    const response = await client.query({
+      query: GET_PRODUCTS,
+      fetchPolicy: 'network-only', // Ensure fresh data is fetched from the server
+    });
+    return response.data.products;
+  },
+);
 
 // Create a slice for product state
 const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
+      .addCase(fetchProducts.pending, state => {
         state.status = 'loading';
       })
-      .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<Product[]>) => {
-        state.status = 'succeeded';
-        state.products = action.payload; // Store the fetched products in the state
-      })
+      .addCase(
+        fetchProducts.fulfilled,
+        (state, action: PayloadAction<Product[]>) => {
+          state.status = 'succeeded';
+          state.products = action.payload; // Store the fetched products in the state
+        },
+      )
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message || 'Failed to fetch products';

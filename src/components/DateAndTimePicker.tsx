@@ -43,7 +43,9 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   placeholderTextColor, // Use the color from the theme
   dateFormat = 'yyyy-MM-dd', // Default date format
 }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(initialDate); // Start with no initial date
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    initialDate,
+  ); // Start with no initial date
   const [showCalendar, setShowCalendar] = useState(false); // Toggle calendar visibility
 
   const handleDayPress = (day: { dateString: string }) => {
@@ -53,7 +55,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     setShowCalendar(false); // Close the calendar after selection
   };
 
-  const currentTheme = useAppSelector((state) => state.theme.theme); // Access current theme (light/dark)
+  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
   // Memoize the theme-based styles
@@ -61,7 +63,8 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     return {
       iconColor: iconColor || commonStyle.iconColor.color,
       textColor: textColor || commonStyle.textColor.color,
-      placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
+      placeholderColor:
+        placeholderTextColor || commonStyle.placeholderTextColor.color,
       inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor, commonStyle]);
@@ -75,14 +78,14 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   const formattedDate = selectedDate ? format(selectedDate, dateFormat) : '';
 
   return (
-    <View style={{ }}>
+    <View style={{}}>
       <TouchableOpacity
         style={[
-          commonStyle.inputContainer, 
+          commonStyle.inputContainer,
           {
             backgroundColor: themeBasedInputBackgroundColor,
             borderWidth: 0,
-          }
+          },
         ]}
         onPress={() => setShowCalendar(true)} // Show calendar on press
         accessibilityLabel="Open date picker" // Accessibility
@@ -101,9 +104,9 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           style={[
             commonStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
-            { 
-              color: themeBasedStyles.textColor, 
-              fontSize: placeholderFontSize, 
+            {
+              color: themeBasedStyles.textColor,
+              fontSize: placeholderFontSize,
               borderWidth: 0, // Remove the border if needed
               paddingHorizontal: 10, // Add some padding inside the input field
             },
@@ -115,11 +118,14 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
       <Modal visible={showCalendar} animationType="slide" transparent={true}>
         <TouchableWithoutFeedback onPress={() => setShowCalendar(false)}>
           <View
-            style={[commonStyle.modalOverlay,{
-              flex: 1,
-              justifyContent: 'center', // Center vertically
-              alignItems: 'center', // Center horizontally
-            }]}
+            style={[
+              commonStyle.modalOverlay,
+              {
+                flex: 1,
+                justifyContent: 'center', // Center vertically
+                alignItems: 'center', // Center horizontally
+              },
+            ]}
           >
             <View
               style={{
@@ -135,12 +141,14 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                   [selectedDate?.toISOString().split('T')[0] || '']: {
                     selected: true,
                     marked: true,
-                    selectedColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use theme color
+                    selectedColor:
+                      commonStyle.selectedDayBackgroundColor.backgroundColor, // Use theme color
                   },
                 }}
                 theme={{
                   todayTextColor: commonStyle.todayTextColor.color, // Use primary color from theme
-                  selectedDayBackgroundColor: commonStyle.selectedDayBackgroundColor.backgroundColor, // Use primary color from theme
+                  selectedDayBackgroundColor:
+                    commonStyle.selectedDayBackgroundColor.backgroundColor, // Use primary color from theme
                   dayTextColor: commonStyle.dayTextColor.color, // Use text color from theme
                   textDisabledColor: commonStyle.textDisabledColor.color, // Disabled text color
                   monthTextColor: commonStyle.monthTextColor.color, // Month text color
@@ -159,7 +167,6 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           </View>
         </TouchableWithoutFeedback>
       </Modal>
-
     </View>
   );
 };

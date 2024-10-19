@@ -1,4 +1,4 @@
-import i18n, { LanguageDetectorAsyncModule } from 'i18next';  // Import the correct type for language detector
+import i18n, { LanguageDetectorAsyncModule } from 'i18next'; // Import the correct type for language detector
 import { initReactI18next } from 'react-i18next';
 import * as RNLocalize from 'react-native-localize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,12 +10,11 @@ import bs from './locales/bs.json'; // Bisaya translations
 import il from './locales/il.json'; // Hiligaynon/Ilonggo translations
 import mb from './locales/mb.json'; // Masbateño translations
 
-
 // Language detector using AsyncStorage and react-native-localize
 const languageDetector: LanguageDetectorAsyncModule = {
   type: 'languageDetector',
-  async: true,  // Specify that this is async
-  init: () => {},  // No special initialization needed
+  async: true, // Specify that this is async
+  init: () => {}, // No special initialization needed
 
   // Detect the language
   detect: async (): Promise<string> => {
@@ -53,22 +52,22 @@ const languageDetector: LanguageDetectorAsyncModule = {
 
 // Initialize i18n with the translations
 i18n
-  .use(languageDetector)  // Use the custom language detector
-  .use(initReactI18next)   // Passes i18n down to react-i18next
+  .use(languageDetector) // Use the custom language detector
+  .use(initReactI18next) // Passes i18n down to react-i18next
   .init({
-    fallbackLng: 'en',  // Fallback language if the user language is not available
+    fallbackLng: 'en', // Fallback language if the user language is not available
     resources: {
       en: { translation: en },
-      tl: { translation: tl },  // Tagalog
-      bs: { translation: bs },  // Bisaya
-      il: { translation: il },  // Iloilo
-      mb: { translation: mb },  // Masbate
+      tl: { translation: tl }, // Tagalog
+      bs: { translation: bs }, // Bisaya
+      il: { translation: il }, // Iloilo
+      mb: { translation: mb }, // Masbate
     },
     interpolation: {
-      escapeValue: false,  // React already escapes values
+      escapeValue: false, // React already escapes values
     },
-    compatibilityJSON: 'v3',  // Fallback to simpler pluralization handling
-    saveMissing: true,  // Optional: useful for catching missing translations in your resources
+    compatibilityJSON: 'v3', // Fallback to simpler pluralization handling
+    saveMissing: true, // Optional: useful for catching missing translations in your resources
   });
 
 export default i18n;

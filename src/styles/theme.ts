@@ -32,16 +32,19 @@ export interface ThemeType {
   buttonGray: string;
   buttonCancel: string;
   buttonClose: string;
-  
+
   buttonBorderPrimary: string;
   buttonBorderBlack: string;
   buttonBorderGray: string;
   buttonBorderLight: string;
 
   tabBarBackgroundColor: string;
+  commentBackgroundColor: string;
+
   iconColorPrimary: string;
   iconColorSecondary: string;
   iconColorSmileys: string;
+  iconColorGray: string;
 
   cardBackground: string;
   modalOverlay: string;
@@ -98,27 +101,29 @@ const lightTheme: ThemeType = {
   buttonBorderBlack: '#393d3f',
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
-  
+
   tabBarBackgroundColor: '#ffffff',
-  iconColorPrimary: "#7cb518",
-  iconColorSecondary: "#f6aa1c",
-  iconColorSmileys: "#fcbf49",
+  commentBackgroundColor: '#ffffff',
+
+  iconColorPrimary: '#7cb518',
+  iconColorSecondary: '#f6aa1c',
+  iconColorSmileys: '#fcbf49',
+  iconColorGray: '#6c757d',
 
   cardBackground: '#ffffff',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
-  loader: "#ffffff",
-  lineBorderColor: "#cad2c5",
+  loader: '#ffffff',
+  lineBorderColor: '#cad2c5',
 
   headingFont: 'Poppins-Bold',
-  bodyFont: 'Roboto-Regular',  
-  bodyFontSlim: 'RobotoCondensed-Light',  
-  buttonFont: 'Montserrat-Bold', 
-  tabFont: 'RobotoCondensed-Light', 
+  bodyFont: 'Roboto-Regular',
+  bodyFontSlim: 'RobotoCondensed-Light',
+  buttonFont: 'Montserrat-Bold',
+  tabFont: 'RobotoCondensed-Light',
 
-  alternativeFont1: 'QwitcherGrypen-Regular', 
-  alternativeFont2: 'LondrinaSketch-Regular', 
-  alternativeFont3: 'GreatVibes-Regular', 
-
+  alternativeFont1: 'QwitcherGrypen-Regular',
+  alternativeFont2: 'LondrinaSketch-Regular',
+  alternativeFont3: 'GreatVibes-Regular',
 };
 
 const darkTheme: ThemeType = {
@@ -162,24 +167,27 @@ const darkTheme: ThemeType = {
   buttonBorderLight: '#ffffff',
 
   tabBarBackgroundColor: '#333533',
-  iconColorPrimary: "#7cb518",
-  iconColorSecondary: "#f6aa1c",
-  iconColorSmileys: "#fcbf49",
+  commentBackgroundColor: '#161616',
+
+  iconColorPrimary: '#7cb518',
+  iconColorSecondary: '#f6aa1c',
+  iconColorSmileys: '#fcbf49',
+  iconColorGray: '#6c757d',
 
   cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
-  loader: "#ffffff",
-  lineBorderColor: "#000000",
+  loader: '#ffffff',
+  lineBorderColor: '#000000',
 
   headingFont: 'Poppins-Bold',
-  bodyFont: 'Roboto-Regular',  
-  bodyFontSlim: 'RobotoCondensed-Light',  
-  buttonFont: 'Montserrat-Bold', 
-  tabFont: 'RobotoCondensed-Light', 
+  bodyFont: 'Roboto-Regular',
+  bodyFontSlim: 'RobotoCondensed-Light',
+  buttonFont: 'Montserrat-Bold',
+  tabFont: 'RobotoCondensed-Light',
 
-  alternativeFont1: 'QwitcherGrypen-Regular', 
-  alternativeFont2: 'LondrinaSketch-Regular', 
-  alternativeFont3: 'GreatVibes-Regular', 
+  alternativeFont1: 'QwitcherGrypen-Regular',
+  alternativeFont2: 'LondrinaSketch-Regular',
+  alternativeFont3: 'GreatVibes-Regular',
 };
 
 export const theme = {

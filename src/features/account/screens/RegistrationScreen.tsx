@@ -26,19 +26,19 @@ import { setUser } from '../../../store/slices/authSlice';
 
 const REGISTER_USER = gql`
   mutation RegisterUser(
-    $email: String!,
-    $password: String!,
-    $firstName: String!,
-    $lastName: String!,
-    $birthdate: String,
+    $email: String!
+    $password: String!
+    $firstName: String!
+    $lastName: String!
+    $birthdate: String
     $gender: Gender!
   ) {
     registerUser(
-      email: $email,
-      password: $password,
-      firstName: $firstName,
-      lastName: $lastName,
-      birthdate: $birthdate,
+      email: $email
+      password: $password
+      firstName: $firstName
+      lastName: $lastName
+      birthdate: $birthdate
       gender: $gender
     ) {
       token
@@ -67,7 +67,6 @@ const RegistrationScreen = () => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
-
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
@@ -134,7 +133,7 @@ const RegistrationScreen = () => {
           />
           <Dropdown
             selectedValue={gender}
-            onValueChange={(itemValue) => setGender(itemValue)}
+            onValueChange={itemValue => setGender(itemValue)}
             options={[
               { label: t('male'), value: 'MALE' },
               { label: t('female'), value: 'FEMALE' },
@@ -143,7 +142,7 @@ const RegistrationScreen = () => {
             placeholder={t('gender')}
             iconName="male"
             iconSize={20}
-            showIcon= {true}
+            showIcon={true}
           />
 
           <DateAndTimePicker
@@ -198,8 +197,10 @@ const RegistrationScreen = () => {
             />
           )}
 
-          {error && <Text style={{ color: 'red' }}>{t('registrationFailed')}</Text>}
-          
+          {error && (
+            <Text style={{ color: 'red' }}>{t('registrationFailed')}</Text>
+          )}
+
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
               {t('hasAccount')}{' '}

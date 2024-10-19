@@ -6,15 +6,16 @@ import { commonStyles } from '../../../styles/commonStyles';
 
 const LogoutScreen = () => {
   const dispatch = useAppDispatch();
-//   const handleLogout = () => {
-//     dispatch(logout());
-//   };
+  //   const handleLogout = () => {
+  //     dispatch(logout());
+  //   };
 
   return (
     <View style={commonStyles('light').container}>
       <Text style={commonStyles('light').title}>Logout</Text>
-      <Button title="Logout"
-       //onPress={handleLogout} 
+      <Button
+        title="Logout"
+        //onPress={handleLogout}
       />
     </View>
   );

@@ -1,5 +1,8 @@
 // src/navigationTypes.ts
-import { Product, Store } from '../src/features/dashboard/screens/DashboardScreen';
+import {
+  Product,
+  Store,
+} from '../src/features/dashboard/screens/DashboardScreen';
 // Stack Navigator Params
 export type RootStackParamList = {
   SplashScreen: undefined;
@@ -24,11 +27,9 @@ export type RootStackParamList = {
   FollowersScreen: undefined;
   SocialAccountsScreen: undefined;
   HelpCenterScreen: undefined;
-  DetailsScreen: { item: Store | Product; type: 'store' | 'product' };  // Updated line
+  DetailsScreen: { item: Store | Product; type: 'store' | 'product' }; // Updated line
   LogoutScreen: undefined;
-  
 };
-
 
 // Tab Navigator Params
 export type RootTabParamList = {

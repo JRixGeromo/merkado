@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image } from 'react-native';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppDispatch, useAppSelector } from './src/hooks/reduxHooks';
@@ -17,7 +21,7 @@ import AccountScreen from './src/features/account/screens/AccountScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DropdownMenu from './src/components/DropdownMenu';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
-import { commonStyles } from './src/styles/commonStyles'; 
+import { commonStyles } from './src/styles/commonStyles';
 import { theme } from './src/styles/theme'; // Import the theme object
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -67,15 +71,18 @@ const App = () => {
         tabBarStyle: commonStyle.tabBarStyle, // Moved to commonStyles
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
         // Add the custom header for the Dashboard screen
-        headerTitle: route.name === 'Dashboard' ? () => (
-          <View style={commonStyle.headerContainer}>
-            <Image
-              source={require('./assets/logo.png')} // Replace with your logo path
-              style={commonStyle.headerLogo} // Moved to commonStyles
-            />
-            <Text style={commonStyle.screenHeaderTitle}>Dashboard</Text>
-          </View>
-        ) : route.name,
+        headerTitle:
+          route.name === 'Dashboard'
+            ? () => (
+                <View style={commonStyle.headerContainer}>
+                  <Image
+                    source={require('./assets/logo.png')} // Replace with your logo path
+                    style={commonStyle.headerLogo} // Moved to commonStyles
+                  />
+                  <Text style={commonStyle.screenHeaderTitle}>Dashboard</Text>
+                </View>
+              )
+            : route.name,
         headerRight: () => (
           <View style={commonStyle.headerRightContainer}>
             <Icon
@@ -99,7 +106,9 @@ const App = () => {
   );
 
   return (
-    <NavigationContainer theme={themeType === 'light' ? DefaultTheme : DarkTheme}>
+    <NavigationContainer
+      theme={themeType === 'light' ? DefaultTheme : DarkTheme}
+    >
       <Stack.Navigator>
         <Stack.Screen
           name="SplashScreen"

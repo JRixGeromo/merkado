@@ -8,22 +8,21 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 
-
 const SettingsScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const dispatch = useAppDispatch();
   const navigation =
-  useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Dark Mode</Text>
       <Switch
         value={theme === 'dark'}
-        onValueChange={(isDarkMode) => {
-            dispatch(toggleTheme());  // Ignore the `isDarkMode` value, just toggle theme
+        onValueChange={isDarkMode => {
+          dispatch(toggleTheme()); // Ignore the `isDarkMode` value, just toggle theme
         }}
-        />
+      />
     </View>
   );
 };

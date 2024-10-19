@@ -4,14 +4,14 @@ import { Provider } from 'react-redux'; // Import Redux provider
 import store from './src/store/store'; // Import your Redux store
 import App from './App'; // Ensure your main App component is imported
 
-import { ApolloProvider } from '@apollo/client';  // Import ApolloProvider
-import client from './src/graphql/apolloClient';  // Correct default import
+import { ApolloProvider } from '@apollo/client'; // Import ApolloProvider
+import client from './src/graphql/apolloClient'; // Correct default import
 
 // Your existing imports and code
-import './src/i18n/i18n';  // Ensure i18n is initialized globally
+import './src/i18n/i18n'; // Ensure i18n is initialized globally
 
 const AppWrapper = () => (
-  <ApolloProvider client={client}> 
+  <ApolloProvider client={client}>
     <Provider store={store}>
       <App />
     </Provider>

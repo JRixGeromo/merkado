@@ -57,8 +57,6 @@ const LoginScreen = () => {
   // Apollo useMutation hook for login
   const [loginUser] = useMutation(LOGIN_USER);
 
-  
-
   const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert(t('error'), t('fillFields')); // Translation for error message
@@ -80,7 +78,7 @@ const LoginScreen = () => {
           setUser({
             user: data.loginUser.user,
             token: data.loginUser.token,
-          })
+          }),
         );
 
         Alert.alert(t('success'), t('loginSuccess'));
@@ -97,7 +95,7 @@ const LoginScreen = () => {
   const navigateToRegister = () => {
     navigation.navigate('RegistrationScreen');
   };
-  
+
   useEffect(() => {
     const backAction = () => {
       return true; // Prevent the user from going back to the splash screen
@@ -105,13 +103,12 @@ const LoginScreen = () => {
 
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
-      backAction
+      backAction,
     );
 
     return () => backHandler.remove(); // Clean up when the component unmounts
   }, []);
 
-  
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -125,7 +122,7 @@ const LoginScreen = () => {
           />
 
           <Text style={commonStyle.headerTitle}>{t('welcomeBack')}</Text>
-          
+
           <TextInputWithIcon
             placeholder={t('email')}
             iconName="mail"
@@ -133,7 +130,7 @@ const LoginScreen = () => {
             onChangeText={setEmail}
             style={{ height: 45 }}
           />
-          
+
           <TextInputWithIcon
             placeholder={t('password')}
             iconName="lock-closed"

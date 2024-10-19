@@ -18,9 +18,9 @@ interface CustomButtonProps {
   color?: string;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
-  width?: number | string;  // Optional width prop
+  width?: number | string; // Optional width prop
   borderRadius?: number; // Optional borderRadius prop
-  textSize?: number;  // Optional textSize prop for font size
+  textSize?: number; // Optional textSize prop for font size
   borderColor?: string; // Optional borderColor prop
 }
 
@@ -31,18 +31,18 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   color,
   disabled = false,
   style = {},
-  width = 'auto',  // Default width is auto, can be overridden
-  borderRadius = 15,  // Default borderRadius is 15, can be overridden
-  textSize = 16,  // Default text size, can be overridden
-  borderColor,  // Optional borderColor prop
+  width = 'auto', // Default width is auto, can be overridden
+  borderRadius = 15, // Default borderRadius is 15, can be overridden
+  textSize = 16, // Default text size, can be overridden
+  borderColor, // Optional borderColor prop
 }) => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
 
   const buttonBackgroundColor = backgroundColor || selectedTheme.buttonPrimary;
-  const buttonTextColor       = color || selectedTheme.textPrimary;
-  const buttonBorderColor     = borderColor || selectedTheme.buttonBorderPrimary; // Fallback to theme's button border color
+  const buttonTextColor = color || selectedTheme.textPrimary;
+  const buttonBorderColor = borderColor || selectedTheme.buttonBorderPrimary; // Fallback to theme's button border color
 
   return (
     <TouchableOpacity
@@ -52,10 +52,10 @@ const CustomButton: React.FC<CustomButtonProps> = ({
           backgroundColor: buttonBackgroundColor,
           paddingVertical: 8,
           opacity: disabled ? 0.6 : 1,
-          width,  // Apply custom width
-          borderRadius,  // Apply custom borderRadius
-          borderColor: buttonBorderColor,  // Apply custom borderColor
-          borderWidth: borderColor ? 1 : 0,  // Only apply border if borderColor is provided
+          width, // Apply custom width
+          borderRadius, // Apply custom borderRadius
+          borderColor: buttonBorderColor, // Apply custom borderColor
+          borderWidth: borderColor ? 1 : 0, // Only apply border if borderColor is provided
         },
         style,
       ]}
@@ -67,7 +67,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         style={[
           {
             color: buttonTextColor,
-            fontSize: normalizeFontSize(textSize),  // Use dynamic text size
+            fontSize: normalizeFontSize(textSize), // Use dynamic text size
           },
         ]}
       >

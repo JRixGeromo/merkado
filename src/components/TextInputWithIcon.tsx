@@ -8,8 +8,8 @@ import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selec
 interface TextInputWithIconProps {
   placeholder: string;
   iconName: string;
-  value?: string;  // Optional for cases like date picker
-  onChangeText?: (text: string) => void;  // Make this optional
+  value?: string; // Optional for cases like date picker
+  onChangeText?: (text: string) => void; // Make this optional
   iconPack?: typeof Icon;
   secureTextEntry?: boolean;
   placeholderTextColor?: string;
@@ -45,32 +45,34 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
   const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
 
+  // Memoize the theme-based styles
+  const themeBasedStyles = useMemo(() => {
+    return {
+      iconColor: iconColor || commonStyle.iconColor.color,
+      textColor: textColor || commonStyle.textColor.color,
+      placeholderColor:
+        placeholderTextColor || commonStyle.placeholderTextColor.color,
+      inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+    };
+  }, [iconColor, textColor, placeholderTextColor, commonStyle]);
 
-    // Memoize the theme-based styles
-    const themeBasedStyles = useMemo(() => {
-      return {
-        iconColor: iconColor || commonStyle.iconColor.color,
-        textColor: textColor || commonStyle.textColor.color,
-        placeholderColor: placeholderTextColor || commonStyle.placeholderTextColor.color,
-        inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
-      };
-    }, [iconColor, textColor, placeholderTextColor, commonStyle]);
-  
-    const themeBasedIconColor = themeBasedStyles.iconColor;
-    const themeBasedTextColor = themeBasedStyles.textColor;
-    const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
-    const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
-    
+  const themeBasedIconColor = themeBasedStyles.iconColor;
+  const themeBasedTextColor = themeBasedStyles.textColor;
+  const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
+  const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
+
   const IconComponent = iconPack;
 
   return (
-    <View style={[
-      commonStyle.inputContainer, 
-      {
-        backgroundColor: themeBasedInputBackgroundColor, // Remove background color to make it blank/transparent
-        borderWidth: 0, // Remove border to make it clean
-      }
-    ]}>
+    <View
+      style={[
+        commonStyle.inputContainer,
+        {
+          backgroundColor: themeBasedInputBackgroundColor, // Remove background color to make it blank/transparent
+          borderWidth: 0, // Remove border to make it clean
+        },
+      ]}
+    >
       <IconComponent
         name={iconName}
         size={iconSize}
@@ -81,10 +83,10 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
         style={[
           commonStyle.input,
           inputStyle,
-          { 
-            color: themeBasedTextColor, 
-            fontSize: placeholderFontSize, 
-            backgroundColor: 'transparent' // Ensure the input itself has no background
+          {
+            color: themeBasedTextColor,
+            fontSize: placeholderFontSize,
+            backgroundColor: 'transparent', // Ensure the input itself has no background
           },
         ]}
         placeholder={placeholder}

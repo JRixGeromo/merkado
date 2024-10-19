@@ -1,34 +1,74 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import ReactionBar from '../../../components/ReactionBar'; // Import the ReactionBar component
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
 
-type DetailsScreenRouteProp = RouteProp<{ params: { item: any; type: 'product' | 'store' } }, 'params'>;
+type DetailsScreenRouteProp = RouteProp<
+  { params: { item: any; type: 'product' | 'store' } },
+  'params'
+>;
 
 const DetailsScreen: React.FC = () => {
   const route = useRoute<DetailsScreenRouteProp>();
   const { item, type } = route.params;
 
-  const themeType = useAppSelector(state => state.theme.theme);
+  const themeType = useAppSelector((state) => state.theme.theme);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
-  // State to track reactions
-  const [showReactions, setShowReactions] = useState(false); // State to handle the reaction bar visibility
+  const [showReactions, setShowReactions] = useState(false); // Post reactions
+  const [showCommentReactions, setShowCommentReactions] = useState<{ [key: number]: boolean }>({});
+  const [selectedCommentReactions, setSelectedCommentReactions] = useState<{ [key: number]: { label: string, emoji: string } }>({});
 
   const handleReactionPress = (reaction: string) => {
-    setShowReactions(false); // Hide the reaction bar after a reaction is selected
+    setShowReactions(false); // Hide the post reaction bar after a reaction is selected
   };
+
+  const handleCommentReactionPress = (commentId: number, label: string, emoji: string) => {
+    // Set the selected reaction for the specific comment
+    setSelectedCommentReactions((prev) => ({ ...prev, [commentId]: { label, emoji } }));
+    setShowCommentReactions((prev) => ({ ...prev, [commentId]: false })); // Hide reaction bar for the specific comment
+  };
+
+  const toggleCommentReactions = (commentId: number) => {
+    setShowCommentReactions((prev) => ({
+      ...prev,
+      [commentId]: !prev[commentId],
+    })); // Toggle reaction bar for the specific comment
+  };
+
+  const reactions = [
+    { emoji: '❤️', label: 'LOVE' },
+    { emoji: '😃', label: 'HAPPY' },
+    { emoji: '😮', label: 'WOW' },
+    { emoji: '😢', label: 'SAD' },
+    { emoji: '😐', label: 'MEH' },
+    { emoji: '😡', label: 'ANGRY' },
+    { emoji: '👍', label: 'LIKE' },
+    { emoji: '👎', label: 'DISLIKE' },
+    { emoji: '🌶️', label: 'SPICY' },
+    { emoji: '🍬', label: 'SWEET' },
+    { emoji: '🍪', label: 'CRUNCHY' },
+    { emoji: '🧂', label: 'TOO_SALTY' },
+    { emoji: '🍭', label: 'TOO_SWEET' },
+  ];
 
   return (
     <View style={[styles.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>
-      {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        
-        {/* "ON SALE! 50% off" Message */}
+        {/* Sale Banner */}
         {type === 'product' && item.onSale && (
           <View style={styles.saleBanner}>
             <Text style={styles.saleText}>ON SALE! 50% off</Text>
@@ -42,7 +82,6 @@ const DetailsScreen: React.FC = () => {
 
         {/* Information Section */}
         <View style={styles.infoSection}>
-          {/* First row with name and reactions */}
           <View style={styles.firstRow}>
             <View style={styles.nameContainer}>
               <Text style={[styles.name, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
@@ -53,13 +92,16 @@ const DetailsScreen: React.FC = () => {
             </View>
           </View>
 
-          {/* Second row with location and comments count */}
           <View style={styles.secondRow}>
             {type === 'store' && item.location && (
-              <Text style={[styles.location, { color: selectedTheme.textSecondary }]}>{item.location}</Text>
+              <Text style={[styles.location, { color: selectedTheme.textSecondary }]}>
+                {item.location}
+              </Text>
             )}
             {type === 'product' && item.description && (
-              <Text style={[styles.description, { color: selectedTheme.textSecondary }]}>{item.description}</Text>
+              <Text style={[styles.description, { color: selectedTheme.textSecondary }]}>
+                {item.description}
+              </Text>
             )}
             <Text style={[styles.commentCount, { color: selectedTheme.textSecondary }]}>
               46 {t('comments')}
@@ -67,16 +109,12 @@ const DetailsScreen: React.FC = () => {
           </View>
         </View>
 
-        {/* Price and Rating/Reactions Section */}
+        {/* Price and Rating Section */}
         <View style={styles.reactionsContainer}>
-          {/* 30% for Price */}
           <View style={styles.priceContainer}>
             {type === 'product' ? (
               <Text>
-                {/* Price in red */}
                 <Text style={[styles.priceText, { color: selectedTheme.textHighlight }]}>₱{item.price} </Text>
-
-                {/* Distance in white */}
                 <Text style={[styles.priceText, { color: selectedTheme.textSecondary }]}>{item.distance}</Text>
               </Text>
             ) : (
@@ -84,7 +122,6 @@ const DetailsScreen: React.FC = () => {
             )}
           </View>
 
-          {/* 70% for Rating, Reaction Icons, Chat, Spread */}
           <View style={styles.ratingAndIconsContainer}>
             <View style={styles.ratingRow}>
               <Icon name="star" size={20} color="gold" />
@@ -93,13 +130,13 @@ const DetailsScreen: React.FC = () => {
 
             <View style={styles.reactionIcons}>
               <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorSmileys} />
+                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleReactionPress('chat')}>
-                <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary} style={styles.reactionSpacing}/>
+                <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={styles.reactionSpacing} />
               </TouchableOpacity>
               <TouchableOpacity>
-                <Icon name="share-outline" size={24} color={selectedTheme.iconColorPrimary} style={styles.reactionSpacing}/>
+                <Icon name="share-outline" size={24} color={selectedTheme.iconColorSmileys}  style={styles.reactionSpacing} />
               </TouchableOpacity>
             </View>
           </View>
@@ -108,27 +145,7 @@ const DetailsScreen: React.FC = () => {
         {/* Reaction Bar */}
         {showReactions && (
           <View style={styles.reactionBarSection}>
-          <ScrollView horizontal={true} contentContainerStyle={styles.reactionBar}>
-            {[
-              { emoji: '❤️', label: 'LOVE' },
-              { emoji: '😃', label: 'HAPPY' },   // Happy face added
-              { emoji: '😮', label: 'WOW' },
-              { emoji: '😢', label: 'SAD' },
-              { emoji: '😐', label: 'MEH' },
-              { emoji: '😡', label: 'ANGRY' },
-              { emoji: '👍', label: 'LIKE' },
-              { emoji: '👎', label: 'DISLIKE' },
-              { emoji: '🌶️', label: 'SPICY' },
-              { emoji: '🍬', label: 'SWEET' },
-              { emoji: '🍪', label: 'CRUNCHY' },
-              { emoji: '🧂', label: 'TOO_SALTY' },
-              { emoji: '🍭', label: 'TOO_SWEET' }
-            ].map(reaction => (
-              <TouchableOpacity key={reaction.label} onPress={() => handleReactionPress(reaction.label)} >
-                <Text style={{ fontSize: 32, marginHorizontal: 5 }}>{reaction.emoji}</Text> 
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+            <ReactionBar reactions={reactions} onReactionPress={handleReactionPress} />
           </View>
         )}
 
@@ -146,9 +163,42 @@ const DetailsScreen: React.FC = () => {
 
         {/* Existing Comments */}
         <View style={styles.commentsList}>
-          <Text style={[styles.commentText, { color: selectedTheme.textSecondary }]}>User1: Nice post!</Text>
-          <Text style={[styles.commentText, { color: selectedTheme.textSecondary }]}>User2: Love this!</Text>
+          {[
+            { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post!', user: 'User1' },
+            { id: 2, text: 'Love this!', user: 'User2' },
+          ].map((comment) => (
+            <View key={comment.id} style={[styles.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
+              <View style={styles.commentWrapper}>
+                <Text style={[styles.commentTextWrapper, { color: selectedTheme.textSecondary }]}>
+                  {comment.user}: {comment.text}
+                </Text>
+                <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)}>
+                  <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
+                </TouchableOpacity>
+              </View>
+
+              {/* Display the selected reaction below the comment if available */}
+              {selectedCommentReactions[comment.id] && (
+                <View style={styles.selectedReactionWrapper}>
+                  <Text style={styles.selectedReactionText}>
+                    {selectedCommentReactions[comment.id].emoji} {selectedCommentReactions[comment.id].label}
+                  </Text>
+                </View>
+              )}
+
+              {/* Comment Reaction Bar */}
+              {showCommentReactions[comment.id] && (
+                <View style={styles.reactionBarSection}>
+                  <ReactionBar
+                    reactions={reactions}
+                    onReactionPress={(label, emoji) => handleCommentReactionPress(comment.id, label, emoji)}
+                  />
+                </View>
+              )}
+            </View>
+          ))}
         </View>
+
       </ScrollView>
     </View>
   );
@@ -255,9 +305,9 @@ const styles = StyleSheet.create({
   },
   reactionIcons: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',  // Align to the right
+    justifyContent: 'flex-end', // Align to the right
     width: '70%',
-    marginRight: 0,  // Ensure no extra space at the right
+    marginRight: 0, // Ensure no extra space at the right
   },
   reactionBar: {
     flexDirection: 'row',
@@ -269,6 +319,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: 'center',
     marginBottom: 5,
+  },
+  selectedReactionWrapper: {
+    marginTop: 5, // Add some space between the comment and the reaction
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  selectedReactionText: {
+    fontSize: 16, // Adjust text size for reaction display
+    color: 'gray', // You can customize the color here
   },
   commentSection: {
     flexDirection: 'row',
@@ -288,10 +347,22 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   commentsList: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 16, // Adjust padding for the comment list
   },
-  commentText: {
-    fontSize: 14,
-    marginBottom: 10,
+  commentContainer: {
+    borderRadius: 10, // Rounded corners for the container
+    padding: 10, // Padding inside the container
+    marginBottom: 10, // Margin between comments
+  },
+  commentWrapper: {
+    flexDirection: 'row', // Arrange text and icon in a row
+    justifyContent: 'space-between', // Space between text and icon
+    alignItems: 'center', // Vertically center items
+  },
+  commentTextWrapper: {
+    flex: 1, // Text will take up the remaining space
+    marginRight: 10, // Margin to create space between text and icon
+    fontSize: 14, // Adjust text size
+    lineHeight: 18, // Adjust line height for better readability
   },
 });

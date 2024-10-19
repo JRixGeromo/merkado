@@ -26,7 +26,7 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isAuthenticated = true; // Set isAuthenticated to true when user is set
     },
-    clearUser: (state) => {
+    clearUser: state => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false; // Set isAuthenticated to false when user is cleared

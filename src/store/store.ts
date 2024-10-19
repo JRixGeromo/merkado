@@ -6,8 +6,8 @@ import productReducer from './slices/productSlice'; // Import the product slice
 // Create the Redux store
 const store = configureStore({
   reducer: {
-    theme: themeReducer,    // Theme state
-    auth: authReducer,      // Authentication state
+    theme: themeReducer, // Theme state
+    auth: authReducer, // Authentication state
     products: productReducer, // Product state (ensure this is added)
   },
 });

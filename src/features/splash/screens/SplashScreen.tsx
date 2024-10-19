@@ -1,11 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  Image,
-  Animated,
-} from 'react-native';
+import { View, Text, ActivityIndicator, Image, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
@@ -27,7 +21,7 @@ const SplashScreen = () => {
     (state: RootState) => state.auth.isAuthenticated,
   );
 
-  const theme = useAppSelector(state => state.theme.theme) as "light" | "dark"; // Explicitly define the type
+  const theme = useAppSelector(state => state.theme.theme) as 'light' | 'dark'; // Explicitly define the type
   const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
   const selectedTheme = appTheme[theme]; // Access the current theme (light or dark)
   const fadeAnim = new Animated.Value(0); // Create an animated value for fade-in
@@ -54,23 +48,26 @@ const SplashScreen = () => {
 
   return (
     <Box style={commonStyle.splashContainer}>
-    <Animated.View style={[{ opacity: fadeAnim }, { alignItems: 'center', justifyContent: 'center', width: '100%' }]}>
-      <Image
-        source={require('../../../../assets/logo.png')} // Logo path
-        style={commonStyle.logo}
-      />
-      <Text style={commonStyle.splashText}>
-        Welcome to Merkado
-      </Text>
-    </Animated.View>
+      <Animated.View
+        style={[
+          { opacity: fadeAnim },
+          { alignItems: 'center', justifyContent: 'center', width: '100%' },
+        ]}
+      >
+        <Image
+          source={require('../../../../assets/logo.png')} // Logo path
+          style={commonStyle.logo}
+        />
+        <Text style={commonStyle.splashText}>Welcome to Merkado</Text>
+      </Animated.View>
 
-    {/* Custom loader */}
-    <ActivityIndicator
-      size="large"
-      color={selectedTheme.primary} // Use primary color directly from the theme
-      style={commonStyle.loader}
-    />
-  </Box>
+      {/* Custom loader */}
+      <ActivityIndicator
+        size="large"
+        color={selectedTheme.primary} // Use primary color directly from the theme
+        style={commonStyle.loader}
+      />
+    </Box>
   );
 };
 

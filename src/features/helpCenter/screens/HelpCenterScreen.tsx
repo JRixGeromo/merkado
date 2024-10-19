@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 
 const HelpCenterScreen = () => {
-  const themeType = useAppSelector((state) => state.theme.theme);
+  const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType);
 
   return (

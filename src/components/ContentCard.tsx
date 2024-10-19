@@ -18,7 +18,11 @@ interface ContentCardProps {
   isLiked: boolean;
   onFullScreenPress: () => void;
   onLikePress: () => void;
-  buttonActions: { iconName: string; onPress: () => void; buttonStyle: object }[];
+  buttonActions: {
+    iconName: string;
+    onPress: () => void;
+    buttonStyle: object;
+  }[];
 }
 
 const ContentCard: React.FC<ContentCardProps> = ({
@@ -36,7 +40,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   onLikePress,
   buttonActions,
 }) => {
-  const theme = useAppSelector((state) => state.theme.theme); // Get current theme from Redux
+  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
 
@@ -44,7 +48,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
     <View style={commonStyle.productBox}>
       <View style={commonStyle.productImageWrapper}>
         <Image source={{ uri: imageUrl }} style={commonStyle.productImage} />
-        <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={onFullScreenPress}>
+        <TouchableOpacity
+          style={commonStyle.magnifyingGlassButton}
+          onPress={onFullScreenPress}
+        >
           <Icon name="expand-outline" size={18} color="white" />
         </TouchableOpacity>
       </View>
@@ -62,19 +69,29 @@ const ContentCard: React.FC<ContentCardProps> = ({
         )}
 
         <View style={commonStyle.infoRow}>
-          <Icon name="star" size={16} color="gold" style={commonStyle.iconContainer} />
+          <Icon
+            name="star"
+            size={16}
+            color="gold"
+            style={commonStyle.iconContainer}
+          />
           <Text style={commonStyle.infoText}>{rating}</Text>
         </View>
 
         <View style={commonStyle.likeRow}>
-          <TouchableOpacity onPress={onLikePress} style={commonStyle.iconContainer}>
+          <TouchableOpacity
+            onPress={onLikePress}
+            style={commonStyle.iconContainer}
+          >
             <Icon
               name={isLiked ? 'heart' : 'heart-outline'}
               size={18}
               color={isLiked ? 'red' : selectedTheme.iconColorPrimary}
             />
           </TouchableOpacity>
-          <Text style={commonStyle.infoText}>{likes + (isLiked ? 1 : 0)} Reactions</Text>
+          <Text style={commonStyle.infoText}>
+            {likes + (isLiked ? 1 : 0)} Reactions
+          </Text>
         </View>
       </View>
 
@@ -85,7 +102,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
             style={[commonStyle.fullWidthButton, action.buttonStyle]}
             onPress={action.onPress}
           >
-            <Icon name={action.iconName} size={20} color={selectedTheme.textLight} />
+            <Icon
+              name={action.iconName}
+              size={20}
+              color={selectedTheme.textLight}
+            />
           </TouchableOpacity>
         ))}
       </View>

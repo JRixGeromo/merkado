@@ -4,16 +4,16 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 const SHARED = {
-  borderRadius: 2,  // Shared border radius
-  padding: normalizeHeight(10),  // Shared padding
+  borderRadius: 2, // Shared border radius
+  padding: normalizeHeight(10), // Shared padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
     opacity: 0.1,
     radius: 2,
-    elevation: 3,  // Android-specific shadow
+    elevation: 3, // Android-specific shadow
   },
-  buttonPadding: normalizeHeight(15),  // Button padding
+  buttonPadding: normalizeHeight(15), // Button padding
 };
 
 // Dynamically generated styles based on theme
@@ -22,7 +22,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
   return StyleSheet.create({
     fullContainer: {
-      flex: 1, 
+      flex: 1,
       backgroundColor: selectedTheme.fullBackgrounColor,
     },
     container: {
@@ -41,7 +41,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
       fontSize: normalizeHeight(10), // You can adjust the size to your liking
-      color:  selectedTheme.textSecondary
+      color: selectedTheme.textSecondary,
     },
     screenHeaderTitle: {
       fontSize: normalizeFontSize(16),
@@ -110,7 +110,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
         default: '90%', // Width for mobile
       }),
     },
-    inputContainer: { 
+    inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       padding: normalizeHeight(2),
@@ -130,7 +130,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     bodyText: {
       fontSize: normalizeFontSize(16),
-      fontFamily: selectedTheme.bodyFont,  // Apply body font from theme
+      fontFamily: selectedTheme.bodyFont, // Apply body font from theme
       color: selectedTheme.textPrimary,
     },
     title: {
@@ -147,13 +147,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     paragraph: {
       fontSize: normalizeFontSize(14),
-      fontFamily: selectedTheme.bodyFont,  // Apply body font for paragraphs
+      fontFamily: selectedTheme.bodyFont, // Apply body font for paragraphs
       color: selectedTheme.textDark,
       margin: 10,
     },
     linkText: {
       fontSize: normalizeFontSize(14),
-      fontFamily: selectedTheme.bodyFont,  // Use body font for links
+      fontFamily: selectedTheme.bodyFont, // Use body font for links
       color: selectedTheme.textLink,
       margin: 10,
     },
@@ -221,14 +221,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 10, // Margin between header and content
     },
     slide: {
-      borderRadius: SHARED.borderRadius,  // Rounded corners
-      overflow: 'hidden',  // Ensure the content inside doesn't exceed the boundary
-      shadowColor: SHARED.shadow.color,  // Apply shadow settings
+      borderRadius: SHARED.borderRadius, // Rounded corners
+      overflow: 'hidden', // Ensure the content inside doesn't exceed the boundary
+      shadowColor: SHARED.shadow.color, // Apply shadow settings
       shadowOffset: SHARED.shadow.offset,
       shadowOpacity: SHARED.shadow.opacity,
       shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation,  // Apply Android-specific shadow
-      marginBottom: 20,  // Space between slides
+      elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
+      marginBottom: 20, // Space between slides
     },
 
     todayTextColor: {
@@ -279,7 +279,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderBottomWidth: 1,
       borderColor: selectedTheme.textPrimary, // Use the primary color for the border
     },
-    inputBackgroundColor: { 
+    inputBackgroundColor: {
       backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
     },
     profileHeader: {
@@ -374,11 +374,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'space-between', // Distribute space between items
       marginTop: 10, // Add some space above the row
     },
-    
+
     iconContainer: {
       marginRight: 5, // Space between the heart icon and the likes count
     },
-    
+
     infoText: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textPrimary, // Use primary text color from theme
@@ -390,13 +390,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 6, // Add some margin after the image
     },
 
-    
     storeImageWrapper: {
       width: '100%',
       height: '40%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',
     },
-    
 
     storeImage: {
       width: '100%',
@@ -404,14 +402,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       resizeMode: 'cover', // Ensure the image covers the available space
     },
 
-        
     // storeImage: {
     //   width: '100%', // Full width of the product box
     //   height: '40%', // Ensure the image takes up 40% of the product box's height
     //   resizeMode: 'cover', // Ensure the image covers the space
     //   //borderRadius: SHARED.borderRadius,
     // },
-    
 
     storeLocation: {
       fontSize: normalizeFontSize(10),
@@ -438,13 +434,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: '40%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',
     },
-    
+
     productImage: {
       width: '100%',
       height: '100%', // Fill the wrapper container
       resizeMode: 'cover', // Ensure the image covers the available space
     },
-    
+
     contentImageWrapper: {
       width: '100%',
       height: '30%', // Fixed height equivalent to 35% of productBox height
@@ -481,21 +477,20 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'space-between', // Space between content and buttons
       alignItems: 'center', // Center all content horizontally
     },
-    
+
     contentContainer: {
       justifyContent: 'flex-start', // Align content to the top of the container
       alignItems: 'center', // Center content horizontally
       width: '100%',
     },
-    
-    
+
     infoRow: {
       flexDirection: 'row',
       alignItems: 'center', // Center items vertically
       justifyContent: 'center', // Center the entire row horizontally
       marginTop: 6,
     },
-  
+
     reactionIcons: {
       flexDirection: 'row',
       justifyContent: 'space-around',
@@ -517,14 +512,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontFamily: selectedTheme.bodyFont,
       marginTop: 3, // Add some margin after the image
     },
-    
+
     productPrice: {
       fontSize: normalizeFontSize(14),
       color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
       marginTop: 0, // Space between the product name and price
     },
-  
+
     fullWidthButton: {
       flexDirection: 'row', // Arrange icon and text in a row
       alignItems: 'center', // Center the content vertically
@@ -534,19 +529,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flex: 0.5, // Each button takes 50% of the width
       //marginHorizontal: 2, // Small space between the two buttons
     },
-    
+
     chatButton: {
       backgroundColor: selectedTheme.buttonDark, // Explicit background color for Chat button
     },
-    
+
     cartButton: {
       backgroundColor: selectedTheme.buttonPrimary, // Explicit background color for Add to Cart button
     },
-    
+
     commentButton: {
       backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
     },
-        
+
     followButton: {
       backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
     },
@@ -555,7 +550,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: 'white', // Button text color
       marginLeft: 5, // Space between icon and text
     },
-    
+
     saleProductPrice: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textHighlight, // Highlight the price using the primary color
@@ -601,7 +596,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderRadius: 20, // Rounded corners inside the search input
       backgroundColor: selectedTheme.cardBackground, // Background color of the input
       color: selectedTheme.textPrimary, // Text color from theme
-    },  
+    },
     modalTitle: {
       fontSize: normalizeFontSize(14),
       fontWeight: 'bold',
@@ -630,7 +625,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     sectionContent: {
       flex: 1,
     },
-    
+
     ////
     searchButton: {
       paddingTop: 4,
@@ -682,8 +677,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Vertically center the items
     },
     socialButtonText: {
-      color: selectedTheme.textLight // Social button text color from selected theme
+      color: selectedTheme.textLight, // Social button text color from selected theme
     },
-   
   });
 };

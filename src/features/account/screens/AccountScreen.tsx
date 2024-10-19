@@ -15,7 +15,8 @@ import { theme as appTheme } from '../../../styles/theme';
 const AccountScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const dispatch = useAppDispatch();
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
@@ -49,7 +50,10 @@ const AccountScreen = () => {
       <View style={commonStyle.profileHeader}>
         <Image
           source={accountInfo.profileImage}
-          style={[commonStyle.profileImage, { width: 100, height: 100, borderRadius: 50 }]}
+          style={[
+            commonStyle.profileImage,
+            { width: 100, height: 100, borderRadius: 50 },
+          ]}
         />
         <Text style={commonStyle.profileName}>{accountInfo.name}</Text>
         <Text style={commonStyle.profileEmail}>{accountInfo.email}</Text>
@@ -61,10 +65,18 @@ const AccountScreen = () => {
         <View style={commonStyle.section}>
           <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
-              <Icon name="person" size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={commonStyle.cardHeaderTitle}>{t('accountInformation')}</Text>
+              <Icon
+                name="person"
+                size={24}
+                color={selectedTheme.iconColorPrimary}
+              />
+              <Text style={commonStyle.cardHeaderTitle}>
+                {t('accountInformation')}
+              </Text>
             </View>
-            <Text style={commonStyle.cardText}>{t('location')}: {accountInfo.location}</Text>
+            <Text style={commonStyle.cardText}>
+              {t('location')}: {accountInfo.location}
+            </Text>
             <TouchableOpacity>
               <Text style={commonStyle.editLink}>{t('edit')}</Text>
             </TouchableOpacity>
@@ -73,11 +85,18 @@ const AccountScreen = () => {
           {/* Payment Method Card */}
           <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
-              <Icon name="card" size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={commonStyle.cardHeaderTitle}>{t('paymentMethod')}</Text>
+              <Icon
+                name="card"
+                size={24}
+                color={selectedTheme.iconColorPrimary}
+              />
+              <Text style={commonStyle.cardHeaderTitle}>
+                {t('paymentMethod')}
+              </Text>
             </View>
             <Text style={commonStyle.cardText}>
-              {accountInfo.paymentMethod.type} {t('endingIn')} {accountInfo.paymentMethod.last4}
+              {accountInfo.paymentMethod.type} {t('endingIn')}{' '}
+              {accountInfo.paymentMethod.last4}
             </Text>
             <TouchableOpacity>
               <Text style={commonStyle.editLink}>{t('edit')}</Text>
@@ -87,29 +106,42 @@ const AccountScreen = () => {
           {/* Preferences Card */}
           <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
-              <Icon name="settings-outline" size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={commonStyle.cardHeaderTitle}>{t('preferences')}</Text>
+              <Icon
+                name="settings-outline"
+                size={24}
+                color={selectedTheme.iconColorPrimary}
+              />
+              <Text style={commonStyle.cardHeaderTitle}>
+                {t('preferences')}
+              </Text>
             </View>
 
             {/* Dark Mode Toggle */}
-            <View style={[commonStyle.toggleButtonContainer, {marginTop: 10}]}>
+            <View
+              style={[commonStyle.toggleButtonContainer, { marginTop: 10 }]}
+            >
               <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
                 <Text style={commonStyle.cardText}>{t('theme')}</Text>
               </TouchableOpacity>
-                <Icon
-                  name={theme === 'dark' ? 'moon' : 'sunny'}
-                  size={24}
-                  color={selectedTheme.iconColorPrimary}
-                />
-              
+              <Icon
+                name={theme === 'dark' ? 'moon' : 'sunny'}
+                size={24}
+                color={selectedTheme.iconColorPrimary}
+              />
             </View>
 
             {/* Language Selection Dropdown */}
             <View style={commonStyle.languageContainer}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+              >
                 <Dropdown
                   selectedValue={selectedLanguage}
-                  onValueChange={(value) => {
+                  onValueChange={value => {
                     setSelectedLanguage(value);
                     i18n.changeLanguage(value);
                   }}
@@ -120,11 +152,14 @@ const AccountScreen = () => {
                   customBackground="transparent"
                   joinLabelVaue={true} // Join the label and value in the dropdown text
                 />
-                <Icon name="globe" size={24} color={selectedTheme.iconColorPrimary} />
+                <Icon
+                  name="globe"
+                  size={24}
+                  color={selectedTheme.iconColorPrimary}
+                />
               </View>
             </View>
           </View>
-
         </View>
       </ScrollView>
     </View>
