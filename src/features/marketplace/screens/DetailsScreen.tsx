@@ -128,7 +128,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
           </View>
           <View style={[layoutStyle.cols_25, commonStyle.rightAligned, commonStyle.rPadding]}>
             {selectedPostReaction && (
-              <View style={commonStyle.selectedReactionWrapper}>
+              <View style={[commonStyle.selectedReactionWrapper, { marginTop: -10}]}>
                 <Text style={commonStyle.selectedReactionText}>
                   {selectedPostReaction}
                 </Text>

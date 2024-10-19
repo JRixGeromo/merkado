@@ -57,7 +57,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     selectedReactionWrapper: {
-      marginTop: -10, // Add some space between the comment and the reaction
       flexDirection: 'row',
       alignItems: 'center',
     },
