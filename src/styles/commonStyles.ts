@@ -25,6 +25,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     rightAligned: {
       alignItems: 'flex-end',
     },
+
     rPadding: {
       paddingRight: 10,
     },
@@ -56,12 +57,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     selectedReactionWrapper: {
-      marginTop: 5, // Add some space between the comment and the reaction
+      marginTop: -10, // Add some space between the comment and the reaction
       flexDirection: 'row',
       alignItems: 'center',
     },
+
     selectedReactionText: {
-      fontSize: 20, // Adjust text size for reaction display
+      fontSize: normalizeFontSize(20),
       color: 'gray', // You can customize the color here
     },
 
@@ -169,7 +171,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     //////////
     //////////
 
-    
+
     fullContainer: {
       flex: 1,
       backgroundColor: selectedTheme.fullBackgrounColor,

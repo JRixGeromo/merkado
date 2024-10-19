@@ -101,6 +101,40 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       },
     ////
 
+    spacer: {
+      height: 10, // Default height spacer (for vertical gaps)
+      width: 10,  // Default width spacer (for horizontal gaps)
+    },
+    // Variants of spacers for different sizes
+    spacerSmall: {
+      height: 5,
+      width: 5,
+    },
+    spacerMedium: {
+      height: 15,
+      width: 15,
+    },
+    spacerLarge: {
+      height: 20,
+      width: 20,
+    },
+
+    // Flexible spacer for horizontal gaps between columns
+    horizontalSpacer: {
+      marginHorizontal: 10, // You can also use margin to create gaps
+    },
+
+    // Vertical spacer for vertical gaps between rows
+    verticalSpacer: {
+      marginVertical: 4,
+    },
+
+    // Full-width horizontal spacer, useful between rows or sections
+    fullWidthSpacer: {
+      width: '100%',
+      height: 10,  // Adjust the height for the gap
+    },
+
     /* Optional shared styles for padding, margin, borderRadius */
     withPadding: {
       padding: SHARED.padding, // Shared padding

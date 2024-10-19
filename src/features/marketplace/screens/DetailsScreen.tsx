@@ -120,7 +120,8 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
         <View style={commonStyle.bannerImageWrapper}>
           <Image source={{ uri: item.imageUrl }} style={commonStyle.bannerContentImage} />
         </View>
-
+        
+        <View style={layoutStyle.verticalSpacer} />
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
             <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
@@ -135,7 +136,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             )}
           </View>
         </View>  
-        
+        <View style={layoutStyle.verticalSpacer} />
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_70, commonStyle.lPadding]}>
             {type === 'store' && item.location && (
@@ -155,7 +156,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             </Text>
           </View>
         </View>  
-       
+        <View style={layoutStyle.verticalSpacer} />
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {type === 'product' ? (
@@ -189,7 +190,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             </View>
           </View>
         </View>  
-
+        <View style={layoutStyle.verticalSpacer} />
         {/* ReactionBar */}
         {showReactions && (
           <View style={commonStyle.reactionBarSection}>
