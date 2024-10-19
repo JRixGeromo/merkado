@@ -15,6 +15,10 @@ import ReactionBar from '../../../components/ReactionBar';
 import CommentInput from '../../../components/CommentInput';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
+import dayjs from 'dayjs'; // Import day.js for date formatting
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 type DetailsScreenRouteProp = RouteProp<
   { params: { item: any; type: 'product' | 'store' } },
@@ -196,27 +200,45 @@ const DetailsScreen: React.FC = () => {
         {/* Existing Comments */}
         <View style={styles.commentsList}>
           {[
-            { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post!', user: 'User1' },
-            { id: 2, text: 'Love this!', user: 'User2' },
-            { id: 3, text: 'Love this!', user: 'User3' },
-            { id: 4, text: 'Love this!', user: 'User4' },
-            { id: 5, text: 'Love this!', user: 'User5' },
-            { id: 6, text: 'Love this!', user: 'User6' },
-            { id: 7, text: 'Love this!', user: 'User7' },
+            { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! ', user: 'User1', time: new Date() },
+            { id: 2, text: 'Love this!', user: 'User2', time: new Date() },
+            { id: 3, text: 'Love this!', user: 'User3', time: new Date() },
+            { id: 4, text: 'Love this!', user: 'User4', time: new Date() },
+            { id: 5, text: 'Love this!', user: 'User5', time: new Date() },
+            { id: 6, text: 'Love this!', user: 'User6', time: new Date() },
+            { id: 7, text: 'Love this!', user: 'User7', time: new Date() },
           ].map((comment) => (
             <View key={comment.id} style={[styles.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
               <Image
                 source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }} // Use user's image URL
                 style={styles.userImage}
               />
+              
               <View style={styles.commentWrapper}>
+                {/* Comment Text */}
                 <Text style={[styles.commentTextWrapper, { color: selectedTheme.textSecondary }]}>
                   {comment.user}: {comment.text}
                 </Text>
 
-                <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={styles.thumbsUpIcon}>
-                  <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
-                </TouchableOpacity>
+              {/* Display the selected reaction below the comment if available */}
+              {selectedCommentReactions[comment.id] && (
+                <View style={styles.selectedReactionWrapper}>
+                  <Text style={styles.selectedReactionText}>
+                    {selectedCommentReactions[comment.id].emoji}
+                  </Text>
+                </View>
+              )}
+              
+                {/* Time and Thumbs Up Row */}
+                <View style={styles.timeAndReactionWrapper}>
+                  <Text style={styles.timeText}>
+                    {dayjs(comment.time).fromNow()}
+                  </Text>
+
+                  <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={styles.thumbsUpIcon}>
+                    <Icon name="thumbs-up-outline" size={18} color={selectedTheme.iconColorGray} />
+                  </TouchableOpacity>
+                </View>
               </View>
 
 
@@ -230,17 +252,7 @@ const DetailsScreen: React.FC = () => {
                 </View>
               )}
 
-              {/* Display the selected reaction below the comment if available */}
-              {selectedCommentReactions[comment.id] && (
-                <View style={styles.selectedReactionWrapper}>
-                  <Text style={styles.selectedReactionText}>
-                    {selectedCommentReactions[comment.id].emoji}
-                  </Text>
-                </View>
-              )}
-
               {/* Reply codes start */}
-
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
                 <View key={index} style={styles.replyContainer}>
@@ -249,6 +261,9 @@ const DetailsScreen: React.FC = () => {
                     style={styles.userImage}
                   />
                   <Text style={[styles.replyText, {color: selectedTheme.textSecondary }]}>{reply}</Text>
+                  <Text style={styles.timeText}>
+                  {dayjs(comment.time).fromNow()}
+                </Text>
                 </View>
               ))}
 
@@ -405,6 +420,32 @@ const styles = StyleSheet.create({
     fontSize: 20, // Adjust text size for reaction display
     color: 'gray', // You can customize the color here
   },
+
+  commentWrapper: {
+    flexDirection: 'column', // Align items in column (text above time)
+    justifyContent: 'flex-start',
+    position: 'relative', // Necessary for positioning thumbs-up icon
+    paddingRight: 40, // Create space for the thumbs-up icon
+  },
+  commentTextWrapper: {
+    fontSize: 14,
+    lineHeight: 18,
+  },
+  timeAndReactionWrapper: {
+    flexDirection: 'row', // Place time and thumbs-up in the same row
+    alignItems: 'center', // Vertically align items
+    marginTop: 5, // Add margin to space it from the comment
+  },
+  timeText: {
+    fontSize: 12,
+    color: 'gray', // Lighter color for time text
+    marginRight: 10, // Add space between the time and thumbs-up icon
+  },
+
+  thumbsUpIcon: {
+   
+  },
+
   commentSection: {
     flexDirection: 'row',
     paddingHorizontal: 16,
@@ -419,30 +460,10 @@ const styles = StyleSheet.create({
     borderRadius: 2, // Rounded corners for the container
     borderBottomWidth: 1,
     marginBottom: 10, // Margin between comments
-    //borderBottomColor: '#ddd',
     position: 'relative', // Necessary for positioning the thumbs-up icon
   },
-  commentWrapper: {
-    flexDirection: 'row', // Display text in a row
-    flexWrap: 'wrap', // Wrap text if it's too long
-    justifyContent: 'space-between', // Space between text and icon
-    paddingRight: 40, // Create space for the thumbs-up icon
-  },
-  thumbsUpIcon: {
-    position: 'absolute',
-    top: 10, // Align to the top right of the comment
-    right: 10, // Align to the right
-  },
-
   replyText: {
     marginTop: 5,
-  },
-
-  commentTextWrapper: {
-    flex: 1, // Text will take up the remaining space
-    marginRight: 10, // Margin to create space between text and icon
-    fontSize: 14, // Adjust text size
-    lineHeight: 18, // Adjust line height for better readability
   },
   replyInputWrapper: {
     marginLeft: 20,
@@ -452,8 +473,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 5,
     paddingLeft: 10,
-    borderLeftWidth: 0.5,
-    borderLeftColor: '#ddd',
+    //borderLeftWidth: 0.5,
+    //borderLeftColor: '#ddd',
   },
   userImage: {
     width: 30, // Width of the user image
@@ -461,4 +482,5 @@ const styles = StyleSheet.create({
     borderRadius: 20, // Half of width/height to make it a perfect circle
     backgroundColor: '#ddd', // Placeholder color in case there's no image
   },
+
 });
