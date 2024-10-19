@@ -1,0 +1,132 @@
+import { StyleSheet, Platform } from 'react-native';
+import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
+import { theme } from '../styles/theme'; // Make sure this path is correct
+
+// Centralized constants for commonly used style properties
+const SHARED = {
+  borderRadius: 2, // Shared border radius
+  padding: normalizeHeight(10), // Shared padding
+  shadow: {
+    color: '#000',
+    offset: { width: 0, height: 2 },
+    opacity: 0.1,
+    radius: 2,
+    elevation: 3, // Android-specific shadow
+  },
+  buttonPadding: normalizeHeight(15), // Button padding
+};
+
+// Dynamically generated styles based on theme
+export const layoutStyles = (currentTheme: 'light' | 'dark') => {
+  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: selectedTheme.fullBackgrounColor, // Theme-based background
+      borderColor: 'transparent',
+      borderWidth: 0,
+      borderRadius: 0,
+    },
+    shadowedContainer: {
+      flex: 1,
+      backgroundColor: selectedTheme.fullBackgrounColor, // Theme-based background
+      borderColor: 'transparent',
+      borderWidth: 0,
+      borderRadius: 0,
+      ...Platform.select({
+        ios: {
+          shadowColor: SHARED.shadow.color,
+          shadowOffset: SHARED.shadow.offset,
+          shadowOpacity: SHARED.shadow.opacity,
+          shadowRadius: SHARED.shadow.radius,
+        },
+        android: {
+          elevation: SHARED.shadow.elevation, // Android shadow
+        },
+      }),
+    },
+    row: {
+      flexDirection: 'row',
+      flexWrap: 'wrap', // Allow wrapping if necessary
+      justifyContent: 'space-between', // Distribute space between columns
+    },
+
+    /* One column with rows */
+    column: {
+      width: '100%',
+      flexDirection: 'column',
+    },
+    
+    /* Column layout variants */
+    columns: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%', // Each row takes 100% of the available width
+    },
+
+    cols_2: {
+      width: '50%',
+    },
+    cols_3: {
+      width: '33.33%',
+    },
+    cols_4: {
+      width: '25%',
+    },
+    cols_5: {
+      width: '20%',
+    },
+    
+    ////
+    cols_25: {
+      width: '25%',
+    },
+    cols_75: {
+      width: '75%',
+    },
+    ////
+    cols_40: {
+      width: '40%',
+    },
+    cols_60: {
+      width: '60%',
+    },
+    ////
+    cols_70: {
+        width: '70%',
+      },
+      cols_30: {
+        width: '30%',
+      },
+    ////
+
+    /* Optional shared styles for padding, margin, borderRadius */
+    withPadding: {
+      padding: SHARED.padding, // Shared padding
+    },
+    withMargin: {
+      margin: normalizeHeight(10), // Dynamic margin
+    },
+    withBorderRadius: {
+      borderRadius: SHARED.borderRadius, // Shared border radius
+    },
+    withBorder: {
+      borderWidth: 1,
+      borderColor: selectedTheme.borderColorPrimary, // Theme-based border color
+    },
+    withShadow: {
+      ...Platform.select({
+        ios: {
+          shadowColor: SHARED.shadow.color,
+          shadowOffset: SHARED.shadow.offset,
+          shadowOpacity: SHARED.shadow.opacity,
+          shadowRadius: SHARED.shadow.radius,
+        },
+        android: {
+          elevation: SHARED.shadow.elevation, // Android shadow
+        },
+      }),
+    },
+  });
+};

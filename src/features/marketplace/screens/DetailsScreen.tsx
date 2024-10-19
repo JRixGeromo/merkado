@@ -14,6 +14,8 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import ReactionBar from '../../../components/ReactionBar';
 import CommentInput from '../../../components/CommentInput';
 import { theme as appTheme } from '../../../styles/theme';
+import { commonStyles } from '../../../styles/commonStyles';
+import { layoutStyles } from '../../../styles/layoutStyles';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -29,8 +31,13 @@ const DetailsScreen: React.FC = () => {
   const route = useRoute<DetailsScreenRouteProp>();
   const { item, type } = route.params;
 
-  const themeType = useAppSelector((state) => state.theme.theme);
+const themeType = useAppSelector((state) => state.theme.theme);
+
+const commonStyle = commonStyles(themeType); // This is fine
+const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
   const selectedTheme = appTheme[themeType];
+  
   const { t } = useTranslation();
 
   const [showReactions, setShowReactions] = useState(false); // Post reactions
@@ -100,7 +107,7 @@ const DetailsScreen: React.FC = () => {
 
 
   return (
-    <View style={[styles.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>
+    <View style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>    
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
@@ -114,14 +121,49 @@ const DetailsScreen: React.FC = () => {
           <Image source={{ uri: item.imageUrl }} style={styles.contentImage} />
         </View>
 
-        {/* Information Section */}
-        <View style={styles.infoSection}>
+        <View style={layoutStyle.columns}>
+          <View style={[layoutStyle.cols_75, commonStyle.paddingAll]}>
+            <Text style={{ color: selectedTheme.textPrimary }}>{item.name}</Text>
+          </View>
+          <View style={[layoutStyle.cols_25, commonStyle.rightAligned, commonStyle.rPadding]}>
+            {selectedPostReaction && (
+              <View style={styles.selectedReactionWrapper}>
+                <Text style={styles.selectedReactionText}>
+                  {selectedPostReaction}
+                </Text>
+              </View>
+            )}
+          </View>
+        </View>  
+        
+        <View style={layoutStyle.columns}>
+          <View style={[layoutStyle.cols_70, commonStyle.lPadding]}>
+            {type === 'store' && item.location && (
+              <Text style={[styles.location, { color: selectedTheme.textSecondary }]}>
+                {item.location}
+              </Text>
+            )}
+            {type === 'product' && item.description && (
+              <Text style={[styles.description, { color: selectedTheme.textSecondary }]}>
+                {item.description}
+              </Text>
+            )}
+          </View>
+          <View style={[layoutStyle.cols_30, commonStyle.rightAligned, commonStyle.rPadding]}>
+            <Text style={[styles.commentCount, { color: selectedTheme.textSecondary }]}>
+              46 {t('comments')}
+            </Text>
+          </View>
+        </View>  
+        
+
+        {/* <View style={styles.infoSection}>
+
           <View style={styles.firstRow}>
             <View style={styles.nameContainer}>
               <Text style={[styles.name, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
             </View>
             <View style={styles.reactionIconContainer}>
-              {/* Display selected reaction above the comment count */}
               {selectedPostReaction && (
                 <View style={styles.selectedReactionWrapper}>
                   <Text style={styles.selectedReactionText}>
@@ -147,7 +189,7 @@ const DetailsScreen: React.FC = () => {
               46 {t('comments')}
             </Text>
           </View>
-        </View>
+        </View> */}
 
         {/* Price and Rating Section */}
         <View style={styles.reactionsContainer}>
@@ -176,7 +218,7 @@ const DetailsScreen: React.FC = () => {
                 <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={styles.reactionSpacing} />
               </TouchableOpacity>
               <TouchableOpacity>
-                <Icon name="share-outline" size={24} color={selectedTheme.iconColorSmileys}  style={styles.reactionSpacing} />
+                <Icon name="arrow-redo-outline" size={24} color={selectedTheme.iconColorSmileys}  style={styles.reactionSpacing} />
               </TouchableOpacity>
             </View>
           </View>

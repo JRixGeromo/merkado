@@ -21,11 +21,26 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+    
+    rightAligned: {
+      alignItems: 'flex-end',
+    },
+    rPadding: {
+      paddingRight: 10,
+    },
+    lPadding: {
+      paddingLeft: 10,
+    },
+    paddingAll: {
+      padding: 10,
+    },
+
+    //////////
     fullContainer: {
       flex: 1,
       backgroundColor: selectedTheme.fullBackgrounColor,
     },
-    container: {
+    containers: {
       ...SHARED, // Apply shared styles
       flex: 1,
       justifyContent: 'center',

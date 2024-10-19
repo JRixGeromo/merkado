@@ -10,6 +10,11 @@ export interface ThemeType {
   textLink: string;
   textGray: string;
 
+  borderColorPrimary: string;
+  borderColorSecondary: string;
+  borderColorGray: string;
+  borderColorDark: string;
+
   fullBackgrounColor: string;
   fullContainerBackgrounColor: string;
   formBackgrounColor: string;
@@ -65,6 +70,7 @@ export interface ThemeType {
 }
 
 const lightTheme: ThemeType = {
+
   textPrimary: '#4CAF50',
   textSecondary: '#000000',
   textPlaceHolderInfo: '#9caea9',
@@ -75,6 +81,11 @@ const lightTheme: ThemeType = {
   textHighlight: '#800e13',
   textLink: '#38b000',
   textGray: '#8d99ae',
+
+  borderColorPrimary: '#4CAF50',
+  borderColorSecondary: '#000000',
+  borderColorGray: '#8d99ae',
+  borderColorDark: '#343a40',
 
   fullBackgrounColor: '#edede9',
   fullContainerBackgrounColor: '#ffffff',
@@ -141,6 +152,11 @@ const darkTheme: ThemeType = {
   textHighlight: '#ff3f00',
   textLink: '#38b000',
   textGray: '#8d99ae',
+
+  borderColorPrimary: '#7cb518',
+  borderColorSecondary: '#dee2e6',
+  borderColorGray: '#8d99ae',
+  borderColorDark: '#e6e6e9',
 
   fullBackgrounColor: '#000000',
   fullContainerBackgrounColor: '#000000',
