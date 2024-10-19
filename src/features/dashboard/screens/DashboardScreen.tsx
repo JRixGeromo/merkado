@@ -122,7 +122,7 @@ const DashboardScreen = () => {
       rating={item.rating}
       likes={item.likes}
       isLiked={likedStores[item.id]}
-      onMagnifyPress={() => navigation.navigate('DetailsScreen', { item, type: 'store' })}  // Corrected navigation
+      onFullScreenPress={() => navigation.navigate('DetailsScreen', { item, type: 'store' })}  // Corrected navigation
       onLikePress={() => toggleStoreLike(item.id)}
       buttonActions={[
         { iconName: 'chatbubble-outline', onPress: () => console.log('Chat Pressed'), buttonStyle: commonStyle.chatButton },
@@ -142,7 +142,7 @@ const DashboardScreen = () => {
       rating={item.rating}
       likes={item.likes}
       isLiked={likedProducts[item.id]}
-      onMagnifyPress={() => navigation.navigate('DetailsScreen', { item, type: 'product' })}  // Corrected navigation
+      onFullScreenPress={() => navigation.navigate('DetailsScreen', { item, type: 'product' })}  // Corrected navigation
       onLikePress={() => toggleProductLike(item.id)}
       buttonActions={[
         { iconName: 'chatbubble-outline', onPress: () => console.log('Chat Pressed'), buttonStyle: commonStyle.chatButton },

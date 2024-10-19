@@ -16,7 +16,7 @@ interface ContentCardProps {
   rating: number;
   likes: number;
   isLiked: boolean;
-  onMagnifyPress: () => void;
+  onFullScreenPress: () => void;
   onLikePress: () => void;
   buttonActions: { iconName: string; onPress: () => void; buttonStyle: object }[];
 }
@@ -32,7 +32,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   rating,
   likes,
   isLiked,
-  onMagnifyPress,
+  onFullScreenPress,
   onLikePress,
   buttonActions,
 }) => {
@@ -44,8 +44,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
     <View style={commonStyle.productBox}>
       <View style={commonStyle.productImageWrapper}>
         <Image source={{ uri: imageUrl }} style={commonStyle.productImage} />
-        <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={onMagnifyPress}>
-          <Icon name="search" size={18} color="white" />
+        <TouchableOpacity style={commonStyle.magnifyingGlassButton} onPress={onFullScreenPress}>
+          <Icon name="expand-outline" size={18} color="white" />
         </TouchableOpacity>
       </View>
 
@@ -74,7 +74,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
               color={isLiked ? 'red' : selectedTheme.iconColorPrimary}
             />
           </TouchableOpacity>
-          <Text style={commonStyle.infoText}>{likes + (isLiked ? 1 : 0)} Likes</Text>
+          <Text style={commonStyle.infoText}>{likes + (isLiked ? 1 : 0)} Reactions</Text>
         </View>
       </View>
 

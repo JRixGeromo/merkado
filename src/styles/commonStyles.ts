@@ -462,9 +462,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       position: 'absolute',
       top: 5,
       right: 5,
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background for visibility
+      backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background for visibility
       padding: 5,
-      borderRadius: 15, // Make it circular
+      borderRadius: 1, // Make it circular
     },
 
     productBox: {

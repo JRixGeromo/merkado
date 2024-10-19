@@ -23,8 +23,6 @@ const DetailsScreen: React.FC = () => {
     setShowReactions(false); // Hide the reaction bar after a reaction is selected
   };
 
-  console.log(item.description);
-
   return (
     <View style={[styles.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>
       {/* Scrollable Content */}
@@ -109,12 +107,28 @@ const DetailsScreen: React.FC = () => {
 
         {/* Reaction Bar */}
         {showReactions && (
-          <View style={styles.reactionBar}>
-            {['heart', 'happy', 'sad', 'angry', 'surprised'].map(reaction => (
-              <TouchableOpacity key={reaction} onPress={() => handleReactionPress(reaction)}>
-                <Icon name={reaction} size={32} color={selectedTheme.iconColorSmileys} />
+          <View style={styles.reactionBarSection}>
+          <ScrollView horizontal={true} contentContainerStyle={styles.reactionBar}>
+            {[
+              { emoji: '❤️', label: 'LOVE' },
+              { emoji: '😃', label: 'HAPPY' },   // Happy face added
+              { emoji: '😮', label: 'WOW' },
+              { emoji: '😢', label: 'SAD' },
+              { emoji: '😐', label: 'MEH' },
+              { emoji: '😡', label: 'ANGRY' },
+              { emoji: '👍', label: 'LIKE' },
+              { emoji: '👎', label: 'DISLIKE' },
+              { emoji: '🌶️', label: 'SPICY' },
+              { emoji: '🍬', label: 'SWEET' },
+              { emoji: '🍪', label: 'CRUNCHY' },
+              { emoji: '🧂', label: 'TOO_SALTY' },
+              { emoji: '🍭', label: 'TOO_SWEET' }
+            ].map(reaction => (
+              <TouchableOpacity key={reaction.label} onPress={() => handleReactionPress(reaction.label)} >
+                <Text style={{ fontSize: 32, marginHorizontal: 5 }}>{reaction.emoji}</Text> 
               </TouchableOpacity>
             ))}
+          </ScrollView>
           </View>
         )}
 
@@ -247,14 +261,20 @@ const styles = StyleSheet.create({
   },
   reactionBar: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
+    justifyContent: 'flex-start',
+    paddingVertical: 5,
+  },
+  reactionBarSection: {
+    flexDirection: 'row',
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    marginBottom: 5,
   },
   commentSection: {
     flexDirection: 'row',
     paddingHorizontal: 16,
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
   },
   commentInput: {
     flex: 1,
