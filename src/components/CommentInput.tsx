@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useAppSelector } from '../hooks/reduxHooks';
 import ReactionBar from './ReactionBar'; // Import the reusable ReactionBar component
+import { theme as appTheme } from '../styles/theme';
 
 interface Reaction {
   emoji: string;
@@ -18,6 +20,9 @@ interface CommentInputProps {
 const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reactions, placeholder = 'Write a comment...' }) => {
   const [comment, setComment] = useState('');
   const [showReactionBar, setShowReactionBar] = useState(false);
+
+  const themeType = useAppSelector((state) => state.theme.theme);
+  const selectedTheme = appTheme[themeType];
 
   const handleSendComment = () => {
     if (comment.trim()) {
@@ -45,14 +50,14 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
         />
 
         <TouchableOpacity style={styles.sendButton} onPress={handleSendComment}>
-          <Icon name="send-outline" size={24} color="#fff" />
+          <Icon name="send-outline" size={24} color={selectedTheme.iconColorPrimary} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.reactionArea}>
         {!showReactionBar && (
           <TouchableOpacity onPress={() => setShowReactionBar(true)} style={styles.thumbsUpButton}>
-            <Icon name="thumbs-up-outline" size={24} color="#007bff" />
+            <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
         )}
 
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     padding: 10,
-    backgroundColor: '#007bff',
+    //backgroundColor: '#007bff',
     borderRadius: 20,
   },
   reactionArea: {
