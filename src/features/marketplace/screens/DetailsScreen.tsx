@@ -36,17 +36,23 @@ const DetailsScreen: React.FC = () => {
     setShowReactions(false); // Hide the post reaction bar after a reaction is selected
   };
 
-  const handleCommentReactionPress = (commentId: number, label: string, emoji: string) => {
-    // Set the selected reaction for the specific comment
-    setSelectedCommentReactions((prev) => ({ ...prev, [commentId]: { label, emoji } }));
-    setShowCommentReactions((prev) => ({ ...prev, [commentId]: false })); // Hide reaction bar for the specific comment
-  };
 
   const toggleCommentReactions = (commentId: number) => {
     setShowCommentReactions((prev) => ({
       ...prev,
       [commentId]: !prev[commentId],
     })); // Toggle reaction bar for the specific comment
+  };
+
+  const handleCommentReactionPress = (commentId: number, label: string, emoji: string) => {
+    // Set the selected reaction for the specific comment by saving both label and emoji
+    setSelectedCommentReactions(prev => ({
+      ...prev,
+      [commentId]: { label, emoji } // Store both label and emoji
+    }));
+  
+    // Optionally, hide the reaction bar after selecting a reaction
+    setShowCommentReactions(prev => ({ ...prev, [commentId]: false }));
   };
 
   const reactions = [
@@ -181,7 +187,8 @@ const DetailsScreen: React.FC = () => {
               {selectedCommentReactions[comment.id] && (
                 <View style={styles.selectedReactionWrapper}>
                   <Text style={styles.selectedReactionText}>
-                    {selectedCommentReactions[comment.id].emoji} {selectedCommentReactions[comment.id].label}
+                    {selectedCommentReactions[comment.id].emoji}
+                    {/* {selectedCommentReactions[comment.id].label} */}
                   </Text>
                 </View>
               )}

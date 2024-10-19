@@ -8,7 +8,7 @@ interface Reaction {
 
 interface ReactionBarProps {
   reactions: Reaction[];
-  onReactionPress: (label: string) => void;
+  onReactionPress: (label: string, emoji: string) => void; // Updated to pass both label and emoji
   iconSize?: number; // Optional: for customizing the size of the emojis
 }
 
@@ -22,7 +22,7 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
       {reactions.map((reaction) => (
         <TouchableOpacity
           key={reaction.label}
-          onPress={() => onReactionPress(reaction.label)}
+          onPress={() => onReactionPress(reaction.label, reaction.emoji)} // Pass both label and emoji
         >
           <Text style={{ fontSize: iconSize, marginHorizontal: 5 }}>
             {reaction.emoji}
