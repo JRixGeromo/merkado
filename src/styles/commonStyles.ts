@@ -165,6 +165,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     //////////
+    //////////
+    //////////
+    //////////
+
+    
     fullContainer: {
       flex: 1,
       backgroundColor: selectedTheme.fullBackgrounColor,
