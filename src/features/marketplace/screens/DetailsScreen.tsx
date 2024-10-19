@@ -156,38 +156,39 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
           </View>
         </View>  
        
-        {/* Price and Rating Section */}
-        <View style={styles.reactionsContainer}>
-          <View style={styles.priceContainer}>
+        <View style={layoutStyle.columns}>
+          <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {type === 'product' ? (
               <Text>
-                <Text style={[styles.priceText, { color: selectedTheme.textHighlight }]}>₱{item.price} </Text>
-                <Text style={[styles.priceText, { color: selectedTheme.textSecondary }]}>{item.distance}</Text>
+                <Text style={[commonStyle.font14, { color: selectedTheme.textHighlight }]}>₱{item.price} </Text>
+                <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>{item.distance}</Text>
               </Text>
             ) : (
-              <Text style={[styles.priceText, { color: selectedTheme.textSecondary }]}>{item.distance}</Text>
+              <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>{item.distance}</Text>
             )}
           </View>
 
-          <View style={styles.ratingAndIconsContainer}>
-            <View style={styles.ratingRow}>
-              <Icon name="star" size={20} color="gold" />
-              <Text style={[styles.ratingText, { color: selectedTheme.textSecondary }]}>{item.rating}</Text>
-            </View>
+          <View style={[layoutStyle.cols_2]}>
+            <View style={layoutStyle.columns}>
+              <View style={[layoutStyle.cols_40, {flexDirection: "row"}]}>
+                <Icon name="star" size={20} color="gold" />
+                <Text style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
+              </View>
 
-            <View style={styles.reactionIcons}>
-              <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={styles.reactionSpacing} />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="arrow-redo-outline" size={24} color={selectedTheme.iconColorSmileys}  style={styles.reactionSpacing} />
-              </TouchableOpacity>
+              <View style={[layoutStyle.cols_60, {flexDirection: "row"}]}>
+                  <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
+                    <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPadding2}/>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={commonStyle.rPadding2} />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Icon name="arrow-redo-outline" size={24} color={selectedTheme.iconColorSmileys}/>
+                  </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
+        </View>  
 
         {/* ReactionBar */}
         {showReactions && (
@@ -397,8 +398,6 @@ const styles = StyleSheet.create({
   reactionIcons: {
     flexDirection: 'row',
     justifyContent: 'flex-end', // Align to the right
-    width: '70%',
-    marginRight: 0, // Ensure no extra space at the right
   },
   reactionBar: {
     flexDirection: 'row',

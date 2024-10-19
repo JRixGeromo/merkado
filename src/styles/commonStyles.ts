@@ -35,6 +35,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: 10,
     },
 
+    rPadding2: {
+      paddingRight: 20,
+    },
+    lPadding2: {
+      paddingLeft: 20,
+    },
+    paddingAll2: {
+      padding: 20,
+    },
+
     bannerImageWrapper: {
       width: '100%',
       height: 200,
@@ -104,7 +114,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       backgroundColor: selectedTheme.fullBackgrounColor,
     },
-    containers: {
+    container: {
       ...SHARED, // Apply shared styles
       flex: 1,
       justifyContent: 'center',
