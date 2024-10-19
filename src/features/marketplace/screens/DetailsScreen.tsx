@@ -162,7 +162,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             {type === 'product' ? (
               <Text>
                 <Text style={[commonStyle.font14, { color: selectedTheme.textHighlight }]}>₱{item.price} </Text>
-                <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>{item.distance}</Text>
+                <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>{" "}{item.distance}</Text>
               </Text>
             ) : (
               <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>{item.distance}</Text>
