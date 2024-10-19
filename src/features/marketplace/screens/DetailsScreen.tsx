@@ -220,23 +220,29 @@ const DetailsScreen: React.FC = () => {
                   {comment.user}: {comment.text}
                 </Text>
 
-              {/* Display the selected reaction below the comment if available */}
-              {selectedCommentReactions[comment.id] && (
-                <View style={styles.selectedReactionWrapper}>
-                  <Text style={styles.selectedReactionText}>
-                    {selectedCommentReactions[comment.id].emoji}
-                  </Text>
-                </View>
-              )}
-              
+                {/* Display the selected reaction below the comment if available */}
+                {selectedCommentReactions[comment.id] && (
+                  <View style={styles.selectedReactionWrapper}>
+                    <Text style={styles.selectedReactionText}>
+                      {selectedCommentReactions[comment.id].emoji}
+                    </Text>
+                  </View>
+                )}
+
                 {/* Time and Thumbs Up Row */}
                 <View style={styles.timeAndReactionWrapper}>
                   <Text style={styles.timeText}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
-
+                  <Text style={styles.timeText}>
+                    |
+                  </Text>
                   <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={styles.thumbsUpIcon}>
-                    <Icon name="thumbs-up-outline" size={18} color={selectedTheme.iconColorGray} />
+                    {/* <Icon name="thumbs-up-outline" size={18} color={selectedTheme.iconColorGray} /> */}
+                    
+                    <Text style={styles.timeText}>
+                      Like
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -261,9 +267,6 @@ const DetailsScreen: React.FC = () => {
                     style={styles.userImage}
                   />
                   <Text style={[styles.replyText, {color: selectedTheme.textSecondary }]}>{reply}</Text>
-                  <Text style={styles.timeText}>
-                  {dayjs(comment.time).fromNow()}
-                </Text>
                 </View>
               ))}
 
