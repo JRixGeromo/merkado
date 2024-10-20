@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
 
@@ -40,9 +41,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
   onLikePress,
   buttonActions,
 }) => {
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
 
   const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
     const IconComponent = IconLib[iconName]; // Access the icon component dynamically
@@ -50,11 +53,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
   };
 
   return (
-    <View style={commonStyle.productBox}>
+    <View style={[layoutStyle.shadowedContainer, commonStyle.productBox]}>
       <View style={commonStyle.productImageWrapper}>
         <Image source={{ uri: imageUrl }} style={commonStyle.productImage} />
         <TouchableOpacity
-          style={commonStyle.magnifyingGlassButton}
+          style={commonStyle.goFullScreenButton}
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
@@ -64,7 +67,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
 
       <View style={commonStyle.contentContainer}>
         <Text style={commonStyle.productName}>{name}</Text>
-
+        <View style={layoutStyle.verticalSpacerS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
           <Text style={commonStyle.productPrice}>₱{price}</Text>
@@ -73,17 +76,17 @@ const ContentCard: React.FC<ContentCardProps> = ({
         {type === 'store' && location && (
           <Text style={commonStyle.storeLocation}>{location}</Text>
         )}
-
-        <View style={commonStyle.infoRow}>
+        <View style={layoutStyle.verticalSpacerS} />
+        <View style={layoutStyle.columnsInsideFlex}>
           {/* Replace with IconLib for the star icon */}
-          <IconLib.Star size={16} color="gold" style={commonStyle.iconContainer} />
-          <Text style={commonStyle.infoText}>{rating}</Text>
+          <IconLib.Star size={16} color="gold" style={commonStyle.rMarginXS} />
+          <Text style={[commonStyle.font12, {color: selectedTheme.textSecondary}]}>{rating}</Text>
         </View>
-
-        <View style={commonStyle.likeRow}>
+        <View style={layoutStyle.verticalSpacerS} />
+        <View style={layoutStyle.columnsInsideFlex}>
           <TouchableOpacity
             onPress={onLikePress}
-            style={commonStyle.iconContainer}
+            style={commonStyle.rMarginXS}
           >
             {/* Replace with IconLib for the heart icon */}
             {isLiked ? (
@@ -92,17 +95,17 @@ const ContentCard: React.FC<ContentCardProps> = ({
               <IconLib.Heart_O size={18} color={selectedTheme.iconColorPrimary} />
             )}
           </TouchableOpacity>
-          <Text style={commonStyle.infoText}>
+          <Text style={[commonStyle.font12, {color: selectedTheme.textSecondary}]}>
             {likes + (isLiked ? 1 : 0)} Reactions
           </Text>
         </View>
       </View>
 
-      <View style={commonStyle.buttonRow}>
+      <View style={layoutStyle.columnsInsideFlex}>
         {buttonActions.map((action, index) => (
           <TouchableOpacity
             key={index}
-            style={[commonStyle.fullWidthButton, action.buttonStyle]}
+            style={[layoutStyle.cols_2, commonStyle.fullWidthButton, action.buttonStyle]}
             onPress={action.onPress}
           >
             {/* Use the renderIcon function to dynamically render icons */}

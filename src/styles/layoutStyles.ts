@@ -30,7 +30,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
     shadowedContainer: {
       flex: 1,
-      backgroundColor: selectedTheme.fullBackgrounColor, // Theme-based background
       borderColor: 'transparent',
       borderWidth: 0,
       borderRadius: 0,
@@ -53,6 +52,11 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     /* One row with columns inside */
+    /* One row with columns inside */
+    columnsInsideFlex: {
+      flexDirection: 'row',
+    },
+
     columnsInside: {
       flexDirection: 'row',
       width: '100%',
@@ -130,7 +134,12 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     // Vertical spacer for vertical gaps between rows
-    verticalSpacer: {
+    verticalSpacerS: {
+      marginVertical: 2,
+    },
+
+    // Vertical spacer for vertical gaps between rows
+    verticalSpacerM: {
       marginVertical: 10,
     },
 

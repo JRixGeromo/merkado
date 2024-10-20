@@ -31,6 +31,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Use to center items vertically
     },
 
+
+    contentContainer: {
+      justifyContent: 'flex-start', // Align content to the top of the container
+      alignItems: 'center', // Center content horizontally
+      width: '100%',
+    },
+
     leftAlignedItems: {
       flexDirection: 'row',
       justifyContent: 'flex-start',
@@ -64,6 +71,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     // margin
+    rMarginXS: {
+      marginRight: 5,
+    },
+    lMarginXS: {
+      marginLeft: 5,
+    },
+
     rMarginS: {
       marginRight: 10,
     },
@@ -221,6 +235,65 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textPrimary, // Text color from theme
     },
 
+
+    productBox: {
+      backgroundColor: selectedTheme.cardBackground,
+      width: 120,
+      height: 225,
+      marginRight: 10,
+      paddingBottom: 0,
+      marginBottom: 0,
+      justifyContent: 'space-between', // Space between content and buttons
+      alignItems: 'center', // Center all content horizontally
+    },
+
+    productImageWrapper: {
+      width: '100%',
+      height: '40%', // Fixed height equivalent to 35% of productBox height
+      position: 'relative',
+    },
+
+    productImage: {
+      width: '100%',
+      height: '100%', // Fill the wrapper container
+      resizeMode: 'cover', // Ensure the image covers the available space
+    },
+
+    goFullScreenButton: {
+      position: 'absolute',
+      top: 5,
+      right: 5,
+      backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background for visibility
+      padding: 5,
+      borderRadius: 1, // Make it circular
+    },
+
+    productName: {
+      fontSize: normalizeFontSize(12),
+      color: selectedTheme.textSecondary,
+      fontFamily: selectedTheme.bodyFont,
+      marginTop: 3, // Add some margin after the image
+    },
+
+    productPrice: {
+      fontSize: normalizeFontSize(14),
+      color: selectedTheme.textHighlight, // Highlight the price
+      fontFamily: selectedTheme.bodyFont,
+      marginTop: 0, // Space between the product name and price
+    },
+
+    storeLocation: {
+      fontSize: normalizeFontSize(10),
+      color: selectedTheme.textSecondary,
+      fontFamily: selectedTheme.bodyFontSlim,
+    },
+
+    fullWidthButton: {
+      alignItems: 'center', // Center the content vertically
+      justifyContent: 'center', // Center the content horizontally
+      paddingVertical: 5, // Add vertical padding for better touch area
+    },
+    
     ////
 
     font8: {
@@ -602,21 +675,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       elevation: SHARED.shadow.elevation, // Android shadow
     },
 
-    likeRow: {
-      flexDirection: 'row', // Arrange items in a row
-      alignItems: 'center', // Vertically center items
-      justifyContent: 'space-between', // Distribute space between items
-      marginTop: 10, // Add some space above the row
-    },
-
-    iconContainer: {
-      marginRight: 5, // Space between the heart icon and the likes count
-    },
-
-    infoText: {
-      fontSize: normalizeFontSize(10),
-      color: selectedTheme.textGray, // Use primary text color from theme
-    },
     storeName: {
       fontSize: normalizeFontSize(10),
       color: selectedTheme.textPrimary,
@@ -643,11 +701,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     //   //borderRadius: SHARED.borderRadius,
     // },
 
-    storeLocation: {
-      fontSize: normalizeFontSize(10),
-      color: selectedTheme.textSecondary,
-      fontFamily: selectedTheme.bodyFontSlim,
-    },
+
     storeBox: {
       backgroundColor: selectedTheme.cardBackground,
       //padding: SHARED.padding,
@@ -663,18 +717,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       shadowRadius: SHARED.shadow.radius,
     },
 
-    productImageWrapper: {
-      width: '100%',
-      height: '40%', // Fixed height equivalent to 35% of productBox height
-      position: 'relative',
-    },
-
-    productImage: {
-      width: '100%',
-      height: '100%', // Fill the wrapper container
-      resizeMode: 'cover', // Ensure the image covers the available space
-    },
-
     contentImageWrapper: {
       width: '100%',
       height: '30%', // Fixed height equivalent to 35% of productBox height
@@ -688,42 +730,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 16,
     },
 
-    magnifyingGlassButton: {
-      position: 'absolute',
-      top: 5,
-      right: 5,
-      backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background for visibility
-      padding: 5,
-      borderRadius: 1, // Make it circular
-    },
-
-    productBox: {
-      backgroundColor: selectedTheme.cardBackground,
-      width: 120,
-      height: 225,
-      marginRight: 10,
-      shadowColor: SHARED.shadow.color,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowOffset: SHARED.shadow.offset,
-      shadowRadius: SHARED.shadow.radius,
-      paddingBottom: 0,
-      marginBottom: 0,
-      justifyContent: 'space-between', // Space between content and buttons
-      alignItems: 'center', // Center all content horizontally
-    },
-
-    contentContainer: {
-      justifyContent: 'flex-start', // Align content to the top of the container
-      alignItems: 'center', // Center content horizontally
-      width: '100%',
-    },
-
-    infoRow: {
-      flexDirection: 'row',
-      alignItems: 'center', // Center items vertically
-      justifyContent: 'center', // Center the entire row horizontally
-      marginTop: 6,
-    },
 
     reactionIcons: {
       flexDirection: 'row',
@@ -738,30 +744,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 10,
       paddingBottom: 0,
       marginBottom: 0,
-    },
-
-    productName: {
-      fontSize: normalizeFontSize(10),
-      color: selectedTheme.textSecondary,
-      fontFamily: selectedTheme.bodyFont,
-      marginTop: 3, // Add some margin after the image
-    },
-
-    productPrice: {
-      fontSize: normalizeFontSize(14),
-      color: selectedTheme.textHighlight, // Highlight the price
-      fontFamily: selectedTheme.bodyFont,
-      marginTop: 0, // Space between the product name and price
-    },
-
-    fullWidthButton: {
-      flexDirection: 'row', // Arrange icon and text in a row
-      alignItems: 'center', // Center the content vertically
-      justifyContent: 'center', // Center the content horizontally
-      paddingVertical: 5, // Add vertical padding for better touch area
-      //borderRadius: 5, // Rounded corners
-      flex: 0.5, // Each button takes 50% of the width
-      //marginHorizontal: 2, // Small space between the two buttons
     },
 
     chatButton: {
@@ -802,7 +784,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     categoryText: {
       color: '#fff',
-      fontWeight: 'bold',
     },
     modalTitle: {
       fontSize: normalizeFontSize(14),

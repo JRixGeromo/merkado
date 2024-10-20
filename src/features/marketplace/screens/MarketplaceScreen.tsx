@@ -255,7 +255,7 @@ const MarketplaceScreen = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={[layoutStyle.container, commonStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]} >
         {/* Search Container */}
-        <View style={layoutStyle.verticalSpacer} />
+        <View style={layoutStyle.verticalSpacerM} />
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
           <TouchableOpacity
             style={commonStyle.rMarginL}
@@ -286,7 +286,7 @@ const MarketplaceScreen = () => {
         {/* Featured Products Section */}
         {categories.map((category, index) => (
           <View key={index}>
-            <View style={layoutStyle.verticalSpacer} />
+            <View style={layoutStyle.verticalSpacerM} />
             <Text style={commonStyle.sectionTitle}>{category}</Text>
             <FlatList
               data={products[category]}
@@ -298,7 +298,7 @@ const MarketplaceScreen = () => {
             />
           </View>
         ))}
-        <View style={layoutStyle.verticalSpacer} />
+        <View style={layoutStyle.verticalSpacerM} />
       </View>
     </ScrollView>
   );

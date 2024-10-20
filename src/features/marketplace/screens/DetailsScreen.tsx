@@ -180,7 +180,7 @@ const DetailsScreen: React.FC = () => {
           </View>
         </View>
 
-        <View style={layoutStyle.verticalSpacer} />
+        <View style={layoutStyle.verticalSpacerM} />
 
         <View style={[layoutStyle.columnsInside, commonStyle.lPaddingS]}>
           {type === 'store' && item.location && (
@@ -199,7 +199,7 @@ const DetailsScreen: React.FC = () => {
           )}
         </View>
 
-        <View style={layoutStyle.verticalSpacer} />
+        <View style={layoutStyle.verticalSpacerM} />
 
         <View style={layoutStyle.columnsInside}>
           <View style={[layoutStyle.cols_2, commonStyle.lPaddingS]}>
@@ -236,7 +236,7 @@ const DetailsScreen: React.FC = () => {
           </View>
         </View>
 
-        <View style={layoutStyle.verticalSpacer} />
+        <View style={layoutStyle.verticalSpacerM} />
 
         {/* ReactionBar */}
         {showReactions && (
@@ -347,7 +347,7 @@ const DetailsScreen: React.FC = () => {
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
                 <View key={index} style={[commonStyle.replyContainer]}>
-                  <View style={layoutStyle.verticalSpacer} />
+                  <View style={layoutStyle.verticalSpacerM} />
                   <Image
                     source={{ uri: 'https://randomuser.me/api/portraits/women/1.jpg' }} // Use user's image URL
                     style={commonStyle.userImage}
