@@ -259,6 +259,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       resizeMode: 'cover', // Ensure the image covers the available space
     },
 
+    promoImage: {
+      width: '100%',
+      height: 225, // Fill the wrapper container
+      resizeMode: 'cover', // Ensure the image covers the available space
+    },
+
     goFullScreenButton: {
       position: 'absolute',
       top: 5,
@@ -288,12 +294,18 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontFamily: selectedTheme.bodyFontSlim,
     },
 
-    fullWidthButton: {
+    cardButton: {
       alignItems: 'center', // Center the content vertically
       justifyContent: 'center', // Center the content horizontally
       paddingVertical: 5, // Add vertical padding for better touch area
     },
-    
+
+    sectionTitle: {
+      fontSize: normalizeFontSize(14), // Default size for icons
+      color: selectedTheme.textSecondary,
+      fontFamily: selectedTheme.headingFont,
+    },
+
     ////
 
     font8: {
@@ -499,12 +511,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     textColor: {
       color: selectedTheme.textSecondary, // Text color for "Or login with"
     },
-    sectionTitle: {
-      fontSize: normalizeFontSize(14), // Default size for icons
-      color: selectedTheme.textSecondary,
-      fontFamily: selectedTheme.headingFont,
-      marginLeft: 5,
-    },
+    
+    // sectionTitle: {
+    //   fontSize: normalizeFontSize(14), // Default size for icons
+    //   color: selectedTheme.textSecondary,
+    //   fontFamily: selectedTheme.headingFont,
+    // },
+
     logoutText: {
       fontSize: normalizeFontSize(16),
       color: '#fff', // Text color for logout button

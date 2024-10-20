@@ -105,7 +105,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         {buttonActions.map((action, index) => (
           <TouchableOpacity
             key={index}
-            style={[layoutStyle.cols_2, commonStyle.fullWidthButton, action.buttonStyle]}
+            style={[layoutStyle.cols_2, commonStyle.cardButton, action.buttonStyle]}
             onPress={action.onPress}
           >
             {/* Use the renderIcon function to dynamically render icons */}

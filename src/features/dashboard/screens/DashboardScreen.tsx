@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
+import { layoutStyles } from '../../../styles/layoutStyles';
 import MarketplaceModal from '../../marketplace/components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
 import Carousel from 'react-native-snap-carousel';
@@ -47,9 +48,12 @@ export type Store = {
 };
 
 const DashboardScreen = () => {
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
 
@@ -240,18 +244,15 @@ const DashboardScreen = () => {
   );
 
   return (
-    <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
-      style={commonStyle.fullContainer}
-    >
-      <View style={commonStyle.section}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={[layoutStyle.container, commonStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]} >
         {/* Search Container */}
-        <View style={commonStyle.searchContainer}>
+        <View style={layoutStyle.verticalSpacerM} />
+        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
           <TouchableOpacity
-            style={commonStyle.headerIcon}
+            style={commonStyle.rMarginL}
             onPress={toggleModal}
           >
-            {/* Use IconLib for menu icon */}
             <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
           <TextInput
@@ -275,7 +276,8 @@ const DashboardScreen = () => {
         />
 
         {/* Promo Carousel */}
-        <View style={commonStyle.section}>
+        
+        <View style={layoutStyle.verticalSpacerL}>
           <Text style={commonStyle.sectionTitle}>{t('spotlightOffers')}</Text>
           <Carousel
             ref={carouselRef}
@@ -292,7 +294,7 @@ const DashboardScreen = () => {
         </View>
 
         {/* Featured Stores */}
-        <View style={commonStyle.section}>
+        <View>
           <Text style={commonStyle.sectionTitle}>{t('Featured Stores')}</Text>
           <FlatList
             data={featuredStores}
@@ -300,12 +302,12 @@ const DashboardScreen = () => {
             renderItem={renderStoreItem}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
+            contentContainerStyle={{ paddingHorizontal: 5 }}
           />
         </View>
 
         {/* Featured Products */}
-        <View style={commonStyle.section}>
+        <View style={layoutStyle.verticalSpacerM}>
           <Text style={commonStyle.sectionTitle}>{t('Featured Products')}</Text>
           <FlatList
             data={featuredProducts}
@@ -313,7 +315,7 @@ const DashboardScreen = () => {
             renderItem={renderProductItem}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
+            contentContainerStyle={{ paddingHorizontal: 5 }}
           />
         </View>
       </View>
