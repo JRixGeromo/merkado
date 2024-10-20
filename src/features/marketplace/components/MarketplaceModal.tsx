@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, Modal, FlatList } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
+import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 import CustomButton from '../../../components/CustomButton'; // Import your CustomButton component
+import { normalizeFontSize, normalizeHeight } from '../../../utils/responsive'; // Import responsive utilities
 
 type MarketplaceModalProps = {
   visible: boolean;
@@ -41,9 +43,11 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   >('categories');
   const { t } = useTranslation();
 
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
 
   // Render each item in the list
   const renderListItem = ({ item }: { item: string }) => (
@@ -76,7 +80,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
 
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
-      <View style={commonStyle.modalContainerFull}>
+      <View style={[layoutStyle.container, {padding: 20, backgroundColor: selectedTheme.cardBackground }]}>
         <Text style={commonStyle.modalTitle}>{t('Search in merkado by')}</Text>
 
         {/* Scrollable Section Buttons */}
@@ -99,7 +103,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
               style={[commonStyle.searchButton, { marginHorizontal: 10 }]} // You can pass an array of styles
               borderRadius={20} // Set borderRadius
               color={selectedTheme.textLight}
-              textSize={12} // Custom text size
+              textSize={normalizeFontSize(12)} // Custom text size
               borderColor={selectedTheme.buttonBorderLight}
             />
           )}

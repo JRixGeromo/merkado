@@ -306,6 +306,29 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontFamily: selectedTheme.headingFont,
     },
 
+    modalTitle: {
+      fontSize: normalizeFontSize(14),
+      fontWeight: 'bold',
+      color: selectedTheme.textSecondary, // Theme-based text color for the title
+      marginBottom: 15,
+    },
+
+    listItem: {
+      padding: 10,
+      borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
+      borderBottomWidth: 1,
+      backgroundColor: selectedTheme.cardBackground, // Theme-based background color
+    },
+    listItemText: {
+      color: selectedTheme.textPrimary,
+    },
+    searchButton: {
+      paddingTop: 4,
+      paddingBottom: 4,
+      paddingLeft: 8,
+      paddingRight: 8,
+      height: 30,
+    },
     ////
 
     font8: {
@@ -346,7 +369,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     //////////
     //////////
     //////////
-
+    
     fullContainer: {
       flex: 1,
       backgroundColor: selectedTheme.fullBackgrounColor,
@@ -798,28 +821,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     categoryText: {
       color: '#fff',
     },
-    modalTitle: {
-      fontSize: normalizeFontSize(14),
-      fontWeight: 'bold',
-      color: selectedTheme.textSecondary, // Theme-based text color for the title
-      marginBottom: 15,
-    },
-    listItem: {
-      padding: 10,
-      borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
-      borderBottomWidth: 1,
-      backgroundColor: selectedTheme.cardBackground, // Theme-based background color
-    },
-    listItemText: {
-      color: selectedTheme.textPrimary,
-    },
-    modalContainerFull: {
-      flex: 1,
-      padding: 20,
-      backgroundColor: selectedTheme.cardBackground, // Theme-based background for modal
-    },
-
-    horizontalScroll: {
+      horizontalScroll: {
       paddingHorizontal: 10,
       marginVertical: 10,
     },
@@ -828,13 +830,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     ////
-    searchButton: {
-      paddingTop: 4,
-      paddingBottom: 4,
-      paddingLeft: 8,
-      paddingRight: 8,
-      height: 30,
-    },
     button: {
       padding: SHARED.buttonPadding, // Button padding from shared settings
       borderRadius: SHARED.borderRadius, // Border radius from shared settings
@@ -880,5 +875,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     socialButtonText: {
       color: selectedTheme.textLight, // Social button text color from selected theme
     },
+    
   });
 };
