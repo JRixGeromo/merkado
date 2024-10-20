@@ -107,6 +107,7 @@ const IconLib = {
   Locked: (props: IconProps) => <CustomIcon name="lock-closed" {...props} />,
   
   Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
+  Male: (props: IconProps) => <CustomIcon name="male" {...props} />,
 
 };
 
