@@ -27,8 +27,15 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     rightAlignedItems: {
+      flexDirection: 'row',
       justifyContent: 'flex-end',  // Use for row-based right alignment
       alignItems: 'center',        // Use to center items vertically
+    },
+
+    leftAlignedItems: {
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
     },
 
     rPadding: {
@@ -136,6 +143,39 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginLeft: 20,
       marginTop: 10,
     },
+
+    commentFormContainer: {
+      backgroundColor: '#333',
+      marginBottom: 10, 
+      padding: 12,
+    },
+
+    inputWrapper: {
+      //alignItems: 'center',
+      borderRadius: 30,
+      paddingLeft: 15,
+    },
+
+    commentInput: {
+      flex: 1,
+      paddingVertical: 10,
+      paddingRight: 50,
+      fontSize: normalizeFontSize(12),
+    },
+
+    sendButton: {
+      position: 'absolute',
+      right: 15,
+      padding: 10,
+      borderRadius: 20,
+    },
+      
+    thumbsUpButton: {
+      paddingHorizontal: 10,
+    },
+    ////
+
+
     font8: {
       fontSize: normalizeFontSize(8),
     },

@@ -31,10 +31,9 @@ const DetailsScreen: React.FC = () => {
   const route = useRoute<DetailsScreenRouteProp>();
   const { item, type } = route.params;
 
-const themeType = useAppSelector((state) => state.theme.theme);
-
-const commonStyle = commonStyles(themeType); // This is fine
-const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const themeType = useAppSelector((state) => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
   
@@ -155,7 +154,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
           <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
             <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
           </View>
-          <View style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding, { flexDirection: "row" }]}>
+          <View style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding]}>
             <Icon name="star" size={20} color="gold" />
             <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
         </View>

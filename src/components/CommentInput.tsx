@@ -3,6 +3,8 @@ import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-nativ
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppSelector } from '../hooks/reduxHooks';
 import ReactionBar from './ReactionBar'; // Import the reusable ReactionBar component
+import { commonStyles } from '../styles/commonStyles';
+import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 
 interface Reaction {
@@ -22,6 +24,9 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
   const [showReactionBar, setShowReactionBar] = useState(false);
 
   const themeType = useAppSelector((state) => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
   const selectedTheme = appTheme[themeType];
 
   const handleSendComment = () => {
@@ -38,10 +43,10 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
   };
 
   return (
-    <View style={[styles.commentContainer, {backgroundColor: selectedTheme.formBackgrounColor}]}>
-      <View style={[styles.inputWrapper, {backgroundColor: selectedTheme.inputBackgroundColor}]}>
+    <View style={[layoutStyle.column, commonStyle.commentFormContainer, {backgroundColor: selectedTheme.formBackgrounColor }]}>
+      <View style={[commonStyle.inputWrapper, {backgroundColor: selectedTheme.inputBackgroundColor}]}>
         <TextInput
-          style={[styles.commentInput, {color: selectedTheme.textSecondary}]}
+          style={[commonStyle.commentInput, {color: selectedTheme.textSecondary}]}
           placeholder={placeholder}
           placeholderTextColor="#999"
           value={comment}
@@ -49,14 +54,14 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
           multiline={true}
         />
 
-        <TouchableOpacity style={styles.sendButton} onPress={handleSendComment}>
+        <TouchableOpacity style={commonStyle.sendButton} onPress={handleSendComment}>
           <Icon name="send-outline" size={24} color={selectedTheme.iconColorPrimary} />
         </TouchableOpacity>
       </View>
 
-      <View style={styles.reactionArea}>
+      <View style={[layoutStyle.column, commonStyle.leftAlignedItems, {paddingTop: 10}]}>
         {!showReactionBar && (
-          <TouchableOpacity onPress={() => setShowReactionBar(true)} style={styles.thumbsUpButton}>
+          <TouchableOpacity onPress={() => setShowReactionBar(true)} style={commonStyle.thumbsUpButton}>
             <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
         )}
@@ -71,44 +76,5 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  commentContainer: {
-    backgroundColor: '#333',
-    borderRadius: 2,
-    padding: 15,
-    marginBottom: 10,
-    width: '100%', 
-  },
-  inputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 30,
-    paddingLeft: 15,
-    width: '100%',
-  },
-  commentInput: {
-    flex: 1,
-    paddingVertical: 10,
-    fontSize: 16,
-    paddingRight: 50,
-  },
-  sendButton: {
-    position: 'absolute',
-    right: 15,
-    padding: 10,
-    //backgroundColor: '#007bff',
-    borderRadius: 20,
-  },
-  reactionArea: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingTop: 10,
-  },
-  thumbsUpButton: {
-    paddingHorizontal: 10,
-  },
-});
 
 export default CommentInput;
