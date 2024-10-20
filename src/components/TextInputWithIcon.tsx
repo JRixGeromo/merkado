@@ -1,16 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons'; // Default to Ionicons
 import { commonStyles } from '../styles/commonStyles';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
 import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selector for theme
+import IconLib from './IconLib'; // Import your custom Icon library
 
 interface TextInputWithIconProps {
   placeholder: string;
-  iconName: string;
+  iconName: keyof typeof IconLib; // Ensure it matches the key of IconLib
   value?: string; // Optional for cases like date picker
   onChangeText?: (text: string) => void; // Make this optional
-  iconPack?: typeof Icon;
   secureTextEntry?: boolean;
   placeholderTextColor?: string;
   iconSize?: number;
@@ -26,10 +25,9 @@ interface TextInputWithIconProps {
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   placeholder,
-  iconName,
+  iconName, // Dynamically refer to the icon name in IconLib
   value,
   onChangeText,
-  iconPack = Icon,
   secureTextEntry = false,
   placeholderTextColor,
   iconSize = normalizeFontSize(20),
@@ -61,7 +59,11 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
   const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
 
-  const IconComponent = iconPack;
+  // Function to render dynamic icon from IconLib
+  const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
+    const IconComponent = IconLib[iconName]; // Access the icon component dynamically
+    return <IconComponent size={size} color={color} />;
+  };
 
   return (
     <View
@@ -71,14 +73,12 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
           backgroundColor: themeBasedInputBackgroundColor, // Remove background color to make it blank/transparent
           borderWidth: 0, // Remove border to make it clean
         },
+        style, // Apply custom container styles if passed
       ]}
     >
-      <IconComponent
-        name={iconName}
-        size={iconSize}
-        color={themeBasedIconColor}
-        style={{ marginRight: normalizeHeight(8) }}
-      />
+      {/* Dynamically render the Icon using IconLib */}
+      {renderIcon(iconName, iconSize, themeBasedIconColor)}
+
       <TextInput
         style={[
           commonStyle.input,

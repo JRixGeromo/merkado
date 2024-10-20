@@ -14,7 +14,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { commonStyles } from '../../../styles/commonStyles';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import IconLib from '../../../components/IconLib'; // Import IconLib here
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigationTypes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -125,7 +125,7 @@ const LoginScreen = () => {
 
           <TextInputWithIcon
             placeholder={t('email')}
-            iconName="mail"
+            iconName="Email" // Use IconLib
             value={email}
             onChangeText={setEmail}
             style={{ height: 45 }}
@@ -133,7 +133,7 @@ const LoginScreen = () => {
 
           <TextInputWithIcon
             placeholder={t('password')}
-            iconName="lock-closed"
+            iconName="Locked" // Use IconLib
             secureTextEntry
             value={password}
             onChangeText={setPassword}
@@ -172,12 +172,7 @@ const LoginScreen = () => {
               style={[commonStyle.socialButton, commonStyle.googleButton]}
               onPress={() => console.log('Google Login Pressed')}
             >
-              <Icon
-                name="google"
-                size={20}
-                color={selectedTheme.textLight}
-                style={{ marginRight: 10 }}
-              />
+              <IconLib.Google size={20} color={selectedTheme.textLight} style={{ marginRight: 10 }} />
               <Text style={commonStyle.socialButtonText}>{t('google')}</Text>
             </TouchableOpacity>
 
@@ -185,12 +180,7 @@ const LoginScreen = () => {
               style={[commonStyle.socialButton, commonStyle.facebookButton]}
               onPress={() => console.log('Facebook Login Pressed')}
             >
-              <Icon
-                name="facebook"
-                size={20}
-                color={selectedTheme.textLight}
-                style={{ marginRight: 10 }}
-              />
+              <IconLib.Fb size={20} color={selectedTheme.textLight} style={{ marginRight: 10 }} />
               <Text style={commonStyle.socialButtonText}>{t('facebook')}</Text>
             </TouchableOpacity>
           </View>

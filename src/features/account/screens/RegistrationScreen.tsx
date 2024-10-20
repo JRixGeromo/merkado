@@ -119,14 +119,14 @@ const RegistrationScreen = () => {
           />
           <TextInputWithIcon
             placeholder={t('firstName')}
-            iconName="person"
+            iconName="Person"
             value={firstName}
             onChangeText={setFirstName}
             style={{ height: 45 }}
           />
           <TextInputWithIcon
             placeholder={t('lastName')}
-            iconName="person"
+            iconName="Person"
             value={lastName}
             onChangeText={setLastName}
             style={{ height: 45 }}
@@ -155,14 +155,14 @@ const RegistrationScreen = () => {
 
           <TextInputWithIcon
             placeholder={t('email')}
-            iconName="mail"
+            iconName="Email"
             value={email}
             onChangeText={setEmail}
             style={{ height: 45 }}
           />
           <TextInputWithIcon
             placeholder={t('password')}
-            iconName="lock-closed"
+            iconName="Locked"
             secureTextEntry
             value={password}
             onChangeText={setPassword}
@@ -170,7 +170,7 @@ const RegistrationScreen = () => {
           />
           <TextInputWithIcon
             placeholder={t('confirmPassword')}
-            iconName="lock-closed"
+            iconName="Locked"
             secureTextEntry
             value={confirmPassword}
             onChangeText={setConfirmPassword}
