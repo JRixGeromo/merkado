@@ -17,7 +17,7 @@ import ContentCard from '../../../components/ContentCard';
 import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
 import { theme as appTheme } from '../../../styles/theme';
-import Icon from 'react-native-vector-icons/Ionicons'; // Icon library for likes and ratings
+import IconLib from '../../../components/IconLib'; // Import IconLib
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
@@ -178,7 +178,6 @@ const DashboardScreen = () => {
   );
 
   // Render store item for FlatList
-  // Render store item for FlatList
   const renderStoreItem: ListRenderItem<Store> = ({ item }) => (
     <ContentCard
       type="store"
@@ -192,16 +191,17 @@ const DashboardScreen = () => {
       isLiked={likedStores[item.id]}
       onFullScreenPress={() =>
         navigation.navigate('DetailsScreen', { item, type: 'store' })
-      } // Corrected navigation
+      }
       onLikePress={() => toggleStoreLike(item.id)}
       buttonActions={[
         {
-          iconName: 'chatbubble-outline',
+          iconName: 'Chat_O',
           onPress: () => console.log('Chat Pressed'),
           buttonStyle: commonStyle.chatButton,
         },
         {
-          iconName: 'person-add-outline',
+          //iconName: 'person_add-outline',
+          iconName: 'PersonAdd_O',
           onPress: () => console.log('Follow Pressed'),
           buttonStyle: commonStyle.followButton,
         },
@@ -222,16 +222,16 @@ const DashboardScreen = () => {
       isLiked={likedProducts[item.id]}
       onFullScreenPress={() =>
         navigation.navigate('DetailsScreen', { item, type: 'product' })
-      } // Corrected navigation
+      }
       onLikePress={() => toggleProductLike(item.id)}
       buttonActions={[
         {
-          iconName: 'chatbubble-outline',
+          iconName: 'Chat_O',
           onPress: () => console.log('Chat Pressed'),
           buttonStyle: commonStyle.chatButton,
         },
         {
-          iconName: 'cart-outline',
+          iconName: 'Cart_O',
           onPress: () => console.log('Cart Pressed'),
           buttonStyle: commonStyle.cartButton,
         },
@@ -251,11 +251,8 @@ const DashboardScreen = () => {
             style={commonStyle.headerIcon}
             onPress={toggleModal}
           >
-            <Icon
-              name="menu"
-              size={24}
-              color={selectedTheme.iconColorPrimary}
-            />
+            {/* Use IconLib for menu icon */}
+            <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
           <TextInput
             style={commonStyle.searchInput}

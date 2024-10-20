@@ -70,7 +70,6 @@ export interface ThemeType {
 }
 
 const lightTheme: ThemeType = {
-
   textPrimary: '#4CAF50',
   textSecondary: '#000000',
   textPlaceHolderInfo: '#9caea9',

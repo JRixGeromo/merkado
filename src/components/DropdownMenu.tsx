@@ -7,7 +7,7 @@ import {
   Modal,
   ScrollView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import IconLib from '../components/IconLib'; // Import the new IconLib
 import { commonStyles } from '../styles/commonStyles';
 import { useAppSelector } from '../hooks/reduxHooks';
 
@@ -26,132 +26,130 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const menuItems = [
     {
       label: 'Account Setting',
-      icon: 'cog-outline',
+      icon: 'Cog_O', // Use the predefined key for Cog icon in IconLib
       action: 'AccountScreen' as keyof RootStackParamList,
     },
     {
       label: 'Product Categories',
-      icon: 'list-outline',
+      icon: 'List_O', // Use the predefined key for List icon in IconLib
       action: 'ProductCategoriesScreen' as keyof RootStackParamList,
     },
     {
-      label: 'MyProducts',
-      icon: 'cube-outline',
+      label: 'My Products',
+      icon: 'Products_O', // Use the predefined key for Products icon in IconLib
       action: 'MyProductsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Favorites',
-      icon: 'heart-outline',
+      icon: 'Heart_O', // Use the predefined key for Heart icon in IconLib
       action: 'FavoritesScreen' as keyof RootStackParamList,
     },
     {
       label: 'Live Shows',
-      icon: 'videocam-outline',
+      icon: 'Video_O', // Use the predefined key for Video icon in IconLib
       action: 'LiveShowsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Offline Shows',
-      icon: 'calendar-outline',
+      icon: 'Calendar_O', // Use the predefined key for Calendar icon in IconLib
       action: 'OfflineShowsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Marketing Campaigns',
-      icon: 'megaphone-outline',
+      icon: 'Megaphone_O', // Use the predefined key for Megaphone icon in IconLib
       action: 'MarketingCampaignsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Manage Vendors',
-      icon: 'storefront-outline',
+      icon: 'Marketplace_O', // Use the predefined key for Marketplace icon in IconLib
       action: 'ManageVendorsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Wishes',
-      icon: 'heart-outline',
+      icon: 'Heart_O', // Use the predefined key for Heart icon in IconLib
       action: 'WishesScreen' as keyof RootStackParamList,
-    }, // Corrected to 'WishesScreen'
+    },
     {
       label: 'Ratings & Reviews',
-      icon: 'star-outline',
+      icon: 'Star_O', // Use the predefined key for Star icon in IconLib
       action: 'RatingsReviewsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Reactions',
-      icon: 'thumbs-up-outline',
+      icon: 'ThumbsUp_O', // Use the predefined key for ThumbsUp icon in IconLib
       action: 'ReactionsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Followers',
-      icon: 'people-outline',
+      icon: 'People_O', // Use the predefined key for People icon in IconLib
       action: 'FollowersScreen' as keyof RootStackParamList,
     },
     {
       label: 'Social Accounts',
-      icon: 'logo-facebook',
+      icon: 'FBLogo_O', // Use the predefined key for Facebook Logo icon in IconLib
       action: 'SocialAccountsScreen' as keyof RootStackParamList,
     },
     {
       label: 'Help Center',
-      icon: 'help-circle-outline',
+      icon: 'Help_O', // Use the predefined key for Help icon in IconLib
       action: 'HelpCenterScreen' as keyof RootStackParamList,
     },
     {
       label: 'Logout',
-      icon: 'log-out-outline',
+      icon: 'Logout_O', // Use the predefined key for Logout icon in IconLib
       action: 'LogoutScreen' as keyof RootStackParamList,
     },
   ];
+ // Function to render the icons dynamically
+ const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
+  const IconComponent = IconLib[iconName]; // Access the icon component dynamically
+  return <IconComponent size={size} color={color} />;
+};
 
-  return (
-    <>
-      <TouchableOpacity onPress={() => setMenuVisible(true)}>
-        <Icon
-          name="ellipsis-vertical"
-          size={24}
-          color={commonStyle.iconColor.color}
-        />
-      </TouchableOpacity>
+return (
+  <>
+    <TouchableOpacity onPress={() => setMenuVisible(true)}>
+      {renderIcon('DotsMenu', 24, commonStyle.iconColor.color)}
+    </TouchableOpacity>
 
-      <Modal
-        visible={menuVisible}
-        animationType="fade"
-        transparent={true}
-        onRequestClose={() => setMenuVisible(false)}
-      >
-        <TouchableWithoutFeedback onPress={() => setMenuVisible(false)}>
-          <View style={commonStyle.overlay}>
-            <View
-              style={[
-                commonStyle.dropdownMenu,
-                { maxHeight: 400, position: 'absolute', right: 10, top: 50 },
-              ]}
-            >
-              <ScrollView>
-                {menuItems.map((item, index) => (
-                  <TouchableOpacity
-                    key={index}
-                    style={commonStyle.dropdownItem}
-                    onPress={() => {
-                      setMenuVisible(false);
-                      if (item.action) {
-                        navigation.navigate(item.action); // Correct typing for action navigation
-                      }
-                    }}
-                  >
-                    <Icon
-                      name={item.icon}
-                      size={20}
-                      color={commonStyle.iconColor.color}
-                    />
-                    <Text style={commonStyle.dropdownText}>{item.label}</Text>
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            </View>
+    <Modal
+      visible={menuVisible}
+      animationType="fade"
+      transparent={true}
+      onRequestClose={() => setMenuVisible(false)}
+    >
+      <TouchableWithoutFeedback onPress={() => setMenuVisible(false)}>
+        <View style={commonStyle.overlay}>
+          <View
+            style={[
+              commonStyle.dropdownMenu,
+              { maxHeight: 400, position: 'absolute', right: 10, top: 50 },
+            ]}
+          >
+            <ScrollView>
+              {menuItems.map((item, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={commonStyle.dropdownItem}
+                  onPress={() => {
+                    setMenuVisible(false);
+                    if (item.action) {
+                      navigation.navigate(item.action); // Correct typing for action navigation
+                    }
+                  }}
+                >
+                  {/* Use renderIcon to dynamically load the icon */}
+                  {renderIcon(item.icon, 20, commonStyle.iconColor.color)}
+                  <Text style={commonStyle.dropdownText}>{item.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
           </View>
-        </TouchableWithoutFeedback>
-      </Modal>
-    </>
-  );
+        </View>
+      </TouchableWithoutFeedback>
+    </Modal>
+  </>
+);
 };
 
 export default DropdownMenu;

@@ -21,15 +21,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
-    
     rightAlignedItem: {
       alignItems: 'flex-end',
     },
 
     rightAlignedItems: {
       flexDirection: 'row',
-      justifyContent: 'flex-end',  // Use for row-based right alignment
-      alignItems: 'center',        // Use to center items vertically
+      justifyContent: 'flex-end', // Use for row-based right alignment
+      alignItems: 'center', // Use to center items vertically
     },
 
     leftAlignedItems: {
@@ -87,7 +86,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       zIndex: 1, // Ensures it appears on top of the image
       alignItems: 'center',
     },
-    
+
     reactionBarSection: {
       paddingHorizontal: 16,
       alignItems: 'center',
@@ -122,7 +121,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       position: 'relative', // Necessary for positioning thumbs-up icon
       paddingRight: 40, // Create space for the thumbs-up icon
     },
-    
+
     commentTextWrapper: {
       lineHeight: 18,
     },
@@ -132,12 +131,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Vertically align items
       marginTop: 5, // Add margin to space it from the comment
     },
-  
+
     replyContainer: {
       marginLeft: 20,
       marginTop: 5,
       paddingLeft: 10,
-    
     },
     replyInputWrapper: {
       marginLeft: 20,
@@ -146,7 +144,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
     commentFormContainer: {
       backgroundColor: '#333',
-      marginBottom: 10, 
+      marginBottom: 10,
       padding: 12,
     },
 
@@ -169,12 +167,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: 10,
       borderRadius: 20,
     },
-      
+
     thumbsUpButton: {
       paddingHorizontal: 10,
     },
     ////
-
 
     font8: {
       fontSize: normalizeFontSize(8),
@@ -214,7 +211,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     //////////
     //////////
     //////////
-
 
     fullContainer: {
       flex: 1,
@@ -641,7 +637,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: '30%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',
     },
-
 
     contentImage: {
       width: '100%',

@@ -15,7 +15,7 @@ import { commonStyles } from '../../../styles/commonStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import MarketplaceModal from '../components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
-import Icon from 'react-native-vector-icons/Ionicons'; // Import icons for ratings and likes
+import IconLib from '../../../components/IconLib'; // Use IconLib here
 import { useTranslation } from 'react-i18next'; // Import translation hook
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
@@ -234,12 +234,12 @@ const MarketplaceScreen = () => {
       onLikePress={() => toggleProductLike(item.id)}
       buttonActions={[
         {
-          iconName: 'chatbubble-outline',
+          iconName: 'Chat_O', // Update to use IconLib name
           onPress: () => console.log('Chat Pressed'),
           buttonStyle: commonStyle.chatButton,
         },
         {
-          iconName: 'cart-outline',
+          iconName: 'Cart_O', // Update to use IconLib name
           onPress: () => console.log('Cart Pressed'),
           buttonStyle: commonStyle.cartButton,
         },
@@ -256,11 +256,7 @@ const MarketplaceScreen = () => {
             style={commonStyle.headerIcon}
             onPress={toggleModal}
           >
-            <Icon
-              name="menu"
-              size={24}
-              color={selectedTheme.iconColorPrimary}
-            />
+            <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
           <TextInput
             style={commonStyle.searchInput}

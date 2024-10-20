@@ -18,8 +18,8 @@ import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import AccountScreen from './src/features/account/screens/AccountScreen';
-import Icon from 'react-native-vector-icons/Ionicons';
 import DropdownMenu from './src/components/DropdownMenu';
+import IconLib from './src/components/IconLib'; // Import IconLib
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles';
 import { theme } from './src/styles/theme'; // Import the theme object
@@ -50,21 +50,20 @@ const App = () => {
     <Tab.Navigator
       screenOptions={({ route, navigation }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
+          // Use IconLib instead of direct Icon component
           if (route.name === 'Dashboard') {
-            iconName = focused ? 'home' : 'home-outline';
+            return focused ? <IconLib.Dashboard {...{ size, color }} /> : <IconLib.Dashboard_O {...{ size, color }} />;
           } else if (route.name === 'Marketplace') {
-            iconName = focused ? 'storefront' : 'storefront-outline';
+            return focused ? <IconLib.Marketplace {...{ size, color }} /> : <IconLib.Marketplace_O {...{ size, color }} />;
           } else if (route.name === 'MyProducts') {
-            iconName = focused ? 'cube' : 'cube-outline';
+            return focused ? <IconLib.Products {...{ size, color }} /> : <IconLib.Products_O {...{ size, color }} />;
           } else if (route.name === 'Chat') {
-            iconName = focused ? 'chatbubble' : 'chatbubble-outline';
+            return focused ? <IconLib.Chat {...{ size, color }} /> : <IconLib.Chat_O {...{ size, color }} />;
           } else if (route.name === 'Transactions') {
-            iconName = focused ? 'receipt' : 'receipt-outline';
+            return focused ? <IconLib.Transactions {...{ size, color }} /> : <IconLib.Transactions_O {...{ size, color }} />;
           }
 
-          return <Icon name={iconName as string} size={size} color={color} />;
+          return null;
         },
         tabBarActiveTintColor: selectedTheme.iconColorPrimary,
         tabBarInactiveTintColor: selectedTheme.iconColorPrimary,
@@ -85,8 +84,7 @@ const App = () => {
             : route.name,
         headerRight: () => (
           <View style={commonStyle.headerRightContainer}>
-            <Icon
-              name="cart-outline"
+            <IconLib.Cart_O
               size={25}
               color={selectedTheme.iconColorSecondary}
               onPress={() => navigation.navigate('CartScreen')}

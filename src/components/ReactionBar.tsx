@@ -11,15 +11,20 @@ interface ReactionBarProps {
   onReactionPress: (reaction: Reaction) => void; // Pass full reaction object
 }
 
-const ReactionBar: React.FC<ReactionBarProps> = ({ reactions, onReactionPress }) => {
+const ReactionBar: React.FC<ReactionBarProps> = ({
+  reactions,
+  onReactionPress,
+}) => {
   return (
     <ScrollView horizontal={true} contentContainerStyle={styles.reactionBar}>
-      {reactions.map((reaction) => (
+      {reactions.map(reaction => (
         <TouchableOpacity
           key={reaction.label}
           onPress={() => onReactionPress(reaction)} // Pass the full reaction object
         >
-          <Text style={{ fontSize: 32, marginHorizontal: 5 }}>{reaction.emoji}</Text>
+          <Text style={{ fontSize: 32, marginHorizontal: 5 }}>
+            {reaction.emoji}
+          </Text>
         </TouchableOpacity>
       ))}
     </ScrollView>

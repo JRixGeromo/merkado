@@ -57,7 +57,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       width: '100%',
       flexDirection: 'column',
     },
-    
+
     /* Column layout variants */
     columns: {
       flexDirection: 'row',
@@ -77,7 +77,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     cols_5: {
       width: '20%',
     },
-    
+
     ////
     cols_25: {
       width: '25%',
@@ -94,28 +94,28 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
     ////
     cols_70: {
-        width: '70%',
-      },
-      cols_30: {
-        width: '30%',
-      },
+      width: '70%',
+    },
+    cols_30: {
+      width: '30%',
+    },
     ////
 
     dividerWrapper: {
-      width: '100%',           // Full width for the wrapper
-      paddingVertical: 10,     // Apply padding above and below
+      width: '100%', // Full width for the wrapper
+      paddingVertical: 10, // Apply padding above and below
     },
     divider: {
-      width: '100%',           // Full width for the divider
-      borderBottomWidth: 0.5,    // Specify the width of the bottom border
-      borderColor: selectedTheme.lineBorderColor,    // Color of the divider
+      width: '100%', // Full width for the divider
+      borderBottomWidth: 0.5, // Specify the width of the bottom border
+      borderColor: selectedTheme.lineBorderColor, // Color of the divider
     },
 
     ////
 
     spacer: {
       height: 10, // Default height spacer (for vertical gaps)
-      width: 10,  // Default width spacer (for horizontal gaps)
+      width: 10, // Default width spacer (for horizontal gaps)
     },
     // Variants of spacers for different sizes
     spacerSmall: {
@@ -138,13 +138,13 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
 
     // Vertical spacer for vertical gaps between rows
     verticalSpacer: {
-      marginVertical: 4 ,
+      marginVertical: 4,
     },
 
     // Full-width horizontal spacer, useful between rows or sections
     fullWidthSpacer: {
       width: '100%',
-      height: 10,  // Adjust the height for the gap
+      height: 10, // Adjust the height for the gap
     },
 
     /* Optional shared styles for padding, margin, borderRadius */

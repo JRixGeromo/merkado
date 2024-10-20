@@ -8,7 +8,6 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import ReactionBar from '../../../components/ReactionBar';
@@ -19,6 +18,7 @@ import { layoutStyles } from '../../../styles/layoutStyles';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
 import relativeTime from 'dayjs/plugin/relativeTime';
+import IconLib from '../../../components/IconLib'; // Import your Icon Library
 
 dayjs.extend(relativeTime);
 
@@ -31,22 +31,27 @@ const DetailsScreen: React.FC = () => {
   const route = useRoute<DetailsScreenRouteProp>();
   const { item, type } = route.params;
 
-  const themeType = useAppSelector((state) => state.theme.theme);
+  const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
-  
+
   const { t } = useTranslation();
 
   const [showReactions, setShowReactions] = useState(false); // Post reactions
-  const [showCommentReactions, setShowCommentReactions] = useState<{ [key: number]: boolean }>({});
-  const [selectedCommentReactions, setSelectedCommentReactions] = useState<{ [key: number]: { label: string, emoji: string } }>({});
-  const [selectedPostReaction, setSelectedPostReaction] = useState<string | null>(null); // Track post reaction
+  const [showCommentReactions, setShowCommentReactions] = useState<{
+    [key: number]: boolean;
+  }>({});
+  const [selectedCommentReactions, setSelectedCommentReactions] = useState<{
+    [key: number]: { label: string; emoji: string };
+  }>({});
+  const [selectedPostReaction, setSelectedPostReaction] = useState<
+    string | null
+  >(null); // Track post reaction
 
   const [replyingTo, setReplyingTo] = useState<number | null>(null); // State to track the comment being replied to
   const [replies, setReplies] = useState<{ [key: number]: string[] }>({}); // Stores replies per comment
-
 
   const handleSendComment = (comment: string) => {
     console.log('Sent comment:', comment);
@@ -58,31 +63,35 @@ const DetailsScreen: React.FC = () => {
     // Handle adding reaction logic here
   };
 
-  const handleReactionPress = (reaction: { label: string, emoji: string }) => {
+  const handleReactionPress = (reaction: { label: string; emoji: string }) => {
     setSelectedPostReaction(reaction.emoji); // Use emoji where needed
     setShowReactions(false); // Hide reaction bar
   };
 
   const toggleCommentReactions = (commentId: number) => {
-    setShowCommentReactions((prev) => ({
+    setShowCommentReactions(prev => ({
       ...prev,
       [commentId]: !prev[commentId],
     })); // Toggle reaction bar for the specific comment
   };
 
-  const handleCommentReactionPress = (commentId: number, reaction: { label: string, emoji: string }) => {
+  const handleCommentReactionPress = (
+    commentId: number,
+    reaction: { label: string; emoji: string },
+  ) => {
     setSelectedCommentReactions(prev => ({
       ...prev,
-      [commentId]: reaction // Store both label and emoji
+      [commentId]: reaction, // Store both label and emoji
     }));
     setShowCommentReactions(prev => ({ ...prev, [commentId]: false })); // Hide reaction bar
   };
 
   // Toggle reply input form visibility
   const handleReplyToggle = (commentId: number) => {
-    setReplyingTo((prevReplyingTo) => (prevReplyingTo === commentId ? null : commentId));
+    setReplyingTo(prevReplyingTo =>
+      prevReplyingTo === commentId ? null : commentId,
+    );
   };
-
 
   const reactions = [
     { emoji: '❤️', label: 'LOVE' },
@@ -100,37 +109,42 @@ const DetailsScreen: React.FC = () => {
     { emoji: '🍭', label: 'TOO_SWEET' },
   ];
 
-
-
   const handleReplySend = (commentId: number, reply: string) => {
-    setReplies((prevReplies) => ({
+    setReplies(prevReplies => ({
       ...prevReplies,
       [commentId]: [...(prevReplies[commentId] || []), reply],
     }));
     setReplyingTo(null); // Hide reply input after sending the reply
   };
 
-
   return (
-    <View style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>    
+    <View
+      style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}
+    >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
           <View style={commonStyle.saleBanner}>
-            <Text style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}>ON SALE! 50% off</Text>
+            <Text
+              style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}
+            >
+              ON SALE! 50% off
+            </Text>
           </View>
         )}
 
         {/* Product/Vendor Image */}
         <View style={commonStyle.bannerImageWrapper}>
-          <Image source={{ uri: item.imageUrl }} style={commonStyle.bannerContentImage} />
+          <Image
+            source={{ uri: item.imageUrl }}
+            style={commonStyle.bannerContentImage}
+          />
         </View>
-        
+
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {selectedPostReaction && (
-              <View style={[commonStyle.selectedReactionWrapper, { marginTop: -12}]}>
+              <View style={[commonStyle.selectedReactionWrapper, { marginTop: -12 }]}>
                 <Text style={commonStyle.selectedReactionText}>
                   {selectedPostReaction}
                 </Text>
@@ -138,69 +152,89 @@ const DetailsScreen: React.FC = () => {
             )}
           </View>
           <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItem, commonStyle.rPadding]}>
-            
-            <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
+            <Text
+              style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
+            >
               46 {t('comments')}
             </Text>
-          
           </View>
         </View>
 
         <View style={layoutStyle.dividerWrapper}>
           <View style={layoutStyle.divider} />
         </View>
-        
+
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
-            <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
+            <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>
+              {item.name}
+            </Text>
           </View>
-          <View style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding]}>
-            <Icon name="star" size={20} color="gold" />
-            <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
+          <View
+            style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding]}
+          >
+            <IconLib.Star size={20} color="gold" />
+            <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
+              {item.rating}
+            </Text>
+          </View>
         </View>
-        </View> 
-        
+
         <View style={layoutStyle.verticalSpacer} />
-        
+
         <View style={[layoutStyle.column, commonStyle.lPadding]}>
-            {type === 'store' && item.location && (
-              <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
-                {item.location}
-              </Text>
-            )}
-            {type === 'product' && item.description && (
-              <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
-                {item.description}
-              </Text>
-            )}
-        </View>  
-        
+          {type === 'store' && item.location && (
+            <Text
+              style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
+            >
+              {item.location}
+            </Text>
+          )}
+          {type === 'product' && item.description && (
+            <Text
+              style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
+            >
+              {item.description}
+            </Text>
+          )}
+        </View>
+
         <View style={layoutStyle.verticalSpacer} />
-        
+
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {type === 'product' ? (
               <Text>
-                <Text style={[commonStyle.font14, { color: selectedTheme.textLight }]}>₱{item.price} </Text>
-                <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>{" "}{item.distance}</Text>
+                <Text
+                  style={[commonStyle.font14, { color: selectedTheme.textLight }]}
+                >
+                  ₱{item.price}{' '}
+                </Text>
+                <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
+                  {item.distance}
+                </Text>
               </Text>
             ) : (
-              <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>{item.distance}</Text>
+              <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>
+                {item.distance}
+              </Text>
             )}
           </View>
 
-          <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItems, {flexDirection: "row"}]}>
-              <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPadding2}/>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={commonStyle.rPadding2} />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Icon name="arrow-redo-outline" size={24} color={selectedTheme.iconColorSmileys} style={commonStyle.rPadding} />
-              </TouchableOpacity>
+          <View
+            style={[layoutStyle.cols_2, commonStyle.rightAlignedItems, { flexDirection: 'row' }]}
+          >
+            <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
+              <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPadding2} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <IconLib.Chat_O size={24} color={selectedTheme.iconColorPrimary} style={commonStyle.rPadding2} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <IconLib.Share_O size={24} color={selectedTheme.iconColorSmileys} style={commonStyle.rPadding} />
+            </TouchableOpacity>
           </View>
-        </View>  
+        </View>
 
         <View style={layoutStyle.verticalSpacer} />
 
@@ -216,34 +250,56 @@ const DetailsScreen: React.FC = () => {
 
         {/* Comment Section */}
         <View style={commonStyle.commentSection}>
-          <CommentInput onSend={handleSendComment} onAddReaction={handleAddReaction} reactions={reactions} placeholder={"Write a comment..."}/>
+          <CommentInput
+            onSend={handleSendComment}
+            onAddReaction={handleAddReaction}
+            reactions={reactions}
+            placeholder={'Write a comment...'}
+          />
         </View>
 
         {/* Existing Comments */}
         <View style={commonStyle.commentsList}>
           {[
-            { id: 1, text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! ', user: 'User1', time: new Date() },
+            {
+              id: 1,
+              text: 'Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! Nice post! ',
+              user: 'User1',
+              time: new Date(),
+            },
             { id: 2, text: 'Love this!', user: 'User2', time: new Date() },
             { id: 3, text: 'Love this!', user: 'User3', time: new Date() },
             { id: 4, text: 'Love this!', user: 'User4', time: new Date() },
             { id: 5, text: 'Love this!', user: 'User5', time: new Date() },
             { id: 6, text: 'Love this!', user: 'User6', time: new Date() },
             { id: 7, text: 'Love this!', user: 'User7', time: new Date() },
-          ].map((comment) => (
-            <View key={comment.id} style={[commonStyle.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
-              <View style={[commonStyle.rPadding, { flexDirection: "row", alignItems: 'center'  }]}>
+          ].map(comment => (
+            <View
+              key={comment.id}
+              style={[
+                commonStyle.commentContainer,
+                { backgroundColor: selectedTheme.commentBackgroundColor },
+              ]}
+            >
+              <View
+                style={[commonStyle.rPadding, { flexDirection: 'row', alignItems: 'center' }]}
+              >
                 <Image
-                  source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }} // Use user's image URL
+                  source={{ uri: 'https://randomuser.me/api/portraits/men/1.jpg' }} // Use user's image URL
                   style={commonStyle.userImage}
                 />
                 {/* Display the user's name beside the image */}
-                <Text style={[commonStyle.font12, { color: selectedTheme.textDark, marginLeft: 5 }]}>
+                <Text
+                  style={[commonStyle.font12, { color: selectedTheme.textDark, marginLeft: 5 }]}
+                >
                   {comment.user}
                 </Text>
-              </View>    
+              </View>
               <View style={commonStyle.commentWrapper}>
                 {/* Comment Text */}
-                <Text style={[commonStyle.commentTextWrapper, commonStyle.font12, { color: selectedTheme.textSecondary }]}>
+                <Text
+                  style={[commonStyle.commentTextWrapper, commonStyle.font12, { color: selectedTheme.textSecondary }]}
+                >
                   {comment.text}
                 </Text>
 
@@ -264,9 +320,10 @@ const DetailsScreen: React.FC = () => {
                   <Text style={[commonStyle.font12, commonStyle.lPadding, { color: selectedTheme.textGray }]}>
                     |
                   </Text>
-                  <TouchableOpacity onPress={() => toggleCommentReactions(comment.id)} style={commonStyle.lPadding}>
-                    {/* <Icon name="thumbs-up-outline" size={18} color={selectedTheme.iconColorGray} /> */}
-                    
+                  <TouchableOpacity
+                    onPress={() => toggleCommentReactions(comment.id)}
+                    style={commonStyle.lPadding}
+                  >
                     <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                       Like
                     </Text>
@@ -274,13 +331,14 @@ const DetailsScreen: React.FC = () => {
                 </View>
               </View>
 
-
               {/* Comment Reaction Bar */}
               {showCommentReactions[comment.id] && (
                 <View style={commonStyle.reactionBarSection}>
-                 <ReactionBar
+                  <ReactionBar
                     reactions={reactions}
-                    onReactionPress={(reaction) => handleCommentReactionPress(comment.id, reaction)} // Passing the full reaction object
+                    onReactionPress={reaction =>
+                      handleCommentReactionPress(comment.id, reaction)
+                    } // Passing the full reaction object
                   />
                 </View>
               )}
@@ -291,32 +349,35 @@ const DetailsScreen: React.FC = () => {
                 <View key={index} style={[commonStyle.replyContainer]}>
                   <View style={layoutStyle.verticalSpacer} />
                   <Image
-                    source={{ uri: "https://randomuser.me/api/portraits/women/1.jpg" }} // Use user's image URL
+                    source={{ uri: 'https://randomuser.me/api/portraits/women/1.jpg' }} // Use user's image URL
                     style={commonStyle.userImage}
                   />
-                  <Text style={{color: selectedTheme.textSecondary, marginTop: 5 }}>{reply}</Text>
+                  <Text style={{ color: selectedTheme.textSecondary, marginTop: 5 }}>
+                    {reply}
+                  </Text>
                   <Text style={[commonStyle.font12, { color: selectedTheme.textGray, marginTop: 3 }]}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
                 </View>
               ))}
 
-
               {/* Show the reply input field if replying to this comment */}
               {replyingTo === comment.id && (
                 <View style={commonStyle.replyInputWrapper}>
                   <CommentInput
-                    onSend={(reply) => handleReplySend(comment.id, reply)}
+                    onSend={reply => handleReplySend(comment.id, reply)}
                     onAddReaction={handleAddReaction}
                     reactions={reactions}
-                    placeholder={"Write your reply..."}
+                    placeholder={'Write your reply...'}
                   />
                 </View>
               )}
 
               {/* Reply Button */}
               <TouchableOpacity onPress={() => handleReplyToggle(comment.id)}>
-                <Text style={{ color: selectedTheme.textGray, marginTop: 5 }}>Reply</Text>
+                <Text style={{ color: selectedTheme.textGray, marginTop: 5 }}>
+                  Reply
+                </Text>
               </TouchableOpacity>
               {/* End: Reply codes */}
             </View>
@@ -328,4 +389,3 @@ const DetailsScreen: React.FC = () => {
 };
 
 export default DetailsScreen;
-

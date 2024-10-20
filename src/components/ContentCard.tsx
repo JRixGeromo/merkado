@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { commonStyles } from '../styles/commonStyles'; // Import your style
 import { theme as appTheme } from '../styles/theme';
+import IconLib from './IconLib'; // Import IconLib for icons
 
 interface ContentCardProps {
   type: 'store' | 'product' | 'featured' | 'onSale'; // Define types of items
@@ -44,6 +44,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
   const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
 
+  const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
+    const IconComponent = IconLib[iconName]; // Access the icon component dynamically
+    return <IconComponent size={size} color={color} />;
+  };
+
   return (
     <View style={commonStyle.productBox}>
       <View style={commonStyle.productImageWrapper}>
@@ -52,7 +57,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
           style={commonStyle.magnifyingGlassButton}
           onPress={onFullScreenPress}
         >
-          <Icon name="expand-outline" size={18} color="white" />
+          {/* Replace with IconLib for the expand icon */}
+          <IconLib.DotsMenu size={18} color="white" />
         </TouchableOpacity>
       </View>
 
@@ -69,12 +75,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
         )}
 
         <View style={commonStyle.infoRow}>
-          <Icon
-            name="star"
-            size={16}
-            color="gold"
-            style={commonStyle.iconContainer}
-          />
+          {/* Replace with IconLib for the star icon */}
+          <IconLib.Star size={16} color="gold" style={commonStyle.iconContainer} />
           <Text style={commonStyle.infoText}>{rating}</Text>
         </View>
 
@@ -83,11 +85,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
             onPress={onLikePress}
             style={commonStyle.iconContainer}
           >
-            <Icon
-              name={isLiked ? 'heart' : 'heart-outline'}
-              size={18}
-              color={isLiked ? 'red' : selectedTheme.iconColorPrimary}
-            />
+            {/* Replace with IconLib for the heart icon */}
+            {isLiked ? (
+              <IconLib.Heart size={18} color="red" />
+            ) : (
+              <IconLib.Heart_O size={18} color={selectedTheme.iconColorPrimary} />
+            )}
           </TouchableOpacity>
           <Text style={commonStyle.infoText}>
             {likes + (isLiked ? 1 : 0)} Reactions
@@ -102,11 +105,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
             style={[commonStyle.fullWidthButton, action.buttonStyle]}
             onPress={action.onPress}
           >
-            <Icon
-              name={action.iconName}
-              size={20}
-              color={selectedTheme.textLight}
-            />
+            {/* Use the renderIcon function to dynamically render icons */}
+            {renderIcon(action.iconName as keyof typeof IconLib, 20, selectedTheme.textLight)}
           </TouchableOpacity>
         ))}
       </View>

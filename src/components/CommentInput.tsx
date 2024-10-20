@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import ReactionBar from './ReactionBar'; // Import the reusable ReactionBar component
 import { commonStyles } from '../styles/commonStyles';
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
+import IconLib from './IconLib'; // Import IconLib for icons
 
 interface Reaction {
   emoji: string;
@@ -19,11 +25,16 @@ interface CommentInputProps {
   placeholder?: string;
 }
 
-const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reactions, placeholder = 'Write a comment...' }) => {
+const CommentInput: React.FC<CommentInputProps> = ({
+  onSend,
+  onAddReaction,
+  reactions,
+  placeholder = 'Write a comment...',
+}) => {
   const [comment, setComment] = useState('');
   const [showReactionBar, setShowReactionBar] = useState(false);
 
-  const themeType = useAppSelector((state) => state.theme.theme);
+  const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
@@ -37,16 +48,30 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
   };
 
   const handleAddReaction = (emoji: string) => {
-    setComment((prevComment) => `${prevComment} ${emoji}`); // Append emoji to the comment
+    setComment(prevComment => `${prevComment} ${emoji}`); // Append emoji to the comment
     onAddReaction(emoji); // Only pass the emoji string here
     setShowReactionBar(false); // Hide the ReactionBar after selecting a reaction
   };
 
   return (
-    <View style={[layoutStyle.column, commonStyle.commentFormContainer, {backgroundColor: selectedTheme.formBackgrounColor }]}>
-      <View style={[commonStyle.inputWrapper, {backgroundColor: selectedTheme.inputBackgroundColor}]}>
+    <View
+      style={[
+        layoutStyle.column,
+        commonStyle.commentFormContainer,
+        { backgroundColor: selectedTheme.formBackgrounColor },
+      ]}
+    >
+      <View
+        style={[
+          commonStyle.inputWrapper,
+          { backgroundColor: selectedTheme.inputBackgroundColor },
+        ]}
+      >
         <TextInput
-          style={[commonStyle.commentInput, {color: selectedTheme.textSecondary}]}
+          style={[
+            commonStyle.commentInput,
+            { color: selectedTheme.textSecondary },
+          ]}
           placeholder={placeholder}
           placeholderTextColor="#999"
           value={comment}
@@ -54,22 +79,36 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSend, onAddReaction, reac
           multiline={true}
         />
 
-        <TouchableOpacity style={commonStyle.sendButton} onPress={handleSendComment}>
-          <Icon name="send-outline" size={24} color={selectedTheme.iconColorPrimary} />
+        <TouchableOpacity
+          style={commonStyle.sendButton}
+          onPress={handleSendComment}
+        >
+          {/* Use IconLib for the send icon */}
+          <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
         </TouchableOpacity>
       </View>
 
-      <View style={[layoutStyle.column, commonStyle.leftAlignedItems, {paddingTop: 10}]}>
+      <View
+        style={[
+          layoutStyle.column,
+          commonStyle.leftAlignedItems,
+          { paddingTop: 10 },
+        ]}
+      >
         {!showReactionBar && (
-          <TouchableOpacity onPress={() => setShowReactionBar(true)} style={commonStyle.thumbsUpButton}>
-            <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} />
+          <TouchableOpacity
+            onPress={() => setShowReactionBar(true)}
+            style={commonStyle.thumbsUpButton}
+          >
+            {/* Use IconLib for the thumbs-up icon */}
+            <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
         )}
 
         {showReactionBar && (
           <ReactionBar
             reactions={reactions}
-            onReactionPress={(reaction) => handleAddReaction(reaction.emoji)} // Extract the emoji here
+            onReactionPress={reaction => handleAddReaction(reaction.emoji)} // Extract the emoji here
           />
         )}
       </View>
