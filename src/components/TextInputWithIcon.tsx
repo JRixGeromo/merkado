@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import { commonStyles } from '../styles/commonStyles';
+import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../styles/layoutStyles';
+import { theme as appTheme } from '../styles/theme';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
 import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selector for theme
 import IconLib from './IconLib'; // Import your custom Icon library
@@ -40,17 +42,20 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   onFocus, // Destructure onFocus
   editable = true, // Set editable as true by default
 }) => {
-  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
-  const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
+  
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
     return {
-      iconColor: iconColor || commonStyle.iconColor.color,
-      textColor: textColor || commonStyle.textColor.color,
-      placeholderColor:
-        placeholderTextColor || commonStyle.placeholderTextColor.color,
-      inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+      iconColor: iconColor || selectedTheme.iconColorPrimary,
+      textColor: textColor || selectedTheme.textSecondary,
+      placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+      inputBackgroundColor:  selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor, commonStyle]);
 

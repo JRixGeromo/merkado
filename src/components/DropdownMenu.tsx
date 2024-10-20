@@ -8,7 +8,9 @@ import {
   ScrollView,
 } from 'react-native';
 import IconLib from '../components/IconLib'; // Import the new IconLib
-import { commonStyles } from '../styles/commonStyles';
+import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../styles/layoutStyles';
+import { theme as appTheme } from '../styles/theme';
 import { useAppSelector } from '../hooks/reduxHooks';
 
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -20,7 +22,10 @@ type DropdownMenuProps = {
 
 const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
   const [menuVisible, setMenuVisible] = useState(false);
 
   const menuItems = [
@@ -109,7 +114,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
 return (
   <>
     <TouchableOpacity onPress={() => setMenuVisible(true)}>
-      {renderIcon('DotsMenu', 24, commonStyle.iconColor.color)}
+      {renderIcon('DotsMenu', 24, selectedTheme.iconColorPrimary)}
     </TouchableOpacity>
 
     <Modal
@@ -139,7 +144,7 @@ return (
                   }}
                 >
                   {/* Use renderIcon to dynamically load the icon */}
-                  {renderIcon(item.icon, 20, commonStyle.iconColor.color)}
+                  {renderIcon(item.icon, 20, selectedTheme.textPrimary)}
                   <Text style={commonStyle.dropdownText}>{item.label}</Text>
                 </TouchableOpacity>
               ))}

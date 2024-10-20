@@ -14,14 +14,16 @@ import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import DateAndTimePicker from '../../../components/DateAndTimePicker';
 import Dropdown from '../../../components/Dropdown';
+
+import { commonStyles } from '../../../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../../../styles/layoutStyles';
+import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 import { gql, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { theme as appTheme } from '../../../styles/theme';
 import { setUser } from '../../../store/slices/authSlice';
 
 const REGISTER_USER = gql`
@@ -64,9 +66,10 @@ const RegistrationScreen = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation();
 
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const selectedTheme = appTheme[themeType];
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
@@ -112,7 +115,7 @@ const RegistrationScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={commonStyle.container}>
+        <View style={layoutStyle.container}>
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}

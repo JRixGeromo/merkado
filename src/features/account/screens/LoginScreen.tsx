@@ -10,10 +10,13 @@ import {
   Image,
   ActivityIndicator,
 } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
+
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
-import { commonStyles } from '../../../styles/commonStyles';
+import { commonStyles } from '../../../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../../../styles/layoutStyles';
+import { theme as appTheme } from '../../../styles/theme';
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import IconLib from '../../../components/IconLib'; // Import IconLib here
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigationTypes';
@@ -21,7 +24,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { gql, useMutation } from '@apollo/client';
 import { setUser } from '../../../store/slices/authSlice'; // Import the setUser action
-import { theme as appTheme } from '../../../styles/theme';
+
 
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -45,10 +48,11 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('password123');
   const [loading, setLoading] = useState(false); // Add loading state
 
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
-
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const selectedTheme = appTheme[themeType];
+  
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
@@ -115,7 +119,7 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={commonStyle.container}>
+        <View style={layoutStyle.container}>
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}
@@ -142,7 +146,11 @@ const LoginScreen = () => {
 
           {/* Loading indicator */}
           {loading ? (
-            <ActivityIndicator size="large" color={selectedTheme.loader} />
+            <ActivityIndicator
+              size="large"
+              color={selectedTheme.textPrimary}
+              style={commonStyle.loader}
+            />
           ) : (
             <CustomButton
               title={t('login')}
