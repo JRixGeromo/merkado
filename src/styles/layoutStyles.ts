@@ -131,7 +131,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
 
     // Vertical spacer for vertical gaps between rows
     verticalSpacer: {
-      marginVertical: 4,
+      marginVertical: 10,
     },
 
     // Full-width horizontal spacer, useful between rows or sections

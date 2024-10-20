@@ -426,17 +426,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     textColor: {
       color: selectedTheme.textSecondary, // Text color for "Or login with"
     },
-    section: {
-      paddingTop: 20,
-      marginBottom: 10,
-      backgroundColor: selectedTheme.fullBackgrounColor,
-    },
     sectionTitle: {
       fontSize: normalizeFontSize(14), // Default size for icons
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.headingFont,
-      //fontWeight: 'bold',
-      marginBottom: 10,
       marginLeft: 5,
     },
     logoutText: {
