@@ -151,7 +151,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
           </View>
           <View style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding, { flexDirection: "row" }]}>
             <Icon name="star" size={20} color="gold" />
-            <Text style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
+            <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
         </View>
         </View> 
         
@@ -176,7 +176,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
           <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {type === 'product' ? (
               <Text>
-                <Text style={[commonStyle.font14, { color: selectedTheme.textHighlight }]}>₱{item.price} </Text>
+                <Text style={[commonStyle.font14, { color: selectedTheme.textLight }]}>₱{item.price} </Text>
                 <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>{" "}{item.distance}</Text>
               </Text>
             ) : (
@@ -278,7 +278,8 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
               {/* Reply codes start */}
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
-                <View key={index} style={commonStyle.replyContainer}>
+                <View key={index} style={[commonStyle.replyContainer]}>
+                  <View style={layoutStyle.verticalSpacer} />
                   <Image
                     source={{ uri: "https://randomuser.me/api/portraits/women/1.jpg" }} // Use user's image URL
                     style={commonStyle.userImage}

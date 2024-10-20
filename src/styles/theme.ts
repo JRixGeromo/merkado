@@ -149,7 +149,7 @@ const darkTheme: ThemeType = {
   textDark: '#e6e6e9',
   textBlack: '#000000',
   textLight: '#ffffff',
-  textHighlight: '#ff3f00',
+  textHighlight: '#f35b04',
   textLink: '#38b000',
   textGray: '#8d99ae',
 
