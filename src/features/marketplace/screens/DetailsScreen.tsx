@@ -118,10 +118,10 @@ const DetailsScreen: React.FC = () => {
   };
 
   return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View
       style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}
     >
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
           <View style={commonStyle.saleBanner}>
@@ -141,8 +141,8 @@ const DetailsScreen: React.FC = () => {
           />
         </View>
 
-        <View style={layoutStyle.columns}>
-          <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
+        <View style={layoutStyle.columnsInside}>
+          <View style={[layoutStyle.cols_2, commonStyle.lPaddingS]}>
             {selectedPostReaction && (
               <View style={[commonStyle.selectedReactionWrapper, { marginTop: -12 }]}>
                 <Text style={commonStyle.selectedReactionText}>
@@ -151,7 +151,7 @@ const DetailsScreen: React.FC = () => {
               </View>
             )}
           </View>
-          <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItem, commonStyle.rPadding]}>
+          <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItem, commonStyle.rPaddingS]}>
             <Text
               style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
             >
@@ -164,14 +164,14 @@ const DetailsScreen: React.FC = () => {
           <View style={layoutStyle.divider} />
         </View>
 
-        <View style={layoutStyle.columns}>
-          <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
+        <View style={layoutStyle.columnsInside}>
+          <View style={[layoutStyle.cols_75, commonStyle.lPaddingS]}>
             <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>
               {item.name}
             </Text>
           </View>
           <View
-            style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding]}
+            style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS]}
           >
             <IconLib.Star size={20} color="gold" />
             <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
@@ -182,7 +182,7 @@ const DetailsScreen: React.FC = () => {
 
         <View style={layoutStyle.verticalSpacer} />
 
-        <View style={[layoutStyle.column, commonStyle.lPadding]}>
+        <View style={[layoutStyle.columnsInside, commonStyle.lPaddingS]}>
           {type === 'store' && item.location && (
             <Text
               style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
@@ -201,8 +201,8 @@ const DetailsScreen: React.FC = () => {
 
         <View style={layoutStyle.verticalSpacer} />
 
-        <View style={layoutStyle.columns}>
-          <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
+        <View style={layoutStyle.columnsInside}>
+          <View style={[layoutStyle.cols_2, commonStyle.lPaddingS]}>
             {type === 'product' ? (
               <Text>
                 <Text
@@ -225,13 +225,13 @@ const DetailsScreen: React.FC = () => {
             style={[layoutStyle.cols_2, commonStyle.rightAlignedItems, { flexDirection: 'row' }]}
           >
             <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-              <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPadding2} />
+              <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPaddingS} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <IconLib.Chat_O size={24} color={selectedTheme.iconColorPrimary} style={commonStyle.rPadding2} />
+              <IconLib.Chat_O size={24} color={selectedTheme.iconColorPrimary} style={commonStyle.rPaddingS} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <IconLib.Share_O size={24} color={selectedTheme.iconColorSmileys} style={commonStyle.rPadding} />
+              <IconLib.Share_O size={24} color={selectedTheme.iconColorSmileys} style={commonStyle.rPaddingS} />
             </TouchableOpacity>
           </View>
         </View>
@@ -282,7 +282,7 @@ const DetailsScreen: React.FC = () => {
               ]}
             >
               <View
-                style={[commonStyle.rPadding, { flexDirection: 'row', alignItems: 'center' }]}
+                style={[commonStyle.rPaddingS, { flexDirection: 'row', alignItems: 'center' }]}
               >
                 <Image
                   source={{ uri: 'https://randomuser.me/api/portraits/men/1.jpg' }} // Use user's image URL
@@ -317,12 +317,12 @@ const DetailsScreen: React.FC = () => {
                   <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
-                  <Text style={[commonStyle.font12, commonStyle.lPadding, { color: selectedTheme.textGray }]}>
+                  <Text style={[commonStyle.font12, commonStyle.lPaddingS, { color: selectedTheme.textGray }]}>
                     |
                   </Text>
                   <TouchableOpacity
                     onPress={() => toggleCommentReactions(comment.id)}
-                    style={commonStyle.lPadding}
+                    style={commonStyle.lPaddingS}
                   >
                     <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                       Like
@@ -383,8 +383,8 @@ const DetailsScreen: React.FC = () => {
             </View>
           ))}
         </View>
+        </View>
       </ScrollView>
-    </View>
   );
 };
 

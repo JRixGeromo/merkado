@@ -11,8 +11,9 @@ import {
   TextInput,
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
 import { theme as appTheme } from '../../../styles/theme';
+import { commonStyles } from '../../../styles/commonStyles';
+import { layoutStyles } from '../../../styles/layoutStyles';
 import MarketplaceModal from '../components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib'; // Use IconLib here
@@ -37,9 +38,12 @@ export type Product = {
 };
 
 const MarketplaceScreen = () => {
-  const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
 
@@ -249,11 +253,11 @@ const MarketplaceScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={commonStyle.section}>
+      <View style={[layoutStyle.container, commonStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]} >
         {/* Search Container */}
-        <View style={commonStyle.searchContainer}>
+        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
           <TouchableOpacity
-            style={commonStyle.headerIcon}
+            style={commonStyle.rMarginL}
             onPress={toggleModal}
           >
             <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />

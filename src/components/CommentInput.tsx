@@ -56,7 +56,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
   return (
     <View
       style={[
-        layoutStyle.column,
+        layoutStyle.rowsInside,
         commonStyle.commentFormContainer,
         { backgroundColor: selectedTheme.formBackgrounColor },
       ]}
@@ -90,7 +90,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
 
       <View
         style={[
-          layoutStyle.column,
+          layoutStyle.columnsInside,
           commonStyle.leftAlignedItems,
           { paddingTop: 10 },
         ]}

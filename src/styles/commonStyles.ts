@@ -36,27 +36,50 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'flex-start',
       alignItems: 'center',
     },
-
-    rPadding: {
+    
+    // padding
+    rlPaddingS: {
       paddingRight: 10,
-    },
-    lPadding: {
       paddingLeft: 10,
     },
-    paddingAll: {
+
+    rPaddingS: {
+      paddingRight: 10,
+    },
+    lPaddingS: {
+      paddingLeft: 10,
+    },
+    paddingAllS: {
       padding: 10,
     },
 
-    rPadding2: {
+    rPaddingL: {
       paddingRight: 20,
     },
-    lPadding2: {
+    lPaddingL: {
       paddingLeft: 20,
     },
-    paddingAll2: {
+    paddingAllL: {
       padding: 20,
     },
 
+    // margin
+    rMarginS: {
+      marginRight: 10,
+    },
+    lMarginS: {
+      marginLeft: 10,
+    },
+
+    rMarginL: {
+      marginRight: 20,
+    },
+    lMarginL: {
+      marginLeft: 20,
+    },
+
+    /////////
+    
     bannerImageWrapper: {
       width: '100%',
       height: 200,
@@ -171,6 +194,33 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     thumbsUpButton: {
       paddingHorizontal: 10,
     },
+    ////
+
+    searchContainer: {
+      paddingTop: 0,
+      paddingBottom: 0,
+      paddingLeft: 10,
+      paddingRight: 10,
+
+      backgroundColor: selectedTheme.cardBackground, // Use theme background color
+      borderRadius: 30, // Rounded border for the search bar
+      borderWidth: 0.5,
+      borderColor: selectedTheme.buttonBorderPrimary, // Add border using theme color
+      
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+    },
+    searchInput: {
+      flex: 1, // Make the search input take up the remaining space
+      height: 40, // Height of the search input
+      borderColor: selectedTheme.buttonBorderPrimary, // Optional: Add border inside the input field
+      borderWidth: 0, // No extra border inside the input
+      paddingLeft: 0, // Padding inside the search input
+      borderRadius: 20, // Rounded corners inside the search input
+      backgroundColor: selectedTheme.cardBackground, // Background color of the input
+      color: selectedTheme.textPrimary, // Text color from theme
+    },
+
     ////
 
     font8: {
@@ -760,33 +810,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     categoryText: {
       color: '#fff',
       fontWeight: 'bold',
-    },
-    searchContainer: {
-      flexDirection: 'row', // Align items horizontally
-      alignItems: 'center', // Center items vertically
-      paddingTop: 0,
-      paddingBottom: 0,
-      paddingLeft: 10,
-      paddingRight: 10,
-      marginTop: 2,
-      marginBottom: 2,
-      marginLeft: 10,
-      marginRight: 10,
-
-      backgroundColor: selectedTheme.cardBackground, // Use theme background color
-      borderRadius: 30, // Rounded border for the search bar
-      borderWidth: 0.5,
-      borderColor: selectedTheme.buttonBorderPrimary, // Add border using theme color
-    },
-    searchInput: {
-      flex: 1, // Make the search input take up the remaining space
-      height: 40, // Height of the search input
-      borderColor: selectedTheme.buttonBorderPrimary, // Optional: Add border inside the input field
-      borderWidth: 0, // No extra border inside the input
-      paddingLeft: 0, // Padding inside the search input
-      borderRadius: 20, // Rounded corners inside the search input
-      backgroundColor: selectedTheme.cardBackground, // Background color of the input
-      color: selectedTheme.textPrimary, // Text color from theme
     },
     modalTitle: {
       fontSize: normalizeFontSize(14),

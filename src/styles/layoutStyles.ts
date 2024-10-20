@@ -46,23 +46,16 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
-    row: {
-      flexDirection: 'row',
-      flexWrap: 'wrap', // Allow wrapping if necessary
-      justifyContent: 'space-between', // Distribute space between columns
-    },
 
-    /* One column with rows */
-    column: {
+    rowsInside: {
       width: '100%',
       flexDirection: 'column',
     },
 
-    /* Column layout variants */
-    columns: {
+    /* One row with columns inside */
+    columnsInside: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      width: '100%', // Each row takes 100% of the available width
+      width: '100%',
     },
 
     cols_2: {
