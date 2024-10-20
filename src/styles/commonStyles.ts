@@ -356,13 +356,37 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderColor: selectedTheme.textPrimary, // Use the primary color for the border
     },
     
+
+    button: {
+      padding: SHARED.buttonPadding, // Button padding from shared settings
+      borderRadius: SHARED.borderRadius, // Border radius from shared settings
+      backgroundColor: selectedTheme.textPrimary, // Primary button background color from theme
+      alignItems: 'center',
+      justifyContent: 'center', // Center the text/icon in the button
+      shadowColor: SHARED.shadow.color, // Shadow for depth
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Shadow for Android
+      width: Platform.select({
+        web: '40%', // Width for desktop
+        default: '80%', // Width for mobile
+      }),
+    },
+    input: {
+      flex: 1,
+      fontSize: normalizeFontSize(16),
+      color: selectedTheme.textPrimary, // Input text color from selected theme
+    },
+    modalOverlay: {
+      backgroundColor: selectedTheme.modalOverlay, // Add modal overlay color from theme
+    },
     modalText: {
       fontSize: normalizeFontSize(16),
       color: selectedTheme.textPrimary, // Text color from selected theme
       fontFamily: selectedTheme.bodyFont,
     },
     
-
     ////
 
     font8: {
@@ -494,11 +518,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       }),
     },
 
-    input: {
-      flex: 1,
-      fontSize: normalizeFontSize(16),
-      color: selectedTheme.textPrimary, // Input text color from selected theme
-    },
+
+    
     bodyText: {
       fontSize: normalizeFontSize(16),
       fontFamily: selectedTheme.bodyFont, // Apply body font from theme
@@ -622,9 +643,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       width: '80%',
       paddingHorizontal: 10,
     },
-    modalOverlay: {
-      backgroundColor: selectedTheme.modalOverlay, // Add modal overlay color from theme
-    },
+
 
     inputBackgroundColor: {
       backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
@@ -834,22 +853,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     ////
-    button: {
-      padding: SHARED.buttonPadding, // Button padding from shared settings
-      borderRadius: SHARED.borderRadius, // Border radius from shared settings
-      backgroundColor: selectedTheme.textPrimary, // Primary button background color from theme
-      alignItems: 'center',
-      justifyContent: 'center', // Center the text/icon in the button
-      shadowColor: SHARED.shadow.color, // Shadow for depth
-      shadowOffset: SHARED.shadow.offset,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation, // Shadow for Android
-      width: Platform.select({
-        web: '40%', // Width for desktop
-        default: '80%', // Width for mobile
-      }),
-    },
+
     socialButton: {
       ...SHARED, // Reuse shared shadow and padding
       flexDirection: 'row', // Row layout for icon + text

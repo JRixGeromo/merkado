@@ -53,12 +53,10 @@ const Dropdown: React.FC<DropdownProps> = ({
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
     return {
-      iconColor: iconColor || commonStyle.iconColor.color,
-      textColor: textColor || commonStyle.textColor.color,
-      placeholderColor:
-        placeholderTextColor || commonStyle.placeholderTextColor.color,
-      inputBackgroundColor:
-        customBackground || commonStyle.inputBackgroundColor.backgroundColor,
+      iconColor: iconColor || selectedTheme.iconColorPrimary,
+      textColor: textColor || selectedTheme.textSecondary,
+      placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+      inputBackgroundColor:  selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor, commonStyle]);
 

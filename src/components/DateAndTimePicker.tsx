@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { commonStyles } from '../styles/commonStyles';
+import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../styles/layoutStyles';
 import { useAppSelector } from '../hooks/reduxHooks';
+import { theme as appTheme } from '../styles/theme';
 import { normalizeFontSize } from '../utils/responsive';
 import { format } from 'date-fns';
 
@@ -55,17 +57,19 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     setShowCalendar(false); // Close the calendar after selection
   };
 
-  const currentTheme = useAppSelector(state => state.theme.theme); // Access current theme (light/dark)
-  const commonStyle = commonStyles(currentTheme); // Generate styles based on the current theme
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
     return {
-      iconColor: iconColor || commonStyle.iconColor.color,
-      textColor: textColor || commonStyle.textColor.color,
-      placeholderColor:
-        placeholderTextColor || commonStyle.placeholderTextColor.color,
-      inputBackgroundColor: commonStyle.inputBackgroundColor.backgroundColor,
+      iconColor: iconColor || selectedTheme.iconColorPrimary,
+      textColor: textColor || selectedTheme.textSecondary,
+      placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+      inputBackgroundColor:  selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor, commonStyle]);
 
@@ -129,7 +133,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           >
             <View
               style={{
-                backgroundColor: commonStyle.card.backgroundColor,
+                backgroundColor: selectedTheme.cardBackground,
                 borderRadius: 10,
                 padding: 20,
                 width: '80%', // Adjust the width as needed
@@ -141,19 +145,17 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                   [selectedDate?.toISOString().split('T')[0] || '']: {
                     selected: true,
                     marked: true,
-                    selectedColor:
-                      commonStyle.selectedDayBackgroundColor.backgroundColor, // Use theme color
+                    selectedColor: selectedTheme.textPrimary, // Use theme color
                   },
                 }}
                 theme={{
-                  todayTextColor: commonStyle.todayTextColor.color, // Use primary color from theme
-                  selectedDayBackgroundColor:
-                    commonStyle.selectedDayBackgroundColor.backgroundColor, // Use primary color from theme
-                  dayTextColor: commonStyle.dayTextColor.color, // Use text color from theme
-                  textDisabledColor: commonStyle.textDisabledColor.color, // Disabled text color
-                  monthTextColor: commonStyle.monthTextColor.color, // Month text color
-                  arrowColor: commonStyle.arrowColor.color, // Use primary color from theme
-                  calendarBackground: commonStyle.card.backgroundColor, // Set background color for the calendar from the theme
+                  todayTextColor: selectedTheme.textPrimary, // Use primary color from theme
+                  selectedDayBackgroundColor: selectedTheme.textPrimary, // Use primary color from theme
+                  dayTextColor: selectedTheme.textPrimary, // Use text color from theme
+                  textDisabledColor: selectedTheme.textDisabled, // Disabled text color
+                  monthTextColor: selectedTheme.textSecondary, // Month text color
+                  arrowColor: selectedTheme.iconColorPrimary, // Use primary color from theme
+                  calendarBackground: selectedTheme.cardBackground, // Set background color for the calendar from the theme
                 }}
               />
               <TouchableOpacity
@@ -163,6 +165,15 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
               >
                 <Text style={commonStyle.modalText}>Close</Text>
               </TouchableOpacity>
+{/* 
+              <CustomButton
+                title={t('Close')}
+                onPress={() => setShowCalendar(false)} // Close calendar
+                backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
+                borderRadius={2} // You can set this dynamically too
+                color={selectedTheme.textLight}
+              /> */}
+              
             </View>
           </View>
         </TouchableWithoutFeedback>
