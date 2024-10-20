@@ -329,6 +329,40 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingRight: 8,
       height: 30,
     },
+
+    inputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: normalizeHeight(2),
+      borderRadius: SHARED.borderRadius,
+      backgroundColor: selectedTheme.cardBackground, // Check this color
+      marginBottom: 15,
+      borderWidth: 1,
+      borderColor: '#ddd',
+      width: '80%',
+      height: normalizeHeight(40),
+      paddingHorizontal: 10,
+    },
+    
+    modalContent: {
+      borderRadius: 10,
+      padding: 20,
+      backgroundColor: selectedTheme.cardBackground, // Ensure the background color is from the theme
+    },
+
+    dropdownOption: {
+      padding: 10,
+      borderBottomWidth: 1,
+      borderColor: selectedTheme.textPrimary, // Use the primary color for the border
+    },
+    
+    modalText: {
+      fontSize: normalizeFontSize(16),
+      color: selectedTheme.textPrimary, // Text color from selected theme
+      fontFamily: selectedTheme.bodyFont,
+    },
+    
+
     ////
 
     font8: {
@@ -459,19 +493,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
         default: '90%', // Width for mobile
       }),
     },
-    inputContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: normalizeHeight(2),
-      borderRadius: SHARED.borderRadius,
-      backgroundColor: selectedTheme.cardBackground, // Check this color
-      marginBottom: 15,
-      borderWidth: 1,
-      borderColor: '#ddd',
-      width: '80%',
-      height: normalizeHeight(40),
-      paddingHorizontal: 10,
-    },
+
     input: {
       flex: 1,
       fontSize: normalizeFontSize(16),
@@ -603,25 +625,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     modalOverlay: {
       backgroundColor: selectedTheme.modalOverlay, // Add modal overlay color from theme
     },
-    modalText: {
-      fontSize: normalizeFontSize(16),
-      color: selectedTheme.textPrimary, // Text color from selected theme
-      fontFamily: selectedTheme.bodyFont,
-    },
-    modalContainer: {
-      flex: 1,
-      justifyContent: 'center',
-    },
-    modalContent: {
-      borderRadius: 10,
-      padding: 20,
-      backgroundColor: selectedTheme.cardBackground, // Ensure the background color is from the theme
-    },
-    option: {
-      padding: 10,
-      borderBottomWidth: 1,
-      borderColor: selectedTheme.textPrimary, // Use the primary color for the border
-    },
+
     inputBackgroundColor: {
       backgroundColor: selectedTheme.inputBackgroundColor, // Ensure the background color is from the theme
     },

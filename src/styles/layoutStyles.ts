@@ -46,6 +46,11 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       }),
     },
 
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    
     rowsInside: {
       width: '100%',
       flexDirection: 'column',

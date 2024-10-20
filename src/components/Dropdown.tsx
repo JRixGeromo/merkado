@@ -1,9 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
-import { commonStyles } from '../styles/commonStyles';
 import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
+import { commonStyles } from '../styles/commonStyles';
+import { layoutStyles } from '../styles/layoutStyles';
+import { theme as appTheme } from '../styles/theme';
+import { useTranslation } from 'react-i18next'; // Import translation hook
+import CustomButton from '../components/CustomButton'; // Import your CustomButton component
 
 interface DropdownProps {
   selectedValue: string; // Current selected value
@@ -39,8 +43,12 @@ const Dropdown: React.FC<DropdownProps> = ({
   showIcon = true, // Show the icon by default
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const currentTheme = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(currentTheme);
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
+  const { t } = useTranslation();
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
@@ -88,17 +96,17 @@ const Dropdown: React.FC<DropdownProps> = ({
           flexDirection: 'row',
           alignItems: 'center',
           paddingVertical: 10,
-          paddingHorizontal: 12,
+          paddingHorizontal: 10,
         },
       ]}
     >
       <TouchableOpacity
         onPress={() => setShowModal(true)}
         accessibilityLabel="Select option"
-        style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}
+        style={layoutStyle.columnsInside}
       >
         {showIcon && (
-          <View style={{ marginRight: 8 }}>
+          <View style={{ marginRight: 3 }}>
             {renderIcon(iconName, iconSize, themeBasedIconColor)}
           </View>
         )}
@@ -124,13 +132,13 @@ const Dropdown: React.FC<DropdownProps> = ({
               alignItems: 'center',
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
-            commonStyle.modalContainer,
+            layoutStyle.modalContainer,
           ]}
         >
           <View
             style={[
               commonStyle.modalContent,
-              { backgroundColor: commonStyle.card.backgroundColor },
+              { backgroundColor: selectedTheme.cardBackground },
             ]}
           >
             {options.length > 0 ? (
@@ -142,8 +150,8 @@ const Dropdown: React.FC<DropdownProps> = ({
                     setShowModal(false);
                   }}
                   style={[
-                    commonStyle.option,
-                    { borderColor: commonStyle.modal.borderColor },
+                    commonStyle.dropdownOption,
+                    { borderColor: selectedTheme.borderColorGray },
                   ]}
                 >
                   <Text style={[commonStyle.modalText]}>{option.label}</Text>
@@ -152,12 +160,15 @@ const Dropdown: React.FC<DropdownProps> = ({
             ) : (
               <Text style={[commonStyle.modalText]}>No options available</Text>
             )}
-            <TouchableOpacity
+            <View style={layoutStyle.verticalSpacerM} />
+            <CustomButton
+              title={t('Close')}
               onPress={() => setShowModal(false)}
-              style={commonStyle.closeButton}
-            >
-              <Text style={[commonStyle.modalText]}>Close</Text>
-            </TouchableOpacity>
+              backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
+              borderRadius={2} // You can set this dynamically too
+              color={selectedTheme.textLight}
+            />
+            
           </View>
         </View>
       </Modal>

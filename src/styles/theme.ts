@@ -163,7 +163,7 @@ const darkTheme: ThemeType = {
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#000',
+  inputBackgroundColor: '#343a40',
 
   buttonPrimary: '#606c38',
   buttonSecondary: '#ffffff',
