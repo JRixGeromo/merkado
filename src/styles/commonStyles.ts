@@ -22,8 +22,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
   return StyleSheet.create({
     
-    rightAligned: {
+    rightAlignedItem: {
       alignItems: 'flex-end',
+    },
+
+    rightAlignedItems: {
+      justifyContent: 'flex-end',  // Use for row-based right alignment
+      alignItems: 'center',        // Use to center items vertically
     },
 
     rPadding: {

@@ -109,6 +109,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
   return (
     <View style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}>    
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
           <View style={commonStyle.saleBanner}>
@@ -121,24 +122,42 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
           <Image source={{ uri: item.imageUrl }} style={commonStyle.bannerContentImage} />
         </View>
         
-        <View style={layoutStyle.verticalSpacer} />
         <View style={layoutStyle.columns}>
-          <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
-            <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
-          </View>
-          <View style={[layoutStyle.cols_25, commonStyle.rightAligned, commonStyle.rPadding]}>
+          <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {selectedPostReaction && (
-              <View style={[commonStyle.selectedReactionWrapper, { marginTop: -10}]}>
+              <View style={[commonStyle.selectedReactionWrapper, { marginTop: -12}]}>
                 <Text style={commonStyle.selectedReactionText}>
                   {selectedPostReaction}
                 </Text>
               </View>
             )}
           </View>
-        </View>  
-        <View style={layoutStyle.verticalSpacer} />
+          <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItem, commonStyle.rPadding]}>
+            
+            <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
+              46 {t('comments')}
+            </Text>
+          
+          </View>
+        </View>
+
+        <View style={layoutStyle.dividerWrapper}>
+          <View style={layoutStyle.divider} />
+        </View>
+        
         <View style={layoutStyle.columns}>
-          <View style={[layoutStyle.cols_70, commonStyle.lPadding]}>
+          <View style={[layoutStyle.cols_75, commonStyle.lPadding]}>
+            <Text style={[commonStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
+          </View>
+          <View style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPadding, { flexDirection: "row" }]}>
+            <Icon name="star" size={20} color="gold" />
+            <Text style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
+        </View>
+        </View> 
+        
+        <View style={layoutStyle.verticalSpacer} />
+        
+        <View style={[layoutStyle.column, commonStyle.lPadding]}>
             {type === 'store' && item.location && (
               <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
                 {item.location}
@@ -149,14 +168,10 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
                 {item.description}
               </Text>
             )}
-          </View>
-          <View style={[layoutStyle.cols_30, commonStyle.rightAligned, commonStyle.rPadding]}>
-            <Text style={[commonStyle.font10, { color: selectedTheme.textSecondary }]}>
-              46 {t('comments')}
-            </Text>
-          </View>
         </View>  
+        
         <View style={layoutStyle.verticalSpacer} />
+        
         <View style={layoutStyle.columns}>
           <View style={[layoutStyle.cols_2, commonStyle.lPadding]}>
             {type === 'product' ? (
@@ -169,28 +184,21 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             )}
           </View>
 
-          <View style={[layoutStyle.cols_2]}>
-            <View style={layoutStyle.columns}>
-              <View style={[layoutStyle.cols_40, {flexDirection: "row"}]}>
-                <Icon name="star" size={20} color="gold" />
-                <Text style={[commonStyle.font14, { color: selectedTheme.textSecondary }]}>{" "}{item.rating}</Text>
-              </View>
-
-              <View style={[layoutStyle.cols_60, {flexDirection: "row"}]}>
-                  <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-                    <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPadding2}/>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={commonStyle.rPadding2} />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Icon name="arrow-redo-outline" size={24} color={selectedTheme.iconColorSmileys}/>
-                  </TouchableOpacity>
-              </View>
-            </View>
+          <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItems, {flexDirection: "row"}]}>
+              <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
+                <Icon name="thumbs-up-outline" size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPadding2}/>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Icon name="chatbubble-outline" size={24} color={selectedTheme.iconColorPrimary}  style={commonStyle.rPadding2} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Icon name="arrow-redo-outline" size={24} color={selectedTheme.iconColorSmileys} style={commonStyle.rPadding} />
+              </TouchableOpacity>
           </View>
         </View>  
+
         <View style={layoutStyle.verticalSpacer} />
+
         {/* ReactionBar */}
         {showReactions && (
           <View style={commonStyle.reactionBarSection}>
@@ -298,7 +306,6 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
               <TouchableOpacity onPress={() => setReplyingTo(comment.id)}>
                 <Text style={{color: selectedTheme.textGray, marginTop: 5 }}>Reply</Text>
               </TouchableOpacity>
-
               {/* End: Reply codes */}
             </View>
           ))}

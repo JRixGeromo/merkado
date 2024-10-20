@@ -199,7 +199,7 @@ const darkTheme: ThemeType = {
   cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
-  lineBorderColor: '#000000',
+  lineBorderColor: '#4a4e69',
 
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',

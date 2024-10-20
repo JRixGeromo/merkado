@@ -101,6 +101,18 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       },
     ////
 
+    dividerWrapper: {
+      width: '100%',           // Full width for the wrapper
+      paddingVertical: 10,     // Apply padding above and below
+    },
+    divider: {
+      width: '100%',           // Full width for the divider
+      borderBottomWidth: 0.5,    // Specify the width of the bottom border
+      borderColor: selectedTheme.lineBorderColor,    // Color of the divider
+    },
+
+    ////
+
     spacer: {
       height: 10, // Default height spacer (for vertical gaps)
       width: 10,  // Default width spacer (for horizontal gaps)
