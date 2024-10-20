@@ -79,6 +79,12 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
     setShowCommentReactions(prev => ({ ...prev, [commentId]: false })); // Hide reaction bar
   };
 
+  // Toggle reply input form visibility
+  const handleReplyToggle = (commentId: number) => {
+    setReplyingTo((prevReplyingTo) => (prevReplyingTo === commentId ? null : commentId));
+  };
+
+
   const reactions = [
     { emoji: '❤️', label: 'LOVE' },
     { emoji: '😃', label: 'HAPPY' },
@@ -211,7 +217,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
         {/* Comment Section */}
         <View style={commonStyle.commentSection}>
-          <CommentInput onSend={handleSendComment} onAddReaction={handleAddReaction} reactions={reactions}/>
+          <CommentInput onSend={handleSendComment} onAddReaction={handleAddReaction} reactions={reactions} placeholder={"Write a comment..."}/>
         </View>
 
         {/* Existing Comments */}
@@ -304,13 +310,14 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
                     onSend={(reply) => handleReplySend(comment.id, reply)}
                     onAddReaction={handleAddReaction}
                     reactions={reactions}
+                    placeholder={"Write your reply..."}
                   />
                 </View>
               )}
 
               {/* Reply Button */}
-              <TouchableOpacity onPress={() => setReplyingTo(comment.id)}>
-                <Text style={{color: selectedTheme.textGray, marginTop: 5 }}>Reply</Text>
+              <TouchableOpacity onPress={() => handleReplyToggle(comment.id)}>
+                <Text style={{ color: selectedTheme.textGray, marginTop: 5 }}>Reply</Text>
               </TouchableOpacity>
               {/* End: Reply codes */}
             </View>
