@@ -165,7 +165,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
 
     sendButton: {
       position: 'absolute',
-      right: 15,
+      right: 10,
       padding: 10,
       borderRadius: 20,
     },
