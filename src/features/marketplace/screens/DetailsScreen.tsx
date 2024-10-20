@@ -226,11 +226,16 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
             { id: 7, text: 'Love this!', user: 'User7', time: new Date() },
           ].map((comment) => (
             <View key={comment.id} style={[commonStyle.commentContainer, {backgroundColor: selectedTheme.commentBackgroundColor}]}>
-              <Image
-                source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }} // Use user's image URL
-                style={commonStyle.userImage}
-              />
-              
+              <View style={[commonStyle.rPadding, { flexDirection: "row", alignItems: 'center'  }]}>
+                <Image
+                  source={{ uri: "https://randomuser.me/api/portraits/men/1.jpg" }} // Use user's image URL
+                  style={commonStyle.userImage}
+                />
+                {/* Display the user's name beside the image */}
+                <Text style={[commonStyle.font12, { color: selectedTheme.textDark, marginLeft: 5 }]}>
+                  {comment.user}
+                </Text>
+              </View>    
               <View style={commonStyle.commentWrapper}>
                 {/* Comment Text */}
                 <Text style={[commonStyle.commentTextWrapper, commonStyle.font12, { color: selectedTheme.textSecondary }]}>

@@ -146,7 +146,7 @@ const darkTheme: ThemeType = {
   textSecondary: '#dee2e6',
   textPlaceHolderInfo: '#9999a1',
   textDisabled: '#ced4da',
-  textDark: '#e6e6e9',
+  textDark: '#66666e',
   textBlack: '#000000',
   textLight: '#ffffff',
   textHighlight: '#f35b04',
