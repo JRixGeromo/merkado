@@ -239,7 +239,7 @@ const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
               <View style={commonStyle.commentWrapper}>
                 {/* Comment Text */}
                 <Text style={[commonStyle.commentTextWrapper, commonStyle.font12, { color: selectedTheme.textSecondary }]}>
-                  {comment.user}: {comment.text}
+                  {comment.text}
                 </Text>
 
                 {/* Display the selected reaction below the comment if available */}
