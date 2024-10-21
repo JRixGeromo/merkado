@@ -6,6 +6,8 @@ import { toggleTheme } from '../../../store/slices/themeSlice';
 import CustomButton from '../../../components/CustomButton';
 import Dropdown from '../../../components/Dropdown'; // Import Dropdown component
 import { commonStyles } from '../../../styles/commonStyles';
+import { layoutStyles } from '../../../styles/layoutStyles';
+
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
@@ -13,13 +15,16 @@ import { useTranslation } from 'react-i18next';
 import { theme as appTheme } from '../../../styles/theme';
 
 const AccountScreen = () => {
-  const theme = useAppSelector(state => state.theme.theme);
+  
   const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    const themeType = useAppSelector(state => state.theme.theme);
+    const commonStyle = commonStyles(themeType); // This is fine
+    const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  
+    const selectedTheme = appTheme[themeType];
 
-  const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
 
   const { t, i18n } = useTranslation();
 
@@ -47,7 +52,7 @@ const AccountScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {/* Fixed Profile Header */}
-      <View style={commonStyle.profileHeader}>
+      {/* <View style={commonStyle.profileHeader}>
         <Image
           source={accountInfo.profileImage}
           style={[
@@ -57,13 +62,13 @@ const AccountScreen = () => {
         />
         <Text style={commonStyle.profileName}>{accountInfo.name}</Text>
         <Text style={commonStyle.profileEmail}>{accountInfo.email}</Text>
-      </View>
+      </View> */}
 
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
         {/* Account Information Card */}
-        <View style={commonStyle.section}>
-          <View style={commonStyle.card}>
+        <View style={commonStyle.innerContainer}>
+          {/* <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
               <Icon
                 name="person"
@@ -80,10 +85,10 @@ const AccountScreen = () => {
             <TouchableOpacity>
               <Text style={commonStyle.editLink}>{t('edit')}</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
 
           {/* Payment Method Card */}
-          <View style={commonStyle.card}>
+          {/* <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
               <Icon
                 name="card"
@@ -101,7 +106,7 @@ const AccountScreen = () => {
             <TouchableOpacity>
               <Text style={commonStyle.editLink}>{t('edit')}</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
 
           {/* Preferences Card */}
           <View style={commonStyle.card}>
@@ -124,7 +129,7 @@ const AccountScreen = () => {
                 <Text style={commonStyle.cardText}>{t('theme')}</Text>
               </TouchableOpacity>
               <Icon
-                name={theme === 'dark' ? 'moon' : 'sunny'}
+                name={themeType === 'dark' ? 'moon' : 'sunny'}
                 size={24}
                 color={selectedTheme.iconColorPrimary}
               />

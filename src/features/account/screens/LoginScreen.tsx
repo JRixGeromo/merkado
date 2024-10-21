@@ -119,7 +119,7 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={layoutStyle.container}>
+        <View style={[layoutStyle.shadowedContainer, layoutStyle.innerContainer]}>
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}

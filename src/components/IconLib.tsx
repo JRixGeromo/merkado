@@ -96,7 +96,9 @@ const IconLib = {
   Help_O: (props: IconProps) => <CustomIcon name="help-circle-outline" {...props} />,
   Logout_O: (props: IconProps) => <CustomIcon name="log-out-outline" {...props} />,
   Send_O: (props: IconProps) => <CustomIcon name="send-outline" {...props} />,
-
+  
+  Settings_O: (props: IconProps) => <CustomIcon name="settings-outline" {...props} />,
+  
   // FontAwesome Icons using the "fa" type
   Google: (props: IconProps) => <CustomIcon name="google" {...props} iconType="fa" />,
   Fb: (props: IconProps) => <CustomIcon name="facebook" {...props} iconType="fa" />,
@@ -105,6 +107,10 @@ const IconLib = {
   Menu: (props: IconProps) => <CustomIcon name="menu" {...props} />,
   Email: (props: IconProps) => <CustomIcon name="mail" {...props} />,
   Locked: (props: IconProps) => <CustomIcon name="lock-closed" {...props} />,
+  Globe: (props: IconProps) => <CustomIcon name="globe" {...props} />,
+  Sunny: (props: IconProps) => <CustomIcon name="sunny" {...props} />,
+  Moon: (props: IconProps) => <CustomIcon name="moon" {...props} />,
+  
   
   Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
   Male: (props: IconProps) => <CustomIcon name="male" {...props} />,

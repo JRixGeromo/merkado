@@ -46,6 +46,11 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       }),
     },
 
+    innerContainer: {
+      justifyContent: 'center', 
+      alignItems: 'center'
+    },
+
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
