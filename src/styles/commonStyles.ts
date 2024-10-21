@@ -501,6 +501,21 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     headerIcon: {
       marginRight: 20,
     },
+    chatButton: {
+      backgroundColor: selectedTheme.buttonDark, // Explicit background color for Chat button
+    },
+
+    cartButton: {
+      backgroundColor: selectedTheme.buttonPrimary, // Explicit background color for Add to Cart button
+    },
+
+    commentButton: {
+      backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
+    },
+
+    followButton: {
+      backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
+    },
 
     ////
 
@@ -600,6 +615,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     //////////
-    
+   
   });
 };
