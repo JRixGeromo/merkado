@@ -28,6 +28,7 @@ type Avatar = {
   id: string;
   avatarUrl: string;
   name?: string; // Optional, if you have a name or label for the avatar
+  unreadCount?: number; // Adding unread count for each user
 };
 
 const ChatScreen = () => {
@@ -40,7 +41,7 @@ const ChatScreen = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, text: 'Hi!', sender: 'user1' },
-    { id: 2, text: 'Hello', sender: 'user2' },
+    { id: 2, text: 'Hello Hello Hello Hello Hello', sender: 'user2' },
     { id: 3, text: 'Good', sender: 'user1' },
     { id: 4, text: 'How’s all', sender: 'user2' },
   ]);
@@ -48,11 +49,21 @@ const ChatScreen = () => {
   const [showReactions, setShowReactions] = useState(false);
 
   const avatars: Avatar[] = [
-    { id: 'user1', avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg', name: 'user1' },
-    { id: 'user2', avatarUrl: 'https://randomuser.me/api/portraits/men/2.jpg', name: 'user2' },
-    { id: 'user3', avatarUrl: 'https://randomuser.me/api/portraits/women/3.jpg', name: 'user3' },
-    { id: 'user4', avatarUrl: 'https://randomuser.me/api/portraits/men/4.jpg', name: 'user4' },
-    { id: 'user5', avatarUrl: 'https://randomuser.me/api/portraits/men/5.jpg', name: 'user5' },
+    { id: 'user1', avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg', name: 'user1', unreadCount: 2 },
+    { id: 'user2', avatarUrl: 'https://randomuser.me/api/portraits/men/2.jpg', name: 'user2', unreadCount: 0 },
+    { id: 'user3', avatarUrl: 'https://randomuser.me/api/portraits/women/3.jpg', name: 'user3', unreadCount: 1 },
+    { id: 'user4', avatarUrl: 'https://randomuser.me/api/portraits/men/4.jpg', name: 'user4', unreadCount: 0 },
+    { id: 'user5', avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg', name: 'user5' },
+    { id: 'user6', avatarUrl: 'https://randomuser.me/api/portraits/men/2.jpg', name: 'user6' },
+    { id: 'user7', avatarUrl: 'https://randomuser.me/api/portraits/women/3.jpg', name: 'user7' },
+    { id: 'user8', avatarUrl: 'https://randomuser.me/api/portraits/men/4.jpg', name: 'user8' },
+    { id: 'user9', avatarUrl: 'https://randomuser.me/api/portraits/men/5.jpg', name: 'user9' },
+    { id: 'user10', avatarUrl: 'https://randomuser.me/api/portraits/men/6.jpg', name: 'user10' },
+    { id: 'user11', avatarUrl: 'https://randomuser.me/api/portraits/men/7.jpg', name: 'user11' },
+    { id: 'user12', avatarUrl: 'https://randomuser.me/api/portraits/men/8.jpg', name: 'user12' },
+    { id: 'user13', avatarUrl: 'https://randomuser.me/api/portraits/men/9.jpg', name: 'user13' },
+    { id: 'user14', avatarUrl: 'https://randomuser.me/api/portraits/men/10.jpg', name: 'user14' },
+    { id: 'user15', avatarUrl: 'https://randomuser.me/api/portraits/men/11.jpg', name: 'user15' },
   ];
 
   const scrollViewRef = useRef<ScrollView>(null);
@@ -124,22 +135,29 @@ const ChatScreen = () => {
       keyboardVerticalOffset={80}
     >
       {/* Chat History Avatars */}
-      <View style={{ height: 50, backgroundColor: selectedTheme.cardBackground, flexDirection: 'row' }}>
+      <View style={{ height: 60, backgroundColor: selectedTheme.cardBackground, flexDirection: 'row' }}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {avatars.map(avatar => (
-            <TouchableOpacity key={avatar.id}>
-              <Image
-                source={{ uri: avatar.avatarUrl }}
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 25,
-                  marginHorizontal: 5,
-                  borderWidth: 2,
-                  borderColor: selectedTheme.textPrimary,
-                }}
-              />
-            </TouchableOpacity>
+            <View key={avatar.id} style={{ position: 'relative', marginHorizontal: 5, marginVertical: 5 }}>
+              <TouchableOpacity>
+                <Image
+                  source={{ uri: avatar.avatarUrl }}
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 25,
+                    borderWidth: 2,
+                    borderColor: selectedTheme.textPrimary,
+                  }}
+                />
+                {/* Display unread message badge */}
+                {(avatar.unreadCount ?? 0) > 0 && (
+                <View style={styles.unreadBadge}>
+                    <Text style={styles.unreadText}>{avatar.unreadCount}</Text>
+                </View>
+                )}
+              </TouchableOpacity>
+            </View>
           ))}
         </ScrollView>
       </View>
@@ -205,6 +223,22 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  unreadBadge: {
+    position: 'absolute',
+    top: -5,
+    right: -5,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  unreadText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
   },
 });
 
