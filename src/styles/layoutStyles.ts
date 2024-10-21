@@ -144,8 +144,12 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     // Vertical spacer for vertical gaps between rows
-    verticalSpacerS: {
+    verticalSpacerXS: {
       marginVertical: 2,
+    },
+
+    verticalSpacerS: {
+      marginVertical: 5,
     },
 
     // Vertical spacer for vertical gaps between rows

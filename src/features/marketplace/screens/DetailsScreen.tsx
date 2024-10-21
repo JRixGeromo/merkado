@@ -12,6 +12,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import ReactionBar from '../../../components/ReactionBar';
 import CommentInput from '../../../components/CommentInput';
+import CustomButton from '../../../components/CustomButton';
 import { theme as appTheme } from '../../../styles/theme';
 import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
@@ -116,6 +117,10 @@ const DetailsScreen: React.FC = () => {
     }));
     setReplyingTo(null); // Hide reply input after sending the reply
   };
+  const handleBuy = () => {
+  };
+
+  
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -139,6 +144,15 @@ const DetailsScreen: React.FC = () => {
             source={{ uri: item.imageUrl }}
             style={commonStyle.bannerContentImage}
           />
+
+          {/* Price at Bottom-Right */}
+          {type === 'product' && (
+            <View style={commonStyle.priceContainer}>
+              <Text style={[commonStyle.font20, { color: selectedTheme.textHighlight }]}>
+                ₱{item.price}
+              </Text>
+            </View>
+          )}
         </View>
 
         <View style={layoutStyle.columnsInside}>
@@ -175,44 +189,66 @@ const DetailsScreen: React.FC = () => {
           >
             <IconLib.Star size={20} color="gold" />
             <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
-              {item.rating}
+              {" "}{item.rating}
             </Text>
           </View>
         </View>
 
-        <View style={layoutStyle.verticalSpacerM} />
+        <View style={layoutStyle.verticalSpacerS} />
 
-        <View style={[layoutStyle.columnsInside, commonStyle.lPaddingS]}>
-          {type === 'store' && item.location && (
-            <Text
-              style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
-            >
-              {item.location}
-            </Text>
-          )}
-          {type === 'product' && item.description && (
-            <Text
-              style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
-            >
-              {item.description}
-            </Text>
-          )}
+        <View style={layoutStyle.columnsInside}>
+          <View style={[layoutStyle.cols_75, commonStyle.lPaddingS]}>
+            {type === 'store' && item.location && (
+              <Text
+                style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
+              >
+                {item.location}
+              </Text>
+            )}
+            {type === 'product' && item.description && (
+              <Text
+                style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
+              >
+                {item.description}
+              </Text>
+            )}
+          </View>
+         
+          <View
+            style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS, {alignItems: 'flex-start'}]}
+          >
+            {type === 'product' &&  (
+              <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
+                {item.distance}
+              </Text>
+            )}
+          </View>
         </View>
 
-        <View style={layoutStyle.verticalSpacerM} />
+
+        <View style={layoutStyle.verticalSpacerS} />
 
         <View style={layoutStyle.columnsInside}>
           <View style={[layoutStyle.cols_2, commonStyle.lPaddingS]}>
             {type === 'product' ? (
               <Text>
-                <Text
-                  style={[commonStyle.font14, { color: selectedTheme.textLight }]}
-                >
-                  ₱{item.price}{' '}
-                </Text>
-                <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
-                  {item.distance}
-                </Text>
+                  <CustomButton
+                    style={{
+                      margin: 5,
+                      paddingTop: 5,
+                      paddingBottom: 5,
+                      paddingRight: 10,
+                      paddingLeft: 10,
+                    }}
+                    title={t('Buy')} // Text inside the button
+                    onPress={handleBuy} // Function to handle the press event
+                    color={selectedTheme.textLight} // Text color, using theme values
+                    backgroundColor={selectedTheme.buttonPrimary} // Button background color, using theme values
+                    borderRadius={2} // Set the border radius for rounded corners
+                    iconName="Cart" // Icon from IconLib (Cart icon)
+                    iconSize={20} // Size of the Cart icon
+                    textSize={12} // Font size of the text inside the button
+                  />
               </Text>
             ) : (
               <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>

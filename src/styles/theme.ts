@@ -159,11 +159,11 @@ const darkTheme: ThemeType = {
 
   fullBackgrounColor: '#000000',
   fullContainerBackgrounColor: '#000000',
-  formBackgrounColor: '#2f2f2f',
+  formBackgrounColor: '#1f2421',
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#343a40',
+  inputBackgroundColor: '#111111',
 
   buttonPrimary: '#606c38',
   buttonSecondary: '#ffffff',

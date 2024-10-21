@@ -124,6 +124,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
     },
 
+    priceContainer: {
+      position: 'absolute',
+      bottom: 10,     // Adjust this value for vertical positioning
+      right: 10,      // Adjust this value for horizontal positioning
+      padding: 5,     // Padding around the price text
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background for better readability
+      borderRadius: 5, // Rounded corners
+      zIndex: 2,      // Ensure it appears on top of other elements
+    },
+
     reactionBarSection: {
       paddingHorizontal: 16,
       alignItems: 'center',
@@ -286,6 +296,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
       marginTop: 0, // Space between the product name and price
+    },
+
+    productPriceL: {
+      fontSize: normalizeFontSize(20),
+      color: selectedTheme.textHighlight, // Highlight the price
+      fontFamily: selectedTheme.bodyFont,
     },
 
     storeLocation: {

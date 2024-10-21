@@ -5,11 +5,13 @@ import {
   GestureResponderEvent,
   StyleProp,
   ViewStyle,
+  View,
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { commonStyles } from '../styles/commonStyles'; // Import your style
 import { normalizeFontSize } from '../utils/responsive'; // Import for responsive text size
-import { theme as appTheme } from '../styles/theme'; // Import your theme and give it an alias to avoid conflicts
+import { theme as appTheme } from '../styles/theme'; // Import your theme
+import IconLib from './IconLib'; // Import IconLib
 
 interface CustomButtonProps {
   title: string;
@@ -22,6 +24,11 @@ interface CustomButtonProps {
   borderRadius?: number; // Optional borderRadius prop
   textSize?: number; // Optional textSize prop for font size
   borderColor?: string; // Optional borderColor prop
+  paddingVertical?: number; // Customizable vertical padding
+  paddingHorizontal?: number; // Customizable horizontal padding
+  iconName?: keyof typeof IconLib; // Optional icon on the left
+  iconSize?: number; // Optional icon size prop
+  iconColor?: string; // Optional icon color
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -30,11 +37,20 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   backgroundColor,
   color,
   disabled = false,
-  style = {},
+  style = {
+    margin: 5,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 15,
+    paddingLeft: 15,
+  },
   width = 'auto', // Default width is auto, can be overridden
   borderRadius = 15, // Default borderRadius is 15, can be overridden
-  textSize = 16, // Default text size, can be overridden
   borderColor, // Optional borderColor prop
+  iconName, // Optional icon from IconLib
+  iconColor, // Optional icon color
+  iconSize = 20, // Default icon size
+  textSize = 16, // Default text size, can be overridden
 }) => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);
@@ -42,34 +58,40 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   const buttonBackgroundColor = backgroundColor || selectedTheme.buttonPrimary;
   const buttonTextColor = color || selectedTheme.textPrimary;
-  const buttonBorderColor = borderColor || selectedTheme.buttonBorderPrimary; // Fallback to theme's button border color
+  const buttonBorderColor = borderColor || selectedTheme.buttonBorderPrimary;
+  const iconFinalColor = iconColor || buttonTextColor;
 
   return (
     <TouchableOpacity
       style={[
-        commonStyle.button,
         {
           backgroundColor: buttonBackgroundColor,
-          paddingVertical: 8,
           opacity: disabled ? 0.6 : 1,
           width, // Apply custom width
           borderRadius, // Apply custom borderRadius
-          borderColor: buttonBorderColor, // Apply custom borderColor
+          borderColor: buttonBorderColor, // Apply borderColor
           borderWidth: borderColor ? 1 : 0, // Only apply border if borderColor is provided
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center', // Center the icon and text inside the button
         },
-        style,
+        style, // Merge any additional styles passed
       ]}
       onPress={onPress}
       disabled={disabled}
       accessibilityLabel={title}
     >
+      {/* Render the optional icon on the left if provided */}
+      {iconName && (
+        <View style={{ marginRight: 8 }}>
+          {React.createElement(IconLib[iconName], { size: iconSize, color: iconFinalColor })}
+        </View>
+      )}
       <Text
-        style={[
-          {
-            color: buttonTextColor,
-            fontSize: normalizeFontSize(textSize), // Use dynamic text size
-          },
-        ]}
+        style={{
+          color: buttonTextColor,
+          fontSize: normalizeFontSize(textSize),
+        }}
       >
         {title}
       </Text>

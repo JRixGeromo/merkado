@@ -115,7 +115,7 @@ const RegistrationScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={[layoutStyle.shadowedContainer, layoutStyle.innerContainer]}>
+        <View style={[layoutStyle.container, layoutStyle.innerContainer]}>
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}

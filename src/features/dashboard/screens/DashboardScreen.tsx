@@ -80,9 +80,9 @@ const DashboardScreen = () => {
 
   // Dummy promo images array
   const promoImages = [
-    { imageUrl: 'https://via.placeholder.com/100x100' },
-    { imageUrl: 'https://via.placeholder.com/100x100' },
-    { imageUrl: 'https://via.placeholder.com/100x100' },
+    { imageUrl: 'https://picsum.photos/100/100?random=10' },
+    { imageUrl: 'https://picsum.photos/100/100?random=11' },
+    { imageUrl: 'https://picsum.photos/100/100?random=12' },
   ];
 
   // Dummy featured stores data
@@ -121,7 +121,7 @@ const DashboardScreen = () => {
     {
       id: '1',
       name: 'Beef Boneless',
-      description: 'Beef Boneless',
+      description: 'Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description',
       price: 500,
       distance: 'PH-03(32km)',
       imageUrl: 'https://picsum.photos/100/100?random=4',
