@@ -100,7 +100,7 @@ const ChatScreen = () => {
     >
       <View
         style={{
-          backgroundColor: msg.sender === 'user1' ? 'grey' : 'lightblue',
+          backgroundColor: msg.sender === 'user1' ? '#ede7b1' : 'lightblue',
           padding: 10,
           borderRadius: 10,
           marginBottom: 10,
