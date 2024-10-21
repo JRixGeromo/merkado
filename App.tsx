@@ -16,6 +16,7 @@ import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
+import ChatScreen from './src/features/chat/screens/ChatScreen';
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import AccountScreen from './src/features/account/screens/AccountScreen';
 import DropdownMenu from './src/components/DropdownMenu';
@@ -98,7 +99,7 @@ const App = () => {
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
       <Tab.Screen name="MyProducts" component={MyProductsScreen} />
-      <Tab.Screen name="Chat" component={DummyScreen} />
+      <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
   );
