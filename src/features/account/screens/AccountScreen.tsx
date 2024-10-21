@@ -67,7 +67,7 @@ const AccountScreen = () => {
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
         {/* Account Information Card */}
-        <View style={commonStyle.innerContainer}>
+        <View style={layoutStyle.innerContainer}>
           {/* <View style={commonStyle.card}>
             <View style={commonStyle.cardHeader}>
               <Icon

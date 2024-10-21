@@ -64,7 +64,7 @@ const SplashScreen = () => {
       {/* Custom loader */}
       <ActivityIndicator
         size="large"
-        color={selectedTheme.primary} // Use primary color directly from the theme
+        color={selectedTheme.textPrimary} // Use primary color directly from the theme
         style={commonStyle.loader}
       />
     </Box>
