@@ -119,9 +119,9 @@ const DetailsScreen: React.FC = () => {
   };
   const handleBuy = () => {
   };
-
+  const handleFollow = () => {
+  };
   
-
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View
@@ -194,40 +194,68 @@ const DetailsScreen: React.FC = () => {
           </View>
         </View>
 
-        <View style={layoutStyle.verticalSpacerS} />
-
-        <View style={layoutStyle.columnsInside}>
-          <View style={[layoutStyle.cols_75, commonStyle.lPaddingS]}>
-            {type === 'store' && item.location && (
+        {type === 'store' && item.location && (
+          <>
+          <View style={layoutStyle.verticalSpacerS} />
+          <View style={layoutStyle.columnsInside}>
+            <Text
+              style={[commonStyle.font12, commonStyle.lPaddingS, { color: selectedTheme.textSecondary }]}
+            >
+              {item.description}
+            </Text>
+          </View>
+          <View style={layoutStyle.verticalSpacerS} />
+          <View style={layoutStyle.columnsInside}>
+            <View style={[layoutStyle.cols_75, commonStyle.lPaddingS]}>
               <Text
                 style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
               >
                 {item.location}
               </Text>
-            )}
-            {type === 'product' && item.description && (
-              <Text
-                style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
-              >
-                {item.description}
-              </Text>
-            )}
-          </View>
-         
-          <View
-            style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS, {alignItems: 'flex-start'}]}
-          >
-            {type === 'product' &&  (
+            </View>
+            <View
+              style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS, {alignItems: 'flex-start'}]}
+            >
               <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                 {item.distance}
               </Text>
-            )}
+            </View>
           </View>
-        </View>
-
+          </>
+        )}
+        
+        {type === 'product' && (
+          <>
+          <View style={layoutStyle.verticalSpacerS} />
+          <View style={layoutStyle.columnsInside}>
+            <Text
+              style={[commonStyle.font12, commonStyle.lPaddingS, { color: selectedTheme.textSecondary }]}
+            >
+              {item.description}
+            </Text>
+          </View>
+          <View style={layoutStyle.verticalSpacerS} />
+          <View style={layoutStyle.columnsInside}>
+            <View style={[layoutStyle.cols_75, commonStyle.lPaddingS]}>
+              <Text
+                style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
+              >
+               {item.location}
+              </Text>
+            </View>
+          
+            <View
+              style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS, {alignItems: 'flex-start'}]}
+            >
+                <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
+                  {item.distance}
+                </Text>
+            </View>
+          </View>
+          </>
+        )}
 
         <View style={layoutStyle.verticalSpacerS} />
-
         <View style={layoutStyle.columnsInside}>
           <View style={[layoutStyle.cols_2, commonStyle.lPaddingS]}>
             {type === 'product' ? (
@@ -251,8 +279,24 @@ const DetailsScreen: React.FC = () => {
                   />
               </Text>
             ) : (
-              <Text style={[commonStyle.font14, { color: selectedTheme.textGray }]}>
-                {item.distance}
+              <Text>
+                  <CustomButton
+                    style={{
+                      margin: 5,
+                      paddingTop: 5,
+                      paddingBottom: 5,
+                      paddingRight: 10,
+                      paddingLeft: 10,
+                    }}
+                    title={t('Follow')} // Text inside the button
+                    onPress={handleFollow} // Function to handle the press event
+                    color={selectedTheme.textLight} // Text color, using theme values
+                    backgroundColor={selectedTheme.buttonInfo} // Button background color, using theme values
+                    borderRadius={2} // Set the border radius for rounded corners
+                    iconName="PersonAdd" // Icon from IconLib (Cart icon)
+                    iconSize={20} // Size of the Cart icon
+                    textSize={12} // Font size of the text inside the button
+                  />
               </Text>
             )}
           </View>

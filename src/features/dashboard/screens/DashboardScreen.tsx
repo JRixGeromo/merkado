@@ -31,6 +31,7 @@ export type Product = {
   description: string | null;
   distance: string;
   price: number;
+  location: string;
   imageUrl: string;
   rating: number;
   likes: number;
@@ -40,6 +41,7 @@ export type Product = {
 export type Store = {
   id: string;
   name: string;
+  description: string;
   distance: string;
   location: string;
   imageUrl: string;
@@ -90,6 +92,7 @@ const DashboardScreen = () => {
     {
       id: '1',
       name: "Trader Joe's",
+      description: 'Description',
       location: 'Springfield, CA',
       distance: 'PH-07(3km)',
       imageUrl: 'https://picsum.photos/100/100?random=1',
@@ -99,6 +102,7 @@ const DashboardScreen = () => {
     {
       id: '2',
       name: 'Costco',
+      description: 'Description',
       location: 'Walnut Creek, CA',
       distance: 'PH-10(31km)',
       imageUrl: 'https://picsum.photos/100/100?random=2',
@@ -108,6 +112,7 @@ const DashboardScreen = () => {
     {
       id: '3',
       name: 'Vons',
+      description: 'Description',
       location: 'Oakland, CA',
       distance: 'PH-05(23km)',
       imageUrl: 'https://picsum.photos/100/100?random=3',
@@ -123,6 +128,7 @@ const DashboardScreen = () => {
       name: 'Beef Boneless',
       description: 'Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description',
       price: 500,
+      location: 'Walnut Creek, CA',
       distance: 'PH-03(32km)',
       imageUrl: 'https://picsum.photos/100/100?random=4',
       rating: 4.6,
@@ -134,6 +140,7 @@ const DashboardScreen = () => {
       name: 'Milk Lakeland',
       description: 'Beef Boneless',
       price: 80,
+      location: 'Walnut Creek, CA',
       distance: 'PH-07(31km)',
       imageUrl: 'https://picsum.photos/100/100?random=5',
       rating: 4.0,
@@ -145,6 +152,7 @@ const DashboardScreen = () => {
       name: 'Simba Teff Flour',
       description: 'Beef Boneless',
       price: 120,
+      location: 'Walnut Creek, CA',
       distance: 'PH-10(43km)',
       imageUrl: 'https://picsum.photos/100/100?random=6',
       rating: 3.9,
