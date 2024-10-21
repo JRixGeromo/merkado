@@ -56,7 +56,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       iconColor: iconColor || selectedTheme.iconColorPrimary,
       textColor: textColor || selectedTheme.textSecondary,
       placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
-      inputBackgroundColor:  selectedTheme.inputBackgroundColor,
+      inputBackgroundColor:  customBackground || selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor, commonStyle]);
 
