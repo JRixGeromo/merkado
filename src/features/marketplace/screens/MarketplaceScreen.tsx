@@ -31,6 +31,7 @@ export type Product = {
   description: string | null;
   distance: string;
   price: number;
+  location: string;
   imageUrl: string;
   rating: number;
   likes: number;
@@ -72,6 +73,7 @@ const MarketplaceScreen = () => {
         name: 'Lipstick',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=1',
         rating: 4.5,
@@ -83,6 +85,7 @@ const MarketplaceScreen = () => {
         name: 'Foundation',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=2',
         rating: 4.2,
@@ -94,6 +97,7 @@ const MarketplaceScreen = () => {
         name: 'Eye Brow',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=3',
         rating: 4.2,
@@ -107,6 +111,7 @@ const MarketplaceScreen = () => {
         name: 'Coke',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=4',
         rating: 4.7,
@@ -118,6 +123,7 @@ const MarketplaceScreen = () => {
         name: 'Pepsi',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=5',
         rating: 4.6,
@@ -129,6 +135,7 @@ const MarketplaceScreen = () => {
         name: 'Beer',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=6',
         rating: 4.6,
@@ -142,6 +149,7 @@ const MarketplaceScreen = () => {
         name: 'Fried Chicken',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=7',
         rating: 4.8,
@@ -153,6 +161,7 @@ const MarketplaceScreen = () => {
         name: 'Pasta',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=8',
         rating: 4.5,
@@ -164,6 +173,7 @@ const MarketplaceScreen = () => {
         name: 'Lechon Baboy',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=9',
         rating: 4.6,
@@ -177,6 +187,7 @@ const MarketplaceScreen = () => {
         name: 'Chips',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=10',
         rating: 4.2,
@@ -188,6 +199,7 @@ const MarketplaceScreen = () => {
         name: 'Energy Bar',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=11',
         rating: 4.1,
@@ -199,6 +211,7 @@ const MarketplaceScreen = () => {
         name: 'Skyflakes',
         description: 'Beef Boneless',
         price: 500,
+        location: 'Walnut Creek, CA',
         distance: 'PH-03(32km)',
         imageUrl: 'https://picsum.photos/100/100?random=12',
         rating: 4.6,

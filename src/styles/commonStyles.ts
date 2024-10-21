@@ -262,9 +262,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Center all content horizontally
     },
 
-    productImageWrapper: {
+    cardImageWrapper: {
       width: '100%',
-      height: '40%', // Fixed height equivalent to 35% of productBox height
+      height: '33%', // Fixed height equivalent to 35% of productBox height
       position: 'relative',
     },
 

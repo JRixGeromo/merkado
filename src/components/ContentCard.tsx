@@ -54,7 +54,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
 
   return (
     <View style={[layoutStyle.shadowedContainer, commonStyle.productBox]}>
-      <View style={commonStyle.productImageWrapper}>
+      <View style={commonStyle.cardImageWrapper}>
         <Image source={{ uri: imageUrl }} style={commonStyle.productImage} />
         <TouchableOpacity
           style={commonStyle.goFullScreenButton}
@@ -100,7 +100,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           </Text>
         </View>
       </View>
-
+      <View style={layoutStyle.verticalSpacerS} />
       <View style={layoutStyle.columnsInsideFlex}>
         {buttonActions.map((action, index) => (
           <TouchableOpacity
