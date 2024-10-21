@@ -128,8 +128,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       position: 'absolute',
       bottom: 10,     // Adjust this value for vertical positioning
       right: 10,      // Adjust this value for horizontal positioning
-      padding: 5,     // Padding around the price text
+      paddingTop: 5,     // Padding around the price text
+      paddingBottom: 5,     // Padding around the price text
+      paddingLeft: 10,     // Padding around the price text
+      paddingRight: 10,     // Padding around the price text
       backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background for better readability
+      borderWidth: 0.5,
+      borderColor: selectedTheme.borderColorDark,
       borderRadius: 5, // Rounded corners
       zIndex: 2,      // Ensure it appears on top of other elements
     },

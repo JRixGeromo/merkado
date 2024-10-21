@@ -148,7 +148,7 @@ const DetailsScreen: React.FC = () => {
           {/* Price at Bottom-Right */}
           {type === 'product' && (
             <View style={commonStyle.priceContainer}>
-              <Text style={[commonStyle.font20, { color: selectedTheme.textHighlight }]}>
+              <Text style={[commonStyle.font20, { color: selectedTheme.textPriceBanner }]}>
                 ₱{item.price}
               </Text>
             </View>

@@ -7,6 +7,7 @@ export interface ThemeType {
   textBlack: string;
   textLight: string;
   textHighlight: string;
+  textPriceBanner: string;
   textLink: string;
   textGray: string;
 
@@ -78,6 +79,7 @@ const lightTheme: ThemeType = {
   textBlack: '#000000',
   textLight: '#ffffff',
   textHighlight: '#800e13',
+  textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#8d99ae',
 
@@ -148,7 +150,8 @@ const darkTheme: ThemeType = {
   textDark: '#66666e',
   textBlack: '#000000',
   textLight: '#ffffff',
-  textHighlight: '#f35b04',
+  textHighlight: '#f2bb05',
+  textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#8d99ae',
 
