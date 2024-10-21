@@ -578,6 +578,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textPrimary, // Use primary color from the theme
       marginTop: 10, // Add margin between the logo and the text
     },
+    slide: {
+      borderRadius: SHARED.borderRadius, // Rounded corners
+      overflow: 'hidden', // Ensure the content inside doesn't exceed the boundary
+      shadowColor: SHARED.shadow.color, // Apply shadow settings
+      shadowOffset: SHARED.shadow.offset,
+      shadowOpacity: SHARED.shadow.opacity,
+      shadowRadius: SHARED.shadow.radius,
+      elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
+      marginBottom: 20, // Space between slides
+    },
     ////
 
     font8: {
