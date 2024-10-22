@@ -23,7 +23,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: selectedTheme.fullBackgrounColor, // Theme-based background
+      backgroundColor: selectedTheme.fullBackgroundColor, // Theme-based background
       borderColor: 'transparent',
       borderWidth: 0,
       borderRadius: 0,

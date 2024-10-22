@@ -185,17 +185,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     replyContainer: {
-      marginLeft: 20,
+      marginLeft: 15,
       marginTop: 5,
       paddingLeft: 10,
     },
     replyInputWrapper: {
-      marginLeft: 20,
+      marginLeft: -10,
+      marginRight: -10,
       marginTop: 10,
     },
 
     commentFormContainer: {
-      backgroundColor: '#333',
       marginBottom: 10,
       padding: 12,
     },

@@ -23,6 +23,7 @@ interface CommentInputProps {
   onAddReaction: (reaction: string) => void; // Expect only emoji string here
   reactions: Reaction[];
   placeholder?: string;
+  backgroundColor?: string; // New background color prop
 }
 
 const CommentInput: React.FC<CommentInputProps> = ({
@@ -30,6 +31,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
   onAddReaction,
   reactions,
   placeholder = 'Write a comment...',
+  backgroundColor, // Added background color prop
 }) => {
   const [comment, setComment] = useState('');
   const [showReactionBar, setShowReactionBar] = useState(false);
@@ -58,7 +60,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
       style={[
         layoutStyle.rowsInside,
         commonStyle.commentFormContainer,
-        { backgroundColor: selectedTheme.formBackgrounColor },
+        { backgroundColor: backgroundColor || selectedTheme.formBackgroundColorPrimary }, // Use backgroundColor prop if provided
       ]}
     >
       <View

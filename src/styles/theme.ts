@@ -18,7 +18,8 @@ export interface ThemeType {
 
   fullBackgrounColor: string;
   fullContainerBackgrounColor: string;
-  formBackgrounColor: string;
+  formBackgroundColorPrimary: string;
+  formBackgroundColorSecondary: string;
 
   googleButtonColor: string;
   facebookButtonColor: string;
@@ -90,7 +91,8 @@ const lightTheme: ThemeType = {
 
   fullBackgrounColor: '#edede9',
   fullContainerBackgrounColor: '#ffffff',
-  formBackgrounColor: '#ebebeb',
+  formBackgroundColorPrimary: '#ebebeb',
+  formBackgroundColorSecondary: '#212529',
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
@@ -162,11 +164,12 @@ const darkTheme: ThemeType = {
 
   fullBackgrounColor: '#000000',
   fullContainerBackgrounColor: '#000000',
-  formBackgrounColor: '#1f2421',
+  formBackgroundColorPrimary: '#161616',
+  formBackgroundColorSecondary: '#070707',
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#111111',
+  inputBackgroundColor: '#161a1d',
 
   buttonPrimary: '#606c38',
   buttonSecondary: '#ffffff',

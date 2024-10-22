@@ -253,7 +253,7 @@ const DashboardScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, commonStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]} >
+      <View style={[layoutStyle.container, commonStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
         {/* Search Container */}
         <View style={layoutStyle.verticalSpacerM} />
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>

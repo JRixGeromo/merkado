@@ -110,7 +110,7 @@ const DetailsScreen: React.FC = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View
-      style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgrounColor }]}
+      style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]}
     >
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
@@ -434,6 +434,7 @@ const DetailsScreen: React.FC = () => {
                     onAddReaction={handleAddReaction}
                     reactions={reactions}
                     placeholder={'Write your reply...'}
+                    backgroundColor={selectedTheme.formBackgroundColorPrimary}
                   />
                 </View>
               )}
