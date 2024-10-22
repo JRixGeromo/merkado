@@ -17,11 +17,13 @@ import { theme as appTheme } from '../../../styles/theme';
 import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
 import ReactionBar from '../../../components/ReactionBar'; // Assuming ReactionBar is imported
+import { launchCamera } from 'react-native-image-picker';
 
 type Message = {
   id: number;
-  text: string;
+  text?: string; // Optional if the message has no text
   sender: string;
+  imageUri?: string; // Add an image URI for messages containing photos
 };
 
 type Avatar = {
@@ -54,16 +56,7 @@ const ChatScreen = () => {
     { id: 'user3', avatarUrl: 'https://randomuser.me/api/portraits/women/3.jpg', name: 'user3', unreadCount: 1 },
     { id: 'user4', avatarUrl: 'https://randomuser.me/api/portraits/men/4.jpg', name: 'user4', unreadCount: 0 },
     { id: 'user5', avatarUrl: 'https://randomuser.me/api/portraits/men/1.jpg', name: 'user5' },
-    { id: 'user6', avatarUrl: 'https://randomuser.me/api/portraits/men/2.jpg', name: 'user6' },
-    { id: 'user7', avatarUrl: 'https://randomuser.me/api/portraits/women/3.jpg', name: 'user7' },
-    { id: 'user8', avatarUrl: 'https://randomuser.me/api/portraits/men/4.jpg', name: 'user8' },
-    { id: 'user9', avatarUrl: 'https://randomuser.me/api/portraits/men/5.jpg', name: 'user9' },
-    { id: 'user10', avatarUrl: 'https://randomuser.me/api/portraits/men/6.jpg', name: 'user10' },
-    { id: 'user11', avatarUrl: 'https://randomuser.me/api/portraits/men/7.jpg', name: 'user11' },
-    { id: 'user12', avatarUrl: 'https://randomuser.me/api/portraits/men/8.jpg', name: 'user12' },
-    { id: 'user13', avatarUrl: 'https://randomuser.me/api/portraits/men/9.jpg', name: 'user13' },
-    { id: 'user14', avatarUrl: 'https://randomuser.me/api/portraits/men/10.jpg', name: 'user14' },
-    { id: 'user15', avatarUrl: 'https://randomuser.me/api/portraits/men/11.jpg', name: 'user15' },
+    // ... add more avatars if needed
   ];
 
   const scrollViewRef = useRef<ScrollView>(null);
@@ -78,7 +71,35 @@ const ChatScreen = () => {
     }
   };
 
-  // Scroll to the bottom whenever messages are updated
+  const sendPhoto = (imageUri: string) => {
+    setMessages(prevMessages => [
+      ...prevMessages,
+      { id: prevMessages.length + 1, imageUri, sender: 'user1' },
+    ]);
+  };
+
+  const takePhoto = () => {
+    launchCamera(
+      {
+        mediaType: 'photo',
+        includeBase64: false,
+      },
+      (response) => {
+        if (response?.assets && response.assets.length > 0) {
+          const photo = response.assets[0];
+  
+          // Check if the photo has a valid uri
+          if (photo.uri) {
+            sendPhoto(photo.uri); // Only send if the URI is valid
+          } else {
+            console.error("Photo URI is undefined");
+          }
+        }
+      }
+    );
+  };
+  
+
   useEffect(() => {
     scrollViewRef.current?.scrollToEnd({ animated: true });
   }, [messages]);
@@ -91,24 +112,28 @@ const ChatScreen = () => {
   const renderMessage = (msg: Message) => (
     <View
       key={msg.id}
-      style={[
-        layoutStyle.columnsInside,
-        commonStyle.rPaddingS,
-        commonStyle.lPaddingS,
-        { justifyContent: msg.sender === 'user1' ? 'flex-start' : 'flex-end' },
-      ]}
+      style={[layoutStyle.columnsInside, commonStyle.rPaddingS, commonStyle.lPaddingS, {
+        justifyContent: msg.sender === 'user1' ? 'flex-start' : 'flex-end',
+      }]}
     >
-      <View
-        style={{
-          backgroundColor: msg.sender === 'user1' ? '#ede7b1' : 'lightblue',
-          padding: 10,
-          borderRadius: 10,
-          marginBottom: 10,
-          maxWidth: '75%',
-        }}
-      >
-        <Text style={{ color: 'black' }}>{msg.text}</Text>
-      </View>
+      {msg.imageUri ? (
+        <Image
+          source={{ uri: msg.imageUri }}
+          style={{ width: 200, height: 200, borderRadius: 10, marginBottom: 10 }}
+        />
+      ) : (
+        <View
+          style={{
+            backgroundColor: msg.sender === 'user1' ? '#ede7b1' : 'lightblue',
+            padding: 10,
+            borderRadius: 10,
+            marginBottom: 10,
+            maxWidth: '75%',
+          }}
+        >
+          <Text style={{ color: 'black' }}>{msg.text}</Text>
+        </View>
+      )}
     </View>
   );
 
@@ -180,11 +205,10 @@ const ChatScreen = () => {
             <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           )}
-          <TouchableOpacity onPress={() => {/* Handle Camera Action */}} style={{ marginLeft: 10 }}>
+          <TouchableOpacity onPress={takePhoto} style={{ marginLeft: 10 }}>
             <IconLib.Camera_O size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
         </View>
-
 
         {showReactions && (
           <ReactionBar
@@ -192,6 +216,7 @@ const ChatScreen = () => {
             onReactionPress={(reaction) => appendEmojiToMessage(reaction.emoji)}
           />
         )}
+
         <View style={[styles.inputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
           <TextInput
             value={message}
@@ -204,7 +229,6 @@ const ChatScreen = () => {
           <TouchableOpacity onPress={sendMessage} style={commonStyle.chatSendButton}>
             <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
-
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -219,13 +243,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginBottom: 5,
     borderRadius: 25,
-  },
-  sendButton: {
-    marginLeft: 10,
-    borderRadius: 25,
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   unreadBadge: {
     position: 'absolute',
