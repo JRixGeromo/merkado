@@ -18,6 +18,8 @@ import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
 import ReactionBar from '../../../components/ReactionBar'; // Assuming ReactionBar is imported
 import { launchCamera } from 'react-native-image-picker';
+import { reactions } from '../../../constants/reactions';
+
 
 type Message = {
   id: number;
@@ -85,15 +87,19 @@ const ChatScreen = () => {
         includeBase64: false,
       },
       (response) => {
-        if (response?.assets && response.assets.length > 0) {
-          const photo = response.assets[0];
+        // Handle the case where the user cancels the camera
+        if (response.didCancel) {
+          console.log("User cancelled the camera");
+          return; // Early return if the user cancels
+        }
   
-          // Check if the photo has a valid uri
+        if (response.assets && response.assets.length > 0) {
+          const photo = response.assets[0];
           if (photo.uri) {
-            sendPhoto(photo.uri); // Only send if the URI is valid
-          } else {
-            console.error("Photo URI is undefined");
+            sendPhoto(photo.uri); // Call sendPhoto if the image is valid
           }
+        } else if (response.errorCode) {
+          console.error("Camera error: ", response.errorMessage); // Handle potential errors
         }
       }
     );
@@ -136,22 +142,6 @@ const ChatScreen = () => {
       )}
     </View>
   );
-
-  const reactions = [
-    { emoji: '❤️', label: 'LOVE' },
-    { emoji: '😃', label: 'HAPPY' },
-    { emoji: '😮', label: 'WOW' },
-    { emoji: '😢', label: 'SAD' },
-    { emoji: '😐', label: 'MEH' },
-    { emoji: '😡', label: 'ANGRY' },
-    { emoji: '👍', label: 'LIKE' },
-    { emoji: '👎', label: 'DISLIKE' },
-    { emoji: '🌶️', label: 'SPICY' },
-    { emoji: '🍬', label: 'SWEET' },
-    { emoji: '🍪', label: 'CRUNCHY' },
-    { emoji: '🧂', label: 'TOO_SALTY' },
-    { emoji: '🍭', label: 'TOO_SWEET' },
-  ];
 
   return (
     <KeyboardAvoidingView

@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
 import relativeTime from 'dayjs/plugin/relativeTime';
 import IconLib from '../../../components/IconLib'; // Import your Icon Library
+import { reactions } from '../../../constants/reactions';
 
 dayjs.extend(relativeTime);
 
@@ -93,22 +94,6 @@ const DetailsScreen: React.FC = () => {
       prevReplyingTo === commentId ? null : commentId,
     );
   };
-
-  const reactions = [
-    { emoji: '❤️', label: 'LOVE' },
-    { emoji: '😃', label: 'HAPPY' },
-    { emoji: '😮', label: 'WOW' },
-    { emoji: '😢', label: 'SAD' },
-    { emoji: '😐', label: 'MEH' },
-    { emoji: '😡', label: 'ANGRY' },
-    { emoji: '👍', label: 'LIKE' },
-    { emoji: '👎', label: 'DISLIKE' },
-    { emoji: '🌶️', label: 'SPICY' },
-    { emoji: '🍬', label: 'SWEET' },
-    { emoji: '🍪', label: 'CRUNCHY' },
-    { emoji: '🧂', label: 'TOO_SALTY' },
-    { emoji: '🍭', label: 'TOO_SWEET' },
-  ];
 
   const handleReplySend = (commentId: number, reply: string) => {
     setReplies(prevReplies => ({
