@@ -173,28 +173,18 @@ const ChatScreen = () => {
       </ScrollView>
 
       {/* Message Input */}
-      <View style={{ position: 'relative', backgroundColor: "#ccc", paddingTop: 8, paddingBottom: 8 }}>
-        <View style={[styles.inputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
-          <TextInput
-            value={message}
-            onChangeText={setMessage}
-            placeholder={t('type here ...')}
-            placeholderTextColor={selectedTheme.textSecondary}
-            style={[commonStyle.input, { flex: 1, color: selectedTheme.textPrimary }]}
-            onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
-          />
-          <TouchableOpacity onPress={sendMessage} style={commonStyle.chatSendButton}>
-            <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
+      <View style={{ position: 'relative', backgroundColor: selectedTheme.cardBackground, paddingTop: 8, paddingBottom: 8 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: 10, marginBottom: 10, marginRight: 5 }}>
+          {!showReactions && (
+          <TouchableOpacity onPress={() => setShowReactions(true)}>
+            <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />
+          </TouchableOpacity>
+          )}
+          <TouchableOpacity onPress={() => {/* Handle Camera Action */}} style={{ marginLeft: 10 }}>
+            <IconLib.Camera_O size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
         </View>
 
-        {!showReactions && (
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, marginTop: 5 }}>
-            <TouchableOpacity onPress={() => setShowReactions(true)}>
-              <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorPrimary} />
-            </TouchableOpacity>
-          </View>
-        )}
 
         {showReactions && (
           <ReactionBar
@@ -202,6 +192,20 @@ const ChatScreen = () => {
             onReactionPress={(reaction) => appendEmojiToMessage(reaction.emoji)}
           />
         )}
+        <View style={[styles.inputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
+          <TextInput
+            value={message}
+            onChangeText={setMessage}
+            placeholder={t('type here ...')}
+            placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+            style={[commonStyle.input, commonStyle.font14, { flex: 1, color: selectedTheme.textPrimary }]}
+            onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
+          />
+          <TouchableOpacity onPress={sendMessage} style={commonStyle.chatSendButton}>
+            <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
+          </TouchableOpacity>
+
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

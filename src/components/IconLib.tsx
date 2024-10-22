@@ -98,7 +98,8 @@ const IconLib = {
   Send_O: (props: IconProps) => <CustomIcon name="send-outline" {...props} />,
   
   Settings_O: (props: IconProps) => <CustomIcon name="settings-outline" {...props} />,
-  
+  Camera_O: (props: IconProps) => <CustomIcon name="camera-outline" {...props} />,
+
   // FontAwesome Icons using the "fa" type
   Google: (props: IconProps) => <CustomIcon name="google" {...props} iconType="fa" />,
   Fb: (props: IconProps) => <CustomIcon name="facebook" {...props} iconType="fa" />,
