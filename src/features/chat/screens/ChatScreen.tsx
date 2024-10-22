@@ -177,8 +177,8 @@ const ChatScreen = () => {
                 />
                 {/* Display unread message badge */}
                 {(avatar.unreadCount ?? 0) > 0 && (
-                <View style={styles.unreadBadge}>
-                    <Text style={styles.unreadText}>{avatar.unreadCount}</Text>
+                <View style={commonStyle.unreadBadge}>
+                    <Text style={commonStyle.unreadText}>{avatar.unreadCount}</Text>
                 </View>
                 )}
               </TouchableOpacity>
@@ -198,8 +198,8 @@ const ChatScreen = () => {
       </ScrollView>
 
       {/* Message Input */}
-      <View style={{ position: 'relative', backgroundColor: selectedTheme.cardBackground, paddingTop: 8, paddingBottom: 8 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: 10, marginBottom: 10, marginRight: 5 }}>
+      <View style={commonStyle.chatMessagesContainer }>
+        <View style={commonStyle.chatInputIconsContainer}>
           {!showReactions && (
           <TouchableOpacity onPress={() => setShowReactions(true)}>
             <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />
@@ -217,7 +217,7 @@ const ChatScreen = () => {
           />
         )}
 
-        <View style={[styles.inputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
+        <View style={[commonStyle.chatInputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
           <TextInput
             value={message}
             onChangeText={setMessage}
@@ -234,32 +234,5 @@ const ChatScreen = () => {
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    marginHorizontal: 10,
-    marginBottom: 5,
-    borderRadius: 25,
-  },
-  unreadBadge: {
-    position: 'absolute',
-    top: -5,
-    right: -5,
-    backgroundColor: 'red',
-    borderRadius: 10,
-    width: 20,
-    height: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  unreadText: {
-    color: 'white',
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-});
 
 export default ChatScreen;

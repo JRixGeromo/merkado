@@ -689,6 +689,45 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderRadius: 20,
       marginBottom: 10,
     },
+
+    chatMessagesContainer: {
+      position: 'relative', 
+      backgroundColor: selectedTheme.cardBackground, 
+      paddingTop: 8, 
+      paddingBottom: 8,
+    },
+
+    chatInputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 10,
+      marginHorizontal: 10,
+      marginBottom: 5,
+      borderRadius: 25,
+    },
+    chatInputIconsContainer: {
+      flexDirection: 'row', 
+      justifyContent: 'flex-end', 
+      paddingHorizontal: 10, 
+      marginBottom: 10, 
+      marginRight: 5
+    },
+    unreadBadge: {
+      position: 'absolute',
+      top: -5,
+      right: -5,
+      backgroundColor: 'red',
+      borderRadius: 10,
+      width: 20,
+      height: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    unreadText: {
+      color: 'white',
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
     ////
 
     font8: {
