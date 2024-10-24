@@ -9,6 +9,9 @@ import { useTranslation } from 'react-i18next';
 import IconLib from '../../../components/IconLib';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
+import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 
 // Define the cart item interface
 interface CartItem {
@@ -40,6 +43,8 @@ const cartItems: CartItem[] = [
 
 
 const CartScreen: React.FC = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
@@ -63,6 +68,10 @@ const CartScreen: React.FC = () => {
   // Calculate total price
   const calculateTotal = (): number => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const handleProceedToCheckout = () => {
+    navigation.navigate('CheckoutScreen');
   };
 
   // Type for rendering each item in FlatList
@@ -97,9 +106,16 @@ const CartScreen: React.FC = () => {
         <Text style={[styles.totalText, { color: selectedTheme.textPrimary }]}>Total:</Text>
         <Text style={[styles.totalPrice, { color: selectedTheme.textPrimary }]}>${calculateTotal()}</Text>
       </View>
-      <TouchableOpacity style={[styles.checkoutButton, { backgroundColor: selectedTheme.buttonBorderPrimary }]}>
+      {/* <TouchableOpacity style={[styles.checkoutButton, { backgroundColor: selectedTheme.buttonBorderPrimary }]}>
         <Text style={[styles.checkoutText, { color: selectedTheme.textPrimary }]}>Proceed to Checkout</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+      <View style={styles.container}>
+        {/* Other cart screen elements */}
+        <TouchableOpacity onPress={handleProceedToCheckout} style={styles.checkoutButton}>
+          <Text style={styles.checkoutText}>Proceed to Checkout</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
