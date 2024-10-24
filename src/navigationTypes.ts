@@ -28,6 +28,7 @@ export type RootStackParamList = {
   SocialAccountsScreen: undefined;
   HelpCenterScreen: undefined;
   DetailsScreen: { item: Store | Product; type: 'store' | 'product' }; // Updated line
+  CartScreen: undefined;
   LogoutScreen: undefined;
 };
 

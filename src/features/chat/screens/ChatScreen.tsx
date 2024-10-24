@@ -157,13 +157,7 @@ const ChatScreen = () => {
               <TouchableOpacity>
                 <Image
                   source={{ uri: avatar.avatarUrl }}
-                  style={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: 25,
-                    borderWidth: 2,
-                    borderColor: selectedTheme.textPrimary,
-                  }}
+                  style={commonStyle.chatAvatar}
                 />
                 {/* Display unread message badge */}
                 {(avatar.unreadCount ?? 0) > 0 && (

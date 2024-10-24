@@ -17,6 +17,7 @@ import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScr
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
 import ChatScreen from './src/features/chat/screens/ChatScreen';
+import CartScreen from './src/features/cart/screens/CartScreen';
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import AccountScreen from './src/features/account/screens/AccountScreen';
 import DropdownMenu from './src/components/DropdownMenu';
@@ -124,7 +125,7 @@ const App = () => {
           component={RegistrationScreen}
           options={{
             headerTitle: 'Register',
-            headerStyle: { backgroundColor: selectedTheme.fullBackgrounColor },
+            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -138,7 +139,16 @@ const App = () => {
           component={DetailsScreen}
           options={{
             headerTitle: 'Details',
-            headerStyle: { backgroundColor: selectedTheme.fullBackgrounColor },
+            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
+            headerTintColor: selectedTheme.textPrimary,
+          }}
+        />
+        <Stack.Screen
+          name="CartScreen"
+          component={CartScreen}
+          options={{
+            headerTitle: 'Cart',
+            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />

@@ -597,6 +597,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     ////
     // CHAT
     ////
+    chatAvatar: {
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      borderWidth: 2,
+      borderColor: selectedTheme.textPrimary,
+    },
 
     chatSendButton: {
       marginLeft: 10,
@@ -669,24 +676,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     font40: {
       fontSize: normalizeFontSize(40),
     },
-
-    
-    // rightAlignedItem: {
-    //   alignItems: 'flex-end',
-    // },
-
-    // rightAlignedItems: {
-    //   flexDirection: 'row',
-    //   justifyContent: 'flex-end', // Use for row-based right alignment
-    //   alignItems: 'center', // Use to center items vertically
-    // },
-
-    // leftAlignedItems: {
-    //   flexDirection: 'row',
-    //   justifyContent: 'flex-start',
-    //   alignItems: 'center',
-    // },
-
 
     //////////
    
