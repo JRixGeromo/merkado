@@ -47,7 +47,7 @@ const SplashScreen = () => {
   }, [isAuthenticated, navigation]);
 
   return (
-    <Box style={commonStyle.splashContainer}>
+    <View style={commonStyle.splashContainer}>
       <Animated.View
         style={[
           { opacity: fadeAnim },
@@ -67,7 +67,7 @@ const SplashScreen = () => {
         color={selectedTheme.textPrimary} // Use primary color directly from the theme
         style={commonStyle.loader}
       />
-    </Box>
+    </View>
   );
 };
 

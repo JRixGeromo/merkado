@@ -62,7 +62,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     /* One row with columns inside */
-    /* One row with columns inside */
     columnsInsideFlex: {
       flexDirection: 'row',
     },
@@ -92,6 +91,9 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     cols_75: {
       width: '75%',
     },
+    
+    
+    
     ////
     cols_40: {
       width: '40%',
@@ -106,6 +108,22 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     cols_30: {
       width: '30%',
     },
+
+    ////
+
+    alignLeft: {
+      justifyContent: 'flex-start', // Align items to the left
+      flexDirection: 'row',
+    },
+    alignCenter: {
+      justifyContent: 'center', // Center the items
+      flexDirection: 'row',
+    },
+    alignRight: {
+      justifyContent: 'flex-end', // Align items to the right
+      flexDirection: 'row',
+    },
+
     ////
 
     dividerWrapper: {

@@ -93,7 +93,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
       <View
         style={[
           layoutStyle.columnsInside,
-          commonStyle.leftAlignedItems,
+          layoutStyle.alignLeft,
           { paddingTop: 10 },
         ]}
       >

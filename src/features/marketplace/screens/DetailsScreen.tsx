@@ -150,7 +150,7 @@ const DetailsScreen: React.FC = () => {
               </View>
             )}
           </View>
-          <View style={[layoutStyle.cols_2, commonStyle.rightAlignedItem, commonStyle.rPaddingS]}>
+          <View style={[layoutStyle.cols_2, layoutStyle.alignRight, commonStyle.rPaddingS]}>
             <Text
               style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}
             >
@@ -170,7 +170,7 @@ const DetailsScreen: React.FC = () => {
             </Text>
           </View>
           <View
-            style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS]}
+            style={[layoutStyle.cols_25, layoutStyle.alignRight, commonStyle.rPaddingS]}
           >
             <IconLib.Star size={20} color="gold" />
             <Text style={[commonStyle.font12, { color: selectedTheme.textSecondary }]}>
@@ -199,7 +199,7 @@ const DetailsScreen: React.FC = () => {
               </Text>
             </View>
             <View
-              style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS, {alignItems: 'flex-start'}]}
+              style={[layoutStyle.cols_25, layoutStyle.alignRight, commonStyle.rPaddingS]}
             >
               <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                 {item.distance}
@@ -230,7 +230,7 @@ const DetailsScreen: React.FC = () => {
             </View>
           
             <View
-              style={[layoutStyle.cols_25, commonStyle.rightAlignedItems, commonStyle.rPaddingS, {alignItems: 'flex-start'}]}
+              style={[layoutStyle.cols_25, layoutStyle.alignRight, commonStyle.rPaddingS ]}
             >
                 <Text style={[commonStyle.font12, { color: selectedTheme.textGray }]}>
                   {item.distance}
@@ -287,7 +287,7 @@ const DetailsScreen: React.FC = () => {
           </View>
 
           <View
-            style={[layoutStyle.cols_2, commonStyle.rightAlignedItems, { flexDirection: 'row' }]}
+            style={[layoutStyle.cols_2, layoutStyle.alignRight, { flexDirection: 'row' }]}
           >
             <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
               <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} style={commonStyle.rPaddingS} />

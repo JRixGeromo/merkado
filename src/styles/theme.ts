@@ -16,8 +16,8 @@ export interface ThemeType {
   borderColorGray: string;
   borderColorDark: string;
 
-  fullBackgrounColor: string;
-  fullContainerBackgrounColor: string;
+  fullBackgroundColor: string;
+  fullContainerBackgroundColor: string;
   formBackgroundColorPrimary: string;
   formBackgroundColorSecondary: string;
 
@@ -89,8 +89,8 @@ const lightTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#343a40',
 
-  fullBackgrounColor: '#edede9',
-  fullContainerBackgrounColor: '#ffffff',
+  fullBackgroundColor: '#edede9',
+  fullContainerBackgroundColor: '#ffffff',
   formBackgroundColorPrimary: '#ebebeb',
   formBackgroundColorSecondary: '#212529',
 
@@ -162,8 +162,8 @@ const darkTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#e6e6e9',
 
-  fullBackgrounColor: '#000000',
-  fullContainerBackgrounColor: '#000000',
+  fullBackgroundColor: '#000000',
+  fullContainerBackgroundColor: '#000000',
   formBackgroundColorPrimary: '#161616',
   formBackgroundColorSecondary: '#070707',
 

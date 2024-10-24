@@ -145,7 +145,7 @@ const ChatScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: selectedTheme.fullContainerBackgrounColor }}
+      style={{ flex: 1, backgroundColor: selectedTheme.fullContainerBackgroundColor }}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={80}
     >
@@ -189,7 +189,11 @@ const ChatScreen = () => {
 
       {/* Message Input */}
       <View style={commonStyle.chatMessagesContainer }>
-        <View style={commonStyle.chatInputIconsContainer}>
+        <View style={[layoutStyle.alignRight, {
+            paddingHorizontal: 10, 
+            marginBottom: 10, 
+            marginRight: 5
+        }]}>
           {!showReactions && (
           <TouchableOpacity onPress={() => setShowReactions(true)}>
             <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />

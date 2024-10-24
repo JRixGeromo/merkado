@@ -21,16 +21,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
-    rightAlignedItem: {
-      alignItems: 'flex-end',
-    },
-
-    rightAlignedItems: {
-      flexDirection: 'row',
-      justifyContent: 'flex-end', // Use for row-based right alignment
-      alignItems: 'center', // Use to center items vertically
-    },
-
 
     contentContainer: {
       justifyContent: 'flex-start', // Align content to the top of the container
@@ -38,11 +28,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       width: '100%',
     },
 
-    leftAlignedItems: {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-    },
     
     // padding
     rlPaddingS: {
@@ -612,82 +597,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     ////
     // CHAT
     ////
-    mainChatContainer: {
-      flexDirection: 'row', // Ensures the chat history is side by side with the chat section
-      flex: 1,
-    },
-    chatHistoryListContainer: {
-      width: 60, // Fixed width for the chat history section
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      backgroundColor: selectedTheme.cardBackground, // Background color for the sidebar
-      paddingVertical: 10,
-      position: 'absolute', // Fix chat history to the right side
-      right: 0,
-      top: 0,
-      bottom: 50, // Adjust for the chat input
-    },
-    chatSection: {
-      flex: 1, // Chat section takes the remaining space
-      justifyContent: 'flex-end',
-      paddingRight: 70, // To make space for the fixed chat history section
-    },
-    chatContainer: {
-      flexGrow: 1,
-      paddingHorizontal: 10,
-      justifyContent: 'flex-end', // Chat bubbles aligned at the bottom
-    },
-    messageContainer: {
-      marginVertical: 5,
-      maxWidth: '80%',
-      borderRadius: 10,
-      padding: 10,
-    },
-    myMessageContainer: {
-      backgroundColor: selectedTheme.buttonPrimary,
-      alignSelf: 'flex-end',
-    },
-    otherMessageContainer: {
-      backgroundColor: selectedTheme.cardBackground,
-      alignSelf: 'flex-start',
-    },
-    messageText: {
-      fontSize: 14,
-    },
-    myMessageText: {
-      color: selectedTheme.textLight,
-    },
-    otherMessageText: {
-      color: selectedTheme.textPrimary,
-    },
-    inputArea: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: 10,
-      backgroundColor: selectedTheme.cardBackground,
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0, // Ensure the input takes full width
-    },
-    textInput: {
-      flex: 1,
-      paddingHorizontal: 10,
-      backgroundColor: selectedTheme.inputBackgroundColor,
-      color: selectedTheme.textPrimary,
-      borderRadius: 20,
-    },
+
     chatSendButton: {
       marginLeft: 10,
-    },
-    chatHistoryContainer: {
-      alignItems: 'center',
-    },
-    chatHistoryAvatar: {
-      width: 40,
-      height: 40,
-      borderRadius: 20,
-      marginBottom: 10,
     },
 
     chatMessagesContainer: {
@@ -705,13 +617,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 5,
       borderRadius: 25,
     },
-    chatInputIconsContainer: {
-      flexDirection: 'row', 
-      justifyContent: 'flex-end', 
-      paddingHorizontal: 10, 
-      marginBottom: 10, 
-      marginRight: 5
-    },
+
     unreadBadge: {
       position: 'absolute',
       top: -5,
@@ -763,6 +669,24 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     font40: {
       fontSize: normalizeFontSize(40),
     },
+
+    
+    // rightAlignedItem: {
+    //   alignItems: 'flex-end',
+    // },
+
+    // rightAlignedItems: {
+    //   flexDirection: 'row',
+    //   justifyContent: 'flex-end', // Use for row-based right alignment
+    //   alignItems: 'center', // Use to center items vertically
+    // },
+
+    // leftAlignedItems: {
+    //   flexDirection: 'row',
+    //   justifyContent: 'flex-start',
+    //   alignItems: 'center',
+    // },
+
 
     //////////
    
