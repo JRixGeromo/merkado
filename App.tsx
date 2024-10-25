@@ -130,7 +130,7 @@ const App = () => {
           component={RegistrationScreen}
           options={{
             headerTitle: 'Register',
-            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -144,7 +144,7 @@ const App = () => {
           component={DetailsScreen}
           options={{
             headerTitle: 'Details',
-            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -153,7 +153,7 @@ const App = () => {
           component={CartScreen}
           options={{
             headerTitle: 'Cart',
-            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -162,7 +162,7 @@ const App = () => {
           component={CheckoutScreen}
           options={{
             headerTitle: 'Checkout',
-            headerStyle: { backgroundColor: selectedTheme.fullBackgroundColor },
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />

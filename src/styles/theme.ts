@@ -47,6 +47,7 @@ export interface ThemeType {
   buttonBorderGray: string;
   buttonBorderLight: string;
 
+  tabHeaderBackgroundColor: string;
   tabBarBackgroundColor: string;
   commentBackgroundColor: string;
 
@@ -120,6 +121,7 @@ const lightTheme: ThemeType = {
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
 
+  tabHeaderBackgroundColor: '#ffffff',
   tabBarBackgroundColor: '#ffffff',
   commentBackgroundColor: '#ffffff',
 
@@ -193,6 +195,7 @@ const darkTheme: ThemeType = {
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
 
+  tabHeaderBackgroundColor: '#ffffff',
   tabBarBackgroundColor: '#333533',
   commentBackgroundColor: '#161616',
 
