@@ -443,10 +443,11 @@ const DetailsScreen: React.FC = () => {
               <CustomButton
                   title={'Reply'} // No text, as you're only displaying an icon
                   onPress={() => handleReplyToggle(comment.id)}
-                  backgroundColor={selectedTheme.buttonDark} // Assuming you want only the icon and no background
+                  backgroundColor={selectedTheme.buttonLight} // Assuming you want only the icon and no background
                   width={50} // Default width is auto, can be overridden
-                  color={selectedTheme.textGray} // Set the icon color
+                  color={selectedTheme.textSecondary} // Set the icon color
                   borderRadius={0} // Default borderRadius is 15, can be overridden
+                  borderColor={selectedTheme.lineBorderColor}
                   textSize={12} // Default text size, can be overridden
                   style={{
                     marginTop: 5,

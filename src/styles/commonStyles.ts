@@ -127,7 +127,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingBottom: 0,
       paddingLeft: 10,
       paddingRight: 10,
-      backgroundColor: selectedTheme.cardBackground, // Use theme background color
+      backgroundColor: selectedTheme.inputBackgroundColor, // Use theme background color
       borderRadius: 30, // Rounded border for the search bar
       borderWidth: 0.5,
       borderColor: selectedTheme.buttonBorderPrimary, // Add border using theme color
@@ -141,7 +141,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderWidth: 0, // No extra border inside the input
       paddingLeft: 0, // Padding inside the search input
       borderRadius: 20, // Rounded corners inside the search input
-      backgroundColor: selectedTheme.cardBackground, // Background color of the input
+      backgroundColor: selectedTheme.inputBackgroundColor, // Background color of the input
       color: selectedTheme.textPrimary, // Text color from theme
     },
     productBox: {

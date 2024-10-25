@@ -108,7 +108,7 @@ const lightTheme: ThemeType = {
   buttonError: '#ba181b',
   buttonDanger: '#ba181b',
   buttonDisabled: '#b8bdb5',
-  buttonDark: '#ced4da',
+  buttonDark: '#46494c',
   buttonBlack: '#000000',
   buttonLight: '#ffffff',
   buttonHighlight: '#f9c74f',
