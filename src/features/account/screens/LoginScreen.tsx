@@ -176,21 +176,25 @@ const LoginScreen = () => {
               width: '80%',
             }}
           >
-            <TouchableOpacity
-              style={[commonStyle.socialButton, commonStyle.googleButton]}
-              onPress={() => console.log('Google Login Pressed')}
-            >
-              <IconLib.Google size={20} color={selectedTheme.textLight} style={{ marginRight: 10 }} />
-              <Text style={commonStyle.socialButtonText}>{t('google')}</Text>
-            </TouchableOpacity>
 
-            <TouchableOpacity
-              style={[commonStyle.socialButton, commonStyle.facebookButton]}
+            <CustomButton
+              title={t('google')}
+              onPress={() => console.log('Google Login Pressed')}
+              color={selectedTheme.textLight}
+              backgroundColor={selectedTheme.googleButtonColor}
+              borderRadius={2} // You can set this dynamically too
+              iconName={'Google'}
+            />
+
+            <CustomButton
+              title={t('facebook')}
               onPress={() => console.log('Facebook Login Pressed')}
-            >
-              <IconLib.Fb size={20} color={selectedTheme.textLight} style={{ marginRight: 10 }} />
-              <Text style={commonStyle.socialButtonText}>{t('facebook')}</Text>
-            </TouchableOpacity>
+              color={selectedTheme.textLight}
+              backgroundColor={selectedTheme.facebookButtonColor}
+              borderRadius={2} // You can set this dynamically too
+              iconName={'Fb'}
+            />
+
           </View>
 
           <TouchableOpacity onPress={navigateToRegister}>

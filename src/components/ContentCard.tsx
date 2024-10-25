@@ -5,6 +5,7 @@ import { commonStyles } from '../styles/commonStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
+import CustomButton from './CustomButton';
 
 interface ContentCardProps {
   type: 'store' | 'product' | 'featured' | 'onSale'; // Define types of items
@@ -101,16 +102,20 @@ const ContentCard: React.FC<ContentCardProps> = ({
         </View>
       </View>
       <View style={layoutStyle.verticalSpacerS} />
+
       <View style={layoutStyle.columnsInsideFlex}>
         {buttonActions.map((action, index) => (
-          <TouchableOpacity
+          <CustomButton
             key={index}
-            style={[layoutStyle.cols_2, commonStyle.cardButton, action.buttonStyle]}
+            title={''} // No text, as you're only displaying an icon
             onPress={action.onPress}
-          >
-            {/* Use the renderIcon function to dynamically render icons */}
-            {renderIcon(action.iconName as keyof typeof IconLib, 20, selectedTheme.textLight)}
-          </TouchableOpacity>
+            backgroundColor="transparent" // Assuming you want only the icon and no background
+            iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
+            iconColor={selectedTheme.textLight} // Set the icon color
+            iconSize={20} // Set the icon size
+            style={[layoutStyle.cols_2, commonStyle.cardButton, action.buttonStyle]} // Apply the button styles
+            borderRadius={0} // Default borderRadius is 15, can be overridden
+          />
         ))}
       </View>
     </View>

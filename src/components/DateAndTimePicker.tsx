@@ -11,10 +11,12 @@ import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { commonStyles } from '../styles/commonStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
+import CustomButton from './CustomButton';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { theme as appTheme } from '../styles/theme';
 import { normalizeFontSize } from '../utils/responsive';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 interface DateAndTimePickerProps {
   onDateChange: (date: Date) => void;
@@ -62,6 +64,8 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
+
+  const { t } = useTranslation(); // Initialize translation
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
@@ -158,21 +162,13 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                   calendarBackground: selectedTheme.cardBackground, // Set background color for the calendar from the theme
                 }}
               />
-              <TouchableOpacity
-                onPress={() => setShowCalendar(false)} // Close calendar
-                style={{ marginTop: 20, alignItems: 'center' }}
-                accessibilityLabel="Close calendar"
-              >
-                <Text style={commonStyle.modalText}>Close</Text>
-              </TouchableOpacity>
-{/* 
               <CustomButton
                 title={t('Close')}
                 onPress={() => setShowCalendar(false)} // Close calendar
                 backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
                 borderRadius={2} // You can set this dynamically too
                 color={selectedTheme.textLight}
-              /> */}
+              />
               
             </View>
           </View>
