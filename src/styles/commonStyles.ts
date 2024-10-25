@@ -89,6 +89,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'flex-start',
       position: 'relative', // Necessary for positioning thumbs-up icon
       paddingRight: 40, // Create space for the thumbs-up icon
+      marginBottom: 10, // Create space for the thumbs-up icon
     },
 
     commentTextWrapper: {
@@ -113,7 +114,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
     commentFormContainer: {
-      marginBottom: 10,
+      marginBottom: 2,
       padding: 12,
     },
 

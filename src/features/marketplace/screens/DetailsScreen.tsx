@@ -440,11 +440,23 @@ const DetailsScreen: React.FC = () => {
               )}
 
               {/* Reply Button */}
-              <TouchableOpacity onPress={() => handleReplyToggle(comment.id)}>
-                <Text style={{ color: selectedTheme.textGray, marginTop: 5 }}>
-                  Reply
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                  title={'Reply'} // No text, as you're only displaying an icon
+                  onPress={() => handleReplyToggle(comment.id)}
+                  backgroundColor={selectedTheme.buttonDark} // Assuming you want only the icon and no background
+                  width={50} // Default width is auto, can be overridden
+                  color={selectedTheme.textSecondary} // Set the icon color
+                  borderRadius={0} // Default borderRadius is 15, can be overridden
+                  textSize={12} // Default text size, can be overridden
+                  style={{
+                    marginTop: 5,
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingRight: 0,
+                    paddingLeft: 0,
+                  }}
+                />
+                
               {/* End: Reply codes */}
             </View>
           ))}

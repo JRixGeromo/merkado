@@ -179,7 +179,7 @@ const darkTheme: ThemeType = {
   buttonError: '#ba181b',
   buttonDanger: '#ba181b',
   buttonDisabled: '#b8bdb5',
-  buttonDark: '#5e503f',
+  buttonDark: '#343a40',
   buttonBlack: '#000000',
   buttonLight: '#ffffff',
   buttonHighlight: '#f9c74f',
