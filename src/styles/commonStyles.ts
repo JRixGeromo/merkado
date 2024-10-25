@@ -526,6 +526,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
       marginBottom: 20, // Space between slides
     },
+    
+    ////
+    reactionBar: {
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      paddingVertical: 5,
+    },
+
     ////
     // CHAT
     ////

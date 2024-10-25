@@ -33,17 +33,9 @@ interface CustomButtonProps {
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   title,
-  onPress,
   backgroundColor,
   color,
   disabled = false,
-  style = {
-    margin: 5,
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingRight: 15,
-    paddingLeft: 15,
-  },
   width = 'auto', // Default width is auto, can be overridden
   borderRadius = 15, // Default borderRadius is 15, can be overridden
   borderColor, // Optional borderColor prop
@@ -51,6 +43,14 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   iconColor, // Optional icon color
   iconSize = 20, // Default icon size
   textSize = 16, // Default text size, can be overridden
+  style = {
+    margin: 5,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 15,
+    paddingLeft: 15,
+  },
+  onPress,
 }) => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
   const commonStyle = commonStyles(theme);

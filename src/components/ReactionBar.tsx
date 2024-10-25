@@ -1,5 +1,9 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
+import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { layoutStyles } from '../styles/layoutStyles';
+import { theme as appTheme } from '../styles/theme';
 
 interface Reaction {
   emoji: string;
@@ -15,8 +19,16 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
   reactions,
   onReactionPress,
 }) => {
+
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
+
+
   return (
-    <ScrollView horizontal={true} contentContainerStyle={styles.reactionBar}>
+    <ScrollView horizontal={true} contentContainerStyle={layoutStyle.alignLeft}>
       {reactions.map(reaction => (
         <TouchableOpacity
           key={reaction.label}
@@ -30,13 +42,5 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  reactionBar: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    paddingVertical: 5,
-  },
-});
 
 export default ReactionBar;

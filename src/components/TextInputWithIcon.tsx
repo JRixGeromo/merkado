@@ -11,7 +11,6 @@ interface TextInputWithIconProps {
   placeholder: string;
   iconName: keyof typeof IconLib; // Ensure it matches the key of IconLib
   value?: string; // Optional for cases like date picker
-  onChangeText?: (text: string) => void; // Make this optional
   secureTextEntry?: boolean;
   placeholderTextColor?: string;
   iconSize?: number;
@@ -21,15 +20,15 @@ interface TextInputWithIconProps {
   textColor?: string;
   inputBackgroundColor?: string;
   placeholderFontSize?: number;
-  onFocus?: () => void; // Make sure this prop exists
   editable?: boolean;
+  onFocus?: () => void; // Make sure this prop exists
+  onChangeText?: (text: string) => void; // Make this optional
 }
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   placeholder,
   iconName, // Dynamically refer to the icon name in IconLib
   value,
-  onChangeText,
   secureTextEntry = false,
   placeholderTextColor,
   iconSize = normalizeFontSize(20),
@@ -39,8 +38,9 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   textColor,
   inputBackgroundColor,
   placeholderFontSize = 14, // Default placeholder font size
-  onFocus, // Destructure onFocus
   editable = true, // Set editable as true by default
+  onFocus, // Destructure onFocus
+  onChangeText,
 }) => {
   
   const themeType = useAppSelector(state => state.theme.theme);
