@@ -1,6 +1,8 @@
-const path = require('path');
+import path from 'path';
+import { Configuration } from 'webpack';
+import 'webpack-dev-server'; // Import this for devServer types
 
-module.exports = {
+const config: Configuration = {
   entry: './index.web.tsx',
   output: {
     filename: 'bundle.js',
@@ -9,7 +11,7 @@ module.exports = {
   resolve: {
     alias: {
       'react-native$': 'react-native-web',
-      'react-native-vector-icons$': 'react-native-vector-icons/dist/index.js', // Handle react-native-vector-icons
+      'react-native-vector-icons$': 'react-native-vector-icons/dist/index.js',
     },
     extensions: ['.web.js', '.js', '.jsx', '.ts', '.tsx', '.json'],
   },
@@ -20,40 +22,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript',
-            ],
-            plugins: [
-              ['@babel/plugin-transform-class-properties', { loose: true }],
-              ['@babel/plugin-transform-private-methods', { loose: true }],
-              [
-                '@babel/plugin-transform-private-property-in-object',
-                { loose: true },
-              ],
-            ],
-          },
-        },
-      },
-      {
-        test: /\.js$/, // Handle normal JavaScript files
-        exclude:
-          /node_modules\/(?!(react-native-vector-icons|@react-native-community\/datetimepicker)\/).*/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: [
-              ['@babel/plugin-transform-class-properties', { loose: true }],
-              ['@babel/plugin-transform-private-methods', { loose: true }],
-              [
-                '@babel/plugin-transform-private-property-in-object',
-                { loose: true },
-              ],
-            ],
-          },
         },
       },
       {
@@ -68,6 +36,7 @@ module.exports = {
       },
     ],
   },
+  // Add devServer configuration here
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
@@ -75,5 +44,7 @@ module.exports = {
     compress: true,
     port: 9000,
   },
-  mode: 'development', // Set to 'development' for local development
+  mode: 'development',
 };
+
+export default config;
