@@ -89,9 +89,9 @@ const lightTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#343a40',
 
-  fullBackgroundColor: '#edede9',
-  fullContainerBackgroundColor: '#ffffff',
-  formBackgroundColorPrimary: '#ebebeb',
+  fullBackgroundColor: '#f1f0ea',
+  fullContainerBackgroundColor: '#f1f0ea',
+  formBackgroundColorPrimary: '#ffffff',
   formBackgroundColorSecondary: '#212529',
 
   googleButtonColor: '#4285F4',
@@ -106,7 +106,7 @@ const lightTheme: ThemeType = {
   buttonError: '#ba181b',
   buttonDanger: '#ba181b',
   buttonDisabled: '#b8bdb5',
-  buttonDark: '#5e503f',
+  buttonDark: '#ced4da',
   buttonBlack: '#000000',
   buttonLight: '#ffffff',
   buttonHighlight: '#f9c74f',
