@@ -76,6 +76,12 @@ const App = () => {
         tabBarInactiveTintColor: selectedTheme.iconColorPrimary,
         tabBarStyle: commonStyle.tabBarStyle, // Moved to commonStyles
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
+        headerStyle: {
+          backgroundColor: selectedTheme.tabHeaderBackgroundColor, // Change background color here
+          borderBottomWidth: 2, // Set the bottom border width
+          borderBottomColor: selectedTheme.headerBorderBottomColor || '#dad2d8', // Set the border color
+        },
+  
         // Add the custom header for the Dashboard screen
         headerTitle:
           route.name === 'Dashboard'
@@ -137,7 +143,10 @@ const App = () => {
         <Stack.Screen
           name="DashboardScreen"
           component={MainTabs}
-          options={{ headerShown: false }}
+          options={{ 
+            headerShown: false,
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor }, 
+          }}
         />
         <Stack.Screen
           name="DetailsScreen"

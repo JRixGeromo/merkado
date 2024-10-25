@@ -49,6 +49,7 @@ export interface ThemeType {
 
   tabHeaderBackgroundColor: string;
   tabBarBackgroundColor: string;
+  headerBorderBottomColor: string;
   commentBackgroundColor: string;
 
   iconColorPrimary: string;
@@ -83,21 +84,21 @@ const lightTheme: ThemeType = {
   textHighlight: '#800e13',
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
-  textGray: '#8d99ae',
+  textGray: '#4f5d75',
 
   borderColorPrimary: '#4CAF50',
   borderColorSecondary: '#000000',
   borderColorGray: '#8d99ae',
   borderColorDark: '#343a40',
 
-  fullBackgroundColor: '#e5e5e5',
-  fullContainerBackgroundColor: '#e5e5e5',
-  formBackgroundColorPrimary: '#ffffff',
-  formBackgroundColorSecondary: '#212529',
+  fullBackgroundColor: '#ffffff',
+  fullContainerBackgroundColor: '#ffffff',
+  formBackgroundColorPrimary: '#f7ede2',
+  formBackgroundColorSecondary: '#f7ede2',
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
-  inputBackgroundColor: '#d6d6d6',
+  inputBackgroundColor: '#ffffff',
 
   buttonPrimary: '#4CAF50',
   buttonSecondary: '#ffffff',
@@ -123,14 +124,15 @@ const lightTheme: ThemeType = {
 
   tabHeaderBackgroundColor: '#ffffff',
   tabBarBackgroundColor: '#ffffff',
-  commentBackgroundColor: '#ffffff',
+  headerBorderBottomColor: '#dddddd',
+  commentBackgroundColor: '#f7ede2',
 
   iconColorPrimary: '#7cb518',
   iconColorSecondary: '#f6aa1c',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
 
-  cardBackground: '#ffffff',
+  cardBackground: '#f7ede2',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#cad2c5',
@@ -195,8 +197,9 @@ const darkTheme: ThemeType = {
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
 
-  tabHeaderBackgroundColor: '#ffffff',
-  tabBarBackgroundColor: '#333533',
+  tabHeaderBackgroundColor: '#121113',
+  tabBarBackgroundColor: '#121113',
+  headerBorderBottomColor: '#444444',
   commentBackgroundColor: '#161616',
 
   iconColorPrimary: '#7cb518',
