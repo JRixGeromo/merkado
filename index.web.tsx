@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './src/styles/tailwind.css';
+import ReactDOM from 'react-dom/client'; // Import 'react-dom/client' instead of 'react-dom'
+import './src/styles/tailwind.css'; // Import your styles
 
 const WelcomePage = () => {
   return (
@@ -20,4 +20,9 @@ const WelcomePage = () => {
   );
 };
 
-ReactDOM.render(<WelcomePage />, document.getElementById('root'));
+// Get the root element and use `createRoot`
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement!); // Use `createRoot` instead of `render`
+
+// Render the app
+root.render(<WelcomePage />);
