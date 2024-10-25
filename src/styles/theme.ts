@@ -91,7 +91,7 @@ const lightTheme: ThemeType = {
 
   fullBackgroundColor: '#e5e5e5',
   fullContainerBackgroundColor: '#e5e5e5',
-  formBackgroundColorPrimary: '#ebebeb',
+  formBackgroundColorPrimary: '#ffffff',
   formBackgroundColorSecondary: '#212529',
 
   googleButtonColor: '#4285F4',
