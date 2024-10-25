@@ -60,7 +60,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     commentContainer: {
       padding: 10,
-      borderRadius: 2, // Rounded corners for the container
+      borderRadius: SHARED.borderRadius,
       marginBottom: 10, // Margin between comments
       position: 'relative', // Necessary for positioning the thumbs-up icon
     },

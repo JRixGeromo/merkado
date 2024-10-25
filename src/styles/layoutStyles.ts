@@ -32,7 +32,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       borderColor: 'transparent',
       borderWidth: 0,
-      borderRadius: 0,
+      borderRadius: SHARED.borderRadius,
       ...Platform.select({
         ios: {
           shadowColor: SHARED.shadow.color,
