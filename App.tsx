@@ -26,15 +26,20 @@ import DropdownMenu from './src/components/DropdownMenu';
 import IconLib from './src/components/IconLib'; // Import IconLib
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles';
-import { theme } from './src/styles/theme'; // Import the theme object
+import { layoutStyles } from './src/styles/layoutStyles';
+import { theme as appTheme } from './src/styles/theme';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const themeType = useAppSelector(state => state.theme.theme); // Access theme from Redux
-  const selectedTheme = theme[themeType]; // Get the light or dark theme directly from your theme file
+  const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  
+  const selectedTheme = appTheme[themeType];
+  
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -47,8 +52,6 @@ const App = () => {
 
     initializeApp();
   }, [dispatch]);
-
-  const commonStyle = commonStyles(themeType);
 
   const MainTabs = () => (
     <Tab.Navigator

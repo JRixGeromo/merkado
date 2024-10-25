@@ -118,7 +118,7 @@ const ChatScreen = () => {
   const renderMessage = (msg: Message) => (
     <View
       key={msg.id}
-      style={[layoutStyle.columnsInside, commonStyle.rPaddingS, commonStyle.lPaddingS, {
+      style={[layoutStyle.columnsInside, layoutStyle.rPaddingS, layoutStyle.lPaddingS, {
         justifyContent: msg.sender === 'user1' ? 'flex-start' : 'flex-end',
       }]}
     >
@@ -211,7 +211,7 @@ const ChatScreen = () => {
             onChangeText={setMessage}
             placeholder={t('type here ...')}
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
-            style={[commonStyle.input, commonStyle.font14, { flex: 1, color: selectedTheme.textPrimary }]}
+            style={[commonStyle.input, layoutStyle.font14, { flex: 1, color: selectedTheme.textPrimary }]}
             onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
           />
           <TouchableOpacity onPress={sendMessage} style={commonStyle.chatSendButton}>

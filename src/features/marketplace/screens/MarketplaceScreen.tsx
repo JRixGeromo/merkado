@@ -266,12 +266,12 @@ const MarketplaceScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, commonStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
+      <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
         {/* Search Container */}
         <View style={layoutStyle.verticalSpacerM} />
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
           <TouchableOpacity
-            style={commonStyle.rMarginL}
+            style={layoutStyle.rMarginL}
             onPress={toggleModal}
           >
             <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />

@@ -3,7 +3,7 @@ import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Imp
 import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
-const SHARED = {
+export const SHARED = {
   borderRadius: 2, // Shared border radius
   padding: normalizeHeight(10), // Shared padding
   shadow: {
@@ -44,6 +44,12 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
           elevation: SHARED.shadow.elevation, // Android shadow
         },
       }),
+    },
+
+    contentContainer: {
+      justifyContent: 'flex-start', // Align content to the top of the container
+      alignItems: 'center', // Center content horizontally
+      width: '100%',
     },
 
     innerContainer: {
@@ -136,8 +142,56 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       borderColor: selectedTheme.lineBorderColor, // Color of the divider
     },
 
-    ////
 
+    // padding
+    rlPaddingS: {
+      paddingRight: 10,
+      paddingLeft: 10,
+    },
+
+    rPaddingS: {
+      paddingRight: 10,
+    },
+    lPaddingS: {
+      paddingLeft: 10,
+    },
+    paddingAllS: {
+      padding: 10,
+    },
+
+    rPaddingL: {
+      paddingRight: 20,
+    },
+    lPaddingL: {
+      paddingLeft: 20,
+    },
+    paddingAllL: {
+      padding: 20,
+    },
+
+    // margin
+    rMarginXS: {
+      marginRight: 5,
+    },
+    lMarginXS: {
+      marginLeft: 5,
+    },
+
+    rMarginS: {
+      marginRight: 10,
+    },
+    lMarginS: {
+      marginLeft: 10,
+    },
+
+    rMarginL: {
+      marginRight: 20,
+    },
+    lMarginL: {
+      marginLeft: 20,
+    },
+
+    ////
     spacer: {
       height: 10, // Default height spacer (for vertical gaps)
       width: 10, // Default width spacer (for horizontal gaps)
@@ -213,5 +267,41 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
+
+    ////
+    font8: {
+      fontSize: normalizeFontSize(8),
+    },
+    font10: {
+      fontSize: normalizeFontSize(10),
+    },
+    font12: {
+      fontSize: normalizeFontSize(12),
+    },
+    font14: {
+      fontSize: normalizeFontSize(14),
+    },
+    font16: {
+      fontSize: normalizeFontSize(16),
+    },
+    font18: {
+      fontSize: normalizeFontSize(18),
+    },
+    font20: {
+      fontSize: normalizeFontSize(20),
+    },
+    font25: {
+      fontSize: normalizeFontSize(25),
+    },
+    font30: {
+      fontSize: normalizeFontSize(30),
+    },
+    font35: {
+      fontSize: normalizeFontSize(35),
+    },
+    font40: {
+      fontSize: normalizeFontSize(40),
+    },
+    
   });
 };

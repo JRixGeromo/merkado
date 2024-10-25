@@ -65,7 +65,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         </TouchableOpacity>
       </View>
 
-      <View style={commonStyle.contentContainer}>
+      <View style={layoutStyle.contentContainer}>
         <Text style={commonStyle.productName}>{name}</Text>
         <View style={layoutStyle.verticalSpacerS} />
         {/* Conditionally render based on the type */}
@@ -79,14 +79,14 @@ const ContentCard: React.FC<ContentCardProps> = ({
         <View style={layoutStyle.verticalSpacerS} />
         <View style={layoutStyle.columnsInsideFlex}>
           {/* Replace with IconLib for the star icon */}
-          <IconLib.Star size={16} color="gold" style={commonStyle.rMarginXS} />
-          <Text style={[commonStyle.font12, {color: selectedTheme.textSecondary}]}>{rating}</Text>
+          <IconLib.Star size={16} color="gold" style={layoutStyle.rMarginXS} />
+          <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>{rating}</Text>
         </View>
         <View style={layoutStyle.verticalSpacerS} />
         <View style={layoutStyle.columnsInsideFlex}>
           <TouchableOpacity
             onPress={onLikePress}
-            style={commonStyle.rMarginXS}
+            style={layoutStyle.rMarginXS}
           >
             {/* Replace with IconLib for the heart icon */}
             {isLiked ? (
@@ -95,7 +95,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
               <IconLib.Heart_O size={18} color={selectedTheme.iconColorPrimary} />
             )}
           </TouchableOpacity>
-          <Text style={[commonStyle.font12, {color: selectedTheme.textSecondary}]}>
+          <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>
             {likes + (isLiked ? 1 : 0)} Reactions
           </Text>
         </View>

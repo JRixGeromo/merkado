@@ -1,82 +1,14 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
+import { SHARED } from '../styles/layoutStyles';
 import { theme } from '../styles/theme'; // Make sure this path is correct
-
-// Centralized constants for commonly used style properties
-const SHARED = {
-  borderRadius: 2, // Shared border radius
-  padding: normalizeHeight(10), // Shared padding
-  shadow: {
-    color: '#000',
-    offset: { width: 0, height: 2 },
-    opacity: 0.1,
-    radius: 2,
-    elevation: 3, // Android-specific shadow
-  },
-  buttonPadding: normalizeHeight(15), // Button padding
-};
 
 // Dynamically generated styles based on theme
 export const commonStyles = (currentTheme: 'light' | 'dark') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
-
-    contentContainer: {
-      justifyContent: 'flex-start', // Align content to the top of the container
-      alignItems: 'center', // Center content horizontally
-      width: '100%',
-    },
-
-    
-    // padding
-    rlPaddingS: {
-      paddingRight: 10,
-      paddingLeft: 10,
-    },
-
-    rPaddingS: {
-      paddingRight: 10,
-    },
-    lPaddingS: {
-      paddingLeft: 10,
-    },
-    paddingAllS: {
-      padding: 10,
-    },
-
-    rPaddingL: {
-      paddingRight: 20,
-    },
-    lPaddingL: {
-      paddingLeft: 20,
-    },
-    paddingAllL: {
-      padding: 20,
-    },
-
-    // margin
-    rMarginXS: {
-      marginRight: 5,
-    },
-    lMarginXS: {
-      marginLeft: 5,
-    },
-
-    rMarginS: {
-      marginRight: 10,
-    },
-    lMarginS: {
-      marginLeft: 10,
-    },
-
-    rMarginL: {
-      marginRight: 20,
-    },
-    lMarginL: {
-      marginLeft: 20,
-    },
-
+       
     /////////
     
     bannerImageWrapper: {
@@ -640,41 +572,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: 'white',
       fontSize: 12,
       fontWeight: 'bold',
-    },
-    ////
-
-    font8: {
-      fontSize: normalizeFontSize(8),
-    },
-    font10: {
-      fontSize: normalizeFontSize(10),
-    },
-    font12: {
-      fontSize: normalizeFontSize(12),
-    },
-    font14: {
-      fontSize: normalizeFontSize(14),
-    },
-    font16: {
-      fontSize: normalizeFontSize(16),
-    },
-    font18: {
-      fontSize: normalizeFontSize(18),
-    },
-    font20: {
-      fontSize: normalizeFontSize(20),
-    },
-    font25: {
-      fontSize: normalizeFontSize(25),
-    },
-    font30: {
-      fontSize: normalizeFontSize(30),
-    },
-    font35: {
-      fontSize: normalizeFontSize(35),
-    },
-    font40: {
-      fontSize: normalizeFontSize(40),
     },
 
     //////////
