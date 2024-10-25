@@ -45,38 +45,30 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
-
     contentContainer: {
       justifyContent: 'flex-start', // Align content to the top of the container
       alignItems: 'center', // Center content horizontally
       width: '100%',
     },
-
     innerContainer: {
       justifyContent: 'center', 
       alignItems: 'center'
     },
-
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
     },
-    
     rowsInside: {
       width: '100%',
       flexDirection: 'column',
     },
-
-    /* One row with columns inside */
     columnsInsideFlex: {
       flexDirection: 'row',
     },
-
     columnsInside: {
       flexDirection: 'row',
       width: '100%',
     },
-
     cols_2: {
       width: '50%',
     },
@@ -89,34 +81,24 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     cols_5: {
       width: '20%',
     },
-
-    ////
     cols_25: {
       width: '25%',
     },
     cols_75: {
       width: '75%',
     },
-    
-    
-    
-    ////
     cols_40: {
       width: '40%',
     },
     cols_60: {
       width: '60%',
     },
-    ////
     cols_70: {
       width: '70%',
     },
     cols_30: {
       width: '30%',
     },
-
-    ////
-
     alignLeft: {
       justifyContent: 'flex-start', // Align items to the left
       flexDirection: 'row',
@@ -129,9 +111,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'flex-end', // Align items to the right
       flexDirection: 'row',
     },
-
-    ////
-
     dividerWrapper: {
       width: '100%', // Full width for the wrapper
       paddingVertical: 10, // Apply padding above and below
@@ -141,9 +120,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       borderBottomWidth: 0.5, // Specify the width of the bottom border
       borderColor: selectedTheme.lineBorderColor, // Color of the divider
     },
-
-
-    // padding
     rlPaddingS: {
       paddingRight: 10,
       paddingLeft: 10,
@@ -158,7 +134,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     paddingAllS: {
       padding: 10,
     },
-
     rPaddingL: {
       paddingRight: 20,
     },
@@ -168,8 +143,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     paddingAllL: {
       padding: 20,
     },
-
-    // margin
     rMarginXS: {
       marginRight: 5,
     },
@@ -190,13 +163,10 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     lMarginL: {
       marginLeft: 20,
     },
-
-    ////
     spacer: {
       height: 10, // Default height spacer (for vertical gaps)
       width: 10, // Default width spacer (for horizontal gaps)
     },
-    // Variants of spacers for different sizes
     spacerSmall: {
       height: 5,
       width: 5,
@@ -209,38 +179,25 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       height: 20,
       width: 20,
     },
-
-    // Flexible spacer for horizontal gaps between columns
     horizontalSpacer: {
       marginHorizontal: 10, // You can also use margin to create gaps
     },
-
-    // Vertical spacer for vertical gaps between rows
     verticalSpacerXS: {
       marginVertical: 2,
     },
-
     verticalSpacerS: {
       marginVertical: 5,
     },
-
-    // Vertical spacer for vertical gaps between rows
     verticalSpacerM: {
       marginVertical: 10,
     },
-
-    // Vertical spacer for vertical gaps between rows
     verticalSpacerL: {
       marginVertical: 20,
     },
-
-    // Full-width horizontal spacer, useful between rows or sections
     fullWidthSpacer: {
       width: '100%',
       height: 10, // Adjust the height for the gap
     },
-
-    /* Optional shared styles for padding, margin, borderRadius */
     withPadding: {
       padding: SHARED.padding, // Shared padding
     },
@@ -267,8 +224,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
-
-    ////
     font8: {
       fontSize: normalizeFontSize(8),
     },
@@ -302,6 +257,5 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     font40: {
       fontSize: normalizeFontSize(40),
     },
-    
   });
 };
