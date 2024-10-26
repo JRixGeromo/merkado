@@ -119,7 +119,10 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={[layoutStyle.container, layoutStyle.innerContainer]}>
+        <View style={[layoutStyle.container, {padding: 20, justifyContent: 'center'}]}>
+          <View style={[layoutStyle.formContainer, {backgroundColor: selectedTheme.formBackgroundColorPrimary}]}>
+
+         
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}
@@ -205,6 +208,7 @@ const LoginScreen = () => {
               </Text>
             </Text>
           </TouchableOpacity>
+           </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

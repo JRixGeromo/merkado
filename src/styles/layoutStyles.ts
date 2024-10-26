@@ -58,6 +58,25 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       justifyContent: 'center',
     },
+    formContainer: {
+      width: '100%',
+      padding: SHARED.padding,
+      backgroundColor: selectedTheme.fullBackgroundColor,
+      borderRadius: SHARED.borderRadius,
+      alignItems: 'center', // Center content horizontally if needed
+      justifyContent: 'flex-start', // Start aligning content at the top
+      ...Platform.select({
+        ios: {
+          shadowColor: SHARED.shadow.color,
+          shadowOffset: SHARED.shadow.offset,
+          shadowOpacity: SHARED.shadow.opacity,
+          shadowRadius: SHARED.shadow.radius,
+        },
+        android: {
+          elevation: SHARED.shadow.elevation,
+        },
+      }),
+    },
     rowsInside: {
       width: '100%',
       flexDirection: 'column',
