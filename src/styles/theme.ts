@@ -33,12 +33,11 @@ export interface ThemeType {
   buttonError: string;
   buttonDanger: string;
   buttonDisabled: string;
-  buttonDark: string;
-  buttonBlack: string;
-  buttonLight: string;
+  buttonAction: string;
   buttonHighlight: string;
   buttonLink: string;
   buttonGray: string;
+  buttonDark: string;
   buttonCancel: string;
   buttonClose: string;
 
@@ -85,6 +84,7 @@ const lightTheme: ThemeType = {
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#4f5d75',
+  buttonDark: '#252422',
 
   borderColorPrimary: '#4CAF50',
   borderColorSecondary: '#000000',
@@ -108,12 +108,10 @@ const lightTheme: ThemeType = {
   buttonError: '#ba181b',
   buttonDanger: '#ba181b',
   buttonDisabled: '#b8bdb5',
-  buttonDark: '#46494c',
-  buttonBlack: '#000000',
-  buttonLight: '#ffffff',
+  buttonAction: '#ffffff',
   buttonHighlight: '#f9c74f',
   buttonLink: '#38b000',
-  buttonGray: '#8d99ae',
+  buttonGray: '#495057',
   buttonCancel: '#e6e6ea',
   buttonClose: '#343a40',
 
@@ -183,12 +181,12 @@ const darkTheme: ThemeType = {
   buttonError: '#ba181b',
   buttonDanger: '#ba181b',
   buttonDisabled: '#b8bdb5',
-  buttonDark: '#343a40',
-  buttonBlack: '#000000',
-  buttonLight: '#ffffff',
+  buttonAction: '#343a40',
   buttonHighlight: '#f9c74f',
   buttonLink: '#38b000',
-  buttonGray: '#e6e6ea',
+  buttonGray: '#495057',
+  buttonDark: '#252422',
+  
   buttonCancel: '#e6e6ea',
   buttonClose: '#343a40',
 
