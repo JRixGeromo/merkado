@@ -403,7 +403,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: SHARED.padding, // Padding inside each card
       borderRadius: SHARED.borderRadius, // Card border radius
       marginVertical: 5, // Equal margin on top and bottom
-      marginHorizontal: 10, // Equal margin on left and right
       shadowColor: SHARED.shadow.color, // Shadow settings for the card
       shadowOffset: SHARED.shadow.offset,
       shadowOpacity: SHARED.shadow.opacity,
@@ -509,6 +508,61 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     unreadText: {
       color: 'white',
       fontSize: 12,
+      fontWeight: 'bold',
+    },
+    cartItemImage: {
+      width: 100,
+      height: 100,
+      borderRadius: 8,
+    },
+    // itemDetails: {
+    //   flex: 1,
+    //   marginLeft: normalizeHeight(10),
+    // },
+    // itemName: {
+    //   fontSize: normalizeHeight(16),
+    //   fontWeight: 'bold',
+    // },
+    // itemPrice: {
+    //   fontSize: normalizeHeight(14),
+    //   marginVertical: normalizeHeight(5),
+    // },
+    quantityContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    quantityButton: {
+      width: 30,
+      height: 30,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#e0e0e0',
+      borderRadius: 5,
+    },
+    // quantityText: {
+    //   fontSize: normalizeHeight(18),
+    // },
+    quantityValue: {
+      marginHorizontal: 10,
+      fontSize: normalizeHeight(16),
+    },
+    totalContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      padding: normalizeHeight(15),
+      borderTopWidth: 1,
+      borderColor: '#ccc',
+    },
+    totalText: {
+      fontSize: normalizeHeight(18),
+      fontWeight: 'bold',
+    },
+    totalPrice: {
+      fontSize: normalizeHeight(18),
+      fontWeight: 'bold',
+    },
+    checkoutText: {
+      fontSize: normalizeHeight(18),
       fontWeight: 'bold',
     },
   });

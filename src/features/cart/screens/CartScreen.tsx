@@ -6,6 +6,7 @@ import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
+import CustomButton from '../../../components/CustomButton';
 import IconLib from '../../../components/IconLib';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
@@ -71,23 +72,24 @@ const CartScreen: React.FC = () => {
   };
 
   const handleProceedToCheckout = () => {
+    console.log("Checkout Screen")
     navigation.navigate('CheckoutScreen');
   };
 
   // Type for rendering each item in FlatList
   const renderItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={styles.cartItem}>
-      <Image source={item.image} style={styles.itemImage} />
-      <View style={styles.itemDetails}>
-        <Text style={[styles.itemName, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
-        <Text style={[styles.itemPrice, { color: selectedTheme.textSecondary }]}>${item.price}</Text>
-        <View style={styles.quantityContainer}>
-          <TouchableOpacity onPress={() => updateQuantity(item.id, 'decrement')} style={styles.quantityButton}>
-            <Text style={styles.quantityText}>-</Text>
+    <View style={[commonStyle.card, layoutStyle.columnsInside]}>
+      <Image source={item.image} style={commonStyle.cartItemImage} />
+      <View style={layoutStyle.lMarginL}>
+        <Text style={[layoutStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
+        <Text style={[layoutStyle.font16, layoutStyle.verticalSpacerXS, { color: selectedTheme.textSecondary }]}>${item.price}</Text>
+        <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerM]}>
+          <TouchableOpacity onPress={() => updateQuantity(item.id, 'decrement')} style={commonStyle.quantityButton}>
+            <Text style={layoutStyle.font16}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.quantityValue}>{item.quantity}</Text>
-          <TouchableOpacity onPress={() => updateQuantity(item.id, 'increment')} style={styles.quantityButton}>
-            <Text style={styles.quantityText}>+</Text>
+          <Text style={[layoutStyle.font16, layoutStyle.lPaddingS, layoutStyle.rPaddingS, {color: selectedTheme.textSecondary}]}>{item.quantity}</Text>
+          <TouchableOpacity onPress={() => updateQuantity(item.id, 'increment')} style={commonStyle.quantityButton}>
+            <Text style={layoutStyle.font16}>+</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -95,117 +97,31 @@ const CartScreen: React.FC = () => {
   );
 
   return (
-    <View style={[styles.container, { backgroundColor: selectedTheme.fullBackgroundColor }]}>
+    <View style={[layoutStyle.container, layoutStyle.paddingAllS, { backgroundColor: selectedTheme.fullBackgroundColor }]}>
       <FlatList
         data={cart}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        contentContainerStyle={styles.cartList}
+        contentContainerStyle={layoutStyle.verticalSpacerS}
       />
-      <View style={styles.totalContainer}>
-        <Text style={[styles.totalText, { color: selectedTheme.textPrimary }]}>Total:</Text>
-        <Text style={[styles.totalPrice, { color: selectedTheme.textPrimary }]}>${calculateTotal()}</Text>
+      <View style={[layoutStyle.columnsInside, {justifyContent: 'space-between'}]}>
+        <Text style={[layoutStyle.font18, { color: selectedTheme.textPrimary }]}>Total:</Text>
+        <Text style={[layoutStyle.font18, { color: selectedTheme.textPrimary }]}>${calculateTotal()}</Text>
       </View>
-      {/* <TouchableOpacity style={[styles.checkoutButton, { backgroundColor: selectedTheme.buttonBorderPrimary }]}>
-        <Text style={[styles.checkoutText, { color: selectedTheme.textPrimary }]}>Proceed to Checkout</Text>
-      </TouchableOpacity> */}
-
-      <View style={styles.container}>
-        {/* Other cart screen elements */}
-        <TouchableOpacity onPress={handleProceedToCheckout} style={styles.checkoutButton}>
-          <Text style={styles.checkoutText}>Proceed to Checkout</Text>
-        </TouchableOpacity>
-      </View>
+      <CustomButton
+        title={t('Proceed to Checkout')}
+        onPress={handleProceedToCheckout}
+        color={selectedTheme.textLight}
+        backgroundColor={selectedTheme.borderColorPrimary}
+        borderRadius={2} // You can set this dynamically too
+        style={{
+          marginLeft: 0,
+          marginRight: 0,
+          padding:10,
+        }}
+      />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: normalizeHeight(10),
-  },
-  cartList: {
-    paddingBottom: normalizeHeight(100), // Provide space for the total and button
-  },
-  cartItem: {
-    flexDirection: 'row',
-    marginBottom: normalizeHeight(15),
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: normalizeHeight(10),
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 3,
-  },
-  itemImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 8,
-  },
-  itemDetails: {
-    flex: 1,
-    marginLeft: normalizeHeight(10),
-  },
-  itemName: {
-    fontSize: normalizeHeight(16),
-    fontWeight: 'bold',
-  },
-  itemPrice: {
-    fontSize: normalizeHeight(14),
-    marginVertical: normalizeHeight(5),
-  },
-  quantityContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  quantityButton: {
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e0e0e0',
-    borderRadius: 5,
-  },
-  quantityText: {
-    fontSize: normalizeHeight(18),
-  },
-  quantityValue: {
-    marginHorizontal: 10,
-    fontSize: normalizeHeight(16),
-  },
-  totalContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: normalizeHeight(15),
-    borderTopWidth: 1,
-    borderColor: '#ccc',
-  },
-  totalText: {
-    fontSize: normalizeHeight(18),
-    fontWeight: 'bold',
-  },
-  totalPrice: {
-    fontSize: normalizeHeight(18),
-    fontWeight: 'bold',
-  },
-  checkoutButton: {
-    position: 'absolute',
-    bottom: 10,
-    left: 10,
-    right: 10,
-    paddingVertical: normalizeHeight(15),
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  checkoutText: {
-    fontSize: normalizeHeight(18),
-    fontWeight: 'bold',
-  },
-});
 
 export default CartScreen;
