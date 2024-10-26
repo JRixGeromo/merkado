@@ -1,6 +1,7 @@
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration } from 'webpack';
-import 'webpack-dev-server'; // Import this for devServer types
+import 'webpack-dev-server';
 
 const config: Configuration = {
   entry: './index.web.tsx',
@@ -20,30 +21,31 @@ const config: Configuration = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'], // Ensure postcss-loader is included
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        use: {
-          loader: 'file-loader',
-        },
+        type: 'asset/resource', // Updated file-loader for Webpack 5 compatibility
       },
     ],
   },
-  // Add devServer configuration here
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './public/index.html'),
+    }),
+  ],
+  // Type assertion for devServer
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
     },
     compress: true,
     port: 9000,
-  },
+  } as unknown as Configuration['devServer'],
   mode: 'development',
 };
 

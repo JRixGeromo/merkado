@@ -1,5 +1,9 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./public/index.html",    // Ensure HTML template is included
+    "./index.web.tsx",
+  ],
   theme: {
     extend: {},
   },
