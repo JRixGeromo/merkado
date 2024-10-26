@@ -219,7 +219,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: 10,
       borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
       borderBottomWidth: 1,
-      backgroundColor: selectedTheme.cardBackground, // Theme-based background color
     },
     listItemText: {
       color: selectedTheme.textPrimary,
@@ -484,7 +483,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     chatMessagesContainer: {
       position: 'relative', 
-      backgroundColor: selectedTheme.cardBackground, 
+      backgroundColor: selectedTheme.formBackgroundColorPrimary, 
       paddingTop: 8, 
       paddingBottom: 8,
     },

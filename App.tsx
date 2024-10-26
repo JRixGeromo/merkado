@@ -57,7 +57,6 @@ const App = () => {
     <Tab.Navigator
       screenOptions={({ route, navigation }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          // Use IconLib instead of direct Icon component
           if (route.name === 'Dashboard') {
             return focused ? <IconLib.Dashboard {...{ size, color }} /> : <IconLib.Dashboard_O {...{ size, color }} />;
           } else if (route.name === 'Marketplace') {
@@ -69,27 +68,31 @@ const App = () => {
           } else if (route.name === 'Transactions') {
             return focused ? <IconLib.Transactions {...{ size, color }} /> : <IconLib.Transactions_O {...{ size, color }} />;
           }
-
+  
           return null;
         },
         tabBarActiveTintColor: selectedTheme.iconColorPrimary,
         tabBarInactiveTintColor: selectedTheme.iconColorPrimary,
-        tabBarStyle: commonStyle.tabBarStyle, // Moved to commonStyles
+        tabBarStyle: [
+          commonStyle.tabBarStyle,
+          {
+            borderTopWidth: 0.5, // Set the top border width
+            borderTopColor: selectedTheme.headerBorderBottomColor || '#dad2d8', // Set the border color
+          },
+        ],
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
         headerStyle: {
-          backgroundColor: selectedTheme.tabHeaderBackgroundColor, // Change background color here
-          borderBottomWidth: 2, // Set the bottom border width
-          borderBottomColor: selectedTheme.headerBorderBottomColor || '#dad2d8', // Set the border color
+          backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+          borderBottomWidth: 0.5,
+          borderBottomColor: selectedTheme.headerBorderBottomColor || '#dad2d8',
         },
-  
-        // Add the custom header for the Dashboard screen
         headerTitle:
           route.name === 'Dashboard'
             ? () => (
                 <View style={commonStyle.headerContainer}>
                   <Image
-                    source={require('./assets/logo.png')} // Replace with your logo path
-                    style={commonStyle.headerLogo} // Moved to commonStyles
+                    source={require('./assets/logo.png')}
+                    style={commonStyle.headerLogo}
                   />
                   <Text style={commonStyle.screenHeaderTitle}>Dashboard</Text>
                 </View>
@@ -101,7 +104,7 @@ const App = () => {
               size={25}
               color={selectedTheme.iconColorSecondary}
               onPress={() => navigation.navigate('CartScreen')}
-              style={commonStyle.headerIcon} // Moved to commonStyles
+              style={commonStyle.headerIcon}
             />
             <DropdownMenu navigation={navigation} />
           </View>
@@ -115,7 +118,7 @@ const App = () => {
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
   );
-
+  
   return (
     <NavigationContainer
       theme={themeType === 'light' ? DefaultTheme : DarkTheme}
