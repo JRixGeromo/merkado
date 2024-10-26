@@ -80,7 +80,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
 
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
-      <View style={[layoutStyle.container, {padding: 20, backgroundColor: selectedTheme.formBackgroundColorPrimary }]}>
+      <View style={[layoutStyle.container, layoutStyle.paddingAllS, {backgroundColor: selectedTheme.formBackgroundColorPrimary }]}>
         <Text style={commonStyle.modalTitle}>{t('Search in merkado by')}</Text>
 
         {/* Scrollable Section Buttons */}
@@ -127,6 +127,11 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
           backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
           borderRadius={2} // You can set this dynamically too
           color={selectedTheme.textLight}
+          style={{
+            marginLeft: 0,
+            marginRight: 0,
+            padding:10,
+          }}
         />
       </View>
     </Modal>
