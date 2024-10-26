@@ -1,11 +1,16 @@
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
-/**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+// Extended Metro configuration
+const defaultConfig = getDefaultConfig(__dirname);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+const config = {
+  resolver: {
+    sourceExts: [...defaultConfig.resolver.sourceExts, 'cjs'], // Adds support for .cjs files if needed
+    assetExts: [...defaultConfig.resolver.assetExts, 'txt', 'xml'], // Customize based on your asset needs
+  },
+  transformer: {
+    babelTransformerPath: require.resolve('react-native-css-transformer'), // Use if transforming CSS files
+  },
+};
+
+module.exports = mergeConfig(defaultConfig, config);
