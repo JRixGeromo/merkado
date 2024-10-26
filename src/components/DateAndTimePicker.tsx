@@ -116,7 +116,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
               color: themeBasedStyles.textColor,
               fontSize: placeholderFontSize,
               borderWidth: 0, // Remove the border if needed
-              paddingHorizontal: 10, // Add some padding inside the input field
+              paddingHorizontal: 0, // Add some padding inside the input field
             },
           ]}
           placeholderTextColor={themeBasedPlaceholderColor} // Placeholder color
