@@ -109,7 +109,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
           )}
           keyExtractor={item => item.key}
           showsHorizontalScrollIndicator={false}
-          style={{ maxHeight: 60 }} // Set the max height for the FlatList
+          style={layoutStyle.flatListMaxHeight} // Set the max height for the FlatList
         />
 
         {/* Dynamic Content Based on Selected Section */}

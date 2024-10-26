@@ -1,6 +1,7 @@
 import { StyleSheet, Platform } from 'react-native';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
 import { theme } from '../styles/theme'; // Make sure this path is correct
+import { FlatList } from 'react-native-gesture-handler';
 
 // Centralized constants for commonly used style properties
 export const SHARED = {
@@ -275,6 +276,9 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
     font40: {
       fontSize: normalizeFontSize(40),
+    },
+    flatListMaxHeight: {
+      maxHeight: normalizeHeight(30),
     },
   });
 };
