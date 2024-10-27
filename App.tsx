@@ -113,7 +113,12 @@ const App = () => {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
-      <Tab.Screen name="MyProducts" component={MyProductsScreen} />
+      <Tab.Screen name="MyProducts" 
+        options={{
+          headerTitle: 'My Products',
+        }}
+      component={MyProductsScreen} 
+      />
       <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>

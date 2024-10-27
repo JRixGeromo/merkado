@@ -144,6 +144,22 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.inputBackgroundColor, // Background color of the input
       color: selectedTheme.textPrimary, // Text color from theme
     },
+
+    contentBox: {
+      backgroundColor: selectedTheme.cardBackground,
+      width: "100%",
+      height: undefined,
+      marginRight: 10,
+      paddingBottom: 0,
+      marginBottom: 0,
+      justifyContent: 'space-between', // Space between content and buttons
+      //alignItems: 'center', // Center all content horizontally
+    },
+    contentImage: {
+      width: '100%',
+      height: '100%', // Fill the wrapper container
+      resizeMode: 'cover', // Ensure the image covers the available space
+    },
     productBox: {
       backgroundColor: selectedTheme.cardBackground,
       width: 120,
