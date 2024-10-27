@@ -41,12 +41,13 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
   };
 
   return (
-    <View style={[layoutStyle.shadowedContainer, commonStyle.contentBox]}>
-      <View style={commonStyle.cardImageWrapper}>
+    <View style={[layoutStyle.shadowedContainer, layoutStyle.columnsInsideFlex, commonStyle.contentBox]}>
+      
+      <View style={[commonStyle.contentImage, layoutStyle.cols_25]}>
         <Image source={{ uri: imageUrl }} style={commonStyle.contentImage} />
       </View>
 
-      <View style={layoutStyle.contentContainer}>
+      <View style={[layoutStyle.cols_75, layoutStyle.horizontalSpacer]}>
         <Text style={commonStyle.productName}>{name}</Text>
         <View style={layoutStyle.verticalSpacerS} />
         {/* Conditionally render based on the type */}
