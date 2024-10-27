@@ -35,6 +35,22 @@ const MyProductsScreen = () => {
       imageUrl: 'https://picsum.photos/100/100?random=1',
       onSale: true,
     },
+    {
+      id: '2',
+      name: 'Dried Fish Boneless',
+      description: 'High quality boneless dried fish.',
+      price: 200,
+      imageUrl: 'https://picsum.photos/100/100?random=2',
+      onSale: true,
+    },
+    {
+      id: '3',
+      name: 'Pork Skin',
+      description: 'High quality posk skin.',
+      price: 520,
+      imageUrl: 'https://picsum.photos/100/100?random=3',
+      onSale: true,
+    },
     // Additional product data as needed
   ]);
 

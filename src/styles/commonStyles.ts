@@ -151,9 +151,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: undefined,
       marginRight: 10,
       paddingBottom: 0,
-      marginBottom: 0,
-      justifyContent: 'space-between', // Space between content and buttons
-      //alignItems: 'center', // Center all content horizontally
+      marginBottom: 10,
+      //justifyContent: 'space-between', // Space between content and buttons
     },
     contentImage: {
       width: '100%',
@@ -414,17 +413,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     followButton: {
       backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
     },
-    card: {
-      backgroundColor: selectedTheme.cardBackground, // Background color for card
-      padding: SHARED.padding, // Padding inside each card
-      borderRadius: SHARED.borderRadius, // Card border radius
-      marginVertical: 5, // Equal margin on top and bottom
-      shadowColor: SHARED.shadow.color, // Shadow settings for the card
-      shadowOffset: SHARED.shadow.offset,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
-    },
+    // card: {
+    //   backgroundColor: selectedTheme.cardBackground, // Background color for card
+    //   padding: SHARED.padding, // Padding inside each card
+    //   borderRadius: SHARED.borderRadius, // Card border radius
+    //   marginVertical: 5, // Equal margin on top and bottom
+    //   shadowColor: SHARED.shadow.color, // Shadow settings for the card
+    //   shadowOffset: SHARED.shadow.offset,
+    //   shadowOpacity: SHARED.shadow.opacity,
+    //   shadowRadius: SHARED.shadow.radius,
+    //   elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
+    // },
     cardHeader: {
       flexDirection: 'row', // Align icon and title in a row
       alignItems: 'center', // Vertically align items in header
@@ -529,7 +528,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     cartItemImage: {
       width: 100,
       height: 100,
-      borderRadius: 8,
+      //borderRadius: 8,
     },
     // itemDetails: {
     //   flex: 1,

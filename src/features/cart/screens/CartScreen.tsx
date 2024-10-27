@@ -78,7 +78,7 @@ const CartScreen: React.FC = () => {
 
   // Type for rendering each item in FlatList
   const renderItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={[commonStyle.card, layoutStyle.columnsInside]}>
+    <View style={[commonStyle.contentBox, layoutStyle.columnsInside]}>
       <Image source={item.image} style={commonStyle.cartItemImage} />
       <View style={layoutStyle.lMarginL}>
         <Text style={[layoutStyle.font14, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
