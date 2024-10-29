@@ -293,5 +293,8 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     flatListMaxHeight: {
       maxHeight: normalizeHeight(30),
     },
+    flatListPaddingTop: { 
+      paddingTop: normalizeHeight(10) 
+    },
   });
 };

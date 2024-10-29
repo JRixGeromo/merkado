@@ -16,6 +16,7 @@ import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
+import CreateProductScreen from './src/features/myProducts/screens/CreateProductScreen';
 import ChatScreen from './src/features/chat/screens/ChatScreen';
 import CartScreen from './src/features/cart/screens/CartScreen';
 import CheckoutScreen from './src/features/cart/screens/CheckoutScreen';
@@ -185,6 +186,18 @@ const App = () => {
         />
         <Stack.Screen name="AccountScreen" component={AccountScreen} />
         {/* Add other Stack.Screen components here */}
+        <Stack.Screen
+          name="CreateProductScreen"
+          component={CreateProductScreen}
+          options={{
+            headerTitle: 'Create Product',
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerTintColor: selectedTheme.textPrimary,
+          }}
+        />
+
+        
+
       </Stack.Navigator>
     </NavigationContainer>
   );

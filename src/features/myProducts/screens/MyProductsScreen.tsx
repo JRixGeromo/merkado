@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput, Image } from 'react-native';
+import { View, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
@@ -56,10 +56,8 @@ const MyProductsScreen = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  
-  // Handle like toggle for stores
   const handleProduct = () => {
-    
+    navigation.navigate('CreateProductScreen');
   };
 
   const renderProductItem = ({ item }: { item: Product }) => (
@@ -76,7 +74,7 @@ const MyProductsScreen = () => {
           backgroundColor: selectedTheme.buttonDanger,
           width: "100%",
           textSize: 10,
-          onPress: () => console.log('Delete Pressed'),
+          onPress: () => console.log('Delete Pressed'), // Add delete functionality here
           buttonStyle: commonStyle.cardButton,
         },
         {
@@ -85,7 +83,7 @@ const MyProductsScreen = () => {
           backgroundColor: selectedTheme.buttonDark,
           width: "100%",
           textSize: 10,
-          onPress: () => console.log('Edit Pressed'),
+          onPress: () => console.log('Edit Pressed'), // Navigate to edit product
           buttonStyle: commonStyle.cardButton,
         },
       ]}
@@ -93,10 +91,10 @@ const MyProductsScreen = () => {
   );
 
   return (
-    <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
+    <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
       {/* Search Bar */}
       <View style={layoutStyle.verticalSpacerS} />
-      <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems ]}>
+      <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_75]}>
           <TouchableOpacity>
             <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
@@ -110,19 +108,19 @@ const MyProductsScreen = () => {
           />
         </View>
         <View style={[layoutStyle.cols_25, layoutStyle.lPaddingS]}>
-            <CustomButton
-              title={'Create'} 
-              textSize={12}
-              backgroundColor={selectedTheme.buttonPrimary}
-              width={"100%"}
-              onPress={handleProduct}
-              iconName={"Add"} // Pass the icon name dynamically
-              iconColor={selectedTheme.iconColorLight} // Set the icon color
-              iconSize={18} // Set the icon size
-              color={selectedTheme.textLight} // Set the icon size
-              style={[commonStyle.cardButton]} // Apply the button styles
-              borderRadius={0} // Default borderRadius is 15, can be overridden
-            />
+          <CustomButton
+            title="Create"
+            textSize={12}
+            backgroundColor={selectedTheme.buttonPrimary}
+            width="100%"
+            onPress={handleProduct}
+            iconName="Add"
+            iconColor={selectedTheme.iconColorLight}
+            iconSize={18}
+            color={selectedTheme.textLight}
+            style={[commonStyle.cardButton]}
+            borderRadius={0}
+          />
         </View>
       </View>
 
@@ -131,7 +129,7 @@ const MyProductsScreen = () => {
         data={products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))}
         keyExtractor={item => item.id}
         renderItem={renderProductItem}
-        contentContainerStyle={{ paddingTop: 10 }}
+        contentContainerStyle={layoutStyle.flatListPaddingTop}
         showsVerticalScrollIndicator={false}
       />
     </View>
