@@ -208,11 +208,12 @@ const CreateProductScreen = () => {
 
             {/* Submit Button */}
             <CustomButton
-              title="Create Product"
+              title="Save"
               onPress={handleCreateProduct}
               color={selectedTheme.textLight}
               backgroundColor={selectedTheme.buttonPrimary}
               borderRadius={5}
+              textSize={14}
             />
           </View>
         </View>
