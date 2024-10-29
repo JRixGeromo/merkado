@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, TextInput, Image } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
 import IconLib from '../../../components/IconLib';
+import CustomButton from '../../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
@@ -46,52 +47,57 @@ const MyProductsScreen = () => {
     {
       id: '3',
       name: 'Pork Skin',
-      description: 'High quality posk skin.',
+      description: 'High quality pork skin.',
       price: 520,
       imageUrl: 'https://picsum.photos/100/100?random=3',
       onSale: true,
     },
-    // Additional product data as needed
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
 
-  // const handleProductLikeToggle = (productId: string) => {
-  //   setProducts(prevProducts =>
-  //     prevProducts.map(product =>
-  //       product.id === productId ? { ...product, likes: product.likes + 1 } : product
-  //     )
-  //   );
-  // };
+  
+  // Handle like toggle for stores
+  const handleProduct = () => {
+    
+  };
 
   const renderProductItem = ({ item }: { item: Product }) => (
-  <ContentCardWide
-    type="product"
-    imageUrl={item.imageUrl}
-    name={item.name}
-    description={item.description}
-    price={item.price}
-    buttonActions={[
-      {
-        iconName: 'Edit_O',
-        //onPress: () => navigation.navigate('EditProductScreen', { product: item }),
-        onPress: () => console.log('Edit Pressed'),
-        buttonStyle: commonStyle.editButton,
-      },
-      {
-        iconName: 'Delete_O',
-        onPress: () => console.log('Delete Pressed'),
-        buttonStyle: commonStyle.deleteButton,
-      },
-    ]}
-  />
-);
+    <ContentCardWide
+      type="product"
+      imageUrl={item.imageUrl}
+      name={item.name}
+      description={item.description}
+      price={item.price}
+      buttonActions={[
+        {
+          iconName: 'Trash',
+          title: 'Delete',
+          backgroundColor: selectedTheme.buttonDanger,
+          width: "100%",
+          textSize: 10,
+          onPress: () => console.log('Delete Pressed'),
+          buttonStyle: commonStyle.cardButton,
+        },
+        {
+          iconName: 'Create',
+          title: 'Update',
+          backgroundColor: selectedTheme.buttonDark,
+          width: "100%",
+          textSize: 10,
+          onPress: () => console.log('Edit Pressed'),
+          buttonStyle: commonStyle.cardButton,
+        },
+      ]}
+    />
+  );
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
-        {/* Search Bar */}
-        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
+    <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
+      {/* Search Bar */}
+      <View style={layoutStyle.verticalSpacerS} />
+      <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems ]}>
+        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_75]}>
           <TouchableOpacity>
             <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
@@ -102,23 +108,33 @@ const MyProductsScreen = () => {
             value={searchTerm}
             onChangeText={setSearchTerm}
           />
-          <TouchableOpacity 
-            //onPress={() => navigation.navigate('AddProductScreen')}
-            >
-            <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
-          </TouchableOpacity>
         </View>
-
-        {/* Product List */}
-        <FlatList
-          data={products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))}
-          keyExtractor={item => item.id}
-          renderItem={renderProductItem}
-          contentContainerStyle={{ padding: 10 }}
-          showsVerticalScrollIndicator={false}
-        />
+        <View style={[layoutStyle.cols_25, layoutStyle.lPaddingS]}>
+            <CustomButton
+              title={'Create'} 
+              textSize={12}
+              backgroundColor={selectedTheme.buttonPrimary}
+              width={"100%"}
+              onPress={handleProduct}
+              iconName={"Add"} // Pass the icon name dynamically
+              iconColor={selectedTheme.iconColorLight} // Set the icon color
+              iconSize={18} // Set the icon size
+              color={selectedTheme.textLight} // Set the icon size
+              style={[commonStyle.cardButton]} // Apply the button styles
+              borderRadius={0} // Default borderRadius is 15, can be overridden
+            />
+        </View>
       </View>
-    </ScrollView>
+
+      {/* Product List */}
+      <FlatList
+        data={products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+        keyExtractor={item => item.id}
+        renderItem={renderProductItem}
+        contentContainerStyle={{ paddingTop: 10 }}
+        showsVerticalScrollIndicator={false}
+      />
+    </View>
   );
 };
 

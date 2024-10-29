@@ -48,11 +48,6 @@ const ContentCard: React.FC<ContentCardProps> = ({
 
   const selectedTheme = appTheme[themeType];
 
-  const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
-    const IconComponent = IconLib[iconName]; // Access the icon component dynamically
-    return <IconComponent size={size} color={color} />;
-  };
-
   return (
     <View style={[layoutStyle.shadowedContainer, commonStyle.productBox]}>
       <View style={commonStyle.cardImageWrapper}>

@@ -55,6 +55,7 @@ export interface ThemeType {
   iconColorSecondary: string;
   iconColorSmileys: string;
   iconColorGray: string;
+  iconColorLight: string;
 
   cardBackground: string;
   modalOverlay: string;
@@ -129,6 +130,7 @@ const lightTheme: ThemeType = {
   iconColorSecondary: '#f6aa1c',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
+  iconColorLight: '#ced4da',
 
   cardBackground: '#f7ede2',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
@@ -204,6 +206,7 @@ const darkTheme: ThemeType = {
   iconColorSecondary: '#f6aa1c',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
+  iconColorLight: '#ced4da',
 
   cardBackground: '#444444',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',

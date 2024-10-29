@@ -74,6 +74,10 @@ const IconLib = {
   Help: (props: IconProps) => <CustomIcon name="help-circle" {...props} />,
   PersonAdd: (props: IconProps) => <CustomIcon name="person-add" {...props} />,
   Logout: (props: IconProps) => <CustomIcon name="log-out" {...props} />,
+  Gender: (props: IconProps) => <CustomIcon name="male-female" {...props} />,
+  Create: (props: IconProps) => <CustomIcon name="create" {...props} />,
+  Trash: (props: IconProps) => <CustomIcon name="trash" {...props} />,
+  Add: (props: IconProps) => <CustomIcon name="add" {...props} />,
 
   ThumbsUp_O: (props: IconProps) => <CustomIcon name="thumbs-up-outline" {...props} />,
   Chat_O: (props: IconProps) => <CustomIcon name="chatbubble-outline" {...props} />,
@@ -99,7 +103,11 @@ const IconLib = {
   
   Settings_O: (props: IconProps) => <CustomIcon name="settings-outline" {...props} />,
   Camera_O: (props: IconProps) => <CustomIcon name="camera-outline" {...props} />,
-
+  Gender_O: (props: IconProps) => <CustomIcon name="male-female-outline" {...props} />,
+  Create_O: (props: IconProps) => <CustomIcon name="create-outline" {...props} />,
+  Trash_O: (props: IconProps) => <CustomIcon name="trash-outline" {...props} />,
+  Add_O: (props: IconProps) => <CustomIcon name="add-outline" {...props} />,
+  
   // FontAwesome Icons using the "fa" type
   Google: (props: IconProps) => <CustomIcon name="google" {...props} iconType="fa" />,
   Fb: (props: IconProps) => <CustomIcon name="facebook" {...props} iconType="fa" />,
@@ -114,7 +122,7 @@ const IconLib = {
   
   
   Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
-  Male: (props: IconProps) => <CustomIcon name="male" {...props} />,
+  
 
 };
 

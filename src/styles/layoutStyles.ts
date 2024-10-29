@@ -51,6 +51,10 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Center content horizontally
       width: '100%',
     },
+    alignAllItems: {
+      justifyContent: 'flex-start', // Align content to the top of the container
+      alignItems: 'center', // Center content horizontally
+    },
     innerContainer: {
       justifyContent: 'center', 
       alignItems: 'center'
@@ -182,6 +186,15 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
     lMarginL: {
       marginLeft: 20,
+    },
+    marginAllS: {
+      padding: 5,
+    },
+    marginAllM: {
+      padding: 10,
+    },
+    marginAllL: {
+      padding: 20,
     },
     spacer: {
       height: 10, // Default height spacer (for vertical gaps)

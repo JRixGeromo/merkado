@@ -16,6 +16,10 @@ interface ContentCardWideProps {
     price?: number;
     buttonActions: {
       iconName: string;
+      title: string;
+      textSize: number;
+      width: string;
+      backgroundColor: string;
       onPress: () => void;
       buttonStyle: object;
     }[];
@@ -35,11 +39,6 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
 
   const selectedTheme = appTheme[themeType];
 
-  const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
-    const IconComponent = IconLib[iconName]; // Access the icon component dynamically
-    return <IconComponent size={size} color={color} />;
-  };
-
   return (
     <View style={[layoutStyle.shadowedContainer, layoutStyle.columnsInsideFlex, commonStyle.contentBox]}>
       
@@ -47,33 +46,36 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
         <Image source={{ uri: imageUrl }} style={commonStyle.contentImage} />
       </View>
 
-      <View style={[layoutStyle.cols_75, layoutStyle.horizontalSpacer]}>
-        <Text style={commonStyle.productName}>{name}</Text>
+      <View style={[layoutStyle.cols_75, layoutStyle.paddingAllS]}>
+        <Text style={[layoutStyle.font14, {color: selectedTheme.textPrimary}]}>{name}</Text>
+        <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>{description}</Text>
         <View style={layoutStyle.verticalSpacerS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
           <Text style={commonStyle.productPrice}>₱{price}</Text>
         )}
         <View style={layoutStyle.verticalSpacerS} />
-        <View style={layoutStyle.verticalSpacerS} />
-      </View>
-      <View style={layoutStyle.verticalSpacerS} />
-
-      {/* <View style={layoutStyle.columnsInsideFlex}>
+        <View style={[layoutStyle.columnsInside, layoutStyle.alignRight ]}>
         {buttonActions.map((action, index) => (
-          <CustomButton
-            key={index}
-            title={''} // No text, as you're only displaying an icon
-            onPress={action.onPress}
-            backgroundColor="transparent" // Assuming you want only the icon and no background
-            iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
-            iconColor={selectedTheme.textLight} // Set the icon color
-            iconSize={20} // Set the icon size
-            style={[layoutStyle.cols_2, commonStyle.cardButton, action.buttonStyle]} // Apply the button styles
-            borderRadius={0} // Default borderRadius is 15, can be overridden
-          />
+          <View style={[layoutStyle.cols_30, layoutStyle.lMarginL]}>
+            <CustomButton
+              key={index}
+              title={action.title} // No text, as you're only displaying an icon
+              textSize={action.textSize}
+              backgroundColor={action.backgroundColor}
+              width={action.width}
+              onPress={action.onPress}
+              iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
+              iconColor={selectedTheme.iconColorLight} // Set the icon color
+              iconSize={18} // Set the icon size
+              color={selectedTheme.textLight} // Set the icon size
+              style={[commonStyle.cardButton, action.buttonStyle]} // Apply the button styles
+              borderRadius={0} // Default borderRadius is 15, can be overridden
+            />
+          </View>
         ))}
-      </View> */}
+      </View>
+      </View>
     </View>
   );
 };
