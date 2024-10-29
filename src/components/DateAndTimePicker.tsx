@@ -103,7 +103,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           name={iconName}
           size={iconSize}
           color={themeBasedIconColor}
-          style={{ marginRight: 4 }} // Add space between icon and input
+          style={{ marginRight: 10 }} // Add space between icon and input
         />
         <TextInput
           placeholder={placeholder} // Use the passed placeholder

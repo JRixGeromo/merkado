@@ -78,6 +78,15 @@ const IconLib = {
   Create: (props: IconProps) => <CustomIcon name="create" {...props} />,
   Trash: (props: IconProps) => <CustomIcon name="trash" {...props} />,
   Add: (props: IconProps) => <CustomIcon name="add" {...props} />,
+  
+  Pricetag: (props: IconProps) => <CustomIcon name="pricetag" {...props} />,
+  Pricetags: (props: IconProps) => <CustomIcon name="pricetags" {...props} />,
+  Layers: (props: IconProps) => <CustomIcon name="layers" {...props} />,
+  Cash: (props: IconProps) => <CustomIcon name="cash" {...props} />,
+  Document: (props: IconProps) => <CustomIcon name="document-text" {...props} />,
+  Apps: (props: IconProps) => <CustomIcon name="apps" {...props} />,
+  Briefcase: (props: IconProps) => <CustomIcon name="briefcase" {...props} />,
+  
 
   ThumbsUp_O: (props: IconProps) => <CustomIcon name="thumbs-up-outline" {...props} />,
   Chat_O: (props: IconProps) => <CustomIcon name="chatbubble-outline" {...props} />,
@@ -107,6 +116,14 @@ const IconLib = {
   Create_O: (props: IconProps) => <CustomIcon name="create-outline" {...props} />,
   Trash_O: (props: IconProps) => <CustomIcon name="trash-outline" {...props} />,
   Add_O: (props: IconProps) => <CustomIcon name="add-outline" {...props} />,
+
+  Pricetag_O: (props: IconProps) => <CustomIcon name="pricetag-outline" {...props} />,
+  Pricetags_O: (props: IconProps) => <CustomIcon name="pricetags-outline" {...props} />,
+  Layers_O: (props: IconProps) => <CustomIcon name="layers-outline" {...props} />,
+  Cash_O: (props: IconProps) => <CustomIcon name="cash-outline" {...props} />,
+  Document_O: (props: IconProps) => <CustomIcon name="document-text-outline" {...props} />,
+  Apps_O: (props: IconProps) => <CustomIcon name="apps-outline" {...props} />,
+  Briefcase_O: (props: IconProps) => <CustomIcon name="briefcase-outline" {...props} />,
   
   // FontAwesome Icons using the "fa" type
   Google: (props: IconProps) => <CustomIcon name="google" {...props} iconType="fa" />,

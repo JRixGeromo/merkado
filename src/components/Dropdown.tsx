@@ -104,7 +104,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         style={layoutStyle.columnsInside}
       >
         {showIcon && (
-          <View style={{ marginRight: 3 }}>
+          <View style={{ marginRight: 10 }}>
             {renderIcon(iconName, iconSize, themeBasedIconColor)}
           </View>
         )}

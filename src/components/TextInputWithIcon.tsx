@@ -23,6 +23,8 @@ interface TextInputWithIconProps {
   editable?: boolean;
   onFocus?: () => void; // Make sure this prop exists
   onChangeText?: (text: string) => void; // Make this optional
+  keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
+  multiline?: boolean; // Add multiline prop
 }
 
 const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
@@ -41,6 +43,8 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   editable = true, // Set editable as true by default
   onFocus, // Destructure onFocus
   onChangeText,
+  keyboardType = 'default',
+  multiline = false,
 }) => {
   
   const themeType = useAppSelector(state => state.theme.theme);
@@ -82,7 +86,10 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
       ]}
     >
       {/* Dynamically render the Icon using IconLib */}
-      {renderIcon(iconName, iconSize, themeBasedIconColor)}
+      <View style={{ marginRight: 4, paddingTop: multiline ? 10 : 0, alignSelf: multiline ? 'flex-start' : 'center' }}>
+        {renderIcon(iconName, iconSize, themeBasedIconColor)}
+      </View>
+
 
       <TextInput
         style={[
@@ -92,6 +99,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
             color: themeBasedTextColor,
             fontSize: placeholderFontSize,
             backgroundColor: 'transparent', // Ensure the input itself has no background
+            textAlignVertical: multiline ? 'top' : 'center', // Align placeholder text at the top for multiline
           },
         ]}
         placeholder={placeholder}
@@ -106,6 +114,9 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
           }
         }}
         editable={editable} // Add the editable prop
+        keyboardType={keyboardType}
+        multiline={multiline}      
+        numberOfLines={multiline ? 3 : 1} // Specify the number of lines if multiline  
       />
     </View>
   );
