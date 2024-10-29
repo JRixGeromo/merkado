@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import {
   View,
   Text,
@@ -6,8 +6,11 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Switch,
+  Image,
   TouchableOpacity,
 } from 'react-native';
+import { launchImageLibrary } from 'react-native-image-picker';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import Dropdown from '../../../components/Dropdown';
@@ -23,47 +26,53 @@ const CreateProductScreen = () => {
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
 
-  // State for product fields
+  // States for all product fields
   const [name, setName] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
   const [salePrice, setSalePrice] = useState('');
-  const [description, setDescription] = useState('');
+  const [longDescription, setLongDescription] = useState('');
   const [category, setCategory] = useState('');
+  const [unit, setUnit] = useState('');
   const [brand, setBrand] = useState('');
   const [isFeatured, setIsFeatured] = useState(false);
   const [isActive, setIsActive] = useState(true);
+  const [images, setImages] = useState<string[]>([]); // Store image URIs
 
-  // Mock categories and brands
-  const categories = [
-    { label: 'Electronics', value: '1' },
-    { label: 'Groceries', value: '2' },
-  ];
-  const brands = [
-    { label: 'Brand A', value: '1' },
-    { label: 'Brand B', value: '2' },
-  ];
+  const categoryOptions = [{ label: 'Electronics', value: 'electronics' }, { label: 'Fashion', value: 'fashion' }];
+  const unitOptions = [{ label: 'Piece', value: 'piece' }, { label: 'Kilogram', value: 'kilogram' }];
+  const brandOptions = [{ label: 'Brand A', value: 'brand_a' }, { label: 'Brand B', value: 'brand_b' }];
 
   const handleCreateProduct = () => {
-    if (!name || !price || !stock || !category || !brand) {
-      Alert.alert('Error', 'Please fill out all required fields.');
+    if (!name || !stock || !price || !category || !unit || !brand || images.length === 0) {
+      Alert.alert('Error', 'Please fill in all required fields and add at least one image.');
       return;
     }
-
-    const newProduct = {
+    const productData = {
       name,
-      stock: parseInt(stock, 10),
+      stock: parseInt(stock),
       price: parseFloat(price),
       salePrice: salePrice ? parseFloat(salePrice) : null,
-      description,
-      categoryId: category,
-      brandId: brand,
+      longDescription,
+      category,
+      unit,
+      brand,
       isFeatured,
       isActive,
+      images,
     };
-
-    console.log('Creating Product:', newProduct);
+    console.log('Product data submitted:', productData);
     Alert.alert('Success', 'Product created successfully!');
+  };
+
+  const handleImagePick = async () => {
+    const result = await launchImageLibrary({
+      mediaType: 'photo',
+      selectionLimit: 3, // Limit the number of images
+    });
+    if (result.assets) {
+      setImages(result.assets.map(asset => asset.uri as string));
+    }
   };
 
   return (
@@ -74,7 +83,6 @@ const CreateProductScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[layoutStyle.container, { padding: 20, justifyContent: 'center' }]}>
           <View style={[layoutStyle.formContainer, { backgroundColor: selectedTheme.formBackgroundColorPrimary }]}>
-            <Text style={commonStyle.header}>Create New Product</Text>
 
             {/* Product Name */}
             <TextInputWithIcon
@@ -119,9 +127,9 @@ const CreateProductScreen = () => {
             <TextInputWithIcon
               placeholder="Description"
               iconName="Document"
-              value={description}
-              onChangeText={setDescription}
-              style={[{ height: 75 }, commonStyle.multilineInput]}
+              value={longDescription}
+              onChangeText={setLongDescription}
+              style={{ height: 75 }}
               multiline={true} // Now supported
             />
 
@@ -129,7 +137,7 @@ const CreateProductScreen = () => {
             <Dropdown
               selectedValue={category}
               onValueChange={value => setCategory(value)}
-              options={categories}
+              options={categoryOptions}
               placeholder="Select Category"
               iconName="Apps"
               iconSize={22}
@@ -140,32 +148,54 @@ const CreateProductScreen = () => {
             <Dropdown
               selectedValue={brand}
               onValueChange={value => setBrand(value)}
-              options={brands}
+              options={brandOptions}
               placeholder="Select Brand"
               iconName="Briefcase"
               iconSize={22}
               showIcon={true}
             />
 
-            {/* Featured Toggle */}
-            <TouchableOpacity
-              style={[commonStyle.toggleContainer, { backgroundColor: isFeatured ? selectedTheme.buttonSuccess : selectedTheme.buttonDisabled }]}
-              onPress={() => setIsFeatured(!isFeatured)}
-            >
-              <Text style={{ color: selectedTheme.textLight }}>
-                {isFeatured ? 'Featured' : 'Not Featured'}
-              </Text>
-            </TouchableOpacity>
+            {/* Unit Selector */}
+            <Dropdown selectedValue={unit} onValueChange={setUnit} options={unitOptions} placeholder="Select Unit" />
 
-            {/* Active Toggle */}
-            <TouchableOpacity
-              style={[commonStyle.toggleContainer, { backgroundColor: isActive ? selectedTheme.buttonSuccess : selectedTheme.buttonDisabled }]}
-              onPress={() => setIsActive(!isActive)}
-            >
-              <Text style={{ color: selectedTheme.textLight }}>
-                {isActive ? 'Active' : 'Inactive'}
-              </Text>
-            </TouchableOpacity>
+            {/* Image Picker */}
+            <View style={{ marginVertical: 20 }}>
+              <Text style={{ color: selectedTheme.textPrimary, marginBottom: 10 }}>Product Images</Text>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                {images.map((uri, index) => (
+                  <Image
+                    key={index}
+                    source={{ uri }}
+                    style={{ width: 80, height: 80, marginRight: 10, marginBottom: 10, borderRadius: 8 }}
+                  />
+                ))}
+              </View>
+              <TouchableOpacity onPress={handleImagePick} style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+                <Text style={{ color: selectedTheme.textPrimary, marginLeft: 10 }}>Add Images</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Switches for Featured and Active */}
+            <View style={[layoutStyle.rowsInside, { width: '80%' }]}>
+              <View style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}>
+                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>Featured Product</Text>
+                <Switch
+                  value={isFeatured}
+                  onValueChange={setIsFeatured}
+                  trackColor={{ false: selectedTheme.switchInactive, true: selectedTheme.switchActive }}
+                  thumbColor={isFeatured ? selectedTheme.switchThumbActive : selectedTheme.switchThumbInactive}
+                />
+              </View>
+              <View style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}>
+                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>Active Product</Text> 
+                <Switch
+                  value={isActive}
+                  onValueChange={setIsActive}
+                  trackColor={{ false: selectedTheme.switchInactive, true: selectedTheme.switchActive }}
+                  thumbColor={isActive ? selectedTheme.switchThumbActive : selectedTheme.switchThumbInactive}
+                />
+              </View>
+            </View>
 
             {/* Submit Button */}
             <CustomButton

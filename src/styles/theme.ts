@@ -68,6 +68,11 @@ export interface ThemeType {
   buttonFont: string;
   tabFont: string;
 
+  switchInactive: string;
+  switchActive: string;
+  switchThumbInactive: string;
+  switchThumbActive: string;
+
   alternativeFont1: string;
   alternativeFont2: string;
   alternativeFont3: string;
@@ -136,6 +141,11 @@ const lightTheme: ThemeType = {
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#cad2c5',
+  
+  switchInactive: '#D1D5DB',         // Light gray for inactive track, subtle on white background
+  switchActive: '#4CAF50',           // Green for active background track (suggests "on")
+  switchThumbInactive: '#9CA3AF',    // Medium gray for inactive thumb
+  switchThumbActive: '#FFFFFF',      // White for active thumb, maintains the light theme feel
 
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',
@@ -175,13 +185,13 @@ const darkTheme: ThemeType = {
   facebookButtonColor: '#3b5998',
   inputBackgroundColor: '#0a0908',
 
-  buttonPrimary: '#606c38',
+  buttonPrimary: '#679436',
   buttonSecondary: '#ffffff',
   buttonSuccess: '#8ac926',
   buttonInfo: '#184e77',
   buttonWarning: '#fb6107',
   buttonError: '#ba181b',
-  buttonDanger: '#ba181b',
+  buttonDanger: '#49111c',
   buttonDisabled: '#b8bdb5',
   buttonAction: '#343a40',
   buttonHighlight: '#f9c74f',
@@ -212,6 +222,11 @@ const darkTheme: ThemeType = {
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#4a4e69',
+
+  switchInactive: '#e0e0e0',         // Light gray for inactive background track
+  switchActive: '#4CAF50',           // Green for active background track (suggests "on")
+  switchThumbInactive: '#9E9E9E',    // Dark gray for inactive thumb
+  switchThumbActive: '#FFFFFF',      // White for active thumb, contrasts with green
 
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',

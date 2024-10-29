@@ -77,8 +77,13 @@ const IconLib = {
   Gender: (props: IconProps) => <CustomIcon name="male-female" {...props} />,
   Create: (props: IconProps) => <CustomIcon name="create" {...props} />,
   Trash: (props: IconProps) => <CustomIcon name="trash" {...props} />,
-  Add: (props: IconProps) => <CustomIcon name="add" {...props} />,
   
+  Settings: (props: IconProps) => <CustomIcon name="settings" {...props} />,
+  Camera: (props: IconProps) => <CustomIcon name="camera" {...props} />,
+  
+  Add: (props: IconProps) => <CustomIcon name="add" {...props} />,
+  Archive: (props: IconProps) => <CustomIcon name="archive" {...props} />,
+
   Pricetag: (props: IconProps) => <CustomIcon name="pricetag" {...props} />,
   Pricetags: (props: IconProps) => <CustomIcon name="pricetags" {...props} />,
   Layers: (props: IconProps) => <CustomIcon name="layers" {...props} />,
@@ -109,7 +114,8 @@ const IconLib = {
   Help_O: (props: IconProps) => <CustomIcon name="help-circle-outline" {...props} />,
   Logout_O: (props: IconProps) => <CustomIcon name="log-out-outline" {...props} />,
   Send_O: (props: IconProps) => <CustomIcon name="send-outline" {...props} />,
-  
+  Archive_O: (props: IconProps) => <CustomIcon name="archive-outline" {...props} />,
+   
   Settings_O: (props: IconProps) => <CustomIcon name="settings-outline" {...props} />,
   Camera_O: (props: IconProps) => <CustomIcon name="camera-outline" {...props} />,
   Gender_O: (props: IconProps) => <CustomIcon name="male-female-outline" {...props} />,

@@ -96,7 +96,7 @@ const MyProductsScreen = () => {
       <View style={layoutStyle.verticalSpacerS} />
       <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_75]}>
-          <TouchableOpacity>
+          <TouchableOpacity style={layoutStyle.rMarginL}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
           <TextInput
@@ -107,6 +107,7 @@ const MyProductsScreen = () => {
             onChangeText={setSearchTerm}
           />
         </View>
+
         <View style={[layoutStyle.cols_25, layoutStyle.lPaddingS]}>
           <CustomButton
             title="Create"
