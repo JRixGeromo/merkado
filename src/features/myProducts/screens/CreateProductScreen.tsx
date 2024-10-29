@@ -173,12 +173,13 @@ const CreateProductScreen = () => {
             <CustomButton
                 title="Add Images"
                 onPress={handleImagePick}
-                backgroundColor={selectedTheme.buttonGray}
+                backgroundColor={selectedTheme.buttonSecondary}
                 color={selectedTheme.textPrimary}
                 borderRadius={5}
                 width={"80%"}
+                textSize={12}
                 style={{
-                    padding:8,
+                    padding:10,
                     marginBottom:10,
                   }}
               />
