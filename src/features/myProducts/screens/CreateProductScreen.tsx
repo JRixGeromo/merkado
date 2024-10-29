@@ -159,8 +159,7 @@ const CreateProductScreen = () => {
             <Dropdown selectedValue={unit} onValueChange={setUnit} options={unitOptions} placeholder="Select Unit" />
 
             {/* Image Picker */}
-            <View style={{ marginVertical: 20 }}>
-              <Text style={{ color: selectedTheme.textPrimary, marginBottom: 10 }}>Product Images</Text>
+            <View>
               <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                 {images.map((uri, index) => (
                   <Image
@@ -170,10 +169,19 @@ const CreateProductScreen = () => {
                   />
                 ))}
               </View>
-              <TouchableOpacity onPress={handleImagePick} style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-                <Text style={{ color: selectedTheme.textPrimary, marginLeft: 10 }}>Add Images</Text>
-              </TouchableOpacity>
             </View>
+            <CustomButton
+                title="Add Images"
+                onPress={handleImagePick}
+                backgroundColor={selectedTheme.buttonGray}
+                color={selectedTheme.textPrimary}
+                borderRadius={5}
+                width={"80%"}
+                style={{
+                    padding:8,
+                    marginBottom:10,
+                  }}
+              />
 
             {/* Switches for Featured and Active */}
             <View style={[layoutStyle.rowsInside, { width: '80%' }]}>
