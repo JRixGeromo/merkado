@@ -580,16 +580,20 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeHeight(18),
       fontWeight: 'bold',
     },
+    
     slideModal: {
       justifyContent: 'flex-end', // Align modal to bottom
-      margin: 0, // No margin for full width
+      //margin: 0, // No margin for full width
+      marginLeft: 10,
+      marginRight: 10,
     },
     slideModalContent: {
       backgroundColor: 'white', // Adjust based on theme
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
-      maxHeight: '80%', // Limits height so it doesn’t take up entire screen
+      minHeight: '60%',  // Ensures the modal takes up at least 60% of the screen height
+      maxHeight: '80%',  // Limits the height so it doesn’t take up the entire screen
     },
     slideModalCloseButton: {
       alignSelf: 'flex-end',
@@ -607,5 +611,45 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderRadius: 10,
       marginBottom: 10,
     },
+
+    confimrationModalContent: {
+      padding: 20,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      minWidth: '80%',
+    },
+    
+    centeredConfimrationModal: {
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      margin: 10,
+    },
+    
+    confimrationModalTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 10,
+      textAlign: 'center',
+    },
+    
+    confimrationModalMessage: {
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    
+    confimrationModalButton: {
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 5,
+      minWidth: 100,
+      alignItems: 'center',
+    },
+    
+    confimrationButtonText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+
   });
 };

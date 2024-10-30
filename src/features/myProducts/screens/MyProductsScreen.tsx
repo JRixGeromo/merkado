@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity, TextInput, Text, Image } from 'react-native';
-import Modal from 'react-native-modal';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
 import SlideContentModal from '../../../components/SlideContentModal';
+import ConfirmationModal from '../../../components/ConfirmationModal';
 import IconLib from '../../../components/IconLib';
 import CustomButton from '../../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
-
 
 export type Product = {
   id: string;
@@ -60,6 +59,21 @@ const MyProductsScreen = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isConfirmVisible, setConfirmVisible] = useState(false);
+
+  const handleDeleteProduct = (product: Product) => {
+    setSelectedProduct(product);
+    setConfirmVisible(true); // Show confirmation modal
+  };
+
+  const confirmDeletion = () => {
+    if (selectedProduct) {
+      console.log(`Deleting product: ${selectedProduct.name}`);
+      setProducts(products.filter(p => p.id !== selectedProduct.id));
+      setSelectedProduct(null);
+      setConfirmVisible(false);
+    }
+  };
 
   const handleProduct = () => {
     navigation.navigate('CreateProductScreen');
@@ -84,7 +98,7 @@ const MyProductsScreen = () => {
           backgroundColor: selectedTheme.buttonDanger,
           width: "100%",
           textSize: 10,
-          onPress: () => console.log('Delete Pressed'),
+          onPress: () => handleDeleteProduct(item),
           buttonStyle: commonStyle.cardButton,
         },
         {
@@ -147,6 +161,7 @@ const MyProductsScreen = () => {
       {/* Product List */}
       <FlatList
         data={products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+        //data={products} // Temporarily use this without filtering
         keyExtractor={item => item.id}
         renderItem={renderProductItem}
         contentContainerStyle={layoutStyle.flatListPaddingTop}
@@ -168,6 +183,19 @@ const MyProductsScreen = () => {
           </View>
         )}
       </SlideContentModal>
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        visible={isConfirmVisible}
+        onClose={() => setConfirmVisible(false)}
+        title="Confirm Deletion"
+        message={`Are you sure you want to delete ${selectedProduct?.name}?`}
+        onConfirm={confirmDeletion}
+        confirmText="Delete"
+        cancelText="Cancel"
+        confirmButtonColor="red"       // Custom confirm button color
+        cancelButtonColor="gray"       // Custom cancel button color
+      />
     </View>
   );
 };
