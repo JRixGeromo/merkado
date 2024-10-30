@@ -60,7 +60,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
         {/* Render buttons */}
         <View style={[layoutStyle.columnsInside, layoutStyle.alignRight ]}>
           {buttonActions.map((action, index) => (
-            <View key={index} style={[layoutStyle.cols_25, layoutStyle.lMarginL]}>
+            <View key={index} style={[layoutStyle.cols_25, layoutStyle.lMarginXL]}>
               <CustomButton
                 title={action.title}
                 textSize={action.textSize}

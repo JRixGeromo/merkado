@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { View, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { View, FlatList, TouchableOpacity, TextInput, Text, Image } from 'react-native';
+import Modal from 'react-native-modal';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
+import SlideContentModal from '../../../components/SlideContentModal';
 import IconLib from '../../../components/IconLib';
 import CustomButton from '../../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
+
 
 export type Product = {
   id: string;
@@ -55,9 +58,16 @@ const MyProductsScreen = () => {
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const handleProduct = () => {
     navigation.navigate('CreateProductScreen');
+  };
+
+  const handleViewProduct = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalVisible(true);
   };
 
   const renderProductItem = ({ item }: { item: Product }) => (
@@ -74,7 +84,7 @@ const MyProductsScreen = () => {
           backgroundColor: selectedTheme.buttonDanger,
           width: "100%",
           textSize: 10,
-          onPress: () => console.log('Delete Pressed'), // Add delete functionality here
+          onPress: () => console.log('Delete Pressed'),
           buttonStyle: commonStyle.cardButton,
         },
         {
@@ -83,7 +93,7 @@ const MyProductsScreen = () => {
           backgroundColor: selectedTheme.buttonDark,
           width: "100%",
           textSize: 10,
-          onPress: () => console.log('Edit Pressed'), // Navigate to edit product
+          onPress: () => console.log('Edit Pressed'),
           buttonStyle: commonStyle.cardButton,
         },
         {
@@ -92,7 +102,7 @@ const MyProductsScreen = () => {
           backgroundColor: selectedTheme.buttonPrimary,
           width: "100%",
           textSize: 10,
-          onPress: () => console.log('Edit Pressed'), // Navigate to edit product
+          onPress: () => handleViewProduct(item),
           buttonStyle: commonStyle.cardButton,
         },
       ]}
@@ -142,6 +152,22 @@ const MyProductsScreen = () => {
         contentContainerStyle={layoutStyle.flatListPaddingTop}
         showsVerticalScrollIndicator={false}
       />
+
+      {/* Slide-up Modal for Viewing Product */}
+      <SlideContentModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        title={selectedProduct?.name}
+      >
+        {selectedProduct && (
+          <View>
+            <Image source={{ uri: selectedProduct.imageUrl }} style={commonStyle.slideModalImage} />
+            <Text style={layoutStyle.modalText}>Price: ₱{selectedProduct.price}</Text>
+            <Text style={layoutStyle.modalText}>Description: {selectedProduct.description}</Text>
+            <Text style={layoutStyle.modalText}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
+          </View>
+        )}
+      </SlideContentModal>
     </View>
   );
 };

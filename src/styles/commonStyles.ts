@@ -580,5 +580,32 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeHeight(18),
       fontWeight: 'bold',
     },
+    slideModal: {
+      justifyContent: 'flex-end', // Align modal to bottom
+      margin: 0, // No margin for full width
+    },
+    slideModalContent: {
+      backgroundColor: 'white', // Adjust based on theme
+      padding: normalizeHeight(20),
+      borderTopLeftRadius: normalizeHeight(15),
+      borderTopRightRadius: normalizeHeight(15),
+      maxHeight: '80%', // Limits height so it doesn’t take up entire screen
+    },
+    slideModalCloseButton: {
+      alignSelf: 'flex-end',
+      padding: normalizeHeight(10),
+    },
+    slideModalTitle: {
+      fontSize: normalizeHeight(18),
+      fontWeight: 'bold',
+      marginBottom: normalizeHeight(10),
+      textAlign: 'center',
+    },
+    slideModalImage: {
+      width: '100%',
+      height: 200,
+      borderRadius: 10,
+      marginBottom: 10,
+    },
   });
 };

@@ -187,6 +187,9 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     lMarginL: {
       marginLeft: 20,
     },
+    lMarginXL: {
+      marginLeft: 25,
+    },
     marginAllS: {
       padding: 5,
     },
