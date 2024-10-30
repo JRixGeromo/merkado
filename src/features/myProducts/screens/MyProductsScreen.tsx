@@ -76,7 +76,7 @@ const MyProductsScreen = () => {
   };
 
   const handleProduct = () => {
-    navigation.navigate('CreateProductScreen');
+    navigation.navigate('UpsertProductScreen');
   };
 
   const handleViewProduct = (product: Product) => {

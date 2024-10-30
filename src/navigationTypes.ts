@@ -15,7 +15,7 @@ export type RootStackParamList = {
   PaymentMethodsScreen: undefined;
   ProductCategoriesScreen: undefined;
   MyProductsScreen: undefined;
-  CreateProductScreen: undefined;
+  UpsertProductScreen: undefined;
   OrdersScreen: undefined;
   FavoritesScreen: undefined;
   LiveShowsScreen: undefined;

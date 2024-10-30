@@ -629,15 +629,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       textAlign: 'center',
     },
     confimrationModalMessage: {
-      fontSize: normalizeFontSize(16),
+      fontSize: normalizeFontSize(14),
       textAlign: 'center',
-    },
-    confimrationModalButton: {
-      paddingVertical: normalizeHeight(10),
-      paddingHorizontal: normalizeHeight(20),
-      borderRadius: normalizeHeight(5),
-      minWidth: normalizeHeight(100),
-      alignItems: 'center',
     },
     confimrationButtonText: {
       fontSize: normalizeFontSize(16),
