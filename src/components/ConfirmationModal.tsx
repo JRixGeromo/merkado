@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { commonStyles } from '../styles/commonStyles';
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
+import CustomButton from './CustomButton'; // Import CustomButton
 
 interface ConfirmationModalProps {
   visible: boolean;
@@ -14,8 +15,8 @@ interface ConfirmationModalProps {
   onConfirm: () => void;
   confirmText?: string;
   cancelText?: string;
-  confirmButtonColor?: string; // New prop for custom confirm button color
-  cancelButtonColor?: string;  // New prop for custom cancel button color
+  confirmButtonColor?: string;
+  cancelButtonColor?: string;
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
@@ -39,44 +40,40 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       isVisible={visible}
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
-      style={commonStyle.centeredConfimrationModal} // Centered on screen
+      style={commonStyle.centeredConfimrationModal}
       backdropOpacity={0.3}
     >
       <View style={[commonStyle.confimrationModalContent, { backgroundColor: selectedTheme.formBackgroundColorPrimary }]}>
         {/* Optional Title */}
-        {title && <Text style={[commonStyle.confimrationModalTitle, { color: selectedTheme.textPrimary }]}>{title}</Text>}
-        
+        {title && (
+          <Text style={[commonStyle.confimrationModalTitle, { color: selectedTheme.textPrimary }]}>{title}</Text>
+        )}
+
         {/* Message */}
-        <Text style={[commonStyle.confimrationModalMessage, { color: selectedTheme.textSecondary }]}>
-          {message}
-        </Text>
+        <Text style={[commonStyle.confimrationModalMessage, { color: selectedTheme.textSecondary }]}>{message}</Text>
 
         {/* Buttons */}
         <View style={[layoutStyle.columnsInside, { justifyContent: 'space-between', marginTop: 20 }]}>
           {/* Cancel Button */}
-          <TouchableOpacity
-            style={[
-              commonStyle.confimrationModalButton, 
-              { backgroundColor: cancelButtonColor || selectedTheme.buttonDanger }
-            ]}
+          <CustomButton
+            title={cancelText}
             onPress={onClose}
-          >
-            <Text style={[commonStyle.confimrationButtonText, { color: selectedTheme.textLight }]}>{cancelText}</Text>
-          </TouchableOpacity>
+            backgroundColor={cancelButtonColor || selectedTheme.buttonDanger}
+            color={selectedTheme.textLight}
+            style={[commonStyle.confimrationModalButton]}
+          />
 
           {/* Confirm Button */}
-          <TouchableOpacity
-            style={[
-              commonStyle.confimrationModalButton, 
-              { backgroundColor: confirmButtonColor || selectedTheme.buttonPrimary }
-            ]}
+          <CustomButton
+            title={confirmText}
             onPress={() => {
               onConfirm();
               onClose(); // Close the modal after confirming
             }}
-          >
-            <Text style={[commonStyle.confimrationButtonText, { color: selectedTheme.textLight }]}>{confirmText}</Text>
-          </TouchableOpacity>
+            backgroundColor={confirmButtonColor || selectedTheme.buttonPrimary}
+            color={selectedTheme.textLight}
+            style={[commonStyle.confimrationModalButton]}
+          />
         </View>
       </View>
     </Modal>
