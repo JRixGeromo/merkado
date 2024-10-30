@@ -77,6 +77,7 @@ const IconLib = {
   Gender: (props: IconProps) => <CustomIcon name="male-female" {...props} />,
   Create: (props: IconProps) => <CustomIcon name="create" {...props} />,
   Trash: (props: IconProps) => <CustomIcon name="trash" {...props} />,
+  View: (props: IconProps) => <CustomIcon name="search" {...props} />,
   
   Settings: (props: IconProps) => <CustomIcon name="settings" {...props} />,
   Camera: (props: IconProps) => <CustomIcon name="camera" {...props} />,
@@ -122,7 +123,8 @@ const IconLib = {
   Create_O: (props: IconProps) => <CustomIcon name="create-outline" {...props} />,
   Trash_O: (props: IconProps) => <CustomIcon name="trash-outline" {...props} />,
   Add_O: (props: IconProps) => <CustomIcon name="add-outline" {...props} />,
-
+  View_O: (props: IconProps) => <CustomIcon name="search-outline" {...props} />,
+  
   Pricetag_O: (props: IconProps) => <CustomIcon name="pricetag-outline" {...props} />,
   Pricetags_O: (props: IconProps) => <CustomIcon name="pricetags-outline" {...props} />,
   Layers_O: (props: IconProps) => <CustomIcon name="layers-outline" {...props} />,

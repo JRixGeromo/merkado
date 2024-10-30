@@ -86,6 +86,15 @@ const MyProductsScreen = () => {
           onPress: () => console.log('Edit Pressed'), // Navigate to edit product
           buttonStyle: commonStyle.cardButton,
         },
+        {
+          iconName: 'View',
+          title: 'View',
+          backgroundColor: selectedTheme.buttonPrimary,
+          width: "100%",
+          textSize: 10,
+          onPress: () => console.log('Edit Pressed'), // Navigate to edit product
+          buttonStyle: commonStyle.cardButton,
+        },
       ]}
     />
   );

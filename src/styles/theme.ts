@@ -186,7 +186,7 @@ const darkTheme: ThemeType = {
   inputBackgroundColor: '#0a0908',
 
   buttonPrimary: '#679436',
-  buttonSecondary: '#30343f',
+  buttonSecondary: '#212529',
   buttonSuccess: '#8ac926',
   buttonInfo: '#184e77',
   buttonWarning: '#fb6107',
