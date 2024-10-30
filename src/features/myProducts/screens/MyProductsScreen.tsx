@@ -177,9 +177,9 @@ const MyProductsScreen = () => {
         {selectedProduct && (
           <View>
             <Image source={{ uri: selectedProduct.imageUrl }} style={commonStyle.slideModalImage} />
-            <Text style={layoutStyle.modalText}>Price: ₱{selectedProduct.price}</Text>
-            <Text style={layoutStyle.modalText}>Description: {selectedProduct.description}</Text>
-            <Text style={layoutStyle.modalText}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
+            <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
+            <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
+            <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
           </View>
         )}
       </SlideContentModal>

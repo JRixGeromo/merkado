@@ -583,12 +583,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     
     slideModal: {
       justifyContent: 'flex-end', // Align modal to bottom
-      //margin: 0, // No margin for full width
-      marginLeft: 10,
-      marginRight: 10,
+      marginLeft: normalizeHeight(10),
+      marginRight: normalizeHeight(10),
     },
     slideModalContent: {
-      backgroundColor: 'white', // Adjust based on theme
+      backgroundColor: selectedTheme.formBackgroundColorPrimary,
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
@@ -600,56 +599,49 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: normalizeHeight(10),
     },
     slideModalTitle: {
-      fontSize: normalizeHeight(18),
+      fontSize: normalizeFontSize(18),
       fontWeight: 'bold',
       marginBottom: normalizeHeight(10),
       textAlign: 'center',
     },
     slideModalImage: {
       width: '100%',
-      height: 200,
-      borderRadius: 10,
-      marginBottom: 10,
+      height: normalizeHeight(200),
+      borderRadius: normalizeHeight(10),
+      marginBottom: normalizeHeight(10),
     },
-
     confimrationModalContent: {
-      padding: 20,
-      borderRadius: 10,
+      padding: normalizeHeight(20),
+      borderRadius: normalizeHeight(10),
       alignItems: 'center',
       justifyContent: 'center',
       minWidth: '80%',
     },
-    
     centeredConfimrationModal: {
       justifyContent: 'center', 
       alignItems: 'center', 
-      margin: 10,
+      margin: normalizeHeight(10),
     },
-    
     confimrationModalTitle: {
-      fontSize: 18,
+      fontSize: normalizeFontSize(18),
       fontWeight: 'bold',
-      marginBottom: 10,
+      marginBottom: normalizeHeight(10),
       textAlign: 'center',
     },
-    
     confimrationModalMessage: {
-      fontSize: 16,
+      fontSize: normalizeFontSize(16),
       textAlign: 'center',
     },
-    
     confimrationModalButton: {
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      borderRadius: 5,
-      minWidth: 100,
+      paddingVertical: normalizeHeight(10),
+      paddingHorizontal: normalizeHeight(20),
+      borderRadius: normalizeHeight(5),
+      minWidth: normalizeHeight(100),
       alignItems: 'center',
     },
-    
     confimrationButtonText: {
-      fontSize: 16,
+      fontSize: normalizeFontSize(16),
       fontWeight: 'bold',
     },
-
   });
 };
