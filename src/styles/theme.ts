@@ -61,6 +61,7 @@ export interface ThemeType {
   modalOverlay: string;
   loader: string;
   lineBorderColor: string;
+  lineBorderColorLight: string;
 
   headingFont: string;
   bodyFont: string;
@@ -141,6 +142,7 @@ const lightTheme: ThemeType = {
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#cad2c5',
+  lineBorderColorLight: '#788585',
   
   switchInactive: '#D1D5DB',         // Light gray for inactive track, subtle on white background
   switchActive: '#4CAF50',           // Green for active background track (suggests "on")
@@ -222,6 +224,7 @@ const darkTheme: ThemeType = {
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#4a4e69',
+  lineBorderColorLight: '#9caea9',
 
   switchInactive: '#e0e0e0',         // Light gray for inactive background track
   switchActive: '#4CAF50',           // Green for active background track (suggests "on")

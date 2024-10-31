@@ -182,7 +182,7 @@ const ChatScreen = () => {
       </ScrollView>
 
       {/* Message Input */}
-      <View style={commonStyle.chatMessagesContainer }>
+      <View style={[commonStyle.chatMessagesContainer, { borderTopColor: selectedTheme.lineBorderColor, borderWidth: 0.5}] }>
         <View style={[layoutStyle.alignRight, {
             paddingHorizontal: 10, 
             marginBottom: 10, 

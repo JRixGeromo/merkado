@@ -61,6 +61,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     commentContainer: {
       padding: 10,
       borderRadius: SHARED.borderRadius,
+      borderColor: selectedTheme.lineBorderColor,
+      borderWidth: 0.5,
       marginBottom: 10, // Margin between comments
       position: 'relative', // Necessary for positioning the thumbs-up icon
     },
@@ -100,6 +102,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     commentFormContainer: {
       marginBottom: 2,
       padding: 12,
+      borderColor: selectedTheme.lineBorderColor,
+      borderWidth: 0.5,
     },
     inputWrapper: {
       //alignItems: 'center',
@@ -152,6 +156,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginRight: 10,
       paddingBottom: 0,
       marginBottom: 10,
+      borderColor: selectedTheme.lineBorderColorLight,
+      borderWidth: 0.5,
       //justifyContent: 'space-between', // Space between content and buttons
     },
     contentImage: {
@@ -159,19 +165,21 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: '100%', // Fill the wrapper container
       resizeMode: 'cover', // Ensure the image covers the available space
     },
-    productBox: {
+    contentBoxPortrait: {
       backgroundColor: selectedTheme.cardBackground,
       width: 120,
-      height: 225,
+      height: 230,
       marginRight: 10,
       paddingBottom: 0,
       marginBottom: 0,
       justifyContent: 'space-between', // Space between content and buttons
       alignItems: 'center', // Center all content horizontally
+      borderColor: selectedTheme.lineBorderColorLight,
+      borderWidth: 0.5,
     },
     cardImageWrapper: {
       width: '100%',
-      height: '33%', // Fixed height equivalent to 35% of productBox height
+      height: '33%', // Fixed height equivalent to 35% of contentBoxPortrait height
       position: 'relative',
     },
     productImage: {
@@ -506,7 +514,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
       paddingHorizontal: 10,
       marginHorizontal: 10,
-      marginBottom: 5,
+      marginBottom: 10,
       borderRadius: 25,
     },
     unreadBadge: {

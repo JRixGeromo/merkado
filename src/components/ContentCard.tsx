@@ -49,7 +49,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   const selectedTheme = appTheme[themeType];
 
   return (
-    <View style={[layoutStyle.shadowedContainer, commonStyle.productBox]}>
+    <View style={[layoutStyle.shadowedContainer, commonStyle.contentBoxPortrait]}>
       <View style={commonStyle.cardImageWrapper}>
         <Image source={{ uri: imageUrl }} style={commonStyle.productImage} />
         <TouchableOpacity
