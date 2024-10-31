@@ -125,8 +125,8 @@ const MyProductsScreen = () => {
 
   return (
     <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
+      <View style={layoutStyle.verticalSpacerM} />
       {/* Search Bar */}
-      <View style={layoutStyle.verticalSpacerS} />
       <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_75]}>
           <TouchableOpacity style={layoutStyle.rMarginL}>
