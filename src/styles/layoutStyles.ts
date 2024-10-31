@@ -5,13 +5,13 @@ import { FlatList } from 'react-native-gesture-handler';
 
 // Centralized constants for commonly used style properties
 export const SHARED = {
-  borderRadius: 2, // Shared border radius
+  borderRadius: 0, // Shared border radius
   padding: normalizeHeight(10), // Shared padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
     opacity: 0.1,
-    radius: 2,
+    radius: 0,
     elevation: 3, // Android-specific shadow
   },
   buttonPadding: normalizeHeight(15), // Button padding

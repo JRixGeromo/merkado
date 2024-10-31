@@ -73,7 +73,7 @@ const App = () => {
           return null;
         },
         tabBarActiveTintColor: selectedTheme.iconColorPrimary,
-        tabBarInactiveTintColor: selectedTheme.iconColorPrimary,
+        tabBarInactiveTintColor: selectedTheme.iconColorGray,
         tabBarStyle: [
           commonStyle.tabBarStyle,
           {

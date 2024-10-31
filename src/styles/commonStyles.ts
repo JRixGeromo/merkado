@@ -198,7 +198,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       right: 5,
       backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background for visibility
       padding: 5,
-      borderRadius: 1, // Make it circular
+      borderRadius: 0, // Make it circular
     },
     productName: {
       fontSize: normalizeFontSize(12),
@@ -560,7 +560,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#e0e0e0',
-      borderRadius: 5,
+      borderRadius: 0,
     },
     // quantityText: {
     //   fontSize: normalizeHeight(18),
