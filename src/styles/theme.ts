@@ -176,14 +176,14 @@ const darkTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#e6e6e9',
 
-  fullBackgroundColor: '#0c1821',
-  fullContainerBackgroundColor: '#0c1821',
+  fullBackgroundColor: '#161a1d',
+  fullContainerBackgroundColor: '#161a1d',
   formBackgroundColorPrimary: '#000000',
   formBackgroundColorSecondary: '#000000',
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#0c1821',
+  inputBackgroundColor: '#161a1d',
 
   buttonPrimary: '#679436',
   buttonSecondary: '#212529',
