@@ -90,7 +90,7 @@ const lightTheme: ThemeType = {
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#4f5d75',
-  buttonDark: '#252422',
+  buttonDark: '#788585',
 
   borderColorPrimary: '#4CAF50',
   borderColorSecondary: '#000000',
@@ -176,14 +176,14 @@ const darkTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#e6e6e9',
 
-  fullBackgroundColor: '#333533',
-  fullContainerBackgroundColor: '#333533',
-  formBackgroundColorPrimary: '#302b27',
-  formBackgroundColorSecondary: '#070707',
+  fullBackgroundColor: '#0c1821',
+  fullContainerBackgroundColor: '#0c1821',
+  formBackgroundColorPrimary: '#000000',
+  formBackgroundColorSecondary: '#000000',
 
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
-  inputBackgroundColor: '#1c1c1c',
+  inputBackgroundColor: '#0c1821',
 
   buttonPrimary: '#679436',
   buttonSecondary: '#212529',
@@ -210,7 +210,7 @@ const darkTheme: ThemeType = {
   tabHeaderBackgroundColor: '#222725',
   tabBarBackgroundColor: '#222725',
   headerBorderBottomColor: '#444444',
-  commentBackgroundColor: '#302b27',
+  commentBackgroundColor: '#000000',
 
   iconColorPrimary: '#7cb518',
   iconColorSecondary: '#f6aa1c',
