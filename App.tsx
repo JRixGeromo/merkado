@@ -190,7 +190,7 @@ const App = () => {
           name="UpsertProductScreen"
           component={UpsertProductScreen}
           options={{
-            headerTitle: 'Create/Update Product',
+            headerTitle: 'Product',
             headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
