@@ -176,8 +176,8 @@ const darkTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#e6e6e9',
 
-  fullBackgroundColor: '#000000',
-  fullContainerBackgroundColor: '#000000',
+  fullBackgroundColor: '#333533',
+  fullContainerBackgroundColor: '#333533',
   formBackgroundColorPrimary: '#161616',
   formBackgroundColorSecondary: '#070707',
 
@@ -207,8 +207,8 @@ const darkTheme: ThemeType = {
   buttonBorderGray: '#e6e6ea',
   buttonBorderLight: '#ffffff',
 
-  tabHeaderBackgroundColor: '#121113',
-  tabBarBackgroundColor: '#121113',
+  tabHeaderBackgroundColor: '#222725',
+  tabBarBackgroundColor: '#222725',
   headerBorderBottomColor: '#444444',
   commentBackgroundColor: '#161616',
 
