@@ -292,7 +292,7 @@ const DashboardScreen = () => {
             data={promoImages}
             renderItem={renderPromoItem}
             sliderWidth={screenWidth}
-            itemWidth={screenWidth * 0.8}
+            itemWidth={screenWidth * 0.40}
             loop={true}
             autoplay={true}
             autoplayInterval={3000}

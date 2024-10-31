@@ -189,7 +189,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     promoImage: {
       width: '100%',
-      height: 225, // Fill the wrapper container
+      height: 100, // Fill the wrapper container
       resizeMode: 'cover', // Ensure the image covers the available space
     },
     goFullScreenButton: {
@@ -486,7 +486,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       shadowOpacity: SHARED.shadow.opacity,
       shadowRadius: SHARED.shadow.radius,
       elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
-      marginBottom: 20, // Space between slides
+      //marginBottom: 10, // Space between slides
     },
     reactionBar: {
       flexDirection: 'row',
