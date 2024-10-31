@@ -6,7 +6,8 @@ import App from './App'; // Ensure your main App component is imported
 
 import { ApolloProvider } from '@apollo/client'; // Import ApolloProvider
 import client from './src/graphql/apolloClient'; // Correct default import
-
+import FloatingHearts from './src/components/FloatingHearts';
+import FloatingBubbles from './src/components/FloatingBubbles';
 // Your existing imports and code
 import './src/i18n/i18n'; // Ensure i18n is initialized globally
 
@@ -14,6 +15,8 @@ const AppWrapper = () => (
   <ApolloProvider client={client}>
     <Provider store={store}>
       <App />
+      <FloatingHearts />
+      <FloatingBubbles />
     </Provider>
   </ApolloProvider>
 );

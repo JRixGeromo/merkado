@@ -22,6 +22,9 @@ import IconLib from '../../../components/IconLib'; // Import IconLib
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
+// import FloatingDollars from '../../../components/FloatingDollars';
+// import FloatingHearts from '../../../components/FloatingHearts';
+// import FloatingBubbles from '../../../components/FloatingBubbles';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -326,6 +329,10 @@ const DashboardScreen = () => {
             contentContainerStyle={{ paddingHorizontal: 5 }}
           />
         </View>
+        {/* Overlay with Floating Dollars Animation */}
+        {/* <FloatingDollars />
+        <FloatingHearts />
+        <FloatingBubbles /> */}
       </View>
     </ScrollView>
   );
