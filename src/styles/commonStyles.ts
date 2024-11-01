@@ -590,11 +590,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     
     slideModal: {
       justifyContent: 'flex-end', // Align modal to bottom
-      marginLeft: normalizeHeight(10),
-      marginRight: normalizeHeight(10),
+      marginLeft: 0,
+      marginRight: 0,
+      marginBottom: 0,
     },
     slideModalContent: {
-      backgroundColor: selectedTheme.formBackgroundColorPrimary,
+      backgroundColor: selectedTheme.formBackgroundColorSecondary,
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
