@@ -12,7 +12,7 @@ import {
 import { launchImageLibrary } from 'react-native-image-picker';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
-import Dropdown from '../../../components/Dropdown';
+import ListOptions from '../../../components/ListOptions';
 
 import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
@@ -151,7 +151,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
               style={{ height: 75 }}
               multiline={true}
             />
-            <Dropdown
+            <ListOptions
               selectedValue={category}
               onValueChange={value => setCategory(value)}
               options={categoryOptions}
@@ -160,7 +160,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
               iconSize={22}
               showIcon={true}
             />
-            <Dropdown
+            <ListOptions
               selectedValue={brand}
               onValueChange={value => setBrand(value)}
               options={brandOptions}
@@ -169,7 +169,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
               iconSize={22}
               showIcon={true}
             />
-            <Dropdown
+            <ListOptions
               selectedValue={unit}
               onValueChange={setUnit}
               options={unitOptions}

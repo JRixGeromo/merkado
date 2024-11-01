@@ -13,7 +13,7 @@ import {
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import DateAndTimePicker from '../../../components/DateAndTimePicker';
-import Dropdown from '../../../components/Dropdown';
+import ListOptions from '../../../components/ListOptions';
 
 import { commonStyles } from '../../../styles/commonStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
@@ -135,7 +135,7 @@ const RegistrationScreen = () => {
             onChangeText={setLastName}
             style={{ height: 45 }}
           />
-          <Dropdown
+          <ListOptions
             selectedValue={gender}
             onValueChange={itemValue => setGender(itemValue)}
             options={[

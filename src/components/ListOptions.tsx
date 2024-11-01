@@ -7,9 +7,9 @@ import { commonStyles } from '../styles/commonStyles';
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
-import CustomButton from '../components/CustomButton'; // Import your CustomButton component
+import CustomButton from './CustomButton'; // Import your CustomButton component
 
-interface DropdownProps {
+interface ListOptionsProps {
   selectedValue: string; // Current selected value
   onValueChange: (value: string) => void; // Callback when value changes
   options: { label: string; value: string }[]; // Options for the dropdown
@@ -26,7 +26,7 @@ interface DropdownProps {
   showIcon?: boolean;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
+const ListOptions: React.FC<ListOptionsProps> = ({
   selectedValue,
   onValueChange,
   options = [], // Provide a default value to avoid undefined
@@ -236,4 +236,4 @@ const Dropdown: React.FC<DropdownProps> = ({
   );
 };
 
-export default Dropdown;
+export default ListOptions;
