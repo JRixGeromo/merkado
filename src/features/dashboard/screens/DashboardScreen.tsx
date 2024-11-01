@@ -88,6 +88,9 @@ const DashboardScreen = () => {
     { imageUrl: 'https://picsum.photos/100/100?random=10' },
     { imageUrl: 'https://picsum.photos/100/100?random=11' },
     { imageUrl: 'https://picsum.photos/100/100?random=12' },
+    { imageUrl: 'https://picsum.photos/100/100?random=13' },
+    { imageUrl: 'https://picsum.photos/100/100?random=14' },
+    { imageUrl: 'https://picsum.photos/100/100?random=15' },
   ];
 
   // Dummy featured stores data

@@ -6,6 +6,7 @@ import { FlatList } from 'react-native-gesture-handler';
 // Centralized constants for commonly used style properties
 export const SHARED = {
   borderRadius: 0, // Shared border radius
+  borderRadiusSecondary: 14,
   padding: normalizeHeight(10), // Shared padding
   shadow: {
     color: '#000',

@@ -484,7 +484,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginTop: 10, // Add margin between the logo and the text
     },
     slide: {
-      borderRadius: SHARED.borderRadius, // Rounded corners
+      borderRadius: SHARED.borderRadiusSecondary, // Rounded corners
       overflow: 'hidden', // Ensure the content inside doesn't exceed the boundary
     },
     reactionBar: {
