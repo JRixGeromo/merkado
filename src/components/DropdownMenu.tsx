@@ -114,7 +114,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
 return (
   <>
     <TouchableOpacity onPress={() => setMenuVisible(true)}>
-      {renderIcon('DotsMenu', 24, selectedTheme.iconColorPrimary)}
+      {renderIcon('DotsMenu', 24, selectedTheme.iconColorGray)}
     </TouchableOpacity>
 
     <Modal
