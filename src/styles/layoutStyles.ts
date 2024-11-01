@@ -67,6 +67,8 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       width: '100%',
       padding: SHARED.padding,
       backgroundColor: selectedTheme.fullBackgroundColor,
+      borderWidth: 0.5,
+      borderColor: selectedTheme.lineBorderColor,
       borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center content horizontally if needed
       justifyContent: 'flex-start', // Start aligning content at the top
@@ -78,7 +80,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
           shadowRadius: SHARED.shadow.radius,
         },
         android: {
-          elevation: SHARED.shadow.elevation,
+          elevation: selectedTheme.shadowElevation,
         },
       }),
     },

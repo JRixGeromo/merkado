@@ -73,6 +73,7 @@ export interface ThemeType {
   switchActive: string;
   switchThumbInactive: string;
   switchThumbActive: string;
+  shadowElevation: number;
 
   alternativeFont1: string;
   alternativeFont2: string;
@@ -148,6 +149,8 @@ const lightTheme: ThemeType = {
   switchActive: '#4CAF50',           // Green for active background track (suggests "on")
   switchThumbInactive: '#9CA3AF',    // Medium gray for inactive thumb
   switchThumbActive: '#FFFFFF',      // White for active thumb, maintains the light theme feel
+  
+  shadowElevation: 3,      // White for active thumb, contrasts with green
 
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',
@@ -230,6 +233,8 @@ const darkTheme: ThemeType = {
   switchActive: '#4CAF50',           // Green for active background track (suggests "on")
   switchThumbInactive: '#9E9E9E',    // Dark gray for inactive thumb
   switchThumbActive: '#FFFFFF',      // White for active thumb, contrasts with green
+
+  shadowElevation: 1,
 
   headingFont: 'Poppins-Bold',
   bodyFont: 'Roboto-Regular',
