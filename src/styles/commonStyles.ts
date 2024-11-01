@@ -102,8 +102,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     commentFormContainer: {
       marginBottom: 2,
       padding: 12,
-      borderColor: selectedTheme.lineBorderColor,
-      borderWidth: 0.5,
+      // borderColor: selectedTheme.lineBorderColor,
+      // borderWidth: 0.5,
     },
     inputWrapper: {
       //alignItems: 'center',
