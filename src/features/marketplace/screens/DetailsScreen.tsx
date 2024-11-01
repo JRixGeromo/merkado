@@ -314,7 +314,7 @@ const DetailsScreen: React.FC = () => {
         )}
 
         {/* Comment Section */}
-        <View style={commonStyle.commentSection}>
+        <View style={[commonStyle.commentSection, layoutStyle.shadowedContainer]}>
           <CommentInput
             onSend={handleSendComment}
             onAddReaction={handleAddReaction}
