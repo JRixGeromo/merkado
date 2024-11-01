@@ -116,7 +116,7 @@ const RegistrationScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={[layoutStyle.container, {padding: 20, justifyContent: 'center'}]}>
-      <View style={[layoutStyle.formContainer, {backgroundColor: selectedTheme.formBackgroundColorPrimary}]}>
+      <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, {backgroundColor: selectedTheme.formBackgroundColorPrimary}]}>
           <Image
             source={require('../../../../assets/logo.png')}
             style={commonStyle.logo}

@@ -30,9 +30,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       borderRadius: 0,
     },
     shadowedContainer: {
-      flex: 1,
-      borderColor: 'transparent',
-      borderWidth: 0,
       borderRadius: SHARED.borderRadius,
       ...Platform.select({
         ios: {
@@ -42,7 +39,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
           shadowRadius: SHARED.shadow.radius,
         },
         android: {
-          elevation: SHARED.shadow.elevation, // Android shadow
+          elevation: selectedTheme.shadowElevation,
         },
       }),
     },
@@ -72,17 +69,6 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center content horizontally if needed
       justifyContent: 'flex-start', // Start aligning content at the top
-      ...Platform.select({
-        ios: {
-          shadowColor: SHARED.shadow.color,
-          shadowOffset: SHARED.shadow.offset,
-          shadowOpacity: SHARED.shadow.opacity,
-          shadowRadius: SHARED.shadow.radius,
-        },
-        android: {
-          elevation: selectedTheme.shadowElevation,
-        },
-      }),
     },
     rowsInside: {
       width: '100%',

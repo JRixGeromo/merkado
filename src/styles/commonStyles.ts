@@ -152,17 +152,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     contentBox: {
       backgroundColor: selectedTheme.cardBackground,
       width: "100%",
-      height: undefined,
+      maxHeight: 130,
       marginRight: 10,
       paddingBottom: 0,
       marginBottom: 10,
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: 0.5,
-      //justifyContent: 'space-between', // Space between content and buttons
     },
     contentImage: {
       width: '100%',
-      height: '100%', // Fill the wrapper container
+      height: '100%',
       resizeMode: 'cover', // Ensure the image covers the available space
     },
     contentBoxPortrait: {
@@ -282,11 +281,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.textPrimary, // Primary button background color from theme
       alignItems: 'center',
       justifyContent: 'center', // Center the text/icon in the button
-      shadowColor: SHARED.shadow.color, // Shadow for depth
-      shadowOffset: SHARED.shadow.offset,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation, // Shadow for Android
+      ...Platform.select({
+        ios: {
+          shadowColor: SHARED.shadow.color,
+          shadowOffset: SHARED.shadow.offset,
+          shadowOpacity: SHARED.shadow.opacity,
+          shadowRadius: SHARED.shadow.radius,
+        },
+        android: {
+          elevation: selectedTheme.shadowElevation,
+        },
+      }),
       width: Platform.select({
         web: '40%', // Width for desktop
         default: '80%', // Width for mobile
@@ -481,12 +486,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     slide: {
       borderRadius: SHARED.borderRadius, // Rounded corners
       overflow: 'hidden', // Ensure the content inside doesn't exceed the boundary
-      shadowColor: SHARED.shadow.color, // Apply shadow settings
-      shadowOffset: SHARED.shadow.offset,
-      shadowOpacity: SHARED.shadow.opacity,
-      shadowRadius: SHARED.shadow.radius,
-      elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
-      //marginBottom: 10, // Space between slides
     },
     reactionBar: {
       flexDirection: 'row',
