@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -20,11 +20,10 @@ import UpsertProductScreen from './src/features/myProducts/screens/UpsertProduct
 import ChatScreen from './src/features/chat/screens/ChatScreen';
 import CartScreen from './src/features/cart/screens/CartScreen';
 import CheckoutScreen from './src/features/cart/screens/CheckoutScreen';
-
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import AccountScreen from './src/features/account/screens/AccountScreen';
 import DropdownMenu from './src/components/DropdownMenu';
-import IconLib from './src/components/IconLib'; // Import IconLib
+import IconLib from './src/components/IconLib';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles';
 import { layoutStyles } from './src/styles/layoutStyles';
@@ -36,11 +35,10 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
-  
+  const user = useAppSelector(state => state.auth.user); // Adjusted to access user under auth
+  const commonStyle = commonStyles(themeType);
+  const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
-  
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -69,7 +67,6 @@ const App = () => {
           } else if (route.name === 'Transactions') {
             return focused ? <IconLib.Transactions {...{ size, color }} /> : <IconLib.Transactions_O {...{ size, color }} />;
           }
-  
           return null;
         },
         tabBarActiveTintColor: selectedTheme.iconColorPrimary,
@@ -77,8 +74,8 @@ const App = () => {
         tabBarStyle: [
           commonStyle.tabBarStyle,
           {
-            borderTopWidth: 0.5, // Set the top border width
-            borderTopColor: selectedTheme.headerBorderBottomColor || '#dad2d8', // Set the border color
+            borderTopWidth: 0.5,
+            borderTopColor: selectedTheme.headerBorderBottomColor || '#dad2d8',
           },
         ],
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
@@ -107,6 +104,16 @@ const App = () => {
               onPress={() => navigation.navigate('CartScreen')}
               style={commonStyle.headerIcon}
             />
+            <TouchableOpacity onPress={() => navigation.navigate('AccountScreen')} style={layoutStyle.rMarginL}>
+              {user?.avatar ? (
+                <Image
+                  source={{ uri: user.avatar }}
+                  style={{ width: 35, height: 35, borderRadius: 17.5, marginRight: 10 }}
+                />
+              ) : (
+                <IconLib.Person size={25} color={selectedTheme.iconColorSecondary} />
+              )}
+            </TouchableOpacity>
             <DropdownMenu navigation={navigation} />
           </View>
         ),
@@ -124,7 +131,7 @@ const App = () => {
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
   );
-  
+
   return (
     <NavigationContainer
       theme={themeType === 'light' ? DefaultTheme : DarkTheme}
@@ -185,7 +192,6 @@ const App = () => {
           }}
         />
         <Stack.Screen name="AccountScreen" component={AccountScreen} />
-        {/* Add other Stack.Screen components here */}
         <Stack.Screen
           name="UpsertProductScreen"
           component={UpsertProductScreen}
@@ -195,14 +201,9 @@ const App = () => {
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
-
-        
-
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
 export default App;
-
-const DummyScreen = () => <Text>This is a screen!</Text>;

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, Modal, TouchableOpacity } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
@@ -47,6 +47,10 @@ const Dropdown: React.FC<DropdownProps> = ({
   const commonStyle = commonStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
+  // Inside the component
+  const [addNewModalVisible, setAddNewModalVisible] = useState(false);
+  const [newOption, setNewOption] = useState('');
+
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
@@ -82,6 +86,18 @@ const Dropdown: React.FC<DropdownProps> = ({
       return <IconLib.PersonAdd_O size={size} color={color} />; // Default fallback icon
     }
     return <IconComponent size={size} color={color} />;
+  };
+
+  const handleAddNewOption = () => {
+    if (newOption.trim() === '') {
+      Alert.alert(t('Error'), t('Please enter a valid option.'));
+      return;
+    }
+    const newEntry = { label: newOption, value: newOption.toLowerCase().replace(/\s/g, '_') };
+    options.push(newEntry);
+    onValueChange(newEntry.value);
+    setAddNewModalVisible(false);
+    setNewOption('');
   };
 
   return (
@@ -158,6 +174,12 @@ const Dropdown: React.FC<DropdownProps> = ({
             ) : (
               <Text style={[commonStyle.modalText]}>No options available</Text>
             )}
+            <TouchableOpacity
+              onPress={() => setAddNewModalVisible(true)}
+              style={commonStyle.dropdownOption} // This is a button without a border
+            >
+              <Text style={commonStyle.modalText}>{t('Add New')}</Text>
+            </TouchableOpacity>
             <View style={layoutStyle.verticalSpacerM} />
             <CustomButton
               title={t('Close')}
@@ -170,6 +192,46 @@ const Dropdown: React.FC<DropdownProps> = ({
           </View>
         </View>
       </Modal>
+      <Modal visible={addNewModalVisible} animationType="slide" transparent={true}>
+        <View
+          style={[
+            layoutStyle.modalContainer,
+            {
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            },
+          ]}
+        >
+          <View style={[commonStyle.modalContent, { backgroundColor: selectedTheme.cardBackground }]}>
+            <Text style={[commonStyle.modalText, { marginBottom: 10 }]}>{t('Enter New Option')}</Text>
+            <TextInput
+              placeholder={t('New Option')}
+              value={newOption}
+              onChangeText={setNewOption}
+              style={[commonStyle.input, { marginBottom: 10 }]}
+              placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+            />
+            <CustomButton
+              title={t('Add')}
+              onPress={handleAddNewOption}
+              backgroundColor={selectedTheme.buttonPrimary}
+              color={selectedTheme.textLight}
+              borderRadius={2}
+            />
+            <CustomButton
+              title={t('Cancel')}
+              onPress={() => setAddNewModalVisible(false)}
+              backgroundColor={selectedTheme.buttonClose}
+              color={selectedTheme.textLight}
+              borderRadius={2}
+              style={{ marginTop: 10 }}
+            />
+          </View>
+        </View>
+      </Modal>
+
     </View>
   );
 };

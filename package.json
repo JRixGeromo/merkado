@@ -10,6 +10,7 @@
     "build-android": "cd android && gradlew.bat assembleRelease",
     "clean-android": "cd android && gradlew.bat clean",
     "start-web": "webpack serve --config webpack.config.ts --open --mode development --node-env=development",
+    "build-apk": "cd android && gradlew.bat assembleRelease",
     "format": "prettier --write ."
   },
   "dependencies": {

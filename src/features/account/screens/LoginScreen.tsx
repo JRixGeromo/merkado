@@ -44,7 +44,7 @@ const LOGIN_USER = gql`
 `;
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('xxxx@example.com');
+  const [email, setEmail] = useState('john.doe@example.com');
   const [password, setPassword] = useState('password123');
   const [loading, setLoading] = useState(false); // Add loading state
 
@@ -66,7 +66,7 @@ const LoginScreen = () => {
       Alert.alert(t('error'), t('fillFields')); // Translation for error message
       return;
     }
-
+    
     setLoading(true); // Set loading to true while the request is being made
     try {
       const { data } = await loginUser({
