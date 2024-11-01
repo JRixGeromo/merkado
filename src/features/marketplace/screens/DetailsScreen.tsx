@@ -314,13 +314,15 @@ const DetailsScreen: React.FC = () => {
         )}
 
         {/* Comment Section */}
-        <View style={[commonStyle.commentSection, layoutStyle.shadowedContainer]}>
-          <CommentInput
-            onSend={handleSendComment}
-            onAddReaction={handleAddReaction}
-            reactions={reactions}
-            placeholder={'Write a comment...'}
-          />
+        <View style={[commonStyle.commentSection]}>
+          <View style={[layoutStyle.shadowedContainer]}>
+            <CommentInput
+              onSend={handleSendComment}
+              onAddReaction={handleAddReaction}
+              reactions={reactions}
+              placeholder={'Write a comment...'}
+            />
+          </View>
         </View>
 
         {/* Existing Comments */}
@@ -342,6 +344,7 @@ const DetailsScreen: React.FC = () => {
             <View
               key={comment.id}
               style={[
+                layoutStyle.shadowedContainer,
                 commonStyle.commentContainer,
                 { backgroundColor: selectedTheme.commentBackgroundColor },
               ]}
