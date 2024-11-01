@@ -38,7 +38,7 @@ export type RootStackParamList = {
 export type RootTabParamList = {
   Dashboard: undefined;
   Marketplace: undefined;
-  MyProducts: undefined;
+  'My Products': undefined;
   Chat: undefined;
   Transactions: undefined;
 };

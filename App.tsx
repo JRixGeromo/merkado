@@ -62,7 +62,7 @@ const App = () => {
             return focused ? <IconLib.Dashboard {...{ size, color }} /> : <IconLib.Dashboard_O {...{ size, color }} />;
           } else if (route.name === 'Marketplace') {
             return focused ? <IconLib.Marketplace {...{ size, color }} /> : <IconLib.Marketplace_O {...{ size, color }} />;
-          } else if (route.name === 'MyProducts') {
+          } else if (route.name === 'My Products') {
             return focused ? <IconLib.Products {...{ size, color }} /> : <IconLib.Products_O {...{ size, color }} />;
           } else if (route.name === 'Chat') {
             return focused ? <IconLib.Chat {...{ size, color }} /> : <IconLib.Chat_O {...{ size, color }} />;
@@ -142,7 +142,7 @@ const App = () => {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
-      <Tab.Screen name="MyProducts" 
+      <Tab.Screen name="My Products" 
         options={{
           headerTitle: 'My Products',
         }}
