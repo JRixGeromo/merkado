@@ -249,38 +249,32 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
-    font8: {
+    fontXS: {
       fontSize: normalizeFontSize(8),
     },
-    font10: {
+    fontS: {
       fontSize: normalizeFontSize(10),
     },
-    font12: {
+    fontM: {
       fontSize: normalizeFontSize(12),
     },
-    font14: {
+    fontL: {
       fontSize: normalizeFontSize(14),
     },
-    font16: {
+    fontXL: {
       fontSize: normalizeFontSize(16),
     },
-    font18: {
-      fontSize: normalizeFontSize(18),
-    },
-    font20: {
+    fontXxL: {
       fontSize: normalizeFontSize(20),
     },
-    font25: {
-      fontSize: normalizeFontSize(25),
-    },
-    font30: {
+    fontXxxL: {
       fontSize: normalizeFontSize(30),
     },
-    font35: {
-      fontSize: normalizeFontSize(35),
-    },
-    font40: {
+    fontBig: {
       fontSize: normalizeFontSize(40),
+    },
+    fontXBig: {
+      fontSize: normalizeFontSize(60),
     },
     flatListMaxHeight: {
       maxHeight: normalizeHeight(30),
