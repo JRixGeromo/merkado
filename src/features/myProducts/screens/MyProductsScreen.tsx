@@ -157,7 +157,7 @@ const MyProductsScreen = () => {
           />
         </View>
       </View>
-
+      <View style={layoutStyle.verticalSpacerM} />
       {/* Product List */}
       <FlatList
         data={products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))}
