@@ -76,7 +76,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         <View style={layoutStyle.columnsInsideFlex}>
           {/* Replace with IconLib for the star icon */}
           <IconLib.Star size={16} color="gold" style={layoutStyle.rMarginXS} />
-          <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>{rating}</Text>
+          <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>{rating}</Text>
         </View>
         <View style={layoutStyle.verticalSpacerS} />
         <View style={layoutStyle.columnsInsideFlex}>
@@ -91,7 +91,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
               <IconLib.Heart_O size={18} color={selectedTheme.iconColorPrimary} />
             )}
           </TouchableOpacity>
-          <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>
+          <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>
             {likes + (isLiked ? 1 : 0)} Reactions
           </Text>
         </View>

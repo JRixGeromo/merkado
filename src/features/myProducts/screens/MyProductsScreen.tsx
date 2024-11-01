@@ -97,7 +97,7 @@ const MyProductsScreen = () => {
           title: 'Delete',
           backgroundColor: selectedTheme.buttonDanger,
           width: "100%",
-          textSize: 10,
+          textSize: 12,
           onPress: () => handleDeleteProduct(item),
           buttonStyle: commonStyle.cardButton,
         },
@@ -106,7 +106,7 @@ const MyProductsScreen = () => {
           title: 'Update',
           backgroundColor: selectedTheme.buttonDark,
           width: "100%",
-          textSize: 10,
+          textSize: 12,
           onPress: () => console.log('Edit Pressed'),
           buttonStyle: commonStyle.cardButton,
         },
@@ -115,7 +115,7 @@ const MyProductsScreen = () => {
           title: 'View',
           backgroundColor: selectedTheme.buttonPrimary,
           width: "100%",
-          textSize: 10,
+          textSize: 12,
           onPress: () => handleViewProduct(item),
           buttonStyle: commonStyle.cardButton,
         },
@@ -177,9 +177,9 @@ const MyProductsScreen = () => {
         {selectedProduct && (
           <View>
             <Image source={{ uri: selectedProduct.imageUrl }} style={commonStyle.slideModalImage} />
-            <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
-            <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
-            <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
+            <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
+            <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
+            <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
           </View>
         )}
       </SlideContentModal>

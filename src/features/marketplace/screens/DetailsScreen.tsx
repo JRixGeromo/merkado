@@ -116,7 +116,7 @@ const DetailsScreen: React.FC = () => {
         {type === 'product' && item.onSale && (
           <View style={commonStyle.saleBanner}>
             <Text
-              style={[layoutStyle.font14, { color: selectedTheme.textSecondary }]}
+              style={[layoutStyle.fontM, { color: selectedTheme.textSecondary }]}
             >
               ON SALE! 50% off
             </Text>
@@ -133,7 +133,7 @@ const DetailsScreen: React.FC = () => {
           {/* Price at Bottom-Right */}
           {type === 'product' && (
             <View style={commonStyle.priceContainer}>
-              <Text style={[layoutStyle.font20, { color: selectedTheme.textPriceBanner }]}>
+              <Text style={[layoutStyle.fontXxL, { color: selectedTheme.textPriceBanner }]}>
                 ₱{item.price}
               </Text>
             </View>
@@ -152,7 +152,7 @@ const DetailsScreen: React.FC = () => {
           </View>
           <View style={[layoutStyle.cols_2, layoutStyle.alignRight, layoutStyle.rPaddingS]}>
             <Text
-              style={[layoutStyle.font12, { color: selectedTheme.textSecondary }]}
+              style={[layoutStyle.fontS, { color: selectedTheme.textSecondary }]}
             >
               46 {t('comments')}
             </Text>
@@ -165,7 +165,7 @@ const DetailsScreen: React.FC = () => {
 
         <View style={layoutStyle.columnsInside}>
           <View style={[layoutStyle.cols_75, layoutStyle.lPaddingS]}>
-            <Text style={[layoutStyle.font14, { color: selectedTheme.textPrimary }]}>
+            <Text style={[layoutStyle.fontM, { color: selectedTheme.textPrimary }]}>
               {item.name}
             </Text>
           </View>
@@ -173,7 +173,7 @@ const DetailsScreen: React.FC = () => {
             style={[layoutStyle.cols_25, layoutStyle.alignRight, layoutStyle.rPaddingS]}
           >
             <IconLib.Star size={20} color="gold" />
-            <Text style={[layoutStyle.font12, { color: selectedTheme.textSecondary }]}>
+            <Text style={[layoutStyle.fontS, { color: selectedTheme.textSecondary }]}>
               {" "}{item.rating}
             </Text>
           </View>
@@ -184,7 +184,7 @@ const DetailsScreen: React.FC = () => {
           <View style={layoutStyle.verticalSpacerS} />
           <View style={layoutStyle.columnsInside}>
             <Text
-              style={[layoutStyle.font12, layoutStyle.lPaddingS, { color: selectedTheme.textSecondary }]}
+              style={[layoutStyle.fontS, layoutStyle.lPaddingS, { color: selectedTheme.textSecondary }]}
             >
               {item.description}
             </Text>
@@ -193,7 +193,7 @@ const DetailsScreen: React.FC = () => {
           <View style={layoutStyle.columnsInside}>
             <View style={[layoutStyle.cols_75, layoutStyle.lPaddingS]}>
               <Text
-                style={[layoutStyle.font12, { color: selectedTheme.textSecondary }]}
+                style={[layoutStyle.fontS, { color: selectedTheme.textSecondary }]}
               >
                 {item.location}
               </Text>
@@ -201,7 +201,7 @@ const DetailsScreen: React.FC = () => {
             <View
               style={[layoutStyle.cols_25, layoutStyle.alignRight, layoutStyle.rPaddingS]}
             >
-              <Text style={[layoutStyle.font12, { color: selectedTheme.textGray }]}>
+              <Text style={[layoutStyle.fontS, { color: selectedTheme.textGray }]}>
                 {item.distance}
               </Text>
             </View>
@@ -214,7 +214,7 @@ const DetailsScreen: React.FC = () => {
           <View style={layoutStyle.verticalSpacerS} />
           <View style={layoutStyle.columnsInside}>
             <Text
-              style={[layoutStyle.font12, layoutStyle.lPaddingS, { color: selectedTheme.textSecondary }]}
+              style={[layoutStyle.fontS, layoutStyle.lPaddingS, { color: selectedTheme.textSecondary }]}
             >
               {item.description}
             </Text>
@@ -223,7 +223,7 @@ const DetailsScreen: React.FC = () => {
           <View style={layoutStyle.columnsInside}>
             <View style={[layoutStyle.cols_75, layoutStyle.lPaddingS]}>
               <Text
-                style={[layoutStyle.font12, { color: selectedTheme.textSecondary }]}
+                style={[layoutStyle.fontS, { color: selectedTheme.textSecondary }]}
               >
                {item.location}
               </Text>
@@ -232,7 +232,7 @@ const DetailsScreen: React.FC = () => {
             <View
               style={[layoutStyle.cols_25, layoutStyle.alignRight, layoutStyle.rPaddingS ]}
             >
-                <Text style={[layoutStyle.font12, { color: selectedTheme.textGray }]}>
+                <Text style={[layoutStyle.fontS, { color: selectedTheme.textGray }]}>
                   {item.distance}
                 </Text>
             </View>
@@ -358,7 +358,7 @@ const DetailsScreen: React.FC = () => {
                 />
                 {/* Display the user's name beside the image */}
                 <Text
-                  style={[layoutStyle.font12, { color: selectedTheme.textDark, marginLeft: 5 }]}
+                  style={[layoutStyle.fontS, { color: selectedTheme.textDark, marginLeft: 5 }]}
                 >
                   {comment.user}
                 </Text>
@@ -366,7 +366,7 @@ const DetailsScreen: React.FC = () => {
               <View style={commonStyle.commentWrapper}>
                 {/* Comment Text */}
                 <Text
-                  style={[commonStyle.commentTextWrapper, layoutStyle.font12, { color: selectedTheme.textSecondary }]}
+                  style={[commonStyle.commentTextWrapper, layoutStyle.fontS, { color: selectedTheme.textSecondary }]}
                 >
                   {comment.text}
                 </Text>
@@ -382,17 +382,17 @@ const DetailsScreen: React.FC = () => {
 
                 {/* Time and Thumbs Up Row */}
                 <View style={commonStyle.timeAndReactionWrapper}>
-                  <Text style={[layoutStyle.font12, { color: selectedTheme.textGray }]}>
+                  <Text style={[layoutStyle.fontS, { color: selectedTheme.textGray }]}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
-                  <Text style={[layoutStyle.font12, layoutStyle.lPaddingS, { color: selectedTheme.textGray }]}>
+                  <Text style={[layoutStyle.fontS, layoutStyle.lPaddingS, { color: selectedTheme.textGray }]}>
                     |
                   </Text>
                   <TouchableOpacity
                     onPress={() => toggleCommentReactions(comment.id)}
                     style={layoutStyle.lPaddingS}
                   >
-                    <Text style={[layoutStyle.font12, { color: selectedTheme.textGray }]}>
+                    <Text style={[layoutStyle.fontS, { color: selectedTheme.textGray }]}>
                       Like
                     </Text>
                   </TouchableOpacity>
@@ -423,7 +423,7 @@ const DetailsScreen: React.FC = () => {
                   <Text style={{ color: selectedTheme.textSecondary, marginTop: 5 }}>
                     {reply}
                   </Text>
-                  <Text style={[layoutStyle.font12, { color: selectedTheme.textGray, marginTop: 3 }]}>
+                  <Text style={[layoutStyle.fontS, { color: selectedTheme.textGray, marginTop: 3 }]}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
                 </View>

@@ -108,7 +108,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[layoutStyle.container, { padding: 20, justifyContent: 'center' }]}>
           <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, { backgroundColor: selectedTheme.formBackgroundColorPrimary }]}>
-            <Text style={[layoutStyle.verticalSpacerM, layoutStyle.font20, {color: selectedTheme.textSecondary}]}>
+            <Text style={[layoutStyle.verticalSpacerM, layoutStyle.fontXxL, {color: selectedTheme.textSecondary}]}>
               {product ? 'Update' : 'Create'}
             </Text>
             <View style={layoutStyle.verticalSpacerM} />

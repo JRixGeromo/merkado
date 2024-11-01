@@ -47,8 +47,8 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
       </View>
 
       <View style={[layoutStyle.cols_75, layoutStyle.paddingAllS]}>
-        <Text style={[layoutStyle.font14, {color: selectedTheme.textPrimary}]}>{name}</Text>
-        <Text style={[layoutStyle.font12, {color: selectedTheme.textSecondary}]}>{description}</Text>
+        <Text style={[layoutStyle.fontM, {color: selectedTheme.textPrimary}]}>{name}</Text>
+        <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>{description}</Text>
         <View style={layoutStyle.verticalSpacerS} />
         
         {/* Conditionally render based on the type */}

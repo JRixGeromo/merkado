@@ -211,7 +211,7 @@ const ChatScreen = () => {
             onChangeText={setMessage}
             placeholder={t('type here ...')}
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
-            style={[commonStyle.input, layoutStyle.font14, { flex: 1, color: selectedTheme.textPrimary }]}
+            style={[commonStyle.input, layoutStyle.fontM, { flex: 1, color: selectedTheme.textPrimary }]}
             onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
           />
           <TouchableOpacity onPress={sendMessage} style={commonStyle.chatSendButton}>
