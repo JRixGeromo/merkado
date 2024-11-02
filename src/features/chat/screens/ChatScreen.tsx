@@ -150,7 +150,7 @@ const ChatScreen = () => {
       keyboardVerticalOffset={80}
     >
       {/* Chat History Avatars */}
-      <View style={{ height: 60, backgroundColor: selectedTheme.cardBackground, flexDirection: 'row' }}>
+      <View style={ commonStyle.avatarBar }>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {avatars.map(avatar => (
             <View key={avatar.id} style={{ position: 'relative', marginHorizontal: 5, marginVertical: 5 }}>

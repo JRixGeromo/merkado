@@ -518,11 +518,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingVertical: normalizeHeight(5),
     },
     chatAvatar: {
-      width: normalizeWidth(50),
-      height: normalizeHeight(50),
+      width: normalizeWidth(40),
+      height: normalizeHeight(40),
       borderRadius: 25,
       borderWidth: 2,
       borderColor: selectedTheme.textPrimary,
+    },
+    avatarBar: {
+      height: normalizeHeight(48), 
+      backgroundColor: 
+      selectedTheme.cardBackground, 
+      flexDirection: 'row'
     },
     chatSendButton: {
       marginLeft: normalizeWidth(10),

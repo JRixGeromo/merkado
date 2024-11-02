@@ -58,7 +58,10 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
             >{description}</Text>
           <View style={layoutStyle.verticalSpacerS} />
           {type === 'product' && price !== undefined && (
-            <Text style={commonStyle.productPrice}>₱{price}</Text>
+            <Text 
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price:₱{price} | Sale:₱{price} | kilogram | Qty:230</Text>
           )}
         </View>
        
@@ -76,7 +79,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
                 iconColor={selectedTheme.iconColorLight}
                 iconSize={18}
                 color={selectedTheme.textLight}
-                style={[commonStyle.cardButton, action.buttonStyle]}
+                style={[commonStyle.cardButton, action.buttonStyle, {height: "100%"}]}
                 borderRadius={0}
               />
             </View>
