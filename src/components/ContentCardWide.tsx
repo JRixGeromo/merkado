@@ -47,7 +47,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
       </View>
 
       <View style={[layoutStyle.cols_75]}>
-        <View style={[layoutStyle.paddingAllS, {height: "75%"}]}>
+        <View style={[layoutStyle.paddingAllS, {height: "72%"}]}>
           <Text style={[layoutStyle.mediumText, {color: selectedTheme.textSecondary,}]} 
             numberOfLines={1}
             ellipsizeMode="tail"
@@ -61,12 +61,12 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
             <Text 
             numberOfLines={1}
             ellipsizeMode="tail"
-            style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price:₱{price} | Sale:₱{price} | kilogram | Qty:230</Text>
+            style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price:₱{price} | Sale:₱{price} | Qty:230 | kilogram</Text>
           )}
         </View>
        
         {/* Render buttons */}
-        <View style={[layoutStyle.columnsInside, layoutStyle.alignRight, {height: "25%"}]}>
+        <View style={[layoutStyle.columnsInside, layoutStyle.alignRight, {height: "28%"}]}>
           {buttonActions.map((action, index) => (
             <View key={index} style={[layoutStyle.cols_3]}>
               <CustomButton

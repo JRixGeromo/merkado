@@ -199,7 +199,7 @@ const darkTheme: ThemeType = {
   buttonInfo: '#184e77',
   buttonWarning: '#fb6107',
   buttonError: '#ba181b',
-  buttonDanger: '#9d0208',
+  buttonDanger: '#a50104',
   buttonDisabled: '#b8bdb5',
   buttonAction: '#343a40',
   buttonHighlight: '#f9c74f',
@@ -226,7 +226,7 @@ const darkTheme: ThemeType = {
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',
 
-  cardBackground: '#223333',
+  cardBackground: '#042a2b',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#4a4e69',

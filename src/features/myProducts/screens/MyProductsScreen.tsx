@@ -113,7 +113,7 @@ const MyProductsScreen = () => {
         {
           iconName: 'View',
           title: 'View',
-          backgroundColor: selectedTheme.buttonPrimary,
+          backgroundColor: selectedTheme.buttonInfo,
           width: "100%",
           textSize: 12,
           onPress: () => handleViewProduct(item),
@@ -177,9 +177,9 @@ const MyProductsScreen = () => {
         {selectedProduct && (
           <View>
             <Image source={{ uri: selectedProduct.imageUrl }} style={commonStyle.slideModalImage} />
-            <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
-            <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
-            <Text style={[layoutStyle.fontS, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
+            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
+            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
+            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
           </View>
         )}
       </SlideContentModal>
@@ -193,8 +193,8 @@ const MyProductsScreen = () => {
         onConfirm={confirmDeletion}
         confirmText="Delete"
         cancelText="Cancel"
-        confirmButtonColor="red"       // Custom confirm button color
-        cancelButtonColor="gray"       // Custom cancel button color
+        confirmButtonColor={selectedTheme.buttonDanger}       // Custom confirm button color
+        cancelButtonColor={selectedTheme.buttonGray}       // Custom cancel button color
       />
     </View>
   );

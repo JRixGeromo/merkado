@@ -251,7 +251,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     cardButton: {
       alignItems: 'center', // Center the content vertically
       justifyContent: 'center', // Center the content horizontally
-      paddingVertical: normalizeHeight(5), // Add vertical padding for better touch area
+      paddingVertical: normalizeHeight(7), // Add vertical padding for better touch area
     },
     sectionTitle: {
       fontSize: normalizeFontSize(14), // Default size for icons
