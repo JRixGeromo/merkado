@@ -158,7 +158,7 @@ const lightTheme: ThemeType = {
   bodyFont: 'Roboto-Regular',
   bodyFontSlim: 'RobotoCondensed-Light',
   buttonFont: 'Montserrat-Bold',
-  tabFont: 'RobotoCondensed-Light',
+  tabFont: 'NanumGothicCoding-Regular',
 
   alternativeFont1: 'QwitcherGrypen-Regular',
   alternativeFont2: 'LondrinaSketch-Regular',
@@ -243,7 +243,7 @@ const darkTheme: ThemeType = {
   bodyFont: 'Roboto-Regular',
   bodyFontSlim: 'RobotoCondensed-Light',
   buttonFont: 'Montserrat-Bold',
-  tabFont: 'Montserrat-Meduim',
+  tabFont: 'NanumGothicCoding-Regular',
 
   alternativeFont1: 'QwitcherGrypen-Regular',
   alternativeFont2: 'LondrinaSketch-Regular',
