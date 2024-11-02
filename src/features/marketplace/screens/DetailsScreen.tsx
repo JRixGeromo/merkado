@@ -152,7 +152,7 @@ const DetailsScreen: React.FC = () => {
           </View>
           <View style={[layoutStyle.cols_2, layoutStyle.alignRight, layoutStyle.rPaddingS]}>
             <Text
-              style={[layoutStyle.smallText, { color: selectedTheme.textSecondary }]}
+              style={[layoutStyle.smallText, { color: selectedTheme.textBlur}]}
             >
               46 {t('comments')}
             </Text>
@@ -173,7 +173,7 @@ const DetailsScreen: React.FC = () => {
             style={[layoutStyle.cols_25, layoutStyle.alignRight, layoutStyle.rPaddingS]}
           >
             <IconLib.Star size={20} color="gold" />
-            <Text style={[layoutStyle.smallText, { color: selectedTheme.textSecondary }]}>
+            <Text style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}>
               {" "}{item.rating}
             </Text>
           </View>
@@ -201,7 +201,7 @@ const DetailsScreen: React.FC = () => {
             <View
               style={[layoutStyle.cols_25, layoutStyle.alignRight, layoutStyle.rPaddingS]}
             >
-              <Text style={[layoutStyle.smallText, { color: selectedTheme.textGray }]}>
+              <Text style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}>
                 {item.distance}
               </Text>
             </View>
