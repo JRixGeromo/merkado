@@ -535,7 +535,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     chatMessagesContainer: {
       position: 'relative', 
-      backgroundColor: selectedTheme.formBackgroundColorPrimary, 
+      backgroundColor: selectedTheme.cardBackground, 
       paddingTop: normalizeHeight(8), 
       paddingBottom: normalizeHeight(8),
     },
