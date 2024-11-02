@@ -81,15 +81,15 @@ const CartScreen: React.FC = () => {
     <View style={[commonStyle.contentBox, layoutStyle.columnsInside]}>
       <Image source={item.image} style={commonStyle.cartItemImage} />
       <View style={layoutStyle.lMarginL}>
-        <Text style={[layoutStyle.fontM, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
-        <Text style={[layoutStyle.fontL, layoutStyle.verticalSpacerXS, { color: selectedTheme.textSecondary }]}>${item.price}</Text>
+        <Text style={[layoutStyle.mediumText, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
+        <Text style={[layoutStyle.largeText, layoutStyle.verticalSpacerXS, { color: selectedTheme.textSecondary }]}>${item.price}</Text>
         <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerM]}>
           <TouchableOpacity onPress={() => updateQuantity(item.id, 'decrement')} style={commonStyle.quantityButton}>
-            <Text style={layoutStyle.fontL}>-</Text>
+            <Text style={layoutStyle.largeText}>-</Text>
           </TouchableOpacity>
-          <Text style={[layoutStyle.fontL, layoutStyle.lPaddingS, layoutStyle.rPaddingS, {color: selectedTheme.textSecondary}]}>{item.quantity}</Text>
+          <Text style={[layoutStyle.largeText, layoutStyle.lPaddingS, layoutStyle.rPaddingS, {color: selectedTheme.textSecondary}]}>{item.quantity}</Text>
           <TouchableOpacity onPress={() => updateQuantity(item.id, 'increment')} style={commonStyle.quantityButton}>
-            <Text style={layoutStyle.fontL}>+</Text>
+            <Text style={layoutStyle.largeText}>+</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -105,8 +105,8 @@ const CartScreen: React.FC = () => {
         contentContainerStyle={layoutStyle.verticalSpacerS}
       />
       <View style={[layoutStyle.columnsInside, {justifyContent: 'space-between'}]}>
-        <Text style={[layoutStyle.fontXL, { color: selectedTheme.textPrimary }]}>Total:</Text>
-        <Text style={[layoutStyle.fontXL, { color: selectedTheme.textPrimary }]}>${calculateTotal()}</Text>
+        <Text style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}>Total:</Text>
+        <Text style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}>${calculateTotal()}</Text>
       </View>
       <CustomButton
         title={t('Proceed to Checkout')}

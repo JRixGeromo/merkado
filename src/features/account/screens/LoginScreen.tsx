@@ -24,6 +24,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { gql, useMutation } from '@apollo/client';
 import { setUser } from '../../../store/slices/authSlice'; // Import the setUser action
+import { normalizeHeight } from '../../../utils/responsive';
 
 
 type NavigationProp = NativeStackNavigationProp<
@@ -165,12 +166,12 @@ const LoginScreen = () => {
           )}
 
           <TouchableOpacity>
-            <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
+            <Text style={[commonStyle.linkText, layoutStyle.marginAllL, { fontWeight: 'bold' }]}>
               {t('forgotPassword')}
             </Text>
           </TouchableOpacity>
 
-          <Text style={commonStyle.paragraph}>{t('orLoginWith')}</Text>
+          <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, {color: selectedTheme.textSecondary }]}>{t('orLoginWith')}</Text>
 
           <View
             style={{
@@ -201,7 +202,7 @@ const LoginScreen = () => {
           </View>
 
           <TouchableOpacity onPress={navigateToRegister}>
-            <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
+            <Text style={[layoutStyle.smallText, layoutStyle.marginAllL, { color: selectedTheme.textSecondary }]}>
               {t('noAccount')}{' '}
               <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
                 {t('register')}
