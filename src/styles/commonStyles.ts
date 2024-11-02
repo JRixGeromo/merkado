@@ -566,20 +566,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     cartItemImage: {
       width: normalizeWidth(100),
       height: normalizeHeight(100),
-      //borderRadius: 8,
     },
-    // itemDetails: {
-    //   flex: 1,
-    //   marginLeft: normalizeHeight(10),
-    // },
-    // itemName: {
-    //   fontSize: normalizeHeight(16),
-    //   fontWeight: 'bold',
-    // },
-    // itemPrice: {
-    //   fontSize: normalizeHeight(14),
-    //   marginVertical: normalizeHeight(5),
-    // },
     quantityContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -592,9 +579,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: '#e0e0e0',
       borderRadius: 0,
     },
-    // quantityText: {
-    //   fontSize: normalizeHeight(18),
-    // },
     quantityValue: {
       marginHorizontal: normalizeWidth(10),
       fontSize: normalizeHeight(16),
@@ -651,10 +635,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     confimrationModalContent: {
       padding: normalizeHeight(20),
-      borderRadius: normalizeHeight(10),
+      borderRadius: SHARED.borderRadius,
       alignItems: 'center',
       justifyContent: 'center',
-      minWidth: '80%',
+      width: '90%',
     },
     centeredConfimrationModal: {
       justifyContent: 'center', 
