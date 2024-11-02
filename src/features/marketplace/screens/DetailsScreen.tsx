@@ -346,7 +346,7 @@ const DetailsScreen: React.FC = () => {
               style={[
                 layoutStyle.shadowedContainer,
                 commonStyle.commentContainer,
-                { backgroundColor: selectedTheme.commentBackgroundColor },
+                { backgroundColor: selectedTheme.cardBackground },
               ]}
             >
               <View
@@ -437,7 +437,7 @@ const DetailsScreen: React.FC = () => {
                     onAddReaction={handleAddReaction}
                     reactions={reactions}
                     placeholder={'Write your reply...'}
-                    backgroundColor={selectedTheme.formBackgroundColorPrimary}
+                    backgroundColor={selectedTheme.cardBackground}
                   />
                 </View>
               )}

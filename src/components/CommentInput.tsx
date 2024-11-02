@@ -60,7 +60,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
       style={[
         layoutStyle.rowsInside,
         commonStyle.commentFormContainer,
-        { backgroundColor: backgroundColor || selectedTheme.formBackgroundColorPrimary }, // Use backgroundColor prop if provided
+        { backgroundColor: backgroundColor || selectedTheme.cardBackground }, // Use backgroundColor prop if provided
       ]}
     >
       <View

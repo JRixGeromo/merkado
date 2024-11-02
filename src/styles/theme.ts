@@ -226,7 +226,7 @@ const darkTheme: ThemeType = {
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',
 
-  cardBackground: '#042a2b',
+  cardBackground: '#1b2021',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#4a4e69',
