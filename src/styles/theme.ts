@@ -199,7 +199,7 @@ const darkTheme: ThemeType = {
   buttonInfo: '#184e77',
   buttonWarning: '#fb6107',
   buttonError: '#ba181b',
-  buttonDanger: '#9d0208',
+  buttonDanger: '#d62828',
   buttonDisabled: '#b8bdb5',
   buttonAction: '#343a40',
   buttonHighlight: '#f9c74f',

@@ -271,10 +271,10 @@ const MarketplaceScreen = () => {
         <View style={layoutStyle.verticalSpacerM} />
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
           <TouchableOpacity
-            style={layoutStyle.rMarginL}
+            style={layoutStyle.rMarginS}
             onPress={toggleModal}
           >
-            <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
+            <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
             style={commonStyle.searchInput}

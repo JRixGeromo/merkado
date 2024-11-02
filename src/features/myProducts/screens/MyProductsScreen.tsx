@@ -129,8 +129,8 @@ const MyProductsScreen = () => {
       {/* Search Bar */}
       <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_75]}>
-          <TouchableOpacity style={layoutStyle.rMarginL}>
-            <IconLib.Menu size={24} color={selectedTheme.iconColorPrimary} />
+          <TouchableOpacity style={layoutStyle.rMarginS}>
+            <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
             style={commonStyle.searchInput}
