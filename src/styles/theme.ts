@@ -193,7 +193,7 @@ const darkTheme: ThemeType = {
   facebookButtonColor: '#3b5998',
   inputBackgroundColor: '#161a1d',
 
-  buttonPrimary: '#679436',
+  buttonPrimary: '#4f772d',
   buttonSecondary: '#212529',
   buttonSuccess: '#8ac926',
   buttonInfo: '#184e77',

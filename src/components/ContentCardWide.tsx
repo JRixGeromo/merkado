@@ -48,7 +48,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
 
       <View style={[layoutStyle.cols_75]}>
         <View style={[layoutStyle.paddingAllS, {height: "72%"}]}>
-          <Text style={[layoutStyle.mediumText, {color: selectedTheme.textSecondary,}]} 
+          <Text style={[layoutStyle.mediumText, {color: selectedTheme.textSecondary, fontWeight: "bold",}]} 
             numberOfLines={1}
             ellipsizeMode="tail"
           >{name}</Text>

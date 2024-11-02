@@ -95,7 +95,7 @@ const MyProductsScreen = () => {
         {
           iconName: 'Trash',
           title: 'Delete',
-          backgroundColor: selectedTheme.buttonDanger,
+          backgroundColor: selectedTheme.buttonDark,
           width: "100%",
           textSize: 12,
           onPress: () => handleDeleteProduct(item),
@@ -104,7 +104,7 @@ const MyProductsScreen = () => {
         {
           iconName: 'Create',
           title: 'Edit',
-          backgroundColor: selectedTheme.buttonDark,
+          backgroundColor: selectedTheme.buttonPrimary,
           width: "100%",
           textSize: 12,
           onPress: () => console.log('Edit Pressed'),
