@@ -48,7 +48,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
 
       <View style={[layoutStyle.cols_75]}>
         <View style={[layoutStyle.paddingAllS, {height: "75%"}]}>
-          <Text style={[layoutStyle.mediumText, {color: selectedTheme.textPrimary}]}>{name}</Text>
+          <Text style={[layoutStyle.mediumText, {color: selectedTheme.textSecondary}]}>{name}</Text>
           <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>{description}</Text>
           <View style={layoutStyle.verticalSpacerS} />
           {type === 'product' && price !== undefined && (
