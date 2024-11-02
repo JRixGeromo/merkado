@@ -35,7 +35,7 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({ visible, onClose,
       <View style={commonStyle.slideModalContent}>
         {/* Close Button */}
         <TouchableOpacity style={commonStyle.slideModalCloseButton} onPress={onClose}>
-          <Text style={[layoutStyle.fontL, {color: selectedTheme.textGray}]}>X</Text>
+          <Text style={[layoutStyle.largeText, {color: selectedTheme.textGray}]}>X</Text>
         </TouchableOpacity>
 
         {/* Optional Title */}
