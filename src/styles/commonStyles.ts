@@ -272,9 +272,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
       borderBottomWidth: 1,
     },
-    listItemText: {
-      color: selectedTheme.textPrimary,
-    },
     searchButton: {
       paddingTop: normalizeHeight(4),
       paddingBottom: normalizeHeight(4),
