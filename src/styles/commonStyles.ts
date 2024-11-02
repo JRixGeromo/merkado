@@ -619,7 +619,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     slideModalCloseButton: {
       alignSelf: 'flex-end',
-      padding: normalizeHeight(10),
     },
     slideModalTitle: {
       fontSize: normalizeFontSize(18),
