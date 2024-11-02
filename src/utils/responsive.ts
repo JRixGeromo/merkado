@@ -36,3 +36,13 @@ export const normalizeHeight = (size: number) => {
 
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 };
+
+export const normalizeWidth = (size: number) => {
+  const newSize = size * scale;
+
+  if (Platform.OS === 'web' && SCREEN_WIDTH > 1280) {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize * 1.5));
+  }
+
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+};

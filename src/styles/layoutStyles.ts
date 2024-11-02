@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
-import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
+import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
 import { theme } from '../styles/theme'; // Make sure this path is correct
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -7,7 +7,7 @@ import { FlatList } from 'react-native-gesture-handler';
 export const SHARED = {
   borderRadius: 0, // Shared border radius
   borderRadiusSecondary: 14,
-  padding: normalizeHeight(10), // Shared padding
+  padding: normalizeWidth(10), // Shared padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
@@ -15,7 +15,18 @@ export const SHARED = {
     radius: 0,
     elevation: 3, // Android-specific shadow
   },
-  buttonPadding: normalizeHeight(15), // Button padding
+  buttonPadding: normalizeWidth(15), // Button padding
+
+  fontXxS: normalizeFontSize(8),
+  fontXS: normalizeFontSize(10),
+  fontS: normalizeFontSize(12),
+  fontM: normalizeFontSize(14),
+  fontL: normalizeFontSize(16),
+  fontXL: normalizeFontSize(18),
+  fontXxL: normalizeFontSize(20),
+  fontXxxL: normalizeFontSize(30),
+  fontBig: normalizeFontSize(40),
+  fontXBig: normalizeFontSize(50),
 };
 
 // Dynamically generated styles based on theme
@@ -126,108 +137,106 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
     dividerWrapper: {
       width: '100%', // Full width for the wrapper
-      paddingVertical: 10, // Apply padding above and below
+      paddingVertical: normalizeHeight(10), // Apply padding above and below
     },
     divider: {
       width: '100%', // Full width for the divider
       borderBottomWidth: 0.5, // Specify the width of the bottom border
       borderColor: selectedTheme.lineBorderColor, // Color of the divider
     },
+    
     rlPaddingS: {
-      paddingRight: 10,
-      paddingLeft: 10,
+      paddingRight: normalizeWidth(10),
+      paddingLeft: normalizeWidth(10),
     },
-
     rPaddingS: {
-      paddingRight: 10,
+      paddingRight: normalizeWidth(10),
     },
     lPaddingS: {
-      paddingLeft: 10,
+      paddingLeft: normalizeWidth(10),
     },
     paddingAllS: {
-      padding: 10,
+      padding: normalizeWidth(10),
     },
     rPaddingL: {
-      paddingRight: 20,
+      paddingRight: normalizeWidth(20),
     },
     lPaddingL: {
-      paddingLeft: 20,
+      paddingLeft: normalizeWidth(20),
     },
     paddingAllL: {
-      padding: 20,
+      padding: normalizeWidth(20),
     },
     rMarginXS: {
-      marginRight: 5,
+      marginRight: normalizeWidth(5),
     },
     lMarginXS: {
-      marginLeft: 5,
+      marginLeft: normalizeWidth(5),
     },
-
     rMarginS: {
-      marginRight: 10,
+      marginRight: normalizeWidth(10),
     },
     lMarginS: {
-      marginLeft: 10,
+      marginLeft: normalizeWidth(10),
     },
-
     rMarginL: {
-      marginRight: 20,
+      marginRight: normalizeWidth(20),
     },
     lMarginL: {
-      marginLeft: 20,
+      marginLeft: normalizeWidth(20),
     },
     lMarginXL: {
-      marginLeft: 25,
+      marginLeft: normalizeWidth(25),
     },
     marginAllS: {
-      padding: 5,
+      margin: normalizeWidth(5),
     },
     marginAllM: {
-      padding: 10,
+      margin: normalizeWidth(10),
     },
     marginAllL: {
-      padding: 20,
+      margin: normalizeWidth(20),
     },
     spacer: {
-      height: 10, // Default height spacer (for vertical gaps)
-      width: 10, // Default width spacer (for horizontal gaps)
+      height: normalizeHeight(10),
+      width: normalizeWidth(10),
     },
     spacerSmall: {
-      height: 5,
-      width: 5,
+      height: normalizeHeight(5),
+      width: normalizeWidth(5),
     },
     spacerMedium: {
-      height: 15,
-      width: 15,
+      height: normalizeHeight(15),
+      width: normalizeWidth(15),
     },
     spacerLarge: {
-      height: 20,
-      width: 20,
+      height: normalizeHeight(20),
+      width: normalizeWidth(20),
     },
     horizontalSpacer: {
-      marginHorizontal: 10, // You can also use margin to create gaps
+      marginHorizontal: normalizeWidth(10),
     },
     verticalSpacerXS: {
-      marginVertical: 2,
+      marginVertical: normalizeHeight(2),
     },
     verticalSpacerS: {
-      marginVertical: 5,
+      marginVertical: normalizeHeight(5),
     },
     verticalSpacerM: {
-      marginVertical: 10,
+      marginVertical: normalizeHeight(10),
     },
     verticalSpacerL: {
-      marginVertical: 20,
+      marginVertical: normalizeHeight(20),
     },
     fullWidthSpacer: {
       width: '100%',
-      height: 10, // Adjust the height for the gap
+      height: normalizeHeight(10), // Adjust the height for the gap
     },
     withPadding: {
       padding: SHARED.padding, // Shared padding
     },
     withMargin: {
-      margin: normalizeHeight(10), // Dynamic margin
+      margin: normalizeWidth(10), // Dynamic margin
     },
     withBorderRadius: {
       borderRadius: SHARED.borderRadius, // Shared border radius
@@ -249,36 +258,37 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
-    fontXxS: {
-      fontSize: normalizeFontSize(8),
+    
+    XxSmallText: {
+      fontFamily: selectedTheme.bodyFont,
+      fontSize: SHARED.fontXxS,
     },
-    fontXS: {
-      fontSize: normalizeFontSize(10),
+
+    xSmallText: {
+      fontFamily: selectedTheme.bodyFont,
+      fontSize: SHARED.fontXS,
     },
-    fontS: {
-      fontSize: normalizeFontSize(12),
+
+    mediumText: {
+      fontFamily: selectedTheme.bodyFont,
+      fontSize: SHARED.fontM,
     },
-    fontM: {
-      fontSize: normalizeFontSize(14),
+    
+    largeText: {
+      fontFamily: selectedTheme.headingFont,
+      fontSize: SHARED.fontL,
     },
-    fontL: {
-      fontSize: normalizeFontSize(16),
+
+    xLargeText: {
+      fontFamily: selectedTheme.headingFont,
+      fontSize: SHARED.fontXL,
     },
-    fontXL: {
-      fontSize: normalizeFontSize(18),
+
+    XxLargeText: {
+      fontFamily: selectedTheme.headingFont,
+      fontSize: SHARED.fontXxL,
     },
-    fontXxL: {
-      fontSize: normalizeFontSize(20),
-    },
-    fontXxxL: {
-      fontSize: normalizeFontSize(30),
-    },
-    fontBig: {
-      fontSize: normalizeFontSize(40),
-    },
-    fontXBig: {
-      fontSize: normalizeFontSize(50),
-    },
+
     flatListMaxHeight: {
       maxHeight: normalizeHeight(30),
     },

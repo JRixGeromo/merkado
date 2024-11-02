@@ -240,7 +240,7 @@ const darkTheme: ThemeType = {
   bodyFont: 'Roboto-Regular',
   bodyFontSlim: 'RobotoCondensed-Light',
   buttonFont: 'Montserrat-Bold',
-  tabFont: 'RobotoCondensed-Light',
+  tabFont: 'Montserrat-Meduim',
 
   alternativeFont1: 'QwitcherGrypen-Regular',
   alternativeFont2: 'LondrinaSketch-Regular',

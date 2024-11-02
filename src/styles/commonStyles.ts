@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
-import { normalizeFontSize, normalizeHeight } from '../utils/responsive'; // Import responsive utilities
+import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
 import { SHARED } from '../styles/layoutStyles';
 import { theme } from '../styles/theme'; // Make sure this path is correct
 
@@ -11,12 +11,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
        
     bannerImageWrapper: {
       width: '100%',
-      height: 200,
+      height: normalizeHeight(200),
       resizeMode: 'cover',
     },
     bannerContentImage: {
       width: '100%',
-      height: 200,
+      height: normalizeHeight(200),
     },
     selectedReactionWrapper: {
       flexDirection: 'row',
@@ -31,18 +31,21 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       top: 0,
       width: '100%',
       backgroundColor: 'red',
-      padding: 5,
+      paddingTop: normalizeHeight(5),
+      paddingBottom: normalizeHeight(5),
+      paddingLeft: normalizeWidth(5),
+      paddingRight: normalizeWidth(5),
       zIndex: 1, // Ensures it appears on top of the image
       alignItems: 'center',
     },
     priceContainer: {
       position: 'absolute',
-      bottom: 10,     // Adjust this value for vertical positioning
-      right: 10,      // Adjust this value for horizontal positioning
-      paddingTop: 5,     // Padding around the price text
-      paddingBottom: 5,     // Padding around the price text
-      paddingLeft: 10,     // Padding around the price text
-      paddingRight: 10,     // Padding around the price text
+      bottom: normalizeHeight(10),     // Adjust this value for vertical positioning
+      right: normalizeHeight(10),      // Adjust this value for horizontal positioning
+      paddingTop: normalizeHeight(5),     // Padding around the price text
+      paddingBottom: normalizeHeight(5),     // Padding around the price text
+      paddingLeft: normalizeWidth(10),     // Padding around the price text
+      paddingRight: normalizeWidth(10),     // Padding around the price text
       backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background for better readability
       borderWidth: 0.5,
       borderColor: selectedTheme.borderColorDark,
@@ -50,87 +53,96 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       zIndex: 2,      // Ensure it appears on top of other elements
     },
     reactionBarSection: {
-      paddingHorizontal: 16,
+      paddingHorizontal: normalizeWidth(16),
       alignItems: 'center',
-      marginBottom: 5,
+      marginBottom: normalizeHeight(5),
     },
     commentSection: {
-      paddingHorizontal: 10,
-      marginBottom: 10, // Margin between comments
+      paddingHorizontal: normalizeWidth(10),
+      marginBottom: normalizeHeight(10), // Margin between comments
     },
     commentContainer: {
-      padding: 10,
+      paddingTop: normalizeHeight(5),
+      paddingBottom: normalizeHeight(5),
+      paddingLeft: normalizeWidth(5),
+      paddingRight: normalizeWidth(5),
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
       borderWidth: 0.5,
-      marginBottom: 10, // Margin between comments
+      marginBottom: normalizeHeight(10), // Margin between comments
       position: 'relative', // Necessary for positioning the thumbs-up icon
     },
     commentsList: {
-      paddingHorizontal: 10, // Adjust padding for the comment list
+      paddingHorizontal: normalizeWidth(10), // Adjust padding for the comment list
     },
     userImage: {
-      width: 30, // Width of the user image
-      height: 30, // Height of the user image
+      width: normalizeWidth(30), // Width of the user image
+      height: normalizeWidth(30), // Height of the user image
       borderRadius: 20, // Half of width/height to make it a perfect circle
     },
     commentWrapper: {
       flexDirection: 'column', // Align items in column (text above time)
       justifyContent: 'flex-start',
       position: 'relative', // Necessary for positioning thumbs-up icon
-      paddingRight: 40, // Create space for the thumbs-up icon
-      marginBottom: 10, // Create space for the thumbs-up icon
+      paddingRight: normalizeWidth(40), // Create space for the thumbs-up icon
+      marginBottom: normalizeHeight(10), // Create space for the thumbs-up icon
     },
     commentTextWrapper: {
-      lineHeight: 18,
+      lineHeight: normalizeHeight(18),
     },
     timeAndReactionWrapper: {
       flexDirection: 'row', // Place time and thumbs-up in the same row
       alignItems: 'center', // Vertically align items
-      marginTop: 5, // Add margin to space it from the comment
+      marginTop: normalizeHeight(5), // Add margin to space it from the comment
     },
     replyContainer: {
-      marginLeft: 15,
-      marginTop: 5,
-      paddingLeft: 10,
+      marginLeft: normalizeWidth(15),
+      marginTop: normalizeHeight(5),
+      paddingLeft: normalizeWidth(10),
     },
     replyInputWrapper: {
       // marginLeft: -10,
       // marginRight: -10,
-      marginTop: 10,
+      marginTop: normalizeHeight(10),
     },
     commentFormContainer: {
-      marginBottom: 2,
-      padding: 12,
+      marginBottom: normalizeHeight(2),
+      paddingTop: normalizeHeight(12),
+      paddingBottom: normalizeHeight(12),
+      paddingLeft: normalizeWidth(12),
+      paddingRight: normalizeWidth(12),
       // borderColor: selectedTheme.lineBorderColor,
       // borderWidth: 0.5,
     },
     inputWrapper: {
       //alignItems: 'center',
       borderRadius: 30,
-      paddingLeft: 15,
+      paddingLeft: normalizeWidth(15),
     },
     commentInput: {
       flex: 1,
-      paddingVertical: 10,
-      paddingRight: 50,
+      paddingVertical: normalizeHeight(10),
+      paddingRight: normalizeWidth(50),
       fontSize: normalizeFontSize(12),
     },
     sendButton: {
       position: 'absolute',
-      right: 10,
-      padding: 10,
+      right: normalizeWidth(10),
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
       borderRadius: 20,
     },
     thumbsUpButton: {
-      paddingHorizontal: 10,
+      paddingHorizontal: normalizeWidth(10),
     },
     ////
     searchContainer: {
-      paddingTop: 0,
-      paddingBottom: 0,
-      paddingLeft: 10,
-      paddingRight: 10,
+      paddingTop: normalizeHeight(0),
+      paddingBottom: normalizeHeight(0),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
       backgroundColor: selectedTheme.inputBackgroundColor, // Use theme background color
       borderRadius: 30, // Rounded border for the search bar
       borderWidth: 0.5,
@@ -140,7 +152,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     searchInput: {
       flex: 1, // Make the search input take up the remaining space
-      height: 40, // Height of the search input
+      height: normalizeHeight(40), // Height of the search input
       borderColor: selectedTheme.buttonBorderPrimary, // Optional: Add border inside the input field
       borderWidth: 0, // No extra border inside the input
       paddingLeft: 0, // Padding inside the search input
@@ -152,10 +164,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     contentBox: {
       backgroundColor: selectedTheme.cardBackground,
       width: "100%",
-      maxHeight: 130,
-      marginRight: 10,
+      maxHeight: normalizeHeight(130),
+      marginRight: normalizeWidth(10),
       paddingBottom: 0,
-      marginBottom: 10,
+      marginBottom: normalizeHeight(10),
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: 0.5,
     },
@@ -166,11 +178,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     contentBoxPortrait: {
       backgroundColor: selectedTheme.cardBackground,
-      width: 120,
-      height: 230,
-      marginRight: 10,
-      paddingBottom: 0,
-      marginBottom: 0,
+      width: normalizeWidth(120),
+      height: normalizeHeight(230),
+      marginRight: normalizeWidth(10),
+      paddingBottom: normalizeHeight(0),
+      marginBottom: normalizeHeight(0),
       justifyContent: 'space-between', // Space between content and buttons
       alignItems: 'center', // Center all content horizontally
       borderColor: selectedTheme.lineBorderColorLight,
@@ -188,13 +200,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     promoImage: {
       width: '100%',
-      height: 100, // Fill the wrapper container
+      height: normalizeHeight(100), // Fill the wrapper container
       resizeMode: 'cover', // Ensure the image covers the available space
     },
     goFullScreenButton: {
       position: 'absolute',
-      top: 5,
-      right: 5,
+      top: normalizeHeight(5),
+      right: normalizeWidth(5),
       backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background for visibility
       padding: 5,
       borderRadius: 0, // Make it circular
@@ -203,12 +215,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(12),
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
-      marginTop: 3, // Add some margin after the image
+      fontWeight:  "bold",
+      marginTop: normalizeHeight(3), // Add some margin after the image
     },
     productPrice: {
       fontSize: normalizeFontSize(14),
       color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
+      fontWeight:  "bold",
       marginTop: 0, // Space between the product name and price
     },
     productPriceL: {
@@ -224,7 +238,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     cardButton: {
       alignItems: 'center', // Center the content vertically
       justifyContent: 'center', // Center the content horizontally
-      paddingVertical: 5, // Add vertical padding for better touch area
+      paddingVertical: normalizeHeight(5), // Add vertical padding for better touch area
     },
     sectionTitle: {
       fontSize: normalizeFontSize(14), // Default size for icons
@@ -238,7 +252,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 15,
     },
     listItem: {
-      padding: 10,
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
       borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
       borderBottomWidth: 1,
     },
@@ -246,11 +263,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       color: selectedTheme.textPrimary,
     },
     searchButton: {
-      paddingTop: 4,
-      paddingBottom: 4,
-      paddingLeft: 8,
-      paddingRight: 8,
-      height: 30,
+      paddingTop: normalizeHeight(4),
+      paddingBottom: normalizeHeight(4),
+      paddingLeft: normalizeWidth(8),
+      paddingRight: normalizeWidth(8),
+      height: normalizeHeight(30),
     },
     inputContainer: {
       flexDirection: 'row',
@@ -258,20 +275,26 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
       backgroundColor: selectedTheme.cardBackground, // Check this color
-      marginBottom: 15,
+      marginBottom: normalizeHeight(15),
       borderWidth: 1,
       borderColor: '#ddd',
       width: '80%',
       height: normalizeHeight(40),
-      paddingHorizontal: 10,
+      paddingHorizontal: normalizeWidth(10),
     },
     modalContent: {
       borderRadius: 10,
-      padding: 20,
+      paddingTop: normalizeHeight(20),
+      paddingBottom: normalizeHeight(20),
+      paddingLeft: normalizeWidth(20),
+      paddingRight: normalizeWidth(20),
       backgroundColor: selectedTheme.cardBackground, // Ensure the background color is from the theme
     },
     dropdownOption: {
-      padding: 10,
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
       borderBottomWidth: 1,
       borderColor: selectedTheme.textPrimary, // Use the primary color for the border
     },
@@ -319,8 +342,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     dropdownMenu: {
       backgroundColor: selectedTheme.cardBackground, // Background color for the dropdown
       borderRadius: 10,
-      padding: 10,
-      width: 220, // Make the dropdown wider
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+      width: normalizeWidth(220), // Make the dropdown wider
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
@@ -330,38 +356,35 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     dropdownItem: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingVertical: 10,
+      paddingVertical: normalizeHeight(10),
       borderBottomWidth: 1,
       borderColor: selectedTheme.lineBorderColor, // Border color based on theme
     },
     dropdownText: {
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
-      marginLeft: 10,
+      marginLeft: normalizeWidth(10),
     },
     logo: {
-      width: 150, // Adjust width based on design
-      height: 150, // Adjust height based on design
+      width: normalizeWidth(150), // Adjust width based on design
+      height: normalizeHeight(150), // Adjust height based on design
       resizeMode: 'contain', // Keep the logo aspect ratio
-      marginBottom: 20, // Add space between logo and text
+      marginBottom: normalizeHeight(20), // Add space between logo and text
     },
     headerTitle: {
       fontSize: normalizeFontSize(20),
       fontFamily: selectedTheme.headingFont,
       color: selectedTheme.textPrimary,
-      marginBottom: 20,
+      marginBottom: normalizeHeight(20),
     },
     linkText: {
       fontSize: normalizeFontSize(14),
       fontFamily: selectedTheme.bodyFont, // Use body font for links
       color: selectedTheme.textLink,
-      margin: 10,
-    },
-    paragraph: {
-      fontSize: normalizeFontSize(14),
-      fontFamily: selectedTheme.bodyFont, // Apply body font for paragraphs
-      color: selectedTheme.textDark,
-      margin: 10,
+      marginTop: normalizeHeight(10),
+      marginBottom: normalizeHeight(10),
+      marginLeft: normalizeWidth(10),
+      marginRight: normalizeWidth(10),
     },
     socialButton: {
       ...SHARED, // Reuse shared shadow and padding
@@ -379,18 +402,18 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
 
      loader: {
-      marginTop: 30, // Add space between the text and loader
+      marginTop: normalizeHeight(30), // Add space between the text and loader
       color: selectedTheme.loader,
     },
     headerLogo: {
-      width: 30, // Adjust the width to fit your design
-      height: 30, // Adjust the height to fit your design
+      width: normalizeWidth(30), // Adjust the width to fit your design
+      height: normalizeHeight(30), // Adjust the height to fit your design
       resizeMode: 'contain', // Ensures the logo scales appropriately
-      marginRight: 10, // Adds spacing between logo and title
+      marginRight: normalizeWidth(10), // Adds spacing between logo and title
     },
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
-      fontSize: normalizeHeight(10), // You can adjust the size to your liking
+      fontSize: normalizeFontSize(10), // You can adjust the size to your liking
       color: selectedTheme.textSecondary,
     },
     screenHeaderTitle: {
@@ -409,10 +432,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     headerRightContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginRight: 15,
+      marginRight: normalizeWidth(15),
     },
     headerIcon: {
-      marginRight: 20,
+      marginRight: normalizeWidth(20),
     },
     chatButton: {
       backgroundColor: selectedTheme.buttonDark, // Explicit background color for Chat button
@@ -426,21 +449,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     followButton: {
       backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
     },
-    // card: {
-    //   backgroundColor: selectedTheme.cardBackground, // Background color for card
-    //   padding: SHARED.padding, // Padding inside each card
-    //   borderRadius: SHARED.borderRadius, // Card border radius
-    //   marginVertical: 5, // Equal margin on top and bottom
-    //   shadowColor: SHARED.shadow.color, // Shadow settings for the card
-    //   shadowOffset: SHARED.shadow.offset,
-    //   shadowOpacity: SHARED.shadow.opacity,
-    //   shadowRadius: SHARED.shadow.radius,
-    //   elevation: SHARED.shadow.elevation, // Apply Android-specific shadow
-    // },
     cardHeader: {
       flexDirection: 'row', // Align icon and title in a row
       alignItems: 'center', // Vertically align items in header
-      marginBottom: 10, // Margin between header and content
+      marginBottom: normalizeHeight(10), // Margin between header and content
     },
     cardHeaderTitle: {
       fontSize: normalizeFontSize(18),
@@ -454,7 +466,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     sectionButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 20,
+      marginBottom: normalizeHeight(20),
     },
     toggleButtonContainer: {
       flexDirection: 'row', // Align the text and the icon in a row
@@ -464,11 +476,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     cardText: {
       fontSize: normalizeFontSize(14), // Font size for text inside card
       color: selectedTheme.textPrimary, // Text color from selected theme
-      marginTop: 5, // Space between lines of text
-      marginLeft: 10, // Space between icon and text in header
+      marginTop: normalizeHeight(5), // Space between lines of text
+      marginLeft: normalizeWidth(10), // Space between icon and text in header
     },
     languageContainer: {
-      marginTop: 10, // Add spacing at the top for the language container
+      marginTop: normalizeHeight(10), // Add spacing at the top for the language container
       backgroundColor: selectedTheme.cardBackground, // Background color from theme
     },
     splashContainer: {
@@ -481,7 +493,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       fontSize: normalizeFontSize(20),
       fontWeight: 'bold',
       color: selectedTheme.textPrimary, // Use primary color from the theme
-      marginTop: 10, // Add margin between the logo and the text
+      marginTop: normalizeHeight(10), // Add margin between the logo and the text
     },
     slide: {
       borderRadius: SHARED.borderRadiusSecondary, // Rounded corners
@@ -490,51 +502,51 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     reactionBar: {
       flexDirection: 'row',
       justifyContent: 'flex-start',
-      paddingVertical: 5,
+      paddingVertical: normalizeHeight(5),
     },
     chatAvatar: {
-      width: 50,
-      height: 50,
+      width: normalizeWidth(50),
+      height: normalizeHeight(50),
       borderRadius: 25,
       borderWidth: 2,
       borderColor: selectedTheme.textPrimary,
     },
     chatSendButton: {
-      marginLeft: 10,
+      marginLeft: normalizeWidth(10),
     },
     chatMessagesContainer: {
       position: 'relative', 
       backgroundColor: selectedTheme.formBackgroundColorPrimary, 
-      paddingTop: 8, 
-      paddingBottom: 8,
+      paddingTop: normalizeHeight(8), 
+      paddingBottom: normalizeHeight(8),
     },
     chatInputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 10,
-      marginHorizontal: 10,
-      marginBottom: 10,
+      paddingHorizontal: normalizeWidth(10),
+      marginHorizontal: normalizeWidth(10),
+      marginBottom: normalizeHeight(10),
       borderRadius: 25,
     },
     unreadBadge: {
       position: 'absolute',
-      top: -5,
-      right: -5,
+      top: normalizeHeight(-5),
+      right: normalizeWidth(-5),
       backgroundColor: 'red',
       borderRadius: 10,
-      width: 20,
-      height: 20,
+      width: normalizeWidth(20),
+      height: normalizeHeight(20),
       justifyContent: 'center',
       alignItems: 'center',
     },
     unreadText: {
       color: 'white',
-      fontSize: 12,
+      fontSize: normalizeFontSize(12),
       fontWeight: 'bold',
     },
     cartItemImage: {
-      width: 100,
-      height: 100,
+      width: normalizeWidth(100),
+      height: normalizeHeight(100),
       //borderRadius: 8,
     },
     // itemDetails: {
@@ -554,8 +566,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
     },
     quantityButton: {
-      width: 30,
-      height: 30,
+      width: normalizeWidth(30),
+      height: normalizeHeight(30),
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#e0e0e0',
@@ -565,7 +577,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     //   fontSize: normalizeHeight(18),
     // },
     quantityValue: {
-      marginHorizontal: 10,
+      marginHorizontal: normalizeWidth(10),
       fontSize: normalizeHeight(16),
     },
     totalContainer: {
