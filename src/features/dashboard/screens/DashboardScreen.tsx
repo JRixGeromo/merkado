@@ -22,9 +22,6 @@ import IconLib from '../../../components/IconLib'; // Import IconLib
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
-// import FloatingDollars from '../../../components/FloatingDollars';
-// import FloatingHearts from '../../../components/FloatingHearts';
-// import FloatingBubbles from '../../../components/FloatingBubbles';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -292,7 +289,7 @@ const DashboardScreen = () => {
         {/* Promo Carousel */}
         
         <View style={layoutStyle.verticalSpacerL}>
-          <Text style={commonStyle.sectionTitle}>{t('spotlightOffers')}</Text>
+        <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('spotlightOffers')}</Text>
           <Carousel
             ref={carouselRef}
             data={promoImages}
@@ -309,7 +306,7 @@ const DashboardScreen = () => {
 
         {/* Featured Stores */}
         <View>
-          <Text style={commonStyle.sectionTitle}>{t('Featured Stores')}</Text>
+        <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('Featured Stores')}</Text>
           <FlatList
             data={featuredStores}
             keyExtractor={item => item.id.toString()}
@@ -322,7 +319,7 @@ const DashboardScreen = () => {
 
         {/* Featured Products */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={commonStyle.sectionTitle}>{t('Featured Products')}</Text>
+          <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('Featured Products')}</Text>
           <FlatList
             data={featuredProducts}
             keyExtractor={item => item.id.toString()}
@@ -332,10 +329,6 @@ const DashboardScreen = () => {
             contentContainerStyle={{ paddingHorizontal: 5 }}
           />
         </View>
-        {/* Overlay with Floating Dollars Animation */}
-        {/* <FloatingDollars />
-        <FloatingHearts />
-        <FloatingBubbles /> */}
       </View>
     </ScrollView>
   );

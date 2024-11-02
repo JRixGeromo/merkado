@@ -245,20 +245,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       borderWidth: 1,
       borderColor: selectedTheme.borderColorPrimary, // Theme-based border color
     },
-    withShadow: {
-      ...Platform.select({
-        ios: {
-          shadowColor: SHARED.shadow.color,
-          shadowOffset: SHARED.shadow.offset,
-          shadowOpacity: SHARED.shadow.opacity,
-          shadowRadius: SHARED.shadow.radius,
-        },
-        android: {
-          elevation: SHARED.shadow.elevation, // Android shadow
-        },
-      }),
-    },
-    
+   
     XxSmallText: {
       fontFamily: selectedTheme.bodyFont,
       fontSize: SHARED.fontXxS,
@@ -268,7 +255,10 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
       fontFamily: selectedTheme.bodyFont,
       fontSize: SHARED.fontXS,
     },
-
+    smallText: {
+      fontFamily: selectedTheme.bodyFont,
+      fontSize: SHARED.fontS,
+    },
     mediumText: {
       fontFamily: selectedTheme.bodyFont,
       fontSize: SHARED.fontM,

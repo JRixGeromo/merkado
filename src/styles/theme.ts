@@ -10,6 +10,7 @@ export interface ThemeType {
   textPriceBanner: string;
   textLink: string;
   textGray: string;
+  textBlur: string;
 
   borderColorPrimary: string;
   borderColorSecondary: string;
@@ -93,6 +94,7 @@ const lightTheme: ThemeType = {
   textLink: '#38b000',
   textGray: '#4f5d75',
   buttonDark: '#788585',
+  textBlur: '#adb5bd',
 
   borderColorPrimary: '#4CAF50',
   borderColorSecondary: '#000000',
@@ -175,6 +177,7 @@ const darkTheme: ThemeType = {
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#8d99ae',
+  textBlur: '#adb5bd',
 
   borderColorPrimary: '#7cb518',
   borderColorSecondary: '#dee2e6',

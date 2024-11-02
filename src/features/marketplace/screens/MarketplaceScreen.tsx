@@ -300,7 +300,7 @@ const MarketplaceScreen = () => {
         {categories.map((category, index) => (
           <View key={index}>
             <View style={layoutStyle.verticalSpacerM} />
-            <Text style={commonStyle.sectionTitle}>{category}</Text>
+            <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{category}</Text>
             <FlatList
               data={products[category]}
               renderItem={renderProductItem}

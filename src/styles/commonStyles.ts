@@ -43,7 +43,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       bottom: normalizeHeight(10),     // Adjust this value for vertical positioning
       right: normalizeHeight(10),      // Adjust this value for horizontal positioning
       paddingTop: normalizeHeight(5),     // Padding around the price text
-      paddingBottom: normalizeHeight(5),     // Padding around the price text
+      paddingBottom: normalizeHeight(1),     // Padding around the price text
       paddingLeft: normalizeWidth(10),     // Padding around the price text
       paddingRight: normalizeWidth(10),     // Padding around the price text
       backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background for better readability
