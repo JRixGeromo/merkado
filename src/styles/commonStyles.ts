@@ -549,8 +549,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     unreadBadge: {
       position: 'absolute',
-      top: normalizeHeight(-5),
-      right: normalizeWidth(-5),
+      top: normalizeHeight(-3),
+      right: normalizeWidth(-7),
       backgroundColor: 'red',
       borderRadius: 10,
       width: normalizeWidth(20),
