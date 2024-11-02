@@ -77,27 +77,25 @@ const App = () => {
           commonStyle.tabBarStyle,
           {
             borderTopWidth: 0.5,
-            borderTopColor: selectedTheme.headerBorderBottomColor || '#dad2d8',
+            borderTopColor: selectedTheme.headerBorderBottomColor,
           },
         ],
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
         headerStyle: {
           backgroundColor: selectedTheme.tabHeaderBackgroundColor,
           borderBottomWidth: 0.5,
-          borderBottomColor: selectedTheme.headerBorderBottomColor || '#dad2d8',
+          borderBottomColor: selectedTheme.headerBorderBottomColor,
         },
-        headerTitle:
-          route.name === 'Dashboard'
-            ? () => (
-                <View style={commonStyle.headerContainer}>
-                  <Image
-                    source={require('./assets/logo.png')}
-                    style={commonStyle.headerLogo}
-                  />
-                  <Text style={commonStyle.screenHeaderTitle}>Dashboard</Text>
-                </View>
-              )
-            : route.name,
+        //headerTitleStyle: commonStyle.screenHeaderTitle, 
+        headerTitle: () => (
+          <View style={commonStyle.headerContainer}>
+            <Image
+              source={require('./assets/logo.png')}
+              style={commonStyle.headerLogo}
+            />
+            <Text style={commonStyle.screenHeaderTitle}>{route.name}</Text>
+          </View>
+        ),
         headerRight: () => (
           <View style={commonStyle.headerRightContainer}>
             <View style={{ position: 'relative' }}>
@@ -142,12 +140,7 @@ const App = () => {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
-      <Tab.Screen name="My Products" 
-        options={{
-          headerTitle: 'My Products',
-        }}
-      component={MyProductsScreen} 
-      />
+      <Tab.Screen name="My Products" component={MyProductsScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
     </Tab.Navigator>
