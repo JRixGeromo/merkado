@@ -164,7 +164,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     contentBox: {
       backgroundColor: selectedTheme.cardBackground,
       width: "100%",
-      maxHeight: normalizeHeight(130),
+      height: normalizeHeight(110),
       marginRight: normalizeWidth(10),
       paddingBottom: 0,
       marginBottom: normalizeHeight(10),
@@ -176,10 +176,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       height: '100%',
       resizeMode: 'cover', // Ensure the image covers the available space
     },
+
+    /// Portrait
     contentBoxPortrait: {
       backgroundColor: selectedTheme.cardBackground,
       width: normalizeWidth(120),
-      height: normalizeHeight(230),
+      height: normalizeHeight(210),
       marginRight: normalizeWidth(10),
       paddingBottom: normalizeHeight(0),
       marginBottom: normalizeHeight(0),
@@ -190,9 +192,20 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     cardImageWrapper: {
       width: '100%',
-      height: '33%', // Fixed height equivalent to 35% of contentBoxPortrait height
+      height: '35%', // Fixed height equivalent to 35% of contentBoxPortrait height
       position: 'relative',
     },
+    contentContainer: {
+      justifyContent: 'flex-start', // Align content to the top of the container
+      alignItems: 'center', // Center content horizontally
+      width: '100%',
+      height: "50%",
+    },
+    buttonContainer: {
+      height: "15%"
+    },
+    ///
+    
     productImage: {
       width: '100%',
       height: '100%', // Fill the wrapper container

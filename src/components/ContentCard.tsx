@@ -61,9 +61,9 @@ const ContentCard: React.FC<ContentCardProps> = ({
         </TouchableOpacity>
       </View>
 
-      <View style={layoutStyle.contentContainer}>
+      <View style={commonStyle.contentContainer}>
         <Text style={commonStyle.productName}>{name}</Text>
-        <View style={layoutStyle.verticalSpacerS} />
+        <View style={layoutStyle.verticalSpacerXS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
           <Text style={commonStyle.productPrice}>₱{price}</Text>
@@ -79,7 +79,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}>{rating}</Text>
         </View>
         <View style={layoutStyle.verticalSpacerS} />
-        <View style={layoutStyle.columnsInsideFlex}>
+        <View style={[layoutStyle.columnsInsideFlex, layoutStyle.bMaringS]}>
           <TouchableOpacity
             onPress={onLikePress}
             style={layoutStyle.rMarginXS}
@@ -96,9 +96,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
           </Text>
         </View>
       </View>
-      <View style={layoutStyle.verticalSpacerS} />
-
-      <View style={layoutStyle.columnsInsideFlex}>
+      
+      <View style={[layoutStyle.columnsInsideFlex, commonStyle.buttonContainer]}>
         {buttonActions.map((action, index) => (
           <CustomButton
             key={index}

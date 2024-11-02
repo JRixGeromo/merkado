@@ -46,21 +46,20 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
         <Image source={{ uri: imageUrl }} style={commonStyle.contentImage} />
       </View>
 
-      <View style={[layoutStyle.cols_75, layoutStyle.paddingAllS]}>
-        <Text style={[layoutStyle.mediumText, {color: selectedTheme.textPrimary}]}>{name}</Text>
-        <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>{description}</Text>
-        <View style={layoutStyle.verticalSpacerS} />
-        
-        {/* Conditionally render based on the type */}
-        {type === 'product' && price !== undefined && (
-          <Text style={commonStyle.productPrice}>₱{price}</Text>
-        )}
-        <View style={layoutStyle.verticalSpacerS} />
-
+      <View style={[layoutStyle.cols_75]}>
+        <View style={[layoutStyle.paddingAllS, {height: "75%"}]}>
+          <Text style={[layoutStyle.mediumText, {color: selectedTheme.textPrimary}]}>{name}</Text>
+          <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>{description}</Text>
+          <View style={layoutStyle.verticalSpacerS} />
+          {type === 'product' && price !== undefined && (
+            <Text style={commonStyle.productPrice}>₱{price}</Text>
+          )}
+        </View>
+       
         {/* Render buttons */}
-        <View style={[layoutStyle.columnsInside, layoutStyle.alignRight ]}>
+        <View style={[layoutStyle.columnsInside, layoutStyle.alignRight, {height: "25%"}]}>
           {buttonActions.map((action, index) => (
-            <View key={index} style={[layoutStyle.cols_25, layoutStyle.lMarginXL]}>
+            <View key={index} style={[layoutStyle.cols_3]}>
               <CustomButton
                 title={action.title}
                 textSize={action.textSize}

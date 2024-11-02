@@ -70,7 +70,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
           width, // Apply custom width
           borderRadius, // Apply custom borderRadius
           borderColor: buttonBorderColor, // Apply borderColor
-          borderWidth: borderColor ? 1 : 0, // Only apply border if borderColor is provided
+          borderWidth: borderColor ? 0.5 : 0, // Only apply border if borderColor is provided
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center', // Center the icon and text inside the button
@@ -83,7 +83,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     >
       {/* Render the optional icon on the left if provided */}
       {iconName && (
-        <View style={{ marginRight: 4 }}>
+        <View style={{ marginRight: 1 }}>
           {React.createElement(IconLib[iconName], { size: iconSize, color: iconFinalColor })}
         </View>
       )}

@@ -55,11 +55,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
         },
       }),
     },
-    contentContainer: {
-      justifyContent: 'flex-start', // Align content to the top of the container
-      alignItems: 'center', // Center content horizontally
-      width: '100%',
-    },
+
     alignAllItems: {
       justifyContent: 'flex-start', // Align content to the top of the container
       alignItems: 'center', // Center content horizontally
@@ -172,6 +168,18 @@ export const layoutStyles = (currentTheme: 'light' | 'dark') => {
     },
     lMarginXS: {
       marginLeft: normalizeWidth(5),
+    },
+    bMaringS: {
+      marginBottom: normalizeHeight(10),
+    },
+    bMaringM: {
+      marginBottom: normalizeHeight(20),
+    },
+    tMaringS: {
+      marginTop: normalizeHeight(10),
+    },
+    tMaringM: {
+      marginTop: normalizeHeight(20),
     },
     rMarginS: {
       marginRight: normalizeWidth(10),

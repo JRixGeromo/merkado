@@ -103,7 +103,7 @@ const MyProductsScreen = () => {
         },
         {
           iconName: 'Create',
-          title: 'Update',
+          title: 'Edit',
           backgroundColor: selectedTheme.buttonDark,
           width: "100%",
           textSize: 12,
