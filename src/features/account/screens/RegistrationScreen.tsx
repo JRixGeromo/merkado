@@ -206,7 +206,7 @@ const RegistrationScreen = () => {
           )}
 
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={[commonStyle.paragraph, { marginTop: 20 }]}>
+            <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, { color: selectedTheme.textSecondary }]}>
               {t('hasAccount')}{' '}
               <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
                 {t('login')}

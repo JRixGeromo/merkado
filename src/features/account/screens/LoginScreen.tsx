@@ -202,7 +202,7 @@ const LoginScreen = () => {
           </View>
 
           <TouchableOpacity onPress={navigateToRegister}>
-            <Text style={[layoutStyle.smallText, layoutStyle.marginAllL, { color: selectedTheme.textSecondary }]}>
+            <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, { color: selectedTheme.textSecondary }]}>
               {t('noAccount')}{' '}
               <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
                 {t('register')}
