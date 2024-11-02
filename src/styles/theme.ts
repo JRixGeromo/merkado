@@ -93,7 +93,7 @@ const lightTheme: ThemeType = {
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#4f5d75',
-  buttonDark: '#788585',
+  buttonDark: '#495057',
   textBlur: '#adb5bd',
 
   borderColorPrimary: '#4CAF50',
