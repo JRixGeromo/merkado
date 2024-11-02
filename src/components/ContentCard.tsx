@@ -62,7 +62,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
       </View>
 
       <View style={commonStyle.contentContainer}>
-        <Text style={commonStyle.productName}>{name}</Text>
+        <Text style={commonStyle.productName}
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        >{name}</Text>
         <View style={layoutStyle.verticalSpacerXS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
@@ -70,7 +73,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
         )}
 
         {type === 'store' && location && (
-          <Text style={commonStyle.storeLocation}>{location}</Text>
+          <Text 
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={commonStyle.storeLocation}
+          >{location}</Text>
         )}
         <View style={layoutStyle.verticalSpacerS} />
         <View style={layoutStyle.columnsInsideFlex}>
@@ -91,7 +98,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
               <IconLib.Heart_O size={18} color={selectedTheme.iconColorPrimary} />
             )}
           </TouchableOpacity>
-          <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}>
+          <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
             {likes + (isLiked ? 1 : 0)} Reactions
           </Text>
         </View>

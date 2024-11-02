@@ -32,8 +32,8 @@ const MyProductsScreen = () => {
   const [products, setProducts] = useState<Product[]>([
     {
       id: '1',
-      name: 'Beef Boneless',
-      description: 'High quality boneless beef.',
+      name: 'Beef Boneless Beef Boneless Beef Boneless Beef Boneless Beef Boneless',
+      description: 'High quality boneless beef. High quality boneless beef. High quality boneless beef.',
       price: 500,
       imageUrl: 'https://picsum.photos/100/100?random=1',
       onSale: true,
