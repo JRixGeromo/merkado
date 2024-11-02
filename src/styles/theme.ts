@@ -101,6 +101,7 @@ const lightTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#343a40',
 
+  cardBackground: '#f7ede2',
   fullBackgroundColor: '#ffffff',
   fullContainerBackgroundColor: '#ffffff',
   formBackgroundColorPrimary: '#f7ede2',
@@ -141,7 +142,6 @@ const lightTheme: ThemeType = {
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',
 
-  cardBackground: '#f7ede2',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#cad2c5',
@@ -184,6 +184,7 @@ const darkTheme: ThemeType = {
   borderColorGray: '#8d99ae',
   borderColorDark: '#e6e6e9',
 
+  cardBackground: '#1b2021',
   fullBackgroundColor: '#161a1d',
   fullContainerBackgroundColor: '#161a1d',
   formBackgroundColorPrimary: '#000000',
@@ -226,7 +227,6 @@ const darkTheme: ThemeType = {
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',
 
-  cardBackground: '#1b2021',
   modalOverlay: 'rgba(255, 255, 255, 0.3)',
   loader: '#ffffff',
   lineBorderColor: '#4a4e69',
