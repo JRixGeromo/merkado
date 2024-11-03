@@ -301,8 +301,8 @@ const darkTheme: ThemeType = {
   /************************** */
   // Card and Background
   cardBackground: '#1b2021',
-  fullBackgroundColor: '#161a1d',
-  fullContainerBackgroundColor: '#161a1d',
+  fullBackgroundColor: '#111111',
+  fullContainerBackgroundColor: '#111111',
 
   // below are not in use
   //formBackgroundColorSecondary: '#161a1d',

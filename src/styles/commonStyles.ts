@@ -607,7 +607,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: 0,
     },
     slideModalContent: {
-      backgroundColor: selectedTheme.formBackgroundColorSecondary,
+      backgroundColor: selectedTheme.cardBackground,
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
