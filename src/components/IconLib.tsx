@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons'; // Import Ionicons packag
 import IconFA from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome package
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook for theme selection
 import { theme as appTheme } from '../styles/theme'; // Theme
+import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
 
 interface IconProps {
   size?: number; // Icon size (optional, default provided)
@@ -33,7 +34,7 @@ const CustomIcon: React.FC<{
       <TouchableOpacity onPress={onPress}>
         <IconComponent
           name={name}
-          size={size}
+          size={normalizeFontSize(size)}
           color={color || selectedTheme.iconColorGray} // Use theme color if not provided
           style={style}
         />
@@ -45,7 +46,7 @@ const CustomIcon: React.FC<{
   return (
     <IconComponent
       name={name}
-      size={size}
+      size={normalizeFontSize(size)}
       color={color || selectedTheme.iconColorGray} // Use theme color if not provided
       style={style}
     />
