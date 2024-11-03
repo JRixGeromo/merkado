@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { commonStyles } from '../styles/commonStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { layoutStyles, SHARED } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
 import CustomButton from './CustomButton';
@@ -57,7 +57,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
-          <IconLib.DotsMenu size={18} color="white" />
+          <IconLib.DotsMenu size={1iconSize={SHARED.fontXL} color="white" />
         </TouchableOpacity>
       </View>
 
@@ -91,11 +91,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
             onPress={onLikePress}
             style={layoutStyle.rMarginXS}
           >
-            {/* Replace with IconLib for the heart icon */}
             {isLiked ? (
-              <IconLib.Heart size={18} color="red" />
+              <IconLib.Heart size={1iconSize={SHARED.fontXL} color="red" />
             ) : (
-              <IconLib.Heart_O size={18} color={selectedTheme.iconColorPrimary} />
+              <IconLib.Heart_O size={1iconSize={SHARED.fontXL} color={selectedTheme.iconColorPrimary} />
             )}
           </TouchableOpacity>
           <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}
@@ -116,7 +115,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
             backgroundColor="transparent" // Assuming you want only the icon and no background
             iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
             iconColor={selectedTheme.textLight} // Set the icon color
-            iconSize={20} // Set the icon size
+            iconSize={SHARED.fontL} // Set the icon size
             style={[layoutStyle.cols_2, commonStyle.cardButton, action.buttonStyle]} // Apply the button styles
             borderRadius={0} // Default borderRadius is 15, can be overridden
           />

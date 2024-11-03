@@ -150,7 +150,7 @@ const MyProductsScreen = () => {
             onPress={handleProduct}
             iconName="Add"
             iconColor={selectedTheme.iconColorLight}
-            iconSize={18}
+            iconSize={SHARED.fontXL}
             color={selectedTheme.textLight}
             style={[commonStyle.cardButton]}
             borderRadius={0}

@@ -157,7 +157,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
               options={categoryOptions}
               placeholder="Select Category"
               iconName="Apps"
-              iconSize={22}
+              iconSize={SHARED.fontXxL}
               showIcon={true}
             />
             <ListOptions
@@ -166,7 +166,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
               options={brandOptions}
               placeholder="Select Brand"
               iconName="Briefcase"
-              iconSize={22}
+              iconSize={SHARED.fontXxL}
               showIcon={true}
             />
             <ListOptions

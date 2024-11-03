@@ -259,7 +259,7 @@ const DetailsScreen: React.FC = () => {
                     backgroundColor={selectedTheme.buttonPrimary} // Button background color, using theme values
                     borderRadius={2} // Set the border radius for rounded corners
                     iconName="Cart" // Icon from IconLib (Cart icon)
-                    iconSize={20} // Size of the Cart icon
+                    iconSize={SHARED.fontXxL} // Size of the Cart icon
                     textSize={12} // Font size of the text inside the button
                   />
               </Text>
@@ -279,7 +279,7 @@ const DetailsScreen: React.FC = () => {
                     backgroundColor={selectedTheme.buttonInfo} // Button background color, using theme values
                     borderRadius={2} // Set the border radius for rounded corners
                     iconName="PersonAdd" // Icon from IconLib (Cart icon)
-                    iconSize={20} // Size of the Cart icon
+                    iconSize={SHARED.fontXxL} // Size of the Cart icon
                     textSize={12} // Font size of the text inside the button
                   />
               </Text>

@@ -93,7 +93,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       <Text
         style={{
           color: buttonTextColor,
-          fontSize: normalizeFontSize(textSize),
+          fontSize: textSize,
         }}
       >
         {title}

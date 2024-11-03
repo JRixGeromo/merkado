@@ -145,14 +145,14 @@ const RegistrationScreen = () => {
             ]}
             placeholder={t('gender')}
             iconName="Gender"
-            iconSize={22}
+            iconSize={SHARED.fontXxL}
             showIcon={true}
           />
 
           <DateAndTimePicker
             onDateChange={setBirthdate}
             iconName="calendar"
-            iconSize={20}
+            iconSize={SHARED.fontXxL}
             placeholder={t('birthDate')}
             inputStyle={{ height: 40 }}
           />
