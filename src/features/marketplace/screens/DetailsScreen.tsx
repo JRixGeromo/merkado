@@ -255,10 +255,10 @@ const DetailsScreen: React.FC = () => {
                     }}
                     title={t('Buy')} // Text inside the button
                     onPress={handleBuy} // Function to handle the press event
-                    color={selectedTheme.textLight} // Text color, using theme values
+                    color={selectedTheme.buttonTextPrimary} // Text color, using theme values
                     backgroundColor={selectedTheme.buttonPrimary} // Button background color, using theme values
                     borderRadius={2} // Set the border radius for rounded corners
-                    iconName="Cart" // Icon from IconLib (Cart icon)
+                    iconName="Cart_O" // Icon from IconLib (Cart icon)
                     iconSize={SHARED.fontXxL} // Size of the Cart icon
                     textSize={12} // Font size of the text inside the button
                   />
@@ -275,7 +275,7 @@ const DetailsScreen: React.FC = () => {
                     }}
                     title={t('Follow')} // Text inside the button
                     onPress={handleFollow} // Function to handle the press event
-                    color={selectedTheme.textLight} // Text color, using theme values
+                    color={selectedTheme.buttonTextPrimary} // Text color, using theme values
                     backgroundColor={selectedTheme.buttonInfo} // Button background color, using theme values
                     borderRadius={2} // Set the border radius for rounded corners
                     iconName="PersonAdd" // Icon from IconLib (Cart icon)
@@ -448,7 +448,7 @@ const DetailsScreen: React.FC = () => {
                   onPress={() => handleReplyToggle(comment.id)}
                   backgroundColor={selectedTheme.buttonDark} // Assuming you want only the icon and no background
                   width={50} // Default width is auto, can be overridden
-                  color={selectedTheme.textLight} // Set the icon color
+                  color={selectedTheme.buttonTextPrimary} // Set the icon color
                   borderRadius={0} // Default borderRadius is 15, can be overridden
                   borderColor={selectedTheme.lineBorderColor}
                   textSize={12} // Default text size, can be overridden

@@ -222,7 +222,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
             <CustomButton
               title={product ? 'Update Product' : 'Create Product'}
               onPress={handleSaveProduct}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               backgroundColor={selectedTheme.buttonPrimary}
               borderRadius={5}
               textSize={14}

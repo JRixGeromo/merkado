@@ -130,7 +130,7 @@ const App = () => {
                   style={{ width: 35, height: 35, borderRadius: 17.5, marginRight: 10 }}
                 />
               ) : (
-                <IconLib.Person size={25} color={selectedTheme.iconColorGray} />
+                <IconLib.Person_O size={25} color={selectedTheme.iconColorGray} />
               )}
             </TouchableOpacity>
             <DropdownMenu navigation={navigation} />

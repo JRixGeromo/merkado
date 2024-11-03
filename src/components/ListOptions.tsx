@@ -186,7 +186,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               onPress={() => setShowModal(false)}
               backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
               borderRadius={2} // You can set this dynamically too
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
             />
             
           </View>
@@ -217,14 +217,14 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               title={t('Add')}
               onPress={handleAddNewOption}
               backgroundColor={selectedTheme.buttonPrimary}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               borderRadius={2}
             />
             <CustomButton
               title={t('Cancel')}
               onPress={() => setAddNewModalVisible(false)}
               backgroundColor={selectedTheme.buttonClose}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               borderRadius={2}
               style={{ marginTop: 10 }}
             />

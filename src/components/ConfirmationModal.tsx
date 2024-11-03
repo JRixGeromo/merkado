@@ -59,7 +59,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             title={cancelText}
             onPress={onClose}
             backgroundColor={cancelButtonColor || selectedTheme.buttonDanger}
-            color={selectedTheme.textLight}
+            color={selectedTheme.buttonTextPrimary}
             //style={[commonStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}
@@ -73,7 +73,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               onClose(); // Close the modal after confirming
             }}
             backgroundColor={confirmButtonColor || selectedTheme.buttonPrimary}
-            color={selectedTheme.textLight}
+            color={selectedTheme.buttonTextPrimary}
             //style={[commonStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}

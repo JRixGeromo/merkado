@@ -195,7 +195,7 @@ const RegistrationScreen = () => {
             <CustomButton
               title={t('register')}
               onPress={handleRegister}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               backgroundColor={selectedTheme.buttonPrimary}
               borderRadius={2} // You can set this dynamically too
             />

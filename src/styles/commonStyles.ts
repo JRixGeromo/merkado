@@ -408,7 +408,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       backgroundColor: selectedTheme.facebookButtonColor, // Facebook button color
     },
     socialButtonText: {
-      color: selectedTheme.textLight, // Social button text color from selected theme
+      color: selectedTheme.buttonTextPrimary, // Social button text color from selected theme
     },
 
      loader: {

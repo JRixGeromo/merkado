@@ -102,7 +102,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
               backgroundColor={selectedTheme.buttonPrimary} // Use theme for close button color
               style={[commonStyle.searchButton, { marginHorizontal: 10 }]} // You can pass an array of styles
               borderRadius={20} // Set borderRadius
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               textSize={normalizeFontSize(12)} // Custom text size
               borderColor={selectedTheme.buttonBorderLight}
             />
@@ -126,7 +126,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
           onPress={onClose}
           backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
           borderRadius={2} // You can set this dynamically too
-          color={selectedTheme.textLight}
+          color={selectedTheme.buttonTextPrimary}
           style={{
             marginLeft: 0,
             marginRight: 0,

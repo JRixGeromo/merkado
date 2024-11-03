@@ -35,7 +35,7 @@ const CheckoutScreen: React.FC = () => {
       <CustomButton
         title={t('Proceed to Checkout')}
         onPress={handlePurchase}
-        color={selectedTheme.textLight}
+        color={selectedTheme.buttonTextPrimary}
         backgroundColor={selectedTheme.borderColorPrimary}
         borderRadius={2} // You can set this dynamically too
         style={{

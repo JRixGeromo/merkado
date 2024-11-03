@@ -93,7 +93,7 @@ const IconLib = {
   Document: (props: IconProps) => <CustomIcon name="document-text" {...props} />,
   Apps: (props: IconProps) => <CustomIcon name="apps" {...props} />,
   Briefcase: (props: IconProps) => <CustomIcon name="briefcase" {...props} />,
-  
+  Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
 
   ThumbsUp_O: (props: IconProps) => <CustomIcon name="thumbs-up-outline" {...props} />,
   Chat_O: (props: IconProps) => <CustomIcon name="chatbubble-outline" {...props} />,
@@ -133,7 +133,8 @@ const IconLib = {
   Document_O: (props: IconProps) => <CustomIcon name="document-text-outline" {...props} />,
   Apps_O: (props: IconProps) => <CustomIcon name="apps-outline" {...props} />,
   Briefcase_O: (props: IconProps) => <CustomIcon name="briefcase-outline" {...props} />,
-  
+  Person_O: (props: IconProps) => <CustomIcon name="person-outline" {...props} />,
+
   // FontAwesome Icons using the "fa" type
   Google: (props: IconProps) => <CustomIcon name="google" {...props} iconType="fa" />,
   Fb: (props: IconProps) => <CustomIcon name="facebook" {...props} iconType="fa" />,
@@ -146,10 +147,6 @@ const IconLib = {
   Sunny: (props: IconProps) => <CustomIcon name="sunny" {...props} />,
   Moon: (props: IconProps) => <CustomIcon name="moon" {...props} />,
   
-  
-  Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
-  
-
 };
 
 export default IconLib;

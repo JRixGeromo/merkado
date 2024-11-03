@@ -111,7 +111,7 @@ const CartScreen: React.FC = () => {
       <CustomButton
         title={t('Proceed to Checkout')}
         onPress={handleProceedToCheckout}
-        color={selectedTheme.textLight}
+        color={selectedTheme.buttonTextPrimary}
         backgroundColor={selectedTheme.borderColorPrimary}
         borderRadius={2} // You can set this dynamically too
         style={{

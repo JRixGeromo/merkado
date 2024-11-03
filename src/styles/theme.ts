@@ -64,6 +64,8 @@ export interface ThemeType {
   buttonDark: string;             // #495057 (Light) / #252422 (Dark)
   buttonBorderLight: string;      // #ffffff (Light) / #ffffff (Dark)
   buttonClose: string;            // #343a40 (Light) / #343a40 (Dark)
+  buttonTextPrimary: string;
+  buttonTextSecondary: string;
 
   // below are not in use
   // buttonSuccess: string;          // #8ac926 (Light) / #8ac926 (Dark)
@@ -142,7 +144,7 @@ const lightTheme: ThemeType = {
   textGray: '#4f5d75',
   textBlur: '#adb5bd',
   textHighlight: '#800e13',
-  textLight: '#ffffff',
+  textLight: '#000',
   textDisabled: '#ced4da',
 
   // below are not in use
@@ -190,16 +192,17 @@ const lightTheme: ThemeType = {
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
   
-  buttonPrimary: '#4CAF50',
+  buttonPrimary: '#d6ce93',
   buttonSecondary: '#ffffff',
-  buttonInfo: '#184e77',
+  buttonInfo: '#bee9e8',
   buttonDanger: '#ba181b',
   buttonCancel: '#e6e6ea',
   buttonBorderPrimary: '#4CAF50',
-  buttonDark: '#495057',
+  buttonDark: '#adb5bd',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-
+  buttonTextPrimary: '#ffffff',
+  buttonTextSecondary: '#000000',
   // below are not in use
   // buttonSuccess: '#8ac926',
   // buttonWarning: '#fb6107',
@@ -334,6 +337,8 @@ const darkTheme: ThemeType = {
   buttonDark: '#252422',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
+  buttonTextPrimary: '#000000',
+  buttonTextSecondary: '#ffffff',
 
   // below are not in use
   // buttonSuccess: '#8ac926',
@@ -467,6 +472,8 @@ const feminineTheme: ThemeType = {
   buttonDark: '#d6d6d6',            // Dark brown button
   buttonBorderLight: '#ffffff',     // White for light button border
   buttonClose: '#6d4c41',           // Brown for close button
+  buttonTextPrimary: '#000000',
+  buttonTextSecondary: '#ffffff',
 
   // below are not in use
   // buttonSuccess: '#8ac926',

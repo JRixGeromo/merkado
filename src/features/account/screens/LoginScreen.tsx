@@ -163,7 +163,7 @@ const LoginScreen = () => {
             <CustomButton
               title={t('login')}
               onPress={handleLogin}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               backgroundColor={selectedTheme.buttonPrimary}
               borderRadius={2} // You can set this dynamically too
             />
@@ -188,7 +188,7 @@ const LoginScreen = () => {
             <CustomButton
               title={t('google')}
               onPress={() => console.log('Google Login Pressed')}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               backgroundColor={selectedTheme.googleButtonColor}
               borderRadius={2} // You can set this dynamically too
               iconName={'Google'}
@@ -197,7 +197,7 @@ const LoginScreen = () => {
             <CustomButton
               title={t('facebook')}
               onPress={() => console.log('Facebook Login Pressed')}
-              color={selectedTheme.textLight}
+              color={selectedTheme.buttonTextPrimary}
               backgroundColor={selectedTheme.facebookButtonColor}
               borderRadius={2} // You can set this dynamically too
               iconName={'Fb'}

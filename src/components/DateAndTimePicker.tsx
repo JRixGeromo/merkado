@@ -167,7 +167,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                 onPress={() => setShowCalendar(false)} // Close calendar
                 backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
                 borderRadius={2} // You can set this dynamically too
-                color={selectedTheme.textLight}
+                color={selectedTheme.buttonTextPrimary}
               />
               
             </View>
