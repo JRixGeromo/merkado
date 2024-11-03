@@ -68,6 +68,10 @@ const LoginScreen = () => {
       return;
     }
     
+    ////////////////
+    navigation.navigate('DashboardScreen'); // for testing purpose, temporary
+    ////////////////
+
     setLoading(true); // Set loading to true while the request is being made
     try {
       const { data } = await loginUser({

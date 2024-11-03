@@ -192,17 +192,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     cardImageWrapper: {
       width: '100%',
-      height: '35%', // Fixed height equivalent to 35% of contentBoxPortrait height
+      flex: 0.35, // Fixed height equivalent to 35% of contentBoxPortrait height
       position: 'relative',
     },
     contentContainer: {
       justifyContent: 'flex-start', // Align content to the top of the container
       alignItems: 'center', // Center content horizontally
       width: '100%',
-      height: "50%",
+      flex: 0.5,
     },
     buttonContainer: {
-      height: "15%"
+      flex: 0.15,
     },
     ///
     
