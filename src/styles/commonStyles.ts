@@ -23,7 +23,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center',
     },
     selectedReactionText: {
-      fontSize: normalizeFontSize(20),
+      fontSize: SHARED.fontXxL,
       color: 'gray', // You can customize the color here
     },
     saleBanner: {
@@ -123,7 +123,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       flex: 1,
       paddingVertical: normalizeHeight(10),
       paddingRight: normalizeWidth(50),
-      fontSize: normalizeFontSize(12),
+      fontSize: SHARED.fontS,
     },
     sendButton: {
       position: 'absolute',
@@ -225,26 +225,26 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderRadius: 0, // Make it circular
     },
     productName: {
-      fontSize: normalizeFontSize(12),
+      fontSize: SHARED.fontS,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
       fontWeight:  "bold",
       marginTop: normalizeHeight(3), // Add some margin after the image
     },
     productPrice: {
-      fontSize: normalizeFontSize(14),
+      fontSize: SHARED.fontM,
       color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
       fontWeight:  "bold",
       marginTop: 0, // Space between the product name and price
     },
     productPriceL: {
-      fontSize: normalizeFontSize(20),
+      fontSize: SHARED.fontXxL,
       color: selectedTheme.textHighlight, // Highlight the price
       fontFamily: selectedTheme.bodyFont,
     },
     storeLocation: {
-      fontSize: normalizeFontSize(10),
+      fontSize: SHARED.fontXS,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFontSlim,
     },
@@ -254,12 +254,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       paddingVertical: normalizeHeight(7), // Add vertical padding for better touch area
     },
     sectionTitle: {
-      fontSize: normalizeFontSize(14), // Default size for icons
+      fontSize: SHARED.fontM, // Default size for icons
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.headingFont,
     },
     modalTitle: {
-      fontSize: normalizeFontSize(14),
+      fontSize: SHARED.fontM,
       fontWeight: 'bold',
       color: selectedTheme.textSecondary, // Theme-based text color for the title
       marginBottom: 15,
@@ -332,7 +332,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     input: {
       flex: 1,
-      fontSize: normalizeFontSize(16),
+      fontSize: SHARED.fontL,
       color: selectedTheme.textPrimary, // Input text color from selected theme
     },
     modalOverlay: {
@@ -345,7 +345,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Align items in center
     },
     modalText: {
-      fontSize: normalizeFontSize(16),
+      fontSize: SHARED.fontL,
       color: selectedTheme.textPrimary, // Text color from selected theme
       fontFamily: selectedTheme.bodyFont,
     },
@@ -382,13 +382,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: normalizeHeight(20), // Add space between logo and text
     },
     headerTitle: {
-      fontSize: normalizeFontSize(20),
+      fontSize: SHARED.fontXxL,
       fontFamily: selectedTheme.headingFont,
       color: selectedTheme.textPrimary,
       marginBottom: normalizeHeight(20),
     },
     linkText: {
-      fontSize: normalizeFontSize(14),
+      fontSize: SHARED.fontM,
       fontFamily: selectedTheme.bodyFont, // Use body font for links
       color: selectedTheme.textLink,
       marginTop: normalizeHeight(10),
@@ -423,11 +423,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
-      fontSize: normalizeFontSize(10), // You can adjust the size to your liking
+      fontSize: SHARED.fontXS, // You can adjust the size to your liking
       color: selectedTheme.textSecondary,
     },
     screenHeaderTitle: {
-      fontSize: normalizeFontSize(16),
+      fontSize: SHARED.fontL,
       fontFamily: selectedTheme.tabFont,
       color: selectedTheme.textSecondary,
     },
@@ -465,13 +465,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       marginBottom: normalizeHeight(10), // Margin between header and content
     },
     cardHeaderTitle: {
-      fontSize: normalizeFontSize(18),
+      fontSize: SHARED.fontXL,
       fontFamily: selectedTheme.headingFont, // Use the heading font for card titles
       color: selectedTheme.textPrimary,
     },
     sectionButtonText: {
       color: selectedTheme.textPrimary, // Theme-based text color
-      fontSize: normalizeFontSize(10),
+      fontSize: SHARED.fontXS,
     },
     sectionButtonContainer: {
       flexDirection: 'row',
@@ -484,7 +484,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignItems: 'center', // Vertically center the items
     },
     cardText: {
-      fontSize: normalizeFontSize(14), // Font size for text inside card
+      fontSize: SHARED.fontM, // Font size for text inside card
       color: selectedTheme.textPrimary, // Text color from selected theme
       marginTop: normalizeHeight(5), // Space between lines of text
       marginLeft: normalizeWidth(10), // Space between icon and text in header
@@ -500,7 +500,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       backgroundColor: selectedTheme.cardBackground, // Background color from the theme
     },
     splashText: {
-      fontSize: normalizeFontSize(20),
+      fontSize: SHARED.fontXxL,
       fontWeight: 'bold',
       color: selectedTheme.textPrimary, // Use primary color from the theme
       marginTop: normalizeHeight(10), // Add margin between the logo and the text
@@ -557,7 +557,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     unreadText: {
       color: 'white',
-      fontSize: normalizeFontSize(12),
+      fontSize: SHARED.fontS,
       fontWeight: 'bold',
     },
     cartItemImage: {
@@ -578,7 +578,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     quantityValue: {
       marginHorizontal: normalizeWidth(10),
-      fontSize: normalizeHeight(16),
+      fontSize: normalizeFontSize(16),
     },
     totalContainer: {
       flexDirection: 'row',
@@ -588,15 +588,15 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       borderColor: '#ccc',
     },
     totalText: {
-      fontSize: normalizeHeight(18),
+      fontSize: SHARED.fontXL,
       fontWeight: 'bold',
     },
     totalPrice: {
-      fontSize: normalizeHeight(18),
+      fontSize: SHARED.fontXL,
       fontWeight: 'bold',
     },
     checkoutText: {
-      fontSize: normalizeHeight(18),
+      fontSize: SHARED.fontXL,
       fontWeight: 'bold',
     },
     
@@ -618,7 +618,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       alignSelf: 'flex-end',
     },
     slideModalTitle: {
-      fontSize: normalizeFontSize(18),
+      fontSize: SHARED.fontXL,
       fontWeight: 'bold',
       marginBottom: normalizeHeight(10),
       textAlign: 'center',
@@ -642,17 +642,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       margin: normalizeHeight(10),
     },
     confimrationModalTitle: {
-      fontSize: normalizeFontSize(18),
+      fontSize: SHARED.fontXL,
       fontWeight: 'bold',
       marginBottom: normalizeHeight(10),
       textAlign: 'center',
     },
     confimrationModalMessage: {
-      fontSize: normalizeFontSize(14),
+      fontSize: SHARED.fontM,
       textAlign: 'center',
     },
     confimrationButtonText: {
-      fontSize: normalizeFontSize(16),
+      fontSize: SHARED.fontL,
       fontWeight: 'bold',
     },
   });
