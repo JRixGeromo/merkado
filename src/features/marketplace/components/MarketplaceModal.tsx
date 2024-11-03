@@ -80,7 +80,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
 
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
-      <View style={[layoutStyle.container, layoutStyle.paddingAllS, {backgroundColor: selectedTheme.formBackgroundColorSecondary }]}>
+      <View style={[layoutStyle.container, layoutStyle.paddingAllS, {backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
         <Text style={commonStyle.modalTitle}>{t('Search in merkado by')}</Text>
 
         {/* Scrollable Section Buttons */}

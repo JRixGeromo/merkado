@@ -121,7 +121,7 @@ const LoginScreen = () => {
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[ layoutStyle.container, {padding: 20, justifyContent: 'center'}]}>
-          <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, {backgroundColor: selectedTheme.formBackgroundColorPrimary}]}>
+          <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, {backgroundColor: selectedTheme.cardBackground}]}>
 
          
           <Image

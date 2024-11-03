@@ -194,7 +194,7 @@ const MyProductsScreen = () => {
         confirmText="Delete"
         cancelText="Cancel"
         confirmButtonColor={selectedTheme.buttonDanger}       // Custom confirm button color
-        cancelButtonColor={selectedTheme.buttonGray}       // Custom cancel button color
+        cancelButtonColor={selectedTheme.buttonCancel}       // Custom cancel button color
       />
     </View>
   );

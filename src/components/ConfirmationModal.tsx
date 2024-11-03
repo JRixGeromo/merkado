@@ -43,7 +43,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       style={commonStyle.centeredConfimrationModal}
       backdropOpacity={0.3}
     >
-      <View style={[commonStyle.confimrationModalContent, { backgroundColor: selectedTheme.formBackgroundColorPrimary }]}>
+      <View style={[commonStyle.confimrationModalContent, { backgroundColor: selectedTheme.cardBackground }]}>
         {/* Optional Title */}
         {title && (
           <Text style={[commonStyle.confimrationModalTitle, { color: selectedTheme.textPrimary }]}>{title}</Text>
