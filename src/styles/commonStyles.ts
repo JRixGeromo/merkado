@@ -259,9 +259,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontFamily: selectedTheme.headingFont,
     },
     modalTitle: {
-      fontSize: SHARED.fontM,
+      fontSize: SHARED.fontL,
       fontWeight: 'bold',
-      color: selectedTheme.textSecondary, // Theme-based text color for the title
+      color: selectedTheme.textPrimary, // Theme-based text color for the title
       marginBottom: 15,
     },
     listItem: {

@@ -144,7 +144,7 @@ return (
                   }}
                 >
                   {/* Use renderIcon to dynamically load the icon */}
-                  {renderIcon(item.icon, 20, selectedTheme.textPrimary)}
+                  {renderIcon(item.icon, 20, selectedTheme.iconColorGray)}
                   <Text style={commonStyle.dropdownText}>{item.label}</Text>
                 </TouchableOpacity>
               ))}

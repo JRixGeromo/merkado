@@ -77,7 +77,7 @@ const IconLib = {
   Logout: (props: IconProps) => <CustomIcon name="log-out" {...props} />,
   Gender: (props: IconProps) => <CustomIcon name="male-female" {...props} />,
   Create: (props: IconProps) => <CustomIcon name="create" {...props} />,
-  Trash: (props: IconProps) => <CustomIcon name="trash" {...props} />,
+  Trash: (props: IconProps) => <CustomIcon name="trash-bin" {...props} />,
   View: (props: IconProps) => <CustomIcon name="search" {...props} />,
   
   Settings: (props: IconProps) => <CustomIcon name="settings" {...props} />,
@@ -122,7 +122,7 @@ const IconLib = {
   Camera_O: (props: IconProps) => <CustomIcon name="camera-outline" {...props} />,
   Gender_O: (props: IconProps) => <CustomIcon name="male-female-outline" {...props} />,
   Create_O: (props: IconProps) => <CustomIcon name="create-outline" {...props} />,
-  Trash_O: (props: IconProps) => <CustomIcon name="trash-outline" {...props} />,
+  Trash_O: (props: IconProps) => <CustomIcon name="trash-bin-outline" {...props} />,
   Add_O: (props: IconProps) => <CustomIcon name="add-outline" {...props} />,
   View_O: (props: IconProps) => <CustomIcon name="search-outline" {...props} />,
   
