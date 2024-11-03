@@ -163,7 +163,7 @@ const LoginScreen = () => {
             <CustomButton
               title={t('login')}
               onPress={handleLogin}
-              color={selectedTheme.buttonTextPrimary}
+              color={selectedTheme.textLight}
               backgroundColor={selectedTheme.buttonPrimary}
               borderRadius={2} // You can set this dynamically too
             />
@@ -188,7 +188,7 @@ const LoginScreen = () => {
             <CustomButton
               title={t('google')}
               onPress={() => console.log('Google Login Pressed')}
-              color={selectedTheme.buttonTextPrimary}
+              color={selectedTheme.textLight}
               backgroundColor={selectedTheme.googleButtonColor}
               borderRadius={2} // You can set this dynamically too
               iconName={'Google'}

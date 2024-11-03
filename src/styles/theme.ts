@@ -201,8 +201,8 @@ const lightTheme: ThemeType = {
   buttonDark: '#adb5bd',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-  buttonTextPrimary: '#ffffff',
-  buttonTextSecondary: '#000000',
+  buttonTextPrimary: '#000000',
+  buttonTextSecondary: '#ffffff',
   // below are not in use
   // buttonSuccess: '#8ac926',
   // buttonWarning: '#fb6107',
@@ -337,8 +337,8 @@ const darkTheme: ThemeType = {
   buttonDark: '#252422',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-  buttonTextPrimary: '#000000',
-  buttonTextSecondary: '#ffffff',
+  buttonTextPrimary: '#ffffff',
+  buttonTextSecondary: '#000000',
 
   // below are not in use
   // buttonSuccess: '#8ac926',
