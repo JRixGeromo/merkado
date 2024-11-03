@@ -15,7 +15,7 @@ import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import ListOptions from '../../../components/ListOptions';
 
 import { commonStyles } from '../../../styles/commonStyles';
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 

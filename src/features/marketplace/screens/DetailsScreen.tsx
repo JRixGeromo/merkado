@@ -15,7 +15,7 @@ import CommentInput from '../../../components/CommentInput';
 import CustomButton from '../../../components/CustomButton';
 import { theme as appTheme } from '../../../styles/theme';
 import { commonStyles } from '../../../styles/commonStyles';
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
 import relativeTime from 'dayjs/plugin/relativeTime';
