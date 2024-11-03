@@ -412,7 +412,7 @@ const feminineTheme: ThemeType = {
   textGray: '#bcaaa4',           // Soft beige-gray
   textBlur: '#5e503f',           // Light muted beige
   textHighlight: '#000',      // Pink highlight
-  textLight: '#ffffff',          // Pure white for light text
+  textLight: '#000',          // Pure white for light text
   textDisabled: '#d7ccc8',       // Muted beige for disabled text
 
   // below are not in use
@@ -453,18 +453,18 @@ const feminineTheme: ThemeType = {
   /************************** */
   // Line, Button, and Button Border
   lineBorderColor: '#f8bbd0',       // Light pink line
-  lineBorderColorLight: '#fff',  // Light orange-pink line
+  lineBorderColorLight: '#000',  // Light orange-pink line
   googleButtonColor: '#f06292',     // Soft pink for Google button
   facebookButtonColor: '#8e24aa',   // Purple for Facebook button
 
-  buttonPrimary: '#540b0e',         // Pink primary button
+  buttonPrimary: '#ffadad',         // Pink primary button
   buttonSecondary: '#ffebee',       // Very light pink for secondary button
-  buttonInfo: '#ba68c8',            // Purple for info button
+  buttonInfo: '#ffdac6',            // Purple for info button
   buttonDanger: '#d32f2f',          // Red for danger button
   buttonCancel: '#ffebee',          // Light pink for cancel button
 
   buttonBorderPrimary: '#efd3d7',   // Pink for primary button border
-  buttonDark: '#000',            // Dark brown button
+  buttonDark: '#d6d6d6',            // Dark brown button
   buttonBorderLight: '#ffffff',     // White for light button border
   buttonClose: '#6d4c41',           // Brown for close button
 
@@ -496,7 +496,7 @@ const feminineTheme: ThemeType = {
   iconColorSecondary: '#ba68c8',       // Purple icons
   iconColorSmileys: '#ffb74d',         // Orange for smiley icons
   iconColorGray: '#6d4c41',            // Brown-gray icons
-  iconColorLight: '#ffffff',           // White icons
+  iconColorLight: '#000000',           // White icons
   ///////////////////
 
 

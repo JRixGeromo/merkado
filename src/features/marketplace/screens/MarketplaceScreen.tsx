@@ -279,7 +279,7 @@ const MarketplaceScreen = () => {
           <TextInput
             style={commonStyle.searchInput}
             placeholder="Search"
-            placeholderTextColor="gray"
+            placeholderTextColor={selectedTheme.textPlaceHolderInfo}
           />
         </View>
 
