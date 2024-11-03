@@ -78,7 +78,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
                 iconName={action.iconName as keyof typeof IconLib}
                 iconColor={selectedTheme.buttonTextPrimary}
                 iconSize={SHARED.fontL}
-                color={selectedTheme.textLight}
+                color={selectedTheme.buttonTextPrimary}
                 style={[commonStyle.cardButton, action.buttonStyle, {height: "100%"}]}
                 borderRadius={0}
               />

@@ -10,10 +10,10 @@ export interface ThemeType {
   textGray: string;
   textBlur: string;
   textHighlight: string;     // #800e13 (Light) / #f2bb05 (Dark)
-  textLight: string;         // #ffffff (Light) / #ffffff (Dark)
   textDisabled: string;      // #ced4da (Light) / #ced4da (Dark)
 
   // below are not in use
+  // textLight: string;         // #ffffff (Light) / #ffffff (Dark)
   // textBlack: string;         // #000000 (Light) / #000000 (Dark)
   ///////////////////
 
@@ -144,11 +144,11 @@ const lightTheme: ThemeType = {
   textGray: '#4f5d75',
   textBlur: '#adb5bd',
   textHighlight: '#800e13',
-  textLight: '#000',
   textDisabled: '#ced4da',
 
   // below are not in use
   // textBlack: '#000000',
+  // textLight: '#000',
   ///////////////////
   
   
@@ -282,11 +282,11 @@ const darkTheme: ThemeType = {
   textGray: '#8d99ae',
   textBlur: '#adb5bd',
   textHighlight: '#f2bb05',
-  textLight: '#ffffff',
   textDisabled: '#ced4da',
 
   // below are not in use
   // textBlack: '#000000',
+  // textLight: '#ffffff',
   ///////////////////
 
   
@@ -417,11 +417,11 @@ const feminineTheme: ThemeType = {
   textGray: '#bcaaa4',           // Soft beige-gray
   textBlur: '#5e503f',           // Light muted beige
   textHighlight: '#000',      // Pink highlight
-  textLight: '#000',          // Pure white for light text
   textDisabled: '#d7ccc8',       // Muted beige for disabled text
 
   // below are not in use
   // textBlack: '#000000',
+  // textLight: '#000',          // Pure white for light text
   ///////////////////
 
 
