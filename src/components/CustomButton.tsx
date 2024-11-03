@@ -87,7 +87,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       {/* Render the optional icon on the left if provided */}
       {iconName && (
         <View style={{ marginRight: 1 }}>
-          {React.createElement(IconLib[iconName], { size: iconSize, color: iconFinalColor })}
+          {React.createElement(IconLib[iconName], { size: normalizeFontSize(iconSize), color: iconFinalColor })}
         </View>
       )}
       <Text

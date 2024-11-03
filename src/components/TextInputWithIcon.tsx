@@ -87,7 +87,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
     >
       {/* Dynamically render the Icon using IconLib */}
       <View style={{ marginRight: 4, paddingTop: multiline ? 10 : 0, alignSelf: multiline ? 'flex-start' : 'center' }}>
-        {renderIcon(iconName, iconSize, themeBasedIconColor)}
+        {renderIcon(iconName, normalizeFontSize(iconSize), themeBasedIconColor)}
       </View>
 
 
