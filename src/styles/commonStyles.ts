@@ -655,5 +655,98 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontL,
       fontWeight: 'bold',
     },
+
+
+
+    ////////////////
+
+
+    container: {
+      flex: 1,
+      padding: 16,
+    },
+    verticalSpacerM: {
+      marginVertical: 12,
+    },
+    rlPaddingS: {
+      paddingHorizontal: 8,
+    },
+    largeText: {
+      fontSize: 18,
+      fontWeight: '600',
+    },
+    metricBox: {
+      flex: 1,
+      padding: 12,
+      borderRadius: 8,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      marginHorizontal: 4,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.2,
+      shadowRadius: 1.41,
+      elevation: 2,
+    },
+    metricTitle: {
+      fontSize: 14,
+      color: '#666',
+      marginBottom: 4,
+    },
+    metricValue: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    orderBox: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      padding: 10,
+      borderRadius: 8,
+      backgroundColor: '#f5f5f5',
+      marginVertical: 4,
+    },
+    orderText: {
+      fontSize: 14,
+      color: '#333',
+    },
+    orderStatus: {
+      fontSize: 12,
+      fontWeight: '500',
+    },
+    feedbackBox: {
+      padding: 12,
+      borderRadius: 8,
+      backgroundColor: '#f9f9f9',
+      marginVertical: 4,
+    },
+    feedbackUser: {
+      fontSize: 14,
+      fontWeight: '600',
+      color: '#333',
+    },
+    feedbackContent: {
+      fontSize: 13,
+      color: '#666',
+      marginVertical: 4,
+    },
+    feedbackRating: {
+      fontSize: 12,
+      fontWeight: '500',
+      color: '#ffa500',
+    },
+    liveShowButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      borderRadius: 8,
+      marginTop: 16,
+    },
+    liveShowText: {
+      fontSize: 16,
+      fontWeight: '500',
+      marginLeft: 8,
+    },
+    
   });
 };
