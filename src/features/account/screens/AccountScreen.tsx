@@ -122,18 +122,23 @@ const AccountScreen = () => {
             </View>
 
             {/* Dark Mode Toggle */}
-            <View
-              style={[commonStyle.toggleButtonContainer, { marginTop: 10 }]}
-            >
-              <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
-                <Text style={commonStyle.cardText}>{t('theme')}</Text>
-              </TouchableOpacity>
-              <Icon
-                name={themeType === 'dark' ? 'moon' : 'sunny'}
-                size={24}
-                color={selectedTheme.iconColorPrimary}
-              />
-            </View>
+            <View style={[commonStyle.toggleButtonContainer, { marginTop: 10 }]}>
+            <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
+              <Text style={commonStyle.cardText}>{t('theme')}</Text>
+            </TouchableOpacity>
+            <Icon
+              name={
+                themeType === 'dark'
+                  ? 'moon'
+                  : themeType === 'feminine'
+                  ? 'heart'
+                  : 'sunny'
+              }
+              size={24}
+              color={selectedTheme.iconColorPrimary}
+            />
+          </View>
+
 
             {/* Language Selection Dropdown */}
             <View style={commonStyle.languageContainer}>

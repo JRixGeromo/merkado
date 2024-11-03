@@ -4,7 +4,7 @@ import { SHARED } from '../styles/layoutStyles';
 import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
-export const commonStyles = (currentTheme: 'light' | 'dark') => {
+export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
@@ -139,8 +139,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
     },
     ////
     searchContainer: {
-      paddingTop: normalizeHeight(0),
-      paddingBottom: normalizeHeight(0),
+      paddingTop: 0,
+      paddingBottom: 0,
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       backgroundColor: selectedTheme.inputBackgroundColor, // Use theme background color
@@ -183,8 +183,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark') => {
       width: normalizeWidth(120),
       height: normalizeHeight(210),
       marginRight: normalizeWidth(10),
-      paddingBottom: normalizeHeight(0),
-      marginBottom: normalizeHeight(0),
+      paddingBottom: 0,
+      marginBottom: 0,
       justifyContent: 'space-between', // Space between content and buttons
       alignItems: 'center', // Center all content horizontally
       borderColor: selectedTheme.lineBorderColorLight,

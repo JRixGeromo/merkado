@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Define the type for the theme state
 type ThemeState = {
-  theme: 'light' | 'dark';
+  theme: 'light' | 'dark' | 'feminine';
 };
 
 // Set the initial state with an explicit type
@@ -19,7 +19,7 @@ export const loadThemeFromStorage = createAsyncThunk(
   'theme/loadThemeFromStorage',
   async () => {
     const savedTheme = await AsyncStorage.getItem(STORAGE_KEY);
-    return (savedTheme as 'light' | 'dark') || 'light'; // Fallback to 'light' if no theme is saved
+    return (savedTheme as 'light' | 'dark' | 'feminine') || 'light'; // Fallback to 'light' if no theme is saved
   },
 );
 
@@ -28,17 +28,23 @@ const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    // Toggle between light and dark themes and persist the choice
-    toggleTheme: state => {
-      state.theme = state.theme === 'light' ? 'dark' : 'light';
+    // Toggle between light, dark, and feminine themes and persist the choice
+    toggleTheme: (state) => {
+      if (state.theme === 'light') {
+        state.theme = 'dark';
+      } else if (state.theme === 'dark') {
+        state.theme = 'feminine';
+      } else {
+        state.theme = 'light';
+      }
       // Save the theme to AsyncStorage
       AsyncStorage.setItem(STORAGE_KEY, state.theme);
     },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder.addCase(
       loadThemeFromStorage.fulfilled,
-      (state, action: PayloadAction<'light' | 'dark'>) => {
+      (state, action: PayloadAction<'light' | 'dark' | 'feminine'>) => {
         state.theme = action.payload; // Update theme after it is loaded from AsyncStorage
       },
     );

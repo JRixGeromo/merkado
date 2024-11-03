@@ -30,7 +30,7 @@ export const SHARED = {
 };
 
 // Dynamically generated styles based on theme
-export const layoutStyles = (currentTheme: 'light' | 'dark') => {
+export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
