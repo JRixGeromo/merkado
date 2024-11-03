@@ -93,7 +93,7 @@ const MyProductsScreen = () => {
       price={item.price}
       buttonActions={[
         {
-          iconName: 'Trash',
+          iconName: 'Trash_O',
           title: 'Delete',
           backgroundColor: selectedTheme.buttonDark,
           width: "100%",
@@ -102,7 +102,7 @@ const MyProductsScreen = () => {
           buttonStyle: commonStyle.cardButton,
         },
         {
-          iconName: 'Create',
+          iconName: 'Create_O',
           title: 'Edit',
           backgroundColor: selectedTheme.buttonPrimary,
           width: "100%",
@@ -111,7 +111,7 @@ const MyProductsScreen = () => {
           buttonStyle: commonStyle.cardButton,
         },
         {
-          iconName: 'View',
+          iconName: 'View_O',
           title: 'View',
           backgroundColor: selectedTheme.buttonInfo,
           width: "100%",
