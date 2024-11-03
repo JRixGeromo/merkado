@@ -57,7 +57,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
-          <IconLib.DotsMenu size={1iconSize={SHARED.fontXL} color="white" />
+          <IconLib.DotsMenu size={SHARED.fontXL} color="white" />
         </TouchableOpacity>
       </View>
 
@@ -92,9 +92,9 @@ const ContentCard: React.FC<ContentCardProps> = ({
             style={layoutStyle.rMarginXS}
           >
             {isLiked ? (
-              <IconLib.Heart size={1iconSize={SHARED.fontXL} color="red" />
+              <IconLib.Heart size={SHARED.fontXL} color="red" />
             ) : (
-              <IconLib.Heart_O size={1iconSize={SHARED.fontXL} color={selectedTheme.iconColorPrimary} />
+              <IconLib.Heart_O size={SHARED.fontXL} color={selectedTheme.iconColorPrimary} />
             )}
           </TouchableOpacity>
           <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}
