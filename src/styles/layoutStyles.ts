@@ -116,6 +116,12 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     cols_70: {
       width: '70%',
     },
+    cols_80: {
+      width: '80%',
+    },
+    cols_90: {
+      width: '90%',
+    },
     cols_30: {
       width: '30%',
     },

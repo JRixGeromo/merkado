@@ -251,7 +251,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     cardButton: {
       alignItems: 'center', // Center the content vertically
       justifyContent: 'center', // Center the content horizontally
-      paddingVertical: normalizeHeight(7), // Add vertical padding for better touch area
+      paddingVertical: normalizeHeight(5), // Add vertical padding for better touch area
     },
     sectionTitle: {
       fontSize: SHARED.fontM, // Default size for icons

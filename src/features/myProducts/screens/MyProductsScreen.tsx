@@ -94,7 +94,7 @@ const MyProductsScreen = () => {
       buttonActions={[
         {
           iconName: 'Trash_O',
-          title: 'Delete',
+          title: '',
           backgroundColor: selectedTheme.buttonDark,
           width: "100%",
           textSize: 12,
@@ -103,7 +103,7 @@ const MyProductsScreen = () => {
         },
         {
           iconName: 'Create_O',
-          title: 'Edit',
+          title: '',
           backgroundColor: selectedTheme.buttonPrimary,
           width: "100%",
           textSize: 12,
@@ -112,7 +112,7 @@ const MyProductsScreen = () => {
         },
         {
           iconName: 'View_O',
-          title: 'View',
+          title: '',
           backgroundColor: selectedTheme.buttonInfo,
           width: "100%",
           textSize: 12,
@@ -128,7 +128,7 @@ const MyProductsScreen = () => {
       <View style={layoutStyle.verticalSpacerM} />
       {/* Search Bar */}
       <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
-        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_75]}>
+        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_80]}>
           <TouchableOpacity style={layoutStyle.rMarginS}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
@@ -141,9 +141,9 @@ const MyProductsScreen = () => {
           />
         </View>
 
-        <View style={[layoutStyle.cols_25, layoutStyle.lPaddingS]}>
+        <View style={[layoutStyle.cols_5, layoutStyle.lPaddingL]}>
           <CustomButton
-            title="Create"
+            title=""
             textSize={12}
             backgroundColor={selectedTheme.buttonPrimary}
             width="100%"
@@ -152,7 +152,7 @@ const MyProductsScreen = () => {
             iconColor={selectedTheme.iconColorLight}
             iconSize={SHARED.fontXL}
             color={selectedTheme.textLight}
-            style={[commonStyle.cardButton]}
+            style={commonStyle.cardButton}
             borderRadius={0}
           />
         </View>
