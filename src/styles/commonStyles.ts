@@ -678,7 +678,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     metricBox: {
       flex: 1,
       padding: 12,
-      borderRadius: 8,
+      //borderRadius: 8,
       backgroundColor: '#fff',
       alignItems: 'center',
       marginHorizontal: 4,
@@ -747,6 +747,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontWeight: '500',
       marginLeft: 8,
     },
-    
+
   });
 };

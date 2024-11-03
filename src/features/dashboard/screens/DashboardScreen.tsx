@@ -103,7 +103,7 @@ const VendorDashboard = () => {
 
          {/* Reaction Metrics */}
         <View style={{ marginTop: 20 }}>
-          <Text style={layoutStyle.largeText}>{t('Reactions')}</Text>
+          {/* <Text style={layoutStyle.largeText}>{t('Reactions')}</Text> */}
           <View style={[layoutStyle.columnsInside, { marginTop: 10 }]}>
             <View style={[layoutStyle.cols_3, commonStyle.metricBox]}>
               <IconLib.Heart size={24} color={selectedTheme.iconColorPrimary} />
