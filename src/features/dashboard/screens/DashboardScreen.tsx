@@ -101,23 +101,7 @@ const VendorDashboard = () => {
           </View>
         </View>
 
-        {/* Recent Orders */}
-        <View style={{ marginTop: 30 }}>
-          <Text style={layoutStyle.largeText}>{t('Recent Orders')}</Text>
-          {recentOrders.map(order => (
-            <View key={order.id} style={commonStyle.orderBox}>
-              <Text style={commonStyle.orderText}>
-                {order.customerName} - ₱{order.amount}
-              </Text>
-              <Text style={[commonStyle.orderStatus, { color: selectedTheme.textAccent }]}>
-                {order.status}
-              </Text>
-            </View>
-          ))}
-        </View>
-
-
-        {/* Reaction Metrics */}
+         {/* Reaction Metrics */}
         <View style={{ marginTop: 20 }}>
           <Text style={layoutStyle.largeText}>{t('Reactions')}</Text>
           <View style={[layoutStyle.columnsInside, { marginTop: 10 }]}>
@@ -138,6 +122,22 @@ const VendorDashboard = () => {
             </View>
           </View>
         </View>
+
+       {/* Recent Orders */}
+       <View style={{ marginTop: 30 }}>
+          <Text style={layoutStyle.largeText}>{t('Recent Orders')}</Text>
+          {recentOrders.map(order => (
+            <View key={order.id} style={commonStyle.orderBox}>
+              <Text style={commonStyle.orderText}>
+                {order.customerName} - ₱{order.amount}
+              </Text>
+              <Text style={[commonStyle.orderStatus, { color: selectedTheme.textAccent }]}>
+                {order.status}
+              </Text>
+            </View>
+          ))}
+        </View>
+
 
         {/* Customer Feedback */}
         <View style={{ marginTop: 30 }}>
