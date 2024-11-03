@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { commonStyles } from '../styles/commonStyles'; // Import your style
-import { normalizeFontSize } from '../utils/responsive'; // Import for responsive text size
+import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
 import { theme as appTheme } from '../styles/theme'; // Import your theme
 import IconLib from './IconLib'; // Import IconLib
 
@@ -41,14 +41,17 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   borderColor, // Optional borderColor prop
   iconName, // Optional icon from IconLib
   iconColor, // Optional icon color
-  iconSize = 20, // Default icon size
-  textSize = 16, // Default text size, can be overridden
+  iconSize = normalizeFontSize(20), // Default icon size
+  textSize = normalizeFontSize(16), // Default text size, can be overridden
   style = {
-    margin: 5,
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingRight: 15,
-    paddingLeft: 15,
+    marginTop: normalizeHeight(5),
+    marginBottom: normalizeHeight(5),
+    marginLeft: normalizeWidth(5),
+    marginRight: normalizeWidth(5),
+    paddingTop: normalizeHeight(8),
+    paddingBottom: normalizeHeight(8),
+    paddingLeft: normalizeWidth(15),
+    paddingRight: normalizeWidth(15),
   },
   onPress,
 }) => {
