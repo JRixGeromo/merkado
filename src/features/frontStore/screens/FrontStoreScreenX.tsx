@@ -14,8 +14,14 @@ import { layoutStyles } from '../../../styles/layoutStyles';
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigationTypes';
 
+type FrontStoreScreenRouteProp = RouteProp<RootStackParamList, 'FrontStoreScreen'>;
 const FrontStoreScreenx = () => {
+  const route = useRoute<FrontStoreScreenRouteProp>();
+  const { vendorId } = route.params;
+
   const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType);
   const layoutStyle = layoutStyles(themeType);

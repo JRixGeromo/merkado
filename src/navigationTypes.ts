@@ -9,7 +9,7 @@ export type RootStackParamList = {
   LoginScreen: undefined;
   RegistrationScreen: undefined;
   DashboardScreen: undefined;
-  FrontStoreScreen: undefined;
+  FrontStoreScreen: { vendorId: number }; // add vendorId as a required parameter
   AccountScreen: undefined;
   ChangePasswordScreen: undefined;
   ManageAddressesScreen: undefined;

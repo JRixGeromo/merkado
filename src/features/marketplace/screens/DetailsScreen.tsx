@@ -20,6 +20,9 @@ import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
 import relativeTime from 'dayjs/plugin/relativeTime';
 import IconLib from '../../../components/IconLib'; // Import your Icon Library
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigationTypes';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { reactions } from '../../../constants/reactions';
 
 dayjs.extend(relativeTime);
@@ -29,6 +32,10 @@ type DetailsScreenRouteProp = RouteProp<
   'params'
 >;
 
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'DetailsScreen'
+>;
 const DetailsScreen: React.FC = () => {
   const route = useRoute<DetailsScreenRouteProp>();
   const { item, type } = route.params;
@@ -38,6 +45,8 @@ const DetailsScreen: React.FC = () => {
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
+
+  const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
 
   const { t } = useTranslation();
 
@@ -297,6 +306,11 @@ const DetailsScreen: React.FC = () => {
             </TouchableOpacity>
             <TouchableOpacity>
               <IconLib.Share_O size={24} color={selectedTheme.iconColorSmileys} style={layoutStyle.rPaddingS} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('FrontStoreScreen', { vendorId: 1 })}
+              >
+              <IconLib.Store_O size={24} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingS} />
             </TouchableOpacity>
           </View>
         </View>

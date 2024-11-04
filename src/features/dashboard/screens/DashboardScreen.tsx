@@ -27,6 +27,30 @@ type DashboardMetrics = {
   followers: number;
 };
 
+export type Product = {
+  id: string;
+  name: string;
+  description: string | null;
+  distance: string;
+  price: number;
+  location: string;
+  imageUrl: string;
+  rating: number;
+  likes: number;
+  onSale: boolean;
+};
+
+export type Store = {
+  id: string;
+  name: string;
+  description: string;
+  distance: string;
+  location: string;
+  imageUrl: string;
+  rating: number;
+  likes: number;
+};
+
 const VendorDashboard = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType);
