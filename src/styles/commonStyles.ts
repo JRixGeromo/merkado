@@ -747,6 +747,133 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontWeight: '500',
       marginLeft: 8,
     },
+    //////////////////////////
+    vendorHeader: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      paddingVertical: 10,
+    },
+    vendorInfo: {
+      marginLeft: 10,
+      flex: 1,
+    },
+    vendorName: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#333', // Adjust based on theme
+    },
+    vendorLocation: {
+      color: '#666', // Adjust based on theme
+      fontSize: 14,
+    },
+    vendorStats: {
+      color: '#666', // Adjust based on theme
+      fontSize: 12,
+    },
 
+    followButtonText: {
+      color: '#FFF', // Text color for the button
+      fontWeight: 'bold',
+      fontSize: 14,
+    },
+    iconMargin: {
+      marginLeft: 10,
+    },
+    bannerImage: {
+      width: '90%',
+      height: 150,
+      borderRadius: 10,
+      marginRight: 10,
+    },
+    categoryCard: {
+      backgroundColor: '#f2f2f2', // Replace with theme background color
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      borderRadius: 20,
+      marginHorizontal: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    categoryText: {
+      color: '#333', // Replace with theme text color
+      fontSize: 14,
+    },
+
+    productCard: {
+      marginRight: 10,
+      width: 150,
+    },
+    reviewBox: {
+      backgroundColor: '#f9f9f9', // Adjust based on theme
+      padding: 10,
+      borderRadius: 8,
+      marginVertical: 5,
+    },
+    reviewUser: {
+      fontWeight: 'bold',
+      color: '#333', // Replace with theme text color
+    },
+    reviewContent: {
+      color: '#555', // Adjust based on theme
+      fontSize: 14,
+      marginVertical: 5,
+    },
+    reviewRating: {
+      color: '#FFC107', // Star color
+      fontSize: 14,
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 20,
+    },
+
+    storeName: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: selectedTheme.textPrimary,
+    },
+    metricsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginVertical: 20,
+    },
+    metricLabel: {
+      fontSize: 14,
+      color: selectedTheme.textBlur,
+      marginTop: 5,
+    },
+    productListContainer: {
+      marginTop: 20,
+    },
+    
+    productInfo: {
+      flex: 1,
+    },
+    
+    ratingContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 5,
+    },
+    ratingText: {
+      fontSize: 14,
+      color: selectedTheme.textBlur,
+      marginLeft: 5,
+    },
+    reactionContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 20,
+    },
+    reactionIcon: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    reactionCount: {
+      fontSize: 14,
+      color: selectedTheme.textPrimary,
+      marginLeft: 5,
+    },
   });
 };

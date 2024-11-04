@@ -13,6 +13,7 @@ import SplashScreen from './src/features/splash/screens/SplashScreen';
 import LoginScreen from './src/features/account/screens/LoginScreen';
 import RegistrationScreen from './src/features/account/screens/RegistrationScreen';
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
+import FrontStoreScreen from './src/features/frontStore/screens/FrontStoreScreen';
 import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
@@ -123,6 +124,13 @@ const App = () => {
                 </View>
               )}
             </View>
+            {/* Front Store Icon */}
+            <TouchableOpacity
+              onPress={() => navigation.navigate('FrontStoreScreen')}
+              style={layoutStyle.rMarginL}
+            >
+              <IconLib.Store_O size={25} color={selectedTheme.iconColorGray} />
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('AccountScreen')} style={layoutStyle.rMarginL}>
               {user?.avatar ? (
                 <Image
@@ -183,6 +191,15 @@ const App = () => {
           component={DetailsScreen}
           options={{
             headerTitle: 'Details',
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerTintColor: selectedTheme.textPrimary,
+          }}
+        />
+        <Stack.Screen
+          name="FrontStoreScreen"
+          component={FrontStoreScreen}
+          options={{
+            headerTitle: 'FrontStore',
             headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
