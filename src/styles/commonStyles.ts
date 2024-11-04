@@ -875,5 +875,25 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       color: selectedTheme.textPrimary,
       marginLeft: 5,
     },
+    
+    bannerWrapper: {
+      position: 'relative',
+      width: '100%',
+      height: 200, // Adjust based on desired height of the banner
+      marginBottom: 20,
+    },
+
+  
+    // Profile picture in the lower left corner of the banner
+    profilePicture: {
+      position: 'absolute',
+      bottom: 10, // Adjust distance from the bottom edge
+      left: 10,   // Adjust distance from the left edge
+      width: 60,  // Adjust size of the profile picture
+      height: 60,
+      borderRadius: 30, // Make it circular
+      borderWidth: 2,
+      borderColor: 'white', // White border for a nice effect
+    },
   });
 };

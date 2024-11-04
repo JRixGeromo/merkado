@@ -266,18 +266,19 @@ const FrontStoreScreen = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
         {/* Vendor Header */}
-        <View style={commonStyle.vendorHeader}>
-          <Image source={{ uri: vendorInfo.logoUrl }} style={commonStyle.logo} />
-          <View style={commonStyle.vendorInfo}>
-            <Text style={commonStyle.vendorName}>{vendorInfo.name}</Text>
-            <Text style={commonStyle.vendorLocation}>{vendorInfo.location}</Text>
-            <Text style={commonStyle.vendorStats}>{vendorInfo.followers} Followers</Text>
-          </View>
-          <TouchableOpacity style={commonStyle.followButton}>
-            <Text style={commonStyle.followButtonText}>{t('Follow')}</Text>
-          </TouchableOpacity>
+        <View style={commonStyle.bannerWrapper}>
+          {/* Banner Image */}
+          <Image source={{ uri: vendorInfo.logoUrl }} style={commonStyle.bannerImage} />
+          
+          {/* Profile Picture in Bottom Left Corner */}
+          <Image source={{ uri: vendorInfo.logoUrl }} style={commonStyle.profilePicture} />
         </View>
 
+        <View style={commonStyle.vendorInfo}>
+          <Text style={commonStyle.vendorName}>{vendorInfo.name}</Text>
+          <Text style={commonStyle.vendorLocation}>{vendorInfo.location}</Text>
+          <Text style={commonStyle.vendorStats}>{vendorInfo.followers} Followers</Text>
+        </View>
         {/* Search Container */}
         {/* <View style={layoutStyle.verticalSpacerM} />
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
@@ -376,7 +377,7 @@ const FrontStoreScreen = () => {
           </View>
           {/* Add more reviews as needed */}
         </View>
-        
+
       </View>
     </ScrollView>
   );
