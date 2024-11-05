@@ -62,10 +62,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginBottom: normalizeHeight(10), // Margin between comments
     },
     commentContainer: {
-      paddingTop: normalizeHeight(5),
-      paddingBottom: normalizeHeight(5),
-      paddingLeft: normalizeWidth(5),
-      paddingRight: normalizeWidth(5),
+      paddingTop: normalizeHeight(15),
+      paddingBottom: normalizeHeight(15),
+      paddingLeft: normalizeWidth(15),
+      paddingRight: normalizeWidth(15),
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
       borderWidth: SHARED.borderWidth,
@@ -101,8 +101,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingLeft: normalizeWidth(10),
     },
     replyInputWrapper: {
-      // marginLeft: -10,
-      // marginRight: -10,
+      marginLeft: -15,
+      marginRight: -15,
       marginTop: normalizeHeight(10),
     },
     commentFormContainer: {

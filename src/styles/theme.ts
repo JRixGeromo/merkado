@@ -199,7 +199,7 @@ const lightTheme: ThemeType = {
   buttonDanger: '#ba181b',
   buttonCancel: '#e6e6ea',
   buttonBorderPrimary: '#4CAF50',
-  buttonDark: '#adb5bd',
+  buttonDark: '#a5a5a5',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
   buttonTextPrimary: '#ffffff',
@@ -331,14 +331,14 @@ const feminineTheme: ThemeType = {
   googleButtonColor: '#f06292',     // Soft pink for Google button
   facebookButtonColor: '#8e24aa',   // Purple for Facebook button
 
-  buttonPrimary: '#ffadad',         // Pink primary button
+  buttonPrimary: '#f2b5d4',         // Pink primary button
   buttonSecondary: '#ffebee',       // Very light pink for secondary button
   buttonInfo: '#ffdac6',            // Purple for info button
   buttonDanger: '#d32f2f',          // Red for danger button
   buttonCancel: '#ffebee',          // Light pink for cancel button
 
   buttonBorderPrimary: '#efd3d7',   // Pink for primary button border
-  buttonDark: '#d6d6d6',            // Dark brown button
+  buttonDark: '#dbc7be',            // Dark brown button
   buttonBorderLight: '#ffffff',     // White for light button border
   buttonClose: '#6d4c41',           // Brown for close button
   buttonTextPrimary: '#ffffff',
@@ -468,7 +468,7 @@ const darkTheme: ThemeType = {
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
 
-  buttonPrimary: '#1b4332',
+  buttonPrimary: '#333d29',
   buttonSecondary: '#212529',
   buttonInfo: '#184e77',
   buttonDanger: '#a50104',
@@ -477,8 +477,8 @@ const darkTheme: ThemeType = {
   buttonDark: '#252422',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-  buttonTextPrimary: '#ffffff',
-  buttonTextSecondary: '#000000',
+  buttonTextPrimary: '#d9d9d9',
+  buttonTextSecondary: '#adb6c4',
   buttonTextDelete: '#ffffff',
 
   // below are not in use
