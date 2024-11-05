@@ -73,7 +73,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               onClose(); // Close the modal after confirming
             }}
             backgroundColor={confirmButtonColor || selectedTheme.buttonPrimary}
-            color={selectedTheme.buttonTextPrimary}
+            color={selectedTheme.buttonTextDelete}
             //style={[commonStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}

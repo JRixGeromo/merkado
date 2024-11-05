@@ -47,7 +47,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingLeft: normalizeWidth(10),     // Padding around the price text
       paddingRight: normalizeWidth(10),     // Padding around the price text
       backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background for better readability
-      borderWidth: 0.5,
+      borderWidth: SHARED.borderWidthSecondary,
       borderColor: selectedTheme.borderColorDark,
       borderRadius: 5, // Rounded corners
       zIndex: 2,      // Ensure it appears on top of other elements
@@ -68,7 +68,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingRight: normalizeWidth(5),
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
-      borderWidth: 0.5,
+      borderWidth: SHARED.borderWidth,
       marginBottom: normalizeHeight(10), // Margin between comments
       position: 'relative', // Necessary for positioning the thumbs-up icon
     },
@@ -145,7 +145,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingRight: normalizeWidth(10),
       backgroundColor: selectedTheme.inputBackgroundColor, // Use theme background color
       borderRadius: 30, // Rounded border for the search bar
-      borderWidth: 0.5,
+      borderWidth: SHARED.borderWidthSecondary,
       borderColor: selectedTheme.buttonBorderPrimary, // Add border using theme color
       justifyContent: 'flex-start',
       alignItems: 'center',
@@ -169,7 +169,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: 0,
       marginBottom: normalizeHeight(10),
       borderColor: selectedTheme.lineBorderColorLight,
-      borderWidth: 0.5,
+      borderWidth: SHARED.borderWidth,
     },
     contentImage: {
       width: '100%',
@@ -188,7 +188,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       justifyContent: 'space-between', // Space between content and buttons
       alignItems: 'center', // Center all content horizontally
       borderColor: selectedTheme.lineBorderColorLight,
-      borderWidth: 0.5,
+      borderWidth: SHARED.borderWidth,
     },
     cardImageWrapper: {
       width: '100%',
@@ -425,6 +425,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontFamily: selectedTheme.tabFont, // Apply the custom font
       fontSize: SHARED.fontXS, // You can adjust the size to your liking
       color: selectedTheme.textSecondary,
+      marginTop:  normalizeHeight(-4), 
+      marginBottom:  normalizeHeight(4), 
     },
     screenHeaderTitle: {
       fontSize: SHARED.fontL,
@@ -659,7 +661,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
 
 
     ////////////////
-
+    // CSS below need refactore
 
     container: {
       flex: 1,

@@ -5,9 +5,12 @@ import { FlatList } from 'react-native-gesture-handler';
 
 // Centralized constants for commonly used style properties
 export const SHARED = {
+  borderWidth: 0, // Shared border radius
+  borderWidthSecondary: 0.5,
   borderRadius: 0, // Shared border radius
   borderRadiusSecondary: 14,
   padding: normalizeWidth(10), // Shared padding
+  buttonPadding: normalizeWidth(15), // Button padding
   shadow: {
     color: '#000',
     offset: { width: 0, height: 2 },
@@ -15,8 +18,7 @@ export const SHARED = {
     radius: 0,
     elevation: 3, // Android-specific shadow
   },
-  buttonPadding: normalizeWidth(15), // Button padding
-
+  
   fontXxS: normalizeFontSize(8),
   fontXS: normalizeFontSize(10),
   fontS: normalizeFontSize(12),
@@ -72,7 +74,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: '100%',
       padding: SHARED.padding,
       backgroundColor: selectedTheme.fullBackgroundColor,
-      borderWidth: 0.5,
+      borderWidth: SHARED.borderWidth,
       borderColor: selectedTheme.lineBorderColor,
       borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center content horizontally if needed

@@ -66,6 +66,7 @@ export interface ThemeType {
   buttonClose: string;            // #343a40 (Light) / #343a40 (Dark)
   buttonTextPrimary: string;
   buttonTextSecondary: string;
+  buttonTextDelete: string;
 
   // below are not in use
   // buttonSuccess: string;          // #8ac926 (Light) / #8ac926 (Dark)
@@ -203,6 +204,8 @@ const lightTheme: ThemeType = {
   buttonClose: '#343a40',
   buttonTextPrimary: '#000000',
   buttonTextSecondary: '#ffffff',
+  buttonTextDelete: '#ffffff',
+
   // below are not in use
   // buttonSuccess: '#8ac926',
   // buttonWarning: '#fb6107',
@@ -339,6 +342,7 @@ const darkTheme: ThemeType = {
   buttonClose: '#343a40',
   buttonTextPrimary: '#ffffff',
   buttonTextSecondary: '#000000',
+  buttonTextDelete: '#ffffff',
 
   // below are not in use
   // buttonSuccess: '#8ac926',
@@ -474,6 +478,7 @@ const feminineTheme: ThemeType = {
   buttonClose: '#6d4c41',           // Brown for close button
   buttonTextPrimary: '#000000',
   buttonTextSecondary: '#ffffff',
+  buttonTextDelete: '#ffffff',
 
   // below are not in use
   // buttonSuccess: '#8ac926',
@@ -520,7 +525,7 @@ const feminineTheme: ThemeType = {
   switchActive: '#e91e63',                 // Darker pink for active track
   switchThumbInactive: '#d7ccc8',          // Beige for inactive thumb
   switchThumbActive: '#ffffff',            // White for active thumb
-  shadowElevation: 2,
+  shadowElevation: 3,
   ///////////////////
 
 

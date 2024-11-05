@@ -61,7 +61,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
             <Text 
             numberOfLines={1}
             ellipsizeMode="tail"
-            style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price:₱{price} | Sale:₱{price} | Qty:230 | kilogram</Text>
+            style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price:₱{price} | Sale:₱{price} | Qty:230</Text>
           )}
         </View>
        

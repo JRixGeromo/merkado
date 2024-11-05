@@ -58,17 +58,19 @@ const App = () => {
   const MainTabs = () => (
     <Tab.Navigator
       screenOptions={({ route, navigation }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused, color }) => {
+          const iconSize = 22; // Set your desired icon size here
+  
           if (route.name === 'Dashboard') {
-            return focused ? <IconLib.Dashboard {...{ size, color }} /> : <IconLib.Dashboard_O {...{ size, color }} />;
+            return focused ? <IconLib.Dashboard size={iconSize} color={color} /> : <IconLib.Dashboard_O size={iconSize} color={color} />;
           } else if (route.name === 'Marketplace') {
-            return focused ? <IconLib.Marketplace {...{ size, color }} /> : <IconLib.Marketplace_O {...{ size, color }} />;
+            return focused ? <IconLib.Marketplace size={iconSize} color={color} /> : <IconLib.Marketplace_O size={iconSize} color={color} />;
           } else if (route.name === 'My Products') {
-            return focused ? <IconLib.Products {...{ size, color }} /> : <IconLib.Products_O {...{ size, color }} />;
+            return focused ? <IconLib.Products size={iconSize} color={color} /> : <IconLib.Products_O size={iconSize} color={color} />;
           } else if (route.name === 'Chat') {
-            return focused ? <IconLib.Chat {...{ size, color }} /> : <IconLib.Chat_O {...{ size, color }} />;
+            return focused ? <IconLib.Chat size={iconSize} color={color} /> : <IconLib.Chat_O size={iconSize} color={color} />;
           } else if (route.name === 'Transactions') {
-            return focused ? <IconLib.Transactions {...{ size, color }} /> : <IconLib.Transactions_O {...{ size, color }} />;
+            return focused ? <IconLib.Transactions size={iconSize} color={color} /> : <IconLib.Transactions_O size={iconSize} color={color} />;
           }
           return null;
         },
@@ -101,7 +103,7 @@ const App = () => {
           <View style={commonStyle.headerRightContainer}>
             <View style={{ position: 'relative' }}>
               <IconLib.Cart_O
-                size={25}
+                size={20}
                 color={selectedTheme.iconColorGray}
                 onPress={() => navigation.navigate('CartScreen')}
                 style={commonStyle.headerIcon}
@@ -129,7 +131,7 @@ const App = () => {
               onPress={() => navigation.navigate('FrontStoreScreen')}
               style={layoutStyle.rMarginL}
             >
-              <IconLib.Store_O size={25} color={selectedTheme.iconColorGray} />
+              <IconLib.Store_O size={20} color={selectedTheme.iconColorGray} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('AccountScreen')} style={layoutStyle.rMarginL}>
               {user?.avatar ? (
@@ -138,7 +140,7 @@ const App = () => {
                   style={{ width: 35, height: 35, borderRadius: 17.5, marginRight: 10 }}
                 />
               ) : (
-                <IconLib.Person_O size={25} color={selectedTheme.iconColorGray} />
+                <IconLib.Person_O size={20} color={selectedTheme.iconColorGray} />
               )}
             </TouchableOpacity>
             <DropdownMenu navigation={navigation} />
@@ -148,9 +150,9 @@ const App = () => {
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />
-      <Tab.Screen name="My Products" component={MyProductsScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Transactions" component={TransactionsScreen} />
+      <Tab.Screen name="My Products" component={MyProductsScreen} />
     </Tab.Navigator>
   );
 
