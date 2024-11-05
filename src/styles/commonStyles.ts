@@ -170,6 +170,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginBottom: normalizeHeight(10),
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: SHARED.borderWidth,
+      borderRadius: SHARED.borderRadiusSecondary,
+      overflow: 'hidden'
     },
     contentImage: {
       width: '100%',
@@ -189,6 +191,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center', // Center all content horizontally
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: SHARED.borderWidth,
+      borderRadius: SHARED.borderRadiusSecondary,
+      overflow: 'hidden'
     },
     cardImageWrapper: {
       width: '100%',

@@ -8,7 +8,7 @@ export const SHARED = {
   borderWidth: 0, // Shared border radius
   borderWidthSecondary: 0.5,
   borderRadius: 0, // Shared border radius
-  borderRadiusSecondary: 14,
+  borderRadiusSecondary: 8,
   padding: normalizeWidth(10), // Shared padding
   buttonPadding: normalizeWidth(15), // Button padding
   shadow: {
@@ -44,7 +44,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius: 0,
     },
     shadowedContainer: {
-      borderRadius: SHARED.borderRadius,
+      borderRadius: SHARED.borderRadiusSecondary,
       ...Platform.select({
         ios: {
           shadowColor: SHARED.shadow.color,
