@@ -202,7 +202,7 @@ const lightTheme: ThemeType = {
   buttonDark: '#adb5bd',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-  buttonTextPrimary: '#000000',
+  buttonTextPrimary: '#ffffff',
   buttonTextSecondary: '#ffffff',
   buttonTextDelete: '#ffffff',
 
@@ -272,6 +272,143 @@ const lightTheme: ThemeType = {
 
   
 };
+
+
+const feminineTheme: ThemeType = {
+  /************************** */
+  // Text
+  textPrimary: '#e91e63',        // Pink shade for primary text
+  textSecondary: '#000000',      // Warm brown for secondary text
+  textPlaceHolderInfo: '#f8bbd0', // Light pink placeholder
+  textDark: '#4e342e',           // Deep brown for dark text
+  textPriceBanner: '#ffb74d',    // Light orange for price highlight
+  textLink: '#c2185b',           // Dark pink for links
+  textGray: '#bcaaa4',           // Soft beige-gray
+  textBlur: '#5e503f',           // Light muted beige
+  textHighlight: '#000',      // Pink highlight
+  textDisabled: '#d7ccc8',       // Muted beige for disabled text
+
+  // below are not in use
+  // textBlack: '#000000',
+  // textLight: '#000',          // Pure white for light text
+  ///////////////////
+
+
+  /************************** */
+  // Border
+  borderColorPrimary: '#e91e63',   // Pink primary border
+  borderColorGray: '#bcaaa4',      // Soft gray border
+  borderColorDark: '#4e342e',      // Dark brown border
+
+  // below are not in use
+  // borderColorSecondary: '#000000',
+  ///////////////////
+
+
+  /************************** */
+  // Card and Background
+  fullBackgroundColor: '#ffffff',      // Very light peach background
+  cardBackground: '#f8edeb',           // Light pink background for cards
+  fullContainerBackgroundColor: '#ffffff',
+
+  // below are not in use
+  // formBackgroundColorPrimary: '#ffe0b2',
+  // formBackgroundColorSecondary: '#ffccbc',
+  // commentBackgroundColor: '#ffccbc',
+  ///////////////////
+
+
+  /************************** */
+  // Input Background
+  inputBackgroundColor: '#fff',  // Light orange for inputs
+  ///////////////////
+
+
+  /************************** */
+  // Line, Button, and Button Border
+  lineBorderColor: '#f8bbd0',       // Light pink line
+  lineBorderColorLight: '#000',  // Light orange-pink line
+  googleButtonColor: '#f06292',     // Soft pink for Google button
+  facebookButtonColor: '#8e24aa',   // Purple for Facebook button
+
+  buttonPrimary: '#ffadad',         // Pink primary button
+  buttonSecondary: '#ffebee',       // Very light pink for secondary button
+  buttonInfo: '#ffdac6',            // Purple for info button
+  buttonDanger: '#d32f2f',          // Red for danger button
+  buttonCancel: '#ffebee',          // Light pink for cancel button
+
+  buttonBorderPrimary: '#efd3d7',   // Pink for primary button border
+  buttonDark: '#d6d6d6',            // Dark brown button
+  buttonBorderLight: '#ffffff',     // White for light button border
+  buttonClose: '#6d4c41',           // Brown for close button
+  buttonTextPrimary: '#ffffff',
+  buttonTextSecondary: '#ffffff',
+  buttonTextDelete: '#ffffff',
+
+  // below are not in use
+  // buttonSuccess: '#8ac926',
+  // buttonWarning: '#fb6107',
+  // buttonError: '#ba181b',
+  // buttonDisabled: '#b8bdb5',
+  // buttonAction: '#ffffff',
+  // buttonHighlight: '#f9c74f',
+  // buttonLink: '#38b000',
+  // buttonGray: '#495057',
+  // buttonBorderBlack: '#393d3f',
+  // buttonBorderGray: '#e6e6ea',
+  ///////////////////
+
+
+  /************************** */
+  // Tab
+  tabHeaderBackgroundColor: '#ffccd5',   // Light orange tab header
+  tabBarBackgroundColor: '#ffccd5',      // Light pink tab bar
+  headerBorderBottomColor: '#d7ccc8',    // Beige for header border
+  ///////////////////
+
+
+  /************************** */
+  // Icon
+  iconColorPrimary: '#e91e63',         // Pink icons
+  iconColorSecondary: '#ba68c8',       // Purple icons
+  iconColorSmileys: '#ffb74d',         // Orange for smiley icons
+  iconColorGray: '#6d4c41',            // Brown-gray icons
+  iconColorLight: '#000000',           // White icons
+  ///////////////////
+
+
+  /************************** */
+  // Overlay and Loader
+  modalOverlay: 'rgba(248, 187, 208, 0.3)',  // Light pink overlay
+  loader: '#f48fb1',                         // Light pink loader
+  ///////////////////
+
+
+  /************************** */
+  // Switch and Shadow Elevation
+  switchInactive: '#f8bbd0',               // Pink for inactive track
+  switchActive: '#e91e63',                 // Darker pink for active track
+  switchThumbInactive: '#d7ccc8',          // Beige for inactive thumb
+  switchThumbActive: '#ffffff',            // White for active thumb
+  shadowElevation: 3,
+  ///////////////////
+
+
+  /************************** */
+  // Fonts
+  headingFont: 'Poppins-Bold',
+  bodyFont: 'Roboto-Regular',
+  bodyFontSlim: 'RobotoCondensed-Light',
+  buttonFont: 'Montserrat-Bold',
+  tabFont: 'NanumGothicCoding-Regular',
+
+  // below are not in use
+  // alternativeFont1: 'QwitcherGrypen-Regular',
+  // alternativeFont2: 'LondrinaSketch-Regular',
+  // alternativeFont3: 'GreatVibes-Regular',
+  ///////////////////
+};
+
 
 const darkTheme: ThemeType = {
   /************************** */
@@ -391,141 +528,6 @@ const darkTheme: ThemeType = {
   switchThumbInactive: '#9E9E9E',    // Dark gray for inactive thumb
   switchThumbActive: '#FFFFFF',      // White for active thumb, contrasts with green
   shadowElevation: 1,
-  ///////////////////
-
-
-  /************************** */
-  // Fonts
-  headingFont: 'Poppins-Bold',
-  bodyFont: 'Roboto-Regular',
-  bodyFontSlim: 'RobotoCondensed-Light',
-  buttonFont: 'Montserrat-Bold',
-  tabFont: 'NanumGothicCoding-Regular',
-
-  // below are not in use
-  // alternativeFont1: 'QwitcherGrypen-Regular',
-  // alternativeFont2: 'LondrinaSketch-Regular',
-  // alternativeFont3: 'GreatVibes-Regular',
-  ///////////////////
-};
-
-const feminineTheme: ThemeType = {
-  /************************** */
-  // Text
-  textPrimary: '#e91e63',        // Pink shade for primary text
-  textSecondary: '#000000',      // Warm brown for secondary text
-  textPlaceHolderInfo: '#f8bbd0', // Light pink placeholder
-  textDark: '#4e342e',           // Deep brown for dark text
-  textPriceBanner: '#ffb74d',    // Light orange for price highlight
-  textLink: '#c2185b',           // Dark pink for links
-  textGray: '#bcaaa4',           // Soft beige-gray
-  textBlur: '#5e503f',           // Light muted beige
-  textHighlight: '#000',      // Pink highlight
-  textDisabled: '#d7ccc8',       // Muted beige for disabled text
-
-  // below are not in use
-  // textBlack: '#000000',
-  // textLight: '#000',          // Pure white for light text
-  ///////////////////
-
-
-  /************************** */
-  // Border
-  borderColorPrimary: '#e91e63',   // Pink primary border
-  borderColorGray: '#bcaaa4',      // Soft gray border
-  borderColorDark: '#4e342e',      // Dark brown border
-
-  // below are not in use
-  // borderColorSecondary: '#000000',
-  ///////////////////
-
-
-  /************************** */
-  // Card and Background
-  fullBackgroundColor: '#ffffff',      // Very light peach background
-  cardBackground: '#f8edeb',           // Light pink background for cards
-  fullContainerBackgroundColor: '#ffffff',
-
-  // below are not in use
-  // formBackgroundColorPrimary: '#ffe0b2',
-  // formBackgroundColorSecondary: '#ffccbc',
-  // commentBackgroundColor: '#ffccbc',
-  ///////////////////
-
-
-  /************************** */
-  // Input Background
-  inputBackgroundColor: '#fff',  // Light orange for inputs
-  ///////////////////
-
-
-  /************************** */
-  // Line, Button, and Button Border
-  lineBorderColor: '#f8bbd0',       // Light pink line
-  lineBorderColorLight: '#000',  // Light orange-pink line
-  googleButtonColor: '#f06292',     // Soft pink for Google button
-  facebookButtonColor: '#8e24aa',   // Purple for Facebook button
-
-  buttonPrimary: '#ffadad',         // Pink primary button
-  buttonSecondary: '#ffebee',       // Very light pink for secondary button
-  buttonInfo: '#ffdac6',            // Purple for info button
-  buttonDanger: '#d32f2f',          // Red for danger button
-  buttonCancel: '#ffebee',          // Light pink for cancel button
-
-  buttonBorderPrimary: '#efd3d7',   // Pink for primary button border
-  buttonDark: '#d6d6d6',            // Dark brown button
-  buttonBorderLight: '#ffffff',     // White for light button border
-  buttonClose: '#6d4c41',           // Brown for close button
-  buttonTextPrimary: '#000000',
-  buttonTextSecondary: '#ffffff',
-  buttonTextDelete: '#ffffff',
-
-  // below are not in use
-  // buttonSuccess: '#8ac926',
-  // buttonWarning: '#fb6107',
-  // buttonError: '#ba181b',
-  // buttonDisabled: '#b8bdb5',
-  // buttonAction: '#ffffff',
-  // buttonHighlight: '#f9c74f',
-  // buttonLink: '#38b000',
-  // buttonGray: '#495057',
-  // buttonBorderBlack: '#393d3f',
-  // buttonBorderGray: '#e6e6ea',
-  ///////////////////
-
-
-  /************************** */
-  // Tab
-  tabHeaderBackgroundColor: '#ffccd5',   // Light orange tab header
-  tabBarBackgroundColor: '#ffccd5',      // Light pink tab bar
-  headerBorderBottomColor: '#d7ccc8',    // Beige for header border
-  ///////////////////
-
-
-  /************************** */
-  // Icon
-  iconColorPrimary: '#e91e63',         // Pink icons
-  iconColorSecondary: '#ba68c8',       // Purple icons
-  iconColorSmileys: '#ffb74d',         // Orange for smiley icons
-  iconColorGray: '#6d4c41',            // Brown-gray icons
-  iconColorLight: '#000000',           // White icons
-  ///////////////////
-
-
-  /************************** */
-  // Overlay and Loader
-  modalOverlay: 'rgba(248, 187, 208, 0.3)',  // Light pink overlay
-  loader: '#f48fb1',                         // Light pink loader
-  ///////////////////
-
-
-  /************************** */
-  // Switch and Shadow Elevation
-  switchInactive: '#f8bbd0',               // Pink for inactive track
-  switchActive: '#e91e63',                 // Darker pink for active track
-  switchThumbInactive: '#d7ccc8',          // Beige for inactive thumb
-  switchThumbActive: '#ffffff',            // White for active thumb
-  shadowElevation: 3,
   ///////////////////
 
 
