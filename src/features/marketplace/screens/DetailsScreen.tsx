@@ -299,18 +299,18 @@ const DetailsScreen: React.FC = () => {
             style={[layoutStyle.cols_2, layoutStyle.alignRight, { flexDirection: 'row' }]}
           >
             <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
-              <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingS} />
+              <IconLib.ThumbsUp_O size={22} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingL} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <IconLib.Chat_O size={24} color={selectedTheme.iconColorPrimary} style={layoutStyle.rPaddingS} />
+              <IconLib.Chat_O size={22} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingL} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <IconLib.Share_O size={24} color={selectedTheme.iconColorSmileys} style={layoutStyle.rPaddingS} />
+              <IconLib.Share_O size={22} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingL} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate('FrontStoreScreen', { vendorId: 1 })}
               >
-              <IconLib.Store_O size={24} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingS} />
+              <IconLib.Store_O size={22} color={selectedTheme.iconColorGray} style={layoutStyle.rPaddingS} />
             </TouchableOpacity>
           </View>
         </View>
@@ -462,9 +462,9 @@ const DetailsScreen: React.FC = () => {
                   onPress={() => handleReplyToggle(comment.id)}
                   backgroundColor={selectedTheme.buttonDark} // Assuming you want only the icon and no background
                   width={50} // Default width is auto, can be overridden
-                  color={selectedTheme.buttonTextPrimary} // Set the icon color
+                  color={selectedTheme.buttonTextSecondary} // Set the icon color
                   borderRadius={0} // Default borderRadius is 15, can be overridden
-                  borderColor={selectedTheme.lineBorderColor}
+                  //borderColor={selectedTheme.lineBorderColor}
                   textSize={12} // Default text size, can be overridden
                   style={{
                     marginTop: 5,

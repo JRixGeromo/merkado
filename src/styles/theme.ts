@@ -143,7 +143,7 @@ const lightTheme: ThemeType = {
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#4f5d75',
-  textBlur: '#adb5bd',
+  textBlur: '#495057',
   textHighlight: '#800e13',
   textDisabled: '#ced4da',
 
@@ -285,7 +285,7 @@ const feminineTheme: ThemeType = {
   textLink: '#c2185b',           // Dark pink for links
   textGray: '#bcaaa4',           // Soft beige-gray
   textBlur: '#5e503f',           // Light muted beige
-  textHighlight: '#000',      // Pink highlight
+  textHighlight: '#e4572e',      // Pink highlight
   textDisabled: '#d7ccc8',       // Muted beige for disabled text
 
   // below are not in use
@@ -342,7 +342,7 @@ const feminineTheme: ThemeType = {
   buttonBorderLight: '#ffffff',     // White for light button border
   buttonClose: '#6d4c41',           // Brown for close button
   buttonTextPrimary: '#ffffff',
-  buttonTextSecondary: '#ffffff',
+  buttonTextSecondary: '#000000',
   buttonTextDelete: '#ffffff',
 
   // below are not in use
@@ -468,7 +468,7 @@ const darkTheme: ThemeType = {
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
 
-  buttonPrimary: '#4f772d',
+  buttonPrimary: '#1b4332',
   buttonSecondary: '#212529',
   buttonInfo: '#184e77',
   buttonDanger: '#a50104',
