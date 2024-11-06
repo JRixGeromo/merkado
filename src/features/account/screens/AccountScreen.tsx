@@ -5,8 +5,9 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { toggleTheme } from '../../../store/slices/themeSlice';
 import CustomButton from '../../../components/CustomButton';
 import ListOptions from '../../../components/ListOptions'; // Import Dropdown component
-import { commonStyles } from '../../../styles/commonStyles';
+import { acctStyles } from '../styles/accountStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
+import { SHARED } from '../../../styles/layoutStyles';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,7 +21,7 @@ const AccountScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const themeType = useAppSelector(state => state.theme.theme);
-    const commonStyle = commonStyles(themeType); // This is fine
+    const acctStyle = acctStyles(themeType); // This is fine
     const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
   
     const selectedTheme = appTheme[themeType];
@@ -52,79 +53,79 @@ const AccountScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {/* Fixed Profile Header */}
-      {/* <View style={commonStyle.profileHeader}>
+      {/* <View style={acctStyle.profileHeader}>
         <Image
           source={accountInfo.profileImage}
           style={[
-            commonStyle.profileImage,
+            acctStyle.profileImage,
             { width: 100, height: 100, borderRadius: 50 },
           ]}
         />
-        <Text style={commonStyle.profileName}>{accountInfo.name}</Text>
-        <Text style={commonStyle.profileEmail}>{accountInfo.email}</Text>
+        <Text style={acctStyle.profileName}>{accountInfo.name}</Text>
+        <Text style={acctStyle.profileEmail}>{accountInfo.email}</Text>
       </View> */}
 
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
         {/* Account Information Card */}
         <View style={layoutStyle.innerContainer}>
-          {/* <View style={commonStyle.card}>
-            <View style={commonStyle.cardHeader}>
+          {/* <View style={acctStyle.card}>
+            <View style={acctStyle.cardHeader}>
               <Icon
                 name="person"
                 size={24}
                 color={selectedTheme.iconColorPrimary}
               />
-              <Text style={commonStyle.cardHeaderTitle}>
+              <Text style={acctStyle.cardHeaderTitle}>
                 {t('accountInformation')}
               </Text>
             </View>
-            <Text style={commonStyle.cardText}>
+            <Text style={acctStyle.cardText}>
               {t('location')}: {accountInfo.location}
             </Text>
             <TouchableOpacity>
-              <Text style={commonStyle.editLink}>{t('edit')}</Text>
+              <Text style={acctStyle.editLink}>{t('edit')}</Text>
             </TouchableOpacity>
           </View> */}
 
           {/* Payment Method Card */}
-          {/* <View style={commonStyle.card}>
-            <View style={commonStyle.cardHeader}>
+          {/* <View style={acctStyle.card}>
+            <View style={acctStyle.cardHeader}>
               <Icon
                 name="card"
                 size={24}
                 color={selectedTheme.iconColorPrimary}
               />
-              <Text style={commonStyle.cardHeaderTitle}>
+              <Text style={acctStyle.cardHeaderTitle}>
                 {t('paymentMethod')}
               </Text>
             </View>
-            <Text style={commonStyle.cardText}>
+            <Text style={acctStyle.cardText}>
               {accountInfo.paymentMethod.type} {t('endingIn')}{' '}
               {accountInfo.paymentMethod.last4}
             </Text>
             <TouchableOpacity>
-              <Text style={commonStyle.editLink}>{t('edit')}</Text>
+              <Text style={acctStyle.editLink}>{t('edit')}</Text>
             </TouchableOpacity>
           </View> */}
 
           {/* Preferences Card */}
-          <View style={commonStyle.card}>
-            <View style={commonStyle.cardHeader}>
+          <View style={acctStyle.card}>
+            <View style={acctStyle.cardHeader}>
               <Icon
                 name="settings-outline"
                 size={24}
                 color={selectedTheme.iconColorPrimary}
               />
-              <Text style={commonStyle.cardHeaderTitle}>
+              <Text style={acctStyle.cardHeaderTitle}>
                 {t('preferences')}
               </Text>
             </View>
 
             {/* Dark Mode Toggle */}
-            <View style={[commonStyle.toggleButtonContainer, { marginTop: 10 }]}>
+            <View style={[acctStyle.toggleButtonContainer, { marginTop: 10 }]}>
             <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
-              <Text style={commonStyle.cardText}>{t('theme')}</Text>
+              <Text style={acctStyle.cardText}>{t('theme')}</Text>
             </TouchableOpacity>
             <Icon
               name={
@@ -141,7 +142,7 @@ const AccountScreen = () => {
 
 
             {/* Language Selection Dropdown */}
-            <View style={commonStyle.languageContainer}>
+            <View style={acctStyle.languageContainer}>
               <View
                 style={{
                   flexDirection: 'row',

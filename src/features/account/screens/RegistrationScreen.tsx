@@ -15,8 +15,9 @@ import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import DateAndTimePicker from '../../../components/DateAndTimePicker';
 import ListOptions from '../../../components/ListOptions';
 
-import { commonStyles } from '../../../styles/commonStyles'; // Import your style
+import { acctStyles } from '../styles/accountStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
+import { SHARED } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { useNavigation } from '@react-navigation/native';
@@ -67,7 +68,7 @@ const RegistrationScreen = () => {
   const { t } = useTranslation();
 
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const acctStyle = acctStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
 
@@ -119,7 +120,7 @@ const RegistrationScreen = () => {
       <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, {backgroundColor: selectedTheme.cardBackground}]}>
           <Image
             source={require('../../../../assets/logo.png')}
-            style={commonStyle.logo}
+            style={acctStyle.logo}
           />
           <TextInputWithIcon
             placeholder={t('firstName')}
@@ -186,7 +187,7 @@ const RegistrationScreen = () => {
               <ActivityIndicator
                 size="large"
                 color={selectedTheme.textPrimary}
-                style={commonStyle.loader}
+                style={layoutStyle.loader}
               />
             </View>
           )}
@@ -208,7 +209,7 @@ const RegistrationScreen = () => {
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
             <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, { color: selectedTheme.textSecondary }]}>
               {t('hasAccount')}{' '}
-              <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
+              <Text style={[acctStyle.linkText, { fontWeight: 'bold' }]}>
                 {t('login')}
               </Text>
             </Text>

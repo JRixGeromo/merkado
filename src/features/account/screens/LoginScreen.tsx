@@ -13,7 +13,7 @@ import {
 
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
-import { commonStyles } from '../../../styles/commonStyles'; // Import your style
+import { acctStyles } from '../styles/accountStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
@@ -50,7 +50,7 @@ const LoginScreen = () => {
   const [loading, setLoading] = useState(false); // Add loading state
 
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const acctStyle = acctStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
   
@@ -130,10 +130,10 @@ const LoginScreen = () => {
          
           <Image
             source={require('../../../../assets/logo.png')}
-            style={commonStyle.logo}
+            style={acctStyle.logo}
           />
 
-          <Text style={commonStyle.headerTitle}>{t('welcomeBack')}</Text>
+          <Text style={acctStyle.welcomeText}>{t('welcomeBack')}</Text>
 
           <TextInputWithIcon
             placeholder={t('email')}
@@ -157,7 +157,7 @@ const LoginScreen = () => {
             <ActivityIndicator
               size="large"
               color={selectedTheme.textPrimary}
-              style={commonStyle.loader}
+              style={layoutStyle.loader}
             />
           ) : (
             <CustomButton
@@ -170,7 +170,7 @@ const LoginScreen = () => {
           )}
 
           <TouchableOpacity>
-            <Text style={[commonStyle.linkText, layoutStyle.marginAllL, { fontWeight: 'bold' }]}>
+            <Text style={[acctStyle.linkText, layoutStyle.marginAllL, { fontWeight: 'bold' }]}>
               {t('forgotPassword')}
             </Text>
           </TouchableOpacity>
@@ -208,7 +208,7 @@ const LoginScreen = () => {
           <TouchableOpacity onPress={navigateToRegister}>
             <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, { color: selectedTheme.textSecondary }]}>
               {t('noAccount')}{' '}
-              <Text style={[commonStyle.linkText, { fontWeight: 'bold' }]}>
+              <Text style={[acctStyle.linkText, { fontWeight: 'bold' }]}>
                 {t('register')}
               </Text>
             </Text>

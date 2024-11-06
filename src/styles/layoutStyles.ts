@@ -301,6 +301,9 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     flatListPaddingTop: { 
       paddingTop: normalizeHeight(10) 
     },
-    
+    loader: {
+      marginTop: normalizeHeight(30), 
+      color: selectedTheme.loader,
+    },
   });
 };
