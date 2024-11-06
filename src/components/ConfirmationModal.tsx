@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import { useAppSelector } from '../hooks/reduxHooks';
-import { commonStyles } from '../styles/commonStyles';
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import CustomButton from './CustomButton'; // Import CustomButton
@@ -32,7 +32,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const selectedTheme = appTheme[themeType];
-  const commonStyle = commonStyles(themeType);
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType);
 
   return (
@@ -40,17 +40,17 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       isVisible={visible}
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
-      style={commonStyle.centeredConfimrationModal}
+      style={compStyle.centeredConfimrationModal}
       backdropOpacity={0.3}
     >
-      <View style={[commonStyle.confimrationModalContent, { backgroundColor: selectedTheme.cardBackground }]}>
+      <View style={[compStyle.confimrationModalContent, { backgroundColor: selectedTheme.cardBackground }]}>
         {/* Optional Title */}
         {title && (
-          <Text style={[commonStyle.confimrationModalTitle, { color: selectedTheme.textPrimary }]}>{title}</Text>
+          <Text style={[compStyle.confimrationModalTitle, { color: selectedTheme.textPrimary }]}>{title}</Text>
         )}
 
         {/* Message */}
-        <Text style={[commonStyle.confimrationModalMessage, { color: selectedTheme.textSecondary }]}>{message}</Text>
+        <Text style={[compStyle.confimrationModalMessage, { color: selectedTheme.textSecondary }]}>{message}</Text>
 
         {/* Buttons */}
         <View style={[layoutStyle.columnsInside, { justifyContent: 'space-between', marginTop: 20 }]}>
@@ -60,7 +60,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             onPress={onClose}
             backgroundColor={cancelButtonColor || selectedTheme.buttonDanger}
             color={selectedTheme.buttonTextPrimary}
-            //style={[commonStyle.confimrationModalButton]}
+            //style={[compStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}
           />
@@ -74,7 +74,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             }}
             backgroundColor={confirmButtonColor || selectedTheme.buttonPrimary}
             color={selectedTheme.buttonTextDelete}
-            //style={[commonStyle.confimrationModalButton]}
+            //style={[compStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}
           />

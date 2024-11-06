@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles, SHARED } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
@@ -34,16 +34,16 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
   buttonActions,
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
   return (
-    <View style={[layoutStyle.shadowedContainer, layoutStyle.columnsInsideFlex, commonStyle.contentBox]}>
+    <View style={[layoutStyle.shadowedContainer, layoutStyle.columnsInsideFlex, compStyle.contentBox]}>
       
-      <View style={[commonStyle.contentImage, layoutStyle.cols_25]}>
-        <Image source={{ uri: imageUrl }} style={commonStyle.contentImage} />
+      <View style={[compStyle.contentImage, layoutStyle.cols_25]}>
+        <Image source={{ uri: imageUrl }} style={compStyle.contentImage} />
       </View>
 
       <View style={[layoutStyle.cols_75]}>
@@ -79,7 +79,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
                 iconColor={selectedTheme.buttonTextPrimary}
                 iconSize={SHARED.fontL}
                 color={selectedTheme.buttonTextPrimary}
-                style={[commonStyle.cardButton, action.buttonStyle, {height: "100%"}]}
+                style={[compStyle.cardButton, action.buttonStyle, {height: "100%"}]}
                 borderRadius={0}
               />
             </View>

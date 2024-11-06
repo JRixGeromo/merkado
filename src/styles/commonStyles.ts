@@ -7,6 +7,7 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
+ 
   return StyleSheet.create({
        
     bannerImageWrapper: {
@@ -24,7 +25,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     selectedReactionText: {
       fontSize: SHARED.fontXxL,
-      color: 'gray', // You can customize the color here
+      color: selectedTheme.textGray,
     },
     saleBanner: {
       position: 'absolute',
@@ -35,22 +36,22 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(5),
       paddingLeft: normalizeWidth(5),
       paddingRight: normalizeWidth(5),
-      zIndex: 1, // Ensures it appears on top of the image
+      zIndex: 1, 
       alignItems: 'center',
     },
     priceContainer: {
       position: 'absolute',
-      bottom: normalizeHeight(10),     // Adjust this value for vertical positioning
-      right: normalizeHeight(10),      // Adjust this value for horizontal positioning
-      paddingTop: normalizeHeight(5),     // Padding around the price text
-      paddingBottom: normalizeHeight(1),     // Padding around the price text
-      paddingLeft: normalizeWidth(10),     // Padding around the price text
-      paddingRight: normalizeWidth(10),     // Padding around the price text
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background for better readability
+      bottom: normalizeHeight(10), 
+      right: normalizeHeight(10),     
+      paddingTop: normalizeHeight(5),    
+      paddingBottom: normalizeHeight(1),   
+      paddingLeft: normalizeWidth(10),   
+      paddingRight: normalizeWidth(10),   
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',  
       borderWidth: SHARED.borderWidthSecondary,
       borderColor: selectedTheme.borderColorDark,
-      borderRadius: 5, // Rounded corners
-      zIndex: 2,      // Ensure it appears on top of other elements
+      borderRadius: 5,
+      zIndex: 2,     
     },
     reactionBarSection: {
       paddingHorizontal: normalizeWidth(16),
@@ -59,7 +60,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     commentSection: {
       paddingHorizontal: normalizeWidth(10),
-      marginBottom: normalizeHeight(10), // Margin between comments
+      marginBottom: normalizeHeight(10), 
     },
     commentContainer: {
       paddingTop: normalizeHeight(15),
@@ -69,31 +70,31 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
       borderWidth: SHARED.borderWidth,
-      marginBottom: normalizeHeight(10), // Margin between comments
-      position: 'relative', // Necessary for positioning the thumbs-up icon
+      marginBottom: normalizeHeight(10), 
+      position: 'relative', 
     },
     commentsList: {
-      paddingHorizontal: normalizeWidth(10), // Adjust padding for the comment list
+      paddingHorizontal: normalizeWidth(10), 
     },
     userImage: {
-      width: normalizeWidth(30), // Width of the user image
-      height: normalizeWidth(30), // Height of the user image
-      borderRadius: 20, // Half of width/height to make it a perfect circle
+      width: normalizeWidth(30), 
+      height: normalizeWidth(30), 
+      borderRadius: 20, 
     },
     commentWrapper: {
-      flexDirection: 'column', // Align items in column (text above time)
+      flexDirection: 'column', 
       justifyContent: 'flex-start',
-      position: 'relative', // Necessary for positioning thumbs-up icon
-      paddingRight: normalizeWidth(40), // Create space for the thumbs-up icon
-      marginBottom: normalizeHeight(10), // Create space for the thumbs-up icon
+      position: 'relative',
+      paddingRight: normalizeWidth(40), 
+      marginBottom: normalizeHeight(10),
     },
     commentTextWrapper: {
       lineHeight: normalizeHeight(18),
     },
     timeAndReactionWrapper: {
-      flexDirection: 'row', // Place time and thumbs-up in the same row
-      alignItems: 'center', // Vertically align items
-      marginTop: normalizeHeight(5), // Add margin to space it from the comment
+      flexDirection: 'row', 
+      alignItems: 'center', 
+      marginTop: normalizeHeight(5), 
     },
     replyContainer: {
       marginLeft: normalizeWidth(15),
@@ -111,11 +112,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(12),
       paddingLeft: normalizeWidth(12),
       paddingRight: normalizeWidth(12),
-      // borderColor: selectedTheme.lineBorderColor,
-      // borderWidth: 0.5,
     },
     inputWrapper: {
-      //alignItems: 'center',
       borderRadius: 30,
       paddingLeft: normalizeWidth(15),
     },
@@ -143,22 +141,22 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: 0,
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      backgroundColor: selectedTheme.inputBackgroundColor, // Use theme background color
-      borderRadius: 30, // Rounded border for the search bar
+      backgroundColor: selectedTheme.inputBackgroundColor, 
+      borderRadius: 30, 
       borderWidth: SHARED.borderWidthSecondary,
-      borderColor: selectedTheme.buttonBorderPrimary, // Add border using theme color
+      borderColor: selectedTheme.buttonBorderPrimary, 
       justifyContent: 'flex-start',
       alignItems: 'center',
     },
     searchInput: {
-      flex: 1, // Make the search input take up the remaining space
-      height: normalizeHeight(40), // Height of the search input
-      borderColor: selectedTheme.buttonBorderPrimary, // Optional: Add border inside the input field
-      borderWidth: 0, // No extra border inside the input
-      paddingLeft: 0, // Padding inside the search input
-      borderRadius: 20, // Rounded corners inside the search input
-      backgroundColor: selectedTheme.inputBackgroundColor, // Background color of the input
-      color: selectedTheme.textPrimary, // Text color from theme
+      flex: 1, 
+      height: normalizeHeight(40), 
+      borderColor: selectedTheme.buttonBorderPrimary,
+      borderWidth: 0,
+      paddingLeft: 0, 
+      borderRadius: 20, 
+      backgroundColor: selectedTheme.inputBackgroundColor, 
+      color: selectedTheme.textPrimary,
     },
 
     contentBox: {
@@ -176,7 +174,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     contentImage: {
       width: '100%',
       height: '100%',
-      resizeMode: 'cover', // Ensure the image covers the available space
+      resizeMode: 'cover', 
     },
 
     /// Portrait
@@ -187,8 +185,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(10),
       paddingBottom: 0,
       marginBottom: 0,
-      justifyContent: 'space-between', // Space between content and buttons
-      alignItems: 'center', // Center all content horizontally
+      justifyContent: 'space-between', 
+      alignItems: 'center', 
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: SHARED.borderWidth,
       borderRadius: SHARED.borderRadiusSecondary,
@@ -196,12 +194,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     cardImageWrapper: {
       width: '100%',
-      flex: 0.35, // Fixed height equivalent to 35% of contentBoxPortrait height
+      flex: 0.35, 
       position: 'relative',
     },
     contentContainer: {
-      justifyContent: 'flex-start', // Align content to the top of the container
-      alignItems: 'center', // Center content horizontally
+      justifyContent: 'flex-start',
+      alignItems: 'center', 
       width: '100%',
       flex: 0.5,
     },
@@ -212,47 +210,47 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     
     productImage: {
       width: '100%',
-      height: '100%', // Fill the wrapper container
-      resizeMode: 'cover', // Ensure the image covers the available space
+      height: '100%',
+      resizeMode: 'cover', 
     },
     promoImage: {
       width: '100%',
-      height: normalizeHeight(100), // Fill the wrapper container
-      resizeMode: 'cover', // Ensure the image covers the available space
+      height: normalizeHeight(100), 
+      resizeMode: 'cover', 
     },
     goFullScreenButton: {
       position: 'absolute',
       top: normalizeHeight(2),
       right: normalizeWidth(2),
-      backgroundColor: 'rgba(0, 0, 0, 0.4)', // Semi-transparent background for visibility
+      backgroundColor: 'rgba(0, 0, 0, 0.4)', 
       padding: 5,
-      borderRadius: 0, // Make it circular
+      borderRadius: 0,
     },
     goLiveShowButton: {
       position: 'absolute',
       bottom: normalizeHeight(2),
       right: normalizeWidth(2),
-      backgroundColor: 'rgba(0, 0, 0, 0.4)', // Semi-transparent background for visibility
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
       padding: 5,
-      borderRadius: 15, // Make it circular
+      borderRadius: 15,
     },
     productName: {
       fontSize: SHARED.fontS,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
       fontWeight:  "bold",
-      marginTop: normalizeHeight(3), // Add some margin after the image
+      marginTop: normalizeHeight(3), 
     },
     productPrice: {
       fontSize: SHARED.fontM,
-      color: selectedTheme.textHighlight, // Highlight the price
+      color: selectedTheme.textHighlight,
       fontFamily: selectedTheme.bodyFont,
       fontWeight:  "bold",
-      marginTop: 0, // Space between the product name and price
+      marginTop: 0,
     },
     productPriceL: {
       fontSize: SHARED.fontXxL,
-      color: selectedTheme.textHighlight, // Highlight the price
+      color: selectedTheme.textHighlight, 
       fontFamily: selectedTheme.bodyFont,
     },
     storeLocation: {
@@ -261,19 +259,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontFamily: selectedTheme.bodyFontSlim,
     },
     cardButton: {
-      alignItems: 'center', // Center the content vertically
-      justifyContent: 'center', // Center the content horizontally
-      paddingVertical: normalizeHeight(5), // Add vertical padding for better touch area
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      paddingVertical: normalizeHeight(5), 
     },
     sectionTitle: {
-      fontSize: SHARED.fontM, // Default size for icons
+      fontSize: SHARED.fontM,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.headingFont,
     },
     modalTitle: {
       fontSize: SHARED.fontL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, // Theme-based text color for the title
+      color: selectedTheme.textPrimary, 
       marginBottom: 15,
     },
     listItem: {
@@ -281,7 +279,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      borderBottomColor: selectedTheme.lineBorderColor, // Theme-based border color
+      borderBottomColor: selectedTheme.lineBorderColor, 
       borderBottomWidth: 1,
     },
     searchButton: {
@@ -296,7 +294,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center',
       padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
-      backgroundColor: selectedTheme.cardBackground, // Check this color
+      backgroundColor: selectedTheme.cardBackground,
       marginBottom: normalizeHeight(15),
       borderWidth: 1,
       borderColor: '#ddd',
@@ -310,7 +308,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(20),
       paddingLeft: normalizeWidth(20),
       paddingRight: normalizeWidth(20),
-      backgroundColor: selectedTheme.cardBackground, // Ensure the background color is from the theme
+      backgroundColor: selectedTheme.cardBackground, 
     },
     dropdownOption: {
       paddingTop: normalizeHeight(10),
@@ -318,14 +316,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.textPrimary, // Use the primary color for the border
+      borderColor: selectedTheme.textPrimary, 
     },
     button: {
-      padding: SHARED.buttonPadding, // Button padding from shared settings
-      borderRadius: SHARED.borderRadius, // Border radius from shared settings
-      backgroundColor: selectedTheme.textPrimary, // Primary button background color from theme
+      padding: SHARED.buttonPadding, 
+      borderRadius: SHARED.borderRadius, 
+      backgroundColor: selectedTheme.textPrimary, 
       alignItems: 'center',
-      justifyContent: 'center', // Center the text/icon in the button
+      justifyContent: 'center', 
       ...Platform.select({
         ios: {
           shadowColor: SHARED.shadow.color,
@@ -345,42 +343,42 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     input: {
       flex: 1,
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, // Input text color from selected theme
+      color: selectedTheme.textPrimary, 
     },
     modalOverlay: {
-      backgroundColor: selectedTheme.modalOverlay, // Add modal overlay color from theme
+      backgroundColor: selectedTheme.modalOverlay, 
     },
     overlay: {
       flex: 1,
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black background for the overlay
-      justifyContent: 'center', // Center content
-      alignItems: 'center', // Align items in center
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      justifyContent: 'center', 
+      alignItems: 'center',
     },
     modalText: {
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, // Text color from selected theme
+      color: selectedTheme.textPrimary, 
       fontFamily: selectedTheme.bodyFont,
     },
     dropdownMenu: {
-      backgroundColor: selectedTheme.cardBackground, // Background color for the dropdown
+      backgroundColor: selectedTheme.cardBackground, 
       borderRadius: 10,
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      width: normalizeWidth(220), // Make the dropdown wider
+      width: normalizeWidth(220), 
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
       shadowRadius: 3,
-      elevation: 5, // For Android
+      elevation: 5,
     },
     dropdownItem: {
       flexDirection: 'row',
       alignItems: 'center',
       paddingVertical: normalizeHeight(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.lineBorderColor, // Border color based on theme
+      borderColor: selectedTheme.lineBorderColor, 
     },
     dropdownText: {
       color: selectedTheme.textSecondary,
@@ -388,10 +386,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginLeft: normalizeWidth(10),
     },
     logo: {
-      width: normalizeWidth(150), // Adjust width based on design
-      height: normalizeHeight(150), // Adjust height based on design
-      resizeMode: 'contain', // Keep the logo aspect ratio
-      marginBottom: normalizeHeight(20), // Add space between logo and text
+      width: normalizeWidth(150), 
+      height: normalizeHeight(150), 
+      resizeMode: 'contain', 
+      marginBottom: normalizeHeight(20), 
     },
     headerTitle: {
       fontSize: SHARED.fontXxL,
@@ -401,7 +399,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     linkText: {
       fontSize: SHARED.fontM,
-      fontFamily: selectedTheme.bodyFont, // Use body font for links
+      fontFamily: selectedTheme.bodyFont, 
       color: selectedTheme.textLink,
       marginTop: normalizeHeight(10),
       marginBottom: normalizeHeight(10),
@@ -409,33 +407,33 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(10),
     },
     socialButton: {
-      ...SHARED, // Reuse shared shadow and padding
-      flexDirection: 'row', // Row layout for icon + text
-      width: '48%', // Width for social buttons
+      ...SHARED, 
+      flexDirection: 'row',
+      width: '48%', 
     },
     googleButton: {
-      backgroundColor: selectedTheme.googleButtonColor, // Google button color
+      backgroundColor: selectedTheme.googleButtonColor, 
     },
     facebookButton: {
-      backgroundColor: selectedTheme.facebookButtonColor, // Facebook button color
+      backgroundColor: selectedTheme.facebookButtonColor, 
     },
     socialButtonText: {
-      color: selectedTheme.buttonTextPrimary, // Social button text color from selected theme
+      color: selectedTheme.buttonTextPrimary, 
     },
 
      loader: {
-      marginTop: normalizeHeight(30), // Add space between the text and loader
+      marginTop: normalizeHeight(30), 
       color: selectedTheme.loader,
     },
     headerLogo: {
-      width: normalizeWidth(30), // Adjust the width to fit your design
-      height: normalizeHeight(30), // Adjust the height to fit your design
-      resizeMode: 'contain', // Ensures the logo scales appropriately
-      marginRight: normalizeWidth(10), // Adds spacing between logo and title
+      width: normalizeWidth(30), 
+      height: normalizeHeight(30), 
+      resizeMode: 'contain', 
+      marginRight: normalizeWidth(10), 
     },
     tabBarLabelStyle: {
-      fontFamily: selectedTheme.tabFont, // Apply the custom font
-      fontSize: SHARED.fontXS, // You can adjust the size to your liking
+      fontFamily: selectedTheme.tabFont,
+      fontSize: SHARED.fontXS, 
       color: selectedTheme.textSecondary,
       marginTop:  normalizeHeight(-4), 
       marginBottom:  normalizeHeight(4), 
@@ -462,29 +460,29 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(20),
     },
     chatButton: {
-      backgroundColor: selectedTheme.buttonDark, // Explicit background color for Chat button
+      backgroundColor: selectedTheme.buttonDark, 
     },
     cartButton: {
-      backgroundColor: selectedTheme.buttonPrimary, // Explicit background color for Add to Cart button
+      backgroundColor: selectedTheme.buttonPrimary, 
     },
     commentButton: {
-      backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
+      backgroundColor: selectedTheme.buttonInfo, 
     },
     followButton: {
-      backgroundColor: selectedTheme.buttonInfo, // Explicit background color for Add to Cart button
+      backgroundColor: selectedTheme.buttonInfo, 
     },
     cardHeader: {
-      flexDirection: 'row', // Align icon and title in a row
-      alignItems: 'center', // Vertically align items in header
-      marginBottom: normalizeHeight(10), // Margin between header and content
+      flexDirection: 'row', 
+      alignItems: 'center', 
+      marginBottom: normalizeHeight(10), 
     },
     cardHeaderTitle: {
       fontSize: SHARED.fontXL,
-      fontFamily: selectedTheme.headingFont, // Use the heading font for card titles
+      fontFamily: selectedTheme.headingFont, 
       color: selectedTheme.textPrimary,
     },
     sectionButtonText: {
-      color: selectedTheme.textPrimary, // Theme-based text color
+      color: selectedTheme.textPrimary,
       fontSize: SHARED.fontXS,
     },
     sectionButtonContainer: {
@@ -493,35 +491,35 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginBottom: normalizeHeight(20),
     },
     toggleButtonContainer: {
-      flexDirection: 'row', // Align the text and the icon in a row
-      justifyContent: 'space-between', // Space between the text and the toggle icon
-      alignItems: 'center', // Vertically center the items
+      flexDirection: 'row', 
+      justifyContent: 'space-between', 
+      alignItems: 'center', 
     },
     cardText: {
-      fontSize: SHARED.fontM, // Font size for text inside card
-      color: selectedTheme.textPrimary, // Text color from selected theme
-      marginTop: normalizeHeight(5), // Space between lines of text
-      marginLeft: normalizeWidth(10), // Space between icon and text in header
+      fontSize: SHARED.fontM, 
+      color: selectedTheme.textPrimary, 
+      marginTop: normalizeHeight(5), 
+      marginLeft: normalizeWidth(10), 
     },
     languageContainer: {
-      marginTop: normalizeHeight(10), // Add spacing at the top for the language container
-      backgroundColor: selectedTheme.cardBackground, // Background color from theme
+      marginTop: normalizeHeight(10), 
+      backgroundColor: selectedTheme.cardBackground, 
     },
     splashContainer: {
       flex: 1,
-      justifyContent: 'center', // Centers content vertically
-      alignItems: 'center', // Centers content horizontally
-      backgroundColor: selectedTheme.cardBackground, // Background color from the theme
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      backgroundColor: selectedTheme.cardBackground, 
     },
     splashText: {
       fontSize: SHARED.fontXxL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, // Use primary color from the theme
-      marginTop: normalizeHeight(10), // Add margin between the logo and the text
+      color: selectedTheme.textPrimary, 
+      marginTop: normalizeHeight(10), 
     },
     slide: {
-      borderRadius: SHARED.borderRadiusSecondary, // Rounded corners
-      overflow: 'hidden', // Ensure the content inside doesn't exceed the boundary
+      borderRadius: SHARED.borderRadiusSecondary, 
+      overflow: 'hidden', 
     },
     reactionBar: {
       flexDirection: 'row',
@@ -615,7 +613,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     
     slideModal: {
-      justifyContent: 'flex-end', // Align modal to bottom
+      justifyContent: 'flex-end', 
       marginLeft: 0,
       marginRight: 0,
       marginBottom: 0,
@@ -625,8 +623,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
-      minHeight: '60%',  // Ensures the modal takes up at least 60% of the screen height
-      maxHeight: '80%',  // Limits the height so it doesn’t take up the entire screen
+      minHeight: '60%',  
+      maxHeight: '80%', 
     },
     slideModalCloseButton: {
       alignSelf: 'flex-end',
@@ -774,19 +772,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     vendorName: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#333', // Adjust based on theme
+      color: '#333', 
     },
     vendorLocation: {
-      color: '#666', // Adjust based on theme
+      color: '#666', 
       fontSize: 14,
     },
     vendorStats: {
-      color: '#666', // Adjust based on theme
+      color: '#666', 
       fontSize: 12,
     },
 
     followButtonText: {
-      color: '#FFF', // Text color for the button
+      color: '#FFF', 
       fontWeight: 'bold',
       fontSize: 14,
     },
@@ -800,7 +798,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: 10,
     },
     categoryCard: {
-      backgroundColor: '#f2f2f2', // Replace with theme background color
+      backgroundColor: '#f2f2f2', 
       paddingHorizontal: 15,
       paddingVertical: 10,
       borderRadius: 20,
@@ -809,7 +807,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center',
     },
     categoryText: {
-      color: '#333', // Replace with theme text color
+      color: '#333', 
       fontSize: 14,
     },
 
@@ -818,22 +816,22 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: 150,
     },
     reviewBox: {
-      backgroundColor: '#f9f9f9', // Adjust based on theme
+      backgroundColor: '#f9f9f9', 
       padding: 10,
       borderRadius: 8,
       marginVertical: 5,
     },
     reviewUser: {
       fontWeight: 'bold',
-      color: '#333', // Replace with theme text color
+      color: '#333', 
     },
     reviewContent: {
-      color: '#555', // Adjust based on theme
+      color: '#555', 
       fontSize: 14,
       marginVertical: 5,
     },
     reviewRating: {
-      color: '#FFC107', // Star color
+      color: '#FFC107', 
       fontSize: 14,
     },
     header: {
@@ -893,7 +891,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     bannerWrapper: {
       position: 'relative',
       width: '100%',
-      height: 200, // Adjust based on desired height of the banner
+      height: 200, 
       marginBottom: 20,
     },
 
@@ -901,13 +899,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     // Profile picture in the lower left corner of the banner
     profilePicture: {
       position: 'absolute',
-      bottom: 10, // Adjust distance from the bottom edge
-      left: 10,   // Adjust distance from the left edge
-      width: 60,  // Adjust size of the profile picture
+      bottom: 10, 
+      left: 10,  
+      width: 60,  
       height: 60,
-      borderRadius: 30, // Make it circular
+      borderRadius: 30, 
       borderWidth: 2,
-      borderColor: 'white', // White border for a nice effect
+      borderColor: 'white',
     },
     
   });

@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import IconLib from '../components/IconLib'; // Import the new IconLib
-import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useAppSelector } from '../hooks/reduxHooks';
@@ -22,7 +22,7 @@ type DropdownMenuProps = {
 
 const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -124,10 +124,10 @@ return (
       onRequestClose={() => setMenuVisible(false)}
     >
       <TouchableWithoutFeedback onPress={() => setMenuVisible(false)}>
-        <View style={commonStyle.overlay}>
+        <View style={compStyle.overlay}>
           <View
             style={[
-              commonStyle.dropdownMenu,
+              compStyle.dropdownMenu,
               { maxHeight: 400, position: 'absolute', right: 10, top: 50 },
             ]}
           >
@@ -135,7 +135,7 @@ return (
               {menuItems.map((item, index) => (
                 <TouchableOpacity
                   key={index}
-                  style={commonStyle.dropdownItem}
+                  style={compStyle.dropdownItem}
                   onPress={() => {
                     setMenuVisible(false);
                     if (item.action) {
@@ -145,7 +145,7 @@ return (
                 >
                   {/* Use renderIcon to dynamically load the icon */}
                   {renderIcon(item.icon, 20, selectedTheme.iconColorGray)}
-                  <Text style={commonStyle.dropdownText}>{item.label}</Text>
+                  <Text style={compStyle.dropdownText}>{item.label}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>

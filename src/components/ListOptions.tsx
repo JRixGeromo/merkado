@@ -3,7 +3,7 @@ import { View, Text, Modal, TouchableOpacity, TextInput, Alert } from 'react-nat
 import { useAppSelector } from '../hooks/reduxHooks';
 import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
-import { commonStyles } from '../styles/commonStyles';
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
@@ -44,7 +44,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   // Inside the component
@@ -62,7 +62,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
       placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
       inputBackgroundColor:  customBackground || selectedTheme.inputBackgroundColor,
     };
-  }, [iconColor, textColor, placeholderTextColor, commonStyle]);
+  }, [iconColor, textColor, placeholderTextColor]);
 
   const themeBasedIconColor = themeBasedStyles.iconColor;
   const themeBasedTextColor = themeBasedStyles.textColor;
@@ -103,7 +103,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
   return (
     <View
       style={[
-        commonStyle.inputContainer,
+        compStyle.inputContainer,
         {
           backgroundColor: themeBasedInputBackgroundColor,
           borderWidth: 0,
@@ -151,7 +151,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
         >
           <View
             style={[
-              commonStyle.modalContent,
+              compStyle.modalContent,
               { backgroundColor: selectedTheme.cardBackground },
             ]}
           >
@@ -164,21 +164,21 @@ const ListOptions: React.FC<ListOptionsProps> = ({
                     setShowModal(false);
                   }}
                   style={[
-                    commonStyle.dropdownOption,
+                    compStyle.dropdownOption,
                     { borderColor: selectedTheme.borderColorGray },
                   ]}
                 >
-                  <Text style={[commonStyle.modalText]}>{option.label}</Text>
+                  <Text style={[compStyle.modalText]}>{option.label}</Text>
                 </TouchableOpacity>
               ))
             ) : (
-              <Text style={[commonStyle.modalText]}>No options available</Text>
+              <Text style={[compStyle.modalText]}>No options available</Text>
             )}
             <TouchableOpacity
               onPress={() => setAddNewModalVisible(true)}
-              style={commonStyle.dropdownOption} // This is a button without a border
+              style={compStyle.dropdownOption} // This is a button without a border
             >
-              <Text style={commonStyle.modalText}>{t('Add New')}</Text>
+              <Text style={compStyle.modalText}>{t('Add New')}</Text>
             </TouchableOpacity>
             <View style={layoutStyle.verticalSpacerM} />
             <CustomButton
@@ -204,13 +204,13 @@ const ListOptions: React.FC<ListOptionsProps> = ({
             },
           ]}
         >
-          <View style={[commonStyle.modalContent, { backgroundColor: selectedTheme.cardBackground }]}>
-            <Text style={[commonStyle.modalText, { marginBottom: 10 }]}>{t('Enter New Option')}</Text>
+          <View style={[compStyle.modalContent, { backgroundColor: selectedTheme.cardBackground }]}>
+            <Text style={[compStyle.modalText, { marginBottom: 10 }]}>{t('Enter New Option')}</Text>
             <TextInput
               placeholder={t('New Option')}
               value={newOption}
               onChangeText={setNewOption}
-              style={[commonStyle.input, { marginBottom: 10 }]}
+              style={[compStyle.input, { marginBottom: 10 }]}
               placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             />
             <CustomButton

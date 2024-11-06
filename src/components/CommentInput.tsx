@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import ReactionBar from './ReactionBar'; // Import the reusable ReactionBar component
-import { commonStyles } from '../styles/commonStyles';
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
@@ -37,7 +37,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
   const [showReactionBar, setShowReactionBar] = useState(false);
 
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -59,19 +59,19 @@ const CommentInput: React.FC<CommentInputProps> = ({
     <View
       style={[
         layoutStyle.rowsInside,
-        commonStyle.commentFormContainer,
+        compStyle.commentFormContainer,
         { backgroundColor: backgroundColor || selectedTheme.cardBackground }, // Use backgroundColor prop if provided
       ]}
     >
       <View
         style={[
-          commonStyle.inputWrapper,
+          compStyle.inputWrapper,
           { backgroundColor: selectedTheme.inputBackgroundColor },
         ]}
       >
         <TextInput
           style={[
-            commonStyle.commentInput,
+            compStyle.commentInput,
             { color: selectedTheme.textPrimary },
           ]}
           placeholder={placeholder}
@@ -82,7 +82,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
         />
 
         <TouchableOpacity
-          style={commonStyle.sendButton}
+          style={compStyle.sendButton}
           onPress={handleSendComment}
         >
           {/* Use IconLib for the send icon */}
@@ -100,7 +100,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
         {!showReactionBar && (
           <TouchableOpacity
             onPress={() => setShowReactionBar(true)}
-            style={commonStyle.thumbsUpButton}
+            style={compStyle.thumbsUpButton}
           >
             {/* Use IconLib for the thumbs-up icon */}
             <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />

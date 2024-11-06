@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
@@ -48,7 +48,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
 }) => {
   
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -61,7 +61,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
       placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
       inputBackgroundColor:  selectedTheme.inputBackgroundColor,
     };
-  }, [iconColor, textColor, placeholderTextColor, commonStyle]);
+  }, [iconColor, textColor, placeholderTextColor]);
 
   const themeBasedIconColor = themeBasedStyles.iconColor;
   const themeBasedTextColor = themeBasedStyles.textColor;
@@ -77,7 +77,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   return (
     <View
       style={[
-        commonStyle.inputContainer,
+        compStyle.inputContainer,
         {
           backgroundColor: themeBasedInputBackgroundColor, // Remove background color to make it blank/transparent
           borderWidth: 0, // Remove border to make it clean
@@ -93,7 +93,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
 
       <TextInput
         style={[
-          commonStyle.input,
+          compStyle.input,
           inputStyle,
           {
             color: themeBasedTextColor,

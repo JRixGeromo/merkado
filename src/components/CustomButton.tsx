@@ -8,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { commonStyles } from '../styles/commonStyles'; // Import your style
 import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
 import { theme as appTheme } from '../styles/theme'; // Import your theme
 import IconLib from './IconLib'; // Import IconLib
@@ -56,7 +55,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   onPress,
 }) => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const commonStyle = commonStyles(theme);
   const selectedTheme = appTheme[theme];
 
   const buttonBackgroundColor = backgroundColor || selectedTheme.buttonPrimary;

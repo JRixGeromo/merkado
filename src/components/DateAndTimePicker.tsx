@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles } from '../styles/layoutStyles';
 import CustomButton from './CustomButton';
 import { useAppSelector } from '../hooks/reduxHooks';
@@ -60,7 +60,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   };
 
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -75,10 +75,9 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
       placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
       inputBackgroundColor:  selectedTheme.inputBackgroundColor,
     };
-  }, [iconColor, textColor, placeholderTextColor, commonStyle]);
+  }, [iconColor, textColor, placeholderTextColor]);
 
   const themeBasedIconColor = themeBasedStyles.iconColor;
-  const themeBasedTextColor = themeBasedStyles.textColor;
   const themeBasedPlaceholderColor = themeBasedStyles.placeholderColor;
   const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
 
@@ -89,7 +88,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     <View style={{}}>
       <TouchableOpacity
         style={[
-          commonStyle.inputContainer,
+          compStyle.inputContainer,
           {
             backgroundColor: themeBasedInputBackgroundColor,
             borderWidth: 0,
@@ -110,7 +109,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           value={formattedDate} // Display formatted date
           editable={false} // Make it read-only, only clickable to open calendar
           style={[
-            commonStyle.input, // Apply input styles
+            compStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
             {
               color: themeBasedStyles.textColor,
@@ -127,7 +126,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
         <TouchableWithoutFeedback onPress={() => setShowCalendar(false)}>
           <View
             style={[
-              commonStyle.modalOverlay,
+              compStyle.modalOverlay,
               {
                 flex: 1,
                 justifyContent: 'center', // Center vertically

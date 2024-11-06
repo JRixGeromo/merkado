@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { commonStyles } from '../styles/commonStyles'; // Import your style
+import { compStyles } from './styles/componentStyles'; // Import your style
 import { layoutStyles, SHARED } from '../styles/layoutStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
@@ -43,17 +43,17 @@ const ContentCard: React.FC<ContentCardProps> = ({
   buttonActions,
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
   return (
-    <View style={[layoutStyle.shadowedContainer, commonStyle.contentBoxPortrait]}>
-      <View style={commonStyle.cardImageWrapper}>
-        <Image source={{ uri: imageUrl }} style={commonStyle.productImage} />
+    <View style={[layoutStyle.shadowedContainer, compStyle.contentBoxPortrait]}>
+      <View style={compStyle.cardImageWrapper}>
+        <Image source={{ uri: imageUrl }} style={compStyle.productImage} />
         <TouchableOpacity
-          style={commonStyle.goFullScreenButton}
+          style={compStyle.goFullScreenButton}
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
@@ -61,31 +61,31 @@ const ContentCard: React.FC<ContentCardProps> = ({
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={commonStyle.goLiveShowButton}
+          style={compStyle.goLiveShowButton}
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
-          <IconLib.Video_O size={SHARED.fontL} color={"#9ef01a"} />
+          <IconLib.Video_O size={SHARED.fontL} color={selectedTheme.online} />
         </TouchableOpacity>
 
       </View>
 
-      <View style={commonStyle.contentContainer}>
-        <Text style={commonStyle.productName}
+      <View style={compStyle.contentContainer}>
+        <Text style={compStyle.productName}
           numberOfLines={1}
           ellipsizeMode="tail"
         >{name}</Text>
         <View style={layoutStyle.verticalSpacerXS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
-          <Text style={commonStyle.productPrice}>₱{price}</Text>
+          <Text style={compStyle.productPrice}>₱{price}</Text>
         )}
 
         {type === 'store' && location && (
           <Text 
             numberOfLines={1}
             ellipsizeMode="tail"
-            style={commonStyle.storeLocation}
+            style={compStyle.storeLocation}
           >{location}</Text>
         )}
         <View style={layoutStyle.verticalSpacerS} />
@@ -115,7 +115,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         </View>
       </View>
       <View style={layoutStyle.verticalSpacerXS} />
-      <View style={[layoutStyle.columnsInsideFlex, commonStyle.buttonContainer]}>
+      <View style={[layoutStyle.columnsInsideFlex, compStyle.buttonContainer]}>
         {buttonActions.map((action, index) => (
           <CustomButton
             key={index}
@@ -125,7 +125,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
             iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
             iconColor={selectedTheme.buttonTextPrimary} // Set the icon color
             iconSize={SHARED.fontL} // Set the icon size
-            style={[layoutStyle.cols_2, commonStyle.cardButton, action.buttonStyle]} // Apply the button styles
+            style={[layoutStyle.cols_2, compStyle.cardButton, action.buttonStyle]} // Apply the button styles
             borderRadius={0} // Default borderRadius is 15, can be overridden
           />
         ))}
