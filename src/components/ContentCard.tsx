@@ -57,8 +57,17 @@ const ContentCard: React.FC<ContentCardProps> = ({
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
-          <IconLib.DotsMenu size={SHARED.fontXL} color="white" />
+          <IconLib.DotsMenu size={SHARED.fontL} color={selectedTheme.textLight} />
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={commonStyle.goLiveShowButton}
+          onPress={onFullScreenPress}
+        >
+          {/* Replace with IconLib for the expand icon */}
+          <IconLib.Video_O size={SHARED.fontL} color={"#9ef01a"} />
+        </TouchableOpacity>
+
       </View>
 
       <View style={commonStyle.contentContainer}>
@@ -80,12 +89,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
           >{location}</Text>
         )}
         <View style={layoutStyle.verticalSpacerS} />
+
         <View style={layoutStyle.columnsInsideFlex}>
-          {/* Replace with IconLib for the star icon */}
           <IconLib.Star size={16} color="gold" style={layoutStyle.rMarginXS} />
           <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}>{rating}</Text>
         </View>
-        <View style={layoutStyle.verticalSpacerS} />
+        <View style={layoutStyle.verticalSpacerXS} />
         <View style={[layoutStyle.columnsInsideFlex, layoutStyle.bMaringS]}>
           <TouchableOpacity
             onPress={onLikePress}
@@ -105,7 +114,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           </Text>
         </View>
       </View>
-      
+      <View style={layoutStyle.verticalSpacerXS} />
       <View style={[layoutStyle.columnsInsideFlex, commonStyle.buttonContainer]}>
         {buttonActions.map((action, index) => (
           <CustomButton

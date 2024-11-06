@@ -5,6 +5,7 @@ export interface ThemeType {
   textSecondary: string;
   textPlaceHolderInfo: string;
   textDark: string;
+  textLight: string;
   textPriceBanner: string;
   textLink: string;
   textGray: string;
@@ -12,6 +13,7 @@ export interface ThemeType {
   textHighlight: string;     // #800e13 (Light) / #f2bb05 (Dark)
   textDisabled: string;      // #ced4da (Light) / #ced4da (Dark)
 
+  online: string;      // #ced4da (Light) / #ced4da (Dark)
   // below are not in use
   // textLight: string;         // #ffffff (Light) / #ffffff (Dark)
   // textBlack: string;         // #000000 (Light) / #000000 (Dark)
@@ -140,12 +142,15 @@ const lightTheme: ThemeType = {
   textSecondary: '#000000',
   textPlaceHolderInfo: '#9caea9',
   textDark: '#343a40',
+  textLight: '#ffffff',
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#4f5d75',
   textBlur: '#495057',
   textHighlight: '#800e13',
   textDisabled: '#ced4da',
+
+  online: "#9ef01a",
 
   // below are not in use
   // textBlack: '#000000',
@@ -281,6 +286,7 @@ const feminineTheme: ThemeType = {
   textSecondary: '#000000',      // Warm brown for secondary text
   textPlaceHolderInfo: '#f8bbd0', // Light pink placeholder
   textDark: '#4e342e',           // Deep brown for dark text
+  textLight: '#ffffff',
   textPriceBanner: '#ffb74d',    // Light orange for price highlight
   textLink: '#c2185b',           // Dark pink for links
   textGray: '#bcaaa4',           // Soft beige-gray
@@ -288,6 +294,7 @@ const feminineTheme: ThemeType = {
   textHighlight: '#e4572e',      // Pink highlight
   textDisabled: '#d7ccc8',       // Muted beige for disabled text
 
+  online: "#9ef01a",
   // below are not in use
   // textBlack: '#000000',
   // textLight: '#000',          // Pure white for light text
@@ -417,6 +424,7 @@ const darkTheme: ThemeType = {
   textSecondary: '#dee2e6',
   textPlaceHolderInfo: '#9999a1',
   textDark: '#66666e',
+  textLight: '#ffffff',
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
   textGray: '#8d99ae',
@@ -424,6 +432,7 @@ const darkTheme: ThemeType = {
   textHighlight: '#f2bb05',
   textDisabled: '#ced4da',
 
+  online: "#9ef01a",
   // below are not in use
   // textBlack: '#000000',
   // textLight: '#ffffff',

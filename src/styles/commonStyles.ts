@@ -222,11 +222,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     goFullScreenButton: {
       position: 'absolute',
-      top: normalizeHeight(5),
-      right: normalizeWidth(5),
-      backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background for visibility
+      top: normalizeHeight(2),
+      right: normalizeWidth(2),
+      backgroundColor: 'rgba(0, 0, 0, 0.4)', // Semi-transparent background for visibility
       padding: 5,
       borderRadius: 0, // Make it circular
+    },
+    goLiveShowButton: {
+      position: 'absolute',
+      bottom: normalizeHeight(2),
+      right: normalizeWidth(2),
+      backgroundColor: 'rgba(0, 0, 0, 0.4)', // Semi-transparent background for visibility
+      padding: 5,
+      borderRadius: 15, // Make it circular
     },
     productName: {
       fontSize: SHARED.fontS,
@@ -901,5 +909,6 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderWidth: 2,
       borderColor: 'white', // White border for a nice effect
     },
+    
   });
 };
