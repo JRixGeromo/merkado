@@ -14,7 +14,7 @@ import ReactionBar from '../../../components/ReactionBar';
 import CommentInput from '../../../components/CommentInput';
 import CustomButton from '../../../components/CustomButton';
 import { theme as appTheme } from '../../../styles/theme';
-import { commonStyles } from '../../../styles/commonStyles';
+import { marketStyles } from '../styles/marketStyles';
 import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
@@ -41,7 +41,7 @@ const DetailsScreen: React.FC = () => {
   const { item, type } = route.params;
 
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const marketStyle = marketStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -123,7 +123,7 @@ const DetailsScreen: React.FC = () => {
     >
         {/* Sale Banner */}
         {type === 'product' && item.onSale && (
-          <View style={commonStyle.saleBanner}>
+          <View style={marketStyle.saleBanner}>
             <Text
               style={[layoutStyle.mediumText, { color: selectedTheme.textSecondary }]}
             >
@@ -133,15 +133,15 @@ const DetailsScreen: React.FC = () => {
         )}
 
         {/* Product/Vendor Image */}
-        <View style={commonStyle.bannerImageWrapper}>
+        <View style={marketStyle.bannerImageWrapper}>
           <Image
             source={{ uri: item.imageUrl }}
-            style={commonStyle.bannerContentImage}
+            style={marketStyle.bannerContentImage}
           />
 
           {/* Price at Bottom-Right */}
           {type === 'product' && (
-            <View style={commonStyle.priceContainer}>
+            <View style={marketStyle.priceContainer}>
               <Text style={[layoutStyle.xLargeText, { color: selectedTheme.textPriceBanner }]}>
                 ₱{item.price}
               </Text>
@@ -152,8 +152,8 @@ const DetailsScreen: React.FC = () => {
         <View style={layoutStyle.columnsInside}>
           <View style={[layoutStyle.cols_2, layoutStyle.lPaddingS]}>
             {selectedPostReaction && (
-              <View style={[commonStyle.selectedReactionWrapper, { marginTop: -12 }]}>
-                <Text style={commonStyle.selectedReactionText}>
+              <View style={[marketStyle.selectedReactionWrapper, { marginTop: -12 }]}>
+                <Text style={marketStyle.selectedReactionText}>
                   {selectedPostReaction}
                 </Text>
               </View>
@@ -319,7 +319,7 @@ const DetailsScreen: React.FC = () => {
 
         {/* ReactionBar */}
         {showReactions && (
-          <View style={commonStyle.reactionBarSection}>
+          <View style={marketStyle.reactionBarSection}>
             <ReactionBar
               reactions={reactions}
               onReactionPress={handleReactionPress}
@@ -328,7 +328,7 @@ const DetailsScreen: React.FC = () => {
         )}
 
         {/* Comment Section */}
-        <View style={[commonStyle.commentSection]}>
+        <View style={[marketStyle.commentSection]}>
           <View style={[layoutStyle.shadowedContainer, { borderColor: selectedTheme.lineBorderColor}]}>
             <CommentInput
               onSend={handleSendComment}
@@ -340,7 +340,7 @@ const DetailsScreen: React.FC = () => {
         </View>
 
         {/* Existing Comments */}
-        <View style={commonStyle.commentsList}>
+        <View style={marketStyle.commentsList}>
           {[
             {
               id: 1,
@@ -359,7 +359,7 @@ const DetailsScreen: React.FC = () => {
               key={comment.id}
               style={[
                 layoutStyle.shadowedContainer,
-                commonStyle.commentContainer,
+                marketStyle.commentContainer,
                 { backgroundColor: selectedTheme.cardBackground },
               ]}
             >
@@ -368,7 +368,7 @@ const DetailsScreen: React.FC = () => {
               >
                 <Image
                   source={{ uri: 'https://randomuser.me/api/portraits/men/1.jpg' }} // Use user's image URL
-                  style={commonStyle.userImage}
+                  style={marketStyle.userImage}
                 />
                 {/* Display the user's name beside the image */}
                 <Text
@@ -377,25 +377,25 @@ const DetailsScreen: React.FC = () => {
                   {comment.user}
                 </Text>
               </View>
-              <View style={commonStyle.commentWrapper}>
+              <View style={marketStyle.commentWrapper}>
                 {/* Comment Text */}
                 <Text
-                  style={[commonStyle.commentTextWrapper, layoutStyle.smallText, { color: selectedTheme.textSecondary }]}
+                  style={[marketStyle.commentTextWrapper, layoutStyle.smallText, { color: selectedTheme.textSecondary }]}
                 >
                   {comment.text}
                 </Text>
 
                 {/* Display the selected reaction below the comment if available */}
                 {selectedCommentReactions[comment.id] && (
-                  <View style={commonStyle.selectedReactionWrapper}>
-                    <Text style={commonStyle.selectedReactionText}>
+                  <View style={marketStyle.selectedReactionWrapper}>
+                    <Text style={marketStyle.selectedReactionText}>
                       {selectedCommentReactions[comment.id].emoji}
                     </Text>
                   </View>
                 )}
 
                 {/* Time and Thumbs Up Row */}
-                <View style={commonStyle.timeAndReactionWrapper}>
+                <View style={marketStyle.timeAndReactionWrapper}>
                   <Text style={[layoutStyle.xSmallText, { color: selectedTheme.textBlur, marginTop: 3 }]}>
                     {dayjs(comment.time).fromNow()}
                   </Text>
@@ -415,7 +415,7 @@ const DetailsScreen: React.FC = () => {
 
               {/* Comment Reaction Bar */}
               {showCommentReactions[comment.id] && (
-                <View style={commonStyle.reactionBarSection}>
+                <View style={marketStyle.reactionBarSection}>
                   <ReactionBar
                     reactions={reactions}
                     onReactionPress={reaction =>
@@ -428,11 +428,11 @@ const DetailsScreen: React.FC = () => {
               {/* Reply codes start */}
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
-                <View key={index} style={[commonStyle.replyContainer]}>
+                <View key={index} style={[marketStyle.replyContainer]}>
                   <View style={layoutStyle.verticalSpacerM} />
                   <Image
                     source={{ uri: 'https://randomuser.me/api/portraits/women/1.jpg' }} // Use user's image URL
-                    style={commonStyle.userImage}
+                    style={marketStyle.userImage}
                   />
                   <Text style={{ color: selectedTheme.textSecondary, marginTop: 5 }}>
                     {reply}
@@ -445,7 +445,7 @@ const DetailsScreen: React.FC = () => {
 
               {/* Show the reply input field if replying to this comment */}
               {replyingTo === comment.id && (
-                <View style={commonStyle.replyInputWrapper}>
+                <View style={marketStyle.replyInputWrapper}>
                   <CommentInput
                     onSend={reply => handleReplySend(comment.id, reply)}
                     onAddReaction={handleAddReaction}

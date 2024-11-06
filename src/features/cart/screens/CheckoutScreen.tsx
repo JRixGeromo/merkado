@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
-import { commonStyles } from '../../../styles/commonStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';

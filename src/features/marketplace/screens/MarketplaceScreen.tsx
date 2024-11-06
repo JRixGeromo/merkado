@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
-import { commonStyles } from '../../../styles/commonStyles';
+import { marketStyles } from '../styles/marketStyles';
 import { layoutStyles } from '../../../styles/layoutStyles';
 import MarketplaceModal from '../components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
@@ -40,7 +40,7 @@ export type Product = {
 
 const MarketplaceScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const marketStyle = marketStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -253,12 +253,12 @@ const MarketplaceScreen = () => {
         {
           iconName: 'Chat_O', // Update to use IconLib name
           onPress: () => console.log('Chat Pressed'),
-          buttonStyle: commonStyle.chatButton,
+          buttonStyle: marketStyle.chatButton,
         },
         {
           iconName: 'Cart_O', // Update to use IconLib name
           onPress: () => console.log('Cart Pressed'),
-          buttonStyle: commonStyle.cartButton,
+          buttonStyle: marketStyle.cartButton,
         },
       ]}
     />
@@ -269,7 +269,7 @@ const MarketplaceScreen = () => {
       <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
         {/* Search Container */}
         <View style={layoutStyle.verticalSpacerM} />
-        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
+        <View style={[marketStyle.searchContainer, layoutStyle.columnsInside]}>
           <TouchableOpacity
             style={layoutStyle.rMarginS}
             onPress={toggleModal}
@@ -277,7 +277,7 @@ const MarketplaceScreen = () => {
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={commonStyle.searchInput}
+            style={marketStyle.searchInput}
             placeholder="Search"
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
           />

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
-import { commonStyles } from '../../../styles/commonStyles';
+import { dashStyles } from '../styles/dashStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib';
@@ -53,7 +53,7 @@ export type Store = {
 
 const VendorDashboard = () => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const dashStyle = dashStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
@@ -104,23 +104,23 @@ const VendorDashboard = () => {
         {/* Dashboard Metrics */}
         <View style={[layoutStyle.verticalSpacerM]}>
           <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}>
-            <View style={[commonStyle.metricBox]}>
-              <Text style={commonStyle.largeText}>{t('Total Sales')}</Text>
-              <Text style={commonStyle.metricValue}>₱{dashboardMetrics.totalSales}</Text>
+            <View style={[dashStyle.metricBox]}>
+              <Text style={dashStyle.largeText}>{t('Total Sales')}</Text>
+              <Text style={dashStyle.metricValue}>₱{dashboardMetrics.totalSales}</Text>
             </View>
-            <View style={[commonStyle.metricBox]}>
-              <Text style={commonStyle.largeText}>{t('Total Orders')}</Text>
-              <Text style={commonStyle.metricValue}>{dashboardMetrics.totalOrders}</Text>
+            <View style={[dashStyle.metricBox]}>
+              <Text style={dashStyle.largeText}>{t('Total Orders')}</Text>
+              <Text style={dashStyle.metricValue}>{dashboardMetrics.totalOrders}</Text>
             </View>
           </View>
           <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}>  
-            <View style={[commonStyle.metricBox]}>
-              <Text style={commonStyle.largeText}>{t('Avg. Rating')}</Text>
-              <Text style={commonStyle.metricValue}>{dashboardMetrics.avgRating} ★</Text>
+            <View style={[dashStyle.metricBox]}>
+              <Text style={dashStyle.largeText}>{t('Avg. Rating')}</Text>
+              <Text style={dashStyle.metricValue}>{dashboardMetrics.avgRating} ★</Text>
             </View>
-            <View style={[commonStyle.metricBox]}>
-              <Text style={commonStyle.largeText}>{t('Followers')}</Text>
-              <Text style={commonStyle.metricValue}>{dashboardMetrics.followers}</Text>
+            <View style={[dashStyle.metricBox]}>
+              <Text style={dashStyle.largeText}>{t('Followers')}</Text>
+              <Text style={dashStyle.metricValue}>{dashboardMetrics.followers}</Text>
             </View>
           </View>
         </View>
@@ -129,20 +129,20 @@ const VendorDashboard = () => {
         <View style={{ marginTop: 20 }}>
           {/* <Text style={layoutStyle.largeText}>{t('Reactions')}</Text> */}
           <View style={[layoutStyle.columnsInside, { marginTop: 10 }]}>
-            <View style={[layoutStyle.cols_3, commonStyle.metricBox]}>
+            <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Heart size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={commonStyle.reactionValue}>{reactionMetrics.hearts}</Text>
-              <Text style={commonStyle.reactionLabel}>{t('Hearts')}</Text>
+              <Text style={dashStyle.reactionValue}>{reactionMetrics.hearts}</Text>
+              <Text style={dashStyle.reactionLabel}>{t('Hearts')}</Text>
             </View>
-            <View style={[layoutStyle.cols_3, commonStyle.metricBox]}>
+            <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Share size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={commonStyle.reactionValue}>{reactionMetrics.shares}</Text>
-              <Text style={commonStyle.reactionLabel}>{t('Shares')}</Text>
+              <Text style={dashStyle.reactionValue}>{reactionMetrics.shares}</Text>
+              <Text style={dashStyle.reactionLabel}>{t('Shares')}</Text>
             </View>
-            <View style={[layoutStyle.cols_3, commonStyle.metricBox]}>
+            <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Chat_O size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={commonStyle.reactionValue}>{reactionMetrics.comments}</Text>
-              <Text style={commonStyle.reactionLabel}>{t('Comments')}</Text>
+              <Text style={dashStyle.reactionValue}>{reactionMetrics.comments}</Text>
+              <Text style={dashStyle.reactionLabel}>{t('Comments')}</Text>
             </View>
           </View>
         </View>
@@ -151,11 +151,11 @@ const VendorDashboard = () => {
        <View style={{ marginTop: 30 }}>
           <Text style={layoutStyle.largeText}>{t('Recent Orders')}</Text>
           {recentOrders.map(order => (
-            <View key={order.id} style={commonStyle.orderBox}>
-              <Text style={commonStyle.orderText}>
+            <View key={order.id} style={dashStyle.orderBox}>
+              <Text style={dashStyle.orderText}>
                 {order.customerName} - ₱{order.amount}
               </Text>
-              <Text style={[commonStyle.orderStatus, { color: selectedTheme.textAccent }]}>
+              <Text style={[dashStyle.orderStatus, { color: selectedTheme.textAccent }]}>
                 {order.status}
               </Text>
             </View>
@@ -167,10 +167,10 @@ const VendorDashboard = () => {
         <View style={{ marginTop: 30 }}>
           <Text style={layoutStyle.largeText}>{t('Customer Feedback')}</Text>
           {recentFeedback.map(feedback => (
-            <View key={feedback.id} style={commonStyle.feedbackBox}>
-              <Text style={commonStyle.feedbackUser}>{feedback.user}</Text>
-              <Text style={commonStyle.feedbackContent}>{feedback.content}</Text>
-              <Text style={commonStyle.feedbackRating}>{feedback.rating} ★</Text>
+            <View key={feedback.id} style={dashStyle.feedbackBox}>
+              <Text style={dashStyle.feedbackUser}>{feedback.user}</Text>
+              <Text style={dashStyle.feedbackContent}>{feedback.content}</Text>
+              <Text style={dashStyle.feedbackRating}>{feedback.rating} ★</Text>
             </View>
           ))}
         </View>
@@ -181,7 +181,7 @@ const VendorDashboard = () => {
           onPress={() => navigation.navigate('LiveShowScreen')}
         >
           <IconLib.Video size={20} color={selectedTheme.textLight} />
-          <Text style={commonStyle.liveShowText}>{t('Go Live')}</Text>
+          <Text style={dashStyle.liveShowText}>{t('Go Live')}</Text>
         </TouchableOpacity> */}
       </View>
     </ScrollView>

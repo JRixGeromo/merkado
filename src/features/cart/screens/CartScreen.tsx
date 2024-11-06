@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, ListRenderItem } from 'react-native';
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
 
-import { commonStyles } from '../../../styles/commonStyles';
+import { cartStyles } from '../styles/cartStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
@@ -47,7 +47,7 @@ const CartScreen: React.FC = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const cartStyle = cartStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
@@ -78,17 +78,17 @@ const CartScreen: React.FC = () => {
 
   // Type for rendering each item in FlatList
   const renderItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={[commonStyle.contentBox, layoutStyle.columnsInside]}>
-      <Image source={item.image} style={commonStyle.cartItemImage} />
+    <View style={[cartStyle.contentBox, layoutStyle.columnsInside]}>
+      <Image source={item.image} style={cartStyle.cartItemImage} />
       <View style={layoutStyle.lMarginL}>
         <Text style={[layoutStyle.mediumText, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
         <Text style={[layoutStyle.largeText, layoutStyle.verticalSpacerXS, { color: selectedTheme.textSecondary }]}>${item.price}</Text>
         <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerM]}>
-          <TouchableOpacity onPress={() => updateQuantity(item.id, 'decrement')} style={commonStyle.quantityButton}>
+          <TouchableOpacity onPress={() => updateQuantity(item.id, 'decrement')} style={cartStyle.quantityButton}>
             <Text style={layoutStyle.largeText}>-</Text>
           </TouchableOpacity>
           <Text style={[layoutStyle.largeText, layoutStyle.lPaddingS, layoutStyle.rPaddingS, {color: selectedTheme.textSecondary}]}>{item.quantity}</Text>
-          <TouchableOpacity onPress={() => updateQuantity(item.id, 'increment')} style={commonStyle.quantityButton}>
+          <TouchableOpacity onPress={() => updateQuantity(item.id, 'increment')} style={cartStyle.quantityButton}>
             <Text style={layoutStyle.largeText}>+</Text>
           </TouchableOpacity>
         </View>

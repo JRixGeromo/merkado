@@ -11,7 +11,7 @@ import {
   Platform,
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
+import { chatStyles } from '../styles/chatStyles'; // Import your style
 import { layoutStyles } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import IconLib from '../../../components/IconLib';
@@ -37,7 +37,7 @@ type Avatar = {
 
 const ChatScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const chatStyle = chatStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
@@ -150,19 +150,19 @@ const ChatScreen = () => {
       keyboardVerticalOffset={80}
     >
       {/* Chat History Avatars */}
-      <View style={ commonStyle.avatarBar }>
+      <View style={ chatStyle.avatarBar }>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {avatars.map(avatar => (
             <View key={avatar.id} style={{ position: 'relative', marginHorizontal: 5, marginVertical: 5 }}>
               <TouchableOpacity>
                 <Image
                   source={{ uri: avatar.avatarUrl }}
-                  style={commonStyle.chatAvatar}
+                  style={chatStyle.chatAvatar}
                 />
                 {/* Display unread message badge */}
                 {(avatar.unreadCount ?? 0) > 0 && (
-                <View style={commonStyle.unreadBadge}>
-                    <Text style={commonStyle.unreadText}>{avatar.unreadCount}</Text>
+                <View style={chatStyle.unreadBadge}>
+                    <Text style={chatStyle.unreadText}>{avatar.unreadCount}</Text>
                 </View>
                 )}
               </TouchableOpacity>
@@ -182,7 +182,7 @@ const ChatScreen = () => {
       </ScrollView>
 
       {/* Message Input */}
-      <View style={[commonStyle.chatMessagesContainer, { borderTopColor: selectedTheme.lineBorderColor, borderWidth: 0.5}] }>
+      <View style={[chatStyle.chatMessagesContainer, { borderTopColor: selectedTheme.lineBorderColor, borderWidth: 0.5}] }>
         <View style={[layoutStyle.alignRight, {
             paddingHorizontal: 10, 
             marginBottom: 10, 
@@ -205,16 +205,16 @@ const ChatScreen = () => {
           />
         )}
 
-        <View style={[commonStyle.chatInputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
+        <View style={[chatStyle.chatInputContainer, { backgroundColor: selectedTheme.inputBackgroundColor }]}>
           <TextInput
             value={message}
             onChangeText={setMessage}
             placeholder={t('type here ...')}
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
-            style={[commonStyle.input, layoutStyle.mediumText, { flex: 1, color: selectedTheme.textPrimary }]}
+            style={[chatStyle.input, layoutStyle.mediumText, { flex: 1, color: selectedTheme.textPrimary }]}
             onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
           />
-          <TouchableOpacity onPress={sendMessage} style={commonStyle.chatSendButton}>
+          <TouchableOpacity onPress={sendMessage} style={chatStyle.chatSendButton}>
             <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
           </TouchableOpacity>
         </View>
