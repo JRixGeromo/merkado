@@ -13,8 +13,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import ListOptions from '../../../components/ListOptions';
-
-import { commonStyles } from '../../../styles/commonStyles';
+import { myProductStyles } from '../styles/myProductStyles';
 import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector } from '../../../hooks/reduxHooks';
@@ -40,7 +39,7 @@ interface UpsertProductScreenProps {
 
 const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const myProductStyle = myProductStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, FlatList, TouchableOpacity, TextInput, Text, Image } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
+import { myProductStyles } from '../styles/myProductStyles';
 import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
@@ -24,7 +24,7 @@ export type Product = {
 
 const MyProductsScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const myProductStyle = myProductStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -99,7 +99,7 @@ const MyProductsScreen = () => {
           width: "100%",
           textSize: 12,
           onPress: () => handleDeleteProduct(item),
-          buttonStyle: commonStyle.cardButton,
+          buttonStyle: myProductStyle.cardButton,
         },
         {
           iconName: 'Create_O',
@@ -108,7 +108,7 @@ const MyProductsScreen = () => {
           width: "100%",
           textSize: 12,
           onPress: () => console.log('Edit Pressed'),
-          buttonStyle: commonStyle.cardButton,
+          buttonStyle: myProductStyle.cardButton,
         },
         {
           iconName: 'View_O',
@@ -117,7 +117,7 @@ const MyProductsScreen = () => {
           width: "100%",
           textSize: 12,
           onPress: () => handleViewProduct(item),
-          buttonStyle: commonStyle.cardButton,
+          buttonStyle: myProductStyle.cardButton,
         },
       ]}
     />
@@ -128,12 +128,12 @@ const MyProductsScreen = () => {
       <View style={layoutStyle.verticalSpacerM} />
       {/* Search Bar */}
       <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
-        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_80]}>
+        <View style={[myProductStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_80]}>
           <TouchableOpacity style={layoutStyle.rMarginS}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={commonStyle.searchInput}
+            style={myProductStyle.searchInput}
             placeholder="Search Products"
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             value={searchTerm}
@@ -152,7 +152,7 @@ const MyProductsScreen = () => {
             iconColor={selectedTheme.buttonTextPrimary}
             iconSize={SHARED.fontXL}
             color={selectedTheme.buttonTextPrimary}
-            style={commonStyle.cardButton}
+            style={myProductStyle.cardButton}
             borderRadius={0}
           />
         </View>
@@ -176,7 +176,7 @@ const MyProductsScreen = () => {
       >
         {selectedProduct && (
           <View>
-            <Image source={{ uri: selectedProduct.imageUrl }} style={commonStyle.slideModalImage} />
+            <Image source={{ uri: selectedProduct.imageUrl }} style={myProductStyle.slideModalImage} />
             <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
             <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
             <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
