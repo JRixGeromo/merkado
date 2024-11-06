@@ -19,7 +19,6 @@ const CheckoutScreen: React.FC = () => {
   const navigation =
   useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
