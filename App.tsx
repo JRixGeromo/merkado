@@ -27,7 +27,7 @@ import DropdownMenu from './src/components/DropdownMenu';
 import IconLib from './src/components/IconLib';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles';
-import { layoutStyles } from './src/styles/baseStyles';
+import { baseStyles } from './src/styles/baseStyles';
 import { theme as appTheme } from './src/styles/theme';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -40,7 +40,7 @@ const App = () => {
   //const cartCount = useAppSelector(state => state.cart.count); // Assuming cart count is in state.cart.count
   const cartCount = 2; // Assuming cart count is in state.cart.count
   const commonStyle = commonStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const dispatch = useAppDispatch();
 
@@ -151,13 +151,13 @@ const App = () => {
             {/* Front Store Icon */}
             <TouchableOpacity
               onPress={() => navigation.navigate('FrontStoreScreen')}
-              style={layoutStyle.rMarginL}
+              style={baseStyle.rMarginL}
             >
               <IconLib.Store_O size={20} color={selectedTheme.iconColorGray} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate('AccountScreen')}
-              style={layoutStyle.rMarginL}
+              style={baseStyle.rMarginL}
             >
               {user?.avatar ? (
                 <Image
