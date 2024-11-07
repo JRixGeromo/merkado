@@ -96,34 +96,34 @@ const ContentCard: React.FC<ContentCardProps> = ({
           </Text>
         )}
         <View style={baseStyle.verticalSpacerS} />
-
-        <View style={baseStyle.columnsInsideFlex}>
-          <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
-          <Text
-            style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
-          >
-            {rating}
-          </Text>
-        </View>
-        <View style={baseStyle.verticalSpacerXS} />
-        <View style={[baseStyle.columnsInsideFlex, baseStyle.bMaringS]}>
-          <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
-            {isLiked ? (
-              <IconLib.Heart size={SHARED.fontXL} color="red" />
-            ) : (
-              <IconLib.Heart_O
-                size={SHARED.fontXL}
-                color={selectedTheme.iconColorPrimary}
-              />
-            )}
-          </TouchableOpacity>
-          <Text
-            style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-          >
-            {likes + (isLiked ? 1 : 0)} Reactions
-          </Text>
+        <View style={baseStyle.columnsInside}>
+          <View style={[baseStyle.columnsInsideFlex, baseStyle.cols_2]}>
+            <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
+            <Text
+              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+            >
+              {rating}
+            </Text>
+          </View>
+          <View style={[baseStyle.columnsInsideFlex, baseStyle.cols_2, baseStyle.alignRight, baseStyle.rPaddingXS]}>
+            <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
+              {isLiked ? (
+                <IconLib.Heart size={SHARED.fontXL} color="red" />
+              ) : (
+                <IconLib.Heart_O
+                  size={SHARED.fontXL}
+                  color={selectedTheme.iconColorPrimary}
+                />
+              )}
+            </TouchableOpacity>
+            <Text
+              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {likes + (isLiked ? 1 : 0)} 
+            </Text>
+          </View>
         </View>
       </View>
       <View style={baseStyle.verticalSpacerXS} />

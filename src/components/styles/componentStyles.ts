@@ -76,14 +76,14 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     cardImageWrapper: {
       width: '100%',
-      flex: 0.35,
+      flex: 0.47,
       position: 'relative',
     },
     contentContainer: {
       justifyContent: 'flex-start',
       alignItems: 'center',
       width: '100%',
-      flex: 0.5,
+      flex: 0.38,
     },
     buttonContainer: {
       flex: 0.15,

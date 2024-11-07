@@ -201,7 +201,7 @@ const MyProductsScreen = () => {
           <View>
             <Image
               source={{ uri: selectedProduct.imageUrl }}
-              style={myProductStyle.slideModalImage}
+              style={baseStyle.slideModalImage}
             />
             <Text
               style={[

@@ -156,6 +156,9 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingRight: normalizeWidth(10),
       paddingLeft: normalizeWidth(10),
     },
+    rPaddingXS: {
+      paddingRight: normalizeWidth(4),
+    },
     rPaddingS: {
       paddingRight: normalizeWidth(10),
     },
@@ -312,6 +315,12 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
 
 
     //////////////
+    slideModalImage: {
+      width: '100%',
+      height: normalizeHeight(200),
+      borderRadius: normalizeHeight(10),
+      marginBottom: normalizeHeight(10),
+    },
     searchContainer: {
       paddingTop: 0,
       paddingBottom: 0,

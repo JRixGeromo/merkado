@@ -14,11 +14,6 @@ export const myProductStyles = (
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
-    slideModalImage: {
-      width: '100%',
-      height: normalizeHeight(200),
-      borderRadius: normalizeHeight(10),
-      marginBottom: normalizeHeight(10),
-    },
+
   });
 };
