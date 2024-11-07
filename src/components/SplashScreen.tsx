@@ -56,7 +56,7 @@ const SplashScreen = () => {
         ]}
       >
         <Image
-          source={require('../../../../assets/logo.png')} // Logo path
+          source={require('../../assets/logo.png')} // Logo path
           style={compStyle.logo}
         />
         <Text style={compStyle.splashText}>Welcome to Merkado</Text>
