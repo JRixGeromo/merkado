@@ -3,12 +3,12 @@ import { View, Text, ActivityIndicator, Image, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
-import Box from '../../../components/Box';
-import { RootState } from '../../../store/store';
-import { useAppSelector } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
-import { RootStackParamList } from '../../../navigationTypes';
-import { theme as appTheme } from '../../../styles/theme'; // Import your theme for direct use
+import { RootState } from '../store/store';
+import { useAppSelector } from '../hooks/reduxHooks';
+import { compStyles } from './styles/componentStyles'; // Import your style
+import { RootStackParamList } from '../navigationTypes';
+import { theme as appTheme } from '../styles/theme'; // Import your theme for direct use
+import { layoutStyles } from '../styles/layoutStyles';
 
 type SplashScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -22,7 +22,8 @@ const SplashScreen = () => {
   );
 
   const theme = useAppSelector(state => state.theme.theme) as 'light' | 'dark'; // Explicitly define the type
-  const commonStyle = commonStyles(theme); // Dynamically create styles based on the theme
+  const compStyle = compStyles(theme); // Dynamically create styles based on the theme
+  const layoutStyle = layoutStyles(theme); // Dynamically create styles based on the theme
   const selectedTheme = appTheme[theme]; // Access the current theme (light or dark)
   const fadeAnim = new Animated.Value(0); // Create an animated value for fade-in
 
@@ -47,7 +48,7 @@ const SplashScreen = () => {
   }, [isAuthenticated, navigation]);
 
   return (
-    <View style={commonStyle.splashContainer}>
+    <View style={compStyle.splashContainer}>
       <Animated.View
         style={[
           { opacity: fadeAnim },
@@ -56,16 +57,16 @@ const SplashScreen = () => {
       >
         <Image
           source={require('../../../../assets/logo.png')} // Logo path
-          style={commonStyle.logo}
+          style={compStyle.logo}
         />
-        <Text style={commonStyle.splashText}>Welcome to Merkado</Text>
+        <Text style={compStyle.splashText}>Welcome to Merkado</Text>
       </Animated.View>
 
       {/* Custom loader */}
       <ActivityIndicator
         size="large"
         color={selectedTheme.textPrimary} // Use primary color directly from the theme
-        style={commonStyle.loader}
+        style={layoutStyle.loader}
       />
     </View>
   );

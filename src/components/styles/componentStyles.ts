@@ -8,6 +8,24 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+    splashContainer: {
+      flex: 1,
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      backgroundColor: selectedTheme.cardBackground, 
+    },
+    logo: {
+      width: normalizeWidth(150), 
+      height: normalizeHeight(150), 
+      resizeMode: 'contain', 
+      marginBottom: normalizeHeight(20), 
+    },
+    splashText: {
+      fontSize: SHARED.fontXxL,
+      fontWeight: 'bold',
+      color: selectedTheme.textPrimary, 
+      marginTop: normalizeHeight(10), 
+    },
     commentFormContainer: {
       marginBottom: normalizeHeight(2),
       paddingTop: normalizeHeight(12),
