@@ -11,7 +11,7 @@ import { useAppSelector } from '../hooks/reduxHooks';
 import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 import CustomButton from './CustomButton'; // Import your CustomButton component
@@ -52,7 +52,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
   const [showModal, setShowModal] = useState(false);
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   // Inside the component
   const [addNewModalVisible, setAddNewModalVisible] = useState(false);
@@ -135,7 +135,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
       <TouchableOpacity
         onPress={() => setShowModal(true)}
         accessibilityLabel="Select option"
-        style={layoutStyle.columnsInside}
+        style={baseStyle.columnsInside}
       >
         {showIcon && (
           <View style={{ marginRight: 10 }}>
@@ -164,7 +164,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               alignItems: 'center',
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
-            layoutStyle.modalContainer,
+            baseStyle.modalContainer,
           ]}
         >
           <View
@@ -198,7 +198,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
             >
               <Text style={compStyle.modalText}>{t('Add New')}</Text>
             </TouchableOpacity>
-            <View style={layoutStyle.verticalSpacerM} />
+            <View style={baseStyle.verticalSpacerM} />
             <CustomButton
               title={t('Close')}
               onPress={() => setShowModal(false)}
@@ -216,7 +216,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
       >
         <View
           style={[
-            layoutStyle.modalContainer,
+            baseStyle.modalContainer,
             {
               flex: 1,
               justifyContent: 'center',
@@ -238,7 +238,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               placeholder={t('New Option')}
               value={newOption}
               onChangeText={setNewOption}
-              style={[layoutStyle.input, { marginBottom: 10 }]}
+              style={[baseStyle.input, { marginBottom: 10 }]}
               placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             />
             <CustomButton

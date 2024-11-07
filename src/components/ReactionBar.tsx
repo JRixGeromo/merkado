@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 
 interface Reaction {
@@ -19,12 +19,12 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
   onReactionPress,
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
   return (
-    <ScrollView horizontal={true} contentContainerStyle={layoutStyle.alignLeft}>
+    <ScrollView horizontal={true} contentContainerStyle={baseStyle.alignLeft}>
       {reactions.map(reaction => (
         <TouchableOpacity
           key={reaction.label}

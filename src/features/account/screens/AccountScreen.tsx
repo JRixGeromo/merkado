@@ -6,8 +6,8 @@ import { toggleTheme } from '../../../store/slices/themeSlice';
 import CustomButton from '../../../components/CustomButton';
 import ListOptions from '../../../components/ListOptions'; // Import Dropdown component
 import { acctStyles } from '../styles/accountStyles'; // Import your style
-import { layoutStyles } from '../../../styles/layoutStyles';
-import { SHARED } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
+import { SHARED } from '../../../styles/baseStyles';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -21,7 +21,7 @@ const AccountScreen = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const themeType = useAppSelector(state => state.theme.theme);
   const acctStyle = acctStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -66,7 +66,7 @@ const AccountScreen = () => {
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
         {/* Account Information Card */}
-        <View style={layoutStyle.innerContainer}>
+        <View style={baseStyle.innerContainer}>
           {/* <View style={acctStyle.card}>
             <View style={acctStyle.cardHeader}>
               <Icon

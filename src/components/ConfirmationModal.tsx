@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import CustomButton from './CustomButton'; // Import CustomButton
 
@@ -33,7 +33,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   const themeType = useAppSelector(state => state.theme.theme);
   const selectedTheme = appTheme[themeType];
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
 
   return (
     <Modal
@@ -74,7 +74,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         {/* Buttons */}
         <View
           style={[
-            layoutStyle.columnsInside,
+            baseStyle.columnsInside,
             { justifyContent: 'space-between', marginTop: 20 },
           ]}
         >

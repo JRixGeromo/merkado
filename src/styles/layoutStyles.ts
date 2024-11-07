@@ -5,7 +5,6 @@ import {
   normalizeWidth,
 } from '../utils/responsive'; // Import responsive utilities
 import { theme } from '../styles/theme'; // Make sure this path is correct
-import { FlatList } from 'react-native-gesture-handler';
 
 // Centralized constants for commonly used style properties
 export const SHARED = {
@@ -36,7 +35,7 @@ export const SHARED = {
 };
 
 // Dynamically generated styles based on theme
-export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
+export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
@@ -310,8 +309,9 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       color: selectedTheme.loader,
     },
 
-    //////////////
 
+
+    //////////////
     searchContainer: {
       paddingTop: 0,
       paddingBottom: 0,

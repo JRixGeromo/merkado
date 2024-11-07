@@ -4,7 +4,7 @@ import {
   normalizeHeight,
   normalizeWidth,
 } from '../../../utils/responsive'; // Import responsive utilities
-import { SHARED } from '../../../styles/layoutStyles';
+import { SHARED } from '../../../styles/baseStyles';
 import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import IconLib from '../components/IconLib'; // Import the new IconLib
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useAppSelector } from '../hooks/reduxHooks';
 
@@ -23,7 +23,7 @@ type DropdownMenuProps = {
 const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
   const [menuVisible, setMenuVisible] = useState(false);

@@ -14,7 +14,7 @@ import {
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { acctStyles } from '../styles/accountStyles'; // Import your style
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import IconLib from '../../../components/IconLib'; // Import IconLib here
@@ -50,7 +50,7 @@ const LoginScreen = () => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const acctStyle = acctStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
 
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
@@ -125,20 +125,20 @@ const LoginScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View
           style={[
-            layoutStyle.container,
+            baseStyle.container,
             { padding: 20, justifyContent: 'center' },
           ]}
         >
           <View
             style={[
-              layoutStyle.shadowedContainer,
-              layoutStyle.formContainer,
+              baseStyle.shadowedContainer,
+              baseStyle.formContainer,
               { backgroundColor: selectedTheme.cardBackground },
             ]}
           >
             <Image
               source={require('../../../../assets/logo.png')}
-              style={layoutStyle.logo}
+              style={baseStyle.logo}
             />
 
             <Text style={acctStyle.welcomeText}>{t('welcomeBack')}</Text>
@@ -165,7 +165,7 @@ const LoginScreen = () => {
               <ActivityIndicator
                 size="large"
                 color={selectedTheme.textPrimary}
-                style={layoutStyle.loader}
+                style={baseStyle.loader}
               />
             ) : (
               <CustomButton
@@ -181,7 +181,7 @@ const LoginScreen = () => {
               <Text
                 style={[
                   acctStyle.linkText,
-                  layoutStyle.marginAllL,
+                  baseStyle.marginAllL,
                   { fontWeight: 'bold' },
                 ]}
               >
@@ -191,8 +191,8 @@ const LoginScreen = () => {
 
             <Text
               style={[
-                layoutStyle.smallText,
-                layoutStyle.marginAllM,
+                baseStyle.smallText,
+                baseStyle.marginAllM,
                 { color: selectedTheme.textSecondary },
               ]}
             >
@@ -228,8 +228,8 @@ const LoginScreen = () => {
             <TouchableOpacity onPress={navigateToRegister}>
               <Text
                 style={[
-                  layoutStyle.smallText,
-                  layoutStyle.marginAllM,
+                  baseStyle.smallText,
+                  baseStyle.marginAllM,
                   { color: selectedTheme.textSecondary },
                 ]}
               >

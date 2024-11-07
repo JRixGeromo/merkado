@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
 import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selector for theme
@@ -48,7 +48,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -102,7 +102,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
 
       <TextInput
         style={[
-          layoutStyle.input,
+          baseStyle.input,
           inputStyle,
           {
             color: themeBasedTextColor,

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { chatStyles } from '../styles/chatStyles'; // Import your style
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
@@ -37,7 +37,7 @@ type Avatar = {
 const ChatScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const chatStyle = chatStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
@@ -141,9 +141,9 @@ const ChatScreen = () => {
     <View
       key={msg.id}
       style={[
-        layoutStyle.columnsInside,
-        layoutStyle.rPaddingS,
-        layoutStyle.lPaddingS,
+        baseStyle.columnsInside,
+        baseStyle.rPaddingS,
+        baseStyle.lPaddingS,
         {
           justifyContent: msg.sender === 'user1' ? 'flex-start' : 'flex-end',
         },
@@ -236,7 +236,7 @@ const ChatScreen = () => {
       >
         <View
           style={[
-            layoutStyle.alignRight,
+            baseStyle.alignRight,
             {
               paddingHorizontal: 10,
               marginBottom: 10,
@@ -276,8 +276,8 @@ const ChatScreen = () => {
             placeholder={t('type here ...')}
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             style={[
-              layoutStyle.input,
-              layoutStyle.mediumText,
+              baseStyle.input,
+              baseStyle.mediumText,
               { flex: 1, color: selectedTheme.textPrimary },
             ]}
             onFocus={() => setShowReactions(false)} // Hide smileys when input is focused

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import MarketplaceModal from '../../marketplace/components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
 import Carousel from 'react-native-snap-carousel';
@@ -52,7 +52,7 @@ export type Store = {
 const FrontStoreScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -266,8 +266,8 @@ const FrontStoreScreen = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
-          layoutStyle.container,
-          layoutStyle.rlPaddingS,
+          baseStyle.container,
+          baseStyle.rlPaddingS,
           { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
@@ -294,10 +294,10 @@ const FrontStoreScreen = () => {
           </Text>
         </View>
         {/* Search Container */}
-        {/* <View style={layoutStyle.verticalSpacerM} />
-        <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
+        {/* <View style={baseStyle.verticalSpacerM} />
+        <View style={[commonStyle.searchContainer, baseStyle.columnsInside]}>
           <TouchableOpacity
-            style={layoutStyle.rMarginS}
+            style={baseStyle.rMarginS}
             onPress={toggleModal}
           >
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
@@ -325,10 +325,10 @@ const FrontStoreScreen = () => {
         {/* Promo Carousel */}
 
         {/* Categories */}
-        <View style={layoutStyle.verticalSpacerM}>
+        <View style={baseStyle.verticalSpacerM}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textPrimary },
             ]}
           >
@@ -351,10 +351,10 @@ const FrontStoreScreen = () => {
             {/* Add more categories as needed */}
           </ScrollView>
         </View>
-        <View style={layoutStyle.verticalSpacerL}>
+        <View style={baseStyle.verticalSpacerL}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textSecondary },
             ]}
           >
@@ -378,7 +378,7 @@ const FrontStoreScreen = () => {
         <View>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textSecondary },
             ]}
           >
@@ -395,10 +395,10 @@ const FrontStoreScreen = () => {
         </View>
 
         {/* Featured Products */}
-        <View style={layoutStyle.verticalSpacerM}>
+        <View style={baseStyle.verticalSpacerM}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textSecondary },
             ]}
           >
@@ -415,10 +415,10 @@ const FrontStoreScreen = () => {
         </View>
 
         {/* Customer Reviews */}
-        <View style={layoutStyle.verticalSpacerM}>
+        <View style={baseStyle.verticalSpacerM}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textPrimary },
             ]}
           >

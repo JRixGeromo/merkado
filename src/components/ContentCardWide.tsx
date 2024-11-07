@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles, SHARED } from '../styles/layoutStyles';
+import { baseStyles, SHARED } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
 import CustomButton from './CustomButton';
@@ -35,27 +35,27 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
   return (
     <View
       style={[
-        layoutStyle.shadowedContainer,
-        layoutStyle.columnsInsideFlex,
-        layoutStyle.contentBox,
+        baseStyle.shadowedContainer,
+        baseStyle.columnsInsideFlex,
+        baseStyle.contentBox,
       ]}
     >
-      <View style={[compStyle.contentImage, layoutStyle.cols_25]}>
+      <View style={[compStyle.contentImage, baseStyle.cols_25]}>
         <Image source={{ uri: imageUrl }} style={compStyle.contentImage} />
       </View>
 
-      <View style={[layoutStyle.cols_75]}>
-        <View style={[layoutStyle.paddingAllS, { height: '72%' }]}>
+      <View style={[baseStyle.cols_75]}>
+        <View style={[baseStyle.paddingAllS, { height: '72%' }]}>
           <Text
             style={[
-              layoutStyle.mediumText,
+              baseStyle.mediumText,
               { color: selectedTheme.textSecondary, fontWeight: 'bold' },
             ]}
             numberOfLines={1}
@@ -65,7 +65,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
           </Text>
           <Text
             style={[
-              layoutStyle.smallText,
+              baseStyle.smallText,
               { color: selectedTheme.textSecondary },
             ]}
             numberOfLines={1}
@@ -73,13 +73,13 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
           >
             {description}
           </Text>
-          <View style={layoutStyle.verticalSpacerS} />
+          <View style={baseStyle.verticalSpacerS} />
           {type === 'product' && price !== undefined && (
             <Text
               numberOfLines={1}
               ellipsizeMode="tail"
               style={[
-                layoutStyle.smallText,
+                baseStyle.smallText,
                 { color: selectedTheme.textSecondary },
               ]}
             >
@@ -91,13 +91,13 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
         {/* Render buttons */}
         <View
           style={[
-            layoutStyle.columnsInside,
-            layoutStyle.alignRight,
+            baseStyle.columnsInside,
+            baseStyle.alignRight,
             { height: '28%' },
           ]}
         >
           {buttonActions.map((action, index) => (
-            <View key={index} style={[layoutStyle.cols_3]}>
+            <View key={index} style={[baseStyle.cols_3]}>
               <CustomButton
                 title={action.title}
                 textSize={action.textSize}
@@ -109,7 +109,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
                 iconSize={SHARED.fontL}
                 color={selectedTheme.buttonTextPrimary}
                 style={[
-                  layoutStyle.cardButton,
+                  baseStyle.cardButton,
                   action.buttonStyle,
                   { height: '100%' },
                 ]}

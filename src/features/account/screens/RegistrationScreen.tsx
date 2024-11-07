@@ -16,8 +16,8 @@ import DateAndTimePicker from '../../../components/DateAndTimePicker';
 import ListOptions from '../../../components/ListOptions';
 
 import { acctStyles } from '../styles/accountStyles'; // Import your style
-import { layoutStyles } from '../../../styles/layoutStyles';
-import { SHARED } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
+import { SHARED } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { useNavigation } from '@react-navigation/native';
@@ -69,7 +69,7 @@ const RegistrationScreen = () => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const acctStyle = acctStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
@@ -118,14 +118,14 @@ const RegistrationScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View
           style={[
-            layoutStyle.container,
+            baseStyle.container,
             { padding: 20, justifyContent: 'center' },
           ]}
         >
           <View
             style={[
-              layoutStyle.shadowedContainer,
-              layoutStyle.formContainer,
+              baseStyle.shadowedContainer,
+              baseStyle.formContainer,
               { backgroundColor: selectedTheme.cardBackground },
             ]}
           >
@@ -198,7 +198,7 @@ const RegistrationScreen = () => {
                 <ActivityIndicator
                   size="large"
                   color={selectedTheme.textPrimary}
-                  style={layoutStyle.loader}
+                  style={baseStyle.loader}
                 />
               </View>
             )}
@@ -222,8 +222,8 @@ const RegistrationScreen = () => {
             >
               <Text
                 style={[
-                  layoutStyle.smallText,
-                  layoutStyle.marginAllM,
+                  baseStyle.smallText,
+                  baseStyle.marginAllM,
                   { color: selectedTheme.textSecondary },
                 ]}
               >

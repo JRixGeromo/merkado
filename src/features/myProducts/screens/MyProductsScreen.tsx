@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { myProductStyles } from '../styles/myProductStyles';
-import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
+import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
 import SlideContentModal from '../../../components/SlideContentModal';
@@ -32,7 +32,7 @@ export type Product = {
 const MyProductsScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const myProductStyle = myProductStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -108,7 +108,7 @@ const MyProductsScreen = () => {
           width: '100%',
           textSize: 12,
           onPress: () => handleDeleteProduct(item),
-          buttonStyle: layoutStyle.cardButton,
+          buttonStyle: baseStyle.cardButton,
         },
         {
           iconName: 'Create_O',
@@ -117,7 +117,7 @@ const MyProductsScreen = () => {
           width: '100%',
           textSize: 12,
           onPress: () => console.log('Edit Pressed'),
-          buttonStyle: layoutStyle.cardButton,
+          buttonStyle: baseStyle.cardButton,
         },
         {
           iconName: 'View_O',
@@ -126,7 +126,7 @@ const MyProductsScreen = () => {
           width: '100%',
           textSize: 12,
           onPress: () => handleViewProduct(item),
-          buttonStyle: layoutStyle.cardButton,
+          buttonStyle: baseStyle.cardButton,
         },
       ]}
     />
@@ -135,26 +135,26 @@ const MyProductsScreen = () => {
   return (
     <View
       style={[
-        layoutStyle.container,
-        layoutStyle.rlPaddingS,
+        baseStyle.container,
+        baseStyle.rlPaddingS,
         { backgroundColor: selectedTheme.fullContainerBackgroundColor },
       ]}
     >
-      <View style={layoutStyle.verticalSpacerM} />
+      <View style={baseStyle.verticalSpacerM} />
       {/* Search Bar */}
-      <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
+      <View style={[baseStyle.columnsInside, baseStyle.alignAllItems]}>
         <View
           style={[
-            layoutStyle.searchContainer,
-            layoutStyle.columnsInside,
-            layoutStyle.cols_80,
+            baseStyle.searchContainer,
+            baseStyle.columnsInside,
+            baseStyle.cols_80,
           ]}
         >
-          <TouchableOpacity style={layoutStyle.rMarginS}>
+          <TouchableOpacity style={baseStyle.rMarginS}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={layoutStyle.searchInput}
+            style={baseStyle.searchInput}
             placeholder="Search Products"
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             value={searchTerm}
@@ -162,7 +162,7 @@ const MyProductsScreen = () => {
           />
         </View>
 
-        <View style={[layoutStyle.cols_5, layoutStyle.lPaddingL]}>
+        <View style={[baseStyle.cols_5, baseStyle.lPaddingL]}>
           <CustomButton
             title=""
             textSize={12}
@@ -173,12 +173,12 @@ const MyProductsScreen = () => {
             iconColor={selectedTheme.buttonTextPrimary}
             iconSize={SHARED.fontXL}
             color={selectedTheme.buttonTextPrimary}
-            style={layoutStyle.cardButton}
+            style={baseStyle.cardButton}
             borderRadius={0}
           />
         </View>
       </View>
-      <View style={layoutStyle.verticalSpacerM} />
+      <View style={baseStyle.verticalSpacerM} />
       {/* Product List */}
       <FlatList
         data={products.filter(product =>
@@ -187,7 +187,7 @@ const MyProductsScreen = () => {
         //data={products} // Temporarily use this without filtering
         keyExtractor={item => item.id}
         renderItem={renderProductItem}
-        contentContainerStyle={layoutStyle.flatListPaddingTop}
+        contentContainerStyle={baseStyle.flatListPaddingTop}
         showsVerticalScrollIndicator={false}
       />
 
@@ -205,7 +205,7 @@ const MyProductsScreen = () => {
             />
             <Text
               style={[
-                layoutStyle.smallText,
+                baseStyle.smallText,
                 { color: selectedTheme.textSecondary },
               ]}
             >
@@ -213,7 +213,7 @@ const MyProductsScreen = () => {
             </Text>
             <Text
               style={[
-                layoutStyle.smallText,
+                baseStyle.smallText,
                 { color: selectedTheme.textSecondary },
               ]}
             >
@@ -221,7 +221,7 @@ const MyProductsScreen = () => {
             </Text>
             <Text
               style={[
-                layoutStyle.smallText,
+                baseStyle.smallText,
                 { color: selectedTheme.textSecondary },
               ]}
             >

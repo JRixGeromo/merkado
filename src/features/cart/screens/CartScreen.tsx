@@ -11,7 +11,7 @@ import {
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
 
 import { cartStyles } from '../styles/cartStyles'; // Import your style
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
 import CustomButton from '../../../components/CustomButton';
@@ -55,7 +55,7 @@ const CartScreen: React.FC = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
   const cartStyle = cartStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
@@ -86,35 +86,35 @@ const CartScreen: React.FC = () => {
 
   // Type for rendering each item in FlatList
   const renderItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={[layoutStyle.contentBox, layoutStyle.columnsInside]}>
+    <View style={[baseStyle.contentBox, baseStyle.columnsInside]}>
       <Image source={item.image} style={cartStyle.cartItemImage} />
-      <View style={layoutStyle.lMarginL}>
+      <View style={baseStyle.lMarginL}>
         <Text
-          style={[layoutStyle.mediumText, { color: selectedTheme.textPrimary }]}
+          style={[baseStyle.mediumText, { color: selectedTheme.textPrimary }]}
         >
           {item.name}
         </Text>
         <Text
           style={[
-            layoutStyle.largeText,
-            layoutStyle.verticalSpacerXS,
+            baseStyle.largeText,
+            baseStyle.verticalSpacerXS,
             { color: selectedTheme.textSecondary },
           ]}
         >
           ${item.price}
         </Text>
-        <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerM]}>
+        <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerM]}>
           <TouchableOpacity
             onPress={() => updateQuantity(item.id, 'decrement')}
             style={cartStyle.quantityButton}
           >
-            <Text style={layoutStyle.largeText}>-</Text>
+            <Text style={baseStyle.largeText}>-</Text>
           </TouchableOpacity>
           <Text
             style={[
-              layoutStyle.largeText,
-              layoutStyle.lPaddingS,
-              layoutStyle.rPaddingS,
+              baseStyle.largeText,
+              baseStyle.lPaddingS,
+              baseStyle.rPaddingS,
               { color: selectedTheme.textSecondary },
             ]}
           >
@@ -124,7 +124,7 @@ const CartScreen: React.FC = () => {
             onPress={() => updateQuantity(item.id, 'increment')}
             style={cartStyle.quantityButton}
           >
-            <Text style={layoutStyle.largeText}>+</Text>
+            <Text style={baseStyle.largeText}>+</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -134,8 +134,8 @@ const CartScreen: React.FC = () => {
   return (
     <View
       style={[
-        layoutStyle.container,
-        layoutStyle.paddingAllS,
+        baseStyle.container,
+        baseStyle.paddingAllS,
         { backgroundColor: selectedTheme.fullBackgroundColor },
       ]}
     >
@@ -143,18 +143,18 @@ const CartScreen: React.FC = () => {
         data={cart}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        contentContainerStyle={layoutStyle.verticalSpacerS}
+        contentContainerStyle={baseStyle.verticalSpacerS}
       />
       <View
-        style={[layoutStyle.columnsInside, { justifyContent: 'space-between' }]}
+        style={[baseStyle.columnsInside, { justifyContent: 'space-between' }]}
       >
         <Text
-          style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}
+          style={[baseStyle.xLargeText, { color: selectedTheme.textPrimary }]}
         >
           Total:
         </Text>
         <Text
-          style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}
+          style={[baseStyle.xLargeText, { color: selectedTheme.textPrimary }]}
         >
           ${calculateTotal()}
         </Text>

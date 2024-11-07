@@ -10,7 +10,7 @@ import {
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { dashStyles } from '../styles/dashStyles'; // Import your style
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
@@ -54,7 +54,7 @@ export type Store = {
 const VendorDashboard = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const dashStyle = dashStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
   const navigation =
@@ -97,15 +97,15 @@ const VendorDashboard = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
-          layoutStyle.container,
-          layoutStyle.rlPaddingS,
+          baseStyle.container,
+          baseStyle.rlPaddingS,
           { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
         {/* Dashboard Metrics */}
-        <View style={[layoutStyle.verticalSpacerM]}>
+        <View style={[baseStyle.verticalSpacerM]}>
           <View
-            style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}
+            style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}
           >
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Total Sales')}</Text>
@@ -121,7 +121,7 @@ const VendorDashboard = () => {
             </View>
           </View>
           <View
-            style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}
+            style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}
           >
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Avg. Rating')}</Text>
@@ -140,23 +140,23 @@ const VendorDashboard = () => {
 
         {/* Reaction Metrics */}
         <View style={{ marginTop: 20 }}>
-          {/* <Text style={layoutStyle.largeText}>{t('Reactions')}</Text> */}
-          <View style={[layoutStyle.columnsInside, { marginTop: 10 }]}>
-            <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
+          {/* <Text style={baseStyle.largeText}>{t('Reactions')}</Text> */}
+          <View style={[baseStyle.columnsInside, { marginTop: 10 }]}>
+            <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Heart size={24} color={selectedTheme.iconColorPrimary} />
               <Text style={dashStyle.reactionValue}>
                 {reactionMetrics.hearts}
               </Text>
               <Text style={dashStyle.reactionLabel}>{t('Hearts')}</Text>
             </View>
-            <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
+            <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Share size={24} color={selectedTheme.iconColorPrimary} />
               <Text style={dashStyle.reactionValue}>
                 {reactionMetrics.shares}
               </Text>
               <Text style={dashStyle.reactionLabel}>{t('Shares')}</Text>
             </View>
-            <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
+            <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Chat_O
                 size={24}
                 color={selectedTheme.iconColorPrimary}
@@ -171,7 +171,7 @@ const VendorDashboard = () => {
 
         {/* Recent Orders */}
         <View style={{ marginTop: 30 }}>
-          <Text style={layoutStyle.largeText}>{t('Recent Orders')}</Text>
+          <Text style={baseStyle.largeText}>{t('Recent Orders')}</Text>
           {recentOrders.map(order => (
             <View key={order.id} style={dashStyle.orderBox}>
               <Text style={dashStyle.orderText}>
@@ -191,7 +191,7 @@ const VendorDashboard = () => {
 
         {/* Customer Feedback */}
         <View style={{ marginTop: 30 }}>
-          <Text style={layoutStyle.largeText}>{t('Customer Feedback')}</Text>
+          <Text style={baseStyle.largeText}>{t('Customer Feedback')}</Text>
           {recentFeedback.map(feedback => (
             <View key={feedback.id} style={dashStyle.feedbackBox}>
               <Text style={dashStyle.feedbackUser}>{feedback.user}</Text>
@@ -203,7 +203,7 @@ const VendorDashboard = () => {
 
         {/* Quick Access to Live Show */}
         {/* <TouchableOpacity
-          style={[layoutStyle.liveShowButton, { backgroundColor: selectedTheme.buttonPrimary }]}
+          style={[baseStyle.liveShowButton, { backgroundColor: selectedTheme.buttonPrimary }]}
           onPress={() => navigation.navigate('LiveShowScreen')}
         >
           <IconLib.Video size={20} color={selectedTheme.textLight} />

@@ -9,7 +9,7 @@ import {
 import { useAppSelector } from '../hooks/reduxHooks';
 import ReactionBar from './ReactionBar'; // Import the reusable ReactionBar component
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
 
@@ -38,7 +38,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
 
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -58,7 +58,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
   return (
     <View
       style={[
-        layoutStyle.rowsInside,
+        baseStyle.rowsInside,
         compStyle.commentFormContainer,
         { backgroundColor: backgroundColor || selectedTheme.cardBackground }, // Use backgroundColor prop if provided
       ]}
@@ -89,8 +89,8 @@ const CommentInput: React.FC<CommentInputProps> = ({
 
       <View
         style={[
-          layoutStyle.columnsInside,
-          layoutStyle.alignLeft,
+          baseStyle.columnsInside,
+          baseStyle.alignLeft,
           { paddingTop: 10 },
         ]}
       >

@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 import { useAppSelector } from '../hooks/reduxHooks';
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles } from '../styles/layoutStyles';
+import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 
 interface SlideContentModalProps {
@@ -22,7 +22,7 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -43,7 +43,7 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({
           onPress={onClose}
         >
           <Text
-            style={[layoutStyle.largeText, { color: selectedTheme.textGray }]}
+            style={[baseStyle.largeText, { color: selectedTheme.textGray }]}
           >
             X
           </Text>

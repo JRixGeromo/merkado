@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { layoutStyles, SHARED } from '../styles/layoutStyles';
+import { baseStyles, SHARED } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
 import CustomButton from './CustomButton';
@@ -44,12 +44,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
   return (
-    <View style={[layoutStyle.shadowedContainer, compStyle.contentBoxPortrait]}>
+    <View style={[baseStyle.shadowedContainer, compStyle.contentBoxPortrait]}>
       <View style={compStyle.cardImageWrapper}>
         <Image source={{ uri: imageUrl }} style={compStyle.productImage} />
         <TouchableOpacity
@@ -80,7 +80,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         >
           {name}
         </Text>
-        <View style={layoutStyle.verticalSpacerXS} />
+        <View style={baseStyle.verticalSpacerXS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
           <Text style={compStyle.productPrice}>₱{price}</Text>
@@ -95,19 +95,19 @@ const ContentCard: React.FC<ContentCardProps> = ({
             {location}
           </Text>
         )}
-        <View style={layoutStyle.verticalSpacerS} />
+        <View style={baseStyle.verticalSpacerS} />
 
-        <View style={layoutStyle.columnsInsideFlex}>
-          <IconLib.Star size={16} color="gold" style={layoutStyle.rMarginXS} />
+        <View style={baseStyle.columnsInsideFlex}>
+          <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
           <Text
-            style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}
+            style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
           >
             {rating}
           </Text>
         </View>
-        <View style={layoutStyle.verticalSpacerXS} />
-        <View style={[layoutStyle.columnsInsideFlex, layoutStyle.bMaringS]}>
-          <TouchableOpacity onPress={onLikePress} style={layoutStyle.rMarginXS}>
+        <View style={baseStyle.verticalSpacerXS} />
+        <View style={[baseStyle.columnsInsideFlex, baseStyle.bMaringS]}>
+          <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
             {isLiked ? (
               <IconLib.Heart size={SHARED.fontXL} color="red" />
             ) : (
@@ -118,7 +118,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
             )}
           </TouchableOpacity>
           <Text
-            style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}
+            style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
             numberOfLines={1}
             ellipsizeMode="tail"
           >
@@ -126,8 +126,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
           </Text>
         </View>
       </View>
-      <View style={layoutStyle.verticalSpacerXS} />
-      <View style={[layoutStyle.columnsInsideFlex, compStyle.buttonContainer]}>
+      <View style={baseStyle.verticalSpacerXS} />
+      <View style={[baseStyle.columnsInsideFlex, compStyle.buttonContainer]}>
         {buttonActions.map((action, index) => (
           <CustomButton
             key={index}
@@ -138,8 +138,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
             iconColor={selectedTheme.buttonTextPrimary} // Set the icon color
             iconSize={SHARED.fontL} // Set the icon size
             style={[
-              layoutStyle.cols_2,
-              layoutStyle.cardButton,
+              baseStyle.cols_2,
+              baseStyle.cardButton,
               action.buttonStyle,
             ]} // Apply the button styles
             borderRadius={0} // Default borderRadius is 15, can be overridden

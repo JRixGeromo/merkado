@@ -15,7 +15,7 @@ import CommentInput from '../../../components/CommentInput';
 import CustomButton from '../../../components/CustomButton';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
-import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
+import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs'; // Import day.js for date formatting
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -42,7 +42,7 @@ const DetailsScreen: React.FC = () => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -118,7 +118,7 @@ const DetailsScreen: React.FC = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
-          layoutStyle.container,
+          baseStyle.container,
           { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
@@ -127,7 +127,7 @@ const DetailsScreen: React.FC = () => {
           <View style={marketStyle.saleBanner}>
             <Text
               style={[
-                layoutStyle.mediumText,
+                baseStyle.mediumText,
                 { color: selectedTheme.textSecondary },
               ]}
             >
@@ -148,7 +148,7 @@ const DetailsScreen: React.FC = () => {
             <View style={marketStyle.priceContainer}>
               <Text
                 style={[
-                  layoutStyle.xLargeText,
+                  baseStyle.xLargeText,
                   { color: selectedTheme.textPriceBanner },
                 ]}
               >
@@ -158,8 +158,8 @@ const DetailsScreen: React.FC = () => {
           )}
         </View>
 
-        <View style={layoutStyle.columnsInside}>
-          <View style={[layoutStyle.cols_2, layoutStyle.lPaddingS]}>
+        <View style={baseStyle.columnsInside}>
+          <View style={[baseStyle.cols_2, baseStyle.lPaddingS]}>
             {selectedPostReaction && (
               <View
                 style={[
@@ -175,28 +175,28 @@ const DetailsScreen: React.FC = () => {
           </View>
           <View
             style={[
-              layoutStyle.cols_2,
-              layoutStyle.alignRight,
-              layoutStyle.rPaddingS,
+              baseStyle.cols_2,
+              baseStyle.alignRight,
+              baseStyle.rPaddingS,
             ]}
           >
             <Text
-              style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
             >
               46 {t('comments')}
             </Text>
           </View>
         </View>
 
-        <View style={layoutStyle.dividerWrapper}>
-          <View style={layoutStyle.divider} />
+        <View style={baseStyle.dividerWrapper}>
+          <View style={baseStyle.divider} />
         </View>
 
-        <View style={layoutStyle.columnsInside}>
-          <View style={[layoutStyle.cols_75, layoutStyle.lPaddingS]}>
+        <View style={baseStyle.columnsInside}>
+          <View style={[baseStyle.cols_75, baseStyle.lPaddingS]}>
             <Text
               style={[
-                layoutStyle.mediumText,
+                baseStyle.mediumText,
                 { color: selectedTheme.textPrimary },
               ]}
             >
@@ -205,14 +205,14 @@ const DetailsScreen: React.FC = () => {
           </View>
           <View
             style={[
-              layoutStyle.cols_25,
-              layoutStyle.alignRight,
-              layoutStyle.rPaddingS,
+              baseStyle.cols_25,
+              baseStyle.alignRight,
+              baseStyle.rPaddingS,
             ]}
           >
             <IconLib.Star size={20} color="gold" />
             <Text
-              style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
             >
               {' '}
               {item.rating}
@@ -222,24 +222,24 @@ const DetailsScreen: React.FC = () => {
 
         {type === 'store' && item.location && (
           <>
-            <View style={layoutStyle.verticalSpacerS} />
-            <View style={layoutStyle.columnsInside}>
+            <View style={baseStyle.verticalSpacerS} />
+            <View style={baseStyle.columnsInside}>
               <Text
                 style={[
-                  layoutStyle.smallText,
-                  layoutStyle.lPaddingS,
+                  baseStyle.smallText,
+                  baseStyle.lPaddingS,
                   { color: selectedTheme.textSecondary },
                 ]}
               >
                 {item.description}
               </Text>
             </View>
-            <View style={layoutStyle.verticalSpacerS} />
-            <View style={layoutStyle.columnsInside}>
-              <View style={[layoutStyle.cols_75, layoutStyle.lPaddingS]}>
+            <View style={baseStyle.verticalSpacerS} />
+            <View style={baseStyle.columnsInside}>
+              <View style={[baseStyle.cols_75, baseStyle.lPaddingS]}>
                 <Text
                   style={[
-                    layoutStyle.smallText,
+                    baseStyle.smallText,
                     { color: selectedTheme.textSecondary },
                   ]}
                 >
@@ -248,14 +248,14 @@ const DetailsScreen: React.FC = () => {
               </View>
               <View
                 style={[
-                  layoutStyle.cols_25,
-                  layoutStyle.alignRight,
-                  layoutStyle.rPaddingS,
+                  baseStyle.cols_25,
+                  baseStyle.alignRight,
+                  baseStyle.rPaddingS,
                 ]}
               >
                 <Text
                   style={[
-                    layoutStyle.smallText,
+                    baseStyle.smallText,
                     { color: selectedTheme.textBlur },
                   ]}
                 >
@@ -268,24 +268,24 @@ const DetailsScreen: React.FC = () => {
 
         {type === 'product' && (
           <>
-            <View style={layoutStyle.verticalSpacerS} />
-            <View style={layoutStyle.columnsInside}>
+            <View style={baseStyle.verticalSpacerS} />
+            <View style={baseStyle.columnsInside}>
               <Text
                 style={[
-                  layoutStyle.smallText,
-                  layoutStyle.lPaddingS,
+                  baseStyle.smallText,
+                  baseStyle.lPaddingS,
                   { color: selectedTheme.textSecondary },
                 ]}
               >
                 {item.description}
               </Text>
             </View>
-            <View style={layoutStyle.verticalSpacerS} />
-            <View style={layoutStyle.columnsInside}>
-              <View style={[layoutStyle.cols_75, layoutStyle.lPaddingS]}>
+            <View style={baseStyle.verticalSpacerS} />
+            <View style={baseStyle.columnsInside}>
+              <View style={[baseStyle.cols_75, baseStyle.lPaddingS]}>
                 <Text
                   style={[
-                    layoutStyle.smallText,
+                    baseStyle.smallText,
                     { color: selectedTheme.textSecondary },
                   ]}
                 >
@@ -295,14 +295,14 @@ const DetailsScreen: React.FC = () => {
 
               <View
                 style={[
-                  layoutStyle.cols_25,
-                  layoutStyle.alignRight,
-                  layoutStyle.rPaddingS,
+                  baseStyle.cols_25,
+                  baseStyle.alignRight,
+                  baseStyle.rPaddingS,
                 ]}
               >
                 <Text
                   style={[
-                    layoutStyle.smallText,
+                    baseStyle.smallText,
                     { color: selectedTheme.textGray },
                   ]}
                 >
@@ -313,9 +313,9 @@ const DetailsScreen: React.FC = () => {
           </>
         )}
 
-        <View style={layoutStyle.verticalSpacerS} />
-        <View style={layoutStyle.columnsInside}>
-          <View style={[layoutStyle.cols_2, layoutStyle.lPaddingS]}>
+        <View style={baseStyle.verticalSpacerS} />
+        <View style={baseStyle.columnsInside}>
+          <View style={[baseStyle.cols_2, baseStyle.lPaddingS]}>
             {type === 'product' ? (
               <Text>
                 <CustomButton
@@ -361,8 +361,8 @@ const DetailsScreen: React.FC = () => {
 
           <View
             style={[
-              layoutStyle.cols_2,
-              layoutStyle.alignRight,
+              baseStyle.cols_2,
+              baseStyle.alignRight,
               { flexDirection: 'row' },
             ]}
           >
@@ -370,21 +370,21 @@ const DetailsScreen: React.FC = () => {
               <IconLib.ThumbsUp_O
                 size={22}
                 color={selectedTheme.iconColorGray}
-                style={layoutStyle.rPaddingL}
+                style={baseStyle.rPaddingL}
               />
             </TouchableOpacity>
             <TouchableOpacity>
               <IconLib.Chat_O
                 size={22}
                 color={selectedTheme.iconColorGray}
-                style={layoutStyle.rPaddingL}
+                style={baseStyle.rPaddingL}
               />
             </TouchableOpacity>
             <TouchableOpacity>
               <IconLib.Share_O
                 size={22}
                 color={selectedTheme.iconColorGray}
-                style={layoutStyle.rPaddingL}
+                style={baseStyle.rPaddingL}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -395,13 +395,13 @@ const DetailsScreen: React.FC = () => {
               <IconLib.Store_O
                 size={22}
                 color={selectedTheme.iconColorGray}
-                style={layoutStyle.rPaddingS}
+                style={baseStyle.rPaddingS}
               />
             </TouchableOpacity>
           </View>
         </View>
 
-        <View style={layoutStyle.verticalSpacerM} />
+        <View style={baseStyle.verticalSpacerM} />
 
         {/* ReactionBar */}
         {showReactions && (
@@ -417,7 +417,7 @@ const DetailsScreen: React.FC = () => {
         <View style={[marketStyle.commentSection]}>
           <View
             style={[
-              layoutStyle.shadowedContainer,
+              baseStyle.shadowedContainer,
               { borderColor: selectedTheme.lineBorderColor },
             ]}
           >
@@ -449,14 +449,14 @@ const DetailsScreen: React.FC = () => {
             <View
               key={comment.id}
               style={[
-                layoutStyle.shadowedContainer,
+                baseStyle.shadowedContainer,
                 marketStyle.commentContainer,
                 { backgroundColor: selectedTheme.cardBackground },
               ]}
             >
               <View
                 style={[
-                  layoutStyle.rPaddingS,
+                  baseStyle.rPaddingS,
                   { flexDirection: 'row', alignItems: 'center' },
                 ]}
               >
@@ -469,7 +469,7 @@ const DetailsScreen: React.FC = () => {
                 {/* Display the user's name beside the image */}
                 <Text
                   style={[
-                    layoutStyle.smallText,
+                    baseStyle.smallText,
                     { color: selectedTheme.textDark, marginLeft: 5 },
                   ]}
                 >
@@ -481,7 +481,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     marketStyle.commentTextWrapper,
-                    layoutStyle.smallText,
+                    baseStyle.smallText,
                     { color: selectedTheme.textSecondary },
                   ]}
                 >
@@ -501,7 +501,7 @@ const DetailsScreen: React.FC = () => {
                 <View style={marketStyle.timeAndReactionWrapper}>
                   <Text
                     style={[
-                      layoutStyle.xSmallText,
+                      baseStyle.xSmallText,
                       { color: selectedTheme.textBlur, marginTop: 3 },
                     ]}
                   >
@@ -509,8 +509,8 @@ const DetailsScreen: React.FC = () => {
                   </Text>
                   <Text
                     style={[
-                      layoutStyle.xSmallText,
-                      layoutStyle.lPaddingS,
+                      baseStyle.xSmallText,
+                      baseStyle.lPaddingS,
                       { color: selectedTheme.textBlur },
                     ]}
                   >
@@ -518,11 +518,11 @@ const DetailsScreen: React.FC = () => {
                   </Text>
                   <TouchableOpacity
                     onPress={() => toggleCommentReactions(comment.id)}
-                    style={layoutStyle.lPaddingS}
+                    style={baseStyle.lPaddingS}
                   >
                     <Text
                       style={[
-                        layoutStyle.xSmallText,
+                        baseStyle.xSmallText,
                         { color: selectedTheme.textBlur, marginTop: 3 },
                       ]}
                     >
@@ -548,7 +548,7 @@ const DetailsScreen: React.FC = () => {
               {/* Display existing replies */}
               {replies[comment.id]?.map((reply, index) => (
                 <View key={index} style={[marketStyle.replyContainer]}>
-                  <View style={layoutStyle.verticalSpacerM} />
+                  <View style={baseStyle.verticalSpacerM} />
                   <Image
                     source={{
                       uri: 'https://randomuser.me/api/portraits/women/1.jpg',
@@ -562,7 +562,7 @@ const DetailsScreen: React.FC = () => {
                   </Text>
                   <Text
                     style={[
-                      layoutStyle.xSmallText,
+                      baseStyle.xSmallText,
                       { color: selectedTheme.textBlur, marginTop: 3 },
                     ]}
                   >

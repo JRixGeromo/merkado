@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Modal, FlatList } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 import CustomButton from '../../../components/CustomButton'; // Import your CustomButton component
@@ -45,7 +45,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
 
   const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -82,8 +82,8 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
     <Modal visible={visible} animationType="slide" transparent={false}>
       <View
         style={[
-          layoutStyle.container,
-          layoutStyle.paddingAllS,
+          baseStyle.container,
+          baseStyle.paddingAllS,
           { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
@@ -115,7 +115,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
           )}
           keyExtractor={item => item.key}
           showsHorizontalScrollIndicator={false}
-          style={layoutStyle.flatListMaxHeight} // Set the max height for the FlatList
+          style={baseStyle.flatListMaxHeight} // Set the max height for the FlatList
         />
 
         {/* Dynamic Content Based on Selected Section */}

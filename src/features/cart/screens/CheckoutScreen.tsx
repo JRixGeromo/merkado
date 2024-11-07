@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
 
@@ -17,7 +17,7 @@ const CheckoutScreen: React.FC = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
@@ -30,7 +30,7 @@ const CheckoutScreen: React.FC = () => {
   return (
     <View
       style={[
-        layoutStyle.container,
+        baseStyle.container,
         { backgroundColor: selectedTheme.fullBackgroundColor },
       ]}
     >

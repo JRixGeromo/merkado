@@ -14,7 +14,7 @@ import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import ListOptions from '../../../components/ListOptions';
 import { myProductStyles } from '../styles/myProductStyles';
-import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
+import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
@@ -42,7 +42,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const myProductStyle = myProductStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
 
   // Initialize states conditionally based on product prop
@@ -136,26 +136,26 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View
           style={[
-            layoutStyle.container,
+            baseStyle.container,
             { padding: 20, justifyContent: 'center' },
           ]}
         >
           <View
             style={[
-              layoutStyle.shadowedContainer,
-              layoutStyle.formContainer,
+              baseStyle.shadowedContainer,
+              baseStyle.formContainer,
               { backgroundColor: selectedTheme.cardBackground },
             ]}
           >
             <Text
               style={[
-                layoutStyle.verticalSpacerM,
+                baseStyle.verticalSpacerM,
                 { color: selectedTheme.textSecondary },
               ]}
             >
               {product ? 'Update' : 'Create'}
             </Text>
-            <View style={layoutStyle.verticalSpacerM} />
+            <View style={baseStyle.verticalSpacerM} />
             <TextInputWithIcon
               placeholder="Product Name"
               iconName="Pricetag"
@@ -249,9 +249,9 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
                 marginBottom: 10,
               }}
             />
-            <View style={[layoutStyle.rowsInside, { width: '80%' }]}>
+            <View style={[baseStyle.rowsInside, { width: '80%' }]}>
               <View
-                style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}
+                style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}
               >
                 <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
                   Featured Product
@@ -271,7 +271,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
                 />
               </View>
               <View
-                style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}
+                style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}
               >
                 <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
                   Active Product

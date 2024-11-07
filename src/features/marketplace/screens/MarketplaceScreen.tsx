@@ -13,7 +13,7 @@ import {
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import MarketplaceModal from '../components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib'; // Use IconLib here
@@ -41,7 +41,7 @@ export type Product = {
 const MarketplaceScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
-  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
 
@@ -268,19 +268,19 @@ const MarketplaceScreen = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
-          layoutStyle.container,
-          layoutStyle.rlPaddingS,
+          baseStyle.container,
+          baseStyle.rlPaddingS,
           { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
         {/* Search Container */}
-        <View style={layoutStyle.verticalSpacerM} />
-        <View style={[layoutStyle.searchContainer, layoutStyle.columnsInside]}>
-          <TouchableOpacity style={layoutStyle.rMarginS} onPress={toggleModal}>
+        <View style={baseStyle.verticalSpacerM} />
+        <View style={[baseStyle.searchContainer, baseStyle.columnsInside]}>
+          <TouchableOpacity style={baseStyle.rMarginS} onPress={toggleModal}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={layoutStyle.searchInput}
+            style={baseStyle.searchInput}
             placeholder="Search"
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
           />
@@ -302,10 +302,10 @@ const MarketplaceScreen = () => {
         {/* Featured Products Section */}
         {categories.map((category, index) => (
           <View key={index}>
-            <View style={layoutStyle.verticalSpacerM} />
+            <View style={baseStyle.verticalSpacerM} />
             <Text
               style={[
-                layoutStyle.largeText,
+                baseStyle.largeText,
                 { color: selectedTheme.textSecondary },
               ]}
             >
@@ -321,7 +321,7 @@ const MarketplaceScreen = () => {
             />
           </View>
         ))}
-        <View style={layoutStyle.verticalSpacerM} />
+        <View style={baseStyle.verticalSpacerM} />
       </View>
     </ScrollView>
   );

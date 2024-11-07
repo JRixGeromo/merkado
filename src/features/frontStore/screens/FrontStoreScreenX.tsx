@@ -10,7 +10,7 @@ import {
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { commonStyles } from '../../../styles/commonStyles';
-import { layoutStyles } from '../../../styles/layoutStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +27,7 @@ const FrontStoreScreenx = () => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const commonStyle = commonStyles(themeType);
-  const layoutStyle = layoutStyles(themeType);
+  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
@@ -69,8 +69,8 @@ const FrontStoreScreenx = () => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
-          layoutStyle.container,
-          layoutStyle.rlPaddingS,
+          baseStyle.container,
+          baseStyle.rlPaddingS,
           { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
@@ -110,10 +110,10 @@ const FrontStoreScreenx = () => {
         </ScrollView>
 
         {/* Categories */}
-        <View style={layoutStyle.verticalSpacerM}>
+        <View style={baseStyle.verticalSpacerM}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textPrimary },
             ]}
           >
@@ -138,10 +138,10 @@ const FrontStoreScreenx = () => {
         </View>
 
         {/* Products List */}
-        <View style={layoutStyle.verticalSpacerM}>
+        <View style={baseStyle.verticalSpacerM}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textPrimary },
             ]}
           >
@@ -179,10 +179,10 @@ const FrontStoreScreenx = () => {
         </View>
 
         {/* Customer Reviews */}
-        <View style={layoutStyle.verticalSpacerM}>
+        <View style={baseStyle.verticalSpacerM}>
           <Text
             style={[
-              layoutStyle.largeText,
+              baseStyle.largeText,
               { color: selectedTheme.textPrimary },
             ]}
           >
