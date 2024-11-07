@@ -4,7 +4,7 @@ import {
   normalizeHeight,
   normalizeWidth,
 } from '../utils/responsive'; // Import responsive utilities
-import { theme } from '../styles/theme'; // Make sure this path is correct
+import { theme } from './theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 export const SHARED = {

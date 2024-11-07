@@ -27,7 +27,7 @@ import DropdownMenu from './src/components/DropdownMenu';
 import IconLib from './src/components/IconLib';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles';
-import { layoutStyles } from './src/styles/layoutStyles';
+import { layoutStyles } from './src/styles/baseStyles';
 import { theme as appTheme } from './src/styles/theme';
 
 const Stack = createStackNavigator<RootStackParamList>();
