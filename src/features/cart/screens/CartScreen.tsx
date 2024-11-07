@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, ListRenderItem } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  ListRenderItem,
+} from 'react-native';
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
 
 import { cartStyles } from '../styles/cartStyles'; // Import your style
@@ -42,7 +50,6 @@ const cartItems: CartItem[] = [
   // Add more items as needed
 ];
 
-
 const CartScreen: React.FC = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
@@ -58,7 +65,8 @@ const CartScreen: React.FC = () => {
   const updateQuantity = (id: string, action: 'increment' | 'decrement') => {
     const updatedCart = cart.map(item => {
       if (item.id === id) {
-        const newQuantity = action === 'increment' ? item.quantity + 1 : item.quantity - 1;
+        const newQuantity =
+          action === 'increment' ? item.quantity + 1 : item.quantity - 1;
         return { ...item, quantity: newQuantity > 0 ? newQuantity : 1 }; // Prevent quantity from going below 1
       }
       return item;
@@ -72,23 +80,50 @@ const CartScreen: React.FC = () => {
   };
 
   const handleProceedToCheckout = () => {
-    console.log("Checkout Screen")
+    console.log('Checkout Screen');
     navigation.navigate('CheckoutScreen');
   };
 
   // Type for rendering each item in FlatList
   const renderItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={[cartStyle.contentBox, layoutStyle.columnsInside]}>
+    <View style={[layoutStyle.contentBox, layoutStyle.columnsInside]}>
       <Image source={item.image} style={cartStyle.cartItemImage} />
       <View style={layoutStyle.lMarginL}>
-        <Text style={[layoutStyle.mediumText, { color: selectedTheme.textPrimary }]}>{item.name}</Text>
-        <Text style={[layoutStyle.largeText, layoutStyle.verticalSpacerXS, { color: selectedTheme.textSecondary }]}>${item.price}</Text>
+        <Text
+          style={[layoutStyle.mediumText, { color: selectedTheme.textPrimary }]}
+        >
+          {item.name}
+        </Text>
+        <Text
+          style={[
+            layoutStyle.largeText,
+            layoutStyle.verticalSpacerXS,
+            { color: selectedTheme.textSecondary },
+          ]}
+        >
+          ${item.price}
+        </Text>
         <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerM]}>
-          <TouchableOpacity onPress={() => updateQuantity(item.id, 'decrement')} style={cartStyle.quantityButton}>
+          <TouchableOpacity
+            onPress={() => updateQuantity(item.id, 'decrement')}
+            style={cartStyle.quantityButton}
+          >
             <Text style={layoutStyle.largeText}>-</Text>
           </TouchableOpacity>
-          <Text style={[layoutStyle.largeText, layoutStyle.lPaddingS, layoutStyle.rPaddingS, {color: selectedTheme.textSecondary}]}>{item.quantity}</Text>
-          <TouchableOpacity onPress={() => updateQuantity(item.id, 'increment')} style={cartStyle.quantityButton}>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              layoutStyle.lPaddingS,
+              layoutStyle.rPaddingS,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {item.quantity}
+          </Text>
+          <TouchableOpacity
+            onPress={() => updateQuantity(item.id, 'increment')}
+            style={cartStyle.quantityButton}
+          >
             <Text style={layoutStyle.largeText}>+</Text>
           </TouchableOpacity>
         </View>
@@ -97,16 +132,32 @@ const CartScreen: React.FC = () => {
   );
 
   return (
-    <View style={[layoutStyle.container, layoutStyle.paddingAllS, { backgroundColor: selectedTheme.fullBackgroundColor }]}>
+    <View
+      style={[
+        layoutStyle.container,
+        layoutStyle.paddingAllS,
+        { backgroundColor: selectedTheme.fullBackgroundColor },
+      ]}
+    >
       <FlatList
         data={cart}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={layoutStyle.verticalSpacerS}
       />
-      <View style={[layoutStyle.columnsInside, {justifyContent: 'space-between'}]}>
-        <Text style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}>Total:</Text>
-        <Text style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}>${calculateTotal()}</Text>
+      <View
+        style={[layoutStyle.columnsInside, { justifyContent: 'space-between' }]}
+      >
+        <Text
+          style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}
+        >
+          Total:
+        </Text>
+        <Text
+          style={[layoutStyle.xLargeText, { color: selectedTheme.textPrimary }]}
+        >
+          ${calculateTotal()}
+        </Text>
       </View>
       <CustomButton
         title={t('Proceed to Checkout')}
@@ -117,7 +168,7 @@ const CartScreen: React.FC = () => {
         style={{
           marginLeft: 0,
           marginRight: 0,
-          padding:10,
+          padding: 10,
         }}
       />
     </View>

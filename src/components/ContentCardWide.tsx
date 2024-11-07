@@ -40,33 +40,62 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
   const selectedTheme = appTheme[themeType];
 
   return (
-    <View style={[layoutStyle.shadowedContainer, layoutStyle.columnsInsideFlex, compStyle.contentBox]}>
-      
+    <View
+      style={[
+        layoutStyle.shadowedContainer,
+        layoutStyle.columnsInsideFlex,
+        layoutStyle.contentBox,
+      ]}
+    >
       <View style={[compStyle.contentImage, layoutStyle.cols_25]}>
         <Image source={{ uri: imageUrl }} style={compStyle.contentImage} />
       </View>
 
       <View style={[layoutStyle.cols_75]}>
-        <View style={[layoutStyle.paddingAllS, {height: "72%"}]}>
-          <Text style={[layoutStyle.mediumText, {color: selectedTheme.textSecondary, fontWeight: "bold",}]} 
+        <View style={[layoutStyle.paddingAllS, { height: '72%' }]}>
+          <Text
+            style={[
+              layoutStyle.mediumText,
+              { color: selectedTheme.textSecondary, fontWeight: 'bold' },
+            ]}
             numberOfLines={1}
             ellipsizeMode="tail"
-          >{name}</Text>
-            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}
+          >
+            {name}
+          </Text>
+          <Text
+            style={[
+              layoutStyle.smallText,
+              { color: selectedTheme.textSecondary },
+            ]}
             numberOfLines={1}
             ellipsizeMode="tail"
-            >{description}</Text>
+          >
+            {description}
+          </Text>
           <View style={layoutStyle.verticalSpacerS} />
           {type === 'product' && price !== undefined && (
-            <Text 
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price:₱{price} | Sale:₱{price} | Qty:230</Text>
+            <Text
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={[
+                layoutStyle.smallText,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
+              Price:₱{price} | Sale:₱{price} | Qty:230
+            </Text>
           )}
         </View>
-       
+
         {/* Render buttons */}
-        <View style={[layoutStyle.columnsInside, layoutStyle.alignRight, {height: "28%"}]}>
+        <View
+          style={[
+            layoutStyle.columnsInside,
+            layoutStyle.alignRight,
+            { height: '28%' },
+          ]}
+        >
           {buttonActions.map((action, index) => (
             <View key={index} style={[layoutStyle.cols_3]}>
               <CustomButton
@@ -79,7 +108,11 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
                 iconColor={selectedTheme.buttonTextPrimary}
                 iconSize={SHARED.fontL}
                 color={selectedTheme.buttonTextPrimary}
-                style={[compStyle.cardButton, action.buttonStyle, {height: "100%"}]}
+                style={[
+                  layoutStyle.cardButton,
+                  action.buttonStyle,
+                  { height: '100%' },
+                ]}
                 borderRadius={0}
               />
             </View>

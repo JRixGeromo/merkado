@@ -29,7 +29,7 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     // Toggle between light, dark, and feminine themes and persist the choice
-    toggleTheme: (state) => {
+    toggleTheme: state => {
       if (state.theme === 'light') {
         state.theme = 'dark';
       } else if (state.theme === 'dark') {
@@ -41,7 +41,7 @@ const themeSlice = createSlice({
       AsyncStorage.setItem(STORAGE_KEY, state.theme);
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(
       loadThemeFromStorage.fulfilled,
       (state, action: PayloadAction<'light' | 'dark' | 'feminine'>) => {

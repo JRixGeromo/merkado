@@ -57,7 +57,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
-          <IconLib.DotsMenu size={SHARED.fontL} color={selectedTheme.textLight} />
+          <IconLib.DotsMenu
+            size={SHARED.fontL}
+            color={selectedTheme.textLight}
+          />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -67,14 +70,16 @@ const ContentCard: React.FC<ContentCardProps> = ({
           {/* Replace with IconLib for the expand icon */}
           <IconLib.Video_O size={SHARED.fontL} color={selectedTheme.online} />
         </TouchableOpacity>
-
       </View>
 
       <View style={compStyle.contentContainer}>
-        <Text style={compStyle.productName}
+        <Text
+          style={compStyle.productName}
           numberOfLines={1}
           ellipsizeMode="tail"
-        >{name}</Text>
+        >
+          {name}
+        </Text>
         <View style={layoutStyle.verticalSpacerXS} />
         {/* Conditionally render based on the type */}
         {type === 'product' && price !== undefined && (
@@ -82,31 +87,38 @@ const ContentCard: React.FC<ContentCardProps> = ({
         )}
 
         {type === 'store' && location && (
-          <Text 
+          <Text
             numberOfLines={1}
             ellipsizeMode="tail"
             style={compStyle.storeLocation}
-          >{location}</Text>
+          >
+            {location}
+          </Text>
         )}
         <View style={layoutStyle.verticalSpacerS} />
 
         <View style={layoutStyle.columnsInsideFlex}>
           <IconLib.Star size={16} color="gold" style={layoutStyle.rMarginXS} />
-          <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}>{rating}</Text>
+          <Text
+            style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}
+          >
+            {rating}
+          </Text>
         </View>
         <View style={layoutStyle.verticalSpacerXS} />
         <View style={[layoutStyle.columnsInsideFlex, layoutStyle.bMaringS]}>
-          <TouchableOpacity
-            onPress={onLikePress}
-            style={layoutStyle.rMarginXS}
-          >
+          <TouchableOpacity onPress={onLikePress} style={layoutStyle.rMarginXS}>
             {isLiked ? (
               <IconLib.Heart size={SHARED.fontXL} color="red" />
             ) : (
-              <IconLib.Heart_O size={SHARED.fontXL} color={selectedTheme.iconColorPrimary} />
+              <IconLib.Heart_O
+                size={SHARED.fontXL}
+                color={selectedTheme.iconColorPrimary}
+              />
             )}
           </TouchableOpacity>
-          <Text style={[layoutStyle.smallText, {color: selectedTheme.textBlur}]}
+          <Text
+            style={[layoutStyle.smallText, { color: selectedTheme.textBlur }]}
             numberOfLines={1}
             ellipsizeMode="tail"
           >
@@ -125,7 +137,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
             iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
             iconColor={selectedTheme.buttonTextPrimary} // Set the icon color
             iconSize={SHARED.fontL} // Set the icon size
-            style={[layoutStyle.cols_2, compStyle.cardButton, action.buttonStyle]} // Apply the button styles
+            style={[
+              layoutStyle.cols_2,
+              layoutStyle.cardButton,
+              action.buttonStyle,
+            ]} // Apply the button styles
             borderRadius={0} // Default borderRadius is 15, can be overridden
           />
         ))}

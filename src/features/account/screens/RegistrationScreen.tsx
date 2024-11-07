@@ -116,105 +116,124 @@ const RegistrationScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, {padding: 20, justifyContent: 'center'}]}>
-      <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, {backgroundColor: selectedTheme.cardBackground}]}>
-          <Image
-            source={require('../../../../assets/logo.png')}
-            style={acctStyle.logo}
-          />
-          <TextInputWithIcon
-            placeholder={t('firstName')}
-            iconName="Person"
-            value={firstName}
-            onChangeText={setFirstName}
-            style={{ height: 45 }}
-          />
-          <TextInputWithIcon
-            placeholder={t('lastName')}
-            iconName="Person"
-            value={lastName}
-            onChangeText={setLastName}
-            style={{ height: 45 }}
-          />
-          <ListOptions
-            selectedValue={gender}
-            onValueChange={itemValue => setGender(itemValue)}
-            options={[
-              { label: t('male'), value: 'MALE' },
-              { label: t('female'), value: 'FEMALE' },
-              { label: t('other'), value: 'OTHER' },
+        <View
+          style={[
+            layoutStyle.container,
+            { padding: 20, justifyContent: 'center' },
+          ]}
+        >
+          <View
+            style={[
+              layoutStyle.shadowedContainer,
+              layoutStyle.formContainer,
+              { backgroundColor: selectedTheme.cardBackground },
             ]}
-            placeholder={t('gender')}
-            iconName="Gender"
-            iconSize={SHARED.fontXxL}
-            showIcon={true}
-          />
-
-          <DateAndTimePicker
-            onDateChange={setBirthdate}
-            iconName="calendar"
-            iconSize={SHARED.fontXxL}
-            placeholder={t('birthDate')}
-            inputStyle={{ height: 40 }}
-          />
-
-          <TextInputWithIcon
-            placeholder={t('email')}
-            iconName="Email"
-            value={email}
-            onChangeText={setEmail}
-            style={{ height: 45 }}
-          />
-          <TextInputWithIcon
-            placeholder={t('password')}
-            iconName="Locked"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-            style={{ height: 45 }}
-          />
-          <TextInputWithIcon
-            placeholder={t('confirmPassword')}
-            iconName="Locked"
-            secureTextEntry
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            style={{ height: 45 }}
-          />
-
-          {loading && (
-            <View style={{ marginTop: 20, marginBottom: 20 }}>
-              <ActivityIndicator
-                size="large"
-                color={selectedTheme.textPrimary}
-                style={layoutStyle.loader}
-              />
-            </View>
-          )}
-
-          {!loading && (
-            <CustomButton
-              title={t('register')}
-              onPress={handleRegister}
-              color={selectedTheme.buttonTextPrimary}
-              backgroundColor={selectedTheme.buttonPrimary}
-              borderRadius={2} // You can set this dynamically too
+          >
+            <Image
+              source={require('../../../../assets/logo.png')}
+              style={acctStyle.logo}
             />
-          )}
+            <TextInputWithIcon
+              placeholder={t('firstName')}
+              iconName="Person"
+              value={firstName}
+              onChangeText={setFirstName}
+              style={{ height: 45 }}
+            />
+            <TextInputWithIcon
+              placeholder={t('lastName')}
+              iconName="Person"
+              value={lastName}
+              onChangeText={setLastName}
+              style={{ height: 45 }}
+            />
+            <ListOptions
+              selectedValue={gender}
+              onValueChange={itemValue => setGender(itemValue)}
+              options={[
+                { label: t('male'), value: 'MALE' },
+                { label: t('female'), value: 'FEMALE' },
+                { label: t('other'), value: 'OTHER' },
+              ]}
+              placeholder={t('gender')}
+              iconName="Gender"
+              iconSize={SHARED.fontXxL}
+              showIcon={true}
+            />
 
-          {error && (
-            <Text style={{ color: 'red' }}>{t('registrationFailed')}</Text>
-          )}
+            <DateAndTimePicker
+              onDateChange={setBirthdate}
+              iconName="calendar"
+              iconSize={SHARED.fontXxL}
+              placeholder={t('birthDate')}
+              inputStyle={{ height: 40 }}
+            />
 
-          <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, { color: selectedTheme.textSecondary }]}>
-              {t('hasAccount')}{' '}
-              <Text style={[acctStyle.linkText, { fontWeight: 'bold' }]}>
-                {t('login')}
+            <TextInputWithIcon
+              placeholder={t('email')}
+              iconName="Email"
+              value={email}
+              onChangeText={setEmail}
+              style={{ height: 45 }}
+            />
+            <TextInputWithIcon
+              placeholder={t('password')}
+              iconName="Locked"
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+              style={{ height: 45 }}
+            />
+            <TextInputWithIcon
+              placeholder={t('confirmPassword')}
+              iconName="Locked"
+              secureTextEntry
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              style={{ height: 45 }}
+            />
+
+            {loading && (
+              <View style={{ marginTop: 20, marginBottom: 20 }}>
+                <ActivityIndicator
+                  size="large"
+                  color={selectedTheme.textPrimary}
+                  style={layoutStyle.loader}
+                />
+              </View>
+            )}
+
+            {!loading && (
+              <CustomButton
+                title={t('register')}
+                onPress={handleRegister}
+                color={selectedTheme.buttonTextPrimary}
+                backgroundColor={selectedTheme.buttonPrimary}
+                borderRadius={2} // You can set this dynamically too
+              />
+            )}
+
+            {error && (
+              <Text style={{ color: 'red' }}>{t('registrationFailed')}</Text>
+            )}
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate('LoginScreen')}
+            >
+              <Text
+                style={[
+                  layoutStyle.smallText,
+                  layoutStyle.marginAllM,
+                  { color: selectedTheme.textSecondary },
+                ]}
+              >
+                {t('hasAccount')}{' '}
+                <Text style={[acctStyle.linkText, { fontWeight: 'bold' }]}>
+                  {t('login')}
+                </Text>
               </Text>
-            </Text>
-          </TouchableOpacity>
-        </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

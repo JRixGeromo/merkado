@@ -60,17 +60,37 @@ const App = () => {
       screenOptions={({ route, navigation }) => ({
         tabBarIcon: ({ focused, color }) => {
           const iconSize = 22; // Set your desired icon size here
-  
+
           if (route.name === 'Dashboard') {
-            return focused ? <IconLib.Dashboard size={iconSize} color={color} /> : <IconLib.Dashboard_O size={iconSize} color={color} />;
+            return focused ? (
+              <IconLib.Dashboard size={iconSize} color={color} />
+            ) : (
+              <IconLib.Dashboard_O size={iconSize} color={color} />
+            );
           } else if (route.name === 'Marketplace') {
-            return focused ? <IconLib.Marketplace size={iconSize} color={color} /> : <IconLib.Marketplace_O size={iconSize} color={color} />;
+            return focused ? (
+              <IconLib.Marketplace size={iconSize} color={color} />
+            ) : (
+              <IconLib.Marketplace_O size={iconSize} color={color} />
+            );
           } else if (route.name === 'My Products') {
-            return focused ? <IconLib.Products size={iconSize} color={color} /> : <IconLib.Products_O size={iconSize} color={color} />;
+            return focused ? (
+              <IconLib.Products size={iconSize} color={color} />
+            ) : (
+              <IconLib.Products_O size={iconSize} color={color} />
+            );
           } else if (route.name === 'Chat') {
-            return focused ? <IconLib.Chat size={iconSize} color={color} /> : <IconLib.Chat_O size={iconSize} color={color} />;
+            return focused ? (
+              <IconLib.Chat size={iconSize} color={color} />
+            ) : (
+              <IconLib.Chat_O size={iconSize} color={color} />
+            );
           } else if (route.name === 'Transactions') {
-            return focused ? <IconLib.Transactions size={iconSize} color={color} /> : <IconLib.Transactions_O size={iconSize} color={color} />;
+            return focused ? (
+              <IconLib.Transactions size={iconSize} color={color} />
+            ) : (
+              <IconLib.Transactions_O size={iconSize} color={color} />
+            );
           }
           return null;
         },
@@ -89,7 +109,7 @@ const App = () => {
           borderBottomWidth: 0.5,
           borderBottomColor: selectedTheme.headerBorderBottomColor,
         },
-        //headerTitleStyle: commonStyle.screenHeaderTitle, 
+        //headerTitleStyle: commonStyle.screenHeaderTitle,
         headerTitle: () => (
           <View style={commonStyle.headerContainer}>
             <Image
@@ -120,7 +140,9 @@ const App = () => {
                     paddingVertical: 2,
                   }}
                 >
-                  <Text style={{ color: 'white', fontSize: 8, fontWeight: 'bold' }}>
+                  <Text
+                    style={{ color: 'white', fontSize: 8, fontWeight: 'bold' }}
+                  >
                     {cartCount}
                   </Text>
                 </View>
@@ -133,14 +155,25 @@ const App = () => {
             >
               <IconLib.Store_O size={20} color={selectedTheme.iconColorGray} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('AccountScreen')} style={layoutStyle.rMarginL}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('AccountScreen')}
+              style={layoutStyle.rMarginL}
+            >
               {user?.avatar ? (
                 <Image
                   source={{ uri: user.avatar }}
-                  style={{ width: 35, height: 35, borderRadius: 17.5, marginRight: 10 }}
+                  style={{
+                    width: 35,
+                    height: 35,
+                    borderRadius: 17.5,
+                    marginRight: 10,
+                  }}
                 />
               ) : (
-                <IconLib.Person_O size={20} color={selectedTheme.iconColorGray} />
+                <IconLib.Person_O
+                  size={20}
+                  color={selectedTheme.iconColorGray}
+                />
               )}
             </TouchableOpacity>
             <DropdownMenu navigation={navigation} />
@@ -176,16 +209,20 @@ const App = () => {
           component={RegistrationScreen}
           options={{
             headerTitle: 'Register',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
         <Stack.Screen
           name="DashboardScreen"
           component={MainTabs}
-          options={{ 
+          options={{
             headerShown: false,
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor }, 
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
           }}
         />
         <Stack.Screen
@@ -193,7 +230,9 @@ const App = () => {
           component={DetailsScreen}
           options={{
             headerTitle: 'Details',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -202,7 +241,9 @@ const App = () => {
           component={FrontStoreScreen}
           options={{
             headerTitle: 'FrontStore',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -211,7 +252,9 @@ const App = () => {
           component={CartScreen}
           options={{
             headerTitle: 'Cart',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -220,7 +263,9 @@ const App = () => {
           component={CheckoutScreen}
           options={{
             headerTitle: 'Checkout',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -230,7 +275,9 @@ const App = () => {
           component={UpsertProductScreen}
           options={{
             headerTitle: 'Product',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />

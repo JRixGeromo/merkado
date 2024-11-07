@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { View, FlatList, TouchableOpacity, TextInput, Text, Image } from 'react-native';
+import {
+  View,
+  FlatList,
+  TouchableOpacity,
+  TextInput,
+  Text,
+  Image,
+} from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { myProductStyles } from '../styles/myProductStyles';
 import { layoutStyles, SHARED } from '../../../styles/layoutStyles';
@@ -27,13 +34,15 @@ const MyProductsScreen = () => {
   const myProductStyle = myProductStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const [products, setProducts] = useState<Product[]>([
     {
       id: '1',
       name: 'Beef Boneless Beef Boneless Beef Boneless Beef Boneless Beef Boneless',
-      description: 'High quality boneless beef. High quality boneless beef. High quality boneless beef.',
+      description:
+        'High quality boneless beef. High quality boneless beef. High quality boneless beef.',
       price: 500,
       imageUrl: 'https://picsum.photos/100/100?random=1',
       onSale: true,
@@ -96,44 +105,56 @@ const MyProductsScreen = () => {
           iconName: 'Trash_O',
           title: '',
           backgroundColor: selectedTheme.buttonDark,
-          width: "100%",
+          width: '100%',
           textSize: 12,
           onPress: () => handleDeleteProduct(item),
-          buttonStyle: myProductStyle.cardButton,
+          buttonStyle: layoutStyle.cardButton,
         },
         {
           iconName: 'Create_O',
           title: '',
           backgroundColor: selectedTheme.buttonPrimary,
-          width: "100%",
+          width: '100%',
           textSize: 12,
           onPress: () => console.log('Edit Pressed'),
-          buttonStyle: myProductStyle.cardButton,
+          buttonStyle: layoutStyle.cardButton,
         },
         {
           iconName: 'View_O',
           title: '',
           backgroundColor: selectedTheme.buttonInfo,
-          width: "100%",
+          width: '100%',
           textSize: 12,
           onPress: () => handleViewProduct(item),
-          buttonStyle: myProductStyle.cardButton,
+          buttonStyle: layoutStyle.cardButton,
         },
       ]}
     />
   );
 
   return (
-    <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
+    <View
+      style={[
+        layoutStyle.container,
+        layoutStyle.rlPaddingS,
+        { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+      ]}
+    >
       <View style={layoutStyle.verticalSpacerM} />
       {/* Search Bar */}
       <View style={[layoutStyle.columnsInside, layoutStyle.alignAllItems]}>
-        <View style={[myProductStyle.searchContainer, layoutStyle.columnsInside, layoutStyle.cols_80]}>
+        <View
+          style={[
+            layoutStyle.searchContainer,
+            layoutStyle.columnsInside,
+            layoutStyle.cols_80,
+          ]}
+        >
           <TouchableOpacity style={layoutStyle.rMarginS}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={myProductStyle.searchInput}
+            style={layoutStyle.searchInput}
             placeholder="Search Products"
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             value={searchTerm}
@@ -152,7 +173,7 @@ const MyProductsScreen = () => {
             iconColor={selectedTheme.buttonTextPrimary}
             iconSize={SHARED.fontXL}
             color={selectedTheme.buttonTextPrimary}
-            style={myProductStyle.cardButton}
+            style={layoutStyle.cardButton}
             borderRadius={0}
           />
         </View>
@@ -160,7 +181,9 @@ const MyProductsScreen = () => {
       <View style={layoutStyle.verticalSpacerM} />
       {/* Product List */}
       <FlatList
-        data={products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))}
+        data={products.filter(product =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase()),
+        )}
         //data={products} // Temporarily use this without filtering
         keyExtractor={item => item.id}
         renderItem={renderProductItem}
@@ -176,10 +199,34 @@ const MyProductsScreen = () => {
       >
         {selectedProduct && (
           <View>
-            <Image source={{ uri: selectedProduct.imageUrl }} style={myProductStyle.slideModalImage} />
-            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Price: ₱{selectedProduct.price}</Text>
-            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>Description: {selectedProduct.description}</Text>
-            <Text style={[layoutStyle.smallText, {color: selectedTheme.textSecondary}]}>On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}</Text>
+            <Image
+              source={{ uri: selectedProduct.imageUrl }}
+              style={myProductStyle.slideModalImage}
+            />
+            <Text
+              style={[
+                layoutStyle.smallText,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
+              Price: ₱{selectedProduct.price}
+            </Text>
+            <Text
+              style={[
+                layoutStyle.smallText,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
+              Description: {selectedProduct.description}
+            </Text>
+            <Text
+              style={[
+                layoutStyle.smallText,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
+              On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}
+            </Text>
           </View>
         )}
       </SlideContentModal>
@@ -193,8 +240,8 @@ const MyProductsScreen = () => {
         onConfirm={confirmDeletion}
         confirmText="Delete"
         cancelText="Cancel"
-        confirmButtonColor={selectedTheme.buttonDanger}       // Custom confirm button color
-        cancelButtonColor={selectedTheme.buttonCancel}       // Custom cancel button color
+        confirmButtonColor={selectedTheme.buttonDanger} // Custom confirm button color
+        cancelButtonColor={selectedTheme.buttonCancel} // Custom cancel button color
       />
     </View>
   );

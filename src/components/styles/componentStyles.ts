@@ -1,5 +1,9 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../../utils/responsive'; // Import responsive utilities
 import { SHARED } from '../../styles/layoutStyles';
 import { theme } from '../../styles/theme'; // Make sure this path is correct
 
@@ -10,21 +14,15 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   return StyleSheet.create({
     splashContainer: {
       flex: 1,
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      backgroundColor: selectedTheme.cardBackground, 
-    },
-    logo: {
-      width: normalizeWidth(150), 
-      height: normalizeHeight(150), 
-      resizeMode: 'contain', 
-      marginBottom: normalizeHeight(20), 
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: selectedTheme.cardBackground,
     },
     splashText: {
       fontSize: SHARED.fontXxL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, 
-      marginTop: normalizeHeight(10), 
+      color: selectedTheme.textPrimary,
+      marginTop: normalizeHeight(10),
     },
     commentFormContainer: {
       marginBottom: normalizeHeight(2),
@@ -55,23 +53,10 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     thumbsUpButton: {
       paddingHorizontal: normalizeWidth(10),
     },
-
-    contentBox: {
-      backgroundColor: selectedTheme.cardBackground,
-      width: "100%",
-      height: normalizeHeight(110),
-      marginRight: normalizeWidth(10),
-      paddingBottom: 0,
-      marginBottom: normalizeHeight(10),
-      borderColor: selectedTheme.lineBorderColorLight,
-      borderWidth: SHARED.borderWidth,
-      borderRadius: SHARED.borderRadiusSecondary,
-      overflow: 'hidden'
-    },
     contentImage: {
       width: '100%',
       height: '100%',
-      resizeMode: 'cover', 
+      resizeMode: 'cover',
     },
 
     // Portrait
@@ -82,38 +67,38 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(10),
       paddingBottom: 0,
       marginBottom: 0,
-      justifyContent: 'space-between', 
-      alignItems: 'center', 
+      justifyContent: 'space-between',
+      alignItems: 'center',
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: SHARED.borderWidth,
       borderRadius: SHARED.borderRadiusSecondary,
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     cardImageWrapper: {
       width: '100%',
-      flex: 0.35, 
+      flex: 0.35,
       position: 'relative',
     },
     contentContainer: {
       justifyContent: 'flex-start',
-      alignItems: 'center', 
+      alignItems: 'center',
       width: '100%',
       flex: 0.5,
     },
     buttonContainer: {
       flex: 0.15,
     },
-    ///
+
     productImage: {
       width: '100%',
       height: '100%',
-      resizeMode: 'cover', 
+      resizeMode: 'cover',
     },
-     goFullScreenButton: {
+    goFullScreenButton: {
       position: 'absolute',
       top: normalizeHeight(2),
       right: normalizeWidth(2),
-      backgroundColor: 'rgba(0, 0, 0, 0.4)', 
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
       padding: 5,
       borderRadius: 0,
     },
@@ -129,30 +114,25 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontS,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
-      fontWeight:  "bold",
-      marginTop: normalizeHeight(3), 
+      fontWeight: 'bold',
+      marginTop: normalizeHeight(3),
     },
     productPrice: {
       fontSize: SHARED.fontM,
       color: selectedTheme.textHighlight,
       fontFamily: selectedTheme.bodyFont,
-      fontWeight:  "bold",
+      fontWeight: 'bold',
       marginTop: 0,
     },
-     storeLocation: {
+    storeLocation: {
       fontSize: SHARED.fontXS,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFontSlim,
     },
-    cardButton: {
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      paddingVertical: normalizeHeight(5), 
-    },
     modalTitle: {
       fontSize: SHARED.fontL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, 
+      color: selectedTheme.textPrimary,
       marginBottom: 15,
     },
     inputContainer: {
@@ -174,7 +154,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(20),
       paddingLeft: normalizeWidth(20),
       paddingRight: normalizeWidth(20),
-      backgroundColor: selectedTheme.cardBackground, 
+      backgroundColor: selectedTheme.cardBackground,
     },
     dropdownOption: {
       paddingTop: normalizeHeight(10),
@@ -182,35 +162,30 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.textPrimary, 
-    },
-    input: {
-      flex: 1,
-      fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, 
+      borderColor: selectedTheme.textPrimary,
     },
     modalOverlay: {
-      backgroundColor: selectedTheme.modalOverlay, 
+      backgroundColor: selectedTheme.modalOverlay,
     },
     overlay: {
       flex: 1,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      justifyContent: 'center', 
+      justifyContent: 'center',
       alignItems: 'center',
     },
     modalText: {
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, 
+      color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
     },
     dropdownMenu: {
-      backgroundColor: selectedTheme.cardBackground, 
+      backgroundColor: selectedTheme.cardBackground,
       borderRadius: 10,
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      width: normalizeWidth(220), 
+      width: normalizeWidth(220),
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
@@ -222,7 +197,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center',
       paddingVertical: normalizeHeight(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.lineBorderColor, 
+      borderColor: selectedTheme.lineBorderColor,
     },
     dropdownText: {
       color: selectedTheme.textSecondary,
@@ -230,7 +205,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginLeft: normalizeWidth(10),
     },
     slideModal: {
-      justifyContent: 'flex-end', 
+      justifyContent: 'flex-end',
       marginLeft: 0,
       marginRight: 0,
       marginBottom: 0,
@@ -240,13 +215,13 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
-      minHeight: '60%',  
-      maxHeight: '80%', 
+      minHeight: '60%',
+      maxHeight: '80%',
     },
     slideModalCloseButton: {
       alignSelf: 'flex-end',
     },
-     confimrationModalContent: {
+    confimrationModalContent: {
       padding: normalizeHeight(20),
       borderRadius: SHARED.borderRadius,
       alignItems: 'center',
@@ -254,8 +229,8 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: '90%',
     },
     centeredConfimrationModal: {
-      justifyContent: 'center', 
-      alignItems: 'center', 
+      justifyContent: 'center',
+      alignItems: 'center',
       margin: normalizeHeight(10),
     },
     confimrationModalTitle: {
@@ -268,6 +243,5 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontM,
       textAlign: 'center',
     },
-  
   });
 };

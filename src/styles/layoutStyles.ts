@@ -1,5 +1,9 @@
 import { StyleSheet, Platform } from 'react-native';
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../utils/responsive'; // Import responsive utilities
 import { theme } from '../styles/theme'; // Make sure this path is correct
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -18,7 +22,7 @@ export const SHARED = {
     radius: 0,
     elevation: 3, // Android-specific shadow
   },
-  
+
   fontXxS: normalizeFontSize(8),
   fontXS: normalizeFontSize(10),
   fontS: normalizeFontSize(12),
@@ -63,8 +67,8 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center', // Center content horizontally
     },
     innerContainer: {
-      justifyContent: 'center', 
-      alignItems: 'center'
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     modalContainer: {
       flex: 1,
@@ -148,7 +152,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderBottomWidth: 0.5, // Specify the width of the bottom border
       borderColor: selectedTheme.lineBorderColor, // Color of the divider
     },
-    
+
     rlPaddingS: {
       paddingRight: normalizeWidth(10),
       paddingLeft: normalizeWidth(10),
@@ -261,7 +265,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderWidth: 1,
       borderColor: selectedTheme.borderColorPrimary, // Theme-based border color
     },
-   
+
     XxSmallText: {
       fontFamily: selectedTheme.bodyFont,
       fontSize: SHARED.fontXxS,
@@ -279,7 +283,7 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontFamily: selectedTheme.bodyFont,
       fontSize: SHARED.fontM,
     },
-    
+
     largeText: {
       fontFamily: selectedTheme.headingFont,
       fontSize: SHARED.fontL,
@@ -298,12 +302,65 @@ export const layoutStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     flatListMaxHeight: {
       maxHeight: normalizeHeight(30),
     },
-    flatListPaddingTop: { 
-      paddingTop: normalizeHeight(10) 
+    flatListPaddingTop: {
+      paddingTop: normalizeHeight(10),
     },
     loader: {
-      marginTop: normalizeHeight(30), 
+      marginTop: normalizeHeight(30),
       color: selectedTheme.loader,
+    },
+
+    //////////////
+
+    searchContainer: {
+      paddingTop: 0,
+      paddingBottom: 0,
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+      backgroundColor: selectedTheme.inputBackgroundColor,
+      borderRadius: 30,
+      borderWidth: SHARED.borderWidthSecondary,
+      borderColor: selectedTheme.buttonBorderPrimary,
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+    },
+    searchInput: {
+      flex: 1,
+      height: normalizeHeight(40),
+      borderColor: selectedTheme.buttonBorderPrimary,
+      borderWidth: 0,
+      paddingLeft: 0,
+      borderRadius: 20,
+      backgroundColor: selectedTheme.inputBackgroundColor,
+      color: selectedTheme.textPrimary,
+    },
+    cardButton: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: normalizeHeight(5),
+    },
+    input: {
+      flex: 1,
+      fontSize: SHARED.fontL,
+      color: selectedTheme.textPrimary,
+    },
+    contentBox: {
+      backgroundColor: selectedTheme.cardBackground,
+      width: '100%',
+      height: normalizeHeight(110),
+      marginRight: normalizeWidth(10),
+      paddingBottom: 0,
+      marginBottom: normalizeHeight(10),
+      borderColor: selectedTheme.lineBorderColorLight,
+      borderWidth: SHARED.borderWidth,
+      borderRadius: SHARED.borderRadiusSecondary,
+      overflow: 'hidden',
+    },
+    logo: {
+      width: normalizeWidth(150),
+      height: normalizeHeight(150),
+      resizeMode: 'contain',
+      marginBottom: normalizeHeight(20),
     },
   });
 };

@@ -41,7 +41,7 @@ const SingleBubble = ({ size, left, duration, color }: BubbleProps) => {
         toValue: -size,
         duration,
         useNativeDriver: true,
-      })
+      }),
     );
     animation.start();
 

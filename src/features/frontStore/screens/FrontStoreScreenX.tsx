@@ -17,7 +17,10 @@ import { useTranslation } from 'react-i18next';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigationTypes';
 
-type FrontStoreScreenRouteProp = RouteProp<RootStackParamList, 'FrontStoreScreen'>;
+type FrontStoreScreenRouteProp = RouteProp<
+  RootStackParamList,
+  'FrontStoreScreen'
+>;
 const FrontStoreScreenx = () => {
   const route = useRoute<FrontStoreScreenRouteProp>();
   const { vendorId } = route.params;
@@ -29,8 +32,24 @@ const FrontStoreScreenx = () => {
   const { t } = useTranslation();
 
   const [products, setProducts] = useState([
-    { id: '1', name: 'Organic Juice', price: 250, rating: 4.6, likes: 100, isLiked: true, imageUrl: 'https://picsum.photos/100/100?random=1' },
-    { id: '2', name: 'Handmade Soap', price: 150, rating: 4.8, likes: 80, isLiked: false, imageUrl: 'https://picsum.photos/100/100?random=2' },
+    {
+      id: '1',
+      name: 'Organic Juice',
+      price: 250,
+      rating: 4.6,
+      likes: 100,
+      isLiked: true,
+      imageUrl: 'https://picsum.photos/100/100?random=1',
+    },
+    {
+      id: '2',
+      name: 'Handmade Soap',
+      price: 150,
+      rating: 4.8,
+      likes: 80,
+      isLiked: false,
+      imageUrl: 'https://picsum.photos/100/100?random=2',
+    },
     // Add more products
   ]);
 
@@ -48,15 +67,27 @@ const FrontStoreScreenx = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
-        
+      <View
+        style={[
+          layoutStyle.container,
+          layoutStyle.rlPaddingS,
+          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+        ]}
+      >
         {/* Vendor Header */}
         <View style={commonStyle.vendorHeader}>
-          <Image source={{ uri: vendorInfo.logoUrl }} style={commonStyle.logo} />
+          <Image
+            source={{ uri: vendorInfo.logoUrl }}
+            style={commonStyle.logo}
+          />
           <View style={commonStyle.vendorInfo}>
             <Text style={commonStyle.vendorName}>{vendorInfo.name}</Text>
-            <Text style={commonStyle.vendorLocation}>{vendorInfo.location}</Text>
-            <Text style={commonStyle.vendorStats}>{vendorInfo.followers} Followers</Text>
+            <Text style={commonStyle.vendorLocation}>
+              {vendorInfo.location}
+            </Text>
+            <Text style={commonStyle.vendorStats}>
+              {vendorInfo.followers} Followers
+            </Text>
           </View>
           <TouchableOpacity style={commonStyle.followButton}>
             <Text style={commonStyle.followButtonText}>{t('Follow')}</Text>
@@ -64,26 +95,58 @@ const FrontStoreScreenx = () => {
         </View>
 
         {/* Banner Carousel */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={commonStyle.bannerContainer}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={commonStyle.bannerContainer}
+        >
           {banners.map(banner => (
-            <Image key={banner.id} source={{ uri: banner.imageUrl }} style={commonStyle.bannerImage} />
+            <Image
+              key={banner.id}
+              source={{ uri: banner.imageUrl }}
+              style={commonStyle.bannerImage}
+            />
           ))}
         </ScrollView>
 
         {/* Categories */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, { color: selectedTheme.textPrimary }]}>{t('Categories')}</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={commonStyle.categoriesContainer}>
-            <View style={commonStyle.categoryCard}><Text style={commonStyle.categoryText}>Cosmetics</Text></View>
-            <View style={commonStyle.categoryCard}><Text style={commonStyle.categoryText}>Beverages</Text></View>
-            <View style={commonStyle.categoryCard}><Text style={commonStyle.categoryText}>Snacks</Text></View>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textPrimary },
+            ]}
+          >
+            {t('Categories')}
+          </Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={commonStyle.categoriesContainer}
+          >
+            <View style={commonStyle.categoryCard}>
+              <Text style={commonStyle.categoryText}>Cosmetics</Text>
+            </View>
+            <View style={commonStyle.categoryCard}>
+              <Text style={commonStyle.categoryText}>Beverages</Text>
+            </View>
+            <View style={commonStyle.categoryCard}>
+              <Text style={commonStyle.categoryText}>Snacks</Text>
+            </View>
             {/* Add more categories as needed */}
           </ScrollView>
         </View>
 
         {/* Products List */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, { color: selectedTheme.textPrimary }]}>{t('Top Products')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textPrimary },
+            ]}
+          >
+            {t('Top Products')}
+          </Text>
           <FlatList
             data={products}
             renderItem={({ item }) => (
@@ -117,7 +180,14 @@ const FrontStoreScreenx = () => {
 
         {/* Customer Reviews */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, { color: selectedTheme.textPrimary }]}>{t('Customer Reviews')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textPrimary },
+            ]}
+          >
+            {t('Customer Reviews')}
+          </Text>
           <View style={commonStyle.reviewBox}>
             <Text style={commonStyle.reviewUser}>John Doe</Text>
             <Text style={commonStyle.reviewContent}>Amazing quality!</Text>

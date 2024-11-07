@@ -105,56 +105,60 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
       action: 'LogoutScreen' as keyof RootStackParamList,
     },
   ];
- // Function to render the icons dynamically
- const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
-  const IconComponent = IconLib[iconName]; // Access the icon component dynamically
-  return <IconComponent size={size} color={color} />;
-};
+  // Function to render the icons dynamically
+  const renderIcon = (
+    iconName: keyof typeof IconLib,
+    size: number,
+    color: string,
+  ) => {
+    const IconComponent = IconLib[iconName]; // Access the icon component dynamically
+    return <IconComponent size={size} color={color} />;
+  };
 
-return (
-  <>
-    <TouchableOpacity onPress={() => setMenuVisible(true)}>
-      {renderIcon('DotsMenu', 24, selectedTheme.iconColorGray)}
-    </TouchableOpacity>
+  return (
+    <>
+      <TouchableOpacity onPress={() => setMenuVisible(true)}>
+        {renderIcon('DotsMenu', 24, selectedTheme.iconColorGray)}
+      </TouchableOpacity>
 
-    <Modal
-      visible={menuVisible}
-      animationType="fade"
-      transparent={true}
-      onRequestClose={() => setMenuVisible(false)}
-    >
-      <TouchableWithoutFeedback onPress={() => setMenuVisible(false)}>
-        <View style={compStyle.overlay}>
-          <View
-            style={[
-              compStyle.dropdownMenu,
-              { maxHeight: 400, position: 'absolute', right: 10, top: 50 },
-            ]}
-          >
-            <ScrollView>
-              {menuItems.map((item, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={compStyle.dropdownItem}
-                  onPress={() => {
-                    setMenuVisible(false);
-                    if (item.action) {
-                      navigation.navigate(item.action); // Correct typing for action navigation
-                    }
-                  }}
-                >
-                  {/* Use renderIcon to dynamically load the icon */}
-                  {renderIcon(item.icon, 20, selectedTheme.iconColorGray)}
-                  <Text style={compStyle.dropdownText}>{item.label}</Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
+      <Modal
+        visible={menuVisible}
+        animationType="fade"
+        transparent={true}
+        onRequestClose={() => setMenuVisible(false)}
+      >
+        <TouchableWithoutFeedback onPress={() => setMenuVisible(false)}>
+          <View style={compStyle.overlay}>
+            <View
+              style={[
+                compStyle.dropdownMenu,
+                { maxHeight: 400, position: 'absolute', right: 10, top: 50 },
+              ]}
+            >
+              <ScrollView>
+                {menuItems.map((item, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={compStyle.dropdownItem}
+                    onPress={() => {
+                      setMenuVisible(false);
+                      if (item.action) {
+                        navigation.navigate(item.action); // Correct typing for action navigation
+                      }
+                    }}
+                  >
+                    {/* Use renderIcon to dynamically load the icon */}
+                    {renderIcon(item.icon, 20, selectedTheme.iconColorGray)}
+                    <Text style={compStyle.dropdownText}>{item.label}</Text>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+            </View>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </Modal>
-  </>
-);
+        </TouchableWithoutFeedback>
+      </Modal>
+    </>
+  );
 };
 
 export default DropdownMenu;

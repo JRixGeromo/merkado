@@ -70,12 +70,9 @@ const CommentInput: React.FC<CommentInputProps> = ({
         ]}
       >
         <TextInput
-          style={[
-            compStyle.commentInput,
-            { color: selectedTheme.textPrimary },
-          ]}
+          style={[compStyle.commentInput, { color: selectedTheme.textPrimary }]}
           placeholder={placeholder}
-          placeholderTextColor={selectedTheme.textPlaceHolderInfo }
+          placeholderTextColor={selectedTheme.textPlaceHolderInfo}
           value={comment}
           onChangeText={setComment}
           multiline={true}

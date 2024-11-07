@@ -18,12 +18,10 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
   reactions,
   onReactionPress,
 }) => {
-
   const themeType = useAppSelector(state => state.theme.theme);
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
-
 
   return (
     <ScrollView horizontal={true} contentContainerStyle={layoutStyle.alignLeft}>

@@ -14,9 +14,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // U
 import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 
 const CheckoutScreen: React.FC = () => {
- 
   const navigation =
-  useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
@@ -29,7 +28,12 @@ const CheckoutScreen: React.FC = () => {
   };
 
   return (
-    <View style={[layoutStyle.container, { backgroundColor: selectedTheme.fullBackgroundColor }]}>
+    <View
+      style={[
+        layoutStyle.container,
+        { backgroundColor: selectedTheme.fullBackgroundColor },
+      ]}
+    >
       <CustomButton
         title={t('Proceed to Checkout')}
         onPress={handlePurchase}
@@ -39,7 +43,7 @@ const CheckoutScreen: React.FC = () => {
         style={{
           marginLeft: 0,
           marginRight: 0,
-          padding:10,
+          padding: 10,
         }}
       />
     </View>

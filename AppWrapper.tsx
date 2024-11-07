@@ -10,7 +10,7 @@ import FloatingHearts from './src/components/FloatingHearts';
 import FloatingStars from './src/components/FloatingStars';
 import FloatingBubbles from './src/components/FloatingBubbles';
 // Your existing imports and code
-import './src/i18n/i18n'; 
+import './src/i18n/i18n';
 // Ensure i18n is initialized globally
 
 const AppWrapper = () => (

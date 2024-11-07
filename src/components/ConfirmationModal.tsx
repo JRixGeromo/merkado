@@ -43,17 +43,41 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       style={compStyle.centeredConfimrationModal}
       backdropOpacity={0.3}
     >
-      <View style={[compStyle.confimrationModalContent, { backgroundColor: selectedTheme.cardBackground }]}>
+      <View
+        style={[
+          compStyle.confimrationModalContent,
+          { backgroundColor: selectedTheme.cardBackground },
+        ]}
+      >
         {/* Optional Title */}
         {title && (
-          <Text style={[compStyle.confimrationModalTitle, { color: selectedTheme.textPrimary }]}>{title}</Text>
+          <Text
+            style={[
+              compStyle.confimrationModalTitle,
+              { color: selectedTheme.textPrimary },
+            ]}
+          >
+            {title}
+          </Text>
         )}
 
         {/* Message */}
-        <Text style={[compStyle.confimrationModalMessage, { color: selectedTheme.textSecondary }]}>{message}</Text>
+        <Text
+          style={[
+            compStyle.confimrationModalMessage,
+            { color: selectedTheme.textSecondary },
+          ]}
+        >
+          {message}
+        </Text>
 
         {/* Buttons */}
-        <View style={[layoutStyle.columnsInside, { justifyContent: 'space-between', marginTop: 20 }]}>
+        <View
+          style={[
+            layoutStyle.columnsInside,
+            { justifyContent: 'space-between', marginTop: 20 },
+          ]}
+        >
           {/* Cancel Button */}
           <CustomButton
             title={cancelText}

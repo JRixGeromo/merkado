@@ -1,5 +1,12 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Animated, Easing, Text, StyleSheet, Dimensions } from 'react-native';
+import {
+  View,
+  Animated,
+  Easing,
+  Text,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -10,7 +17,7 @@ const FloatingStars = () => {
     useRef(new Animated.Value(0)).current,
     useRef(new Animated.Value(0)).current,
     // useRef(new Animated.Value(0)).current,
-    // useRef(new Animated.Value(0)).current, 
+    // useRef(new Animated.Value(0)).current,
   ];
 
   useEffect(() => {
@@ -24,11 +31,11 @@ const FloatingStars = () => {
             useNativeDriver: true,
           }),
           Animated.delay(2000 + Math.random() * 3000), // Random delay between 2-5 seconds
-        ])
+        ]),
       ).start();
     };
 
-    animatedValues.forEach((animatedValue) => {
+    animatedValues.forEach(animatedValue => {
       animate(animatedValue); // Start the animation for each star
     });
   }, [animatedValues]);

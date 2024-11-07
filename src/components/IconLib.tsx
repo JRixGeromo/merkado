@@ -4,7 +4,11 @@ import Icon from 'react-native-vector-icons/Ionicons'; // Import Ionicons packag
 import IconFA from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome package
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook for theme selection
 import { theme as appTheme } from '../styles/theme'; // Theme
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../utils/responsive'; // Import responsive utilities
 
 interface IconProps {
   size?: number; // Icon size (optional, default provided)
@@ -61,7 +65,9 @@ const IconLib = {
   Heart: (props: IconProps) => <CustomIcon name="heart" {...props} />,
   Store: (props: IconProps) => <CustomIcon name="home" {...props} />,
   Dashboard: (props: IconProps) => <CustomIcon name="speedometer" {...props} />,
-  Marketplace: (props: IconProps) => <CustomIcon name="storefront" {...props} />,
+  Marketplace: (props: IconProps) => (
+    <CustomIcon name="storefront" {...props} />
+  ),
   Products: (props: IconProps) => <CustomIcon name="cube" {...props} />,
   Transactions: (props: IconProps) => <CustomIcon name="receipt" {...props} />,
   Cart: (props: IconProps) => <CustomIcon name="cart" {...props} />,
@@ -80,10 +86,10 @@ const IconLib = {
   Create: (props: IconProps) => <CustomIcon name="create" {...props} />,
   Trash: (props: IconProps) => <CustomIcon name="trash-bin" {...props} />,
   View: (props: IconProps) => <CustomIcon name="search" {...props} />,
-  
+
   Settings: (props: IconProps) => <CustomIcon name="settings" {...props} />,
   Camera: (props: IconProps) => <CustomIcon name="camera" {...props} />,
-  
+
   Add: (props: IconProps) => <CustomIcon name="add" {...props} />,
   Archive: (props: IconProps) => <CustomIcon name="archive" {...props} />,
 
@@ -91,64 +97,125 @@ const IconLib = {
   Pricetags: (props: IconProps) => <CustomIcon name="pricetags" {...props} />,
   Layers: (props: IconProps) => <CustomIcon name="layers" {...props} />,
   Cash: (props: IconProps) => <CustomIcon name="cash" {...props} />,
-  Document: (props: IconProps) => <CustomIcon name="document-text" {...props} />,
+  Document: (props: IconProps) => (
+    <CustomIcon name="document-text" {...props} />
+  ),
   Apps: (props: IconProps) => <CustomIcon name="apps" {...props} />,
   Briefcase: (props: IconProps) => <CustomIcon name="briefcase" {...props} />,
   Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
 
-  ThumbsUp_O: (props: IconProps) => <CustomIcon name="thumbs-up-outline" {...props} />,
-  Chat_O: (props: IconProps) => <CustomIcon name="chatbubble-outline" {...props} />,
-  Share_O: (props: IconProps) => <CustomIcon name="arrow-redo-outline" {...props} />,
+  ThumbsUp_O: (props: IconProps) => (
+    <CustomIcon name="thumbs-up-outline" {...props} />
+  ),
+  Chat_O: (props: IconProps) => (
+    <CustomIcon name="chatbubble-outline" {...props} />
+  ),
+  Share_O: (props: IconProps) => (
+    <CustomIcon name="arrow-redo-outline" {...props} />
+  ),
   Heart_O: (props: IconProps) => <CustomIcon name="heart-outline" {...props} />,
   Store_O: (props: IconProps) => <CustomIcon name="home-outline" {...props} />,
-  Dashboard_O: (props: IconProps) => <CustomIcon name="speedometer-outline" {...props} />,
-  Marketplace_O: (props: IconProps) => <CustomIcon name="storefront-outline" {...props} />,
-  Products_O: (props: IconProps) => <CustomIcon name="cube-outline" {...props} />,
-  Transactions_O: (props: IconProps) => <CustomIcon name="receipt-outline" {...props} />,
+  Dashboard_O: (props: IconProps) => (
+    <CustomIcon name="speedometer-outline" {...props} />
+  ),
+  Marketplace_O: (props: IconProps) => (
+    <CustomIcon name="storefront-outline" {...props} />
+  ),
+  Products_O: (props: IconProps) => (
+    <CustomIcon name="cube-outline" {...props} />
+  ),
+  Transactions_O: (props: IconProps) => (
+    <CustomIcon name="receipt-outline" {...props} />
+  ),
   Cart_O: (props: IconProps) => <CustomIcon name="cart-outline" {...props} />,
   Cog_O: (props: IconProps) => <CustomIcon name="cog-outline" {...props} />,
   List_O: (props: IconProps) => <CustomIcon name="list-outline" {...props} />,
-  Video_O: (props: IconProps) => <CustomIcon name="videocam-outline" {...props} />,
-  Calendar_O: (props: IconProps) => <CustomIcon name="calendar-outline" {...props} />,
-  Megaphone_O: (props: IconProps) => <CustomIcon name="megaphone-outline" {...props} />,
+  Video_O: (props: IconProps) => (
+    <CustomIcon name="videocam-outline" {...props} />
+  ),
+  Calendar_O: (props: IconProps) => (
+    <CustomIcon name="calendar-outline" {...props} />
+  ),
+  Megaphone_O: (props: IconProps) => (
+    <CustomIcon name="megaphone-outline" {...props} />
+  ),
   Star_O: (props: IconProps) => <CustomIcon name="star-outline" {...props} />,
-  People_O: (props: IconProps) => <CustomIcon name="people-outline" {...props} />,
-  FBLogo_O: (props: IconProps) => <CustomIcon name="logo-facebook" {...props} />,
-  PersonAdd_O: (props: IconProps) => <CustomIcon name="person-add-outline" {...props} />,
-  Help_O: (props: IconProps) => <CustomIcon name="help-circle-outline" {...props} />,
-  Logout_O: (props: IconProps) => <CustomIcon name="log-out-outline" {...props} />,
+  People_O: (props: IconProps) => (
+    <CustomIcon name="people-outline" {...props} />
+  ),
+  FBLogo_O: (props: IconProps) => (
+    <CustomIcon name="logo-facebook" {...props} />
+  ),
+  PersonAdd_O: (props: IconProps) => (
+    <CustomIcon name="person-add-outline" {...props} />
+  ),
+  Help_O: (props: IconProps) => (
+    <CustomIcon name="help-circle-outline" {...props} />
+  ),
+  Logout_O: (props: IconProps) => (
+    <CustomIcon name="log-out-outline" {...props} />
+  ),
   Send_O: (props: IconProps) => <CustomIcon name="send-outline" {...props} />,
-  Archive_O: (props: IconProps) => <CustomIcon name="archive-outline" {...props} />,
-   
-  Settings_O: (props: IconProps) => <CustomIcon name="settings-outline" {...props} />,
-  Camera_O: (props: IconProps) => <CustomIcon name="camera-outline" {...props} />,
-  Gender_O: (props: IconProps) => <CustomIcon name="male-female-outline" {...props} />,
-  Create_O: (props: IconProps) => <CustomIcon name="create-outline" {...props} />,
-  Trash_O: (props: IconProps) => <CustomIcon name="trash-bin-outline" {...props} />,
+  Archive_O: (props: IconProps) => (
+    <CustomIcon name="archive-outline" {...props} />
+  ),
+
+  Settings_O: (props: IconProps) => (
+    <CustomIcon name="settings-outline" {...props} />
+  ),
+  Camera_O: (props: IconProps) => (
+    <CustomIcon name="camera-outline" {...props} />
+  ),
+  Gender_O: (props: IconProps) => (
+    <CustomIcon name="male-female-outline" {...props} />
+  ),
+  Create_O: (props: IconProps) => (
+    <CustomIcon name="create-outline" {...props} />
+  ),
+  Trash_O: (props: IconProps) => (
+    <CustomIcon name="trash-bin-outline" {...props} />
+  ),
   Add_O: (props: IconProps) => <CustomIcon name="add-outline" {...props} />,
   View_O: (props: IconProps) => <CustomIcon name="search-outline" {...props} />,
-  
-  Pricetag_O: (props: IconProps) => <CustomIcon name="pricetag-outline" {...props} />,
-  Pricetags_O: (props: IconProps) => <CustomIcon name="pricetags-outline" {...props} />,
-  Layers_O: (props: IconProps) => <CustomIcon name="layers-outline" {...props} />,
+
+  Pricetag_O: (props: IconProps) => (
+    <CustomIcon name="pricetag-outline" {...props} />
+  ),
+  Pricetags_O: (props: IconProps) => (
+    <CustomIcon name="pricetags-outline" {...props} />
+  ),
+  Layers_O: (props: IconProps) => (
+    <CustomIcon name="layers-outline" {...props} />
+  ),
   Cash_O: (props: IconProps) => <CustomIcon name="cash-outline" {...props} />,
-  Document_O: (props: IconProps) => <CustomIcon name="document-text-outline" {...props} />,
+  Document_O: (props: IconProps) => (
+    <CustomIcon name="document-text-outline" {...props} />
+  ),
   Apps_O: (props: IconProps) => <CustomIcon name="apps-outline" {...props} />,
-  Briefcase_O: (props: IconProps) => <CustomIcon name="briefcase-outline" {...props} />,
-  Person_O: (props: IconProps) => <CustomIcon name="person-outline" {...props} />,
+  Briefcase_O: (props: IconProps) => (
+    <CustomIcon name="briefcase-outline" {...props} />
+  ),
+  Person_O: (props: IconProps) => (
+    <CustomIcon name="person-outline" {...props} />
+  ),
 
   // FontAwesome Icons using the "fa" type
-  Google: (props: IconProps) => <CustomIcon name="google" {...props} iconType="fa" />,
-  Fb: (props: IconProps) => <CustomIcon name="facebook" {...props} iconType="fa" />,
+  Google: (props: IconProps) => (
+    <CustomIcon name="google" {...props} iconType="fa" />
+  ),
+  Fb: (props: IconProps) => (
+    <CustomIcon name="facebook" {...props} iconType="fa" />
+  ),
   StarRate: (props: IconProps) => <CustomIcon name="star" {...props} />,
-  DotsMenu: (props: IconProps) => <CustomIcon name="ellipsis-vertical" {...props} />,
+  DotsMenu: (props: IconProps) => (
+    <CustomIcon name="ellipsis-vertical" {...props} />
+  ),
   Menu: (props: IconProps) => <CustomIcon name="menu" {...props} />,
   Email: (props: IconProps) => <CustomIcon name="mail" {...props} />,
   Locked: (props: IconProps) => <CustomIcon name="lock-closed" {...props} />,
   Globe: (props: IconProps) => <CustomIcon name="globe" {...props} />,
   Sunny: (props: IconProps) => <CustomIcon name="sunny" {...props} />,
   Moon: (props: IconProps) => <CustomIcon name="moon" {...props} />,
-  
 };
 
 export default IconLib;

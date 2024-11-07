@@ -1,14 +1,17 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../../../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../../../utils/responsive'; // Import responsive utilities
 import { SHARED } from '../../../styles/layoutStyles';
 import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
- 
+
   return StyleSheet.create({
-   
     bannerImageWrapper: {
       width: '100%',
       height: normalizeHeight(200),
@@ -35,22 +38,22 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(5),
       paddingLeft: normalizeWidth(5),
       paddingRight: normalizeWidth(5),
-      zIndex: 1, 
+      zIndex: 1,
       alignItems: 'center',
     },
     priceContainer: {
       position: 'absolute',
-      bottom: normalizeHeight(10), 
-      right: normalizeHeight(10),     
-      paddingTop: normalizeHeight(5),    
-      paddingBottom: normalizeHeight(1),   
-      paddingLeft: normalizeWidth(10),   
-      paddingRight: normalizeWidth(10),   
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',  
+      bottom: normalizeHeight(10),
+      right: normalizeHeight(10),
+      paddingTop: normalizeHeight(5),
+      paddingBottom: normalizeHeight(1),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
       borderWidth: SHARED.borderWidthSecondary,
       borderColor: selectedTheme.borderColorDark,
       borderRadius: 5,
-      zIndex: 2,     
+      zIndex: 2,
     },
     reactionBarSection: {
       paddingHorizontal: normalizeWidth(16),
@@ -59,7 +62,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     commentSection: {
       paddingHorizontal: normalizeWidth(10),
-      marginBottom: normalizeHeight(10), 
+      marginBottom: normalizeHeight(10),
     },
     commentContainer: {
       paddingTop: normalizeHeight(15),
@@ -69,31 +72,31 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
       borderWidth: SHARED.borderWidth,
-      marginBottom: normalizeHeight(10), 
-      position: 'relative', 
+      marginBottom: normalizeHeight(10),
+      position: 'relative',
     },
     commentsList: {
-      paddingHorizontal: normalizeWidth(10), 
+      paddingHorizontal: normalizeWidth(10),
     },
     userImage: {
-      width: normalizeWidth(30), 
-      height: normalizeWidth(30), 
-      borderRadius: 20, 
+      width: normalizeWidth(30),
+      height: normalizeWidth(30),
+      borderRadius: 20,
     },
     commentWrapper: {
-      flexDirection: 'column', 
+      flexDirection: 'column',
       justifyContent: 'flex-start',
       position: 'relative',
-      paddingRight: normalizeWidth(40), 
+      paddingRight: normalizeWidth(40),
       marginBottom: normalizeHeight(10),
     },
     commentTextWrapper: {
       lineHeight: normalizeHeight(18),
     },
     timeAndReactionWrapper: {
-      flexDirection: 'row', 
-      alignItems: 'center', 
-      marginTop: normalizeHeight(5), 
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: normalizeHeight(5),
     },
     replyContainer: {
       marginLeft: normalizeWidth(15),
@@ -140,27 +143,27 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: 0,
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      backgroundColor: selectedTheme.inputBackgroundColor, 
-      borderRadius: 30, 
+      backgroundColor: selectedTheme.inputBackgroundColor,
+      borderRadius: 30,
       borderWidth: SHARED.borderWidthSecondary,
-      borderColor: selectedTheme.buttonBorderPrimary, 
+      borderColor: selectedTheme.buttonBorderPrimary,
       justifyContent: 'flex-start',
       alignItems: 'center',
     },
     searchInput: {
-      flex: 1, 
-      height: normalizeHeight(40), 
+      flex: 1,
+      height: normalizeHeight(40),
       borderColor: selectedTheme.buttonBorderPrimary,
       borderWidth: 0,
-      paddingLeft: 0, 
-      borderRadius: 20, 
-      backgroundColor: selectedTheme.inputBackgroundColor, 
+      paddingLeft: 0,
+      borderRadius: 20,
+      backgroundColor: selectedTheme.inputBackgroundColor,
       color: selectedTheme.textPrimary,
     },
 
     contentBox: {
       backgroundColor: selectedTheme.cardBackground,
-      width: "100%",
+      width: '100%',
       height: normalizeHeight(110),
       marginRight: normalizeWidth(10),
       paddingBottom: 0,
@@ -168,12 +171,12 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: SHARED.borderWidth,
       borderRadius: SHARED.borderRadiusSecondary,
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     contentImage: {
       width: '100%',
       height: '100%',
-      resizeMode: 'cover', 
+      resizeMode: 'cover',
     },
 
     /// Portrait
@@ -184,21 +187,21 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(10),
       paddingBottom: 0,
       marginBottom: 0,
-      justifyContent: 'space-between', 
-      alignItems: 'center', 
+      justifyContent: 'space-between',
+      alignItems: 'center',
       borderColor: selectedTheme.lineBorderColorLight,
       borderWidth: SHARED.borderWidth,
       borderRadius: SHARED.borderRadiusSecondary,
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     cardImageWrapper: {
       width: '100%',
-      flex: 0.35, 
+      flex: 0.35,
       position: 'relative',
     },
     contentContainer: {
       justifyContent: 'flex-start',
-      alignItems: 'center', 
+      alignItems: 'center',
       width: '100%',
       flex: 0.5,
     },
@@ -206,22 +209,22 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       flex: 0.15,
     },
     ///
-    
+
     productImage: {
       width: '100%',
       height: '100%',
-      resizeMode: 'cover', 
+      resizeMode: 'cover',
     },
     promoImage: {
       width: '100%',
-      height: normalizeHeight(100), 
-      resizeMode: 'cover', 
+      height: normalizeHeight(100),
+      resizeMode: 'cover',
     },
     goFullScreenButton: {
       position: 'absolute',
       top: normalizeHeight(2),
       right: normalizeWidth(2),
-      backgroundColor: 'rgba(0, 0, 0, 0.4)', 
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
       padding: 5,
       borderRadius: 0,
     },
@@ -237,19 +240,19 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontS,
       color: selectedTheme.textSecondary,
       fontFamily: selectedTheme.bodyFont,
-      fontWeight:  "bold",
-      marginTop: normalizeHeight(3), 
+      fontWeight: 'bold',
+      marginTop: normalizeHeight(3),
     },
     productPrice: {
       fontSize: SHARED.fontM,
       color: selectedTheme.textHighlight,
       fontFamily: selectedTheme.bodyFont,
-      fontWeight:  "bold",
+      fontWeight: 'bold',
       marginTop: 0,
     },
     productPriceL: {
       fontSize: SHARED.fontXxL,
-      color: selectedTheme.textHighlight, 
+      color: selectedTheme.textHighlight,
       fontFamily: selectedTheme.bodyFont,
     },
     storeLocation: {
@@ -258,9 +261,9 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontFamily: selectedTheme.bodyFontSlim,
     },
     cardButton: {
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      paddingVertical: normalizeHeight(5), 
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: normalizeHeight(5),
     },
     sectionTitle: {
       fontSize: SHARED.fontM,
@@ -270,7 +273,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     modalTitle: {
       fontSize: SHARED.fontL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, 
+      color: selectedTheme.textPrimary,
       marginBottom: 15,
     },
     listItem: {
@@ -278,7 +281,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      borderBottomColor: selectedTheme.lineBorderColor, 
+      borderBottomColor: selectedTheme.lineBorderColor,
       borderBottomWidth: 1,
     },
     searchButton: {
@@ -307,7 +310,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(20),
       paddingLeft: normalizeWidth(20),
       paddingRight: normalizeWidth(20),
-      backgroundColor: selectedTheme.cardBackground, 
+      backgroundColor: selectedTheme.cardBackground,
     },
     dropdownOption: {
       paddingTop: normalizeHeight(10),
@@ -315,14 +318,14 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.textPrimary, 
+      borderColor: selectedTheme.textPrimary,
     },
     button: {
-      padding: SHARED.buttonPadding, 
-      borderRadius: SHARED.borderRadius, 
-      backgroundColor: selectedTheme.textPrimary, 
+      padding: SHARED.buttonPadding,
+      borderRadius: SHARED.borderRadius,
+      backgroundColor: selectedTheme.textPrimary,
       alignItems: 'center',
-      justifyContent: 'center', 
+      justifyContent: 'center',
       ...Platform.select({
         ios: {
           shadowColor: SHARED.shadow.color,
@@ -342,30 +345,30 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     input: {
       flex: 1,
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, 
+      color: selectedTheme.textPrimary,
     },
     modalOverlay: {
-      backgroundColor: selectedTheme.modalOverlay, 
+      backgroundColor: selectedTheme.modalOverlay,
     },
     overlay: {
       flex: 1,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      justifyContent: 'center', 
+      justifyContent: 'center',
       alignItems: 'center',
     },
     modalText: {
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, 
+      color: selectedTheme.textPrimary,
       fontFamily: selectedTheme.bodyFont,
     },
     dropdownMenu: {
-      backgroundColor: selectedTheme.cardBackground, 
+      backgroundColor: selectedTheme.cardBackground,
       borderRadius: 10,
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      width: normalizeWidth(220), 
+      width: normalizeWidth(220),
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.2,
@@ -377,7 +380,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center',
       paddingVertical: normalizeHeight(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.lineBorderColor, 
+      borderColor: selectedTheme.lineBorderColor,
     },
     dropdownText: {
       color: selectedTheme.textSecondary,
@@ -385,10 +388,10 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginLeft: normalizeWidth(10),
     },
     logo: {
-      width: normalizeWidth(150), 
-      height: normalizeHeight(150), 
-      resizeMode: 'contain', 
-      marginBottom: normalizeHeight(20), 
+      width: normalizeWidth(150),
+      height: normalizeHeight(150),
+      resizeMode: 'contain',
+      marginBottom: normalizeHeight(20),
     },
     headerTitle: {
       fontSize: SHARED.fontXxL,
@@ -398,7 +401,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     linkText: {
       fontSize: SHARED.fontM,
-      fontFamily: selectedTheme.bodyFont, 
+      fontFamily: selectedTheme.bodyFont,
       color: selectedTheme.textLink,
       marginTop: normalizeHeight(10),
       marginBottom: normalizeHeight(10),
@@ -406,36 +409,36 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(10),
     },
     socialButton: {
-      ...SHARED, 
+      ...SHARED,
       flexDirection: 'row',
-      width: '48%', 
+      width: '48%',
     },
     googleButton: {
-      backgroundColor: selectedTheme.googleButtonColor, 
+      backgroundColor: selectedTheme.googleButtonColor,
     },
     facebookButton: {
-      backgroundColor: selectedTheme.facebookButtonColor, 
+      backgroundColor: selectedTheme.facebookButtonColor,
     },
     socialButtonText: {
-      color: selectedTheme.buttonTextPrimary, 
+      color: selectedTheme.buttonTextPrimary,
     },
 
-     loader: {
-      marginTop: normalizeHeight(30), 
+    loader: {
+      marginTop: normalizeHeight(30),
       color: selectedTheme.loader,
     },
     headerLogo: {
-      width: normalizeWidth(30), 
-      height: normalizeHeight(30), 
-      resizeMode: 'contain', 
-      marginRight: normalizeWidth(10), 
+      width: normalizeWidth(30),
+      height: normalizeHeight(30),
+      resizeMode: 'contain',
+      marginRight: normalizeWidth(10),
     },
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont,
-      fontSize: SHARED.fontXS, 
+      fontSize: SHARED.fontXS,
       color: selectedTheme.textSecondary,
-      marginTop:  normalizeHeight(-4), 
-      marginBottom:  normalizeHeight(4), 
+      marginTop: normalizeHeight(-4),
+      marginBottom: normalizeHeight(4),
     },
     screenHeaderTitle: {
       fontSize: SHARED.fontL,
@@ -459,25 +462,25 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: normalizeWidth(20),
     },
     chatButton: {
-      backgroundColor: selectedTheme.buttonDark, 
+      backgroundColor: selectedTheme.buttonDark,
     },
     cartButton: {
-      backgroundColor: selectedTheme.buttonPrimary, 
+      backgroundColor: selectedTheme.buttonPrimary,
     },
     commentButton: {
-      backgroundColor: selectedTheme.buttonInfo, 
+      backgroundColor: selectedTheme.buttonInfo,
     },
     followButton: {
-      backgroundColor: selectedTheme.buttonInfo, 
+      backgroundColor: selectedTheme.buttonInfo,
     },
     cardHeader: {
-      flexDirection: 'row', 
-      alignItems: 'center', 
-      marginBottom: normalizeHeight(10), 
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: normalizeHeight(10),
     },
     cardHeaderTitle: {
       fontSize: SHARED.fontXL,
-      fontFamily: selectedTheme.headingFont, 
+      fontFamily: selectedTheme.headingFont,
       color: selectedTheme.textPrimary,
     },
     sectionButtonText: {
@@ -490,35 +493,35 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginBottom: normalizeHeight(20),
     },
     toggleButtonContainer: {
-      flexDirection: 'row', 
-      justifyContent: 'space-between', 
-      alignItems: 'center', 
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     cardText: {
-      fontSize: SHARED.fontM, 
-      color: selectedTheme.textPrimary, 
-      marginTop: normalizeHeight(5), 
-      marginLeft: normalizeWidth(10), 
+      fontSize: SHARED.fontM,
+      color: selectedTheme.textPrimary,
+      marginTop: normalizeHeight(5),
+      marginLeft: normalizeWidth(10),
     },
     languageContainer: {
-      marginTop: normalizeHeight(10), 
-      backgroundColor: selectedTheme.cardBackground, 
+      marginTop: normalizeHeight(10),
+      backgroundColor: selectedTheme.cardBackground,
     },
     splashContainer: {
       flex: 1,
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      backgroundColor: selectedTheme.cardBackground, 
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: selectedTheme.cardBackground,
     },
     splashText: {
       fontSize: SHARED.fontXxL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary, 
-      marginTop: normalizeHeight(10), 
+      color: selectedTheme.textPrimary,
+      marginTop: normalizeHeight(10),
     },
     slide: {
-      borderRadius: SHARED.borderRadiusSecondary, 
-      overflow: 'hidden', 
+      borderRadius: SHARED.borderRadiusSecondary,
+      overflow: 'hidden',
     },
     reactionBar: {
       flexDirection: 'row',
@@ -533,18 +536,17 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderColor: selectedTheme.textPrimary,
     },
     avatarBar: {
-      height: normalizeHeight(48), 
-      backgroundColor: 
-      selectedTheme.cardBackground, 
-      flexDirection: 'row'
+      height: normalizeHeight(48),
+      backgroundColor: selectedTheme.cardBackground,
+      flexDirection: 'row',
     },
     chatSendButton: {
       marginLeft: normalizeWidth(10),
     },
     chatMessagesContainer: {
-      position: 'relative', 
-      backgroundColor: selectedTheme.cardBackground, 
-      paddingTop: normalizeHeight(8), 
+      position: 'relative',
+      backgroundColor: selectedTheme.cardBackground,
+      paddingTop: normalizeHeight(8),
       paddingBottom: normalizeHeight(8),
     },
     chatInputContainer: {
@@ -610,9 +612,9 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontXL,
       fontWeight: 'bold',
     },
-    
+
     slideModal: {
-      justifyContent: 'flex-end', 
+      justifyContent: 'flex-end',
       marginLeft: 0,
       marginRight: 0,
       marginBottom: 0,
@@ -622,8 +624,8 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),
-      minHeight: '60%',  
-      maxHeight: '80%', 
+      minHeight: '60%',
+      maxHeight: '80%',
     },
     slideModalCloseButton: {
       alignSelf: 'flex-end',
@@ -648,8 +650,8 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: '90%',
     },
     centeredConfimrationModal: {
-      justifyContent: 'center', 
-      alignItems: 'center', 
+      justifyContent: 'center',
+      alignItems: 'center',
       margin: normalizeHeight(10),
     },
     confimrationModalTitle: {
@@ -667,7 +669,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontWeight: 'bold',
     },
 
- ////////////////
+    ////////////////
     // CSS below need refactore
 
     container: {
@@ -769,19 +771,19 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     vendorName: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#333', 
+      color: '#333',
     },
     vendorLocation: {
-      color: '#666', 
+      color: '#666',
       fontSize: 14,
     },
     vendorStats: {
-      color: '#666', 
+      color: '#666',
       fontSize: 12,
     },
 
     followButtonText: {
-      color: '#FFF', 
+      color: '#FFF',
       fontWeight: 'bold',
       fontSize: 14,
     },
@@ -795,7 +797,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: 10,
     },
     categoryCard: {
-      backgroundColor: '#f2f2f2', 
+      backgroundColor: '#f2f2f2',
       paddingHorizontal: 15,
       paddingVertical: 10,
       borderRadius: 20,
@@ -804,7 +806,7 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       alignItems: 'center',
     },
     categoryText: {
-      color: '#333', 
+      color: '#333',
       fontSize: 14,
     },
 
@@ -813,22 +815,22 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: 150,
     },
     reviewBox: {
-      backgroundColor: '#f9f9f9', 
+      backgroundColor: '#f9f9f9',
       padding: 10,
       borderRadius: 8,
       marginVertical: 5,
     },
     reviewUser: {
       fontWeight: 'bold',
-      color: '#333', 
+      color: '#333',
     },
     reviewContent: {
-      color: '#555', 
+      color: '#555',
       fontSize: 14,
       marginVertical: 5,
     },
     reviewRating: {
-      color: '#FFC107', 
+      color: '#FFC107',
       fontSize: 14,
     },
     header: {
@@ -855,11 +857,11 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     productListContainer: {
       marginTop: 20,
     },
-    
+
     productInfo: {
       flex: 1,
     },
-    
+
     ratingContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -884,27 +886,24 @@ export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       color: selectedTheme.textPrimary,
       marginLeft: 5,
     },
-    
+
     bannerWrapper: {
       position: 'relative',
       width: '100%',
-      height: 200, 
+      height: 200,
       marginBottom: 20,
     },
 
-  
     // Profile picture in the lower left corner of the banner
     profilePicture: {
       position: 'absolute',
-      bottom: 10, 
-      left: 10,  
-      width: 60,  
+      bottom: 10,
+      left: 10,
+      width: 60,
       height: 60,
-      borderRadius: 30, 
+      borderRadius: 30,
       borderWidth: 2,
       borderColor: 'white',
     },
-    
-    
   });
 };

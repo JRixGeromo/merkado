@@ -266,18 +266,21 @@ const MarketplaceScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
+      <View
+        style={[
+          layoutStyle.container,
+          layoutStyle.rlPaddingS,
+          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+        ]}
+      >
         {/* Search Container */}
         <View style={layoutStyle.verticalSpacerM} />
-        <View style={[marketStyle.searchContainer, layoutStyle.columnsInside]}>
-          <TouchableOpacity
-            style={layoutStyle.rMarginS}
-            onPress={toggleModal}
-          >
+        <View style={[layoutStyle.searchContainer, layoutStyle.columnsInside]}>
+          <TouchableOpacity style={layoutStyle.rMarginS} onPress={toggleModal}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={marketStyle.searchInput}
+            style={layoutStyle.searchInput}
             placeholder="Search"
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
           />
@@ -300,7 +303,14 @@ const MarketplaceScreen = () => {
         {categories.map((category, index) => (
           <View key={index}>
             <View style={layoutStyle.verticalSpacerM} />
-            <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{category}</Text>
+            <Text
+              style={[
+                layoutStyle.largeText,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
+              {category}
+            </Text>
             <FlatList
               data={products[category]}
               renderItem={renderProductItem}

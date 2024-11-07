@@ -8,7 +8,11 @@ import {
   View,
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../utils/responsive'; // Import responsive utilities
 import { theme as appTheme } from '../styles/theme'; // Import your theme
 import IconLib from './IconLib'; // Import IconLib
 
@@ -85,7 +89,10 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       {/* Render the optional icon on the left if provided */}
       {iconName && (
         <View style={{ marginRight: 1 }}>
-          {React.createElement(IconLib[iconName], { size: iconSize, color: iconFinalColor })}
+          {React.createElement(IconLib[iconName], {
+            size: iconSize,
+            color: iconFinalColor,
+          })}
         </View>
       )}
       <Text

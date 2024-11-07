@@ -16,16 +16,14 @@ import { useTranslation } from 'react-i18next';
 import { theme as appTheme } from '../../../styles/theme';
 
 const AccountScreen = () => {
-  
   const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-    const themeType = useAppSelector(state => state.theme.theme);
-    const acctStyle = acctStyles(themeType); // This is fine
-    const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
-  
-    const selectedTheme = appTheme[themeType];
+  const themeType = useAppSelector(state => state.theme.theme);
+  const acctStyle = acctStyles(themeType); // This is fine
+  const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
 
+  const selectedTheme = appTheme[themeType];
 
   const { t, i18n } = useTranslation();
 
@@ -117,29 +115,26 @@ const AccountScreen = () => {
                 size={24}
                 color={selectedTheme.iconColorPrimary}
               />
-              <Text style={acctStyle.cardHeaderTitle}>
-                {t('preferences')}
-              </Text>
+              <Text style={acctStyle.cardHeaderTitle}>{t('preferences')}</Text>
             </View>
 
             {/* Dark Mode Toggle */}
             <View style={[acctStyle.toggleButtonContainer, { marginTop: 10 }]}>
-            <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
-              <Text style={acctStyle.cardText}>{t('theme')}</Text>
-            </TouchableOpacity>
-            <Icon
-              name={
-                themeType === 'dark'
-                  ? 'moon'
-                  : themeType === 'feminine'
-                  ? 'heart'
-                  : 'sunny'
-              }
-              size={24}
-              color={selectedTheme.iconColorPrimary}
-            />
-          </View>
-
+              <TouchableOpacity onPress={() => dispatch(toggleTheme())}>
+                <Text style={acctStyle.cardText}>{t('theme')}</Text>
+              </TouchableOpacity>
+              <Icon
+                name={
+                  themeType === 'dark'
+                    ? 'moon'
+                    : themeType === 'feminine'
+                    ? 'heart'
+                    : 'sunny'
+                }
+                size={24}
+                color={selectedTheme.iconColorPrimary}
+              />
+            </View>
 
             {/* Language Selection Dropdown */}
             <View style={acctStyle.languageContainer}>

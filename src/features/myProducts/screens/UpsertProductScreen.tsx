@@ -37,7 +37,9 @@ interface UpsertProductScreenProps {
   product?: ProductData;
 }
 
-const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) => {
+const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
+  product,
+}) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const myProductStyle = myProductStyles(themeType);
   const layoutStyle = layoutStyles(themeType);
@@ -48,22 +50,46 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
   const [stock, setStock] = useState(product?.stock || '');
   const [price, setPrice] = useState(product?.price || '');
   const [salePrice, setSalePrice] = useState(product?.salePrice || '');
-  const [longDescription, setLongDescription] = useState(product?.longDescription || '');
+  const [longDescription, setLongDescription] = useState(
+    product?.longDescription || '',
+  );
   const [category, setCategory] = useState(product?.category || '');
   const [unit, setUnit] = useState(product?.unit || '');
   const [brand, setBrand] = useState(product?.brand || '');
-  const [isFeatured, setIsFeatured] = useState<boolean>(product?.isFeatured ?? false);
+  const [isFeatured, setIsFeatured] = useState<boolean>(
+    product?.isFeatured ?? false,
+  );
   const [isActive, setIsActive] = useState<boolean>(product?.isActive ?? true);
   const [images, setImages] = useState<string[]>(product?.images || []);
 
-  const categoryOptions = [{ label: 'Electronics', value: 'electronics' }, { label: 'Fashion', value: 'fashion' }];
-  const unitOptions = [{ label: 'Piece', value: 'piece' }, { label: 'Kilogram', value: 'kilogram' }];
-  const brandOptions = [{ label: 'Brand A', value: 'brand_a' }, { label: 'Brand B', value: 'brand_b' }];
+  const categoryOptions = [
+    { label: 'Electronics', value: 'electronics' },
+    { label: 'Fashion', value: 'fashion' },
+  ];
+  const unitOptions = [
+    { label: 'Piece', value: 'piece' },
+    { label: 'Kilogram', value: 'kilogram' },
+  ];
+  const brandOptions = [
+    { label: 'Brand A', value: 'brand_a' },
+    { label: 'Brand B', value: 'brand_b' },
+  ];
 
   const handleSaveProduct = () => {
     // Validation check
-    if (!name || !stock || !price || !category || !unit || !brand || images.length === 0) {
-      Alert.alert('Error', 'Please fill in all required fields and add at least one image.');
+    if (
+      !name ||
+      !stock ||
+      !price ||
+      !category ||
+      !unit ||
+      !brand ||
+      images.length === 0
+    ) {
+      Alert.alert(
+        'Error',
+        'Please fill in all required fields and add at least one image.',
+      );
       return;
     }
 
@@ -103,11 +129,30 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
   };
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={[layoutStyle.container, { padding: 20, justifyContent: 'center' }]}>
-          <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, { backgroundColor: selectedTheme.cardBackground }]}>
-            <Text style={[layoutStyle.verticalSpacerM, {color: selectedTheme.textSecondary}]}>
+        <View
+          style={[
+            layoutStyle.container,
+            { padding: 20, justifyContent: 'center' },
+          ]}
+        >
+          <View
+            style={[
+              layoutStyle.shadowedContainer,
+              layoutStyle.formContainer,
+              { backgroundColor: selectedTheme.cardBackground },
+            ]}
+          >
+            <Text
+              style={[
+                layoutStyle.verticalSpacerM,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
               {product ? 'Update' : 'Create'}
             </Text>
             <View style={layoutStyle.verticalSpacerM} />
@@ -180,7 +225,13 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
                   <Image
                     key={index}
                     source={{ uri }}
-                    style={{ width: 80, height: 80, marginRight: 10, marginBottom: 10, borderRadius: 8 }}
+                    style={{
+                      width: 80,
+                      height: 80,
+                      marginRight: 10,
+                      marginBottom: 10,
+                      borderRadius: 8,
+                    }}
                   />
                 ))}
               </View>
@@ -199,22 +250,44 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({ product }) =>
               }}
             />
             <View style={[layoutStyle.rowsInside, { width: '80%' }]}>
-              <View style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}>
-                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>Featured Product</Text>
+              <View
+                style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}
+              >
+                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
+                  Featured Product
+                </Text>
                 <Switch
                   value={isFeatured}
-                  onValueChange={(value) => setIsFeatured(value)}
-                  trackColor={{ false: selectedTheme.switchInactive, true: selectedTheme.switchActive }}
-                  thumbColor={isFeatured ? selectedTheme.switchThumbActive : selectedTheme.switchThumbInactive}
+                  onValueChange={value => setIsFeatured(value)}
+                  trackColor={{
+                    false: selectedTheme.switchInactive,
+                    true: selectedTheme.switchActive,
+                  }}
+                  thumbColor={
+                    isFeatured
+                      ? selectedTheme.switchThumbActive
+                      : selectedTheme.switchThumbInactive
+                  }
                 />
               </View>
-              <View style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}>
-                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>Active Product</Text>
+              <View
+                style={[layoutStyle.alignCenter, layoutStyle.dividerWrapper]}
+              >
+                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
+                  Active Product
+                </Text>
                 <Switch
                   value={isActive}
-                  onValueChange={(value) => setIsActive(value)}
-                  trackColor={{ false: selectedTheme.switchInactive, true: selectedTheme.switchActive }}
-                  thumbColor={isActive ? selectedTheme.switchThumbActive : selectedTheme.switchThumbInactive}
+                  onValueChange={value => setIsActive(value)}
+                  trackColor={{
+                    false: selectedTheme.switchInactive,
+                    true: selectedTheme.switchActive,
+                  }}
+                  thumbColor={
+                    isActive
+                      ? selectedTheme.switchThumbActive
+                      : selectedTheme.switchThumbInactive
+                  }
                 />
               </View>
             </View>

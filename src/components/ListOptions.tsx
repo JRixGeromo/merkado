@@ -1,5 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, Modal, TouchableOpacity, TextInput, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+} from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
@@ -59,8 +66,10 @@ const ListOptions: React.FC<ListOptionsProps> = ({
     return {
       iconColor: iconColor || selectedTheme.iconColorPrimary,
       textColor: textColor || selectedTheme.textSecondary,
-      placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
-      inputBackgroundColor:  customBackground || selectedTheme.inputBackgroundColor,
+      placeholderColor:
+        placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+      inputBackgroundColor:
+        customBackground || selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor]);
 
@@ -79,10 +88,16 @@ const ListOptions: React.FC<ListOptionsProps> = ({
     : selectedOption?.label || placeholder;
 
   // Render the icon dynamically using IconLib
-  const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
+  const renderIcon = (
+    iconName: keyof typeof IconLib,
+    size: number,
+    color: string,
+  ) => {
     const IconComponent = IconLib[iconName];
     if (!IconComponent) {
-      console.warn(`Icon ${iconName} not found in IconLib. Rendering default icon.`);
+      console.warn(
+        `Icon ${iconName} not found in IconLib. Rendering default icon.`,
+      );
       return <IconLib.PersonAdd_O size={size} color={color} />; // Default fallback icon
     }
     return <IconComponent size={size} color={color} />;
@@ -93,7 +108,10 @@ const ListOptions: React.FC<ListOptionsProps> = ({
       Alert.alert(t('Error'), t('Please enter a valid option.'));
       return;
     }
-    const newEntry = { label: newOption, value: newOption.toLowerCase().replace(/\s/g, '_') };
+    const newEntry = {
+      label: newOption,
+      value: newOption.toLowerCase().replace(/\s/g, '_'),
+    };
     options.push(newEntry);
     onValueChange(newEntry.value);
     setAddNewModalVisible(false);
@@ -188,11 +206,14 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               borderRadius={2} // You can set this dynamically too
               color={selectedTheme.buttonTextPrimary}
             />
-            
           </View>
         </View>
       </Modal>
-      <Modal visible={addNewModalVisible} animationType="slide" transparent={true}>
+      <Modal
+        visible={addNewModalVisible}
+        animationType="slide"
+        transparent={true}
+      >
         <View
           style={[
             layoutStyle.modalContainer,
@@ -204,13 +225,20 @@ const ListOptions: React.FC<ListOptionsProps> = ({
             },
           ]}
         >
-          <View style={[compStyle.modalContent, { backgroundColor: selectedTheme.cardBackground }]}>
-            <Text style={[compStyle.modalText, { marginBottom: 10 }]}>{t('Enter New Option')}</Text>
+          <View
+            style={[
+              compStyle.modalContent,
+              { backgroundColor: selectedTheme.cardBackground },
+            ]}
+          >
+            <Text style={[compStyle.modalText, { marginBottom: 10 }]}>
+              {t('Enter New Option')}
+            </Text>
             <TextInput
               placeholder={t('New Option')}
               value={newOption}
               onChangeText={setNewOption}
-              style={[compStyle.input, { marginBottom: 10 }]}
+              style={[layoutStyle.input, { marginBottom: 10 }]}
               placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             />
             <CustomButton
@@ -231,7 +259,6 @@ const ListOptions: React.FC<ListOptionsProps> = ({
           </View>
         </View>
       </Modal>
-
     </View>
   );
 };

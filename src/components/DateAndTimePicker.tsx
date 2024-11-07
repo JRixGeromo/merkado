@@ -72,8 +72,9 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
     return {
       iconColor: iconColor || selectedTheme.iconColorPrimary,
       textColor: textColor || selectedTheme.textSecondary,
-      placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
-      inputBackgroundColor:  selectedTheme.inputBackgroundColor,
+      placeholderColor:
+        placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+      inputBackgroundColor: selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor]);
 
@@ -109,7 +110,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           value={formattedDate} // Display formatted date
           editable={false} // Make it read-only, only clickable to open calendar
           style={[
-            compStyle.input, // Apply input styles
+            layoutStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
             {
               color: themeBasedStyles.textColor,
@@ -168,7 +169,6 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                 borderRadius={2} // You can set this dynamically too
                 color={selectedTheme.buttonTextPrimary}
               />
-              
             </View>
           </View>
         </TouchableWithoutFeedback>

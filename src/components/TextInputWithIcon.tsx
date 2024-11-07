@@ -46,7 +46,6 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   keyboardType = 'default',
   multiline = false,
 }) => {
-  
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
@@ -58,8 +57,9 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
     return {
       iconColor: iconColor || selectedTheme.iconColorPrimary,
       textColor: textColor || selectedTheme.textSecondary,
-      placeholderColor: placeholderTextColor || selectedTheme.textPlaceHolderInfo,
-      inputBackgroundColor:  selectedTheme.inputBackgroundColor,
+      placeholderColor:
+        placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+      inputBackgroundColor: selectedTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor]);
 
@@ -69,7 +69,11 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   const themeBasedInputBackgroundColor = themeBasedStyles.inputBackgroundColor;
 
   // Function to render dynamic icon from IconLib
-  const renderIcon = (iconName: keyof typeof IconLib, size: number, color: string) => {
+  const renderIcon = (
+    iconName: keyof typeof IconLib,
+    size: number,
+    color: string,
+  ) => {
     const IconComponent = IconLib[iconName]; // Access the icon component dynamically
     return <IconComponent size={size} color={color} />;
   };
@@ -86,14 +90,19 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
       ]}
     >
       {/* Dynamically render the Icon using IconLib */}
-      <View style={{ marginRight: 4, paddingTop: multiline ? 10 : 0, alignSelf: multiline ? 'flex-start' : 'center' }}>
+      <View
+        style={{
+          marginRight: 4,
+          paddingTop: multiline ? 10 : 0,
+          alignSelf: multiline ? 'flex-start' : 'center',
+        }}
+      >
         {renderIcon(iconName, iconSize, themeBasedIconColor)}
       </View>
 
-
       <TextInput
         style={[
-          compStyle.input,
+          layoutStyle.input,
           inputStyle,
           {
             color: themeBasedTextColor,
@@ -115,8 +124,8 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
         }}
         editable={editable} // Add the editable prop
         keyboardType={keyboardType}
-        multiline={multiline}      
-        numberOfLines={multiline ? 3 : 1} // Specify the number of lines if multiline  
+        multiline={multiline}
+        numberOfLines={multiline ? 3 : 1} // Specify the number of lines if multiline
       />
     </View>
   );

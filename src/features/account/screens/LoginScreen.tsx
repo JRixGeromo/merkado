@@ -26,7 +26,6 @@ import { gql, useMutation } from '@apollo/client';
 import { setUser } from '../../../store/slices/authSlice'; // Import the setUser action
 import { normalizeHeight } from '../../../utils/responsive';
 
-
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'LoginScreen'
@@ -53,7 +52,7 @@ const LoginScreen = () => {
   const acctStyle = acctStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
-  
+
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
@@ -67,7 +66,7 @@ const LoginScreen = () => {
       Alert.alert(t('error'), t('fillFields')); // Translation for error message
       return;
     }
-    
+
     ////////////////
     navigation.navigate('DashboardScreen'); // for testing purpose, temporary
     ////////////////
@@ -124,96 +123,123 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={[ layoutStyle.container, {padding: 20, justifyContent: 'center'}]}>
-          <View style={[layoutStyle.shadowedContainer, layoutStyle.formContainer, {backgroundColor: selectedTheme.cardBackground}]}>
-
-         
-          <Image
-            source={require('../../../../assets/logo.png')}
-            style={acctStyle.logo}
-          />
-
-          <Text style={acctStyle.welcomeText}>{t('welcomeBack')}</Text>
-
-          <TextInputWithIcon
-            placeholder={t('email')}
-            iconName="Email" // Use IconLib
-            value={email}
-            onChangeText={setEmail}
-            style={{ height: 45 }}
-          />
-
-          <TextInputWithIcon
-            placeholder={t('password')}
-            iconName="Locked" // Use IconLib
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-            style={{ height: 45 }}
-          />
-
-          {/* Loading indicator */}
-          {loading ? (
-            <ActivityIndicator
-              size="large"
-              color={selectedTheme.textPrimary}
-              style={layoutStyle.loader}
-            />
-          ) : (
-            <CustomButton
-              title={t('login')}
-              onPress={handleLogin}
-              color={selectedTheme.textLight}
-              backgroundColor={selectedTheme.buttonPrimary}
-              borderRadius={2} // You can set this dynamically too
-            />
-          )}
-
-          <TouchableOpacity>
-            <Text style={[acctStyle.linkText, layoutStyle.marginAllL, { fontWeight: 'bold' }]}>
-              {t('forgotPassword')}
-            </Text>
-          </TouchableOpacity>
-
-          <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, {color: selectedTheme.textSecondary }]}>{t('orLoginWith')}</Text>
-
+        <View
+          style={[
+            layoutStyle.container,
+            { padding: 20, justifyContent: 'center' },
+          ]}
+        >
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '80%',
-            }}
+            style={[
+              layoutStyle.shadowedContainer,
+              layoutStyle.formContainer,
+              { backgroundColor: selectedTheme.cardBackground },
+            ]}
           >
-
-            <CustomButton
-              title={t('google')}
-              onPress={() => console.log('Google Login Pressed')}
-              color={selectedTheme.textLight}
-              backgroundColor={selectedTheme.googleButtonColor}
-              borderRadius={2} // You can set this dynamically too
-              iconName={'Google'}
+            <Image
+              source={require('../../../../assets/logo.png')}
+              style={layoutStyle.logo}
             />
 
-            <CustomButton
-              title={t('facebook')}
-              onPress={() => console.log('Facebook Login Pressed')}
-              color={selectedTheme.buttonTextPrimary}
-              backgroundColor={selectedTheme.facebookButtonColor}
-              borderRadius={2} // You can set this dynamically too
-              iconName={'Fb'}
+            <Text style={acctStyle.welcomeText}>{t('welcomeBack')}</Text>
+
+            <TextInputWithIcon
+              placeholder={t('email')}
+              iconName="Email" // Use IconLib
+              value={email}
+              onChangeText={setEmail}
+              style={{ height: 45 }}
             />
 
-          </View>
+            <TextInputWithIcon
+              placeholder={t('password')}
+              iconName="Locked" // Use IconLib
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+              style={{ height: 45 }}
+            />
 
-          <TouchableOpacity onPress={navigateToRegister}>
-            <Text style={[layoutStyle.smallText, layoutStyle.marginAllM, { color: selectedTheme.textSecondary }]}>
-              {t('noAccount')}{' '}
-              <Text style={[acctStyle.linkText, { fontWeight: 'bold' }]}>
-                {t('register')}
+            {/* Loading indicator */}
+            {loading ? (
+              <ActivityIndicator
+                size="large"
+                color={selectedTheme.textPrimary}
+                style={layoutStyle.loader}
+              />
+            ) : (
+              <CustomButton
+                title={t('login')}
+                onPress={handleLogin}
+                color={selectedTheme.textLight}
+                backgroundColor={selectedTheme.buttonPrimary}
+                borderRadius={2} // You can set this dynamically too
+              />
+            )}
+
+            <TouchableOpacity>
+              <Text
+                style={[
+                  acctStyle.linkText,
+                  layoutStyle.marginAllL,
+                  { fontWeight: 'bold' },
+                ]}
+              >
+                {t('forgotPassword')}
               </Text>
+            </TouchableOpacity>
+
+            <Text
+              style={[
+                layoutStyle.smallText,
+                layoutStyle.marginAllM,
+                { color: selectedTheme.textSecondary },
+              ]}
+            >
+              {t('orLoginWith')}
             </Text>
-          </TouchableOpacity>
-           </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '80%',
+              }}
+            >
+              <CustomButton
+                title={t('google')}
+                onPress={() => console.log('Google Login Pressed')}
+                color={selectedTheme.textLight}
+                backgroundColor={selectedTheme.googleButtonColor}
+                borderRadius={2} // You can set this dynamically too
+                iconName={'Google'}
+              />
+
+              <CustomButton
+                title={t('facebook')}
+                onPress={() => console.log('Facebook Login Pressed')}
+                color={selectedTheme.buttonTextPrimary}
+                backgroundColor={selectedTheme.facebookButtonColor}
+                borderRadius={2} // You can set this dynamically too
+                iconName={'Fb'}
+              />
+            </View>
+
+            <TouchableOpacity onPress={navigateToRegister}>
+              <Text
+                style={[
+                  layoutStyle.smallText,
+                  layoutStyle.marginAllM,
+                  { color: selectedTheme.textSecondary },
+                ]}
+              >
+                {t('noAccount')}{' '}
+                <Text style={[acctStyle.linkText, { fontWeight: 'bold' }]}>
+                  {t('register')}
+                </Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

@@ -129,7 +129,8 @@ const DashboardScreen = () => {
     {
       id: '1',
       name: 'Beef Boneless',
-      description: 'Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description',
+      description:
+        'Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description',
       price: 500,
       location: 'Walnut Creek, CA',
       distance: 'PH-03(32km)',
@@ -256,14 +257,17 @@ const DashboardScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
+      <View
+        style={[
+          layoutStyle.container,
+          layoutStyle.rlPaddingS,
+          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+        ]}
+      >
         {/* Search Container */}
         <View style={layoutStyle.verticalSpacerM} />
         <View style={[commonStyle.searchContainer, layoutStyle.columnsInside]}>
-          <TouchableOpacity
-            style={layoutStyle.rMarginS}
-            onPress={toggleModal}
-          >
+          <TouchableOpacity style={layoutStyle.rMarginS} onPress={toggleModal}>
             <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
@@ -287,15 +291,22 @@ const DashboardScreen = () => {
         />
 
         {/* Promo Carousel */}
-        
+
         <View style={layoutStyle.verticalSpacerL}>
-        <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('spotlightOffers')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {t('spotlightOffers')}
+          </Text>
           <Carousel
             ref={carouselRef}
             data={promoImages}
             renderItem={renderPromoItem}
             sliderWidth={screenWidth}
-            itemWidth={screenWidth * 0.40}
+            itemWidth={screenWidth * 0.4}
             loop={true}
             autoplay={true}
             autoplayInterval={3000}
@@ -306,7 +317,14 @@ const DashboardScreen = () => {
 
         {/* Featured Stores */}
         <View>
-        <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('Featured Stores')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {t('Featured Stores')}
+          </Text>
           <FlatList
             data={featuredStores}
             keyExtractor={item => item.id.toString()}
@@ -319,7 +337,14 @@ const DashboardScreen = () => {
 
         {/* Featured Products */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('Featured Products')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {t('Featured Products')}
+          </Text>
           <FlatList
             data={featuredProducts}
             keyExtractor={item => item.id.toString()}

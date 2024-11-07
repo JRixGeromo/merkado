@@ -14,8 +14,12 @@ interface SlideContentModalProps {
   children: React.ReactNode; // Allows any JSX content
 }
 
-const SlideContentModal: React.FC<SlideContentModalProps> = ({ visible, onClose, title, children }) => {
-
+const SlideContentModal: React.FC<SlideContentModalProps> = ({
+  visible,
+  onClose,
+  title,
+  children,
+}) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
   const layoutStyle = layoutStyles(themeType); // Rename this to avoid conflict
@@ -34,8 +38,15 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({ visible, onClose,
     >
       <View style={compStyle.slideModalContent}>
         {/* Close Button */}
-        <TouchableOpacity style={compStyle.slideModalCloseButton} onPress={onClose}>
-          <Text style={[layoutStyle.largeText, {color: selectedTheme.textGray}]}>X</Text>
+        <TouchableOpacity
+          style={compStyle.slideModalCloseButton}
+          onPress={onClose}
+        >
+          <Text
+            style={[layoutStyle.largeText, { color: selectedTheme.textGray }]}
+          >
+            X
+          </Text>
         </TouchableOpacity>
 
         {/* Optional Title */}

@@ -1,14 +1,17 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../../../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../../../utils/responsive'; // Import responsive utilities
 import { SHARED } from '../../../styles/layoutStyles';
 import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
- 
+
   return StyleSheet.create({
-        
     bannerImageWrapper: {
       width: '100%',
       height: normalizeHeight(200),
@@ -35,22 +38,22 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingBottom: normalizeHeight(5),
       paddingLeft: normalizeWidth(5),
       paddingRight: normalizeWidth(5),
-      zIndex: 1, 
+      zIndex: 1,
       alignItems: 'center',
     },
     priceContainer: {
       position: 'absolute',
-      bottom: normalizeHeight(10), 
-      right: normalizeHeight(10),     
-      paddingTop: normalizeHeight(5),    
-      paddingBottom: normalizeHeight(1),   
-      paddingLeft: normalizeWidth(10),   
-      paddingRight: normalizeWidth(10),   
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',  
+      bottom: normalizeHeight(10),
+      right: normalizeHeight(10),
+      paddingTop: normalizeHeight(5),
+      paddingBottom: normalizeHeight(1),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
       borderWidth: SHARED.borderWidthSecondary,
       borderColor: selectedTheme.borderColorDark,
       borderRadius: 5,
-      zIndex: 2,     
+      zIndex: 2,
     },
     reactionBarSection: {
       paddingHorizontal: normalizeWidth(16),
@@ -59,7 +62,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
     commentSection: {
       paddingHorizontal: normalizeWidth(10),
-      marginBottom: normalizeHeight(10), 
+      marginBottom: normalizeHeight(10),
     },
     commentContainer: {
       paddingTop: normalizeHeight(15),
@@ -69,31 +72,31 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
       borderWidth: SHARED.borderWidth,
-      marginBottom: normalizeHeight(10), 
-      position: 'relative', 
+      marginBottom: normalizeHeight(10),
+      position: 'relative',
     },
     commentsList: {
-      paddingHorizontal: normalizeWidth(10), 
+      paddingHorizontal: normalizeWidth(10),
     },
     userImage: {
-      width: normalizeWidth(30), 
-      height: normalizeWidth(30), 
-      borderRadius: 20, 
+      width: normalizeWidth(30),
+      height: normalizeWidth(30),
+      borderRadius: 20,
     },
     commentWrapper: {
-      flexDirection: 'column', 
+      flexDirection: 'column',
       justifyContent: 'flex-start',
       position: 'relative',
-      paddingRight: normalizeWidth(40), 
+      paddingRight: normalizeWidth(40),
       marginBottom: normalizeHeight(10),
     },
     commentTextWrapper: {
       lineHeight: normalizeHeight(18),
     },
     timeAndReactionWrapper: {
-      flexDirection: 'row', 
-      alignItems: 'center', 
-      marginTop: normalizeHeight(5), 
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: normalizeHeight(5),
     },
     replyContainer: {
       marginLeft: normalizeWidth(15),
@@ -105,34 +108,11 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: -15,
       marginTop: normalizeHeight(10),
     },
-    searchContainer: {
-      paddingTop: 0,
-      paddingBottom: 0,
-      paddingLeft: normalizeWidth(10),
-      paddingRight: normalizeWidth(10),
-      backgroundColor: selectedTheme.inputBackgroundColor, 
-      borderRadius: 30, 
-      borderWidth: SHARED.borderWidthSecondary,
-      borderColor: selectedTheme.buttonBorderPrimary, 
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-    },
-    searchInput: {
-      flex: 1, 
-      height: normalizeHeight(40), 
-      borderColor: selectedTheme.buttonBorderPrimary,
-      borderWidth: 0,
-      paddingLeft: 0, 
-      borderRadius: 20, 
-      backgroundColor: selectedTheme.inputBackgroundColor, 
-      color: selectedTheme.textPrimary,
-    },
     chatButton: {
-      backgroundColor: selectedTheme.buttonDark, 
+      backgroundColor: selectedTheme.buttonDark,
     },
     cartButton: {
-      backgroundColor: selectedTheme.buttonPrimary, 
+      backgroundColor: selectedTheme.buttonPrimary,
     },
-    
   });
 };

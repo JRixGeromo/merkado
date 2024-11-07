@@ -1,19 +1,17 @@
 import { StyleSheet, Platform, ViewStyle } from 'react-native';
-import { normalizeFontSize, normalizeHeight, normalizeWidth } from '../../../utils/responsive'; // Import responsive utilities
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../../../utils/responsive'; // Import responsive utilities
 import { SHARED } from '../../../styles/layoutStyles';
 import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const chatStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
- 
+
   return StyleSheet.create({
-   
-    input: {
-      flex: 1,
-      fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary, 
-    },
     chatAvatar: {
       width: normalizeWidth(40),
       height: normalizeHeight(40),
@@ -22,18 +20,17 @@ export const chatStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderColor: selectedTheme.textPrimary,
     },
     avatarBar: {
-      height: normalizeHeight(48), 
-      backgroundColor: 
-      selectedTheme.cardBackground, 
-      flexDirection: 'row'
+      height: normalizeHeight(48),
+      backgroundColor: selectedTheme.cardBackground,
+      flexDirection: 'row',
     },
     chatSendButton: {
       marginLeft: normalizeWidth(10),
     },
     chatMessagesContainer: {
-      position: 'relative', 
-      backgroundColor: selectedTheme.cardBackground, 
-      paddingTop: normalizeHeight(8), 
+      position: 'relative',
+      backgroundColor: selectedTheme.cardBackground,
+      paddingTop: normalizeHeight(8),
       paddingBottom: normalizeHeight(8),
     },
     chatInputContainer: {
@@ -60,6 +57,5 @@ export const chatStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontS,
       fontWeight: 'bold',
     },
-    
   });
 };

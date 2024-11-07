@@ -52,7 +52,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   // Render each item in the list
   const renderListItem = ({ item }: { item: string }) => (
     <View style={commonStyle.listItem}>
-      <Text style={{color: selectedTheme.textSecondary}}>{item}</Text>
+      <Text style={{ color: selectedTheme.textSecondary }}>{item}</Text>
     </View>
   );
 
@@ -80,7 +80,13 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
 
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
-      <View style={[layoutStyle.container, layoutStyle.paddingAllS, {backgroundColor: selectedTheme.fullContainerBackgroundColor }]}>
+      <View
+        style={[
+          layoutStyle.container,
+          layoutStyle.paddingAllS,
+          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+        ]}
+      >
         <Text style={commonStyle.modalTitle}>{t('Search in merkado by')}</Text>
 
         {/* Scrollable Section Buttons */}
@@ -130,7 +136,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
           style={{
             marginLeft: 0,
             marginRight: 0,
-            padding:10,
+            padding: 10,
           }}
         />
       </View>

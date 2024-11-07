@@ -57,7 +57,8 @@ const VendorDashboard = () => {
   const layoutStyle = layoutStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const [dashboardMetrics, setDashboardMetrics] = useState<DashboardMetrics>({
     totalSales: 145000,
@@ -103,65 +104,90 @@ const VendorDashboard = () => {
       >
         {/* Dashboard Metrics */}
         <View style={[layoutStyle.verticalSpacerM]}>
-          <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}>
+          <View
+            style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}
+          >
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Total Sales')}</Text>
-              <Text style={dashStyle.metricValue}>₱{dashboardMetrics.totalSales}</Text>
+              <Text style={dashStyle.metricValue}>
+                ₱{dashboardMetrics.totalSales}
+              </Text>
             </View>
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Total Orders')}</Text>
-              <Text style={dashStyle.metricValue}>{dashboardMetrics.totalOrders}</Text>
+              <Text style={dashStyle.metricValue}>
+                {dashboardMetrics.totalOrders}
+              </Text>
             </View>
           </View>
-          <View style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}>  
+          <View
+            style={[layoutStyle.columnsInside, layoutStyle.verticalSpacerS]}
+          >
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Avg. Rating')}</Text>
-              <Text style={dashStyle.metricValue}>{dashboardMetrics.avgRating} ★</Text>
+              <Text style={dashStyle.metricValue}>
+                {dashboardMetrics.avgRating} ★
+              </Text>
             </View>
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Followers')}</Text>
-              <Text style={dashStyle.metricValue}>{dashboardMetrics.followers}</Text>
+              <Text style={dashStyle.metricValue}>
+                {dashboardMetrics.followers}
+              </Text>
             </View>
           </View>
         </View>
 
-         {/* Reaction Metrics */}
+        {/* Reaction Metrics */}
         <View style={{ marginTop: 20 }}>
           {/* <Text style={layoutStyle.largeText}>{t('Reactions')}</Text> */}
           <View style={[layoutStyle.columnsInside, { marginTop: 10 }]}>
             <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Heart size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={dashStyle.reactionValue}>{reactionMetrics.hearts}</Text>
+              <Text style={dashStyle.reactionValue}>
+                {reactionMetrics.hearts}
+              </Text>
               <Text style={dashStyle.reactionLabel}>{t('Hearts')}</Text>
             </View>
             <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
               <IconLib.Share size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={dashStyle.reactionValue}>{reactionMetrics.shares}</Text>
+              <Text style={dashStyle.reactionValue}>
+                {reactionMetrics.shares}
+              </Text>
               <Text style={dashStyle.reactionLabel}>{t('Shares')}</Text>
             </View>
             <View style={[layoutStyle.cols_3, dashStyle.metricBox]}>
-              <IconLib.Chat_O size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={dashStyle.reactionValue}>{reactionMetrics.comments}</Text>
+              <IconLib.Chat_O
+                size={24}
+                color={selectedTheme.iconColorPrimary}
+              />
+              <Text style={dashStyle.reactionValue}>
+                {reactionMetrics.comments}
+              </Text>
               <Text style={dashStyle.reactionLabel}>{t('Comments')}</Text>
             </View>
           </View>
         </View>
 
-       {/* Recent Orders */}
-       <View style={{ marginTop: 30 }}>
+        {/* Recent Orders */}
+        <View style={{ marginTop: 30 }}>
           <Text style={layoutStyle.largeText}>{t('Recent Orders')}</Text>
           {recentOrders.map(order => (
             <View key={order.id} style={dashStyle.orderBox}>
               <Text style={dashStyle.orderText}>
                 {order.customerName} - ₱{order.amount}
               </Text>
-              <Text style={[dashStyle.orderStatus, { color: selectedTheme.textAccent }]}>
+              <Text
+                style={[
+                  dashStyle.orderStatus,
+                  { color: selectedTheme.textAccent },
+                ]}
+              >
                 {order.status}
               </Text>
             </View>
           ))}
         </View>
-
 
         {/* Customer Feedback */}
         <View style={{ marginTop: 30 }}>

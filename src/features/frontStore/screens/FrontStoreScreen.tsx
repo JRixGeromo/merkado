@@ -129,7 +129,8 @@ const FrontStoreScreen = () => {
     {
       id: '1',
       name: 'Beef Boneless',
-      description: 'Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description',
+      description:
+        'Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description Beef Boneless Description',
       price: 500,
       location: 'Walnut Creek, CA',
       distance: 'PH-03(32km)',
@@ -170,7 +171,6 @@ const FrontStoreScreen = () => {
     location: 'Downtown City',
     followers: 1500,
   };
-
 
   // Handle like toggle for products
   const toggleProductLike = (productId: string) => {
@@ -264,20 +264,34 @@ const FrontStoreScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={[layoutStyle.container, layoutStyle.rlPaddingS, { backgroundColor: selectedTheme.fullContainerBackgroundColor }]} >
+      <View
+        style={[
+          layoutStyle.container,
+          layoutStyle.rlPaddingS,
+          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+        ]}
+      >
         {/* Vendor Header */}
         <View style={commonStyle.bannerWrapper}>
           {/* Banner Image */}
-          <Image source={{ uri: vendorInfo.logoUrl }} style={commonStyle.bannerImage} />
-          
+          <Image
+            source={{ uri: vendorInfo.logoUrl }}
+            style={commonStyle.bannerImage}
+          />
+
           {/* Profile Picture in Bottom Left Corner */}
-          <Image source={{ uri: vendorInfo.logoUrl }} style={commonStyle.profilePicture} />
+          <Image
+            source={{ uri: vendorInfo.logoUrl }}
+            style={commonStyle.profilePicture}
+          />
         </View>
 
         <View style={commonStyle.vendorInfo}>
           <Text style={commonStyle.vendorName}>{vendorInfo.name}</Text>
           <Text style={commonStyle.vendorLocation}>{vendorInfo.location}</Text>
-          <Text style={commonStyle.vendorStats}>{vendorInfo.followers} Followers</Text>
+          <Text style={commonStyle.vendorStats}>
+            {vendorInfo.followers} Followers
+          </Text>
         </View>
         {/* Search Container */}
         {/* <View style={layoutStyle.verticalSpacerM} />
@@ -309,25 +323,49 @@ const FrontStoreScreen = () => {
         />
 
         {/* Promo Carousel */}
-        
-                {/* Categories */}
-                <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, { color: selectedTheme.textPrimary }]}>{t('Categories')}</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={commonStyle.categoriesContainer}>
-            <View style={commonStyle.categoryCard}><Text style={commonStyle.categoryText}>Cosmetics</Text></View>
-            <View style={commonStyle.categoryCard}><Text style={commonStyle.categoryText}>Beverages</Text></View>
-            <View style={commonStyle.categoryCard}><Text style={commonStyle.categoryText}>Snacks</Text></View>
+
+        {/* Categories */}
+        <View style={layoutStyle.verticalSpacerM}>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textPrimary },
+            ]}
+          >
+            {t('Categories')}
+          </Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={commonStyle.categoriesContainer}
+          >
+            <View style={commonStyle.categoryCard}>
+              <Text style={commonStyle.categoryText}>Cosmetics</Text>
+            </View>
+            <View style={commonStyle.categoryCard}>
+              <Text style={commonStyle.categoryText}>Beverages</Text>
+            </View>
+            <View style={commonStyle.categoryCard}>
+              <Text style={commonStyle.categoryText}>Snacks</Text>
+            </View>
             {/* Add more categories as needed */}
           </ScrollView>
         </View>
         <View style={layoutStyle.verticalSpacerL}>
-        <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('spotlightOffers')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {t('spotlightOffers')}
+          </Text>
           <Carousel
             ref={carouselRef}
             data={promoImages}
             renderItem={renderPromoItem}
             sliderWidth={screenWidth}
-            itemWidth={screenWidth * 0.40}
+            itemWidth={screenWidth * 0.4}
             loop={true}
             autoplay={true}
             autoplayInterval={3000}
@@ -338,7 +376,14 @@ const FrontStoreScreen = () => {
 
         {/* Featured Stores */}
         <View>
-        <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('Featured Stores')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {t('Featured Stores')}
+          </Text>
           <FlatList
             data={featuredStores}
             keyExtractor={item => item.id.toString()}
@@ -351,7 +396,14 @@ const FrontStoreScreen = () => {
 
         {/* Featured Products */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, {color: selectedTheme.textSecondary}]}>{t('Featured Products')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textSecondary },
+            ]}
+          >
+            {t('Featured Products')}
+          </Text>
           <FlatList
             data={featuredProducts}
             keyExtractor={item => item.id.toString()}
@@ -364,7 +416,14 @@ const FrontStoreScreen = () => {
 
         {/* Customer Reviews */}
         <View style={layoutStyle.verticalSpacerM}>
-          <Text style={[layoutStyle.largeText, { color: selectedTheme.textPrimary }]}>{t('Customer Reviews')}</Text>
+          <Text
+            style={[
+              layoutStyle.largeText,
+              { color: selectedTheme.textPrimary },
+            ]}
+          >
+            {t('Customer Reviews')}
+          </Text>
           <View style={commonStyle.reviewBox}>
             <Text style={commonStyle.reviewUser}>John Doe</Text>
             <Text style={commonStyle.reviewContent}>Amazing quality!</Text>
@@ -377,7 +436,6 @@ const FrontStoreScreen = () => {
           </View>
           {/* Add more reviews as needed */}
         </View>
-
       </View>
     </ScrollView>
   );
