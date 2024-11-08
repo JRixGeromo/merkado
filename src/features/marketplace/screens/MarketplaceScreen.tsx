@@ -16,13 +16,13 @@ type MarketplaceScreenProps = {
 };
 
 const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => {
-  const renderCategoryItem = ({ item }: { item: typeof categories[0] }) => (
+  const renderCategoryItem = ({ item, index }: { item: typeof categories[0]; index: number }) => (
     <TouchableOpacity
       style={styles.categoryCard}
       onPress={() => navigation.navigate('CategoryDetailScreen', { category: item })}
     >
       <Image
-        source={{ uri: 'https://via.placeholder.com/100' }}
+        source={{ uri: `https://picsum.photos/200/200?random=${index + 1}` }}
         style={styles.categoryImage}
       />
       <Text style={styles.categoryName}>{item.name}</Text>
@@ -37,7 +37,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
       <FlatList
         data={categories.map((category, index) => ({
           ...category,
-          image: `https://picsum.photos/200/200?random=${index + 1}`, // Add hardcoded image URL
+          image: `https://picsum.photos/200/200?random=${index + 1}`, // Dynamically generated images
         }))}
         renderItem={renderCategoryItem}
         keyExtractor={(item) => item.name}
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   categoryCard: {
     flex: 1,
     margin: 10,
-    padding: 10,
+    padding: 15,
     borderRadius: 15,
     backgroundColor: '#ffffff',
     shadowColor: '#000',
@@ -62,26 +62,32 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 4,
     alignItems: 'center', // Center-align content
+    transform: [{ scale: 1 }],
+  },
+  categoryCardPressed: {
+    transform: [{ scale: 0.97 }],
   },
   categoryImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 10,
-    marginBottom: 10,
+    width: 140, // Increased width
+    height: 100, // Increased height
+    borderRadius: 15, // Slightly rounded corners
+    marginBottom: 15, // Space between image and text
     backgroundColor: '#e0e0e0', // Placeholder background
   },
   categoryName: {
-    fontSize: 16,
+    fontSize: 18, // Increased font size
     fontWeight: 'bold',
     marginBottom: 5,
     color: '#333',
     textAlign: 'center',
   },
   categoryDescription: {
-    fontSize: 12,
-    color: '#777',
+    fontSize: 14, // Slightly larger font
+    color: '#666',
     textAlign: 'center',
+    lineHeight: 18, // Improved readability
   },
 });
+
 
 export default MarketplaceScreen;
