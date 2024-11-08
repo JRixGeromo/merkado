@@ -71,7 +71,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
           {item.discount && <Text style={styles.discountBadge}>{item.discount}</Text>}
         </View>
       </View>
-  
+
       {/* Product Image and Add-to-Cart */}
       <View style={styles.imageContainer}>
         <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
@@ -81,7 +81,6 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
       </View>
     </View>
   );
-  
 
   return (
     <View style={styles.container}>
@@ -96,13 +95,13 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             onPress={() => setActiveView('featured')}
             style={[styles.iconButton, activeView === 'featured' && styles.activeIconButton]}
           >
-            <Text style={styles.iconText}>⭐</Text>
+            <Text style={[styles.iconText, activeView === 'featured' && styles.activeIconText]}>⭐</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setActiveView('categories')}
             style={[styles.iconButton, activeView === 'categories' && styles.activeIconButton]}
           >
-            <Text style={styles.iconText}>📂</Text>
+            <Text style={[styles.iconText, activeView === 'categories' && styles.activeIconText]}>📂</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -155,115 +154,8 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
     </View>
   );
 };
+
 const styles = StyleSheet.create({
-  badgeRow: {
-    flexDirection: 'row', // Arrange badges horizontally
-    alignItems: 'center', // Align vertically in the center
-    marginBottom: 5, // Space below the badges
-    gap: 8, // Space between the badges (optional, use padding instead if unsupported)
-  },
-  newBadge: {
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 5,
-  },
-  popularBadge: {
-    backgroundColor: '#FF9800',
-    color: '#fff',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 5,
-  },
-   // Product Card
-   productCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 8,
-    padding: 15,
-    backgroundColor: '#FEF9E7', // Light yellowish background
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-
-  // Product Info Section
-  productInfo: {
-    flex: 1,
-    paddingRight: 10,
-  },
-  productName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  productDescription: {
-    fontSize: 14,
-    color: '#666',
-    marginVertical: 5,
-  },
-
-  // Price Row
-  priceRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 5,
-  },
-  discountedPrice: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-    marginRight: 10,
-  },
-  originalPrice: {
-    fontSize: 14,
-    color: '#999',
-    textDecorationLine: 'line-through',
-    marginRight: 10,
-  },
-  discountBadge: {
-    backgroundColor: '#FF5252',
-    color: '#fff',
-    paddingHorizontal: 5,
-    fontSize: 12,
-    borderRadius: 5,
-    fontWeight: 'bold',
-  },
-
-
-  // Image Section
-  imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  productImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-    marginBottom: 10,
-    backgroundColor: '#e0e0e0',
-  },
-  addToCartButton: {
-    backgroundColor: '#4CAF50',
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  addToCartText: {
-    fontSize: 18,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-
   container: { flex: 1, backgroundColor: '#f8f9fa' },
   searchContainer: {
     flexDirection: 'row',
@@ -303,24 +195,33 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   scrollViewContent: {
-    paddingBottom: 40, // Space below last item
+    paddingBottom: 40,
   },
   featuredContainer: {
     marginBottom: 20,
-    marginHorizontal: 15, // Align content horizontally
+    marginHorizontal: 15,
+  },
+  sectionHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
   },
   featuredList: {
     paddingHorizontal: 15,
   },
   featuredCard: {
     marginRight: 15,
-    borderRadius: 10,
-    overflow: 'hidden',
+    borderRadius: 15, // Consistent rounded corners
+    overflow: 'hidden', // Ensure child elements respect the rounded corners
     width: 250,
+    backgroundColor: '#ffffff', // Optional, if you want a background
+    elevation: 3, // Slight shadow for depth
   },
   featuredImage: {
     width: '100%',
     height: 150,
+    borderRadius: 15, // Match the same borderRadius
   },
   featuredName: {
     fontSize: 14,
@@ -336,11 +237,84 @@ const styles = StyleSheet.create({
   recentlyPostedList: {
     paddingHorizontal: 10,
   },
-  
+  productCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 8,
+    padding: 15,
+    backgroundColor: '#FEF9E7',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  productInfo: { flex: 1, paddingRight: 10 },
+  badgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+    gap: 8,
+  },
+  productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
+  productDescription: { fontSize: 14, color: '#666', marginVertical: 5 },
+  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
+  discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
+  originalPrice: {
+    fontSize: 14,
+    color: '#999',
+    textDecorationLine: 'line-through',
+    marginRight: 10,
+  },
+  discountBadge: {
+    backgroundColor: '#FF5252',
+    color: '#fff',
+    paddingHorizontal: 5,
+    fontSize: 12,
+    borderRadius: 5,
+    fontWeight: 'bold',
+  },
+  popularBadge: {
+    backgroundColor: '#FF9800',
+    color: '#fff',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    fontSize: 12,
+    fontWeight: 'bold',
+    borderRadius: 5,
+  },
+  newBadge: {
+    backgroundColor: '#4CAF50',
+    color: '#fff',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    fontSize: 12,
+    fontWeight: 'bold',
+    borderRadius: 5,
+  },
+  imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  productImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    marginBottom: 10,
+    backgroundColor: '#e0e0e0',
+  },
+  addToCartButton: {
+    backgroundColor: '#4CAF50',
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addToCartText: { fontSize: 18, color: '#fff', fontWeight: 'bold' },
   categoryGrid: {
     paddingHorizontal: 10,
     paddingTop: 10,
-    alignItems: 'stretch',
   },
   categoryCard: {
     flex: 1,
@@ -362,7 +336,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
   },
   categoryName: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
     color: '#333',
@@ -373,7 +347,6 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
   },
- 
 });
 
 export default MarketplaceScreen;
