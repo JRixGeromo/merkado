@@ -37,8 +37,14 @@ export type RootStackParamList = {
 
   // New Marketplace Screens
   MarketplaceScreen: undefined; // Already exists
-  CategoryDetailScreen: { category: { name: string; description: string } };
-  SubcategoryProductsScreen: { subcategory: { name: string } };
+  CategoryDetailScreen: { 
+    category: { 
+      name: string; 
+      description: string; 
+      subcategories: { name: string }[]; // Include subcategories here
+    };
+  };
+  ProductsScreen: { subcategory: { name: string } }; // Renamed to ProductsScreen
 };
 
 // Tab Navigator Params

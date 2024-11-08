@@ -3,12 +3,12 @@ import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 
-type SubcategoryProductsScreenProps = NativeStackScreenProps<
+type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  'SubcategoryProductsScreen'
+  'ProductsScreen'
 >;
 
-const SubcategoryProductsScreen: React.FC<SubcategoryProductsScreenProps> = ({ route }) => {
+const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
   const { subcategory } = route.params;
 
   const products = [
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   productPrice: { fontSize: 14, color: '#555' },
 });
 
-export default SubcategoryProductsScreen;
+export default ProductsScreen;

@@ -1,33 +1,15 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
-
-interface Category {
-  name: string;
-  description: string;
-}
-
-const categories: Category[] = [
-  { name: 'Electronics & Appliances', description: 'Explore a wide range of electronic devices.' },
-  { name: 'Fashion & Apparel', description: 'Stylish clothing and accessories.' },
-  { name: 'Health & Wellness', description: 'Health, beauty, and personal care products.' },
-  { name: 'Home & Living', description: 'Furniture, decor, and essentials for your home.' },
-  { name: 'Food & Beverages', description: 'Fresh produce, snacks, and beverages.' },
-];
+import { RootStackParamList } from '../../../navigationTypes';
+import { categories } from '../data';
 
 type MarketplaceScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'MarketplaceScreen'>;
 };
 
 const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => {
-  const renderCategoryItem = ({ item }: { item: Category }) => (
+  const renderCategoryItem = ({ item }: { item: typeof categories[0] }) => (
     <TouchableOpacity
       style={styles.categoryCard}
       onPress={() => navigation.navigate('CategoryDetailScreen', { category: item })}

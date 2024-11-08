@@ -16,7 +16,7 @@ import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import FrontStoreScreen from './src/features/frontStore/screens/FrontStoreScreen';
 import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
 import CategoryDetailScreen from './src/features/marketplace/screens/CategoryDetailScreen';
-import SubcategoryProductsScreen from './src/features/marketplace/screens/SubcategoryProductsScreen';
+import ProductsScreen from './src/features/marketplace/screens/ProductsScreen';
 
 
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
@@ -261,8 +261,8 @@ const App = () => {
           }}
         />
         <Stack.Screen
-          name="SubcategoryProductsScreen"
-          component={SubcategoryProductsScreen}
+          name="ProductsScreen"
+          component={ProductsScreen}
           options={{
             headerTitle: 'Products',
             headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
