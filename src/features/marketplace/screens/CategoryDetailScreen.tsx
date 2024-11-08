@@ -11,7 +11,13 @@ type CategoryDetailScreenProps = NativeStackScreenProps<
 const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navigation }) => {
   const { category } = route.params;
 
-  const renderSubcategoryItem = ({ item, index }: { item: { name: string }; index: number }) => (
+  const renderSubcategoryItem = ({
+    item,
+    index,
+  }: {
+    item: { name: string; description: string };
+    index: number;
+  }) => (
     <TouchableOpacity
       style={styles.subcategoryCard}
       onPress={() => navigation.navigate('ProductsScreen', { subcategory: item })}
@@ -20,7 +26,10 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
         source={{ uri: `https://picsum.photos/100/100?random=${index + 1}` }}
         style={styles.subcategoryImage}
       />
-      <Text style={styles.subcategoryName}>{item.name}</Text>
+      <View style={styles.subcategoryContent}>
+        <Text style={styles.subcategoryName}>{item.name}</Text>
+        <Text style={styles.subcategoryDescription}>{item.description}</Text>
+      </View>
     </TouchableOpacity>
   );
 
@@ -68,10 +77,16 @@ const styles = StyleSheet.create({
     marginRight: 15,
     backgroundColor: '#e0e0e0',
   },
+  subcategoryContent: { flex: 1 },
   subcategoryName: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
+  },
+  subcategoryDescription: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 2,
   },
 });
 

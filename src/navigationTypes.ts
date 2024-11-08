@@ -1,22 +1,22 @@
-// src/navigationTypes.ts
 import {
   Product,
   Store,
 } from '../src/features/dashboard/screens/DashboardScreen';
+
 // Stack Navigator Params
 export type RootStackParamList = {
   SplashScreen: undefined;
   LoginScreen: undefined;
   RegistrationScreen: undefined;
   DashboardScreen: undefined;
-  FrontStoreScreen: { vendorId: number }; // add vendorId as a required parameter
+  FrontStoreScreen: { vendorId: number }; // Add vendorId as a required parameter
   AccountScreen: undefined;
   ChangePasswordScreen: undefined;
   ManageAddressesScreen: undefined;
   PaymentMethodsScreen: undefined;
   ProductCategoriesScreen: undefined;
   MyProductsScreen: undefined;
-  UpsertProductScreen: undefined;
+  UpsertProductScreen: undefined; // For adding/updating products
   OrdersScreen: undefined;
   FavoritesScreen: undefined;
   LiveShowsScreen: undefined;
@@ -32,19 +32,25 @@ export type RootStackParamList = {
   DetailsScreen: { item: Store | Product; type: 'store' | 'product' }; // Updated line
   CartScreen: undefined;
   CheckoutScreen: undefined; // Add CheckoutScreen here
-  LogoutScreen: undefined;
-
 
   // New Marketplace Screens
-  MarketplaceScreen: undefined; // Already exists
+  MarketplaceScreen: undefined;
   CategoryDetailScreen: { 
     category: { 
       name: string; 
       description: string; 
-      subcategories: { name: string }[]; // Include subcategories here
+      subcategories: { 
+        name: string; 
+        description: string; // Add description for subcategories
+      }[]; // Include subcategories with descriptions here
     };
   };
-  ProductsScreen: { subcategory: { name: string } }; // Renamed to ProductsScreen
+  ProductsScreen: { 
+    subcategory: { 
+      name: string; 
+      description: string; // Include subcategory description here for consistency
+    };
+  };
 };
 
 // Tab Navigator Params
