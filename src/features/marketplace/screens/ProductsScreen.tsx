@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
+import { RootStackParamList } from '../../../navigationTypes';
 
 type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -51,8 +51,10 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
     <View style={styles.productCard}>
       {/* Product Info */}
       <View style={styles.productInfo}>
-        {/* New Badge */}
-        {item.isNew && <Text style={styles.newBadge}>New</Text>}
+        <View style={styles.badgesRow}>
+          {item.isNew && <Text style={styles.newBadge}>New</Text>}
+          {item.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
+        </View>
         <Text style={styles.productName}>{item.name}</Text>
         <Text style={styles.productDescription}>{item.description}</Text>
         <View style={styles.priceRow}>
@@ -62,7 +64,6 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
           )}
           {item.discount && <Text style={styles.discountBadge}>-{item.discount}</Text>}
         </View>
-        {item.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
       </View>
 
       {/* Product Image */}
@@ -103,9 +104,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-    position: 'relative', // For badges
   },
   productInfo: { flex: 1, paddingRight: 10 },
+  badgesRow: {
+    flexDirection: 'row',
+    marginBottom: 5,
+    gap: 8, // Space between badges
+  },
   productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
   productDescription: { fontSize: 14, color: '#666', marginVertical: 5 },
   priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
@@ -125,7 +130,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   popularBadge: {
-    marginTop: 5,
     backgroundColor: '#FF9800',
     color: '#fff',
     paddingHorizontal: 8,
@@ -133,7 +137,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     borderRadius: 5,
-    alignSelf: 'flex-start',
   },
   newBadge: {
     backgroundColor: '#4CAF50',
@@ -143,11 +146,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     borderRadius: 5,
-    alignSelf: 'flex-start',
-    marginBottom: 5,
   },
   imageContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
   },
   productImage: {
     width: 100,
