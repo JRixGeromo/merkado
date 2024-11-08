@@ -33,6 +33,12 @@ export type RootStackParamList = {
   CartScreen: undefined;
   CheckoutScreen: undefined; // Add CheckoutScreen here
   LogoutScreen: undefined;
+
+
+  // New Marketplace Screens
+  MarketplaceScreen: undefined; // Already exists
+  CategoryDetailScreen: { category: { name: string; description: string } };
+  SubcategoryProductsScreen: { subcategory: { name: string } };
 };
 
 // Tab Navigator Params

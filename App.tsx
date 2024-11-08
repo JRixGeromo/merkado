@@ -15,6 +15,10 @@ import RegistrationScreen from './src/features/account/screens/RegistrationScree
 import DashboardScreen from './src/features/dashboard/screens/DashboardScreen';
 import FrontStoreScreen from './src/features/frontStore/screens/FrontStoreScreen';
 import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScreen';
+import CategoryDetailScreen from './src/features/marketplace/screens/CategoryDetailScreen';
+import SubcategoryProductsScreen from './src/features/marketplace/screens/SubcategoryProductsScreen';
+
+
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
 import UpsertProductScreen from './src/features/myProducts/screens/UpsertProductScreen';
@@ -244,6 +248,24 @@ const App = () => {
             headerStyle: {
               backgroundColor: selectedTheme.tabHeaderBackgroundColor,
             },
+            headerTintColor: selectedTheme.textPrimary,
+          }}
+        />
+        <Stack.Screen
+          name="CategoryDetailScreen"
+          component={CategoryDetailScreen}
+          options={{
+            headerTitle: 'Category Details',
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerTintColor: selectedTheme.textPrimary,
+          }}
+        />
+        <Stack.Screen
+          name="SubcategoryProductsScreen"
+          component={SubcategoryProductsScreen}
+          options={{
+            headerTitle: 'Products',
+            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
