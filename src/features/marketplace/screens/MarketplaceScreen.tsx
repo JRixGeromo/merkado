@@ -76,15 +76,15 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
           {item.description}
         </Text>
         <View style={styles.categoryDetails}>
-          {/* Total Products with Icon */}
-          <View style={styles.detailRow}>
-            <Text style={styles.iconText}>📦</Text>
-            <Text style={styles.detailText}>Total Products: {item.totalProducts || 100}</Text>
-          </View>
           {/* Top Subcategory with Icon */}
           <View style={styles.detailRow}>
             <Text style={styles.iconText}>📌</Text>
-            <Text style={styles.detailText}>Top: {item.subcategories[0].name}</Text>
+            <Text style={styles.detailText}>{item.subcategories[0].name}</Text>
+          </View>
+          {/* Total Products with Icon */}
+          <View style={styles.detailRow}>
+            <Text style={styles.iconText}>📦</Text>
+            <Text style={styles.detailText}>{item.totalProducts || 100}</Text>
           </View>
         </View>
       </View>

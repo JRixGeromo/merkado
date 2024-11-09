@@ -30,9 +30,11 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
         <Text style={styles.subcategoryName}>{item.name}</Text>
         <Text style={styles.subcategoryDescription}>{item.description}</Text>
         {item.productCount && (
-          <View style={styles.productCountBadge}>
-            <Text style={styles.productCountText}>{`${item.productCount} Products`}</Text>
+          <View style={styles.detailRow}>
+          <Text style={styles.iconText}>📦</Text>
+          <Text style={styles.detailText}>{item.productCount || 100}</Text>
           </View>
+
         )}
       </View>
     </TouchableOpacity>
@@ -141,6 +143,23 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#333',
     fontWeight: 'bold',
+  },
+  detailRow: {
+    flexDirection: 'row',
+    // alignItems: 'center',
+    // justifyContent: 'center', // Center-align details
+    marginTop: 5,
+  },
+  iconText: {
+    fontSize: 12,
+    marginRight: 5,
+    color: '#007BFF', // Blue icon color for distinction
+  },
+  detailText: {
+    fontSize: 12, // Smaller font size to fit content
+    color: '#555',
+    flexWrap: 'wrap', // Ensure text wraps correctly
+    textAlign: 'center', // Center-align text
   },
 });
 
