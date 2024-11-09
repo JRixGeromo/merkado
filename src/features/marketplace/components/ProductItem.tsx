@@ -15,7 +15,7 @@ type Product = {
   region: string;
 };
 
-const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyPosted' }> = ({
+const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'postedProduct' }> = ({ 
   product,
   variant,
 }) => {
@@ -25,7 +25,7 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
     <View
       style={[
         styles.productCard,
-        isFeatured ? styles.featuredProductCard : styles.recentlyPostedProductCard,
+        isFeatured ? styles.featuredProductCard : styles.postedProductCard,
       ]}
     >
       {/* Product Info */}
@@ -35,10 +35,6 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
     <Text style={styles.newBadgeText}>New</Text>
   </View>
 )}
-        {/* <View style={styles.badgesRow}>
-          {product.isNew && <Text style={styles.newBadge}>New</Text>}
-          {product.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
-        </View> */}
         <Text style={styles.productName}>{product.name}</Text>
         {/* <Text style={styles.productDescription}>{product.description}</Text> */}
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
@@ -107,11 +103,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', // Forces content to start at the top
   },
   featuredProductCard: {
-    width: 320,
+    width: 275,
     marginRight: 15,
     marginLeft: 4,
   },
-  recentlyPostedProductCard: {
+  postedProductCard: {
     marginHorizontal: 0,
   },
   overlayContainer: {
@@ -194,8 +190,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
   },
   featuredProductImage: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
   },
   actionIcons: {
     flexDirection: 'row',

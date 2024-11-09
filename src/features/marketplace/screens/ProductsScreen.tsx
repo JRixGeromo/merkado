@@ -59,7 +59,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
       <Text style={styles.header}>{subcategory.name}</Text>
       <FlatList
         data={products}
-        renderItem={({ item }) => <ProductItem product={item} />}
+        renderItem={({ item }) => <ProductItem product={item} variant="postedProduct" />}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.productList}
       />

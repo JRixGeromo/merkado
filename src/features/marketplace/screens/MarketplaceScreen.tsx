@@ -163,7 +163,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <Text style={styles.sectionHeader}>Recently Posted Products</Text>
             <FlatList
               data={recentlyPostedProducts}
-              renderItem={({ item }) => <ProductItem product={item} variant="recentlyPosted" />}
+              renderItem={({ item }) => <ProductItem product={item} variant="postedProduct" />}
               keyExtractor={(item) => item.id}
               scrollEnabled={false} // Disable scrolling for inner FlatList
               contentContainerStyle={styles.recentlyPostedList}
