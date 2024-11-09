@@ -12,15 +12,39 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 import { categories } from '../data';
+import ProductItem from '../components/ProductItem'; // Import the ProductItem component
 
 type MarketplaceScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'MarketplaceScreen'>;
 };
 
 const featuredProducts = [
-  { id: 1, name: 'Featured Product 1', image: 'https://picsum.photos/400/200?random=1' },
-  { id: 2, name: 'Featured Product 2', image: 'https://picsum.photos/400/200?random=2' },
-  { id: 3, name: 'Featured Product 3', image: 'https://picsum.photos/400/200?random=3' },
+  {
+    id: '1',
+    name: 'Featured Product 1',
+    description: 'Top-rated product for your needs.',
+    price: '$25',
+    discountedPrice: '$20',
+    imageUrl: 'https://picsum.photos/100/100?random=1',
+    isNew: true,
+    isPopular: false,
+    discount: '20%',
+    vendor: 'Vendor A',
+    region: 'PH-1(2km)',
+  },
+  {
+    id: '2',
+    name: 'Featured Product 2',
+    description: 'Best quality at affordable price.',
+    price: '$50',
+    discountedPrice: '$45',
+    imageUrl: 'https://picsum.photos/100/100?random=2',
+    isNew: false,
+    isPopular: true,
+    discount: '10%',
+    vendor: 'Vendor B',
+    region: 'PH-2(3km)',
+  },
 ];
 
 const recentlyPostedProducts = Array.from({ length: 20 }, (_, index) => ({
@@ -33,6 +57,8 @@ const recentlyPostedProducts = Array.from({ length: 20 }, (_, index) => ({
   isNew: index % 2 === 0,
   isPopular: index % 3 === 0,
   discount: `${index % 3 === 0 ? '10%' : '5%'}`,
+  vendor: `Vendor ${String.fromCharCode(65 + index % 3)}`, // Vendor A, B, C
+  region: `PH-${index + 1}(3km)`,
 }));
 
 const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => {
@@ -49,37 +75,6 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
         {item.description}
       </Text>
     </TouchableOpacity>
-  );
-
-  const renderRecentlyPostedProduct = ({ item }: { item: typeof recentlyPostedProducts[0] }) => (
-    <View style={styles.productCard}>
-      {/* Product Information */}
-      <View style={styles.productInfo}>
-        {/* Badges in One Line */}
-        <View style={styles.badgeRow}>
-          {item.isNew && <Text style={styles.newBadge}>New</Text>}
-          {item.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
-        </View>
-        <Text style={styles.productName}>{item.name}</Text>
-        <Text style={styles.productDescription}>{item.description}</Text>
-        {/* Pricing */}
-        <View style={styles.priceRow}>
-          <Text style={styles.discountedPrice}>{item.discountedPrice}</Text>
-          {item.price !== item.discountedPrice && (
-            <Text style={styles.originalPrice}>{item.price}</Text>
-          )}
-          {item.discount && <Text style={styles.discountBadge}>{item.discount}</Text>}
-        </View>
-      </View>
-
-      {/* Product Image and Add-to-Cart */}
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
-        <TouchableOpacity style={styles.addToCartButton}>
-          <Text style={styles.addToCartText}>+</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
   );
 
   return (
@@ -115,13 +110,8 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <FlatList
               data={featuredProducts}
               horizontal
-              renderItem={({ item }) => (
-                <TouchableOpacity style={styles.featuredCard}>
-                  <Image source={{ uri: item.image }} style={styles.featuredImage} />
-                  <Text style={styles.featuredName}>{item.name}</Text>
-                </TouchableOpacity>
-              )}
-              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => <ProductItem product={item} />}
+              keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.featuredList}
             />
@@ -132,7 +122,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <Text style={styles.sectionHeader}>Recently Posted Products</Text>
             <FlatList
               data={recentlyPostedProducts}
-              renderItem={renderRecentlyPostedProduct}
+              renderItem={({ item }) => <ProductItem product={item} />}
               keyExtractor={(item) => item.id}
               scrollEnabled={false} // Disable scrolling for inner FlatList
               contentContainerStyle={styles.recentlyPostedList}
@@ -210,26 +200,6 @@ const styles = StyleSheet.create({
   featuredList: {
     paddingHorizontal: 15,
   },
-  featuredCard: {
-    marginRight: 15,
-    borderRadius: 15, // Consistent rounded corners
-    overflow: 'hidden', // Ensure child elements respect the rounded corners
-    width: 250,
-    backgroundColor: '#ffffff', // Optional, if you want a background
-    elevation: 3, // Slight shadow for depth
-  },
-  featuredImage: {
-    width: '100%',
-    height: 150,
-    borderRadius: 15, // Match the same borderRadius
-  },
-  featuredName: {
-    fontSize: 14,
-    padding: 5,
-    textAlign: 'center',
-    backgroundColor: '#fff',
-    color: '#333',
-  },
   recentlyPostedContainer: {
     marginTop: 10,
     marginHorizontal: 15,
@@ -237,81 +207,6 @@ const styles = StyleSheet.create({
   recentlyPostedList: {
     paddingHorizontal: 10,
   },
-  productCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 8,
-    padding: 15,
-    backgroundColor: '#FEF9E7',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  productInfo: { flex: 1, paddingRight: 10 },
-  badgeRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 5,
-    gap: 8,
-  },
-  productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
-  productDescription: { fontSize: 14, color: '#666', marginVertical: 5 },
-  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
-  discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
-  originalPrice: {
-    fontSize: 14,
-    color: '#999',
-    textDecorationLine: 'line-through',
-    marginRight: 10,
-  },
-  discountBadge: {
-    backgroundColor: '#FF5252',
-    color: '#fff',
-    paddingHorizontal: 5,
-    fontSize: 12,
-    borderRadius: 5,
-    fontWeight: 'bold',
-  },
-  popularBadge: {
-    backgroundColor: '#FF9800',
-    color: '#fff',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 5,
-  },
-  newBadge: {
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 5,
-  },
-  imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  productImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-    marginBottom: 10,
-    backgroundColor: '#e0e0e0',
-  },
-  addToCartButton: {
-    backgroundColor: '#4CAF50',
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  addToCartText: { fontSize: 18, color: '#fff', fontWeight: 'bold' },
   categoryGrid: {
     paddingHorizontal: 10,
     paddingTop: 10,

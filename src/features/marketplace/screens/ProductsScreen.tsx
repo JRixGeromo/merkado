@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
+import ProductItem from '../components/ProductItem'; // Import ProductItem
 
 type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -22,6 +23,8 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
       isNew: true,
       isPopular: true,
       discount: '5%',
+      vendor: 'TechStore Inc.',
+      region: 'PH-1(3km)',
     },
     {
       id: '2',
@@ -33,6 +36,8 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
       isNew: false,
       isPopular: true,
       discount: '6%',
+      vendor: 'GadgetWorld',
+      region: 'PH-2(5km)',
     },
     {
       id: '3',
@@ -44,44 +49,17 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
       isNew: true,
       isPopular: false,
       discount: '10%',
+      vendor: 'Apple Store',
+      region: 'PH-3(10km)',
     },
   ];
-
-  const renderProductItem = ({ item }: { item: typeof products[0] }) => (
-    <View style={styles.productCard}>
-      {/* Product Info */}
-      <View style={styles.productInfo}>
-        <View style={styles.badgesRow}>
-          {item.isNew && <Text style={styles.newBadge}>New</Text>}
-          {item.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
-        </View>
-        <Text style={styles.productName}>{item.name}</Text>
-        <Text style={styles.productDescription}>{item.description}</Text>
-        <View style={styles.priceRow}>
-          <Text style={styles.discountedPrice}>{item.discountedPrice}</Text>
-          {item.price !== item.discountedPrice && (
-            <Text style={styles.originalPrice}>{item.price}</Text>
-          )}
-          {item.discount && <Text style={styles.discountBadge}>-{item.discount}</Text>}
-        </View>
-      </View>
-
-      {/* Product Image */}
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: item.imageUrl }} style={styles.productImage} />
-        <TouchableOpacity style={styles.addToCartButton}>
-          <Text style={styles.addToCartText}>+</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>{subcategory.name}</Text>
       <FlatList
         data={products}
-        renderItem={renderProductItem}
+        renderItem={({ item }) => <ProductItem product={item} />}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.productList}
       />
@@ -93,80 +71,6 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8f9fa' },
   header: { fontSize: 22, fontWeight: 'bold', margin: 15, color: '#333' },
   productList: { padding: 10 },
-  productCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 8,
-    padding: 15,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  productInfo: { flex: 1, paddingRight: 10 },
-  badgesRow: {
-    flexDirection: 'row',
-    marginBottom: 5,
-    gap: 8, // Space between badges
-  },
-  productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
-  productDescription: { fontSize: 14, color: '#666', marginVertical: 5 },
-  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
-  discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
-  originalPrice: {
-    fontSize: 14,
-    color: '#999',
-    textDecorationLine: 'line-through',
-    marginRight: 10,
-  },
-  discountBadge: {
-    backgroundColor: '#FF5252',
-    color: '#fff',
-    paddingHorizontal: 5,
-    fontSize: 12,
-    borderRadius: 5,
-    fontWeight: 'bold',
-  },
-  popularBadge: {
-    backgroundColor: '#FF9800',
-    color: '#fff',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 5,
-  },
-  newBadge: {
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    fontSize: 12,
-    fontWeight: 'bold',
-    borderRadius: 5,
-  },
-  imageContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  productImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 10,
-    marginBottom: 10,
-    backgroundColor: '#e0e0e0',
-  },
-  addToCartButton: {
-    backgroundColor: '#4CAF50',
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  addToCartText: { fontSize: 18, color: '#fff', fontWeight: 'bold' },
 });
 
 export default ProductsScreen;
