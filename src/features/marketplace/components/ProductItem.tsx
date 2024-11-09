@@ -30,10 +30,15 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
     >
       {/* Product Info */}
       <View style={styles.productInfo}>
-        <View style={styles.badgesRow}>
+      {product.isNew && (
+  <View style={styles.newBadgeContainer}>
+    <Text style={styles.newBadgeText}>New</Text>
+  </View>
+)}
+        {/* <View style={styles.badgesRow}>
           {product.isNew && <Text style={styles.newBadge}>New</Text>}
           {product.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
-        </View>
+        </View> */}
         <Text style={styles.productName}>{product.name}</Text>
         {/* <Text style={styles.productDescription}>{product.description}</Text> */}
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
@@ -164,7 +169,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     paddingHorizontal: 8,
     paddingVertical: 3,
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: 'bold',
     borderRadius: 5,
   },
@@ -173,7 +178,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     paddingHorizontal: 8,
     paddingVertical: 3,
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: 'bold',
     borderRadius: 5,
   },
@@ -230,6 +235,24 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#FF5252',
     fontWeight: 'bold',
+  },
+  newBadgeContainer: {
+    backgroundColor: '#4CAF50', // Green background
+    borderTopLeftRadius: 10, // Only round the top-left corner
+    borderBottomRightRadius: 12, // Only round the bottom-right corner
+    borderTopRightRadius: 0, // Keep top-right square
+    borderBottomLeftRadius: 0, // Keep bottom-left square
+    paddingHorizontal: 10, // Space on left and right
+    paddingVertical: 2, // Space on top and bottom
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: -16,
+    left: -16,
+  },
+  newBadgeText: {
+    color: '#fff', // White text color
+    fontSize: 12, // Smaller text
+    fontWeight: 'bold', // Bold text
   },
 });
 
