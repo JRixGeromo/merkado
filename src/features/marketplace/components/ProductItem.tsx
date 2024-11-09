@@ -35,8 +35,6 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           {product.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
         </View>
         <Text style={styles.productName}>{product.name}</Text>
-        <Text style={styles.productDescription}>{product.description}</Text>
-        <Text style={styles.vendorInfo}>{`${product.vendor} - ${product.region}`}</Text>
         <View style={styles.priceRow}>
           <Text style={styles.discountedPrice}>{product.discountedPrice}</Text>
           {product.price !== product.discountedPrice && (
@@ -44,6 +42,16 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           )}
           {product.discount && <Text style={styles.discountBadge}>-{product.discount}</Text>}
         </View>
+        {/* <Text style={styles.productDescription}>{product.description}</Text> */}
+        <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
+        <View style={styles.reactionRow}>
+        <View style={styles.ratingContainer}>
+          <Text style={styles.ratingText}>⭐ 4.5</Text>
+        </View>
+        <View style={styles.reactionContainer}>
+          <Text style={styles.reactionText}>❤️ 123</Text>
+        </View>
+      </View>
       </View>
 
       {/* Product Image and Action Buttons */}
@@ -52,6 +60,12 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           source={{ uri: product.imageUrl }}
           style={[styles.productImage, isFeatured && styles.featuredProductImage]}
         />
+        {/* Square overlay with 3-dots icon */}
+        <View style={styles.overlayContainer}>
+          <TouchableOpacity style={styles.threeDotsButton}>
+            <Text style={styles.threeDotsText}>⋮</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.actionIcons}>
           <TouchableOpacity style={styles.iconButton}>
             <Text style={styles.iconText}>💬</Text>
@@ -68,7 +82,8 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
 const styles = StyleSheet.create({
   productCard: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start', // Ensures the items align to the top
+    justifyContent: 'flex-start', // Align the content to the top-left
     marginVertical: 8,
     padding: 15,
     backgroundColor: '#fff',
@@ -78,24 +93,56 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 3,
   },
+  
+  productInfo: {
+    flex: 1,
+    paddingRight: 10,
+    alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
+    justifyContent: 'flex-start', // Forces content to start at the top
+  },
   featuredProductCard: {
-    width: 320, // Adjusted width for featured products
+    width: 320,
     marginRight: 15,
     marginLeft: 4,
   },
   recentlyPostedProductCard: {
-    marginHorizontal: 0, // Default margin for recently posted products
+    marginHorizontal: 0,
   },
-  productInfo: { flex: 1, paddingRight: 10 },
+  overlayContainer: {
+    position: 'absolute',
+    top: 3,
+    right: 3,
+    width: 30,
+    height: 30,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background
+    borderRadius: 4, // Fully rounded
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  threeDotsButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  threeDotsText: {
+    fontSize: 18,
+    color: '#fff', // White color for contrast
+    fontWeight: 'bold',
+  },
+
   badgesRow: {
     flexDirection: 'row',
     marginBottom: 5,
     gap: 8,
   },
   productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
-  productDescription: { fontSize: 14, color: '#666', marginVertical: 5 },
-  vendorInfo: { fontSize: 13, color: '#777', marginBottom: 5 },
-  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 5 },
+  productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
+  vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5},
+  priceRow: { flexDirection: 'row', alignItems: 'center' },
   discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
   originalPrice: {
     fontSize: 14,
@@ -136,19 +183,18 @@ const styles = StyleSheet.create({
   productImage: {
     width: 100,
     height: 100,
-    borderRadius: 10,
+    //borderRadius: 10,
     marginBottom: 10,
     backgroundColor: '#e0e0e0',
   },
   featuredProductImage: {
-    width: 80, // Smaller image for featured products
+    width: 80,
     height: 80,
   },
   actionIcons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
-    width: 70,
+    width: 80,
   },
   iconButton: {
     alignItems: 'center',
@@ -159,6 +205,30 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   iconText: { fontSize: 18, color: '#333' },
+  reactionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    //marginTop: 18, // Spacing from the price row
+    gap: 16, // Space between rating and reaction
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ratingText: {
+    fontSize: 12,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  reactionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  reactionText: {
+    fontSize: 12,
+    color: '#FF5252',
+    fontWeight: 'bold',
+  },
 });
 
 export default ProductItem;
