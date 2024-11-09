@@ -45,6 +45,7 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'postedPro
             <Text style={styles.originalPrice}>{product.price}</Text>
           )}
           {product.discount && <Text style={styles.discountBadge}>-{product.discount}</Text>}
+
         </View>
         <View style={styles.actionIcons}>
           <TouchableOpacity style={styles.iconButton}>
