@@ -45,6 +45,32 @@ const featuredProducts = [
     vendor: 'Vendor B',
     region: 'PH-2(3km)',
   },
+  {
+    id: '3',
+    name: 'Featured Product 2',
+    description: 'Best quality at affordable price.',
+    price: '$50',
+    discountedPrice: '$45',
+    imageUrl: 'https://picsum.photos/100/100?random=3',
+    isNew: false,
+    isPopular: true,
+    discount: '10%',
+    vendor: 'Vendor B',
+    region: 'PH-2(3km)',
+  },
+  {
+    id: '4',
+    name: 'Featured Product 2',
+    description: 'Best quality at affordable price.',
+    price: '$50',
+    discountedPrice: '$45',
+    imageUrl: 'https://picsum.photos/100/100?random=4',
+    isNew: false,
+    isPopular: true,
+    discount: '10%',
+    vendor: 'Vendor B',
+    region: 'PH-2(3km)',
+  },
 ];
 
 const recentlyPostedProducts = Array.from({ length: 20 }, (_, index) => ({
