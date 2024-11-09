@@ -206,4 +206,17 @@ export const categories = [
     { name: 'Books & Magazines', description: 'Vintage books, magazines, and rare publications.' },
   ],
 },
+{
+  name: 'Travel & Luggage',
+  description: 'Gear and essentials for all your travel needs, from backpacks to premium luggage sets.',
+  subcategories: [
+    { name: 'Luggage & Suitcases', description: 'Durable luggage and suitcases for all types of travel.' },
+    { name: 'Backpacks', description: 'Versatile backpacks for school, work, or adventure.' },
+    { name: 'Travel Accessories', description: 'Neck pillows, travel organizers, and other essentials.' },
+    { name: 'Duffel Bags', description: 'Compact and spacious duffel bags for gym or short trips.' },
+    { name: 'Carry-On Bags', description: 'Lightweight bags for easy travel.' },
+    { name: 'Travel Tech', description: 'Portable chargers, adapters, and other tech gear for travel.' },
+    { name: 'Packing Cubes', description: 'Organizational tools to keep your luggage tidy.' },
+  ],
+}
 ]

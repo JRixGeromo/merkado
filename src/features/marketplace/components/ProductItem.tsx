@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   featuredProductCard: {
-    width: 275, // Adjusted width for featured products
+    width: 300, // Adjusted width for featured products
     marginRight: 15,
     marginLeft: 4,
   },

@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 10,
+    marginLeft: 10,
   },
   featuredList: {
     paddingHorizontal: 5,
