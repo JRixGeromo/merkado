@@ -110,7 +110,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <FlatList
               data={featuredProducts}
               horizontal
-              renderItem={({ item }) => <ProductItem product={item} />}
+              renderItem={({ item }) => <ProductItem product={item} variant="featured" />}
               keyExtractor={(item) => item.id}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.featuredList}
@@ -122,7 +122,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <Text style={styles.sectionHeader}>Recently Posted Products</Text>
             <FlatList
               data={recentlyPostedProducts}
-              renderItem={({ item }) => <ProductItem product={item} />}
+              renderItem={({ item }) => <ProductItem product={item} variant="recentlyPosted" />}
               keyExtractor={(item) => item.id}
               scrollEnabled={false} // Disable scrolling for inner FlatList
               contentContainerStyle={styles.recentlyPostedList}
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   featuredContainer: {
     marginBottom: 20,
-    marginHorizontal: 15,
+    marginHorizontal: 5,
   },
   sectionHeader: {
     fontSize: 20,
@@ -198,11 +198,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   featuredList: {
-    paddingHorizontal: 15,
+    paddingHorizontal: 5,
   },
   recentlyPostedContainer: {
     marginTop: 10,
-    marginHorizontal: 15,
+    marginHorizontal: 4,
   },
   recentlyPostedList: {
     paddingHorizontal: 10,

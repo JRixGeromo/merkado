@@ -1,25 +1,33 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-type ProductItemProps = {
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    price: string;
-    discountedPrice: string;
-    imageUrl: string;
-    isNew: boolean;
-    isPopular: boolean;
-    discount: string;
-    vendor: string;
-    region: string;
-  };
+type Product = {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  discountedPrice: string;
+  imageUrl: string;
+  isNew: boolean;
+  isPopular: boolean;
+  discount: string;
+  vendor: string;
+  region: string;
 };
 
-const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyPosted' }> = ({
+  product,
+  variant,
+}) => {
+  const isFeatured = variant === 'featured';
+
   return (
-    <View style={styles.productCard}>
+    <View
+      style={[
+        styles.productCard,
+        isFeatured ? styles.featuredProductCard : styles.recentlyPostedProductCard,
+      ]}
+    >
       {/* Product Info */}
       <View style={styles.productInfo}>
         <View style={styles.badgesRow}>
@@ -40,10 +48,13 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 
       {/* Product Image and Action Buttons */}
       <View style={styles.imageContainer}>
-        <Image source={{ uri: product.imageUrl }} style={styles.productImage} />
+        <Image
+          source={{ uri: product.imageUrl }}
+          style={[styles.productImage, isFeatured && styles.featuredProductImage]}
+        />
         <View style={styles.actionIcons}>
           <TouchableOpacity style={styles.iconButton}>
-            <Text style={styles.iconText}>💬</Text> 
+            <Text style={styles.iconText}>💬</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
             <Text style={styles.iconText}>🛒</Text>
@@ -67,11 +78,19 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 3,
   },
+  featuredProductCard: {
+    width: 275, // Adjusted width for featured products
+    marginRight: 15,
+    marginLeft: 4,
+  },
+  recentlyPostedProductCard: {
+    marginHorizontal: 0, // Default margin for recently posted products
+  },
   productInfo: { flex: 1, paddingRight: 10 },
   badgesRow: {
     flexDirection: 'row',
     marginBottom: 5,
-    gap: 8, // Space between badges
+    gap: 8,
   },
   productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
   productDescription: { fontSize: 14, color: '#666', marginVertical: 5 },
@@ -120,6 +139,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     backgroundColor: '#e0e0e0',
+  },
+  featuredProductImage: {
+    width: 80, // Smaller image for featured products
+    height: 80,
   },
   actionIcons: {
     flexDirection: 'row',
