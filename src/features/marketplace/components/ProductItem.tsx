@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
 
   ratingText: {
     fontSize: 10,
-    color: '#333',
+    color: '#aaa',
     fontWeight: 'bold',
   },
   reactionContainer: {
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
   },
   reactionText: {
     fontSize: 10,
-    color: '#FF5252',
+    color: '#aaa',
     fontWeight: 'bold',
   },
   newBadgeContainer: {
