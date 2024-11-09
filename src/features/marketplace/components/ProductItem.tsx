@@ -34,7 +34,6 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           {product.isNew && <Text style={styles.newBadge}>New</Text>}
           {product.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
         </View>
-        <Text style={styles.productName}>{product.name}</Text>
         <View style={styles.priceRow}>
           <Text style={styles.discountedPrice}>{product.discountedPrice}</Text>
           {product.price !== product.discountedPrice && (
@@ -42,6 +41,7 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           )}
           {product.discount && <Text style={styles.discountBadge}>-{product.discount}</Text>}
         </View>
+        <Text style={styles.productName}>{product.name}</Text>
         {/* <Text style={styles.productDescription}>{product.description}</Text> */}
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
         <View style={styles.reactionRow}>
@@ -139,13 +139,13 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     gap: 8,
   },
-  productName: { fontSize: 16, fontWeight: 'bold', color: '#333' },
+  productName: { fontSize: 16, color: '#333' },
   productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
   vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5},
   priceRow: { flexDirection: 'row', alignItems: 'center' },
-  discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
+  discountedPrice: { fontSize: 18, fontWeight: 'bold', color: '#333', marginRight: 10 },
   originalPrice: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#999',
     textDecorationLine: 'line-through',
     marginRight: 10,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF5252',
     color: '#fff',
     paddingHorizontal: 5,
-    fontSize: 12,
+    fontSize: 10,
     borderRadius: 5,
     fontWeight: 'bold',
   },
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   reactionRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    //marginTop: 18, // Spacing from the price row
+    marginTop: 18, // Spacing from the price row
     gap: 16, // Space between rating and reaction
   },
   ratingContainer: {
