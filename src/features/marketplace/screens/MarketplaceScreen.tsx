@@ -70,12 +70,27 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
       onPress={() => navigation.navigate('CategoryDetailScreen', { category: item })}
     >
       <Image source={{ uri: `https://picsum.photos/200/200?random=${index + 1}` }} style={styles.categoryImage} />
-      <Text style={styles.categoryName}>{item.name}</Text>
-      <Text style={styles.categoryDescription} numberOfLines={2}>
-        {item.description}
-      </Text>
+      <View style={styles.categoryInfo}>
+        <Text style={styles.categoryName}>{item.name}</Text>
+        <Text style={styles.categoryDescription} numberOfLines={2}>
+          {item.description}
+        </Text>
+        <View style={styles.categoryDetails}>
+          {/* Total Products with Icon */}
+          <View style={styles.detailRow}>
+            <Text style={styles.iconText}>📦</Text>
+            <Text style={styles.detailText}>Total Products: {item.totalProducts || 100}</Text>
+          </View>
+          {/* Top Subcategory with Icon */}
+          <View style={styles.detailRow}>
+            <Text style={styles.iconText}>📌</Text>
+            <Text style={styles.detailText}>Top: {item.subcategories[0].name}</Text>
+          </View>
+        </View>
+      </View>
     </TouchableOpacity>
   );
+  
 
   return (
     <View style={styles.container}>
@@ -177,10 +192,6 @@ const styles = StyleSheet.create({
   activeIconButton: {
     backgroundColor: '#007BFF',
   },
-  iconText: {
-    fontSize: 18,
-    color: '#333',
-  },
   activeIconText: {
     color: '#fff',
   },
@@ -208,10 +219,7 @@ const styles = StyleSheet.create({
   recentlyPostedList: {
     paddingHorizontal: 10,
   },
-  categoryGrid: {
-    paddingHorizontal: 10,
-    paddingTop: 10,
-  },
+
   categoryCard: {
     flex: 1,
     margin: 10,
@@ -219,10 +227,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: '#ffffff',
     shadowColor: '#000',
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 4,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#ddd',
+    //maxWidth: 160, // Constrain card width
+    justifyContent: 'space-between', // Ensure proper spacing
   },
   categoryImage: {
     width: 140,
@@ -231,18 +243,61 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#e0e0e0',
   },
+  categoryInfo: {
+    alignItems: 'center',
+    flex: 1, // Ensure the card expands evenly
+  },
   categoryName: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 5,
     color: '#333',
+    marginBottom: 5,
     textAlign: 'center',
   },
   categoryDescription: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#666',
     textAlign: 'center',
+    marginBottom: 10,
+    lineHeight: 16, // Add spacing between lines
   },
+  categoryDetails: {
+    width: '100%',
+    marginTop: 10,
+  },
+  detailRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center', // Center-align details
+    marginBottom: 5,
+  },
+  iconText: {
+    fontSize: 16,
+    marginRight: 5,
+    color: '#007BFF', // Blue icon color for distinction
+  },
+  detailText: {
+    fontSize: 13, // Smaller font size to fit content
+    color: '#555',
+    flexWrap: 'wrap', // Ensure text wraps correctly
+    textAlign: 'center', // Center-align text
+  },
+
+ 
+  categoryGrid: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+
+
+  categorySubcategory: {
+    fontSize: 13,
+    color: '#888',
+    marginTop: 3,
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  
 });
 
 export default MarketplaceScreen;

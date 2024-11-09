@@ -15,7 +15,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
     item,
     index,
   }: {
-    item: { name: string; description: string };
+    item: { name: string; description: string; productCount?: number };
     index: number;
   }) => (
     <TouchableOpacity
@@ -29,6 +29,11 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
       <View style={styles.subcategoryContent}>
         <Text style={styles.subcategoryName}>{item.name}</Text>
         <Text style={styles.subcategoryDescription}>{item.description}</Text>
+        {item.productCount && (
+          <View style={styles.productCountBadge}>
+            <Text style={styles.productCountText}>{`${item.productCount} Products`}</Text>
+          </View>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -37,13 +42,20 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
     <View style={styles.container}>
       {/* Category Header */}
       <View style={styles.headerContainer}>
+        <Image
+          source={{ uri: `https://picsum.photos/400/200?random=header` }}
+          style={styles.headerImage}
+        />
         <Text style={styles.header}>{category.name}</Text>
         <Text style={styles.description}>{category.description}</Text>
       </View>
 
       {/* Subcategories List */}
       <FlatList
-        data={category.subcategories}
+        data={category.subcategories.map((subcategory, index) => ({
+          ...subcategory,
+          productCount: 10 + index * 5, // Example hardcoded product count
+        }))}
         renderItem={renderSubcategoryItem}
         keyExtractor={(item) => item.name}
         contentContainerStyle={styles.subcategoryList}
@@ -53,11 +65,38 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f8f9fa' },
-  headerContainer: { padding: 15, backgroundColor: '#fff', marginBottom: 10 },
-  header: { fontSize: 22, fontWeight: 'bold', color: '#333', marginBottom: 5 },
-  description: { fontSize: 14, color: '#666' },
-  subcategoryList: { paddingHorizontal: 10, paddingTop: 10 },
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f9fa',
+  },
+  headerContainer: {
+    backgroundColor: '#ffecec',
+    padding: 15,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    alignItems: 'center',
+  },
+  headerImage: {
+    width: '100%',
+    height: 150,
+    borderRadius: 15,
+    marginBottom: 10,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+  },
+  description: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+  },
+  subcategoryList: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
   subcategoryCard: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -71,13 +110,15 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   subcategoryImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 8,
+    width: 80,
+    height: 80,
+    borderRadius: 10,
     marginRight: 15,
     backgroundColor: '#e0e0e0',
   },
-  subcategoryContent: { flex: 1 },
+  subcategoryContent: {
+    flex: 1,
+  },
   subcategoryName: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -87,6 +128,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
     marginTop: 2,
+  },
+  productCountBadge: {
+    marginTop: 5,
+    alignSelf: 'flex-start',
+    backgroundColor: '#FFD700', // Gold background for the badge
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 10,
+  },
+  productCountText: {
+    fontSize: 12,
+    color: '#333',
+    fontWeight: 'bold',
   },
 });
 
