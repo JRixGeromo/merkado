@@ -37,20 +37,21 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
         <Text style={styles.productName}>{product.name}</Text>
         {/* <Text style={styles.productDescription}>{product.description}</Text> */}
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
-        <View style={styles.reactionRow}>
-        <View style={styles.ratingContainer}>
-          <Text style={styles.ratingText}>⭐ 4.5</Text>
-        </View>
-        <View style={styles.reactionContainer}>
-          <Text style={styles.reactionText}>❤️ 123</Text>
-        </View>
-      </View>
+        
         <View style={styles.priceRow}>
           <Text style={styles.discountedPrice}>{product.discountedPrice}/kg</Text>
           {product.price !== product.discountedPrice && (
             <Text style={styles.originalPrice}>{product.price}</Text>
           )}
           {product.discount && <Text style={styles.discountBadge}>-{product.discount}</Text>}
+        </View>
+        <View style={styles.actionIcons}>
+          <TouchableOpacity style={styles.iconButton}>
+            <Text style={styles.iconText}>💬</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconButton}>
+            <Text style={styles.iconText}>🛒</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -66,14 +67,14 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
             <Text style={styles.threeDotsText}>⋮</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.actionIcons}>
-          <TouchableOpacity style={styles.iconButton}>
-            <Text style={styles.iconText}>💬</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <Text style={styles.iconText}>🛒</Text>
-          </TouchableOpacity>
+        <View style={styles.reactionRow}>
+        <View style={styles.ratingContainer}>
+          <Text style={styles.ratingText}>⭐ 4.5</Text>
         </View>
+        <View style={styles.reactionContainer}>
+          <Text style={styles.reactionText}>❤️ 123</Text>
+        </View>
+      </View>
       </View>
     </View>
   );
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
   productName: { fontSize: 14, color: '#333' },
   productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
   vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5},
-  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 15 },
+  priceRow: { flexDirection: 'row', alignItems: 'center' },
   discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
   originalPrice: {
     fontSize: 12,
@@ -195,6 +196,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: 80,
+    marginTop: 10,
   },
   iconButton: {
     alignItems: 'center',
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   ratingText: {
-    fontSize: 10,
+    fontSize: 12,
     color: '#333',
     fontWeight: 'bold',
   },
@@ -225,7 +227,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   reactionText: {
-    fontSize: 10,
+    fontSize: 12,
     color: '#FF5252',
     fontWeight: 'bold',
   },

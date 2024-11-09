@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   subcategoryImage: {
     width: 80,
     height: 80,
-    borderRadius: 10,
+    borderRadius: 0,
     marginRight: 15,
     backgroundColor: '#e0e0e0',
   },

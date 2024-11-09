@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   categoryImage: {
     width: 140,
     height: 100,
-    borderRadius: 15,
+    borderRadius: 0,
     marginBottom: 10,
     backgroundColor: '#e0e0e0',
   },
