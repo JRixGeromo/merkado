@@ -35,19 +35,19 @@ export type RootStackParamList = {
 
   // New Marketplace Screens
   MarketplaceScreen: undefined;
-  CategoryDetailScreen: { 
-    category: { 
-      name: string; 
-      description: string; 
-      subcategories: { 
-        name: string; 
+  CategoryDetailScreen: {
+    category: {
+      name: string;
+      description: string;
+      subcategories: {
+        name: string;
         description: string; // Add description for subcategories
       }[]; // Include subcategories with descriptions here
     };
   };
-  ProductsScreen: { 
-    subcategory: { 
-      name: string; 
+  ProductsScreen: {
+    subcategory: {
+      name: string;
       description: string; // Include subcategory description here for consistency
     };
   };

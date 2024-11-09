@@ -13,7 +13,5 @@ export const myProductStyles = (
 ) => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
-  return StyleSheet.create({
-
-  });
+  return StyleSheet.create({});
 };

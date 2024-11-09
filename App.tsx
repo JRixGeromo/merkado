@@ -18,7 +18,6 @@ import MarketplaceScreen from './src/features/marketplace/screens/MarketplaceScr
 import CategoryDetailScreen from './src/features/marketplace/screens/CategoryDetailScreen';
 import ProductsScreen from './src/features/marketplace/screens/ProductsScreen';
 
-
 import DetailsScreen from './src/features/marketplace/screens/DetailsScreen';
 import MyProductsScreen from './src/features/myProducts/screens/MyProductsScreen';
 import UpsertProductScreen from './src/features/myProducts/screens/UpsertProductScreen';
@@ -256,7 +255,9 @@ const App = () => {
           component={CategoryDetailScreen}
           options={{
             headerTitle: 'Category Details',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />
@@ -265,7 +266,9 @@ const App = () => {
           component={ProductsScreen}
           options={{
             headerTitle: 'Products',
-            headerStyle: { backgroundColor: selectedTheme.tabHeaderBackgroundColor },
+            headerStyle: {
+              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+            },
             headerTintColor: selectedTheme.textPrimary,
           }}
         />

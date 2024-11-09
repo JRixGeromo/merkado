@@ -105,7 +105,14 @@ const ContentCard: React.FC<ContentCardProps> = ({
               {rating}
             </Text>
           </View>
-          <View style={[baseStyle.columnsInsideFlex, baseStyle.cols_2, baseStyle.alignRight, baseStyle.rPaddingXS]}>
+          <View
+            style={[
+              baseStyle.columnsInsideFlex,
+              baseStyle.cols_2,
+              baseStyle.alignRight,
+              baseStyle.rPaddingXS,
+            ]}
+          >
             <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
               {isLiked ? (
                 <IconLib.Heart size={SHARED.fontXL} color="red" />
@@ -121,7 +128,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
               numberOfLines={1}
               ellipsizeMode="tail"
             >
-              {likes + (isLiked ? 1 : 0)} 
+              {likes + (isLiked ? 1 : 0)}
             </Text>
           </View>
         </View>
@@ -137,11 +144,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
             iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
             iconColor={selectedTheme.buttonTextPrimary} // Set the icon color
             iconSize={SHARED.fontL} // Set the icon size
-            style={[
-              baseStyle.cols_2,
-              baseStyle.cardButton,
-              action.buttonStyle,
-            ]} // Apply the button styles
+            style={[baseStyle.cols_2, baseStyle.cardButton, action.buttonStyle]} // Apply the button styles
             borderRadius={0} // Default borderRadius is 15, can be overridden
           />
         ))}

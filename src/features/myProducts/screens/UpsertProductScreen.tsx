@@ -250,9 +250,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
               }}
             />
             <View style={[baseStyle.rowsInside, { width: '80%' }]}>
-              <View
-                style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}
-              >
+              <View style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}>
                 <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
                   Featured Product
                 </Text>
@@ -270,9 +268,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
                   }
                 />
               </View>
-              <View
-                style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}
-              >
+              <View style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}>
                 <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
                   Active Product
                 </Text>

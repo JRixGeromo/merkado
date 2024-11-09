@@ -104,9 +104,7 @@ const VendorDashboard = () => {
       >
         {/* Dashboard Metrics */}
         <View style={[baseStyle.verticalSpacerM]}>
-          <View
-            style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}
-          >
+          <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Total Sales')}</Text>
               <Text style={dashStyle.metricValue}>
@@ -120,9 +118,7 @@ const VendorDashboard = () => {
               </Text>
             </View>
           </View>
-          <View
-            style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}
-          >
+          <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
             <View style={[dashStyle.metricBox]}>
               <Text style={dashStyle.largeText}>{t('Avg. Rating')}</Text>
               <Text style={dashStyle.metricValue}>

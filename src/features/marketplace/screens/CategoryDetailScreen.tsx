@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 
@@ -8,7 +15,10 @@ type CategoryDetailScreenProps = NativeStackScreenProps<
   'CategoryDetailScreen'
 >;
 
-const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navigation }) => {
+const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
+  route,
+  navigation,
+}) => {
   const { category } = route.params;
 
   const renderSubcategoryItem = ({
@@ -20,7 +30,9 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
   }) => (
     <TouchableOpacity
       style={styles.subcategoryCard}
-      onPress={() => navigation.navigate('ProductsScreen', { subcategory: item })}
+      onPress={() =>
+        navigation.navigate('ProductsScreen', { subcategory: item })
+      }
     >
       <Image
         source={{ uri: `https://picsum.photos/100/100?random=${index + 1}` }}
@@ -31,10 +43,9 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
         <Text style={styles.subcategoryDescription}>{item.description}</Text>
         {item.productCount && (
           <View style={styles.detailRow}>
-          <Text style={styles.iconText}>📦</Text>
-          <Text style={styles.detailText}>{item.productCount || 100}</Text>
+            <Text style={styles.iconText}>📦</Text>
+            <Text style={styles.detailText}>{item.productCount || 100}</Text>
           </View>
-
         )}
       </View>
     </TouchableOpacity>
@@ -59,7 +70,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({ route, navi
           productCount: 10 + index * 5, // Example hardcoded product count
         }))}
         renderItem={renderSubcategoryItem}
-        keyExtractor={(item) => item.name}
+        keyExtractor={item => item.name}
         contentContainerStyle={styles.subcategoryList}
       />
     </View>

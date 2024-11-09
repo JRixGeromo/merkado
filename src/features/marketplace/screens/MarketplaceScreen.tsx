@@ -15,7 +15,10 @@ import { categories } from '../data';
 import ProductItem from '../components/ProductItem'; // Import the ProductItem component
 
 type MarketplaceScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'MarketplaceScreen'>;
+  navigation: NativeStackNavigationProp<
+    RootStackParamList,
+    'MarketplaceScreen'
+  >;
 };
 
 const featuredProducts = [
@@ -83,19 +86,34 @@ const recentlyPostedProducts = Array.from({ length: 20 }, (_, index) => ({
   isNew: index % 2 === 0,
   isPopular: index % 3 === 0,
   discount: `${index % 3 === 0 ? '10%' : '5%'}`,
-  vendor: `Vendor ${String.fromCharCode(65 + index % 3)}`, // Vendor A, B, C
+  vendor: `Vendor ${String.fromCharCode(65 + (index % 3))}`, // Vendor A, B, C
   region: `PH-${index + 1}(3km)`,
 }));
 
-const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => {
-  const [activeView, setActiveView] = useState<'featured' | 'categories'>('featured');
+const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
+  navigation,
+}) => {
+  const [activeView, setActiveView] = useState<'featured' | 'categories'>(
+    'featured',
+  );
 
-  const renderCategoryItem = ({ item, index }: { item: typeof categories[0]; index: number }) => (
+  const renderCategoryItem = ({
+    item,
+    index,
+  }: {
+    item: (typeof categories)[0];
+    index: number;
+  }) => (
     <TouchableOpacity
       style={styles.categoryCard}
-      onPress={() => navigation.navigate('CategoryDetailScreen', { category: item })}
+      onPress={() =>
+        navigation.navigate('CategoryDetailScreen', { category: item })
+      }
     >
-      <Image source={{ uri: `https://picsum.photos/200/200?random=${index + 1}` }} style={styles.categoryImage} />
+      <Image
+        source={{ uri: `https://picsum.photos/200/200?random=${index + 1}` }}
+        style={styles.categoryImage}
+      />
       <View style={styles.categoryInfo}>
         <Text style={styles.categoryName}>{item.name}</Text>
         <Text style={styles.categoryDescription} numberOfLines={2}>
@@ -116,7 +134,6 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
       </View>
     </TouchableOpacity>
   );
-  
 
   return (
     <View style={styles.container}>
@@ -129,15 +146,35 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
         <View style={styles.toggleIcons}>
           <TouchableOpacity
             onPress={() => setActiveView('featured')}
-            style={[styles.iconButton, activeView === 'featured' && styles.activeIconButton]}
+            style={[
+              styles.iconButton,
+              activeView === 'featured' && styles.activeIconButton,
+            ]}
           >
-            <Text style={[styles.iconText, activeView === 'featured' && styles.activeIconText]}>⭐</Text>
+            <Text
+              style={[
+                styles.iconText,
+                activeView === 'featured' && styles.activeIconText,
+              ]}
+            >
+              ⭐
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setActiveView('categories')}
-            style={[styles.iconButton, activeView === 'categories' && styles.activeIconButton]}
+            style={[
+              styles.iconButton,
+              activeView === 'categories' && styles.activeIconButton,
+            ]}
           >
-            <Text style={[styles.iconText, activeView === 'categories' && styles.activeIconText]}>📂</Text>
+            <Text
+              style={[
+                styles.iconText,
+                activeView === 'categories' && styles.activeIconText,
+              ]}
+            >
+              📂
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -151,8 +188,10 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <FlatList
               data={featuredProducts}
               horizontal
-              renderItem={({ item }) => <ProductItem product={item} variant="featured" />}
-              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <ProductItem product={item} variant="featured" />
+              )}
+              keyExtractor={item => item.id}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.featuredList}
             />
@@ -163,8 +202,10 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             <Text style={styles.sectionHeader}>Recently Posted Products</Text>
             <FlatList
               data={recentlyPostedProducts}
-              renderItem={({ item }) => <ProductItem product={item} variant="postedProduct" />}
-              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <ProductItem product={item} variant="postedProduct" />
+              )}
+              keyExtractor={item => item.id}
               scrollEnabled={false} // Disable scrolling for inner FlatList
               contentContainerStyle={styles.recentlyPostedList}
             />
@@ -177,7 +218,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({ navigation }) => 
             image: `https://picsum.photos/200/200?random=${index + 1}`,
           }))}
           renderItem={renderCategoryItem}
-          keyExtractor={(item) => item.name}
+          keyExtractor={item => item.name}
           numColumns={2}
           contentContainerStyle={styles.categoryGrid}
         />
@@ -309,12 +350,10 @@ const styles = StyleSheet.create({
     textAlign: 'center', // Center-align text
   },
 
- 
   categoryGrid: {
     paddingHorizontal: 10,
     paddingTop: 10,
   },
-
 
   categorySubcategory: {
     fontSize: 13,
@@ -323,7 +362,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontStyle: 'italic',
   },
-  
 });
 
 export default MarketplaceScreen;

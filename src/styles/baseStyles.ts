@@ -312,8 +312,6 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       color: selectedTheme.loader,
     },
 
-
-
     //////////////
     slideModalImage: {
       width: '100%',

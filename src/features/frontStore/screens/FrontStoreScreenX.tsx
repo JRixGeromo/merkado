@@ -112,10 +112,7 @@ const FrontStoreScreenx = () => {
         {/* Categories */}
         <View style={baseStyle.verticalSpacerM}>
           <Text
-            style={[
-              baseStyle.largeText,
-              { color: selectedTheme.textPrimary },
-            ]}
+            style={[baseStyle.largeText, { color: selectedTheme.textPrimary }]}
           >
             {t('Categories')}
           </Text>
@@ -140,10 +137,7 @@ const FrontStoreScreenx = () => {
         {/* Products List */}
         <View style={baseStyle.verticalSpacerM}>
           <Text
-            style={[
-              baseStyle.largeText,
-              { color: selectedTheme.textPrimary },
-            ]}
+            style={[baseStyle.largeText, { color: selectedTheme.textPrimary }]}
           >
             {t('Top Products')}
           </Text>
@@ -181,10 +175,7 @@ const FrontStoreScreenx = () => {
         {/* Customer Reviews */}
         <View style={baseStyle.verticalSpacerM}>
           <Text
-            style={[
-              baseStyle.largeText,
-              { color: selectedTheme.textPrimary },
-            ]}
+            style={[baseStyle.largeText, { color: selectedTheme.textPrimary }]}
           >
             {t('Customer Reviews')}
           </Text>
