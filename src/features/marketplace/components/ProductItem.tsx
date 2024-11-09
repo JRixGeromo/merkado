@@ -40,13 +40,13 @@ const ProductItem: React.FC<{
     >
       {product.isNew && (
         <View style={styles.newBadgeContainer}>
-          <Text style={styles.newBadgeText}>New</Text>
+          <Text style={styles.newBadgeText}> New </Text>
         </View>
       )}
       {/* Product Info */}
       <View style={[styles.productInfo, isFeatured ? baseStyle.cols_60: baseStyle.cols_70]}>
-        <Text style={styles.productName}>{product.name}</Text>
-        {/* <Text style={styles.productDescription}>{product.description}</Text> */}
+        <Text  numberOfLines={1} ellipsizeMode="tail" style={styles.productName}>{product.name}</Text>
+        <Text  numberOfLines={1} ellipsizeMode="tail" style={styles.productDescription}>{product.description}</Text>
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
 
         <View style={styles.priceRow}>
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
   },
   newBadgeText: {
     color: '#fff', // White text color
-    fontSize: 10, // Smaller text
+    fontSize: 8, // Smaller text
     fontWeight: 'bold', // Bold text
   },
 });
