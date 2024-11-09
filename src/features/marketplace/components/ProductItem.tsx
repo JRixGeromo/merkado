@@ -34,13 +34,6 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           {product.isNew && <Text style={styles.newBadge}>New</Text>}
           {product.isPopular && <Text style={styles.popularBadge}>Popular</Text>}
         </View>
-        <View style={styles.priceRow}>
-          <Text style={styles.discountedPrice}>{product.discountedPrice}</Text>
-          {product.price !== product.discountedPrice && (
-            <Text style={styles.originalPrice}>{product.price}</Text>
-          )}
-          {product.discount && <Text style={styles.discountBadge}>-{product.discount}</Text>}
-        </View>
         <Text style={styles.productName}>{product.name}</Text>
         {/* <Text style={styles.productDescription}>{product.description}</Text> */}
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
@@ -52,6 +45,13 @@ const ProductItem: React.FC<{ product: Product; variant: 'featured' | 'recentlyP
           <Text style={styles.reactionText}>❤️ 123</Text>
         </View>
       </View>
+        <View style={styles.priceRow}>
+          <Text style={styles.discountedPrice}>{product.discountedPrice}/kg</Text>
+          {product.price !== product.discountedPrice && (
+            <Text style={styles.originalPrice}>{product.price}</Text>
+          )}
+          {product.discount && <Text style={styles.discountBadge}>-{product.discount}</Text>}
+        </View>
       </View>
 
       {/* Product Image and Action Buttons */}
@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
   productName: { fontSize: 14, color: '#333' },
   productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
   vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5},
-  priceRow: { flexDirection: 'row', alignItems: 'center' },
-  discountedPrice: { fontSize: 18, fontWeight: 'bold', color: '#333', marginRight: 10 },
+  priceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 15 },
+  discountedPrice: { fontSize: 16, fontWeight: 'bold', color: '#333', marginRight: 10 },
   originalPrice: {
     fontSize: 12,
     color: '#999',
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   reactionRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 18, // Spacing from the price row
+    //marginTop: 18, // Spacing from the price row
     gap: 16, // Space between rating and reaction
   },
   ratingContainer: {
