@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     gap: 8,
   },
-  productName: { fontSize: 16, color: '#333' },
+  productName: { fontSize: 14, color: '#333' },
   productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
   vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5},
   priceRow: { flexDirection: 'row', alignItems: 'center' },
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   ratingText: {
-    fontSize: 12,
+    fontSize: 10,
     color: '#333',
     fontWeight: 'bold',
   },
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   reactionText: {
-    fontSize: 12,
+    fontSize: 10,
     color: '#FF5252',
     fontWeight: 'bold',
   },
