@@ -44,9 +44,22 @@ const ProductItem: React.FC<{
         </View>
       )}
       {/* Product Info */}
-      <View style={[styles.productInfo, isFeatured ? baseStyle.cols_60: baseStyle.cols_70]}>
-        <Text  numberOfLines={1} ellipsizeMode="tail" style={styles.productName}>{product.name}</Text>
-        <Text  numberOfLines={1} ellipsizeMode="tail" style={styles.productDescription}>{product.description}</Text>
+      <View
+        style={[
+          styles.productInfo,
+          isFeatured ? baseStyle.cols_60 : baseStyle.cols_70,
+        ]}
+      >
+        <Text numberOfLines={1} ellipsizeMode="tail" style={styles.productName}>
+          {product.name}
+        </Text>
+        <Text
+          numberOfLines={1}
+          ellipsizeMode="tail"
+          style={styles.productDescription}
+        >
+          {product.description}
+        </Text>
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
 
         <View style={styles.priceRow}>
@@ -71,7 +84,12 @@ const ProductItem: React.FC<{
       </View>
 
       {/* Product Image and Action Buttons */}
-      <View style={[styles.imageContainer, isFeatured ? baseStyle.cols_40:baseStyle.cols_30]}>
+      <View
+        style={[
+          styles.imageContainer,
+          isFeatured ? baseStyle.cols_40 : baseStyle.cols_30,
+        ]}
+      >
         <Image
           source={{ uri: product.imageUrl }}
           style={[
@@ -89,7 +107,7 @@ const ProductItem: React.FC<{
           <View style={[styles.alignLeft, baseStyle.cols_2]}>
             <Text style={styles.ratingText}>⭐ 4.5</Text>
           </View>
-          <View style={[styles.alignRight, baseStyle.cols_2]}>            
+          <View style={[styles.alignRight, baseStyle.cols_2]}>
             <Text style={styles.reactionText}>❤️ 123</Text>
           </View>
         </View>
@@ -208,14 +226,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   productImage: {
-    width: "100%",
+    width: '100%',
     height: 80,
     //borderRadius: 10,
     marginBottom: 10,
     backgroundColor: '#e0e0e0',
   },
   featuredProductImage: {
-    width: "100%",
+    width: '100%',
     height: 80,
   },
   actionIcons: {

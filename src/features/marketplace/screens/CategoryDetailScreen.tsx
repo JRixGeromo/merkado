@@ -35,9 +35,9 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
         navigation.navigate('ProductsScreen', { subcategory: item })
       }
     >
-              <View style={styles.newBadgeContainer}>
-          <Text style={styles.newBadgeText}> Up to -15% </Text>
-        </View>
+      <View style={styles.newBadgeContainer}>
+        <Text style={styles.newBadgeText}> Up to -15% </Text>
+      </View>
       <Image
         source={{ uri: `https://picsum.photos/100/100?random=${index + 1}` }}
         style={styles.subcategoryImage}
@@ -57,9 +57,6 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
 
   return (
     <View style={styles.container}>
-      
-
-      
       {/* Category Header */}
       <View style={styles.headerContainer}>
         <Image

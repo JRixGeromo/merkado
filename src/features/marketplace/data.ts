@@ -5,6 +5,7 @@ export const categories = [
       'Explore a wide range of electronic devices and home appliances, from smartphones to smart home systems.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Mobile Phones',
         description:
           'Smartphones and mobile devices for communication and entertainment.',
@@ -47,6 +48,7 @@ export const categories = [
       'Stylish and trendy clothing and accessories for men, women, and children, including jewelry and watches.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Men’s Clothing',
         description: 'Stylish and comfortable clothing for men.',
       },
@@ -79,6 +81,7 @@ export const categories = [
       'Health, beauty, personal care, and medical supplies to support a healthy lifestyle.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Skincare',
         description: 'Products to nourish and protect your skin.',
       },
@@ -114,6 +117,7 @@ export const categories = [
       'Enhance your living spaces with quality furniture, decor, and household essentials.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Furniture',
         description: 'Stylish and functional furniture for every room.',
       },
@@ -149,6 +153,7 @@ export const categories = [
       'A diverse selection of food and beverages, including fresh produce, meats, seafood, packaged and frozen foods, snacks, and drinks.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Fresh Produce',
         description: 'Fresh fruits, vegetables, and herbs, including eggs.',
       },
@@ -184,6 +189,7 @@ export const categories = [
       'Explore a variety of dining options, from quick service to fine dining, catering to all tastes and occasions.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Fast Food & Quick Service',
         description: 'Quick and convenient meal options for busy lifestyles.',
       },
@@ -214,6 +220,7 @@ export const categories = [
       'Books for every reader and a wide selection of stationery for school or office needs.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Fiction & Non-fiction Books',
         description: 'Books spanning a variety of genres and interests.',
       },
@@ -241,6 +248,7 @@ export const categories = [
       'Gear and apparel for fitness, sports, and outdoor adventures.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Exercise & Fitness Equipment',
         description: 'Tools for strength training, cardio, and yoga.',
       },
@@ -273,6 +281,7 @@ export const categories = [
       'Products for car and motorcycle enthusiasts, including accessories and maintenance tools.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Car Accessories',
         description: "Accessories to enhance your car's comfort and style.",
       },
@@ -300,6 +309,7 @@ export const categories = [
       'Explore properties for sale or rent, including residential, commercial, and vacation rentals.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Residential Properties',
         description: 'Homes, apartments, and condos for sale or rent.',
       },
@@ -332,6 +342,7 @@ export const categories = [
       'A variety of digital products that can be instantly downloaded, from software to creative assets.',
     subcategories: [
       {
+        sale: '15%',
         name: 'E-books & Audiobooks',
         description:
           'Digital books and audiobooks for instant reading or listening.',
@@ -383,6 +394,7 @@ export const categories = [
       'Office essentials, from furniture to organization tools, to keep your workspace efficient.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Office Furniture',
         description:
           'Desks, chairs, and storage solutions for a productive workspace.',
@@ -414,6 +426,7 @@ export const categories = [
       'Essential products for pet care, including food, toys, grooming, and health items for all pet types.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Pet Food',
         description:
           'Nutritious food and treats for dogs, cats, and other pets.',
@@ -443,6 +456,7 @@ export const categories = [
       'Find everything for celebrations, including gift wrap, decor, party favors, and more.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Gift Wrapping',
         description:
           'Gift wrap, bags, ribbons, and bows for special occasions.',
@@ -476,6 +490,7 @@ export const categories = [
       'Equipment, tools, and supplies for industrial, scientific, and agricultural needs.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Lab Equipment',
         description:
           'Laboratory tools and instruments for scientific research.',
@@ -502,6 +517,7 @@ export const categories = [
       'Environmentally friendly products that promote sustainability and eco-conscious choices.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Recycled Products',
         description: 'Products made from recycled materials to reduce waste.',
       },
@@ -525,6 +541,7 @@ export const categories = [
       'Unique and rare items, including antiques, collectibles, and memorabilia for enthusiasts and collectors.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Vintage Clothing',
         description: 'Retro and vintage apparel from various eras.',
       },
@@ -564,6 +581,7 @@ export const categories = [
       'Gear and essentials for all your travel needs, from backpacks to premium luggage sets.',
     subcategories: [
       {
+        sale: '15%',
         name: 'Luggage & Suitcases',
         description: 'Durable luggage and suitcases for all types of travel.',
       },
