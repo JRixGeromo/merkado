@@ -2,6 +2,17 @@ import {
   Product,
   Store,
 } from '../src/features/dashboard/screens/DashboardScreen';
+// Define reusable types for categories and subcategories
+type Subcategory = {
+  name: string;
+  description: string;
+};
+
+type Category = {
+  name: string;
+  description: string;
+  subcategories: Subcategory[];
+};
 
 // Stack Navigator Params
 export type RootStackParamList = {
@@ -9,7 +20,7 @@ export type RootStackParamList = {
   LoginScreen: undefined;
   RegistrationScreen: undefined;
   DashboardScreen: undefined;
-  FrontStoreScreen: { vendorId: number }; // Add vendorId as a required parameter
+  FrontStoreScreen: { vendorId: number }; // Vendor-specific screen
   AccountScreen: undefined;
   ChangePasswordScreen: undefined;
   ManageAddressesScreen: undefined;
@@ -29,28 +40,14 @@ export type RootStackParamList = {
   FollowersScreen: undefined;
   SocialAccountsScreen: undefined;
   HelpCenterScreen: undefined;
-  DetailsScreen: { item: Store | Product; type: 'store' | 'product' }; // Updated line
+  DetailsScreen: { item: Store | Product; type: 'store' | 'product' }; // Details for store or product
   CartScreen: undefined;
-  CheckoutScreen: undefined; // Add CheckoutScreen here
+  CheckoutScreen: undefined; // Add Checkout functionality
 
-  // New Marketplace Screens
+  // Marketplace Screens
   MarketplaceScreen: undefined;
-  CategoryDetailScreen: {
-    category: {
-      name: string;
-      description: string;
-      subcategories: {
-        name: string;
-        description: string; // Add description for subcategories
-      }[]; // Include subcategories with descriptions here
-    };
-  };
-  ProductsScreen: {
-    subcategory: {
-      name: string;
-      description: string; // Include subcategory description here for consistency
-    };
-  };
+  CategoryDetailScreen: { category: Category };
+  ProductsScreen: { subcategory: Subcategory };
 };
 
 // Tab Navigator Params

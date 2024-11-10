@@ -26,7 +26,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
     item,
     index,
   }: {
-    item: { name: string; description: string; productCount?: number };
+    item: { name: string; description: string; productCount?: number, sale?: string };
     index: number;
   }) => (
     <TouchableOpacity
@@ -35,9 +35,11 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
         navigation.navigate('ProductsScreen', { subcategory: item })
       }
     >
-      <View style={styles.newBadgeContainer}>
-        <Text style={styles.newBadgeText}> Up to -15% </Text>
-      </View>
+      {item.sale && (
+        <View style={styles.newBadgeContainer}>
+          <Text style={styles.newBadgeText}>Up to {item.sale}</Text>
+        </View>
+      )}
       <Image
         source={{ uri: `https://picsum.photos/100/100?random=${index + 1}` }}
         style={styles.subcategoryImage}
