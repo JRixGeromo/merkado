@@ -13,6 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 import { categories } from '../data';
 import ProductItem from '../components/ProductItem'; // Import the ProductItem component
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type MarketplaceScreenProps = {
   navigation: NativeStackNavigationProp<
@@ -89,6 +90,45 @@ const recentlyPostedProducts = Array.from({ length: 20 }, (_, index) => ({
   vendor: `Vendor ${String.fromCharCode(65 + (index % 3))}`, // Vendor A, B, C
   region: `PH-${index + 1}(3km)`,
 }));
+
+
+const liveSellingUsers = [
+  {
+    id: '1',
+    name: 'Vendor A',
+    profileImage: 'https://picsum.photos/50/50?random=1',
+    liveTitle: 'Exclusive Deals!',
+  },
+  {
+    id: '2',
+    name: 'Vendor B',
+    profileImage: 'https://picsum.photos/50/50?random=2',
+    liveTitle: 'Flash Sale - Up to 50% Off!',
+  },
+  {
+    id: '3',
+    name: 'Vendor C',
+    profileImage: 'https://picsum.photos/50/50?random=3',
+    liveTitle: 'Hot Products on Sale!',
+  },
+];
+
+const renderLiveSellingItem = ({ item }: { item: typeof liveSellingUsers[0] }) => (
+  <TouchableOpacity style={styles.liveSellingCard}>
+      {/* Video Icon with Red Dot */}
+      <View style={styles.videoIconContainer}>
+        <Ionicons name="videocam-outline" size={20} color="green" />
+        <View style={styles.redDot} />
+      </View>
+    <View style={styles.liveIconWrapper}>
+      <Image source={{ uri: item.profileImage }} style={styles.liveSellingImage} />
+    </View>
+    <View style={styles.liveSellingInfo}>
+      <Text style={styles.liveSellingName}>{item.name}</Text>
+      <Text style={styles.liveSellingTitle}>{item.liveTitle}</Text>
+    </View>
+  </TouchableOpacity>
+);
 
 const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
   navigation,
@@ -178,6 +218,20 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
           </TouchableOpacity>
         </View>
       </View>
+
+
+    {/* Live Selling Section */}
+    <View style={styles.liveSellingContainer}>
+      <Text style={styles.sectionHeader}>Currently Live Selling</Text>
+      <FlatList
+        data={liveSellingUsers}
+        horizontal
+        renderItem={renderLiveSellingItem}
+        keyExtractor={item => item.id}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.liveSellingList}
+      />
+    </View>
 
       {/* Conditional Rendering */}
       {activeView === 'featured' ? (
@@ -362,6 +416,94 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontStyle: 'italic',
   },
+
+
+  liveIconWrapper: {
+    position: 'relative',
+  },
+  videoIconContainer: {
+    position: 'absolute',
+    top: 2, // Position above the profile image
+    right: 4, // Position to the right
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  redDot: {
+    position: 'absolute',
+    top: 0, // Position at the top of the video icon
+    right: 0, // Position at the right of the video icon
+    width: 8, // Size of the red dot
+    height: 8,
+    backgroundColor: 'red', // Red color for the dot
+    borderRadius: 4, // Fully circular
+    borderWidth: 1, // Optional border for distinction
+    borderColor: 'white', // Border color to make it stand out
+  },
+  liveSellingImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25, // Circular profile image
+    marginRight: 10,
+  },
+  liveSellingCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 15,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  liveSellingInfo: {
+    flex: 1,
+  },
+  liveSellingName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  liveSellingTitle: {
+    fontSize: 14,
+    color: '#666',
+  },
+  
+  // onlineIndicator: {
+  //   position: 'absolute',
+  //   bottom: -5, // Slightly below the icon
+  //   right: -5, // Slightly to the right
+  //   width: 10,
+  //   height: 10,
+  //   backgroundColor: 'green', // Green online status
+  //   borderRadius: 5, // Fully circular
+  //   borderWidth: 1,
+  //   borderColor: 'white', // Border to make it distinct
+  // },
+  
+  
+  videoIcon: {
+    fontSize: 12, // Adjust icon size
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  
+  liveSellingContainer: {
+    marginBottom: 20, // Add spacing from the section below
+    marginHorizontal: 5,
+    paddingVertical: 10, // Ensure padding around the section
+    borderTopWidth: 1, // Add top border
+    borderBottomWidth: 1, // Add bottom border
+    borderColor: '#ddd', // Light gray border color
+    backgroundColor: '#fff', // Ensure contrast with the borders
+  },
+  liveSellingList: {
+    paddingHorizontal: 10,
+  },
+ 
 });
 
 export default MarketplaceScreen;
