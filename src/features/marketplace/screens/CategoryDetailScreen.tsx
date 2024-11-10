@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
+import StarburstBadge from '../../../components/StarburstBadge';
 
 type CategoryDetailScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -34,6 +35,9 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
         navigation.navigate('ProductsScreen', { subcategory: item })
       }
     >
+              <View style={styles.newBadgeContainer}>
+          <Text style={styles.newBadgeText}> Up to -15% </Text>
+        </View>
       <Image
         source={{ uri: `https://picsum.photos/100/100?random=${index + 1}` }}
         style={styles.subcategoryImage}
@@ -53,6 +57,9 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
 
   return (
     <View style={styles.container}>
+      
+
+      
       {/* Category Header */}
       <View style={styles.headerContainer}>
         <Image
@@ -171,6 +178,26 @@ const styles = StyleSheet.create({
     color: '#555',
     flexWrap: 'wrap', // Ensure text wraps correctly
     textAlign: 'center', // Center-align text
+  },
+  newBadgeContainer: {
+    position: 'absolute',
+    backgroundColor: 'red', // Green background
+    borderTopRightRadius: 10, // Only round the top-left corner
+    borderBottomLeftRadius: 12, // Only round the bottom-right corner
+    borderBottomRightRadius: 0, // Keep top-right square
+    borderTopLeftRadius: 0, // Keep bottom-left square
+    paddingHorizontal: 10, // Space on left and right
+    paddingVertical: 2, // Space on top and bottom
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 0,
+    right: 0,
+    zIndex: 23,
+  },
+  newBadgeText: {
+    color: '#fff', // White text color
+    fontSize: 10, // Smaller text
+    fontWeight: 'bold', // Bold text
   },
 });
 
