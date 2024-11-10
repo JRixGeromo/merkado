@@ -53,6 +53,7 @@ const ProductItem: React.FC<{
         <Text numberOfLines={1} ellipsizeMode="tail" style={styles.productName}>
           {product.name}
         </Text>
+        
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
@@ -60,6 +61,7 @@ const ProductItem: React.FC<{
         >
           {product.description}
         </Text>
+        
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
 
         <View style={styles.priceRow}>
@@ -229,7 +231,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 80,
     //borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 6,
     backgroundColor: '#e0e0e0',
   },
   featuredProductImage: {
@@ -267,7 +269,7 @@ const styles = StyleSheet.create({
   },
 
   ratingText: {
-    fontSize: 10,
+    fontSize: 12,
     color: '#aaa',
     fontWeight: 'bold',
   },
@@ -276,7 +278,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   reactionText: {
-    fontSize: 10,
+    fontSize: 12,
     color: '#aaa',
     fontWeight: 'bold',
   },
