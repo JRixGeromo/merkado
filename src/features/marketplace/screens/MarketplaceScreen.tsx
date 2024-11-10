@@ -423,8 +423,8 @@ const styles = StyleSheet.create({
   },
   videoIconContainer: {
     position: 'absolute',
-    top: 2, // Position above the profile image
-    right: 4, // Position to the right
+    top: 4, // Position above the profile image
+    right: 6, // Position to the right
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -468,23 +468,10 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   liveSellingTitle: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#666',
   },
-  
-  // onlineIndicator: {
-  //   position: 'absolute',
-  //   bottom: -5, // Slightly below the icon
-  //   right: -5, // Slightly to the right
-  //   width: 10,
-  //   height: 10,
-  //   backgroundColor: 'green', // Green online status
-  //   borderRadius: 5, // Fully circular
-  //   borderWidth: 1,
-  //   borderColor: 'white', // Border to make it distinct
-  // },
-  
-  
+ 
   videoIcon: {
     fontSize: 12, // Adjust icon size
     color: 'white',
