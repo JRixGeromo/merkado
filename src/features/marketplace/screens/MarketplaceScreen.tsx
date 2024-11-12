@@ -13,6 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 import { categories } from '../data';
 import ProductItem from '../components/ProductItem'; // Import the ProductItem component
+import LiveSellingCard from '../components/LiveSellingCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type MarketplaceScreenProps = {
@@ -114,20 +115,10 @@ const liveSellingUsers = [
 ];
 
 const renderLiveSellingItem = ({ item }: { item: typeof liveSellingUsers[0] }) => (
-  <TouchableOpacity style={styles.liveSellingCard}>
-      {/* Video Icon with Red Dot */}
-      <View style={styles.videoIconContainer}>
-        <Ionicons name="videocam-outline" size={20} color="green" />
-        <View style={styles.redDot} />
-      </View>
-    <View style={styles.liveIconWrapper}>
-      <Image source={{ uri: item.profileImage }} style={styles.liveSellingImage} />
-    </View>
-    <View style={styles.liveSellingInfo}>
-      <Text style={styles.liveSellingName}>{item.name}</Text>
-      <Text style={styles.liveSellingTitle}>{item.liveTitle}</Text>
-    </View>
-  </TouchableOpacity>
+  <LiveSellingCard
+    item={item}
+    onPress={() => console.log(`Clicked on ${item.name}`)} // Optional click handler
+  />
 );
 
 const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
