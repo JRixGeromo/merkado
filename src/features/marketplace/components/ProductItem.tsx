@@ -108,7 +108,7 @@ const ProductItem: React.FC<{
           ]}
         />
         {/* Square overlay with 3-dots icon */}
-        <View style={marketStyle.overlayContainer}>
+        <View style={marketStyle.iconOverlayContainer}>
           <TouchableOpacity style={marketStyle.threeDotsButton}>
             <Text style={marketStyle.threeDotsText}>⋮</Text>
           </TouchableOpacity>

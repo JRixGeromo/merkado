@@ -130,32 +130,44 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontWeight: 'bold',
     },
 
-    // overlayContainer: {
-    //   position: 'absolute',
-    //   top: 3,
-    //   right: 3,
-    //   width: 30,
-    //   height: 30,
-    //   backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background
-    //   borderRadius: 15, // Fully rounded
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   shadowColor: '#000',
-    //   shadowOffset: { width: 0, height: 2 },
-    //   shadowOpacity: 0.3,
-    //   shadowRadius: 4,
-    //   elevation: 5,
-    // },
+    imageContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    productImage: {
+      width: '100%',
+      height: normalizeHeight(70),
+      borderRadius:  SHARED.borderRadius,
+      marginBottom: normalizeHeight(6),
+    },
 
-    // threeDotsButton: {
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    // },
-    // threeDotsText: {
-    //   fontSize: 18,
-    //   color: '#fff', // White color for contrast
-    //   fontWeight: 'bold',
-    // },
+    featuredProductImage: {
+      width: '100%',
+      height: normalizeHeight(70),
+    },
+
+    iconOverlayContainer: {
+      position: 'absolute',
+      top: normalizeHeight(3),
+      right: normalizeWidth(3),
+      width: normalizeWidth(25),
+      height: normalizeHeight(25),
+      backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background
+      borderRadius: SHARED.borderRadiusPrimary, 
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    threeDotsButton: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    threeDotsText: {
+      fontSize: SHARED.fontL,
+      color: selectedTheme.textLight,
+      fontWeight: 'bold',
+    },
   
     // badgesRow: {
     //   flexDirection: 'row',
@@ -184,21 +196,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     //   fontWeight: 'bold',
     //   borderRadius: 5,
     // },
-    // imageContainer: {
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    // },
-    // productImage: {
-    //   width: '100%',
-    //   height: 70,
-    //   //borderRadius: 10,
-    //   marginBottom: 6,
-    //   backgroundColor: '#e0e0e0',
-    // },
-    // featuredProductImage: {
-    //   width: '100%',
-    //   height: 70,
-    // },
+
     // actionIcons: {
     //   flexDirection: 'row',
     //   justifyContent: 'space-between',
