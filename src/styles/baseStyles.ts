@@ -11,6 +11,7 @@ export const SHARED = {
   borderWidth: 0, // Shared border radius
   borderWidthSecondary: 0.5,
   borderRadius: 0, // Shared border radius
+  borderRadiusPrimary: 4,
   borderRadiusSecondary: 8,
   padding: normalizeWidth(10), // Shared padding
   buttonPadding: normalizeWidth(15), // Button padding
