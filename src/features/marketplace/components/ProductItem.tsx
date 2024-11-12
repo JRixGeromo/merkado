@@ -54,13 +54,13 @@ const ProductItem: React.FC<{
           {product.name}
         </Text>
         
-        <Text
+        {/* <Text
           numberOfLines={1}
           ellipsizeMode="tail"
           style={styles.productDescription}
         >
           {product.description}
-        </Text>
+        </Text> */}
         
         <Text style={styles.vendorInfo}>{`${product.region}`}</Text>
 
@@ -229,14 +229,14 @@ const styles = StyleSheet.create({
   },
   productImage: {
     width: '100%',
-    height: 80,
+    height: 70,
     //borderRadius: 10,
     marginBottom: 6,
     backgroundColor: '#e0e0e0',
   },
   featuredProductImage: {
     width: '100%',
-    height: 80,
+    height: 70,
   },
   actionIcons: {
     flexDirection: 'row',

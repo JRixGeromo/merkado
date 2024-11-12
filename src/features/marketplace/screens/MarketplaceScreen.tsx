@@ -14,6 +14,8 @@ import { RootStackParamList } from '../../../navigationTypes';
 import { categories } from '../data';
 import ProductItem from '../components/ProductItem'; // Import the ProductItem component
 import LiveSellingCard from '../components/LiveSellingCard';
+import SearchBarWithToggle from '../components/SearchBarWithToggle';
+import CategoryCard from '../components/CategoryCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type MarketplaceScreenProps = {
@@ -135,80 +137,23 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
     item: (typeof categories)[0];
     index: number;
   }) => (
-    <TouchableOpacity
-      style={styles.categoryCard}
-      onPress={() =>
-        navigation.navigate('CategoryDetailScreen', { category: item })
-      }
-    >
-      <Image
-        source={{ uri: `https://picsum.photos/200/200?random=${index + 1}` }}
-        style={styles.categoryImage}
+    <CategoryCard
+        item={item}
+        index={index}
+        onPress={() =>
+          navigation.navigate('CategoryDetailScreen', { category: item })
+        }
       />
-      <View style={styles.categoryInfo}>
-        <Text style={styles.categoryName}>{item.name}</Text>
-        <Text style={styles.categoryDescription} numberOfLines={2}>
-          {item.description}
-        </Text>
-        <View style={styles.categoryDetails}>
-          {/* Top Subcategory with Icon */}
-          <View style={styles.detailRow}>
-            <Text style={styles.iconText}>📌</Text>
-            <Text style={styles.detailText}>{item.subcategories[0].name}</Text>
-          </View>
-          {/* Total Products with Icon */}
-          <View style={styles.detailRow}>
-            <Text style={styles.iconText}>📦</Text>
-            <Text style={styles.detailText}>{item.totalProducts || 100}</Text>
-          </View>
-        </View>
-      </View>
-    </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
-      {/* Search Bar and Icons */}
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search categories or products..."
-        />
-        <View style={styles.toggleIcons}>
-          <TouchableOpacity
-            onPress={() => setActiveView('featured')}
-            style={[
-              styles.iconButton,
-              activeView === 'featured' && styles.activeIconButton,
-            ]}
-          >
-            <Text
-              style={[
-                styles.iconText,
-                activeView === 'featured' && styles.activeIconText,
-              ]}
-            >
-              ⭐
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setActiveView('categories')}
-            style={[
-              styles.iconButton,
-              activeView === 'categories' && styles.activeIconButton,
-            ]}
-          >
-            <Text
-              style={[
-                styles.iconText,
-                activeView === 'categories' && styles.activeIconText,
-              ]}
-            >
-              📂
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      {/* Search Bar and Toggle Icons */}
+      <SearchBarWithToggle
+        activeView={activeView}
+        setActiveView={setActiveView}
+        onSearchChange={(text) => console.log('Search input:', text)} // Optional search handler
+      />
 
 
     {/* Live Selling Section */}
