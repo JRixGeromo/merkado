@@ -103,7 +103,29 @@ const IconLib = {
   Apps: (props: IconProps) => <CustomIcon name="apps" {...props} />,
   Briefcase: (props: IconProps) => <CustomIcon name="briefcase" {...props} />,
   Person: (props: IconProps) => <CustomIcon name="person" {...props} />,
+  Grid: (props: IconProps) => <CustomIcon name="grid" {...props} />,
+  
+  StarRate: (props: IconProps) => <CustomIcon name="star" {...props} />,
+  DotsMenu: (props: IconProps) => (
+    <CustomIcon name="ellipsis-vertical" {...props} />
+  ),
+  Menu: (props: IconProps) => <CustomIcon name="menu" {...props} />,
+  Email: (props: IconProps) => <CustomIcon name="mail" {...props} />,
+  Locked: (props: IconProps) => <CustomIcon name="lock-closed" {...props} />,
+  Globe: (props: IconProps) => <CustomIcon name="globe" {...props} />,
+  Sunny: (props: IconProps) => <CustomIcon name="sunny" {...props} />,
+  Moon: (props: IconProps) => <CustomIcon name="moon" {...props} />,
+  Folder: (props: IconProps) => <CustomIcon name="folder-open" {...props} />,
 
+  // FontAwesome Icons using the "fa" type
+  Google: (props: IconProps) => (
+    <CustomIcon name="google" {...props} iconType="fa" />
+  ),
+  Fb: (props: IconProps) => (
+    <CustomIcon name="facebook" {...props} iconType="fa" />
+  ),
+
+  ////////
   ThumbsUp_O: (props: IconProps) => (
     <CustomIcon name="thumbs-up-outline" {...props} />
   ),
@@ -198,24 +220,8 @@ const IconLib = {
   Person_O: (props: IconProps) => (
     <CustomIcon name="person-outline" {...props} />
   ),
-
-  // FontAwesome Icons using the "fa" type
-  Google: (props: IconProps) => (
-    <CustomIcon name="google" {...props} iconType="fa" />
-  ),
-  Fb: (props: IconProps) => (
-    <CustomIcon name="facebook" {...props} iconType="fa" />
-  ),
-  StarRate: (props: IconProps) => <CustomIcon name="star" {...props} />,
-  DotsMenu: (props: IconProps) => (
-    <CustomIcon name="ellipsis-vertical" {...props} />
-  ),
-  Menu: (props: IconProps) => <CustomIcon name="menu" {...props} />,
-  Email: (props: IconProps) => <CustomIcon name="mail" {...props} />,
-  Locked: (props: IconProps) => <CustomIcon name="lock-closed" {...props} />,
-  Globe: (props: IconProps) => <CustomIcon name="globe" {...props} />,
-  Sunny: (props: IconProps) => <CustomIcon name="sunny" {...props} />,
-  Moon: (props: IconProps) => <CustomIcon name="moon" {...props} />,
+  Grid_O: (props: IconProps) => <CustomIcon name="grid-outline" {...props} />,
+  Folder_O: (props: IconProps) => <CustomIcon name="folder-open-outline" {...props} />,
 };
 
 export default IconLib;

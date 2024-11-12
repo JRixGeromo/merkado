@@ -1,6 +1,15 @@
 // components/SearchBarWithToggle.tsx
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import IconLib from '../../../components/IconLib'; // Use IconLib here
+import { useAppSelector } from '../../../hooks/reduxHooks';
+import { theme as appTheme } from '../../../styles/theme';
+import { marketStyles } from '../styles/marketStyles';
+import { baseStyles } from '../../../styles/baseStyles';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
+import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
+import { useTranslation } from 'react-i18next'; // Import translation hook
+import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 
 type SearchBarWithToggleProps = {
   activeView: 'featured' | 'categories';
@@ -13,89 +22,60 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
   setActiveView,
   onSearchChange,
 }) => {
+    const themeType = useAppSelector(state => state.theme.theme);
+    const marketStyle = marketStyles(themeType); // This is fine
+    const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
+  
+    const selectedTheme = appTheme[themeType];
+  
+    const navigation =
+      useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
+  
+    const { t } = useTranslation(); // Initialize translation
+
   return (
-    <View style={styles.searchContainer}>
+    <View style={[baseStyle.columnsInsideFlex, marketStyle.searchContainer]}>
       <TextInput
-        style={styles.searchInput}
+        style={marketStyle.searchInput}
         placeholder="Search categories or products..."
         onChangeText={onSearchChange}
       />
-      <View style={styles.toggleIcons}>
+      <View style={baseStyle.columnsInsideFlex}>
         <TouchableOpacity
           onPress={() => setActiveView('featured')}
           style={[
-            styles.iconButton,
-            activeView === 'featured' && styles.activeIconButton,
+            marketStyle.iconButton,
+            activeView === 'featured' && marketStyle.activeIconButton,
           ]}
         >
           <Text
             style={[
-              styles.iconText,
-              activeView === 'featured' && styles.activeIconText,
+              //marketStyle.iconText,
+              activeView === 'featured' && marketStyle.activeIconText,
             ]}
           >
-            ⭐
+            <IconLib.Star_O size={21} color={selectedTheme.iconColorGray} />
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setActiveView('categories')}
           style={[
-            styles.iconButton,
-            activeView === 'categories' && styles.activeIconButton,
+            marketStyle.iconButton,
+            activeView === 'categories' && marketStyle.activeIconButton,
           ]}
         >
           <Text
             style={[
-              styles.iconText,
-              activeView === 'categories' && styles.activeIconText,
+              //marketStyle.iconText,
+              activeView === 'categories' && marketStyle.activeIconText,
             ]}
           >
-            📂
+            <IconLib.Folder_O size={21} color={selectedTheme.iconColorGray} />
           </Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-  },
-  searchInput: {
-    flex: 1,
-    backgroundColor: '#f1f1f1',
-    padding: 10,
-    borderRadius: 8,
-    fontSize: 16,
-    marginRight: 10,
-  },
-  toggleIcons: {
-    flexDirection: 'row',
-  },
-  iconButton: {
-    padding: 10,
-    backgroundColor: '#f1f1f1',
-    borderRadius: 8,
-    marginLeft: 5,
-  },
-  activeIconButton: {
-    backgroundColor: '#007BFF',
-  },
-  iconText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  activeIconText: {
-    color: '#fff',
-  },
-});
 
 export default SearchBarWithToggle;

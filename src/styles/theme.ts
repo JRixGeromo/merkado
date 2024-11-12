@@ -299,7 +299,7 @@ const feminineTheme: ThemeType = {
 
   /************************** */
   // Input Background
-  inputBackgroundColor: '#fff', // Light orange for inputs
+  inputBackgroundColor: '#dee2e6', // Light orange for inputs
   ///////////////////
 
   /************************** */

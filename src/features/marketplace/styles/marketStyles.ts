@@ -12,6 +12,53 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+  
+  // SearchBarWithToggle 
+  searchContainer: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: normalizeWidth(15),
+    paddingVertical: normalizeHeight(10),
+    borderBottomWidth: SHARED.borderWidth,
+    borderBottomColor: selectedTheme.lineBorderColor,
+  },
+  
+  searchInput: {
+    flex: 1,
+    backgroundColor: selectedTheme.inputBackgroundColor,
+    paddingTop: normalizeHeight(5),
+    paddingBottom: normalizeHeight(5),
+    paddingLeft: normalizeWidth(10),
+    paddingRight: normalizeWidth(10),
+    borderRadius: SHARED.borderRadiusSecondary,
+    fontSize: SHARED.fontS,
+    marginRight: normalizeWidth(10),
+  },
+
+  iconButton: {
+    paddingTop: normalizeHeight(5),
+    paddingBottom: normalizeHeight(5),
+    paddingLeft: normalizeWidth(10),
+    paddingRight: normalizeWidth(10),
+    backgroundColor: selectedTheme.buttonSecondary,
+    borderRadius: SHARED.borderRadiusSecondary,
+    marginLeft:  normalizeWidth(5),
+  },
+
+  activeIconButton: {
+    backgroundColor: selectedTheme.buttonInfo,
+  },
+
+  iconText: {
+    fontSize: SHARED.fontM,
+    color: selectedTheme.textDark,
+  },
+  activeIconText: {
+    color: selectedTheme.textLight,
+  },
+
+
+    //////
     bannerImageWrapper: {
       width: '100%',
       height: normalizeHeight(200),
