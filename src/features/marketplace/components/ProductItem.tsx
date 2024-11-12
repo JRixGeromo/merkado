@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import IconLib from '../../../components/IconLib'; // Use IconLib here
+import CustomButton from '../../../components/CustomButton';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
@@ -28,7 +29,22 @@ type Product = {
 const ProductItem: React.FC<{
   product: Product;
   variant: 'featured' | 'postedProduct';
-}> = ({ product, variant }) => {
+  onFullScreenPress: () => void;
+  onRatingPress: () => void;
+  onLikePress: () => void;
+  isLiked: boolean;
+  likes: number;
+  rating: number;
+}> = ({
+  product,
+  variant,
+  onFullScreenPress,
+  onRatingPress,
+  onLikePress,
+  isLiked,
+  likes,
+  rating,
+}) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
@@ -36,7 +52,7 @@ const ProductItem: React.FC<{
   const selectedTheme = appTheme[themeType];
 
   const isFeatured = variant === 'featured';
-
+  const { t } = useTranslation(); // Initialize translation
   return (
     <View
       style={[
@@ -83,13 +99,31 @@ const ProductItem: React.FC<{
             <Text style={marketStyle.discountBadge}>-{product.discount}</Text>
           )}
         </View>
-        <View style={marketStyle.actionIcons}>
-          <TouchableOpacity style={marketStyle.iconButton}>
+        <View style={[baseStyle.columnsInsideFlex, marketStyle.actionIcons]}>
+          {/* <TouchableOpacity style={marketStyle.iconButton}>
             <Text style={marketStyle.iconText}>Chat</Text>
           </TouchableOpacity>
           <TouchableOpacity style={marketStyle.iconButton}>
             <Text style={marketStyle.iconText}>Buy</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <CustomButton
+            title={""}
+            onPress={() => console.log('Google Login Pressed')}
+            color={selectedTheme.textLight}
+            backgroundColor={selectedTheme.googleButtonColor}
+            borderRadius={2} // You can set this dynamically too
+            style={[baseStyle.cols_2, baseStyle.cardButton]} // Apply the button styles
+            iconName={'Chat_O'}
+          />
+          <CustomButton
+            title={""}
+            onPress={() => console.log('Google Login Pressed')}
+            color={selectedTheme.textLight}
+            backgroundColor={selectedTheme.googleButtonColor}
+            borderRadius={2} // You can set this dynamically too
+            style={[baseStyle.cols_2, baseStyle.cardButton]} // Apply the button styles
+            iconName={'Cart_O'}
+          />
         </View>
       </View>
 
@@ -108,208 +142,74 @@ const ProductItem: React.FC<{
           ]}
         />
         {/* Square overlay with 3-dots icon */}
-        <View style={marketStyle.iconOverlayContainer}>
-          <TouchableOpacity style={marketStyle.threeDotsButton}>
-            <Text style={marketStyle.threeDotsText}>⋮</Text>
+        
+           {/* Full-Screen Button */}
+          <TouchableOpacity
+            style={marketStyle.iconOverlayContainer}
+            onPress={onFullScreenPress}
+          >
+            <IconLib.DotsMenu size={20} color={selectedTheme.textLight} />
           </TouchableOpacity>
-        </View>
-        <View style={baseStyle.columnsInside}>
-          <View style={[marketStyle.alignLeft, baseStyle.cols_2]}>
+        
+        {/* <View style={baseStyle.columnsInside}>
+          <View style={[baseStyle.alignLeft, baseStyle.cols_2]}>
             <Text style={marketStyle.ratingText}>⭐ 4.5</Text>
           </View>
-          <View style={[marketStyle.alignRight, baseStyle.cols_2]}>
+          <View style={[baseStyle.alignRight, baseStyle.cols_2]}>
             <Text style={marketStyle.reactionText}>❤️ 123</Text>
           </View>
+        </View> */}
+        
+        {/* Rating and Likes */}
+        <View style={[baseStyle.columnsInside]}>
+          {/* Rating */}
+           {/* Rating */}
+           <TouchableOpacity
+            style={[baseStyle.alignLeft, baseStyle.cols_2]}
+            onPress={onRatingPress}
+          >
+            <View style={baseStyle.columnsInsideFlex}>
+              <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
+              <Text
+                style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              >
+                {rating}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          {/* Likes */}
+          <View
+            style={[
+              baseStyle.columnsInsideFlex,
+              baseStyle.cols_2,
+              baseStyle.alignRight,
+              baseStyle.rPaddingXS,
+            ]}
+          >
+            <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
+              {isLiked ? (
+                <IconLib.Heart size={20} color="red" />
+              ) : (
+                <IconLib.Heart_O
+                  size={20}
+                  color={selectedTheme.iconColorPrimary}
+                />
+              )}
+            </TouchableOpacity>
+            <Text
+              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {likes}
+            </Text>
+          </View>
         </View>
+      
+
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  // productCard: {
-  //   flexDirection: 'row',
-  //   alignItems: 'flex-start', // Ensures the items align to the top
-  //   justifyContent: 'flex-start', // Align the content to the top-left
-  //   marginVertical: 8,
-  //   paddingTop: 20,
-  //   paddingBottom: 10,
-  //   paddingLeft: 15,
-  //   paddingRight: 15,
-  //   backgroundColor: '#fff',
-  //   borderRadius: 10,
-  //   shadowColor: '#000',
-  //   shadowOpacity: 0.1,
-  //   shadowRadius: 5,
-  //   elevation: 3,
-  // },
-
-  // productInfo: {
-  //   flex: 1,
-  //   paddingRight: 10,
-  //   alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
-  //   justifyContent: 'flex-start', // Forces content to start at the top
-  // },
-  // featuredProductCard: {
-  //   width: 275,
-  //   marginRight: 15,
-  //   marginLeft: 4,
-  // },
-  // postedProductCard: {
-  //   marginHorizontal: 0,
-  // },
-  // overlayContainer: {
-  //   position: 'absolute',
-  //   top: 3,
-  //   right: 3,
-  //   width: 30,
-  //   height: 30,
-  //   backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background
-  //   borderRadius: 15, // Fully rounded
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   shadowColor: '#000',
-  //   shadowOffset: { width: 0, height: 2 },
-  //   shadowOpacity: 0.3,
-  //   shadowRadius: 4,
-  //   elevation: 5,
-  // },
-  // threeDotsButton: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // threeDotsText: {
-  //   fontSize: 18,
-  //   color: '#fff', // White color for contrast
-  //   fontWeight: 'bold',
-  // },
-
-  // badgesRow: {
-  //   flexDirection: 'row',
-  //   marginBottom: 5,
-  //   gap: 8,
-  // },
-  // productName: { fontSize: 14, color: '#333' },
-  // productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
-  // vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5 },
-  // priceRow: { flexDirection: 'row', alignItems: 'center', marginRight: 10 },
-  // discountedPrice: {
-  //   fontSize: 16,
-  //   fontWeight: 'bold',
-  //   color: '#333',
-  //   marginRight: 10,
-  // },
-  // originalPrice: {
-  //   fontSize: 12,
-  //   color: '#999',
-  //   textDecorationLine: 'line-through',
-  //   marginRight: 10,
-  // },
-  // discountBadge: {
-  //   backgroundColor: '#FF5252',
-  //   color: '#fff',
-  //   paddingHorizontal: 5,
-  //   fontSize: 10,
-  //   borderRadius: 5,
-  //   fontWeight: 'bold',
-  // },
-  // popularBadge: {
-  //   backgroundColor: '#FF9800',
-  //   color: '#fff',
-  //   paddingHorizontal: 8,
-  //   paddingVertical: 3,
-  //   fontSize: 10,
-  //   fontWeight: 'bold',
-  //   borderRadius: 5,
-  // },
-  // newBadge: {
-  //   backgroundColor: '#4CAF50',
-  //   color: '#fff',
-  //   paddingHorizontal: 8,
-  //   paddingVertical: 3,
-  //   fontSize: 10,
-  //   fontWeight: 'bold',
-  //   borderRadius: 5,
-  // },
-  // imageContainer: {
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-  // productImage: {
-  //   width: '100%',
-  //   height: 70,
-  //   //borderRadius: 10,
-  //   marginBottom: 6,
-  //   backgroundColor: '#e0e0e0',
-  // },
-  // featuredProductImage: {
-  //   width: '100%',
-  //   height: 70,
-  // },
-  // actionIcons: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   marginTop: 10,
-  // },
-  // iconButton: {
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: '#e0e0e0',
-  //   borderRadius: 4,
-  //   paddingLeft: 10,
-  //   paddingRight: 10,
-  //   paddingTop: 2,
-  //   paddingBottom: 2,
-  //   width: 60,
-  //   marginRight: 10,
-  // },
-  // iconText: { fontSize: 12, color: 'gray' },
-
-  // reactionRow: {
-  //   flexDirection: 'row', // Arrange children in a row
-  //   width: '100%', // Ensure it spans the full width
-  // },
-  // alignLeft: {
-  //   alignItems: 'flex-start', // Align items to the left within the flex space
-  // },
-  // alignRight: {
-  //   alignItems: 'flex-end', // Align items to the right within the flex space
-  // },
-
-  // ratingText: {
-  //   fontSize: 12,
-  //   color: '#aaa',
-  //   fontWeight: 'bold',
-  // },
-  // reactionContainer: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  // },
-  // reactionText: {
-  //   fontSize: 12,
-  //   color: '#aaa',
-  //   fontWeight: 'bold',
-  // },
-  // newBadgeContainer: {
-  //   position: 'absolute',
-  //   backgroundColor: '#4CAF50', // Green background
-  //   borderTopRightRadius: 10, // Only round the top-left corner
-  //   borderBottomLeftRadius: 12, // Only round the bottom-right corner
-  //   borderBottomRightRadius: 0, // Keep top-right square
-  //   borderTopLeftRadius: 0, // Keep bottom-left square
-  //   paddingHorizontal: 10, // Space on left and right
-  //   paddingVertical: 2, // Space on top and bottom
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   top: 0,
-  //   right: 0,
-  //   zIndex: 23,
-  // },
-  // newBadgeText: {
-  //   color: '#fff', // White text color
-  //   fontSize: 8, // Smaller text
-  //   fontWeight: 'bold', // Bold text
-  // },
-});
 
 export default ProductItem;

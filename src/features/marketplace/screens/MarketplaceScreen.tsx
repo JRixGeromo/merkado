@@ -179,7 +179,15 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
               data={featuredProducts}
               horizontal
               renderItem={({ item }) => (
-                <ProductItem product={item} variant="featured" />
+                <ProductItem product={item} variant="featured" 
+                  onFullScreenPress={() => console.log('Full-screen pressed')}
+                  onRatingPress={() => console.log('Rating pressed')}
+                  onLikePress={() => console.log('Like pressed')}
+                  isLiked={true}
+                  likes={150}
+                  rating={4.8}
+                  />
+                
               )}
               keyExtractor={item => item.id}
               showsHorizontalScrollIndicator={false}
@@ -193,7 +201,14 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
             <FlatList
               data={recentlyPostedProducts}
               renderItem={({ item }) => (
-                <ProductItem product={item} variant="postedProduct" />
+                <ProductItem product={item} variant="postedProduct" 
+                  onFullScreenPress={() => console.log('Full-screen pressed')}
+                  onRatingPress={() => console.log('Rating pressed')}
+                  onLikePress={() => console.log('Like pressed')}
+                  isLiked={true}
+                  likes={150}
+                  rating={4.8}
+                />
               )}
               keyExtractor={item => item.id}
               scrollEnabled={false} // Disable scrolling for inner FlatList

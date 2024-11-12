@@ -169,6 +169,11 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontWeight: 'bold',
     },
   
+    actionIcons: {
+      justifyContent: 'space-between',
+      marginTop: 10,
+    },
+
     // badgesRow: {
     //   flexDirection: 'row',
     //   marginBottom: 5,
@@ -197,11 +202,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     //   borderRadius: 5,
     // },
 
-    // actionIcons: {
-    //   flexDirection: 'row',
-    //   justifyContent: 'space-between',
-    //   marginTop: 10,
-    // },
     // iconButton: {
     //   alignItems: 'center',
     //   justifyContent: 'center',
