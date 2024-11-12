@@ -6,10 +6,7 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { baseStyles } from '../../../styles/baseStyles';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
-import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 import { useTranslation } from 'react-i18next'; // Import translation hook
-import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 
 type SearchBarWithToggleProps = {
   activeView: 'featured' | 'categories';
@@ -28,9 +25,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
   
     const selectedTheme = appTheme[themeType];
   
-    const navigation =
-      useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
-  
+ 
     const { t } = useTranslation(); // Initialize translation
 
   return (
@@ -44,7 +39,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
         <TouchableOpacity
           onPress={() => setActiveView('featured')}
           style={[
-            marketStyle.iconButton,
+            marketStyle.toggleIconButton,
             activeView === 'featured' && marketStyle.activeIconButton,
           ]}
         >
@@ -60,7 +55,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
         <TouchableOpacity
           onPress={() => setActiveView('categories')}
           style={[
-            marketStyle.iconButton,
+            marketStyle.toggleIconButton,
             activeView === 'categories' && marketStyle.activeIconButton,
           ]}
         >
