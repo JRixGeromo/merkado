@@ -1,7 +1,16 @@
 // components/LiveSellingCard.tsx
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useAppSelector } from '../../../hooks/reduxHooks';
+import { theme as appTheme } from '../../../styles/theme';
+import { marketStyles } from '../styles/marketStyles';
+import { baseStyles } from '../../../styles/baseStyles';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
+import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
+import { useTranslation } from 'react-i18next'; // Import translation hook
+import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
+
 
 type LiveSellingCardProps = {
   item: {
@@ -14,78 +23,34 @@ type LiveSellingCardProps = {
 };
 
 const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
+  const themeType = useAppSelector(state => state.theme.theme);
+  const marketStyle = marketStyles(themeType); // This is fine
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
   return (
-    <TouchableOpacity style={styles.liveSellingCard} onPress={onPress}>
+    <TouchableOpacity 
+      onPress={onPress}
+      style={[
+        baseStyle.columnsInsideFlex,
+        baseStyle.shadowedContainer,
+        marketStyle.liveSellingCard,
+      ]}
+    >
       {/* Video Icon with Red Dot */}
-      <View style={styles.videoIconContainer}>
-        <Ionicons name="videocam-outline" size={20} color="#38b000" />
-        <View style={styles.redDot} />
+      <View style={[baseStyle.innerContainer, marketStyle.videoIconContainer]}>
+        <Ionicons name="videocam-outline" size={20} color={selectedTheme.online} />
+        <View style={marketStyle.redDot} />
       </View>
-      <View style={styles.liveIconWrapper}>
-        <Image source={{ uri: item.profileImage }} style={styles.liveSellingImage} />
+      <View style={marketStyle.liveIconWrapper}>
+        <Image source={{ uri: item.profileImage }} style={marketStyle.liveSellingImage} />
       </View>
-      <View style={styles.liveSellingInfo}>
-        <Text style={styles.liveSellingName}>{item.name}</Text>
-        <Text style={styles.liveSellingTitle}>{item.liveTitle}</Text>
+      <View style={marketStyle.liveSellingInfo}>
+        <Text style={marketStyle.liveSellingName}>{item.name}</Text>
+        <Text style={marketStyle.liveSellingTitle}>{item.liveTitle}</Text>
       </View>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  liveSellingCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 15,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  videoIconContainer: {
-    position: 'absolute',
-    top: 4,
-    right: 6,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  redDot: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    width: 8,
-    height: 8,
-    backgroundColor: 'red',
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: 'white',
-  },
-  liveIconWrapper: {
-    position: 'relative',
-  },
-  liveSellingImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 10,
-  },
-  liveSellingInfo: {
-    flex: 1,
-  },
-  liveSellingName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  liveSellingTitle: {
-    fontSize: 12,
-    color: '#666',
-  },
-});
 
 export default LiveSellingCard;

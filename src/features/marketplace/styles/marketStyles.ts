@@ -172,9 +172,65 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     actionIcons: {
       justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
-      gap: 30
+      gap: normalizeWidth(30),
     },
 
+
+
+    // LiveSellingCard
+    liveSellingCard: {
+      alignItems: 'center',
+      marginRight: normalizeWidth(15),
+      marginVertical: normalizeHeight(8),
+      paddingTop: normalizeHeight(20),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(15),
+      paddingRight: normalizeWidth(15),
+      backgroundColor: selectedTheme.cardBackground,
+    },
+    videoIconContainer: {
+      position: 'absolute',
+      top: normalizeHeight(4),
+      right: normalizeWidth(6),
+    },
+    redDot: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: normalizeWidth(7),
+      height: normalizeHeight(7),
+      backgroundColor: selectedTheme.buttonDanger,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: 'white',
+    },
+    liveIconWrapper: {
+      position: 'relative',
+    },
+    liveSellingImage: {
+      width: normalizeWidth(45),
+      height:  normalizeHeight(45),
+      borderRadius: 25,
+      marginRight: normalizeWidth(10),
+    },
+    liveSellingInfo: {
+      flex: 1,
+    },
+    liveSellingName: {
+      fontSize: SHARED.fontM,
+      fontWeight: 'bold',
+      color: selectedTheme.textSecondary,
+    },
+    liveSellingTitle: {
+      fontSize: SHARED.fontXS,
+      color: selectedTheme.textBlur,
+    },
+
+
+
+
+
+    //////////////////
     // badgesRow: {
     //   flexDirection: 'row',
     //   marginBottom: 5,

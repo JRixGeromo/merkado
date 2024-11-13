@@ -269,7 +269,7 @@ const feminineTheme: ThemeType = {
   textHighlight: '#e4572e', // Pink highlight
   textDisabled: '#d7ccc8', // Muted beige for disabled text
 
-  online: '#9ef01a',
+  online: '#7cb518',
   // below are not in use
   // textBlack: '#000000',
   // textLight: '#000',          // Pure white for light text
@@ -364,7 +364,7 @@ const feminineTheme: ThemeType = {
   switchActive: '#e91e63', // Darker pink for active track
   switchThumbInactive: '#d7ccc8', // Beige for inactive thumb
   switchThumbActive: '#ffffff', // White for active thumb
-  shadowElevation: 3,
+  shadowElevation: 1,
   ///////////////////
 
   /************************** */

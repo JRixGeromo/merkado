@@ -20,7 +20,6 @@ export const SHARED = {
     offset: { width: 0, height: 2 },
     opacity: 0.1,
     radius: 0,
-    elevation: 3, // Android-specific shadow
   },
 
   fontXxS: normalizeFontSize(8),
