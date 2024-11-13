@@ -161,13 +161,12 @@ const ProductItem: React.FC<{
         
         {/* Rating and Likes */}
         <View style={[baseStyle.columnsInside]}>
-          {/* Rating */}
            {/* Rating */}
            <TouchableOpacity
             style={[baseStyle.alignLeft, baseStyle.cols_2]}
             onPress={onRatingPress}
           >
-            <View style={baseStyle.columnsInsideFlex}>
+            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainer]}>
               <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
               <Text
                 style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
@@ -177,32 +176,30 @@ const ProductItem: React.FC<{
             </View>
           </TouchableOpacity>
           {/* Likes */}
-          <View
-            style={[
-              baseStyle.columnsInsideFlex,
-              baseStyle.cols_2,
-              baseStyle.alignRight,
-              baseStyle.rPaddingXS,
-            ]}
-          >
-            <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
+            <TouchableOpacity 
+              onPress={onLikePress} 
+              style={[baseStyle.cols_2, baseStyle.alignRight]}
+            >
+            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainer]}>
               {isLiked ? (
-                <IconLib.Heart size={16} color="red" />
+                <IconLib.Heart size={16} color="red"  style={baseStyle.rMarginXS}/>
               ) : (
                 <IconLib.Heart_O
                   size={16}
                   color={selectedTheme.iconColorPrimary}
+                  style={baseStyle.rMarginXS}
                 />
               )}
+
+              <Text
+                style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                {likes}
+              </Text>
+              </View>
             </TouchableOpacity>
-            <Text
-              style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
-              numberOfLines={1}
-              ellipsizeMode="tail"
-            >
-              {likes}
-            </Text>
-          </View>
         </View>
       
 
