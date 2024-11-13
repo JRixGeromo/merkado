@@ -170,7 +170,7 @@ const ProductItem: React.FC<{
             <View style={baseStyle.columnsInsideFlex}>
               <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
               <Text
-                style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+                style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
               >
                 {rating}
               </Text>
@@ -187,16 +187,16 @@ const ProductItem: React.FC<{
           >
             <TouchableOpacity onPress={onLikePress} style={baseStyle.rMarginXS}>
               {isLiked ? (
-                <IconLib.Heart size={20} color="red" />
+                <IconLib.Heart size={16} color="red" />
               ) : (
                 <IconLib.Heart_O
-                  size={20}
+                  size={16}
                   color={selectedTheme.iconColorPrimary}
                 />
               )}
             </TouchableOpacity>
             <Text
-              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
               numberOfLines={1}
               ellipsizeMode="tail"
             >
