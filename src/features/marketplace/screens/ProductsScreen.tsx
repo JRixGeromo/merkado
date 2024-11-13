@@ -60,8 +60,15 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
       <FlatList
         data={products}
         renderItem={({ item }) => (
-          <ProductItem product={item} variant="postedProduct" />
-        )}
+          <ProductItem product={item} variant="postedProduct" 
+            onFullScreenPress={() => console.log('Full-screen pressed')}
+            onRatingPress={() => console.log('Rating pressed')}
+            onLikePress={() => console.log('Like pressed')}
+            isLiked={true}
+            likes={150}
+            rating={4.8}
+            />
+          )}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.productList}
       />

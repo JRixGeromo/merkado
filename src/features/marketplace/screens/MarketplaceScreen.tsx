@@ -187,7 +187,6 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
                   likes={150}
                   rating={4.8}
                   />
-                
               )}
               keyExtractor={item => item.id}
               showsHorizontalScrollIndicator={false}
