@@ -227,6 +227,64 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
 
 
+    // CategoryCard
+    categoryCard: {
+      flex: 1,
+      marginTop: normalizeHeight(10),
+      marginBottom: normalizeHeight(10),
+      marginLeft: normalizeWidth(10),
+      marginRight: normalizeWidth(10),
+      paddingTop: normalizeHeight(15),
+      paddingBottom: normalizeHeight(15),
+      paddingLeft: normalizeWidth(15),
+      paddingRight: normalizeWidth(15),
+      backgroundColor: selectedTheme.cardBackground,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      
+    },
+    categoryImage: {
+      width: normalizeWidth(140),
+      height: normalizeHeight(100),
+      borderRadius: SHARED.borderRadius,
+      marginBottom: normalizeHeight(10),
+    },
+    categoryInfo: {
+      alignItems: 'center',
+      flex: 1,
+    },
+    categoryName: {
+      fontSize: SHARED.fontM,
+      fontWeight: 'bold',
+      color: selectedTheme.textSecondary,
+      marginBottom: normalizeHeight(5),
+      textAlign: 'center',
+    },
+    categoryDescription: {
+      fontSize: SHARED.fontS,
+      color: selectedTheme.textGray,
+      textAlign: 'center',
+      marginBottom:  normalizeHeight(10),
+      lineHeight:  normalizeHeight(16),
+    },
+    categoryDetails: {
+      width: '100%',
+      marginTop: normalizeHeight(10),
+    },
+    detailRow: {
+      marginBottom: normalizeHeight(5),
+    },
+    iconTextSolid: {
+      fontSize: SHARED.fontM,
+      marginRight: normalizeHeight(5),
+      color: '#007BFF',
+    },
+    detailText: {
+      fontSize: SHARED.fontXS,
+      color: selectedTheme.textGray,
+      flexWrap: 'wrap',
+      textAlign: 'center',
+    },
 
 
 

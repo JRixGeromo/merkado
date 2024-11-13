@@ -130,6 +130,7 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     cols_30: {
       width: '30%',
     },
+
     alignLeft: {
       justifyContent: 'flex-start', // Align items to the left
       flexDirection: 'row',
@@ -183,16 +184,19 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     lMarginXS: {
       marginLeft: normalizeWidth(5),
     },
-    bMaringS: {
+    bMarginS: {
       marginBottom: normalizeHeight(10),
     },
-    bMaringM: {
+    bMarginM: {
       marginBottom: normalizeHeight(20),
     },
-    tMaringS: {
+    tMarginXS: {
+      marginTop: normalizeHeight(5),
+    },
+    tMarginS: {
       marginTop: normalizeHeight(10),
     },
-    tMaringM: {
+    tMarginM: {
       marginTop: normalizeHeight(20),
     },
     rMarginS: {

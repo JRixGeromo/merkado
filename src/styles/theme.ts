@@ -264,7 +264,7 @@ const feminineTheme: ThemeType = {
   textLight: '#ffffff',
   textPriceBanner: '#ffb74d', // Light orange for price highlight
   textLink: '#c2185b', // Dark pink for links
-  textGray: '#bcaaa4', // Soft beige-gray
+  textGray: '#666666', // Soft beige-gray
   textBlur: '#5e503f', // Light muted beige
   textHighlight: '#e4572e', // Pink highlight
   textDisabled: '#d7ccc8', // Muted beige for disabled text
