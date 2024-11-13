@@ -6,10 +6,10 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { baseStyles } from '../../../styles/baseStyles';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
-import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
+// import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
+// import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 import { useTranslation } from 'react-i18next'; // Import translation hook
-import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
+//import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 
 
 type Product = {

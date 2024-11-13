@@ -271,9 +271,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: '100%',
       marginTop: normalizeHeight(10),
     },
-    detailRow: {
-      marginBottom: normalizeHeight(5),
-    },
     iconTextSolid: {
       fontSize: SHARED.fontM,
       marginRight: normalizeHeight(5),
@@ -288,6 +285,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
 
 
 
+
+    
     //////////////////
     // badgesRow: {
     //   flexDirection: 'row',
