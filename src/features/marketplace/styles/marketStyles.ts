@@ -171,7 +171,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   
     actionIcons: {
       justifyContent: 'space-between',
-      marginTop: 10,
+      marginTop: normalizeHeight(10),
+      gap: 30
     },
 
     // badgesRow: {
@@ -344,11 +345,11 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginRight: -15,
       marginTop: normalizeHeight(10),
     },
-    chatButton: {
-      backgroundColor: selectedTheme.buttonDark,
-    },
-    cartButton: {
-      backgroundColor: selectedTheme.buttonPrimary,
-    },
+    // chatButton: {
+    //   backgroundColor: selectedTheme.buttonDark,
+    // },
+    // cartButton: {
+    //   backgroundColor: selectedTheme.buttonPrimary,
+    // },
   });
 };

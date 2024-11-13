@@ -315,8 +315,8 @@ const feminineTheme: ThemeType = {
   buttonDanger: '#d32f2f', // Red for danger button
   buttonCancel: '#ffebee', // Light pink for cancel button
 
-  buttonBorderPrimary: '#efd3d7', // Pink for primary button border
-  buttonDark: '#dbc7be', // Dark brown button
+  buttonBorderPrimary: '#ffc2d1', // Pink for primary button border
+  buttonDark: '#d6ccc2', // Dark brown button
   buttonBorderLight: '#ffffff', // White for light button border
   buttonClose: '#6d4c41', // Brown for close button
   buttonTextPrimary: '#ffffff',

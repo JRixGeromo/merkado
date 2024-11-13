@@ -100,29 +100,37 @@ const ProductItem: React.FC<{
           )}
         </View>
         <View style={[baseStyle.columnsInsideFlex, marketStyle.actionIcons]}>
-          {/* <TouchableOpacity style={marketStyle.iconButton}>
-            <Text style={marketStyle.iconText}>Chat</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={marketStyle.iconButton}>
-            <Text style={marketStyle.iconText}>Buy</Text>
-          </TouchableOpacity> */}
           <CustomButton
             title={""}
             onPress={() => console.log('Google Login Pressed')}
-            color={selectedTheme.textLight}
-            backgroundColor={selectedTheme.googleButtonColor}
+            color={selectedTheme.textDark}
+            backgroundColor={selectedTheme.buttonDark}
             borderRadius={2} // You can set this dynamically too
-            style={[baseStyle.cols_2, baseStyle.cardButton]} // Apply the button styles
             iconName={'Chat_O'}
+            iconSize={16} // Font size of the text inside the button
+            width={50}
+            style={{
+              paddingTop: 2,
+              paddingBottom: 2,
+              paddingRight: 10,
+              paddingLeft: 10,
+            }}
           />
           <CustomButton
             title={""}
             onPress={() => console.log('Google Login Pressed')}
-            color={selectedTheme.textLight}
-            backgroundColor={selectedTheme.googleButtonColor}
+            color={selectedTheme.textDark}
+            backgroundColor={selectedTheme.buttonBorderPrimary}
             borderRadius={2} // You can set this dynamically too
-            style={[baseStyle.cols_2, baseStyle.cardButton]} // Apply the button styles
             iconName={'Cart_O'}
+            iconSize={16} // Font size of the text inside the button
+            width={50}
+            style={{
+              paddingTop: 2,
+              paddingBottom: 2,
+              paddingRight: 10,
+              paddingLeft: 10,
+            }}
           />
         </View>
       </View>
@@ -150,15 +158,6 @@ const ProductItem: React.FC<{
           >
             <IconLib.DotsMenu size={20} color={selectedTheme.textLight} />
           </TouchableOpacity>
-        
-        {/* <View style={baseStyle.columnsInside}>
-          <View style={[baseStyle.alignLeft, baseStyle.cols_2]}>
-            <Text style={marketStyle.ratingText}>⭐ 4.5</Text>
-          </View>
-          <View style={[baseStyle.alignRight, baseStyle.cols_2]}>
-            <Text style={marketStyle.reactionText}>❤️ 123</Text>
-          </View>
-        </View> */}
         
         {/* Rating and Likes */}
         <View style={[baseStyle.columnsInside]}>
