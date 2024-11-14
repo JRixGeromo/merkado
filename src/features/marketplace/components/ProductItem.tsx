@@ -138,7 +138,8 @@ const ProductItem: React.FC<{
       {/* Product Image and Action Buttons */}
       <View
         style={[
-          marketStyle.imageContainer,
+          baseStyle.innerContainerCenter,
+          baseStyle.tMarginXxS,
           isFeatured ? baseStyle.cols_40 : baseStyle.cols_30,
         ]}
       >

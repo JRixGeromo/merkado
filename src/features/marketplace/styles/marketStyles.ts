@@ -106,10 +106,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius: SHARED.borderRadiusPrimary, 
       fontWeight: 'bold',
     },
-    imageContainer: {
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+
     productImage: {
       width: '100%',
       height: normalizeHeight(70),

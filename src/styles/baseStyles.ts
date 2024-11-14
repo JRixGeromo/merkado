@@ -39,6 +39,8 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+    //////////////
+    // BASE STYLES
     container: {
       flex: 1,
       backgroundColor: selectedTheme.fullBackgroundColor, // Theme-based background
@@ -197,6 +199,9 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     bMarginM: {
       marginBottom: normalizeHeight(20),
     },
+    tMarginXxS: {
+      marginTop: normalizeHeight(3),
+    },
     tMarginXS: {
       marginTop: normalizeHeight(5),
     },
@@ -324,6 +329,7 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     },
 
     //////////////
+    // COMMON STYLES
     slideModalImage: {
       width: '100%',
       height: normalizeHeight(200),
