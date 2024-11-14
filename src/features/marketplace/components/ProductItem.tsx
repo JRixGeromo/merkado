@@ -74,19 +74,19 @@ const ProductItem: React.FC<{
           isFeatured ? baseStyle.cols_60 : baseStyle.cols_70,
         ]}
       >
-        <Text numberOfLines={1} ellipsizeMode="tail" style={marketStyle.productName}>
+        <Text numberOfLines={1} ellipsizeMode="tail" style={baseStyle.productName}>
           {product.name}
         </Text>
         
-        {/* <Text
+        <Text
           numberOfLines={1}
           ellipsizeMode="tail"
-          style={marketStyle.productDescription}
+          style={baseStyle.productDescription}
         >
           {product.description}
-        </Text> */}
+        </Text>
         
-        <Text style={marketStyle.vendorInfo}>{`${product.region}`}</Text>
+        <Text style={baseStyle.vendorInfo}>{`${product.region}`}</Text>
 
         <View style={[baseStyle.columnsInsideFlex, marketStyle.priceRow]}>
           <Text style={marketStyle.discountedPrice}>
@@ -166,7 +166,7 @@ const ProductItem: React.FC<{
             style={[baseStyle.alignLeft, baseStyle.cols_2]}
             onPress={onRatingPress}
           >
-            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainer]}>
+            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
               <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
               <Text
                 style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
@@ -180,7 +180,7 @@ const ProductItem: React.FC<{
               onPress={onLikePress} 
               style={[baseStyle.cols_2, baseStyle.alignRight]}
             >
-            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainer]}>
+            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
               {isLiked ? (
                 <IconLib.Heart size={16} color="red"  style={baseStyle.rMarginXS}/>
               ) : (

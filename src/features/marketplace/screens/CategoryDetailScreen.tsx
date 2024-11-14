@@ -61,9 +61,9 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
         <Text style={marketStyle.subcategoryName}>{item.name}</Text>
         <Text style={marketStyle.subcategoryDescription}>{item.description}</Text>
         {item.productCount && (
-          <View style={marketStyle.detailRow}>
-            <Text style={marketStyle.iconText}>📦</Text>
-            <Text style={marketStyle.detailText}>{item.productCount || 100}</Text>
+          <View style={[baseStyle.columnsInside, baseStyle.innerContainerLeft, baseStyle.tMarginXS]}>
+            <Text style={baseStyle.iconTextSolid}>📦</Text>
+            <Text style={baseStyle.detailText}>{item.productCount || 100}</Text>
           </View>
         )}
       </View>

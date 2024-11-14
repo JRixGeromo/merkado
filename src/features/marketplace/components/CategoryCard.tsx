@@ -48,14 +48,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index, onPress }) => 
         </Text>
         <View style={marketStyle.categoryDetails}>
           {/* Top Subcategory with Icon */}
-          <View style={[baseStyle.columnsInside, baseStyle.innerContainer]}>
-            <Text style={marketStyle.iconTextSolid}>📌</Text>
-            <Text style={marketStyle.detailText}> Top: {item.subcategories[0].name}</Text>
+          <View style={[baseStyle.columnsInside, baseStyle.innerContainerCenter]}>
+            <Text style={baseStyle.iconTextSolid}>📌</Text>
+            <Text style={baseStyle.detailText}> Top: {item.subcategories[0].name}</Text>
           </View>
           {/* Total Products with Icon */}
-          <View style={[baseStyle.columnsInside, baseStyle.innerContainer, baseStyle.tMarginXS]}>
-            <Text style={marketStyle.iconTextSolid}>📦</Text>
-            <Text style={marketStyle.detailText}> {item.totalProducts || 100}</Text>
+          <View style={[baseStyle.columnsInside, baseStyle.innerContainerCenter, baseStyle.tMarginXS]}>
+            <Text style={baseStyle.iconTextSolid}>📦</Text>
+            <Text style={baseStyle.detailText}> {item.totalProducts || 100}</Text>
           </View>
         </View>
       </View>

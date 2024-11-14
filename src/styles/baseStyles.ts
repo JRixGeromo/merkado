@@ -65,8 +65,11 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       justifyContent: 'flex-start', // Align content to the top of the container
       alignItems: 'center', // Center content horizontally
     },
-    innerContainer: {
+    innerContainerCenter: {
       justifyContent: 'center',
+      alignItems: 'center',
+    },
+    innerContainerLeft: {
       alignItems: 'center',
     },
     modalContainer: {
@@ -397,5 +400,19 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontXxS, // Smaller text
       fontWeight: 'bold', // Bold text
     },
+    iconTextSolid: {
+      fontSize: SHARED.fontM,
+      marginRight: normalizeHeight(5),
+      color: '#007BFF',
+    },
+    detailText: {
+      fontSize: SHARED.fontXS,
+      color: selectedTheme.textGray,
+      flexWrap: 'wrap',
+      textAlign: 'center',
+    },
+    productDescription: { fontSize: SHARED.fontS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
+    vendorInfo: { fontSize: SHARED.fontXxS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
+    productName: { fontSize: SHARED.fontM, color: selectedTheme.textSecondary },
   });
 };

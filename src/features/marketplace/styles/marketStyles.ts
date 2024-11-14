@@ -49,13 +49,13 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       backgroundColor: selectedTheme.buttonInfo,
     },
 
-    iconText: {
-      fontSize: SHARED.fontM,
-      color: selectedTheme.textDark,
-    },
-    activeIconText: {
-      color: selectedTheme.textLight,
-    },
+    // iconText: {
+    //   fontSize: SHARED.fontM,
+    //   color: selectedTheme.textDark,
+    // },
+    // activeIconText: {
+    //   color: selectedTheme.textLight,
+    // },
 
 
     // ProductItem
@@ -78,15 +78,12 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     postedProductCard: {
       marginHorizontal: 0,
     },
-
     productInfo: {
       flex: 1,
       paddingRight: normalizeWidth(10),
       alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
       justifyContent: 'flex-start', // Forces content to start at the top
     },
-    productName: { fontSize: SHARED.fontM, color: selectedTheme.textSecondary },
-    vendorInfo: { fontSize: SHARED.fontXS, color: selectedTheme.textGray, marginBottom:  normalizeHeight(5) },
     priceRow: { alignItems: 'center', marginRight: normalizeWidth(10) },
    
     discountedPrice: {
@@ -109,7 +106,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius: SHARED.borderRadiusPrimary, 
       fontWeight: 'bold',
     },
-
     imageContainer: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -120,12 +116,10 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       borderRadius:  SHARED.borderRadius,
       marginBottom: normalizeHeight(6),
     },
-
     featuredProductImage: {
       width: '100%',
       height: normalizeHeight(70),
     },
-
     iconOverlayContainer: {
       position: 'absolute',
       top: normalizeHeight(3),
@@ -137,18 +131,15 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       justifyContent: 'center',
       alignItems: 'center',
     },
-
     threeDotsButton: {
       justifyContent: 'center',
       alignItems: 'center',
     },
-
     threeDotsText: {
       fontSize: SHARED.fontL,
       color: selectedTheme.textLight,
       fontWeight: 'bold',
     },
-  
     actionIcons: {
       justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
@@ -251,17 +242,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       width: '100%',
       marginTop: normalizeHeight(10),
     },
-    iconTextSolid: {
-      fontSize: SHARED.fontM,
-      marginRight: normalizeHeight(5),
-      color: '#007BFF',
-    },
-    detailText: {
-      fontSize: SHARED.fontXS,
-      color: selectedTheme.textGray,
-      flexWrap: 'wrap',
-      textAlign: 'center',
-    },
 
 
     // CategoryDetailScreen
@@ -288,6 +268,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       fontSize: SHARED.fontXxL,
       color: selectedTheme.textDark,
       marginBottom: normalizeHeight(5),
+      fontWeight: 'bold',
     },
     description: {
       fontSize: SHARED.fontM,
@@ -319,36 +300,24 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       flex: 1,
     },
     subcategoryName: {
-      fontSize: 16,
+      fontSize: SHARED.fontM,
       fontWeight: 'bold',
-      color: '#333',
+      color: selectedTheme.textSecondary,
     },
     subcategoryDescription: {
-      fontSize: 14,
-      color: '#666',
-      marginTop: 2,
+      fontSize: SHARED.fontS,
+      color: selectedTheme.textGray,
+      marginTop: normalizeWidth(2),
     },
     productCountBadge: {
-      marginTop: 5,
+      marginTop: normalizeHeight(5),
       alignSelf: 'flex-start',
       backgroundColor: '#FFD700', // Gold background for the badge
       paddingHorizontal: 8,
       paddingVertical: 3,
       borderRadius: 10,
     },
-    productCountText: {
-      fontSize: 12,
-      color: '#333',
-      fontWeight: 'bold',
-    },
-    detailRow: {
-      flexDirection: 'row',
-      // alignItems: 'center',
-      // justifyContent: 'center', // Center-align details
-      marginTop: 5,
-    },
 
-    
 
 
     //////////////////
@@ -357,9 +326,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     //   marginBottom: 5,
     //   gap: 8,
     // },
-    
-    // productDescription: { fontSize: 12, color: '#666', marginVertical: 5 },
-    // vendorInfo: { fontSize: 10, color: '#777', marginBottom: 5 },
+
 
     // popularBadge: {
     //   backgroundColor: '#FF9800',
