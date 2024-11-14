@@ -25,7 +25,6 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginTop: normalizeHeight(10),
     },
     commentFormContainer: {
-      marginBottom: normalizeHeight(2),
       paddingTop: normalizeHeight(12),
       paddingBottom: normalizeHeight(12),
       paddingLeft: normalizeWidth(12),

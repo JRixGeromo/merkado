@@ -165,7 +165,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
         renderItem={renderLiveSellingItem}
         keyExtractor={item => item.id}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.liveSellingList}
+        contentContainerStyle={[styles.liveSellingList]}
       />
     </View>
 

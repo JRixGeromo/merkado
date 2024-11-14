@@ -82,7 +82,6 @@ const CommentInput: React.FC<CommentInputProps> = ({
           style={compStyle.sendButton}
           onPress={handleSendComment}
         >
-          {/* Use IconLib for the send icon */}
           <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
         </TouchableOpacity>
       </View>
@@ -99,7 +98,6 @@ const CommentInput: React.FC<CommentInputProps> = ({
             onPress={() => setShowReactionBar(true)}
             style={compStyle.thumbsUpButton}
           >
-            {/* Use IconLib for the thumbs-up icon */}
             <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />
           </TouchableOpacity>
         )}
