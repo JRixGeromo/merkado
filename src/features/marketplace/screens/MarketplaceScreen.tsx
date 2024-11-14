@@ -272,6 +272,8 @@ const styles = StyleSheet.create({
   featuredContainer: {
     marginBottom: 20,
     marginHorizontal: 5,
+    borderBottomWidth: 1, // Add bottom border
+    borderColor: '#ddd', // Light gray border color
   },
   sectionHeader: {
     fontSize: 20,
