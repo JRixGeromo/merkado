@@ -377,5 +377,25 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       resizeMode: 'contain',
       marginBottom: normalizeHeight(20),
     },
+    newBadgeContainer: {
+      position: 'absolute',
+      backgroundColor: '#4CAF50', // Green background
+      borderTopRightRadius: SHARED.borderRadiusSecondary, // Only round the top-left corner
+      borderBottomLeftRadius: 12, // Only round the bottom-right corner
+      borderBottomRightRadius: 0, // Keep top-right square
+      borderTopLeftRadius: 0, // Keep bottom-left square
+      paddingHorizontal: normalizeWidth(10), // Space on left and right
+      paddingVertical: normalizeHeight(2), // Space on top and bottom
+      alignItems: 'center',
+      justifyContent: 'center',
+      top: 0,
+      right: 0,
+      zIndex: 23,
+    },
+    newBadgeText: {
+      color: '#fff', // White text color
+      fontSize: SHARED.fontXxS, // Smaller text
+      fontWeight: 'bold', // Bold text
+    },
   });
 };

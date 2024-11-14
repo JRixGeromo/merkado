@@ -63,8 +63,8 @@ const ProductItem: React.FC<{
       ]}
     >
       {product.isNew && (
-        <View style={marketStyle.newBadgeContainer}>
-          <Text style={marketStyle.newBadgeText}> New </Text>
+        <View style={baseStyle.newBadgeContainer}>
+          <Text style={baseStyle.newBadgeText}> New </Text>
         </View>
       )}
       {/* Product Info */}

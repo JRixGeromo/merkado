@@ -49,8 +49,8 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
       }
     >
       {item.sale && (
-        <View style={marketStyle.newBadgeContainer}>
-          <Text style={marketStyle.newBadgeText}>Up to {item.sale}</Text>
+        <View style={baseStyle.newBadgeContainer}>
+          <Text style={baseStyle.newBadgeText}>Up to {item.sale}</Text>
         </View>
       )}
       <Image
