@@ -290,6 +290,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingRight: normalizeWidth(10),
     },
 
+    // DetailScreen
+
 
     //////////////////
     // badgesRow: {

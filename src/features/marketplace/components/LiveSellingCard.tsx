@@ -38,7 +38,7 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
       ]}
     >
       {/* Video Icon with Red Dot */}
-      <View style={[baseStyle.innerContainer, marketStyle.videoIconContainer]}>
+      <View style={[baseStyle.innerContainerCenter, marketStyle.videoIconContainer]}>
         <Ionicons name="videocam-outline" size={20} color={selectedTheme.online} />
         <View style={marketStyle.redDot} />
       </View>

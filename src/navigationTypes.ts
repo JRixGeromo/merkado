@@ -1,8 +1,5 @@
-import {
-  Product,
-  Store,
-} from '../src/features/dashboard/screens/DashboardScreen';
-// Define reusable types for categories and subcategories
+import { Product, Store } from './types'; // Import the shared types
+
 type Subcategory = {
   name: string;
   description: string;
@@ -14,20 +11,19 @@ type Category = {
   subcategories: Subcategory[];
 };
 
-// Stack Navigator Params
 export type RootStackParamList = {
   SplashScreen: undefined;
   LoginScreen: undefined;
   RegistrationScreen: undefined;
   DashboardScreen: undefined;
-  FrontStoreScreen: { vendorId: number }; // Vendor-specific screen
+  FrontStoreScreen: { vendorId: number };
   AccountScreen: undefined;
   ChangePasswordScreen: undefined;
   ManageAddressesScreen: undefined;
   PaymentMethodsScreen: undefined;
   ProductCategoriesScreen: undefined;
   MyProductsScreen: undefined;
-  UpsertProductScreen: undefined; // For adding/updating products
+  UpsertProductScreen: undefined;
   OrdersScreen: undefined;
   FavoritesScreen: undefined;
   LiveShowsScreen: undefined;
@@ -40,17 +36,14 @@ export type RootStackParamList = {
   FollowersScreen: undefined;
   SocialAccountsScreen: undefined;
   HelpCenterScreen: undefined;
-  DetailsScreen: { item: Store | Product; type: 'store' | 'product' }; // Details for store or product
+  DetailsScreen: { item: Store | Product; type: 'store' | 'product' };
   CartScreen: undefined;
-  CheckoutScreen: undefined; // Add Checkout functionality
-
-  // Marketplace Screens
+  CheckoutScreen: undefined;
   MarketplaceScreen: undefined;
   CategoryDetailScreen: { category: Category };
   ProductsScreen: { subcategory: Subcategory };
 };
 
-// Tab Navigator Params
 export type RootTabParamList = {
   Dashboard: undefined;
   Marketplace: undefined;
