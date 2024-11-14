@@ -33,6 +33,7 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
       onPress={onPress}
       style={[
         baseStyle.columnsInsideFlex,
+        baseStyle.shadowedContainer,
         marketStyle.liveSellingCard,
       ]}
     >

@@ -430,12 +430,11 @@ const styles = StyleSheet.create({
   
   liveSellingContainer: {
     marginBottom: 20, // Add spacing from the section below
-    marginHorizontal: 5,
+    marginLeft: 5, // Add spacing from the section below
     paddingVertical: 10, // Ensure padding around the section
     borderTopWidth: 1, // Add top border
     borderBottomWidth: 1, // Add bottom border
     borderColor: '#ddd', // Light gray border color
-    backgroundColor: '#fff', // Ensure contrast with the borders
   },
   liveSellingList: {
     paddingHorizontal: 10,
