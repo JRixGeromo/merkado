@@ -1,8 +1,13 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
+import ProductItem from '../components/ProductItem'; // Import ProductItem
+
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
-import ProductItem from '../components/ProductItem'; // Import ProductItem
+import { useAppSelector } from '../../../hooks/reduxHooks';
+import { theme as appTheme } from '../../../styles/theme';
+import { marketStyles } from '../styles/marketStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 
 type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -11,6 +16,12 @@ type ProductsScreenProps = NativeStackScreenProps<
 
 const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
   const { subcategory } = route.params;
+
+  const themeType = useAppSelector(state => state.theme.theme);
+  const marketStyle = marketStyles(themeType); // This is fine
+  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
+
+  const selectedTheme = appTheme[themeType];
 
   const products = [
     {
@@ -55,8 +66,18 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
   ];
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>{subcategory.name}</Text>
+    <View style={baseStyle.container}>
+      <View 
+        style={[baseStyle.headerContainer, baseStyle.shadowedContainer]}
+      >
+        {/* <Image
+          source={{ uri: `https://picsum.photos/400/200?random=header` }}
+          style={marketStyle.headerImage}
+        /> */}
+        <Text style={baseStyle.headerTitle}>{subcategory.name}</Text>
+      </View>
+
+
       <FlatList
         data={products}
         renderItem={({ item }) => (
@@ -70,16 +91,10 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
             />
           )}
         keyExtractor={item => item.id}
-        contentContainerStyle={styles.productList}
+        contentContainerStyle={marketStyle.productList}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f8f9fa' },
-  header: { fontSize: 22, fontWeight: 'bold', margin: 15, color: '#333' },
-  productList: { padding: 10 },
-});
 
 export default ProductsScreen;

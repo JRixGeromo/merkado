@@ -386,6 +386,22 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       resizeMode: 'contain',
       marginBottom: normalizeHeight(20),
     },
+
+    headerContainer: {
+      backgroundColor: selectedTheme.cardBackground,
+      
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(8),
+      paddingLeft: normalizeWidth(15),
+      paddingRight: normalizeWidth(15),
+      
+      marginTop: normalizeHeight(0),
+      marginBottom: normalizeHeight(0),
+      marginLeft: normalizeWidth(-15),
+      marginRight: normalizeWidth(-15),
+      alignItems: 'center',
+    },
+
     newBadgeContainer: {
       position: 'absolute',
       backgroundColor: '#4CAF50', // Green background
@@ -420,5 +436,13 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     productDescription: { fontSize: SHARED.fontS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
     vendorInfo: { fontSize: SHARED.fontXxS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
     productName: { fontSize: SHARED.fontM, color: selectedTheme.textSecondary },
+    headerTitle: { 
+      fontSize: SHARED.fontXxL, fontWeight: 'bold', color: selectedTheme.textSecondary, 
+    },
+    description: {
+      fontSize: SHARED.fontM,
+      color: selectedTheme.textGray,
+      textAlign: 'center',
+    },
   });
 };

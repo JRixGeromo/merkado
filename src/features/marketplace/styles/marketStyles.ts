@@ -242,38 +242,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
 
 
     // CategoryDetailScreen
-    container: {
-      flex: 1,
-      backgroundColor: '#f8f9fa',
-    },
-    headerContainer: {
-      backgroundColor: selectedTheme.cardBackground,
-      
-      paddingTop: normalizeHeight(15),
-      paddingBottom: normalizeHeight(15),
-      paddingLeft: normalizeWidth(15),
-      paddingRight: normalizeWidth(15),
-      
-      marginTop: normalizeHeight(0),
-      marginBottom: normalizeHeight(0),
-      marginLeft: normalizeWidth(-15),
-      marginRight: normalizeWidth(-15),
-      alignItems: 'center',
-    },
-
-    header: {
-      fontSize: SHARED.fontXxL,
-      color: selectedTheme.textDark,
-      marginBottom: normalizeHeight(5),
-      fontWeight: 'bold',
-    },
-    description: {
-      fontSize: SHARED.fontM,
-      color: selectedTheme.textGray,
-      textAlign: 'center',
-    },
     subcategoryList: {
-      paddingHorizontal: normalizeWidth(10),
       paddingTop: normalizeHeight(10),
     },
     subcategoryCard: {
@@ -314,7 +283,12 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingVertical: 3,
       borderRadius: 10,
     },
-
+    productList: { 
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+    },
 
 
     //////////////////

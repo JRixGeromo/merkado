@@ -80,14 +80,14 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
     >
       {/* Category Header */}
       <View 
-        style={[marketStyle.headerContainer, baseStyle.shadowedContainer]}
+        style={[baseStyle.headerContainer, baseStyle.shadowedContainer]}
       >
         {/* <Image
           source={{ uri: `https://picsum.photos/400/200?random=header` }}
           style={marketStyle.headerImage}
         /> */}
-        <Text style={marketStyle.header}>{category.name}</Text>
-        <Text style={marketStyle.description}>{category.description}</Text>
+        <Text style={baseStyle.headerTitle}>{category.name}</Text>
+        <Text style={baseStyle.description}>{category.description}</Text>
       </View>
 
       {/* Subcategories List */}
