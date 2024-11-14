@@ -90,6 +90,10 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     columnsInsideFlex: {
       flexDirection: 'row',
     },
+    columnsInsideFlexCenter: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
     columnsInside: {
       flexDirection: 'row',
       width: '100%',
