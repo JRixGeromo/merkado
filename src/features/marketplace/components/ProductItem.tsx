@@ -80,13 +80,13 @@ const ProductItem: React.FC<{
           {product.name}
         </Text>
         
-        <Text
+        {/* <Text
           numberOfLines={1}
           ellipsizeMode="tail"
           style={commonStyle.productDescription}
         >
           {product.description}
-        </Text>
+        </Text> */}
         
         <Text style={commonStyle.vendorInfo}>{`${product.region}`}</Text>
 
@@ -145,13 +145,17 @@ const ProductItem: React.FC<{
           isFeatured ? baseStyle.cols_40 : baseStyle.cols_30,
         ]}
       >
+        <View style={marketStyle.productImageWrapper}>
+          <Image source={{ uri: product.imageUrl}} style={marketStyle.productImage} />
+        </View>
+{/*         
         <Image
           source={{ uri: product.imageUrl }}
           style={[
             marketStyle.productImage,
             isFeatured && marketStyle.featuredProductImage,
           ]}
-        />
+        /> */}
         {/* Square overlay with 3-dots icon */}
         
            {/* Full-Screen Button */}

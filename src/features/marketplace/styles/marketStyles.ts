@@ -80,6 +80,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
       backgroundColor: selectedTheme.cardBackground,
+      borderWidth: 0.5,
+      borderColor: selectedTheme.borderColorGray,
     },
   
     featuredProductCard: {
@@ -119,15 +121,20 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       fontWeight: 'bold',
     },
 
-    productImage: {
+
+    productImageWrapper: {
+      justifyContent: 'center', // Centers the Image vertically
+      alignItems: 'center', // Centers the Image horizontally
       width: '100%',
       height: normalizeHeight(70),
-      borderRadius:  SHARED.borderRadius,
-      marginBottom: normalizeHeight(6),
+      backgroundColor: selectedTheme.buttonBorderPrimary, // Background color for the wrapper
+      borderWidth: 2, // Thickness of the border
+      borderColor: selectedTheme.buttonBorderPrimary, // Color of the border
     },
-    featuredProductImage: {
-      width: '100%',
-      height: normalizeHeight(70),
+    productImage: {
+      width: '100%', // Slightly smaller than the wrapper to create padding
+      height: '100%', // Adjusted height
+      resizeMode: 'cover', // Ensures the image fills the space proportionally
     },
     iconOverlayContainer: {
       position: 'absolute',
@@ -165,6 +172,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
       backgroundColor: selectedTheme.cardBackground,
+      borderWidth: 0.5,
+      borderColor: selectedTheme.borderColorGray,
     },
     videoIconContainer: {
       position: 'absolute',
@@ -183,21 +192,27 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       borderColor: 'white',
     },
     liveIconWrapper: {
-      position: 'relative',
-    },
-    liveSellingImage: {
+      justifyContent: 'center', // Centers the Image vertically
+      alignItems: 'center', // Centers the Image horizontally
       width: normalizeWidth(45),
       height:  normalizeHeight(45),
-      borderRadius: 25,
-      marginRight: normalizeWidth(10),
+      backgroundColor: selectedTheme.buttonBorderPrimary,
+      borderRadius: 50, // Optional: Makes the wrapper circular if width and height are equal
+    },
+    liveSellingImage: {
+      width: 45, // Set desired image width
+      height: 45, // Set desired image height
+      borderRadius: 40, // Makes the image circular if width and height are equal
+      resizeMode: 'cover', // Ensures the image fills the space proportionally
     },
     liveSellingInfo: {
-      flex: 1,
+        justifyContent: 'center', // Vertically center content
+        alignItems: 'center', // Horizontally center content
     },
     liveSellingName: {
-      fontSize: SHARED.fontM,
+      fontSize: SHARED.fontS,
       fontWeight: 'bold',
-      color: selectedTheme.textSecondary,
+      color: selectedTheme.textGray,
     },
     liveSellingTitle: {
       fontSize: SHARED.fontXS,

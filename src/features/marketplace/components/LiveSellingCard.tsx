@@ -32,7 +32,6 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
     <TouchableOpacity 
       onPress={onPress}
       style={[
-        baseStyle.columnsInsideFlex,
         baseStyle.shadowedContainer,
         marketStyle.liveSellingCard,
       ]}
@@ -46,7 +45,7 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
       </View>
       <View style={marketStyle.liveSellingInfo}>
         <Text style={marketStyle.liveSellingName}>{item.name}</Text>
-        <Text style={marketStyle.liveSellingTitle}>{item.liveTitle}</Text>
+        {/* <Text style={marketStyle.liveSellingTitle}>{item.liveTitle}</Text> */}
       </View>
     </TouchableOpacity>
   );
