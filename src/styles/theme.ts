@@ -446,7 +446,7 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Line, button, and button border
-  boxBorderWidth: 0,
+  boxBorderWidth: 0.3,
   boxBorderWidthSecondary: 0,
   lineBorderColor: '#4a4e69',
   lineBorderColorLight: '#9caea9',
