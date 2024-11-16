@@ -157,6 +157,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingTop: normalizeHeight(10),
     },
 
+    // iconText: {
+    //   fontSize: SHARED.fontM,
+    //   color: selectedTheme.textDark,
+    // },
+    activeIconText: {
+      color: selectedTheme.textLight,
+    },
+
 
 
 

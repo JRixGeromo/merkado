@@ -5,6 +5,7 @@ import IconLib from '../../../components/IconLib'; // Use IconLib here
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 
@@ -21,6 +22,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
 }) => {
     const themeType = useAppSelector(state => state.theme.theme);
     const marketStyle = marketStyles(themeType); // This is fine
+    const commonStyle = commonStyles(themeType); // This is fine
     const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
   
     const selectedTheme = appTheme[themeType];
@@ -46,7 +48,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
           <Text
             style={[
               //marketStyle.iconText,
-              activeView === 'featured' && marketStyle.activeIconText,
+              activeView === 'featured' && commonStyle.activeIconText,
             ]}
           >
             <IconLib.Star_O size={21} color={selectedTheme.iconColorGray} />
@@ -62,7 +64,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
           <Text
             style={[
               //marketStyle.iconText,
-              activeView === 'categories' && marketStyle.activeIconText,
+              activeView === 'categories' && commonStyle.activeIconText,
             ]}
           >
             <IconLib.Folder_O size={21} color={selectedTheme.iconColorGray} />

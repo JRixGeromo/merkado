@@ -10,6 +10,7 @@ import {
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 // import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 // import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
@@ -31,6 +32,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index, onPress }) => 
 
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
+  const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -49,13 +51,13 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index, onPress }) => 
         <View style={marketStyle.categoryDetails}>
           {/* Top Subcategory with Icon */}
           <View style={[baseStyle.columnsInside, baseStyle.innerContainerCenter]}>
-            <Text style={baseStyle.iconTextSolid}>📌</Text>
-            <Text style={baseStyle.detailText}> Top: {item.subcategories[0].name}</Text>
+            <Text style={commonStyle.iconTextSolid}>📌</Text>
+            <Text style={commonStyle.detailText}> Top: {item.subcategories[0].name}</Text>
           </View>
           {/* Total Products with Icon */}
           <View style={[baseStyle.columnsInside, baseStyle.innerContainerCenter, baseStyle.tMarginXS]}>
-            <Text style={baseStyle.iconTextSolid}>📦</Text>
-            <Text style={baseStyle.detailText}> {item.totalProducts || 100}</Text>
+            <Text style={commonStyle.iconTextSolid}>📦</Text>
+            <Text style={commonStyle.detailText}> {item.totalProducts || 100}</Text>
           </View>
         </View>
       </View>

@@ -5,6 +5,7 @@ import CustomButton from '../../../components/CustomButton';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 // import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 // import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
@@ -47,6 +48,7 @@ const ProductItem: React.FC<{
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
+  const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -63,8 +65,8 @@ const ProductItem: React.FC<{
       ]}
     >
       {product.isNew && (
-        <View style={baseStyle.newBadgeContainer}>
-          <Text style={baseStyle.newBadgeText}> New </Text>
+        <View style={commonStyle.newBadgeContainer}>
+          <Text style={commonStyle.newBadgeText}> New </Text>
         </View>
       )}
       {/* Product Info */}

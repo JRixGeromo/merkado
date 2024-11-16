@@ -11,6 +11,7 @@ import { RootStackParamList } from '../../../navigationTypes';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 // import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 // import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
@@ -31,6 +32,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
   
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
+  const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -49,8 +51,8 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
       }
     >
       {item.sale && (
-        <View style={baseStyle.newBadgeContainer}>
-          <Text style={baseStyle.newBadgeText}>Up to {item.sale}</Text>
+        <View style={commonStyle.newBadgeContainer}>
+          <Text style={commonStyle.newBadgeText}>Up to {item.sale}</Text>
         </View>
       )}
       <Image
@@ -62,8 +64,8 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
         <Text style={marketStyle.subcategoryDescription}>{item.description}</Text>
         {item.productCount && (
           <View style={[baseStyle.columnsInside, baseStyle.innerContainerLeft, baseStyle.tMarginXS]}>
-            <Text style={baseStyle.iconTextSolid}>📦</Text>
-            <Text style={baseStyle.detailText}>{item.productCount || 100}</Text>
+            <Text style={commonStyle.iconTextSolid}>📦</Text>
+            <Text style={commonStyle.detailText}>{item.productCount || 100}</Text>
           </View>
         )}
       </View>
@@ -80,14 +82,14 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
     >
       {/* Category Header */}
       <View 
-        style={[baseStyle.headerContainer, baseStyle.shadowedContainer]}
+        style={[commonStyle.headerContainer, baseStyle.shadowedContainer]}
       >
         {/* <Image
           source={{ uri: `https://picsum.photos/400/200?random=header` }}
           style={marketStyle.headerImage}
         /> */}
-        <Text style={baseStyle.headerTitle}>{category.name}</Text>
-        <Text style={baseStyle.description}>{category.description}</Text>
+        <Text style={commonStyle.headerTitle}>{category.name}</Text>
+        <Text style={commonStyle.description}>{category.description}</Text>
       </View>
 
       {/* Subcategories List */}

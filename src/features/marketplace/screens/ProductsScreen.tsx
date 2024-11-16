@@ -7,6 +7,7 @@ import { RootStackParamList } from '../../../navigationTypes';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
@@ -42,6 +43,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
+  const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
   const selectedTheme = appTheme[themeType];
@@ -110,13 +112,13 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
   return (
     <View style={baseStyle.container}>
       <View 
-        style={[baseStyle.headerContainer, baseStyle.shadowedContainer]}
+        style={[commonStyle.headerContainer, baseStyle.shadowedContainer]}
       >
         {/* <Image
           source={{ uri: `https://picsum.photos/400/200?random=header` }}
           style={marketStyle.headerImage}
         /> */}
-        <Text style={baseStyle.headerTitle}>{subcategory.name}</Text>
+        <Text style={commonStyle.headerTitle}>{subcategory.name}</Text>
       </View>
 
 
