@@ -24,7 +24,7 @@ export interface ThemeType {
   borderColorPrimary: string;
   borderColorGray: string;
   borderColorDark: string; // #343a40 (Light) / #e6e6e9 (Dark)
-
+  borderColorLightGray: string;
   // below are not in use
   // borderColorSecondary: string;  // #000000 (Light) / #dee2e6 (Dark)
   ///////////////////
@@ -34,6 +34,7 @@ export interface ThemeType {
   fullBackgroundColor: string;
   cardBackground: string;
   fullContainerBackgroundColor: string; // #f7ede2 (Light) / #161a1d (Dark)
+  badgeBackgroundColor: string;
 
   // below are not in use
   // formBackgroundColorSecondary: string;     // #f7ede2 (Light) / #161a1d (Dark)
@@ -152,6 +153,7 @@ const lightTheme: ThemeType = {
   borderColorPrimary: '#4CAF50',
   borderColorGray: '#8d99ae',
   borderColorDark: '#343a40',
+  borderColorLightGray: '#dddddd',
 
   // below are not in use
   // borderColorSecondary: '#000000',
@@ -162,6 +164,7 @@ const lightTheme: ThemeType = {
   cardBackground: '#f7ede2',
   fullBackgroundColor: '#ffffff',
   fullContainerBackgroundColor: '#ffffff',
+  badgeBackgroundColor: '#4CAF50',
 
   // below are not in use
   // formBackgroundColorPrimary: '#f7ede2',
@@ -280,6 +283,7 @@ const feminineTheme: ThemeType = {
   borderColorPrimary: '#e91e63', // Pink primary border
   borderColorGray: '#bcaaa4', // Soft gray border
   borderColorDark: '#4e342e', // Dark brown border
+  borderColorLightGray: '#dddddd',
 
   // below are not in use
   // borderColorSecondary: '#000000',
@@ -290,6 +294,7 @@ const feminineTheme: ThemeType = {
   fullBackgroundColor: '#ffffff', // Very light peach background
   cardBackground: '#f8edeb', // Light pink background for cards
   fullContainerBackgroundColor: '#ffffff',
+  badgeBackgroundColor: '#4CAF50',
 
   // below are not in use
   // formBackgroundColorPrimary: '#ffe0b2',
@@ -408,6 +413,7 @@ const darkTheme: ThemeType = {
   borderColorPrimary: '#7cb518',
   borderColorGray: '#8d99ae',
   borderColorDark: '#e6e6e9',
+  borderColorLightGray: '#dddddd',
 
   // below are not in use
   // borderColorSecondary: '#dee2e6',
@@ -418,6 +424,7 @@ const darkTheme: ThemeType = {
   cardBackground: '#1b2021',
   fullBackgroundColor: '#111111',
   fullContainerBackgroundColor: '#111111',
+  badgeBackgroundColor: '#4CAF50',
 
   // below are not in use
   //formBackgroundColorSecondary: '#161a1d',

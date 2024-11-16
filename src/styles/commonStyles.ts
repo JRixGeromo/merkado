@@ -12,6 +12,156 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
+
+   //////////////
+    // COMMON STYLES
+    slideModalImage: {
+      width: '100%',
+      height: normalizeHeight(200),
+      borderRadius: normalizeHeight(10),
+      marginBottom: normalizeHeight(10),
+    },
+    searchContainer: {
+      paddingTop: 0,
+      paddingBottom: 0,
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+      backgroundColor: selectedTheme.inputBackgroundColor,
+      borderRadius: 30,
+      borderWidth: SHARED.borderWidthSecondary,
+      borderColor: selectedTheme.buttonBorderPrimary,
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+    },
+    searchInput: {
+      flex: 1,
+      height: normalizeHeight(40),
+      borderColor: selectedTheme.buttonBorderPrimary,
+      borderWidth: 0,
+      paddingLeft: 0,
+      borderRadius: 20,
+      backgroundColor: selectedTheme.inputBackgroundColor,
+      color: selectedTheme.textPrimary,
+    },
+    cardButton: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: normalizeHeight(5),
+    },
+    input: {
+      flex: 1,
+      fontSize: SHARED.fontL,
+      color: selectedTheme.textPrimary,
+    },
+    contentBox: {
+      backgroundColor: selectedTheme.cardBackground,
+      width: '100%',
+      height: normalizeHeight(110),
+      marginRight: normalizeWidth(10),
+      paddingBottom: 0,
+      marginBottom: normalizeHeight(10),
+      borderColor: selectedTheme.lineBorderColorLight,
+      borderWidth: SHARED.borderWidth,
+      borderRadius: SHARED.borderRadiusSecondary,
+      overflow: 'hidden',
+    },
+    logo: {
+      width: normalizeWidth(150),
+      height: normalizeHeight(150),
+      resizeMode: 'contain',
+      marginBottom: normalizeHeight(20),
+    },
+
+    headerContainer: {
+      backgroundColor: selectedTheme.cardBackground,
+      
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(8),
+      paddingLeft: normalizeWidth(15),
+      paddingRight: normalizeWidth(15),
+      
+      marginTop: normalizeHeight(0),
+      marginBottom: normalizeHeight(0),
+      marginLeft: normalizeWidth(-15),
+      marginRight: normalizeWidth(-15),
+      alignItems: 'center',
+    },
+
+    scrollViewContent: {
+      paddingBottom:  normalizeHeight(40),
+    },
+
+    featuredContainer: {
+      marginBottom: normalizeHeight(20),
+      marginHorizontal: normalizeWidth(5),
+      borderBottomWidth: 1, // Add bottom border
+      borderColor: selectedTheme.borderColorLightGray,
+    },
+
+    newBadgeContainer: {
+      position: 'absolute',
+      backgroundColor: selectedTheme.badgeBackgroundColor, // Only round the top-left corner, // Green background
+      borderTopRightRadius: SHARED.borderRadiusSecondary, // Only round the top-left corner
+      borderBottomLeftRadius: 12, // Only round the bottom-right corner
+      borderBottomRightRadius: 0, // Keep top-right square
+      borderTopLeftRadius: 0, // Keep bottom-left square
+      paddingHorizontal: normalizeWidth(10), // Space on left and right
+      paddingVertical: normalizeHeight(2), // Space on top and bottom
+      alignItems: 'center',
+      justifyContent: 'center',
+      top: 0,
+      right: 0,
+      zIndex: 23,
+    },
+    
+    newBadgeText: {
+      color: '#fff', // White text color
+      fontSize: SHARED.fontXxS, // Smaller text
+      fontWeight: 'bold', // Bold text
+    },
+    iconTextSolid: {
+      fontSize: SHARED.fontM,
+      marginRight: normalizeHeight(5),
+      color: '#007BFF',
+    },
+    detailText: {
+      fontSize: SHARED.fontXS,
+      color: selectedTheme.textGray,
+      flexWrap: 'wrap',
+      textAlign: 'center',
+    },
+    sectionHeader: {
+      fontSize: SHARED.fontL,
+      fontWeight: 'bold',
+      color: selectedTheme.textSecondary,
+      marginBottom: normalizeHeight(10),
+      marginLeft: normalizeWidth(10),
+    },
+    productDescription: { fontSize: SHARED.fontS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
+    vendorInfo: { fontSize: SHARED.fontXxS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
+    productName: { fontSize: SHARED.fontM, color: selectedTheme.textSecondary },
+    headerTitle: { 
+      fontSize: SHARED.fontXxL, fontWeight: 'bold', color: selectedTheme.textSecondary, 
+    },
+    description: {
+      fontSize: SHARED.fontM,
+      color: selectedTheme.textGray,
+      textAlign: 'center',
+    },
+    recentlyPostedList: {
+      paddingHorizontal: normalizeWidth(10),
+    },
+
+    categoryGrid: {
+      paddingHorizontal: normalizeWidth(10),
+      paddingTop: normalizeHeight(10),
+    },
+
+
+
+
+    ////////////////////////////////////////////////////////
+    // OLD COMMON STYLES
     bannerImageWrapper: {
       width: '100%',
       height: normalizeHeight(200),

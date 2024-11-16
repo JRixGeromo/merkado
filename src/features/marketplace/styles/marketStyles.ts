@@ -12,7 +12,27 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
-  
+ 
+    // MarketPlaceScreen
+    liveSellingContainer: {
+      marginBottom: normalizeHeight(20), // Add spacing from the section below
+      marginLeft: normalizeWidth(5), // Add spacing from the section below
+      paddingVertical: normalizeHeight(10), // Ensure padding around the section
+      borderTopWidth: 1, // Add top border
+      borderBottomWidth: 1, // Add bottom border
+      borderColor: selectedTheme.borderColorLightGray, // Light gray border color
+    },
+    liveSellingList: {
+      paddingHorizontal: normalizeWidth(10),
+    },
+    featuredList: {
+      paddingHorizontal: 5,
+    },
+    recentlyPostedContainer: {
+      marginTop: 10,
+      marginHorizontal: 4,
+    },
+
     // SearchBarWithToggle 
     searchContainer: {
       alignItems: 'center',
@@ -48,14 +68,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
     activeIconButton: {
       backgroundColor: selectedTheme.buttonInfo,
     },
-
-    // iconText: {
-    //   fontSize: SHARED.fontM,
-    //   color: selectedTheme.textDark,
-    // },
-    // activeIconText: {
-    //   color: selectedTheme.textLight,
-    // },
 
 
     // ProductItem
@@ -142,8 +154,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       marginTop: normalizeHeight(10),
       gap: normalizeWidth(30),
     },
-
-
 
     // LiveSellingCard
     liveSellingCard: {
@@ -391,85 +401,10 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       paddingLeft: normalizeWidth(10),
     },
     replyInputWrapper: {
-      marginLeft: -15,
-      marginRight: -15,
+      marginLeft: normalizeWidth(-15),
+      marginRight: normalizeWidth(-15),
       marginTop: normalizeHeight(10),
     },
 
-    
-    //////////////////
-    // badgesRow: {
-    //   flexDirection: 'row',
-    //   marginBottom: 5,
-    //   gap: 8,
-    // },
-
-    // popularBadge: {
-    //   backgroundColor: '#FF9800',
-    //   color: '#fff',
-    //   paddingHorizontal: 8,
-    //   paddingVertical: 3,
-    //   fontSize: 10,
-    //   fontWeight: 'bold',
-    //   borderRadius: 5,
-    // },
-    // newBadge: {
-    //   backgroundColor: '#4CAF50',
-    //   color: '#fff',
-    //   paddingHorizontal: 8,
-    //   paddingVertical: 3,
-    //   fontSize: 10,
-    //   fontWeight: 'bold',
-    //   borderRadius: 5,
-    // },
-
-    // iconButton: {
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    //   backgroundColor: '#e0e0e0',
-    //   borderRadius: 4,
-    //   paddingLeft: 10,
-    //   paddingRight: 10,
-    //   paddingTop: 2,
-    //   paddingBottom: 2,
-    //   width: 60,
-    //   marginRight: 10,
-    // },
-    // iconText: { fontSize: 12, color: 'gray' },
-  
-    // reactionRow: {
-    //   flexDirection: 'row', // Arrange children in a row
-    //   width: '100%', // Ensure it spans the full width
-    // },
-    // alignLeft: {
-    //   alignItems: 'flex-start', // Align items to the left within the flex space
-    // },
-    // alignRight: {
-    //   alignItems: 'flex-end', // Align items to the right within the flex space
-    // },
-  
-    // ratingText: {
-    //   fontSize: 12,
-    //   color: '#aaa',
-    //   fontWeight: 'bold',
-    // },
-    // reactionContainer: {
-    //   flexDirection: 'row',
-    //   alignItems: 'center',
-    // },
-    // reactionText: {
-    //   fontSize: 12,
-    //   color: '#aaa',
-    //   fontWeight: 'bold',
-    // },
-
-    ////////////////////////
-
-    // chatButton: {
-    //   backgroundColor: selectedTheme.buttonDark,
-    // },
-    // cartButton: {
-    //   backgroundColor: selectedTheme.buttonPrimary,
-    // },
   });
 };
