@@ -297,7 +297,7 @@ const femmeTheme: ThemeType = {
   /************************** */
   // Card and Background
   fullBackgroundColor: '#ffffff', // Very light peach background
-  cardBackground: '#621708', // Light pink background for cards
+  cardBackground: '#ffd6ff', // Light pink background for cards
   fullContainerBackgroundColor: '#ffffff',
   badgeBackgroundColor: '#4CAF50',
 
@@ -350,8 +350,8 @@ const femmeTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#ffccd5', // Light orange tab header
-  tabBarBackgroundColor: '#ffccd5', // Light pink tab bar
+  tabHeaderBackgroundColor: '#c8b6ff', // Light orange tab header
+  tabBarBackgroundColor: '#c8b6ff', // Light pink tab bar
   headerBorderBottomColor: '#d7ccc8', // Beige for header border
   ///////////////////
 
