@@ -418,7 +418,7 @@ const darkTheme: ThemeType = {
   /************************** */
   // Border
   borderColorPrimary: '#7cb518',
-  borderColorGray: '#8d99ae',
+  borderColorGray: '#373c42',
   borderColorDark: '#e6e6e9',
   borderColorLightGray: '#dddddd',
 
@@ -446,7 +446,7 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Line, button, and button border
-  boxBorderWidth: 0.3,
+  boxBorderWidth: 0.5,
   boxBorderWidthSecondary: 0,
   lineBorderColor: '#4a4e69',
   lineBorderColorLight: '#9caea9',
