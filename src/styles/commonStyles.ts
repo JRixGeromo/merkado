@@ -8,13 +8,52 @@ import { SHARED } from '../styles/baseStyles';
 import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
-export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
+export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
 
    //////////////
     // COMMON STYLES
+    tabHeaderContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    tabBarStyle: {
+      backgroundColor: selectedTheme.tabBarBackgroundColor,
+    },
+
+    headerLogo: {
+      width: normalizeWidth(30),
+      height: normalizeHeight(30),
+      resizeMode: 'contain',
+      marginRight: normalizeWidth(10),
+    },
+    tabBarLabelStyle: {
+      fontFamily: selectedTheme.tabFont,
+      fontSize: SHARED.fontXS,
+      color: selectedTheme.textSecondary,
+      marginTop: normalizeHeight(-4),
+      marginBottom: normalizeHeight(4),
+    },
+
+    screenHeaderTitle: {
+      fontSize: SHARED.fontL,
+      fontFamily: selectedTheme.tabFont,
+      color: selectedTheme.textSecondary,
+    },
+    headerRightContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: normalizeWidth(15),
+    },
+    headerIcon: {
+      marginRight: normalizeWidth(20),
+    },
+    
+    /////////
+
     slideModalImage: {
       width: '100%',
       height: normalizeHeight(200),
@@ -66,8 +105,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
       overflow: 'hidden',
     },
     logo: {
-      width: normalizeWidth(150),
-      height: normalizeHeight(150),
+      width: normalizeWidth(100),
+      height: normalizeHeight(100),
       resizeMode: 'contain',
       marginBottom: normalizeHeight(20),
     },

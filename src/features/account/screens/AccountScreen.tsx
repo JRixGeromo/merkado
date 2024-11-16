@@ -129,7 +129,7 @@ const AccountScreen = () => {
                 name={
                   themeType === 'dark'
                     ? 'moon'
-                    : themeType === 'feminine'
+                    : themeType === 'femme'
                     ? 'heart'
                     : 'sunny'
                 }

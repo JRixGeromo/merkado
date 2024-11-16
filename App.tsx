@@ -114,7 +114,7 @@ const App = () => {
         },
         //headerTitleStyle: commonStyle.screenHeaderTitle,
         headerTitle: () => (
-          <View style={commonStyle.headerContainer}>
+          <View style={commonStyle.tabHeaderContainer}>
             <Image
               source={require('./assets/logo.png')}
               style={commonStyle.headerLogo}

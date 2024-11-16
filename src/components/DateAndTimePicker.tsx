@@ -10,6 +10,7 @@ import {
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { compStyles } from './styles/componentStyles'; // Import your style
+import { commonStyles } from '../styles/commonStyles';
 import { baseStyles } from '../styles/baseStyles';
 import CustomButton from './CustomButton';
 import { useAppSelector } from '../hooks/reduxHooks';
@@ -60,6 +61,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   };
 
   const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
@@ -110,7 +112,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           value={formattedDate} // Display formatted date
           editable={false} // Make it read-only, only clickable to open calendar
           style={[
-            baseStyle.input, // Apply input styles
+            commonStyle.input, // Apply input styles
             inputStyle, // Additional styles passed as a prop
             {
               color: themeBasedStyles.textColor,

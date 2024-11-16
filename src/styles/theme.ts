@@ -257,7 +257,7 @@ const lightTheme: ThemeType = {
   ///////////////////
 };
 
-const feminineTheme: ThemeType = {
+const femmeTheme: ThemeType = {
   /************************** */
   // Text
   textPrimary: '#e91e63', // Pink shade for primary text
@@ -521,5 +521,5 @@ const darkTheme: ThemeType = {
 export const theme = {
   light: lightTheme,
   dark: darkTheme,
-  feminine: feminineTheme,
+  femme: femmeTheme,
 };

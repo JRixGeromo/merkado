@@ -8,7 +8,7 @@ import { SHARED } from '../../../styles/baseStyles';
 import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
-export const dashStyles = (currentTheme: 'light' | 'dark' | 'feminine') => {
+export const dashStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
   const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({

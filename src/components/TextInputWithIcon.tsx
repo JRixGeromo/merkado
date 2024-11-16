@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { compStyles } from './styles/componentStyles'; // Import your style
+import { commonStyles } from '../styles/commonStyles';
 import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
@@ -47,6 +48,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   multiline = false,
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
+  const commonStyle = commonStyles(themeType); // This is fine
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
@@ -102,7 +104,7 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
 
       <TextInput
         style={[
-          baseStyle.input,
+          commonStyle.input,
           inputStyle,
           {
             color: themeBasedTextColor,
