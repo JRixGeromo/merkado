@@ -14,6 +14,7 @@ import {
 import CustomButton from '../../../components/CustomButton';
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { acctStyles } from '../styles/accountStyles'; // Import your style
+import { commonStyles } from '../../../styles/commonStyles'; // Import your style
 import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
@@ -50,6 +51,7 @@ const LoginScreen = () => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const acctStyle = acctStyles(themeType); // This is fine
+  const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
 
@@ -138,7 +140,7 @@ const LoginScreen = () => {
           >
             <Image
               source={require('../../../../assets/logo.png')}
-              style={baseStyle.logo}
+              style={commonStyle.logo}
             />
 
             <Text style={acctStyle.welcomeText}>{t('welcomeBack')}</Text>

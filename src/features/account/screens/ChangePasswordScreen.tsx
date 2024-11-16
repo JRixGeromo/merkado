@@ -9,8 +9,6 @@ const ChangePasswordScreen = () => {
 
   return (
     <View style={commonStyle.container}>
-      <Text style={commonStyle.title}>Change Password</Text>
-      {/* Add inputs and logic for changing password */}
     </View>
   );
 };

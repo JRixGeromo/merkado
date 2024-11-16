@@ -10,6 +10,7 @@ import {
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { dashStyles } from '../styles/dashStyles'; // Import your style
+import { commonStyles } from '../../../styles/commonStyles'; // Import your style
 import { baseStyles } from '../../../styles/baseStyles';
 import ContentCard from '../../../components/ContentCard';
 import IconLib from '../../../components/IconLib';
@@ -54,6 +55,7 @@ export type Store = {
 const VendorDashboard = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const dashStyle = dashStyles(themeType);
+  const commonStyle = commonStyles(themeType);
   const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();

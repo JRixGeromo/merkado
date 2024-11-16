@@ -12,7 +12,6 @@ const LogoutScreen = () => {
 
   return (
     <View style={commonStyles('light').container}>
-      <Text style={commonStyles('light').title}>Logout</Text>
       <Button
         title="Logout"
         //onPress={handleLogout}

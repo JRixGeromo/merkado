@@ -9,8 +9,6 @@ const PaymentMethodsScreen = () => {
 
   return (
     <View style={commonStyle.container}>
-      <Text style={commonStyle.title}>Payment Methods</Text>
-      {/* Add list of payment methods, add/edit methods functionality */}
     </View>
   );
 };

@@ -11,6 +11,7 @@ import {
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
 
 import { cartStyles } from '../styles/cartStyles'; // Import your style
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
@@ -55,6 +56,7 @@ const CartScreen: React.FC = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
   const cartStyle = cartStyles(themeType);
+  const commonStyle = commonStyles(themeType);
   const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
@@ -86,7 +88,7 @@ const CartScreen: React.FC = () => {
 
   // Type for rendering each item in FlatList
   const renderItem: ListRenderItem<CartItem> = ({ item }) => (
-    <View style={[baseStyle.contentBox, baseStyle.columnsInside]}>
+    <View style={[commonStyle.contentBox, baseStyle.columnsInside]}>
       <Image source={item.image} style={cartStyle.cartItemImage} />
       <View style={baseStyle.lMarginL}>
         <Text

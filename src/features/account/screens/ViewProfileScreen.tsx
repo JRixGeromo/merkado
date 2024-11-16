@@ -21,19 +21,7 @@ const ViewProfileScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={commonStyle.container}>
-        <Image
-          source={{ uri: profileData.profileImageUrl }}
-          style={commonStyle.profileImage}
-        />
-        <Text style={commonStyle.profileName}>
-          {profileData.firstName} {profileData.lastName}
-        </Text>
-        <Text style={commonStyle.profileEmail}>{profileData.email}</Text>
-        <Text style={commonStyle.profileBirthDate}>
-          {t('birthDate')}: {profileData.birthDate}
-        </Text>
-      </View>
+      
     </ScrollView>
   );
 };

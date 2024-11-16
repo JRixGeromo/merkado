@@ -16,6 +16,7 @@ import DateAndTimePicker from '../../../components/DateAndTimePicker';
 import ListOptions from '../../../components/ListOptions';
 
 import { acctStyles } from '../styles/accountStyles'; // Import your style
+import { commonStyles } from '../../../styles/commonStyles'; // Import your style
 import { baseStyles } from '../../../styles/baseStyles';
 import { SHARED } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
@@ -69,6 +70,7 @@ const RegistrationScreen = () => {
 
   const themeType = useAppSelector(state => state.theme.theme);
   const acctStyle = acctStyles(themeType); // This is fine
+  const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
   const selectedTheme = appTheme[themeType];
 
@@ -131,7 +133,7 @@ const RegistrationScreen = () => {
           >
             <Image
               source={require('../../../../assets/logo.png')}
-              style={acctStyle.logo}
+              style={commonStyle.logo}
             />
             <TextInputWithIcon
               placeholder={t('firstName')}

@@ -24,33 +24,6 @@ const EditProfileScreen = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={commonStyle.container}>
-        <TextInputWithIcon
-          placeholder={t('firstName')}
-          iconName="person"
-          value={firstName}
-          onChangeText={setFirstName}
-          style={{ height: 45 }}
-        />
-        <TextInputWithIcon
-          placeholder={t('lastName')}
-          iconName="person"
-          value={lastName}
-          onChangeText={setLastName}
-          style={{ height: 45 }}
-        />
-        <TextInputWithIcon
-          placeholder={t('email')}
-          iconName="mail"
-          value={email}
-          onChangeText={setEmail}
-          style={{ height: 45 }}
-        />
-        <CustomButton
-          title={t('saveChanges')}
-          onPress={handleSave}
-          backgroundColor={selectedTheme.primary}
-          color="#fff"
-        />
       </View>
     </ScrollView>
   );

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { chatStyles } from '../styles/chatStyles'; // Import your style
+import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import IconLib from '../../../components/IconLib';
@@ -38,6 +39,7 @@ const ChatScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const chatStyle = chatStyles(themeType);
   const baseStyle = baseStyles(themeType);
+  const commonStyle = commonStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const { t } = useTranslation();
 
@@ -276,7 +278,7 @@ const ChatScreen = () => {
             placeholder={t('type here ...')}
             placeholderTextColor={selectedTheme.textPlaceHolderInfo}
             style={[
-              baseStyle.input,
+              commonStyle.input,
               baseStyle.mediumText,
               { flex: 1, color: selectedTheme.textPrimary },
             ]}
