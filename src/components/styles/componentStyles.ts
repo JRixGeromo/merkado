@@ -69,7 +69,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       justifyContent: 'space-between',
       alignItems: 'center',
       borderColor: selectedTheme.lineBorderColorLight,
-      borderWidth: SHARED.borderWidth,
+      borderWidth: selectedTheme.boxBorderWidthSecondary,
       borderRadius: SHARED.borderRadiusSecondary,
       overflow: 'hidden',
     },

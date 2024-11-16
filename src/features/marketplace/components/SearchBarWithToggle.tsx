@@ -35,6 +35,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
       <TextInput
         style={marketStyle.searchInput}
         placeholder="Search categories or products..."
+        placeholderTextColor={selectedTheme.textPlaceHolderInfo} // Dynamic placeholder color
         onChangeText={onSearchChange}
       />
       <View style={baseStyle.columnsInsideFlex}>

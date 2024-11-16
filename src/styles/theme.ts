@@ -49,10 +49,14 @@ export interface ThemeType {
 
   /************************** */
   // Line, Button, and Button Border
+  boxBorderWidth: number;
+  boxBorderWidthSecondary: number;
+  
   lineBorderColor: string;
   lineBorderColorLight: string;
   googleButtonColor: string;
   facebookButtonColor: string;
+
   buttonPrimary: string;
   buttonSecondary: string;
   buttonInfo: string;
@@ -161,7 +165,7 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Card and Background
-  cardBackground: '#f7ede2',
+  cardBackground: '#e9ecef',
   fullBackgroundColor: '#ffffff',
   fullContainerBackgroundColor: '#ffffff',
   badgeBackgroundColor: '#4CAF50',
@@ -179,13 +183,14 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Line, buttton and button border
+  boxBorderWidth: 0.5,
+  boxBorderWidthSecondary: 0,
   lineBorderColor: '#cad2c5',
   lineBorderColorLight: '#788585',
-
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
 
-  buttonPrimary: '#d6ce93',
+  buttonPrimary: '#cccccc',
   buttonSecondary: '#ffffff',
   buttonInfo: '#bee9e8',
   buttonDanger: '#ba181b',
@@ -309,12 +314,14 @@ const femmeTheme: ThemeType = {
 
   /************************** */
   // Line, Button, and Button Border
+  boxBorderWidth: 0.5,
+  boxBorderWidthSecondary: 0,
   lineBorderColor: '#f8bbd0', // Light pink line
   lineBorderColorLight: '#000', // Light orange-pink line
   googleButtonColor: '#f06292', // Soft pink for Google button
   facebookButtonColor: '#8e24aa', // Purple for Facebook button
 
-  buttonPrimary: '#f2b5d4', // Pink primary button
+  buttonPrimary: '#ffe5d9', // Pink primary button
   buttonSecondary: '#ffebee', // Very light pink for secondary button
   buttonInfo: '#ffdac6', // Purple for info button
   buttonDanger: '#d32f2f', // Red for danger button
@@ -393,7 +400,7 @@ const darkTheme: ThemeType = {
   textPrimary: '#7cb518',
   textSecondary: '#dee2e6',
   textPlaceHolderInfo: '#9999a1',
-  textDark: '#66666e',
+  textDark: '#fff',
   textLight: '#ffffff',
   textPriceBanner: '#ffa737',
   textLink: '#38b000',
@@ -439,9 +446,10 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Line, button, and button border
+  boxBorderWidth: 0,
+  boxBorderWidthSecondary: 0,
   lineBorderColor: '#4a4e69',
   lineBorderColorLight: '#9caea9',
-
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
 

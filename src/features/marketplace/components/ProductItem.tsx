@@ -80,14 +80,16 @@ const ProductItem: React.FC<{
           {product.name}
         </Text>
         
-        {/* <Text
+        { !isFeatured && product.description && 
+        <Text
           numberOfLines={1}
           ellipsizeMode="tail"
           style={commonStyle.productDescription}
         >
           {product.description}
-        </Text> */}
-        
+        </Text>
+        }
+ 
         <Text style={commonStyle.vendorInfo}>{`${product.region}`}</Text>
 
         <View style={[baseStyle.columnsInsideFlex, marketStyle.priceRow]}>
@@ -106,7 +108,7 @@ const ProductItem: React.FC<{
             title={""}
             onPress={() => console.log('Google Login Pressed')}
             color={selectedTheme.textDark}
-            backgroundColor={selectedTheme.buttonDark}
+            backgroundColor={selectedTheme.buttonPrimary}
             borderRadius={2} // You can set this dynamically too
             iconName={'Chat_O'}
             iconSize={16} // Font size of the text inside the button
@@ -122,7 +124,7 @@ const ProductItem: React.FC<{
             title={""}
             onPress={() => console.log('Google Login Pressed')}
             color={selectedTheme.textDark}
-            backgroundColor={selectedTheme.buttonBorderPrimary}
+            backgroundColor={selectedTheme.buttonPrimary}
             borderRadius={2} // You can set this dynamically too
             iconName={'Cart_O'}
             iconSize={16} // Font size of the text inside the button
@@ -142,20 +144,17 @@ const ProductItem: React.FC<{
         style={[
           baseStyle.innerContainerCenter,
           baseStyle.tMarginXxS,
-          isFeatured ? baseStyle.cols_40 : baseStyle.cols_30,
+          isFeatured ? baseStyle.cols_35 : baseStyle.cols_30,
         ]}
       >
         <View style={marketStyle.productImageWrapper}>
-          <Image source={{ uri: product.imageUrl}} style={marketStyle.productImage} />
-        </View>
-{/*         
-        <Image
-          source={{ uri: product.imageUrl }}
+          <Image source={{ uri: product.imageUrl}} 
           style={[
-            marketStyle.productImage,
-            isFeatured && marketStyle.featuredProductImage,
+            marketStyle.productImage
           ]}
-        /> */}
+           />
+        </View>
+
         {/* Square overlay with 3-dots icon */}
         
            {/* Full-Screen Button */}
@@ -167,16 +166,16 @@ const ProductItem: React.FC<{
           </TouchableOpacity>
         
         {/* Rating and Likes */}
-        <View style={[baseStyle.columnsInside]}>
+        <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
            {/* Rating */}
            <TouchableOpacity
             style={[baseStyle.alignLeft, baseStyle.cols_2]}
             onPress={onRatingPress}
           >
             <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
-              <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
+              <IconLib.Star size={14} color="gold"/>
               <Text
-                style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
+                style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
               >
                 {rating}
               </Text>
@@ -189,17 +188,16 @@ const ProductItem: React.FC<{
             >
             <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
               {isLiked ? (
-                <IconLib.Heart size={16} color="red"  style={baseStyle.rMarginXS}/>
+                <IconLib.Heart size={14} color="red"/>
               ) : (
                 <IconLib.Heart_O
                   size={16}
                   color={selectedTheme.iconColorPrimary}
-                  style={baseStyle.rMarginXS}
                 />
               )}
 
               <Text
-                style={[baseStyle.xSmallText, { color: selectedTheme.textBlur }]}
+                style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >

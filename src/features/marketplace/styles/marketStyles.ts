@@ -39,7 +39,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       justifyContent: 'space-between',
       paddingHorizontal: normalizeWidth(15),
       paddingVertical: normalizeHeight(10),
-      borderBottomWidth: SHARED.borderWidth,
+      borderBottomWidth: selectedTheme.boxBorderWidthSecondary,
       borderBottomColor: selectedTheme.lineBorderColor,
     },
     
@@ -66,7 +66,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
 
     activeIconButton: {
-      backgroundColor: selectedTheme.buttonInfo,
+      backgroundColor: selectedTheme.buttonPrimary,
     },
 
 
@@ -80,12 +80,12 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
       backgroundColor: selectedTheme.cardBackground,
-      borderWidth: 0.5,
+      borderWidth: selectedTheme.boxBorderWidth,
       borderColor: selectedTheme.borderColorGray,
     },
   
     featuredProductCard: {
-      width: normalizeWidth(275),
+      width: normalizeWidth(235),
       marginRight:  normalizeWidth(15),
       marginLeft:  normalizeWidth(4),
     },
@@ -98,10 +98,10 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
       justifyContent: 'flex-start', // Forces content to start at the top
     },
-    priceRow: { alignItems: 'center', marginRight: normalizeWidth(10) },
+    priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(8) },
    
     discountedPrice: {
-      fontSize: SHARED.fontM,
+      fontSize: SHARED.fontSM,
       fontWeight: 'bold',
       color: selectedTheme.textSecondary,
       marginRight: normalizeWidth(10),
@@ -128,14 +128,13 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       width: '100%',
       height: normalizeHeight(70),
       backgroundColor: selectedTheme.buttonBorderPrimary, // Background color for the wrapper
-      borderWidth: 2, // Thickness of the border
-      borderColor: selectedTheme.buttonBorderPrimary, // Color of the border
     },
     productImage: {
       width: '100%', // Slightly smaller than the wrapper to create padding
       height: '100%', // Adjusted height
       resizeMode: 'cover', // Ensures the image fills the space proportionally
     },
+
     iconOverlayContainer: {
       position: 'absolute',
       top: normalizeHeight(3),
@@ -159,7 +158,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     actionIcons: {
       justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
-      gap: normalizeWidth(30),
+      gap: normalizeWidth(25),
     },
 
     // LiveSellingCard
@@ -172,7 +171,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
       backgroundColor: selectedTheme.cardBackground,
-      borderWidth: 0.5,
+      borderWidth: selectedTheme.boxBorderWidth,
       borderColor: selectedTheme.borderColorGray,
     },
     videoIconContainer: {
@@ -234,7 +233,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       backgroundColor: selectedTheme.cardBackground,
       alignItems: 'center',
       justifyContent: 'space-between',
-      
+      borderWidth: selectedTheme.boxBorderWidth,
+      borderColor: selectedTheme.borderColorGray,
     },
     categoryImage: {
       width: normalizeWidth(140),
@@ -278,7 +278,9 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingRight: normalizeWidth(15),
       marginVertical: normalizeHeight(8),
       borderRadius: SHARED.borderRadiusSecondary,
-      backgroundColor: selectedTheme.cardBackground
+      backgroundColor: selectedTheme.cardBackground,
+      borderWidth: selectedTheme.boxBorderWidth,
+      borderColor: selectedTheme.borderColorGray,
     },
 
     subcategoryImage: {
@@ -354,7 +356,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      borderWidth: SHARED.borderWidthSecondary,
+      borderWidth: selectedTheme.boxBorderWidth,
       borderColor: selectedTheme.borderColorDark,
       borderRadius: 5,
       zIndex: 2,
@@ -390,7 +392,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingRight: normalizeWidth(15),
       borderRadius: SHARED.borderRadius,
       borderColor: selectedTheme.lineBorderColor,
-      borderWidth: SHARED.borderWidth,
+      borderWidth: selectedTheme.boxBorderWidthSecondary,
       marginBottom: normalizeHeight(10),
       position: 'relative',
     },

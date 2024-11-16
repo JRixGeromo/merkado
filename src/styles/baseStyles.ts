@@ -8,8 +8,6 @@ import { theme } from './theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 export const SHARED = {
-  borderWidth: 0, // Shared border radius
-  borderWidthSecondary: 0.5,
   borderRadius: 0, // Shared border radius
   borderRadiusPrimary: 4,
   borderRadiusSecondary: 8,
@@ -24,7 +22,9 @@ export const SHARED = {
   fontXxS: normalizeFontSize(8),
   fontXS: normalizeFontSize(10),
   fontS: normalizeFontSize(12),
+  fontSM: normalizeFontSize(13),
   fontM: normalizeFontSize(14),
+  fontLM: normalizeFontSize(15),
   fontL: normalizeFontSize(16),
   fontXL: normalizeFontSize(18),
   fontXxL: normalizeFontSize(20),
@@ -81,7 +81,7 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       width: '100%',
       padding: SHARED.padding,
       backgroundColor: selectedTheme.fullBackgroundColor,
-      borderWidth: SHARED.borderWidth,
+      borderWidth: selectedTheme.boxBorderWidthSecondary,
       borderColor: selectedTheme.lineBorderColor,
       borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center content horizontally if needed
@@ -119,6 +119,9 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     cols_75: {
       width: '75%',
+    },
+    cols_35: {
+      width: '35%',
     },
     cols_40: {
       width: '40%',

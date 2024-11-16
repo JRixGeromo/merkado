@@ -233,7 +233,7 @@ const ChatScreen = () => {
       <View
         style={[
           chatStyle.chatMessagesContainer,
-          { borderTopColor: selectedTheme.lineBorderColor, borderWidth: 0.5 },
+          { borderTopColor: selectedTheme.lineBorderColor, borderWidth: selectedTheme.boxBorderWidth },
         ]}
       >
         <View
