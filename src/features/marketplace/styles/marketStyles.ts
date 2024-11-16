@@ -316,16 +316,20 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
 
     bannerImageWrapper: {
+      marginTop: normalizeHeight(10),
       width: '100%',
       height: normalizeHeight(200),
-      resizeMode: 'cover',
+      backgroundColor: "red",
+      borderRadius: SHARED.borderRadiusSecondary, // Rounded corners
+      overflow: 'hidden', // Ensures child elements are clipped
     },
-    
     bannerContentImage: {
       width: '100%',
-      height: normalizeHeight(200),
+      height: '100%',
+      borderRadius: SHARED.borderRadiusSecondary, // Rounded corners for the image
+      resizeMode: 'cover', // Ensures the image fills the container while maintaining aspect ratio
     },
-
+    
     priceContainer: {
       position: 'absolute',
       bottom: normalizeHeight(10),
@@ -358,11 +362,11 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
 
     commentSection: {
-      paddingHorizontal: normalizeWidth(10),
+      //paddingHorizontal: normalizeWidth(10),
       marginBottom: normalizeHeight(10),
     },
     commentsList: {
-      paddingHorizontal: normalizeWidth(10),
+      //paddingHorizontal: normalizeWidth(10),
     },
     commentContainer: {
       paddingTop: normalizeHeight(15),

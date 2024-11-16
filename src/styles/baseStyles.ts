@@ -21,7 +21,6 @@ export const SHARED = {
     opacity: 0.1,
     radius: 0,
   },
-
   fontXxS: normalizeFontSize(8),
   fontXS: normalizeFontSize(10),
   fontS: normalizeFontSize(12),

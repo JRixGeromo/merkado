@@ -76,19 +76,19 @@ const ProductItem: React.FC<{
           isFeatured ? baseStyle.cols_60 : baseStyle.cols_70,
         ]}
       >
-        <Text numberOfLines={1} ellipsizeMode="tail" style={baseStyle.productName}>
+        <Text numberOfLines={1} ellipsizeMode="tail" style={commonStyle.productName}>
           {product.name}
         </Text>
         
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
-          style={baseStyle.productDescription}
+          style={commonStyle.productDescription}
         >
           {product.description}
         </Text>
         
-        <Text style={baseStyle.vendorInfo}>{`${product.region}`}</Text>
+        <Text style={commonStyle.vendorInfo}>{`${product.region}`}</Text>
 
         <View style={[baseStyle.columnsInsideFlex, marketStyle.priceRow]}>
           <Text style={marketStyle.discountedPrice}>

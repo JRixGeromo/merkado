@@ -8,6 +8,11 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../../../utils/responsive'; // Import responsive utilities
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import ReactionBar from '../../../components/ReactionBar';
@@ -119,31 +124,28 @@ const DetailsScreen: React.FC = () => {
       <View
         style={[
           baseStyle.container,
-          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+          { backgroundColor: selectedTheme.fullContainerBackgroundColor, paddingHorizontal: normalizeWidth(10)},
         ]}
       >
-        {/* Sale Banner */}
-        {type === 'product' && item.onSale && (
-          <View style={marketStyle.saleBanner}>
-            <Text
-              style={[
-                baseStyle.mediumText,
-                { color: selectedTheme.textSecondary },
-              ]}
-            >
-              ON SALE! 50% off
-            </Text>
-          </View>
-        )}
-
         {/* Product/Vendor Image */}
         <View style={marketStyle.bannerImageWrapper}>
+            {type === 'product' && item.onSale && (
+              <View style={marketStyle.saleBanner}>
+                <Text
+                  style={[
+                    baseStyle.mediumText,
+                    { color: selectedTheme.textSecondary },
+                  ]}
+                >
+                  ON SALE! 50% off
+                </Text>
+              </View>
+            )}
           <Image
             source={{ uri: item.imageUrl }}
             style={marketStyle.bannerContentImage}
           />
 
-          {/* Price at Bottom-Right */}
           {type === 'product' && (
             <View style={marketStyle.priceContainer}>
               <Text
@@ -152,7 +154,7 @@ const DetailsScreen: React.FC = () => {
                   { color: selectedTheme.textPriceBanner },
                 ]}
               >
-                ₱{item.price}
+                {item.price}
               </Text>
             </View>
           )}
@@ -177,7 +179,7 @@ const DetailsScreen: React.FC = () => {
             style={[
               baseStyle.cols_2,
               baseStyle.alignRight,
-              baseStyle.rPaddingS,
+              //baseStyle.rPaddingS,
             ]}
           >
             <Text
@@ -188,12 +190,8 @@ const DetailsScreen: React.FC = () => {
           </View>
         </View>
 
-        <View style={baseStyle.dividerWrapper}>
-          <View style={baseStyle.divider} />
-        </View>
-
-        <View style={baseStyle.columnsInside}>
-          <View style={[baseStyle.cols_75, baseStyle.lPaddingS]}>
+        <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
+          <View style={[baseStyle.cols_75]}>
             <Text
               style={[
                 baseStyle.mediumText,
@@ -207,7 +205,6 @@ const DetailsScreen: React.FC = () => {
             style={[
               baseStyle.cols_25,
               baseStyle.alignRight,
-              baseStyle.rPaddingS,
             ]}
           >
             <IconLib.Star size={20} color="gold" />
@@ -222,21 +219,18 @@ const DetailsScreen: React.FC = () => {
 
         {type === 'store' && item.location && (
           <>
-            <View style={baseStyle.verticalSpacerS} />
-            <View style={baseStyle.columnsInside}>
+            <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
               <Text
                 style={[
                   baseStyle.smallText,
-                  baseStyle.lPaddingS,
                   { color: selectedTheme.textSecondary },
                 ]}
               >
                 {item.description}
               </Text>
             </View>
-            <View style={baseStyle.verticalSpacerS} />
-            <View style={baseStyle.columnsInside}>
-              <View style={[baseStyle.cols_75, baseStyle.lPaddingS]}>
+            <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
+              <View style={[baseStyle.cols_75]}>
                 <Text
                   style={[
                     baseStyle.smallText,
@@ -268,25 +262,22 @@ const DetailsScreen: React.FC = () => {
 
         {type === 'product' && (
           <>
-            <View style={baseStyle.verticalSpacerS} />
-            <View style={baseStyle.columnsInside}>
+            <View style={[baseStyle.columnsInside]}>
               <Text
                 style={[
                   baseStyle.smallText,
-                  baseStyle.lPaddingS,
-                  { color: selectedTheme.textSecondary },
+                  { color: selectedTheme.textGray },
                 ]}
               >
                 {item.description}
               </Text>
             </View>
-            <View style={baseStyle.verticalSpacerS} />
-            <View style={baseStyle.columnsInside}>
-              <View style={[baseStyle.cols_75, baseStyle.lPaddingS]}>
+            <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerXS]}>
+              <View style={[baseStyle.cols_75]}>
                 <Text
                   style={[
                     baseStyle.smallText,
-                    { color: selectedTheme.textSecondary },
+                    { color: selectedTheme.textGray },
                   ]}
                 >
                   {item.location}
@@ -297,7 +288,6 @@ const DetailsScreen: React.FC = () => {
                 style={[
                   baseStyle.cols_25,
                   baseStyle.alignRight,
-                  baseStyle.rPaddingS,
                 ]}
               >
                 <Text
@@ -313,9 +303,8 @@ const DetailsScreen: React.FC = () => {
           </>
         )}
 
-        <View style={baseStyle.verticalSpacerS} />
-        <View style={baseStyle.columnsInside}>
-          <View style={[baseStyle.cols_2, baseStyle.lPaddingS]}>
+        <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerL]}>
+          <View style={[baseStyle.cols_2]}>
             {type === 'product' ? (
               <Text>
                 <CustomButton
@@ -395,13 +384,10 @@ const DetailsScreen: React.FC = () => {
               <IconLib.Store_O
                 size={22}
                 color={selectedTheme.iconColorGray}
-                style={baseStyle.rPaddingS}
               />
             </TouchableOpacity>
           </View>
         </View>
-
-        <View style={baseStyle.verticalSpacerM} />
 
         {/* ReactionBar */}
         {showReactions && (
