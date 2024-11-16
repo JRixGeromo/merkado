@@ -155,7 +155,7 @@ const lightTheme: ThemeType = {
   /************************** */
   // Border
   borderColorPrimary: '#4CAF50',
-  borderColorGray: '#8d99ae',
+  borderColorGray: '#d3d3d3',
   borderColorDark: '#343a40',
   borderColorLightGray: '#dddddd',
 
@@ -286,7 +286,7 @@ const femmeTheme: ThemeType = {
   /************************** */
   // Border
   borderColorPrimary: '#e91e63', // Pink primary border
-  borderColorGray: '#bcaaa4', // Soft gray border
+  borderColorGray: '#d3d3d3', // Soft gray border
   borderColorDark: '#4e342e', // Dark brown border
   borderColorLightGray: '#dddddd',
 
