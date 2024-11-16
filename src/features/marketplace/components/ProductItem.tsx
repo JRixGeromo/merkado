@@ -92,15 +92,15 @@ const ProductItem: React.FC<{
  
         <Text style={commonStyle.vendorInfo}>{`${product.region}`}</Text>
 
-        <View style={[baseStyle.columnsInsideFlex, marketStyle.priceRow]}>
-          <Text style={marketStyle.discountedPrice}>
+        <View style={[baseStyle.columnsInsideFlex, commonStyle.priceRow]}>
+          <Text style={commonStyle.discountedPrice}>
             {product.discountedPrice}/kg
           </Text>
           {product.price !== product.discountedPrice && (
-            <Text style={marketStyle.originalPrice}>{product.price}</Text>
+            <Text style={commonStyle.originalPrice}>{product.price}</Text>
           )}
           {product.discount && (
-            <Text style={marketStyle.discountBadge}>-{product.discount}</Text>
+            <Text style={commonStyle.discountBadge}>-{product.discount}</Text>
           )}
         </View>
         <View style={[baseStyle.columnsInsideFlex, marketStyle.actionIcons]}>

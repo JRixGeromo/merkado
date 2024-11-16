@@ -321,7 +321,7 @@ const femmeTheme: ThemeType = {
   googleButtonColor: '#f06292', // Soft pink for Google button
   facebookButtonColor: '#8e24aa', // Purple for Facebook button
 
-  buttonPrimary: '#ffe5d9', // Pink primary button
+  buttonPrimary: '#eadde1', // Pink primary button
   buttonSecondary: '#ffebee', // Very light pink for secondary button
   buttonInfo: '#ffdac6', // Purple for info button
   buttonDanger: '#d32f2f', // Red for danger button

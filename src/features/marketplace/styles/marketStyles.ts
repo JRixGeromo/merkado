@@ -98,30 +98,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
       justifyContent: 'flex-start', // Forces content to start at the top
     },
-    priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(8) },
    
-    discountedPrice: {
-      fontSize: SHARED.fontSM,
-      fontWeight: 'bold',
-      color: selectedTheme.textSecondary,
-      marginRight: normalizeWidth(10),
-    },
-    originalPrice: {
-      fontSize: SHARED.fontS,
-      color: selectedTheme.textGray,
-      textDecorationLine: 'line-through',
-      marginRight: normalizeWidth(10),
-    },
-    discountBadge: {
-      backgroundColor: selectedTheme.buttonDanger,
-      color: selectedTheme.textLight,
-      paddingHorizontal: normalizeWidth(5),
-      fontSize: SHARED.fontXS,
-      borderRadius: SHARED.borderRadiusPrimary, 
-      fontWeight: 'bold',
-    },
-
-
     productImageWrapper: {
       justifyContent: 'center', // Centers the Image vertically
       alignItems: 'center', // Centers the Image horizontally

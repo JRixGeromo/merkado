@@ -182,6 +182,28 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     headerTitle: { 
       fontSize: SHARED.fontXxL, fontWeight: 'bold', color: selectedTheme.textSecondary, 
     },
+    priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(8) },
+   
+    discountedPrice: {
+      fontSize: SHARED.fontSM,
+      color: selectedTheme.textSecondary,
+      marginRight: normalizeWidth(10),
+    },
+    originalPrice: {
+      fontSize: SHARED.fontS,
+      color: selectedTheme.textGray,
+      textDecorationLine: 'line-through',
+      marginRight: normalizeWidth(10),
+    },
+    discountBadge: {
+      backgroundColor: selectedTheme.buttonDanger,
+      color: selectedTheme.textLight,
+      paddingHorizontal: normalizeWidth(5),
+      fontSize: SHARED.fontXS,
+      borderRadius: SHARED.borderRadiusPrimary, 
+      fontWeight: 'bold',
+    },
+
     description: {
       fontSize: SHARED.fontM,
       color: selectedTheme.textGray,

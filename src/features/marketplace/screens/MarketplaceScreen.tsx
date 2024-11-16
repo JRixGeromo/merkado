@@ -123,6 +123,37 @@ const liveSellingUsers = [
     profileImage: 'https://picsum.photos/50/50?random=3',
     liveTitle: 'Hot Products on Sale!',
   },
+  {
+    id: '4',
+    name: 'Vendor D',
+    profileImage: 'https://picsum.photos/50/50?random=4',
+    liveTitle: 'Hot Products on Sale!',
+  },
+  {
+    id: '5',
+    name: 'Vendor E',
+    profileImage: 'https://picsum.photos/50/50?random=5',
+    liveTitle: 'Hot Products on Sale!',
+  },
+  {
+    id: '6',
+    name: 'Vendor F',
+    profileImage: 'https://picsum.photos/50/50?random=6',
+    liveTitle: 'Hot Products on Sale!',
+  },
+  {
+    id: '7',
+    name: 'Vendor G',
+    profileImage: 'https://picsum.photos/50/50?random=7',
+    liveTitle: 'Hot Products on Sale!',
+  },
+  {
+    id: '8',
+    name: 'Vendor H',
+    profileImage: 'https://picsum.photos/50/50?random=8',
+    liveTitle: 'Hot Products on Sale!',
+  },
+
 ];
 
 const renderLiveSellingItem = ({ item }: { item: typeof liveSellingUsers[0] }) => (
