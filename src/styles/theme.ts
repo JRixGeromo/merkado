@@ -250,7 +250,7 @@ const lightTheme: ThemeType = {
   switchActive: '#4CAF50', // Green for active background track (suggests "on")
   switchThumbInactive: '#9CA3AF', // Medium gray for inactive thumb
   switchThumbActive: '#ffffff', // White for active thumb, maintains the light theme feel
-  shadowElevation: 3, // White for active thumb, contrasts with green
+  shadowElevation: 1, // White for active thumb, contrasts with green
   ///////////////////
 
   /************************** */
