@@ -428,7 +428,7 @@ const darkTheme: ThemeType = {
   /************************** */
   // Border
   borderColorPrimary: '#7cb518',
-  borderColorGray: '#373c42',
+  borderColorGray: '#353535',
   borderColorDark: '#e6e6e9',
   borderColorLightGray: '#373c42',
 
