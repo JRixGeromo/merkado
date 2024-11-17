@@ -8,7 +8,7 @@ import { theme } from './theme'; // Make sure this path is correct
 
 // Centralized constants for commonly used style properties
 export const SHARED = {
-  borderRadius: 0, // Shared border radius
+  borderRadius: 6, // Shared border radius
   borderRadiusPrimary: 4,
   borderRadiusSecondary: 8,
   padding: normalizeWidth(10), // Shared padding
@@ -42,7 +42,7 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // BASE STYLES
     container: {
       flex: 1,
-      backgroundColor: selectedTheme.fullBackgroundColor, // Theme-based background
+      //backgroundColor: selectedTheme.fullBackgroundColor, // Theme-based background
       borderColor: 'transparent',
       borderWidth: 0,
       borderRadius: 0,

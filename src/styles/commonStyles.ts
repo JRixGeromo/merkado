@@ -33,7 +33,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont,
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textSecondary,
+      color: selectedTheme.textPrimary,
       marginTop: normalizeHeight(-4),
       marginBottom: normalizeHeight(4),
     },
@@ -41,7 +41,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     screenHeaderTitle: {
       fontSize: SHARED.fontL,
       fontFamily: selectedTheme.tabFont,
-      color: selectedTheme.textSecondary,
+      color: selectedTheme.textPrimary,
     },
     headerRightContainer: {
       flexDirection: 'row',

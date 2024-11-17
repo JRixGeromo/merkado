@@ -1,4 +1,6 @@
 export interface ThemeType {
+
+  themeBG: string[]; // Allow lightBG to accept an array of strings
   /************************** */
   // Text
   textPrimary: string;
@@ -132,9 +134,13 @@ export interface ThemeType {
 
 const lightTheme: ThemeType = {
   /************************** */
+
+  themeBG: ['#FFFFFF', '#ADD8E6'], // White to light blue gradient
+  
   // Text
-  textPrimary: '#4CAF50',
+  textPrimary: '#000000',
   textSecondary: '#000000',
+
   textPlaceHolderInfo: '#9caea9',
   textDark: '#343a40',
   textLight: '#ffffff',
@@ -225,8 +231,8 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Tab
-  iconColorPrimary: '#7cb518',
-  iconColorSecondary: '#f6aa1c',
+  iconColorPrimary: '#080708',
+  iconColorSecondary: '#a5a5a5',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',
@@ -243,7 +249,7 @@ const lightTheme: ThemeType = {
   switchInactive: '#D1D5DB', // Light gray for inactive track, subtle on white background
   switchActive: '#4CAF50', // Green for active background track (suggests "on")
   switchThumbInactive: '#9CA3AF', // Medium gray for inactive thumb
-  switchThumbActive: '#FFFFFF', // White for active thumb, maintains the light theme feel
+  switchThumbActive: '#ffffff', // White for active thumb, maintains the light theme feel
   shadowElevation: 3, // White for active thumb, contrasts with green
   ///////////////////
 
@@ -263,9 +269,12 @@ const lightTheme: ThemeType = {
 };
 
 const femmeTheme: ThemeType = {
+
+  themeBG: ['#FFFFFF', '#FFC0CB'], // White to pink gradient
+  
   /************************** */
   // Text
-  textPrimary: '#e91e63', // Pink shade for primary text
+  textPrimary: '#ffffff', // Pink shade for primary text
   textSecondary: '#000000', // Warm brown for secondary text
   textPlaceHolderInfo: '#f8bbd0', // Light pink placeholder
   textDark: '#4e342e', // Deep brown for dark text
@@ -321,8 +330,8 @@ const femmeTheme: ThemeType = {
   googleButtonColor: '#f06292', // Soft pink for Google button
   facebookButtonColor: '#8e24aa', // Purple for Facebook button
 
-  buttonPrimary: '#eadde1', // Pink primary button
-  buttonSecondary: '#ffebee', // Very light pink for secondary button
+  buttonPrimary: '#faf3dd', // Pink primary button
+  buttonSecondary: '#ffffff', // Very light pink for secondary button
   buttonInfo: '#ffdac6', // Purple for info button
   buttonDanger: '#d32f2f', // Red for danger button
   buttonCancel: '#ffebee', // Light pink for cancel button
@@ -350,17 +359,17 @@ const femmeTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#c8b6ff', // Light orange tab header
-  tabBarBackgroundColor: '#c8b6ff', // Light pink tab bar
+  tabHeaderBackgroundColor: '#560bad', // Light orange tab header
+  tabBarBackgroundColor: '#560bad', // Light pink tab bar
   headerBorderBottomColor: '#d7ccc8', // Beige for header border
   ///////////////////
 
   /************************** */
   // Icon
-  iconColorPrimary: '#e91e63', // Pink icons
-  iconColorSecondary: '#ba68c8', // Purple icons
+  iconColorPrimary: '#ffffff', // Pink icons
+  iconColorSecondary: '#a5a5a5', // Purple icons
   iconColorSmileys: '#ffb74d', // Orange for smiley icons
-  iconColorGray: '#6d4c41', // Brown-gray icons
+  iconColorGray: '#252422', // Brown-gray icons
   iconColorLight: '#000000', // White icons
   ///////////////////
 
@@ -395,6 +404,7 @@ const femmeTheme: ThemeType = {
 };
 
 const darkTheme: ThemeType = {
+  themeBG: ['#000000', '#000000'], // Black gradient
   /************************** */
   // Text
   textPrimary: '#7cb518',
@@ -420,7 +430,7 @@ const darkTheme: ThemeType = {
   borderColorPrimary: '#7cb518',
   borderColorGray: '#373c42',
   borderColorDark: '#e6e6e9',
-  borderColorLightGray: '#dddddd',
+  borderColorLightGray: '#373c42',
 
   // below are not in use
   // borderColorSecondary: '#dee2e6',
@@ -490,7 +500,7 @@ const darkTheme: ThemeType = {
   /************************** */
   // Icon
   iconColorPrimary: '#7cb518',
-  iconColorSecondary: '#f6aa1c',
+  iconColorSecondary: '#a5a5a5',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',

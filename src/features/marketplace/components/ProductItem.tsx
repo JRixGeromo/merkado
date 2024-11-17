@@ -103,7 +103,11 @@ const ProductItem: React.FC<{
             <Text style={commonStyle.discountBadge}>-{product.discount}</Text>
           )}
         </View>
-        <View style={[baseStyle.columnsInsideFlex, marketStyle.actionIcons]}>
+        <View style={[
+            baseStyle.columnsInsideFlex, 
+            marketStyle.actionIcons,
+            isFeatured ? marketStyle.buttonGapS : marketStyle.buttonGapL,
+            ]}>
           <CustomButton
             title={""}
             onPress={() => console.log('Google Login Pressed')}
@@ -147,7 +151,11 @@ const ProductItem: React.FC<{
           isFeatured ? baseStyle.cols_35 : baseStyle.cols_30,
         ]}
       >
-        <View style={marketStyle.productImageWrapper}>
+        <View style={[
+            marketStyle.productImageWrapper,
+            isFeatured ? marketStyle.imageHeightS : marketStyle.imageHeightL,
+            
+            ]}>
           <Image source={{ uri: product.imageUrl}} 
           style={[
             marketStyle.productImage

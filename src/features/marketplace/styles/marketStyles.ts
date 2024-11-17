@@ -18,19 +18,19 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       marginBottom: normalizeHeight(20), // Add spacing from the section below
       marginLeft: normalizeWidth(5), // Add spacing from the section below
       paddingVertical: normalizeHeight(10), // Ensure padding around the section
-      borderTopWidth: 1, // Add top border
-      borderBottomWidth: 1, // Add bottom border
+      borderTopWidth: 0.5, // Add top border
+      borderBottomWidth: 0.5, // Add bottom border
       borderColor: selectedTheme.borderColorLightGray, // Light gray border color
     },
     liveSellingList: {
       paddingHorizontal: normalizeWidth(10),
     },
     featuredList: {
-      paddingHorizontal: 5,
+      paddingHorizontal: normalizeWidth(5),
     },
     recentlyPostedContainer: {
-      marginTop: 10,
-      marginHorizontal: 4,
+      marginTop: normalizeHeight(10),
+      marginHorizontal: normalizeWidth(4),
     },
 
     // SearchBarWithToggle 
@@ -103,13 +103,23 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       justifyContent: 'center', // Centers the Image vertically
       alignItems: 'center', // Centers the Image horizontally
       width: '100%',
-      height: normalizeHeight(70),
+      height: normalizeHeight(80),
       backgroundColor: selectedTheme.buttonBorderPrimary, // Background color for the wrapper
+      borderRadius: SHARED.borderRadius, 
     },
     productImage: {
       width: '100%', // Slightly smaller than the wrapper to create padding
       height: '100%', // Adjusted height
       resizeMode: 'cover', // Ensures the image fills the space proportionally
+      borderRadius: SHARED.borderRadius, 
+    },
+
+    imageHeightS: {
+      height: normalizeHeight(70),
+    },
+
+    imageHeightL: {
+      height: normalizeHeight(80),
     },
 
     iconOverlayContainer: {
@@ -135,6 +145,14 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     actionIcons: {
       justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
+      gap: normalizeWidth(25),
+    },
+
+    buttonGapS: {
+      gap: normalizeWidth(18),
+    },
+
+    buttonGapL: {
       gap: normalizeWidth(25),
     },
 

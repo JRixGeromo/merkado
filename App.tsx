@@ -98,7 +98,7 @@ const App = () => {
           return null;
         },
         tabBarActiveTintColor: selectedTheme.iconColorPrimary,
-        tabBarInactiveTintColor: selectedTheme.iconColorGray,
+        tabBarInactiveTintColor: selectedTheme.iconColorSecondary,
         tabBarStyle: [
           commonStyle.tabBarStyle,
           {
@@ -127,7 +127,7 @@ const App = () => {
             <View style={{ position: 'relative' }}>
               <IconLib.Cart_O
                 size={20}
-                color={selectedTheme.iconColorGray}
+                color={selectedTheme.iconColorSecondary}
                 onPress={() => navigation.navigate('CartScreen')}
                 style={commonStyle.headerIcon}
               />
@@ -156,7 +156,7 @@ const App = () => {
               onPress={() => navigation.navigate('FrontStoreScreen')}
               style={baseStyle.rMarginL}
             >
-              <IconLib.Store_O size={20} color={selectedTheme.iconColorGray} />
+              <IconLib.Store_O size={20} color={selectedTheme.iconColorSecondary} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate('AccountScreen')}
@@ -175,7 +175,7 @@ const App = () => {
               ) : (
                 <IconLib.Person_O
                   size={20}
-                  color={selectedTheme.iconColorGray}
+                  color={selectedTheme.iconColorSecondary}
                 />
               )}
             </TouchableOpacity>
@@ -194,7 +194,13 @@ const App = () => {
 
   return (
     <NavigationContainer
-      theme={themeType === 'light' ? DefaultTheme : DarkTheme}
+      theme={{
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: 'transparent', // Transparent NavigationContainer background
+        },
+      }}
     >
       <Stack.Navigator>
         <Stack.Screen

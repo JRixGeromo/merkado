@@ -1,18 +1,48 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
+import { theme as appTheme } from '../../../styles/theme';
 
 const TransactionsScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
+  const selectedTheme = appTheme[themeType];
 
   return (
-    <View style={commonStyle.container}>
-      <Text style={commonStyle.title}>Orders</Text>
-      {/* List of orders with details */}
+    <View style={[styles.container]}>
+      <Text style={[styles.title, { color: selectedTheme.textPrimary }]}>
+        Transactions
+      </Text>
+      <View
+        style={[
+          styles.card,
+          { backgroundColor: selectedTheme.cardBackground },
+        ]}
+      >
+        <Text style={{ color: selectedTheme.textPrimary }}>
+          Order #12345
+        </Text>
+        <Text style={{ color: selectedTheme.textSecondary }}>Delivered</Text>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'transparent', // Let the gradient show through
+    padding: 16,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  card: {
+    padding: 16,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+});
 
 export default TransactionsScreen;
