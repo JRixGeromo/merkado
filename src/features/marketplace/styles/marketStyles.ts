@@ -20,7 +20,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingVertical: normalizeHeight(10), // Ensure padding around the section
       borderTopWidth: 0.5, // Add top border
       borderBottomWidth: 0.5, // Add bottom border
-      borderColor: selectedTheme.borderColorLightGray, // Light gray border color
+      borderColor: selectedTheme.borderColorGray, // Light gray border color
     },
     liveSellingList: {
       paddingHorizontal: normalizeWidth(10),
