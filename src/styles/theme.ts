@@ -492,9 +492,9 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#222725',
+  tabHeaderBackgroundColor: '#444140',
   tabBarBackgroundColor: '#222725',
-  headerBorderBottomColor: '#000000',
+  headerBorderBottomColor: '#000',
   ///////////////////
 
   /************************** */
