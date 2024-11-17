@@ -102,14 +102,14 @@ const App = () => {
         tabBarStyle: [
           commonStyle.tabBarStyle,
           {
-            borderTopWidth: 0.5,
+            borderTopWidth: 1,
             borderTopColor: selectedTheme.headerBorderBottomColor,
           },
         ],
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
         headerStyle: {
           backgroundColor: selectedTheme.tabHeaderBackgroundColor,
-          borderBottomWidth: 0.5,
+          borderBottomWidth: 1,
           borderBottomColor: selectedTheme.headerBorderBottomColor,
         },
         //headerTitleStyle: commonStyle.screenHeaderTitle,

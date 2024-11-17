@@ -494,7 +494,7 @@ const darkTheme: ThemeType = {
   // Tab
   tabHeaderBackgroundColor: '#444140',
   tabBarBackgroundColor: '#222725',
-  headerBorderBottomColor: '#000',
+  headerBorderBottomColor: '#000000',
   ///////////////////
 
   /************************** */
