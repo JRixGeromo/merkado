@@ -306,9 +306,9 @@ const femmeTheme: ThemeType = {
   /************************** */
   // Card and Background
   fullBackgroundColor: '#ffffff', // Very light peach background
-  cardBackground: '#ffd6ff', // Light pink background for cards
+  cardBackground: '#e4c1f9', // Light pink background for cards
   fullContainerBackgroundColor: '#ffffff',
-  badgeBackgroundColor: '#4CAF50',
+  badgeBackgroundColor: '#000000',
 
   // below are not in use
   // formBackgroundColorPrimary: '#ffe0b2',
