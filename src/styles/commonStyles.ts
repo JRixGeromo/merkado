@@ -131,10 +131,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
 
     featuredContainer: {
-      marginBottom: normalizeHeight(20),
       marginHorizontal: normalizeWidth(5),
-      borderBottomWidth: 0.5, // Add bottom border
-      borderColor: selectedTheme.borderColorGray,
     },
 
     newBadgeContainer: {
