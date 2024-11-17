@@ -404,7 +404,7 @@ const femmeTheme: ThemeType = {
 };
 
 const darkTheme: ThemeType = {
-  themeBG: ['#000000', '#000000'], // Black gradient
+  themeBG: ['#444140', '#252422'], // Black gradient
   /************************** */
   // Text
   textPrimary: '#7cb518',
@@ -494,7 +494,7 @@ const darkTheme: ThemeType = {
   // Tab
   tabHeaderBackgroundColor: '#222725',
   tabBarBackgroundColor: '#222725',
-  headerBorderBottomColor: '#444444',
+  headerBorderBottomColor: '#000000',
   ///////////////////
 
   /************************** */
