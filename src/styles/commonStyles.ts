@@ -173,7 +173,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       marginBottom: normalizeHeight(10),
       marginLeft: normalizeWidth(10),
     },
-    productName: { fontSize: SHARED.fontSM, color: selectedTheme.textSecondary },
+    productName: { fontSize: SHARED.fontSM, fontWeight: 'bold', color: selectedTheme.textSecondary },
     productDescription: { fontSize: SHARED.fontS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
     vendorInfo: { fontSize: SHARED.fontXxS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
     headerTitle: { 
