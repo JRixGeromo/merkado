@@ -1,6 +1,6 @@
 export interface ThemeType {
 
-  themeBG: string[]; // Allow lightBG to accept an array of strings
+  themeBG: string[] | string; // Allow lightBG to accept an array of strings
   /************************** */
   // Text
   textPrimary: string;
@@ -231,7 +231,7 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Tab
-  iconColorPrimary: '#080708',
+  iconColorPrimary: '#262626',
   iconColorSecondary: '#a5a5a5',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
@@ -404,7 +404,7 @@ const femmeTheme: ThemeType = {
 };
 
 const darkTheme: ThemeType = {
-  themeBG: ['#444140', '#252422'], // Black gradient
+  themeBG: '#000000',
   /************************** */
   // Text
   textPrimary: '#7cb518',
@@ -492,9 +492,9 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#444140',
+  tabHeaderBackgroundColor: '#222725',
   tabBarBackgroundColor: '#222725',
-  headerBorderBottomColor: '#000000',
+  headerBorderBottomColor: '#22333b',
   ///////////////////
 
   /************************** */

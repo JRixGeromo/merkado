@@ -33,7 +33,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     tabBarLabelStyle: {
       fontFamily: selectedTheme.tabFont,
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textPrimary,
+      color: selectedTheme.textSecondary,
       marginTop: normalizeHeight(-4),
       marginBottom: normalizeHeight(4),
     },
