@@ -189,7 +189,7 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Line, buttton and button border
-  boxBorderWidth: 0.5,
+  boxBorderWidth: 0,
   boxBorderWidthSecondary: 0,
   lineBorderColor: '#cad2c5',
   lineBorderColorLight: '#788585',
@@ -323,7 +323,7 @@ const femmeTheme: ThemeType = {
 
   /************************** */
   // Line, Button, and Button Border
-  boxBorderWidth: 0.5,
+  boxBorderWidth: 0,
   boxBorderWidthSecondary: 0,
   lineBorderColor: '#f8bbd0', // Light pink line
   lineBorderColorLight: '#000', // Light orange-pink line
@@ -456,7 +456,7 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Line, button, and button border
-  boxBorderWidth: 0.5,
+  boxBorderWidth: 0,
   boxBorderWidthSecondary: 0,
   lineBorderColor: '#4a4e69',
   lineBorderColorLight: '#9caea9',
