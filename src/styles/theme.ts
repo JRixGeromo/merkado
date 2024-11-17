@@ -15,7 +15,9 @@ export interface ThemeType {
   textHighlight: string; // #800e13 (Light) / #f2bb05 (Dark)
   textDisabled: string; // #ced4da (Light) / #ced4da (Dark)
 
-  online: string; // #ced4da (Light) / #ced4da (Dark)
+  online: string; 
+  onlineDot: string;
+  onlineDotBorder: string;
   // below are not in use
   // textLight: string;         // #ffffff (Light) / #ffffff (Dark)
   // textBlack: string;         // #000000 (Light) / #000000 (Dark)
@@ -151,7 +153,9 @@ const lightTheme: ThemeType = {
   textHighlight: '#800e13',
   textDisabled: '#ced4da',
 
-  online: '#9ef01a',
+  online: '#38b000',
+  onlineDot: 'red',
+  onlineDotBorder: '#ffffff',
 
   // below are not in use
   // textBlack: '#000000',
@@ -287,6 +291,8 @@ const femmeTheme: ThemeType = {
   textDisabled: '#d7ccc8', // Muted beige for disabled text
 
   online: '#7cb518',
+  onlineDot: 'red',
+  onlineDotBorder: '#e7c6ff',
   // below are not in use
   // textBlack: '#000000',
   // textLight: '#000',          // Pure white for light text
@@ -420,6 +426,8 @@ const darkTheme: ThemeType = {
   textDisabled: '#ced4da',
 
   online: '#9ef01a',
+  onlineDot: 'red',
+  onlineDotBorder: '#333d29',
   // below are not in use
   // textBlack: '#000000',
   // textLight: '#ffffff',

@@ -23,6 +23,7 @@ import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
+import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
@@ -195,87 +196,89 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
   );
 
   return (
-    <View style={baseStyle.container}>
-      {/* Search Bar and Toggle Icons */}
-      <SearchBarWithToggle
-        activeView={activeView}
-        setActiveView={setActiveView}
-        onSearchChange={(text) => console.log('Search input:', text)} // Optional search handler
-      />
-
-
-    {/* Live Selling Section */}
-    <View style={marketStyle.liveSellingContainer}>
-      <Text style={commonStyle.sectionHeader}>Currently Live Selling</Text>
-      <FlatList
-        data={liveSellingUsers}
-        horizontal
-        renderItem={renderLiveSellingItem}
-        keyExtractor={item => item.id}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={[marketStyle.liveSellingList]}
-      />
-    </View>
-
-      {/* Conditional Rendering */}
-      {activeView === 'featured' ? (
-        <ScrollView contentContainerStyle={commonStyle.scrollViewContent}>
-          {/* Featured Products Section */}
-          <View style={commonStyle.featuredContainer}>
-            <Text style={commonStyle.sectionHeader}>Featured Products</Text>
-            <FlatList
-              data={featuredProducts}
-              horizontal
-              renderItem={({ item }) => (
-                <ProductItem product={item} variant="featured" 
-                  onFullScreenPress={() => console.log('Full-screen pressed')}
-                  onRatingPress={() => console.log('Rating pressed')}
-                  onLikePress={() => console.log('Like pressed')}
-                  isLiked={true}
-                  likes={150}
-                  rating={4.8}
-                  />
-              )}
-              keyExtractor={item => item.id}
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={marketStyle.featuredList}
-            />
-          </View>
-
-          {/* Recently Posted Products Section */}
-          <View style={marketStyle.recentlyPostedContainer}>
-            <Text style={commonStyle.sectionHeader}>Recently Posted Products</Text>
-            <FlatList
-              data={recentlyPostedProducts}
-              renderItem={({ item }) => (
-                <ProductItem product={item} variant="postedProduct" 
-                  onFullScreenPress={() => console.log('Full-screen pressed')}
-                  onRatingPress={() => console.log('Rating pressed')}
-                  onLikePress={() => console.log('Like pressed')}
-                  isLiked={true}
-                  likes={150}
-                  rating={4.8}
-                />
-              )}
-              keyExtractor={item => item.id}
-              scrollEnabled={false} // Disable scrolling for inner FlatList
-              contentContainerStyle={commonStyle.recentlyPostedList}
-            />
-          </View>
-        </ScrollView>
-      ) : (
-        <FlatList
-          data={categories.map((category, index) => ({
-            ...category,
-            image: `https://picsum.photos/200/200?random=${index + 1}`,
-          }))}
-          renderItem={renderCategoryItem}
-          keyExtractor={item => item.name}
-          numColumns={2}
-          contentContainerStyle={commonStyle.categoryGrid}
+    <GradientBG>
+      <View style={baseStyle.container}>
+        {/* Search Bar and Toggle Icons */}
+        <SearchBarWithToggle
+          activeView={activeView}
+          setActiveView={setActiveView}
+          onSearchChange={(text) => console.log('Search input:', text)} // Optional search handler
         />
-      )}
-    </View>
+
+
+      {/* Live Selling Section */}
+      <View style={marketStyle.liveSellingContainer}>
+        <Text style={commonStyle.sectionHeader}>Currently Live Selling</Text>
+        <FlatList
+          data={liveSellingUsers}
+          horizontal
+          renderItem={renderLiveSellingItem}
+          keyExtractor={item => item.id}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={[marketStyle.liveSellingList]}
+        />
+      </View>
+
+        {/* Conditional Rendering */}
+        {activeView === 'featured' ? (
+          <ScrollView contentContainerStyle={commonStyle.scrollViewContent}>
+            {/* Featured Products Section */}
+            <View style={commonStyle.featuredContainer}>
+              <Text style={commonStyle.sectionHeader}>Featured Products</Text>
+              <FlatList
+                data={featuredProducts}
+                horizontal
+                renderItem={({ item }) => (
+                  <ProductItem product={item} variant="featured" 
+                    onFullScreenPress={() => console.log('Full-screen pressed')}
+                    onRatingPress={() => console.log('Rating pressed')}
+                    onLikePress={() => console.log('Like pressed')}
+                    isLiked={true}
+                    likes={150}
+                    rating={4.8}
+                    />
+                )}
+                keyExtractor={item => item.id}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={marketStyle.featuredList}
+              />
+            </View>
+
+            {/* Recently Posted Products Section */}
+            <View style={marketStyle.recentlyPostedContainer}>
+              <Text style={commonStyle.sectionHeader}>Recently Posted Products</Text>
+              <FlatList
+                data={recentlyPostedProducts}
+                renderItem={({ item }) => (
+                  <ProductItem product={item} variant="postedProduct" 
+                    onFullScreenPress={() => console.log('Full-screen pressed')}
+                    onRatingPress={() => console.log('Rating pressed')}
+                    onLikePress={() => console.log('Like pressed')}
+                    isLiked={true}
+                    likes={150}
+                    rating={4.8}
+                  />
+                )}
+                keyExtractor={item => item.id}
+                scrollEnabled={false} // Disable scrolling for inner FlatList
+                contentContainerStyle={commonStyle.recentlyPostedList}
+              />
+            </View>
+          </ScrollView>
+        ) : (
+          <FlatList
+            data={categories.map((category, index) => ({
+              ...category,
+              image: `https://picsum.photos/200/200?random=${index + 1}`,
+            }))}
+            renderItem={renderCategoryItem}
+            keyExtractor={item => item.name}
+            numColumns={2}
+            contentContainerStyle={commonStyle.categoryGrid}
+          />
+        )}
+      </View>
+    </GradientBG>
   );
 };
 

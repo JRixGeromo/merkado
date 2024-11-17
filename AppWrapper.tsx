@@ -6,7 +6,6 @@ import App from './App'; // Ensure your main App component is imported
 
 import { ApolloProvider } from '@apollo/client'; // Import ApolloProvider
 import client from './src/graphql/apolloClient'; // Correct default import
-import GradientBG from './src/components/GradientBG'; // Gradient background wrapper
 // Your existing imports and code
 import './src/i18n/i18n';
 // Ensure i18n is initialized globally
@@ -15,9 +14,7 @@ const AppWrapper = () => (
   <ApolloProvider client={client}>
     <Provider store={store}>
       {/* Gradient Background is applied globally */}
-      <GradientBG>
         <App />
-      </GradientBG>
     </Provider>
   </ApolloProvider>
 );

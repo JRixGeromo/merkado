@@ -180,10 +180,10 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       right: 0,
       width: normalizeWidth(7),
       height: normalizeHeight(7),
-      backgroundColor: selectedTheme.buttonDanger,
+      backgroundColor: selectedTheme.onlineDot,
       borderRadius: 4,
       borderWidth: 1,
-      borderColor: 'white',
+      borderColor:  selectedTheme.onlineDotBorder,
     },
     liveIconWrapper: {
       justifyContent: 'center', // Centers the Image vertically
