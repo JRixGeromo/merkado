@@ -175,7 +175,7 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Card and Background
-  cardBackground: '#e9ecef',
+  cardBackground: '#ffffff',
   fullBackgroundColor: '#ffffff',
   fullContainerBackgroundColor: '#ffffff',
   badgeBackgroundColor: '#4CAF50',
