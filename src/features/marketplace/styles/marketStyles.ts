@@ -45,14 +45,10 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     
     searchInput: {
       flex: 1,
-      backgroundColor: selectedTheme.inputBackgroundColor,
-      paddingTop: normalizeHeight(5),
-      paddingBottom: normalizeHeight(5),
-      paddingLeft: normalizeWidth(10),
-      paddingRight: normalizeWidth(10),
-      borderRadius: SHARED.borderRadiusSecondary,
-      fontSize: SHARED.fontS,
-      marginRight: normalizeWidth(10),
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(15),
+      paddingRight: normalizeWidth(15),
     },
 
     toggleIconButton: {

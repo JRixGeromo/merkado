@@ -140,7 +140,6 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
       backgroundColor: selectedTheme.cardBackground,
-      marginBottom: normalizeHeight(15),
       borderWidth: 1,
       borderColor: '#ddd',
       width: '80%',

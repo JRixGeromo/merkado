@@ -1,7 +1,13 @@
 // components/SearchBarWithToggle.tsx
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {
+  normalizeFontSize,
+  normalizeHeight,
+  normalizeWidth,
+} from '../../../utils/responsive'; // Import responsive utilities
 import IconLib from '../../../components/IconLib'; // Use IconLib here
+import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
@@ -10,12 +16,14 @@ import { baseStyles } from '../../../styles/baseStyles';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 
 type SearchBarWithToggleProps = {
+  keyWord: string; // Correctly define it as a string
   activeView: 'featured' | 'categories';
   setActiveView: (view: 'featured' | 'categories') => void;
   onSearchChange?: (text: string) => void; // Optional handler for search input changes
 };
 
 const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
+  keyWord,
   activeView,
   setActiveView,
   onSearchChange,
@@ -31,14 +39,17 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
     const { t } = useTranslation(); // Initialize translation
 
   return (
-    <View style={[baseStyle.columnsInsideFlex, marketStyle.searchContainer]}>
-      <TextInput
-        style={marketStyle.searchInput}
-        placeholder="Search categories or products..."
-        placeholderTextColor={selectedTheme.textPlaceHolderInfo} // Dynamic placeholder color
-        onChangeText={onSearchChange}
-      />
-      <View style={baseStyle.columnsInsideFlex}>
+    <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
+      <View style={[baseStyle.cols_70, marketStyle.searchInput]}>
+        <TextInputWithIcon
+          placeholder={t('search')}
+          iconName="Search_O" // Use IconLib
+          value={keyWord}
+          onChangeText={onSearchChange}
+          style={{ height: 42, width: "100%", paddingTop: 2 }}
+        />
+      </View>
+      <View style={[baseStyle.columnsInsideFlex, baseStyle.cols_30 ]}>
         <TouchableOpacity
           onPress={() => setActiveView('featured')}
           style={[

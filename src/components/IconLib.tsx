@@ -116,6 +116,7 @@ const IconLib = {
   Sunny: (props: IconProps) => <CustomIcon name="sunny" {...props} />,
   Moon: (props: IconProps) => <CustomIcon name="moon" {...props} />,
   Folder: (props: IconProps) => <CustomIcon name="folder-open" {...props} />,
+  Search: (props: IconProps) => <CustomIcon name="search" {...props} />,
 
   // FontAwesome Icons using the "fa" type
   Google: (props: IconProps) => (
@@ -222,6 +223,9 @@ const IconLib = {
   ),
   Grid_O: (props: IconProps) => <CustomIcon name="grid-outline" {...props} />,
   Folder_O: (props: IconProps) => <CustomIcon name="folder-open-outline" {...props} />,
+  Search_O: (props: IconProps) => <CustomIcon name="search-outline" {...props} />,
+
+
 };
 
 export default IconLib;

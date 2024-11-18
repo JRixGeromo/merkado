@@ -171,6 +171,9 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
     'featured',
   );
 
+  
+  const [keyword, setKeyword] = useState<string>(''); // Ensure it's initialized as a string
+
   const themeType = useAppSelector(state => state.theme.theme);
   const marketStyle = marketStyles(themeType); // This is fine
   const commonStyle = commonStyles(themeType); // This is fine
@@ -200,24 +203,25 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
       <View style={baseStyle.container}>
         {/* Search Bar and Toggle Icons */}
         <SearchBarWithToggle
+          keyWord={keyword}
           activeView={activeView}
           setActiveView={setActiveView}
           onSearchChange={(text) => console.log('Search input:', text)} // Optional search handler
         />
 
 
-      {/* Live Selling Section */}
-      <View style={marketStyle.liveSellingContainer}>
-        <Text style={commonStyle.sectionHeader}>Currently Live Selling</Text>
-        <FlatList
-          data={liveSellingUsers}
-          horizontal
-          renderItem={renderLiveSellingItem}
-          keyExtractor={item => item.id}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={[marketStyle.liveSellingList]}
-        />
-      </View>
+        {/* Live Selling Section */}
+        <View style={marketStyle.liveSellingContainer}>
+          <Text style={commonStyle.sectionHeader}>Currently Live Selling</Text>
+          <FlatList
+            data={liveSellingUsers}
+            horizontal
+            renderItem={renderLiveSellingItem}
+            keyExtractor={item => item.id}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={[marketStyle.liveSellingList]}
+          />
+        </View>
 
         {/* Conditional Rendering */}
         {activeView === 'featured' ? (
