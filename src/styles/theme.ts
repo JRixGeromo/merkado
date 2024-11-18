@@ -188,7 +188,7 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Input background
-  inputBackgroundColor: '#ffffff',
+  inputBackgroundColor: '#dee2e6',
   ///////////////////
 
   /************************** */
