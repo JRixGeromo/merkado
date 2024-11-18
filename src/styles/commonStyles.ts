@@ -182,12 +182,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(2),  marginBottom: normalizeHeight(4) },
     
     discountedPrice: {
-      fontSize: SHARED.fontSM,
+      fontSize: SHARED.fontS,
+      fontWeight: 'bold', 
       color: selectedTheme.textSecondary,
       marginRight: normalizeWidth(10),
     },
     originalPrice: {
-      fontSize: SHARED.fontS,
+      fontSize: SHARED.fontXS,
       color: selectedTheme.textGray,
       textDecorationLine: 'line-through',
       marginRight: normalizeWidth(10),
@@ -196,7 +197,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       backgroundColor: selectedTheme.buttonDanger,
       color: selectedTheme.textLight,
       paddingHorizontal: normalizeWidth(5),
-      fontSize: SHARED.fontXS,
+      fontSize: SHARED.fontXxS,
       borderRadius: SHARED.borderRadiusPrimary, 
       fontWeight: 'bold',
     },

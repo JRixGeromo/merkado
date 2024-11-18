@@ -12,7 +12,7 @@ import { Dimensions } from 'react-native';
 const screenWidth = Dimensions.get('window').width;
 
 // Calculate 50% of the screen width
-const halfScreenWidth = screenWidth * 0.4;
+const halfScreenWidth = screenWidth * 0.40;
 
 // Centralized constants for commonly used style properties
 export const SHARED = {

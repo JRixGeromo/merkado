@@ -231,7 +231,7 @@ const ProductItem: React.FC<{
             borderRadius={SHARED.borderRadiusPrimary} // You can set this dynamically too
             iconName={'Chat_O'}
             iconSize={16} // Font size of the text inside the button
-            width={60}
+            width={50}
             style={{
               paddingTop: 2,
               paddingBottom: 2,
@@ -247,7 +247,7 @@ const ProductItem: React.FC<{
             borderRadius={SHARED.borderRadiusPrimary} // You can set this dynamically too
             iconName={'Cart_O'}
             iconSize={16} // Font size of the text inside the button
-            width={60}
+            width={50}
             style={{
               paddingTop: 2,
               paddingBottom: 2,

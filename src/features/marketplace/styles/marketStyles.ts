@@ -153,7 +153,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
 
     buttonRowGap: {
-      gap: normalizeWidth(30), 
+      gap: normalizeWidth(35), 
     },
 
     // LiveSellingCard
