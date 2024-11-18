@@ -109,7 +109,7 @@ const ProductItem: React.FC<{
         </TouchableOpacity>
       
       {/* Rating and Likes */}
-      <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
+      <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerXS]}>
          {/* Rating */}
          <TouchableOpacity
           style={[baseStyle.alignLeft, baseStyle.cols_2]}
@@ -177,6 +177,7 @@ const ProductItem: React.FC<{
       >
         {/* Product Image and Action Buttons */}
         {isFeatured && (
+          <>
             <ProductImage
               imageUrl={product.imageUrl}
               isFeatured={isFeatured}
@@ -187,6 +188,8 @@ const ProductItem: React.FC<{
               likes={likes}
               rating={rating}
             />
+            <View style={baseStyle.verticalSpacerXS}/>
+          </>  
         )}
         
         <Text numberOfLines={1} ellipsizeMode="tail" style={[commonStyle.productName, {textAlign: 'justify'}]}>

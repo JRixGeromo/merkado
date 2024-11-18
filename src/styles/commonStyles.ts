@@ -179,7 +179,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     headerTitle: { 
       fontSize: SHARED.fontXxL, fontWeight: 'bold', color: selectedTheme.textSecondary, 
     },
-    priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(2),  marginBottom: normalizeHeight(4) },
+    priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(4),  marginBottom: normalizeHeight(4) },
     
     discountedPrice: {
       fontSize: SHARED.fontS,
