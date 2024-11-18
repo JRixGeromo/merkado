@@ -205,7 +205,7 @@ const lightTheme: ThemeType = {
   buttonInfo: '#bee9e8',
   buttonDanger: '#ba181b',
   buttonCancel: '#e6e6ea',
-  buttonBorderPrimary: '#4CAF50',
+  buttonBorderPrimary: '#8ecae6',
   buttonDark: '#a5a5a5',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
