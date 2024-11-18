@@ -29,6 +29,7 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigationTypes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { reactions } from '../../../constants/reactions';
+import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 
 dayjs.extend(relativeTime);
 
@@ -120,11 +121,12 @@ const DetailsScreen: React.FC = () => {
   const handleFollow = () => {};
 
   return (
+    <GradientBG>
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
           baseStyle.container,
-          { backgroundColor: selectedTheme.fullContainerBackgroundColor, paddingHorizontal: normalizeWidth(10)},
+          { paddingHorizontal: normalizeWidth(10)},
         ]}
       >
         {/* Product/Vendor Image */}
@@ -595,6 +597,7 @@ const DetailsScreen: React.FC = () => {
         </View>
       </View>
     </ScrollView>
+    </GradientBG>
   );
 };
 

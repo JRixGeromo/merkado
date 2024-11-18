@@ -13,6 +13,7 @@ import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
+import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 // import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 // import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 // import { useTranslation } from 'react-i18next'; // Import translation hook
@@ -73,11 +74,11 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
   );
 
   return (
+    <GradientBG>
     <View
       style={[
         baseStyle.container,
         baseStyle.rlPaddingS,
-        { backgroundColor: selectedTheme.fullContainerBackgroundColor },
       ]}
     >
       {/* Category Header */}
@@ -103,6 +104,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
         contentContainerStyle={marketStyle.subcategoryList}
       />
     </View>
+    </GradientBG>
   );
 };
 

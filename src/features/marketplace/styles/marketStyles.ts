@@ -257,7 +257,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     categoryDetails: {
       width: '100%',
-      marginTop: normalizeHeight(10),
+      marginTop: normalizeHeight(2),
     },
 
 

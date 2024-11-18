@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next';
 import ReactionBar from '../../../components/ReactionBar'; // Assuming ReactionBar is imported
 import { launchCamera } from 'react-native-image-picker';
 import { reactions } from '../../../constants/reactions';
+import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 
 type Message = {
   id: number;
@@ -178,121 +179,122 @@ const ChatScreen = () => {
   );
 
   return (
-    <KeyboardAvoidingView
-      style={{
-        flex: 1,
-        backgroundColor: selectedTheme.fullContainerBackgroundColor,
-      }}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={80}
-    >
-      {/* Chat History Avatars */}
-      <View style={chatStyle.avatarBar}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {avatars.map(avatar => (
-            <View
-              key={avatar.id}
-              style={{
-                position: 'relative',
-                marginHorizontal: 5,
-                marginVertical: 5,
-              }}
-            >
-              <TouchableOpacity>
-                <Image
-                  source={{ uri: avatar.avatarUrl }}
-                  style={chatStyle.chatAvatar}
-                />
-                {/* Display unread message badge */}
-                {(avatar.unreadCount ?? 0) > 0 && (
-                  <View style={chatStyle.unreadBadge}>
-                    <Text style={chatStyle.unreadText}>
-                      {avatar.unreadCount}
-                    </Text>
-                  </View>
-                )}
-              </TouchableOpacity>
-            </View>
-          ))}
+    <GradientBG>
+      <KeyboardAvoidingView
+        style={{
+          flex: 1,
+        }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={80}
+      >
+        {/* Chat History Avatars */}
+        <View style={chatStyle.avatarBar}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {avatars.map(avatar => (
+              <View
+                key={avatar.id}
+                style={{
+                  position: 'relative',
+                  marginHorizontal: 5,
+                  marginVertical: 5,
+                }}
+              >
+                <TouchableOpacity>
+                  <Image
+                    source={{ uri: avatar.avatarUrl }}
+                    style={chatStyle.chatAvatar}
+                  />
+                  {/* Display unread message badge */}
+                  {(avatar.unreadCount ?? 0) > 0 && (
+                    <View style={chatStyle.unreadBadge}>
+                      <Text style={chatStyle.unreadText}>
+                        {avatar.unreadCount}
+                      </Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* Chat Messages */}
+        <ScrollView
+          ref={scrollViewRef}
+          style={{ flex: 1 }}
+          contentContainerStyle={{ paddingBottom: 10, paddingTop: 10 }}
+          onContentSizeChange={() =>
+            scrollViewRef.current?.scrollToEnd({ animated: true })
+          }
+        >
+          {messages.map(renderMessage)}
         </ScrollView>
-      </View>
 
-      {/* Chat Messages */}
-      <ScrollView
-        ref={scrollViewRef}
-        style={{ flex: 1 }}
-        contentContainerStyle={{ paddingBottom: 10, paddingTop: 10 }}
-        onContentSizeChange={() =>
-          scrollViewRef.current?.scrollToEnd({ animated: true })
-        }
-      >
-        {messages.map(renderMessage)}
-      </ScrollView>
-
-      {/* Message Input */}
-      <View
-        style={[
-          chatStyle.chatMessagesContainer,
-          { borderTopColor: selectedTheme.lineBorderColor, borderWidth: selectedTheme.boxBorderWidth },
-        ]}
-      >
+        {/* Message Input */}
         <View
           style={[
-            baseStyle.alignRight,
-            {
-              paddingHorizontal: 10,
-              marginBottom: 10,
-              marginRight: 5,
-            },
+            chatStyle.chatMessagesContainer,
+            { borderTopColor: selectedTheme.lineBorderColor, borderWidth: selectedTheme.boxBorderWidth },
           ]}
         >
-          {!showReactions && (
-            <TouchableOpacity onPress={() => setShowReactions(true)}>
-              <IconLib.ThumbsUp_O
-                size={24}
-                color={selectedTheme.iconColorGray}
-              />
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity onPress={takePhoto} style={{ marginLeft: 10 }}>
-            <IconLib.Camera_O size={24} color={selectedTheme.iconColorGray} />
-          </TouchableOpacity>
-        </View>
-
-        {showReactions && (
-          <ReactionBar
-            reactions={reactions}
-            onReactionPress={reaction => appendEmojiToMessage(reaction.emoji)}
-          />
-        )}
-
-        <View
-          style={[
-            chatStyle.chatInputContainer,
-            { backgroundColor: selectedTheme.inputBackgroundColor },
-          ]}
-        >
-          <TextInput
-            value={message}
-            onChangeText={setMessage}
-            placeholder={t('type here ...')}
-            placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+          <View
             style={[
-              commonStyle.input,
-              baseStyle.mediumText,
-              { flex: 1, color: selectedTheme.textPrimary },
+              baseStyle.alignRight,
+              {
+                paddingHorizontal: 10,
+                marginBottom: 10,
+                marginRight: 5,
+              },
             ]}
-            onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
-          />
-          <TouchableOpacity
-            onPress={sendMessage}
-            style={chatStyle.chatSendButton}
           >
-            <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
-          </TouchableOpacity>
+            {!showReactions && (
+              <TouchableOpacity onPress={() => setShowReactions(true)}>
+                <IconLib.ThumbsUp_O
+                  size={24}
+                  color={selectedTheme.iconColorGray}
+                />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity onPress={takePhoto} style={{ marginLeft: 10 }}>
+              <IconLib.Camera_O size={24} color={selectedTheme.iconColorGray} />
+            </TouchableOpacity>
+          </View>
+
+          {showReactions && (
+            <ReactionBar
+              reactions={reactions}
+              onReactionPress={reaction => appendEmojiToMessage(reaction.emoji)}
+            />
+          )}
+
+          <View
+            style={[
+              chatStyle.chatInputContainer,
+              { backgroundColor: selectedTheme.inputBackgroundColor },
+            ]}
+          >
+            <TextInput
+              value={message}
+              onChangeText={setMessage}
+              placeholder={t('type here ...')}
+              placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+              style={[
+                commonStyle.input,
+                baseStyle.mediumText,
+                { flex: 1, color: selectedTheme.textPrimary },
+              ]}
+              onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
+            />
+            <TouchableOpacity
+              onPress={sendMessage}
+              style={chatStyle.chatSendButton}
+            >
+              <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </GradientBG>
   );
 };
 

@@ -9,6 +9,7 @@ import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
+import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
@@ -110,6 +111,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
     
 
   return (
+    <GradientBG>
     <View style={baseStyle.container}>
       <View 
         style={[commonStyle.headerContainer, baseStyle.shadowedContainer]}
@@ -141,6 +143,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
         contentContainerStyle={marketStyle.productList}
       />
     </View>
+    </GradientBG>
   );
 };
 
