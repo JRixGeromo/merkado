@@ -6,8 +6,17 @@ import {
 } from '../utils/responsive'; // Import responsive utilities
 import { theme } from './theme'; // Make sure this path is correct
 
+import { Dimensions } from 'react-native';
+
+// Get screen width
+const screenWidth = Dimensions.get('window').width;
+
+// Calculate 50% of the screen width
+const halfScreenWidth = screenWidth * 0.4;
+
 // Centralized constants for commonly used style properties
 export const SHARED = {
+  halfScreen: halfScreenWidth, // Shared border radius
   borderRadius: 6, // Shared border radius
   borderRadiusPrimary: 4,
   borderRadiusSecondary: 8,
@@ -100,6 +109,9 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     columnsInside: {
       flexDirection: 'row',
+      width: '100%',
+    },
+    cols_1: {
       width: '100%',
     },
     cols_2: {

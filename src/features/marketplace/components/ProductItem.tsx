@@ -55,13 +55,112 @@ const ProductItem: React.FC<{
 
   const isFeatured = variant === 'featured';
   const { t } = useTranslation(); // Initialize translation
+
+  // Define the ProductImage component inline
+  const ProductImage: React.FC<{
+    imageUrl: string;
+    isFeatured: boolean;
+    onFullScreenPress: () => void;
+    onRatingPress: () => void;
+    onLikePress: () => void;
+    isLiked: boolean;
+    likes: number;
+    rating: number;
+  }> = ({
+    imageUrl,
+    isFeatured,
+    onFullScreenPress,
+    onRatingPress,
+    onLikePress,
+    isLiked,
+    likes,
+    rating,
+  }) => {
+    if (!imageUrl) return null; // Handle missing image URL
+
+    return (
+      <View
+      style={[
+        baseStyle.innerContainerCenter,
+        baseStyle.tMarginXxS,
+        isFeatured ? baseStyle.cols_1 : baseStyle.cols_30,
+      ]}
+    >
+      <View style={[
+          marketStyle.productImageWrapper,
+          isFeatured ? marketStyle.imageHeightS : marketStyle.imageHeightL,
+          
+          ]}>
+        <Image source={{ uri: product.imageUrl}} 
+        style={[
+          marketStyle.productImage
+        ]}
+         />
+      </View>
+
+      {/* Square overlay with 3-dots icon */}
+      
+         {/* Full-Screen Button */}
+        <TouchableOpacity
+          style={marketStyle.iconOverlayContainer}
+          onPress={onFullScreenPress}
+        >
+          <IconLib.DotsMenu size={20} color={selectedTheme.textLight} />
+        </TouchableOpacity>
+      
+      {/* Rating and Likes */}
+      <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
+         {/* Rating */}
+         <TouchableOpacity
+          style={[baseStyle.alignLeft, baseStyle.cols_2]}
+          onPress={onRatingPress}
+        >
+          <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
+            <IconLib.Star size={14} color="gold"/>
+            <Text
+              style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
+            >
+              {rating}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        {/* Likes */}
+          <TouchableOpacity 
+            onPress={onLikePress} 
+            style={[baseStyle.cols_2, baseStyle.alignRight]}
+          >
+          <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
+            {isLiked ? (
+              <IconLib.Heart size={14} color="red"/>
+            ) : (
+              <IconLib.Heart_O
+                size={16}
+                color={selectedTheme.iconColorPrimary}
+              />
+            )}
+
+            <Text
+              style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {likes}
+            </Text>
+            </View>
+          </TouchableOpacity>
+      </View>
+    </View>
+    );
+  };
+
+
   return (
     <View
       style={[
         baseStyle.columnsInsideFlex,
         baseStyle.shadowedContainer,
         marketStyle.productCardLandscape,
-        isFeatured ? marketStyle.featuredProductCard : marketStyle.postedProductCard,
+        isFeatured ? marketStyle.featuredProductCard : marketStyle.postedProductCard
       ]}
     >
       {product.isNew && (
@@ -73,10 +172,24 @@ const ProductItem: React.FC<{
       <View
         style={[
           marketStyle.productInfo,
-          isFeatured ? baseStyle.cols_60 : baseStyle.cols_70,
+          isFeatured ? baseStyle.cols_60 : baseStyle.cols_1,
         ]}
       >
-        <Text numberOfLines={1} ellipsizeMode="tail" style={commonStyle.productName}>
+        {/* Product Image and Action Buttons */}
+        {isFeatured && (
+            <ProductImage
+              imageUrl={product.imageUrl}
+              isFeatured={isFeatured}
+              onFullScreenPress={onFullScreenPress}
+              onRatingPress={onRatingPress}
+              onLikePress={onLikePress}
+              isLiked={isLiked}
+              likes={likes}
+              rating={rating}
+            />
+        )}
+        
+        <Text numberOfLines={1} ellipsizeMode="tail" style={[commonStyle.productName, {textAlign: 'justify'}]}>
           {product.name}
         </Text>
         
@@ -103,11 +216,13 @@ const ProductItem: React.FC<{
             <Text style={commonStyle.discountBadge}>-{product.discount}</Text>
           )}
         </View>
-        <View style={[
-            baseStyle.columnsInsideFlex, 
-            marketStyle.actionIcons,
-            isFeatured ? marketStyle.buttonGapS : marketStyle.buttonGapL,
-            ]}>
+        <View
+            style={[
+              baseStyle.columnsInsideFlex,
+              marketStyle.actionIcons,
+              isFeatured ? marketStyle.buttonRowWidth : marketStyle.buttonRowGap, // Apply conditionally
+            ]}
+          >
           <CustomButton
             title={""}
             onPress={() => console.log('Google Login Pressed')}
@@ -144,79 +259,18 @@ const ProductItem: React.FC<{
       </View>
 
       {/* Product Image and Action Buttons */}
-      <View
-        style={[
-          baseStyle.innerContainerCenter,
-          baseStyle.tMarginXxS,
-          isFeatured ? baseStyle.cols_35 : baseStyle.cols_30,
-        ]}
-      >
-        <View style={[
-            marketStyle.productImageWrapper,
-            isFeatured ? marketStyle.imageHeightS : marketStyle.imageHeightL,
-            
-            ]}>
-          <Image source={{ uri: product.imageUrl}} 
-          style={[
-            marketStyle.productImage
-          ]}
-           />
-        </View>
-
-        {/* Square overlay with 3-dots icon */}
-        
-           {/* Full-Screen Button */}
-          <TouchableOpacity
-            style={marketStyle.iconOverlayContainer}
-            onPress={onFullScreenPress}
-          >
-            <IconLib.DotsMenu size={20} color={selectedTheme.textLight} />
-          </TouchableOpacity>
-        
-        {/* Rating and Likes */}
-        <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
-           {/* Rating */}
-           <TouchableOpacity
-            style={[baseStyle.alignLeft, baseStyle.cols_2]}
-            onPress={onRatingPress}
-          >
-            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
-              <IconLib.Star size={14} color="gold"/>
-              <Text
-                style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
-              >
-                {rating}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          {/* Likes */}
-            <TouchableOpacity 
-              onPress={onLikePress} 
-              style={[baseStyle.cols_2, baseStyle.alignRight]}
-            >
-            <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
-              {isLiked ? (
-                <IconLib.Heart size={14} color="red"/>
-              ) : (
-                <IconLib.Heart_O
-                  size={16}
-                  color={selectedTheme.iconColorPrimary}
-                />
-              )}
-
-              <Text
-                style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {likes}
-              </Text>
-              </View>
-            </TouchableOpacity>
-        </View>
-      
-
-      </View>
+      {!isFeatured && (
+          <ProductImage
+            imageUrl={product.imageUrl}
+            isFeatured={isFeatured}
+            onFullScreenPress={onFullScreenPress}
+            onRatingPress={onRatingPress}
+            onLikePress={onLikePress}
+            isLiked={isLiked}
+            likes={likes}
+            rating={rating}
+          />
+      )}
     </View>
   );
 };

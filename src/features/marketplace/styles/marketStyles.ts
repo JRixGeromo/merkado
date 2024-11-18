@@ -85,7 +85,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
   
     featuredProductCard: {
-      width: normalizeWidth(235),
+      width: normalizeWidth(SHARED.halfScreen),
       marginRight:  normalizeWidth(15),
       marginLeft:  normalizeWidth(4),
     },
@@ -94,7 +94,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     productInfo: {
       flex: 1,
-      paddingRight: normalizeWidth(10),
+      //paddingRight: normalizeWidth(10),
       alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
       justifyContent: 'flex-start', // Forces content to start at the top
     },
@@ -145,15 +145,15 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     actionIcons: {
       justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
-      gap: normalizeWidth(25),
     },
 
-    buttonGapS: {
-      gap: normalizeWidth(18),
+    
+    buttonRowWidth: {
+      width: "100%", 
     },
 
-    buttonGapL: {
-      gap: normalizeWidth(25),
+    buttonRowGap: {
+      gap: normalizeWidth(30), 
     },
 
     // LiveSellingCard
