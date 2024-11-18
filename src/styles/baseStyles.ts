@@ -17,9 +17,10 @@ const halfScreenWidth = screenWidth * 0.4;
 // Centralized constants for commonly used style properties
 export const SHARED = {
   halfScreen: halfScreenWidth, // Shared border radius
-  borderRadius: 6, // Shared border radius
-  borderRadiusPrimary: 4,
+  borderRadius: 4, // Shared border radius
+  borderRadiusPrimary: 6,
   borderRadiusSecondary: 8,
+  borderRadiusRound: 15,
   padding: normalizeWidth(10), // Shared padding
   buttonPadding: normalizeWidth(15), // Button padding
   shadow: {

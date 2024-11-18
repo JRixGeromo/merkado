@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../hooks/reduxHooks';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
-import { baseStyles } from '../../../styles/baseStyles';
+import { baseStyles, SHARED } from '../../../styles/baseStyles';
 // import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
 // import { RootStackParamList } from '../../../navigationTypes'; // Import RootStackParamList
 import { useTranslation } from 'react-i18next'; // Import translation hook
@@ -228,10 +228,10 @@ const ProductItem: React.FC<{
             onPress={() => console.log('Google Login Pressed')}
             color={selectedTheme.textDark}
             backgroundColor={selectedTheme.buttonPrimary}
-            borderRadius={2} // You can set this dynamically too
+            borderRadius={SHARED.borderRadiusPrimary} // You can set this dynamically too
             iconName={'Chat_O'}
             iconSize={16} // Font size of the text inside the button
-            width={50}
+            width={60}
             style={{
               paddingTop: 2,
               paddingBottom: 2,
@@ -244,10 +244,10 @@ const ProductItem: React.FC<{
             onPress={() => console.log('Google Login Pressed')}
             color={selectedTheme.textDark}
             backgroundColor={selectedTheme.buttonPrimary}
-            borderRadius={2} // You can set this dynamically too
+            borderRadius={SHARED.borderRadiusPrimary} // You can set this dynamically too
             iconName={'Cart_O'}
             iconSize={16} // Font size of the text inside the button
-            width={50}
+            width={60}
             style={{
               paddingTop: 2,
               paddingBottom: 2,
