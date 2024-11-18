@@ -230,7 +230,7 @@ const lightTheme: ThemeType = {
   // Tab
   tabHeaderBackgroundColor: '#ffffff',
   tabBarBackgroundColor: '#ffffff',
-  headerBorderBottomColor: '#dddddd',
+  headerBorderBottomColor: '#8d99ae',
   ///////////////////
 
   /************************** */
