@@ -44,6 +44,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
         <TextInputWithIcon
           placeholder={t('search')}
           iconName="Search_O" // Use IconLib
+          iconColor={selectedTheme.iconColorSecondary}
           value={keyWord}
           onChangeText={onSearchChange}
           style={{ height: 42, width: "100%", paddingTop: 2 }}
