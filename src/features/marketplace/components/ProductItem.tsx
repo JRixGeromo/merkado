@@ -195,7 +195,7 @@ const ProductItem: React.FC<{
         <Text numberOfLines={1} ellipsizeMode="tail" style={[baseStyle.mediumText, {color: myTheme.text2nd, fontWeight: 'bold'}]}>
           {product.name}
         </Text>
-        
+        {/* ///////////////////////////////////////// continue here */}
         { !isFeatured && product.description && 
         <Text
           numberOfLines={1}
