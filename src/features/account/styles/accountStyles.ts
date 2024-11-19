@@ -9,19 +9,19 @@ import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const acctStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
     welcomeText: {
       fontSize: SHARED.fontXxL,
-      fontFamily: selectedTheme.headingFont,
-      color: selectedTheme.textPrimary,
+      fontFamily: myTheme.headingFont,
+      color: myTheme.text1st,
       marginBottom: normalizeHeight(20),
     },
     linkText: {
       fontSize: SHARED.fontM,
-      fontFamily: selectedTheme.bodyFont,
-      color: selectedTheme.textLink,
+      fontFamily: myTheme.bodyFont,
+      color: myTheme.textLink,
       marginTop: normalizeHeight(10),
       marginBottom: normalizeHeight(10),
       marginLeft: normalizeWidth(10),
@@ -34,8 +34,8 @@ export const acctStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     cardHeaderTitle: {
       fontSize: SHARED.fontXL,
-      fontFamily: selectedTheme.headingFont,
-      color: selectedTheme.textPrimary,
+      fontFamily: myTheme.headingFont,
+      color: myTheme.text1st,
     },
     toggleButtonContainer: {
       flexDirection: 'row',
@@ -44,13 +44,13 @@ export const acctStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     cardText: {
       fontSize: SHARED.fontM,
-      color: selectedTheme.textPrimary,
+      color: myTheme.text1st,
       marginTop: normalizeHeight(5),
       marginLeft: normalizeWidth(10),
     },
     languageContainer: {
       marginTop: normalizeHeight(10),
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
     },
   });
 };

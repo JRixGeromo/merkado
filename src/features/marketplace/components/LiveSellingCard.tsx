@@ -27,7 +27,7 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
   const marketStyle = marketStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   return (
     <TouchableOpacity 
       onPress={onPress}
@@ -37,7 +37,7 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
       ]}
     >
       <View style={[baseStyle.innerContainerCenter, marketStyle.videoIconContainer]}>
-        <Ionicons name="videocam-outline" size={20} color={selectedTheme.online} />
+        <Ionicons name="videocam-outline" size={20} color={myTheme.online} />
         <View style={marketStyle.redDot} />
       </View>
       <View style={marketStyle.liveIconWrapper}>

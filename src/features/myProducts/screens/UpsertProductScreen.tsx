@@ -43,7 +43,7 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
   const themeType = useAppSelector(state => state.theme.theme);
   const myProductStyle = myProductStyles(themeType);
   const baseStyle = baseStyles(themeType);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   // Initialize states conditionally based on product prop
   const [name, setName] = useState(product?.name || '');
@@ -144,13 +144,13 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
             style={[
               baseStyle.shadowedContainer,
               baseStyle.formContainer,
-              { backgroundColor: selectedTheme.cardBackground },
+              { backgroundColor: myTheme.cardBackground },
             ]}
           >
             <Text
               style={[
                 baseStyle.verticalSpacerM,
-                { color: selectedTheme.textSecondary },
+                { color: myTheme.text2nd },
               ]}
             >
               {product ? 'Update' : 'Create'}
@@ -239,8 +239,8 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
             <CustomButton
               title="Add Images"
               onPress={handleImagePick}
-              backgroundColor={selectedTheme.buttonSecondary}
-              color={selectedTheme.textPrimary}
+              backgroundColor={myTheme.button2nd}
+              color={myTheme.text1st}
               borderRadius={5}
               width="80%"
               textSize={12}
@@ -251,38 +251,38 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
             />
             <View style={[baseStyle.rowsInside, { width: '80%' }]}>
               <View style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}>
-                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
+                <Text style={{ color: myTheme.text1st, flex: 1 }}>
                   Featured Product
                 </Text>
                 <Switch
                   value={isFeatured}
                   onValueChange={value => setIsFeatured(value)}
                   trackColor={{
-                    false: selectedTheme.switchInactive,
-                    true: selectedTheme.switchActive,
+                    false: myTheme.switchInactive,
+                    true: myTheme.switchActive,
                   }}
                   thumbColor={
                     isFeatured
-                      ? selectedTheme.switchThumbActive
-                      : selectedTheme.switchThumbInactive
+                      ? myTheme.switchThumbActive
+                      : myTheme.switchThumbInactive
                   }
                 />
               </View>
               <View style={[baseStyle.alignCenter, baseStyle.dividerWrapper]}>
-                <Text style={{ color: selectedTheme.textPrimary, flex: 1 }}>
+                <Text style={{ color: myTheme.text1st, flex: 1 }}>
                   Active Product
                 </Text>
                 <Switch
                   value={isActive}
                   onValueChange={value => setIsActive(value)}
                   trackColor={{
-                    false: selectedTheme.switchInactive,
-                    true: selectedTheme.switchActive,
+                    false: myTheme.switchInactive,
+                    true: myTheme.switchActive,
                   }}
                   thumbColor={
                     isActive
-                      ? selectedTheme.switchThumbActive
-                      : selectedTheme.switchThumbInactive
+                      ? myTheme.switchThumbActive
+                      : myTheme.switchThumbInactive
                   }
                 />
               </View>
@@ -290,8 +290,8 @@ const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
             <CustomButton
               title={product ? 'Update Product' : 'Create Product'}
               onPress={handleSaveProduct}
-              color={selectedTheme.buttonTextPrimary}
-              backgroundColor={selectedTheme.buttonPrimary}
+              color={myTheme.buttonText1st}
+              backgroundColor={myTheme.button1st}
               borderRadius={5}
               textSize={14}
             />

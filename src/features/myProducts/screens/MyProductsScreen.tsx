@@ -33,7 +33,7 @@ const MyProductsScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const myProductStyle = myProductStyles(themeType);
   const baseStyle = baseStyles(themeType);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -104,7 +104,7 @@ const MyProductsScreen = () => {
         {
           iconName: 'Trash_O',
           title: '',
-          backgroundColor: selectedTheme.buttonDark,
+          backgroundColor: myTheme.buttonDark,
           width: '100%',
           textSize: 12,
           onPress: () => handleDeleteProduct(item),
@@ -113,7 +113,7 @@ const MyProductsScreen = () => {
         {
           iconName: 'Create_O',
           title: '',
-          backgroundColor: selectedTheme.buttonPrimary,
+          backgroundColor: myTheme.button1st,
           width: '100%',
           textSize: 12,
           onPress: () => console.log('Edit Pressed'),
@@ -122,7 +122,7 @@ const MyProductsScreen = () => {
         {
           iconName: 'View_O',
           title: '',
-          backgroundColor: selectedTheme.buttonInfo,
+          backgroundColor: myTheme.buttonInfo,
           width: '100%',
           textSize: 12,
           onPress: () => handleViewProduct(item),
@@ -137,7 +137,7 @@ const MyProductsScreen = () => {
       style={[
         baseStyle.container,
         baseStyle.rlPaddingS,
-        { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+        { backgroundColor: myTheme.fullContainerBGColor },
       ]}
     >
       <View style={baseStyle.verticalSpacerM} />
@@ -151,12 +151,12 @@ const MyProductsScreen = () => {
           ]}
         >
           <TouchableOpacity style={baseStyle.rMarginS}>
-            <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
+            <IconLib.Menu size={24} color={myTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
             style={baseStyle.searchInput}
             placeholder="Search Products"
-            placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+            placeholderTextColor={myTheme.textPHolderInfo}
             value={searchTerm}
             onChangeText={setSearchTerm}
           />
@@ -166,13 +166,13 @@ const MyProductsScreen = () => {
           <CustomButton
             title=""
             textSize={12}
-            backgroundColor={selectedTheme.buttonPrimary}
+            backgroundColor={myTheme.button1st}
             width="100%"
             onPress={handleProduct}
             iconName="Add"
-            iconColor={selectedTheme.buttonTextPrimary}
+            iconColor={myTheme.buttonText1st}
             iconSize={SHARED.fontXL}
-            color={selectedTheme.buttonTextPrimary}
+            color={myTheme.buttonText1st}
             style={baseStyle.cardButton}
             borderRadius={0}
           />
@@ -206,7 +206,7 @@ const MyProductsScreen = () => {
             <Text
               style={[
                 baseStyle.smallText,
-                { color: selectedTheme.textSecondary },
+                { color: myTheme.text2nd },
               ]}
             >
               Price: ₱{selectedProduct.price}
@@ -214,7 +214,7 @@ const MyProductsScreen = () => {
             <Text
               style={[
                 baseStyle.smallText,
-                { color: selectedTheme.textSecondary },
+                { color: myTheme.text2nd },
               ]}
             >
               Description: {selectedProduct.description}
@@ -222,7 +222,7 @@ const MyProductsScreen = () => {
             <Text
               style={[
                 baseStyle.smallText,
-                { color: selectedTheme.textSecondary },
+                { color: myTheme.text2nd },
               ]}
             >
               On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}
@@ -240,8 +240,8 @@ const MyProductsScreen = () => {
         onConfirm={confirmDeletion}
         confirmText="Delete"
         cancelText="Cancel"
-        confirmButtonColor={selectedTheme.buttonDanger} // Custom confirm button color
-        cancelButtonColor={selectedTheme.buttonCancel} // Custom cancel button color
+        confirmButtonColor={myTheme.buttonDanger} // Custom confirm button color
+        cancelButtonColor={myTheme.buttonCancel} // Custom cancel button color
       />
     </View>
   );

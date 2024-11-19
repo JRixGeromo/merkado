@@ -53,7 +53,7 @@ const LoginScreen = () => {
   const acctStyle = acctStyles(themeType); // This is fine
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 
@@ -135,7 +135,7 @@ const LoginScreen = () => {
             style={[
               baseStyle.shadowedContainer,
               baseStyle.formContainer,
-              { backgroundColor: selectedTheme.cardBackground },
+              { backgroundColor: myTheme.cardBackground },
             ]}
           >
             <Image
@@ -166,15 +166,15 @@ const LoginScreen = () => {
             {loading ? (
               <ActivityIndicator
                 size="large"
-                color={selectedTheme.textPrimary}
+                color={myTheme.text1st}
                 style={baseStyle.loader}
               />
             ) : (
               <CustomButton
                 title={t('login')}
                 onPress={handleLogin}
-                color={selectedTheme.textLight}
-                backgroundColor={selectedTheme.buttonPrimary}
+                color={myTheme.textLight}
+                backgroundColor={myTheme.button1st}
                 borderRadius={2} // You can set this dynamically too
               />
             )}
@@ -195,7 +195,7 @@ const LoginScreen = () => {
               style={[
                 baseStyle.smallText,
                 baseStyle.marginAllM,
-                { color: selectedTheme.textSecondary },
+                { color: myTheme.text2nd },
               ]}
             >
               {t('orLoginWith')}
@@ -211,8 +211,8 @@ const LoginScreen = () => {
               <CustomButton
                 title={t('google')}
                 onPress={() => console.log('Google Login Pressed')}
-                color={selectedTheme.textLight}
-                backgroundColor={selectedTheme.googleButtonColor}
+                color={myTheme.textLight}
+                backgroundColor={myTheme.googleButtonColor}
                 borderRadius={2} // You can set this dynamically too
                 iconName={'Google'}
               />
@@ -220,8 +220,8 @@ const LoginScreen = () => {
               <CustomButton
                 title={t('facebook')}
                 onPress={() => console.log('Facebook Login Pressed')}
-                color={selectedTheme.buttonTextPrimary}
-                backgroundColor={selectedTheme.facebookButtonColor}
+                color={myTheme.buttonText1st}
+                backgroundColor={myTheme.facebookButtonColor}
                 borderRadius={2} // You can set this dynamically too
                 iconName={'Fb'}
               />
@@ -232,7 +232,7 @@ const LoginScreen = () => {
                 style={[
                   baseStyle.smallText,
                   baseStyle.marginAllM,
-                  { color: selectedTheme.textSecondary },
+                  { color: myTheme.text2nd },
                 ]}
               >
                 {t('noAccount')}{' '}

@@ -11,7 +11,7 @@ const EditProfileScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const { t } = useTranslation();
   const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const myTheme = appTheme[theme];
 
   const [firstName, setFirstName] = useState('John');
   const [lastName, setLastName] = useState('Doe');

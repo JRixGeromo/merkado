@@ -9,7 +9,7 @@ import { theme } from '../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
 
@@ -21,7 +21,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'center',
     },
     tabBarStyle: {
-      backgroundColor: selectedTheme.tabBarBackgroundColor,
+      backgroundColor: myTheme.tabBottomBGColor,
     },
 
     headerLogo: {
@@ -31,17 +31,17 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       marginRight: normalizeWidth(10),
     },
     tabBarLabelStyle: {
-      fontFamily: selectedTheme.tabFont,
+      fontFamily: myTheme.tabFont,
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textPrimary,
+      color: myTheme.text1st,
       marginTop: normalizeHeight(-4),
       marginBottom: normalizeHeight(4),
     },
 
     screenHeaderTitle: {
       fontSize: SHARED.fontL,
-      fontFamily: selectedTheme.tabFont,
-      color: selectedTheme.textPrimary,
+      fontFamily: myTheme.tabFont,
+      color: myTheme.text1st,
     },
     headerRightContainer: {
       flexDirection: 'row',
@@ -65,22 +65,22 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom: 0,
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      backgroundColor: selectedTheme.inputBackgroundColor,
+      backgroundColor: myTheme.inputBackgroundColor,
       borderRadius: 30,
-      borderWidth: selectedTheme.boxBorderWidth,
-      borderColor: selectedTheme.buttonBorderPrimary,
+      borderWidth: myTheme.boxBorderWidth,
+      borderColor: myTheme.buttonBorder1st,
       justifyContent: 'flex-start',
       alignItems: 'center',
     },
     searchInput: {
       flex: 1,
       height: normalizeHeight(40),
-      borderColor: selectedTheme.buttonBorderPrimary,
+      borderColor: myTheme.buttonBorder1st,
       borderWidth: 0,
       paddingLeft: 0,
       borderRadius: 20,
-      backgroundColor: selectedTheme.inputBackgroundColor,
-      color: selectedTheme.textPrimary,
+      backgroundColor: myTheme.inputBackgroundColor,
+      color: myTheme.text1st,
     },
     cardButton: {
       alignItems: 'center',
@@ -90,18 +90,18 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     input: {
       flex: 1,
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary,
+      color: myTheme.text1st,
     },
     contentBox: {
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       width: '100%',
       height: normalizeHeight(110),
       marginRight: normalizeWidth(10),
       paddingBottom: 0,
       marginBottom: normalizeHeight(10),
-      borderColor: selectedTheme.lineBorderColorLight,
-      borderWidth: selectedTheme.boxBorderWidthSecondary,
-      borderRadius: SHARED.borderRadiusSecondary,
+      borderColor: myTheme.lineBorderColorLight,
+      borderWidth: myTheme.boxBorderWidth2nd,
+      borderRadius: SHARED.borderRadius2nd,
       overflow: 'hidden',
     },
     logo: {
@@ -112,7 +112,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
 
     headerContainer: {
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(8),
@@ -136,8 +136,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
 
     newBadgeContainer: {
       position: 'absolute',
-      backgroundColor: selectedTheme.badgeBackgroundColor, // Only round the top-left corner, // Green background
-      borderTopRightRadius: SHARED.borderRadiusSecondary, // Only round the top-left corner
+      backgroundColor: myTheme.badgeBackgroundColor, // Only round the top-left corner, // Green background
+      borderTopRightRadius: SHARED.borderRadius2nd, // Only round the top-left corner
       borderBottomLeftRadius: 12, // Only round the bottom-right corner
       borderBottomRightRadius: 0, // Keep top-right square
       borderTopLeftRadius: 0, // Keep bottom-left square
@@ -162,49 +162,49 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     detailText: {
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
       flexWrap: 'wrap',
       textAlign: 'center',
     },
     sectionHeader: {
       fontSize: SHARED.fontL,
       fontWeight: 'bold',
-      color: selectedTheme.textSecondary,
+      color: myTheme.text2nd,
       marginBottom: normalizeHeight(10),
       marginLeft: normalizeWidth(10),
     },
-    productName: { fontSize: SHARED.fontSM, fontWeight: 'bold', color: selectedTheme.textSecondary },
-    productDescription: { fontSize: SHARED.fontS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
-    vendorInfo: { fontSize: SHARED.fontXxS, color: selectedTheme.textGray, marginVertical: normalizeHeight(2) },
+    productName: { fontSize: SHARED.fontSM, fontWeight: 'bold', color: myTheme.text2nd },
+    productDescription: { fontSize: SHARED.fontS, color: myTheme.textGray, marginVertical: normalizeHeight(2) },
+    vendorInfo: { fontSize: SHARED.fontXxS, color: myTheme.textGray, marginVertical: normalizeHeight(2) },
     headerTitle: { 
-      fontSize: SHARED.fontXxL, fontWeight: 'bold', color: selectedTheme.textSecondary, 
+      fontSize: SHARED.fontXxL, fontWeight: 'bold', color: myTheme.text2nd, 
     },
     priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(4),  marginBottom: normalizeHeight(4) },
     
     discountedPrice: {
       fontSize: SHARED.fontS,
       fontWeight: 'bold', 
-      color: selectedTheme.textSecondary,
+      color: myTheme.text2nd,
       marginRight: normalizeWidth(10),
     },
     originalPrice: {
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
       textDecorationLine: 'line-through',
       marginRight: normalizeWidth(10),
     },
     discountBadge: {
-      backgroundColor: selectedTheme.buttonDanger,
-      color: selectedTheme.textLight,
+      backgroundColor: myTheme.buttonDanger,
+      color: myTheme.textLight,
       paddingHorizontal: normalizeWidth(5),
       fontSize: SHARED.fontXxS,
-      borderRadius: SHARED.borderRadiusPrimary, 
+      borderRadius: SHARED.borderRadius1st, 
       fontWeight: 'bold',
     },
 
     description: {
       fontSize: SHARED.fontM,
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
       textAlign: 'center',
     },
     recentlyPostedList: {
@@ -216,7 +216,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingTop: normalizeHeight(10),
     },
     activeIconText: {
-      color: selectedTheme.textLight,
+      color: myTheme.textLight,
     },
 
 
@@ -239,7 +239,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // selectedReactionText: {
     //   fontSize: SHARED.fontXxL,
-    //   color: selectedTheme.textGray,
+    //   color: myTheme.textGray,
     // },
     // saleBanner: {
     //   position: 'absolute',
@@ -262,8 +262,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   paddingLeft: normalizeWidth(10),
     //   paddingRight: normalizeWidth(10),
     //   backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    //   borderWidth: selectedTheme.boxBorderWidth,
-    //   borderColor: selectedTheme.borderColorDark,
+    //   borderWidth: myTheme.boxBorderWidth,
+    //   borderColor: myTheme.borderColorDark,
     //   borderRadius: 5,
     //   zIndex: 2,
     // },
@@ -282,8 +282,8 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   paddingLeft: normalizeWidth(15),
     //   paddingRight: normalizeWidth(15),
     //   borderRadius: SHARED.borderRadius,
-    //   borderColor: selectedTheme.lineBorderColor,
-    //   borderWidth: selectedTheme.boxBorderWidthSecondary,
+    //   borderColor: myTheme.lineBorderColor,
+    //   borderWidth: myTheme.boxBorderWidth2nd,
     //   marginBottom: normalizeHeight(10),
     //   position: 'relative',
     // },
@@ -355,34 +355,34 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   paddingBottom: 0,
     //   paddingLeft: normalizeWidth(10),
     //   paddingRight: normalizeWidth(10),
-    //   backgroundColor: selectedTheme.inputBackgroundColor,
+    //   backgroundColor: myTheme.inputBackgroundColor,
     //   borderRadius: 30,
-    //   borderWidth: selectedTheme.boxBorderWidth,
-    //   borderColor: selectedTheme.buttonBorderPrimary,
+    //   borderWidth: myTheme.boxBorderWidth,
+    //   borderColor: myTheme.buttonBorder1st,
     //   justifyContent: 'flex-start',
     //   alignItems: 'center',
     // },
     // searchInput: {
     //   flex: 1,
     //   height: normalizeHeight(40),
-    //   borderColor: selectedTheme.buttonBorderPrimary,
+    //   borderColor: myTheme.buttonBorder1st,
     //   borderWidth: 0,
     //   paddingLeft: 0,
     //   borderRadius: 20,
-    //   backgroundColor: selectedTheme.inputBackgroundColor,
-    //   color: selectedTheme.textPrimary,
+    //   backgroundColor: myTheme.inputBackgroundColor,
+    //   color: myTheme.text1st,
     // },
 
     // contentBox: {
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   width: '100%',
     //   height: normalizeHeight(110),
     //   marginRight: normalizeWidth(10),
     //   paddingBottom: 0,
     //   marginBottom: normalizeHeight(10),
-    //   borderColor: selectedTheme.lineBorderColorLight,
-    //   borderWidth: selectedTheme.boxBorderWidthSecondary,
-    //   borderRadius: SHARED.borderRadiusSecondary,
+    //   borderColor: myTheme.lineBorderColorLight,
+    //   borderWidth: myTheme.boxBorderWidth2nd,
+    //   borderRadius: SHARED.borderRadius2nd,
     //   overflow: 'hidden',
     // },
     // contentImage: {
@@ -393,7 +393,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
 
     // /// Portrait
     // contentBoxPortrait: {
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   width: normalizeWidth(120),
     //   height: normalizeHeight(210),
     //   marginRight: normalizeWidth(10),
@@ -401,9 +401,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   marginBottom: 0,
     //   justifyContent: 'space-between',
     //   alignItems: 'center',
-    //   borderColor: selectedTheme.lineBorderColorLight,
-    //   borderWidth: selectedTheme.boxBorderWidthSecondary,
-    //   borderRadius: SHARED.borderRadiusSecondary,
+    //   borderColor: myTheme.lineBorderColorLight,
+    //   borderWidth: myTheme.boxBorderWidth2nd,
+    //   borderRadius: SHARED.borderRadius2nd,
     //   overflow: 'hidden',
     // },
     // cardImageWrapper: {
@@ -450,27 +450,27 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // productName: {
     //   fontSize: SHARED.fontS,
-    //   color: selectedTheme.textSecondary,
-    //   fontFamily: selectedTheme.bodyFont,
+    //   color: myTheme.text2nd,
+    //   fontFamily: myTheme.bodyFont,
     //   fontWeight: 'bold',
     //   marginTop: normalizeHeight(3),
     // },
     // productPrice: {
     //   fontSize: SHARED.fontM,
-    //   color: selectedTheme.textHighlight,
-    //   fontFamily: selectedTheme.bodyFont,
+    //   color: myTheme.textHighlight,
+    //   fontFamily: myTheme.bodyFont,
     //   fontWeight: 'bold',
     //   marginTop: 0,
     // },
     // productPriceL: {
     //   fontSize: SHARED.fontXxL,
-    //   color: selectedTheme.textHighlight,
-    //   fontFamily: selectedTheme.bodyFont,
+    //   color: myTheme.textHighlight,
+    //   fontFamily: myTheme.bodyFont,
     // },
     // storeLocation: {
     //   fontSize: SHARED.fontXS,
-    //   color: selectedTheme.textSecondary,
-    //   fontFamily: selectedTheme.bodyFontSlim,
+    //   color: myTheme.text2nd,
+    //   fontFamily: myTheme.bodyFontSlim,
     // },
     // cardButton: {
     //   alignItems: 'center',
@@ -479,13 +479,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // sectionTitle: {
     //   fontSize: SHARED.fontM,
-    //   color: selectedTheme.textSecondary,
-    //   fontFamily: selectedTheme.headingFont,
+    //   color: myTheme.text2nd,
+    //   fontFamily: myTheme.headingFont,
     // },
     // modalTitle: {
     //   fontSize: SHARED.fontL,
     //   fontWeight: 'bold',
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     //   marginBottom: 15,
     // },
     // listItem: {
@@ -493,7 +493,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   paddingBottom: normalizeHeight(10),
     //   paddingLeft: normalizeWidth(10),
     //   paddingRight: normalizeWidth(10),
-    //   borderBottomColor: selectedTheme.lineBorderColor,
+    //   borderBottomColor: myTheme.lineBorderColor,
     //   borderBottomWidth: 1,
     // },
     // searchButton: {
@@ -508,7 +508,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   alignItems: 'center',
     //   padding: normalizeHeight(2),
     //   borderRadius: SHARED.borderRadius,
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   marginBottom: normalizeHeight(15),
     //   borderWidth: 1,
     //   borderColor: '#ddd',
@@ -522,7 +522,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   paddingBottom: normalizeHeight(20),
     //   paddingLeft: normalizeWidth(20),
     //   paddingRight: normalizeWidth(20),
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     // },
     // dropdownOption: {
     //   paddingTop: normalizeHeight(10),
@@ -530,12 +530,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   paddingLeft: normalizeWidth(10),
     //   paddingRight: normalizeWidth(10),
     //   borderBottomWidth: 1,
-    //   borderColor: selectedTheme.textPrimary,
+    //   borderColor: myTheme.text1st,
     // },
     // button: {
     //   padding: SHARED.buttonPadding,
     //   borderRadius: SHARED.borderRadius,
-    //   backgroundColor: selectedTheme.textPrimary,
+    //   backgroundColor: myTheme.text1st,
     //   alignItems: 'center',
     //   justifyContent: 'center',
     //   ...Platform.select({
@@ -546,7 +546,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //       shadowRadius: SHARED.shadow.radius,
     //     },
     //     android: {
-    //       elevation: selectedTheme.shadowElevation,
+    //       elevation: myTheme.shadowElevation,
     //     },
     //   }),
     //   width: Platform.select({
@@ -557,10 +557,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // input: {
     //   flex: 1,
     //   fontSize: SHARED.fontL,
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     // },
     // modalOverlay: {
-    //   backgroundColor: selectedTheme.modalOverlay,
+    //   backgroundColor: myTheme.modalOverlay,
     // },
     // overlay: {
     //   flex: 1,
@@ -570,11 +570,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // modalText: {
     //   fontSize: SHARED.fontL,
-    //   color: selectedTheme.textPrimary,
-    //   fontFamily: selectedTheme.bodyFont,
+    //   color: myTheme.text1st,
+    //   fontFamily: myTheme.bodyFont,
     // },
     // dropdownMenu: {
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   borderRadius: 10,
     //   paddingTop: normalizeHeight(10),
     //   paddingBottom: normalizeHeight(10),
@@ -592,11 +592,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   alignItems: 'center',
     //   paddingVertical: normalizeHeight(10),
     //   borderBottomWidth: 1,
-    //   borderColor: selectedTheme.lineBorderColor,
+    //   borderColor: myTheme.lineBorderColor,
     // },
     // dropdownText: {
-    //   color: selectedTheme.textSecondary,
-    //   fontFamily: selectedTheme.bodyFont,
+    //   color: myTheme.text2nd,
+    //   fontFamily: myTheme.bodyFont,
     //   marginLeft: normalizeWidth(10),
     // },
     // logo: {
@@ -607,14 +607,14 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // headerTitle: {
     //   fontSize: SHARED.fontXxL,
-    //   fontFamily: selectedTheme.headingFont,
-    //   color: selectedTheme.textPrimary,
+    //   fontFamily: myTheme.headingFont,
+    //   color: myTheme.text1st,
     //   marginBottom: normalizeHeight(20),
     // },
     // linkText: {
     //   fontSize: SHARED.fontM,
-    //   fontFamily: selectedTheme.bodyFont,
-    //   color: selectedTheme.textLink,
+    //   fontFamily: myTheme.bodyFont,
+    //   color: myTheme.textLink,
     //   marginTop: normalizeHeight(10),
     //   marginBottom: normalizeHeight(10),
     //   marginLeft: normalizeWidth(10),
@@ -626,18 +626,18 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   width: '48%',
     // },
     // googleButton: {
-    //   backgroundColor: selectedTheme.googleButtonColor,
+    //   backgroundColor: myTheme.googleButtonColor,
     // },
     // facebookButton: {
-    //   backgroundColor: selectedTheme.facebookButtonColor,
+    //   backgroundColor: myTheme.facebookButtonColor,
     // },
     // socialButtonText: {
-    //   color: selectedTheme.buttonTextPrimary,
+    //   color: myTheme.buttonText1st,
     // },
 
     // loader: {
     //   marginTop: normalizeHeight(30),
-    //   color: selectedTheme.loader,
+    //   color: myTheme.loader,
     // },
     // headerLogo: {
     //   width: normalizeWidth(30),
@@ -646,19 +646,19 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   marginRight: normalizeWidth(10),
     // },
     // tabBarLabelStyle: {
-    //   fontFamily: selectedTheme.tabFont,
+    //   fontFamily: myTheme.tabFont,
     //   fontSize: SHARED.fontXS,
-    //   color: selectedTheme.textSecondary,
+    //   color: myTheme.text2nd,
     //   marginTop: normalizeHeight(-4),
     //   marginBottom: normalizeHeight(4),
     // },
     // screenHeaderTitle: {
     //   fontSize: SHARED.fontL,
-    //   fontFamily: selectedTheme.tabFont,
-    //   color: selectedTheme.textSecondary,
+    //   fontFamily: myTheme.tabFont,
+    //   color: myTheme.text2nd,
     // },
     // tabBarStyle: {
-    //   backgroundColor: selectedTheme.tabBarBackgroundColor,
+    //   backgroundColor: myTheme.tabBottomBGColor,
     // },
     // headerContainer: {
     //   flexDirection: 'row',
@@ -674,16 +674,16 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   marginRight: normalizeWidth(20),
     // },
     // chatButton: {
-    //   backgroundColor: selectedTheme.buttonDark,
+    //   backgroundColor: myTheme.buttonDark,
     // },
     // cartButton: {
-    //   backgroundColor: selectedTheme.buttonPrimary,
+    //   backgroundColor: myTheme.button1st,
     // },
     // commentButton: {
-    //   backgroundColor: selectedTheme.buttonInfo,
+    //   backgroundColor: myTheme.buttonInfo,
     // },
     // followButton: {
-    //   backgroundColor: selectedTheme.buttonInfo,
+    //   backgroundColor: myTheme.buttonInfo,
     // },
     // cardHeader: {
     //   flexDirection: 'row',
@@ -692,11 +692,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // cardHeaderTitle: {
     //   fontSize: SHARED.fontXL,
-    //   fontFamily: selectedTheme.headingFont,
-    //   color: selectedTheme.textPrimary,
+    //   fontFamily: myTheme.headingFont,
+    //   color: myTheme.text1st,
     // },
     // sectionButtonText: {
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     //   fontSize: SHARED.fontXS,
     // },
     // sectionButtonContainer: {
@@ -711,28 +711,28 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // cardText: {
     //   fontSize: SHARED.fontM,
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     //   marginTop: normalizeHeight(5),
     //   marginLeft: normalizeWidth(10),
     // },
     // languageContainer: {
     //   marginTop: normalizeHeight(10),
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     // },
     // splashContainer: {
     //   flex: 1,
     //   justifyContent: 'center',
     //   alignItems: 'center',
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     // },
     // splashText: {
     //   fontSize: SHARED.fontXxL,
     //   fontWeight: 'bold',
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     //   marginTop: normalizeHeight(10),
     // },
     // slide: {
-    //   borderRadius: SHARED.borderRadiusSecondary,
+    //   borderRadius: SHARED.borderRadius2nd,
     //   overflow: 'hidden',
     // },
     // reactionBar: {
@@ -745,11 +745,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   height: normalizeHeight(40),
     //   borderRadius: 25,
     //   borderWidth: 2,
-    //   borderColor: selectedTheme.textPrimary,
+    //   borderColor: myTheme.text1st,
     // },
     // avatarBar: {
     //   height: normalizeHeight(48),
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   flexDirection: 'row',
     // },
     // chatSendButton: {
@@ -757,7 +757,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // chatMessagesContainer: {
     //   position: 'relative',
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   paddingTop: normalizeHeight(8),
     //   paddingBottom: normalizeHeight(8),
     // },
@@ -832,7 +832,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   marginBottom: 0,
     // },
     // slideModalContent: {
-    //   backgroundColor: selectedTheme.cardBackground,
+    //   backgroundColor: myTheme.cardBackground,
     //   padding: normalizeHeight(20),
     //   borderTopLeftRadius: normalizeHeight(15),
     //   borderTopRightRadius: normalizeHeight(15),
@@ -1054,7 +1054,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // storeName: {
     //   fontSize: 24,
     //   fontWeight: 'bold',
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     // },
     // metricsContainer: {
     //   flexDirection: 'row',
@@ -1063,7 +1063,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // metricLabel: {
     //   fontSize: 14,
-    //   color: selectedTheme.textBlur,
+    //   color: myTheme.textBlur,
     //   marginTop: 5,
     // },
     // productListContainer: {
@@ -1081,7 +1081,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // ratingText: {
     //   fontSize: 14,
-    //   color: selectedTheme.textBlur,
+    //   color: myTheme.textBlur,
     //   marginLeft: 5,
     // },
     // reactionContainer: {
@@ -1095,7 +1095,7 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // },
     // reactionCount: {
     //   fontSize: 14,
-    //   color: selectedTheme.textPrimary,
+    //   color: myTheme.text1st,
     //   marginLeft: 5,
     // },
 

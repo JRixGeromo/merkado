@@ -25,7 +25,7 @@ const AccountScreen = () => {
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const { t, i18n } = useTranslation();
 
@@ -74,7 +74,7 @@ const AccountScreen = () => {
               <Icon
                 name="person"
                 size={24}
-                color={selectedTheme.iconColorPrimary}
+                color={myTheme.iconColor1st}
               />
               <Text style={acctStyle.cardHeaderTitle}>
                 {t('accountInformation')}
@@ -94,7 +94,7 @@ const AccountScreen = () => {
               <Icon
                 name="card"
                 size={24}
-                color={selectedTheme.iconColorPrimary}
+                color={myTheme.iconColor1st}
               />
               <Text style={acctStyle.cardHeaderTitle}>
                 {t('paymentMethod')}
@@ -115,7 +115,7 @@ const AccountScreen = () => {
               <Icon
                 name="settings-outline"
                 size={24}
-                color={selectedTheme.iconColorPrimary}
+                color={myTheme.iconColor1st}
               />
               <Text style={acctStyle.cardHeaderTitle}>{t('preferences')}</Text>
             </View>
@@ -134,7 +134,7 @@ const AccountScreen = () => {
                     : 'sunny'
                 }
                 size={24}
-                color={selectedTheme.iconColorPrimary}
+                color={myTheme.iconColor1st}
               />
             </View>
 
@@ -156,7 +156,7 @@ const AccountScreen = () => {
                   options={languageOptions}
                   placeholder={t('Select Language')} // Just use "Select Language" here
                   //iconName="Globe"
-                  textColor={selectedTheme.textPrimary}
+                  textColor={myTheme.text1st}
                   customBackground="transparent"
                   showIcon={false}
                   //joinLabelVaue={true} // Join the label and value in the dropdown text
@@ -164,7 +164,7 @@ const AccountScreen = () => {
                 <Icon
                   name="globe"
                   size={24}
-                  color={selectedTheme.iconColorPrimary}
+                  color={myTheme.iconColor1st}
                 />
               </View>
             </View>

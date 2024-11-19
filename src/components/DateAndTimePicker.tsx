@@ -65,18 +65,18 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const { t } = useTranslation(); // Initialize translation
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
     return {
-      iconColor: iconColor || selectedTheme.iconColorPrimary,
-      textColor: textColor || selectedTheme.textSecondary,
+      iconColor: iconColor || myTheme.iconColor1st,
+      textColor: textColor || myTheme.text2nd,
       placeholderColor:
-        placeholderTextColor || selectedTheme.textPlaceHolderInfo,
-      inputBackgroundColor: selectedTheme.inputBackgroundColor,
+        placeholderTextColor || myTheme.textPHolderInfo,
+      inputBackgroundColor: myTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor]);
 
@@ -139,7 +139,7 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
           >
             <View
               style={{
-                backgroundColor: selectedTheme.cardBackground,
+                backgroundColor: myTheme.cardBackground,
                 borderRadius: 10,
                 padding: 20,
                 width: '80%', // Adjust the width as needed
@@ -151,25 +151,25 @@ const DateAndTimePicker: React.FC<DateAndTimePickerProps> = ({
                   [selectedDate?.toISOString().split('T')[0] || '']: {
                     selected: true,
                     marked: true,
-                    selectedColor: selectedTheme.textPrimary, // Use theme color
+                    selectedColor: myTheme.text1st, // Use theme color
                   },
                 }}
                 theme={{
-                  todayTextColor: selectedTheme.textPrimary, // Use primary color from theme
-                  selectedDayBackgroundColor: selectedTheme.textPrimary, // Use primary color from theme
-                  dayTextColor: selectedTheme.textPrimary, // Use text color from theme
-                  textDisabledColor: selectedTheme.textDisabled, // Disabled text color
-                  monthTextColor: selectedTheme.textSecondary, // Month text color
-                  arrowColor: selectedTheme.iconColorPrimary, // Use primary color from theme
-                  calendarBackground: selectedTheme.cardBackground, // Set background color for the calendar from the theme
+                  todayTextColor: myTheme.text1st, // Use primary color from theme
+                  selectedDayBackgroundColor: myTheme.text1st, // Use primary color from theme
+                  dayTextColor: myTheme.text1st, // Use text color from theme
+                  textDisabledColor: myTheme.textDisabled, // Disabled text color
+                  monthTextColor: myTheme.text2nd, // Month text color
+                  arrowColor: myTheme.iconColor1st, // Use primary color from theme
+                  calendarBackground: myTheme.cardBackground, // Set background color for the calendar from the theme
                 }}
               />
               <CustomButton
                 title={t('Close')}
                 onPress={() => setShowCalendar(false)} // Close calendar
-                backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
+                backgroundColor={myTheme.buttonClose} // Use theme for close button color
                 borderRadius={2} // You can set this dynamically too
-                color={selectedTheme.buttonTextPrimary}
+                color={myTheme.buttonText1st}
               />
             </View>
           </View>

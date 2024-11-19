@@ -18,8 +18,8 @@ const halfScreenWidth = screenWidth * 0.40;
 export const SHARED = {
   halfScreen: halfScreenWidth, // Shared border radius
   borderRadius: 4, // Shared border radius
-  borderRadiusPrimary: 6,
-  borderRadiusSecondary: 8,
+  borderRadius1st: 6,
+  borderRadius2nd: 8,
   borderRadiusRound: 15,
   padding: normalizeWidth(10), // Shared padding
   buttonPadding: normalizeWidth(15), // Button padding
@@ -45,20 +45,20 @@ export const SHARED = {
 
 // Dynamically generated styles based on theme
 export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
     //////////////
     // BASE STYLES
     container: {
       flex: 1,
-      //backgroundColor: selectedTheme.fullBackgroundColor, // Theme-based background
+      //backgroundColor: myTheme.fullBackgroundColor, // Theme-based background
       borderColor: 'transparent',
       borderWidth: 0,
       borderRadius: 0,
     },
     shadowedContainer: {
-      borderRadius: SHARED.borderRadiusSecondary,
+      borderRadius: SHARED.borderRadius2nd,
       ...Platform.select({
         ios: {
           shadowColor: SHARED.shadow.color,
@@ -67,40 +67,50 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
           shadowRadius: SHARED.shadow.radius,
         },
         android: {
-          elevation: selectedTheme.shadowElevation,
+          elevation: myTheme.shadowElevation,
         },
       }),
     },
 
+    // Aligns all items to the start of the main axis and centers them on the cross axis.
     alignAllItems: {
-      justifyContent: 'flex-start', // Align content to the top of the container
-      alignItems: 'center', // Center content horizontally
+      justifyContent: 'flex-start', // Aligns children to the start of the container's main axis (top for column, left for row).
+      alignItems: 'center', // Centers children along the cross axis (horizontal in column layout).
     },
+
+    // Centers all children both vertically and horizontally in the container.
     innerContainerCenter: {
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: 'center', // Centers children along the main axis.
+      alignItems: 'center', // Centers children along the cross axis, creating a fully centered layout.
     },
+
+    // Aligns children to the center of the cross axis (horizontal alignment for vertical layouts).
     innerContainerLeft: {
-      alignItems: 'center',
+      alignItems: 'center', // Centers children along the cross axis (vertical alignment in row layout).
+      // Note: No `justifyContent` means it uses the default (flex-start) for the main axis.
     },
+
+    // Styles a modal container to take up the full screen and center its content.
     modalContainer: {
-      flex: 1,
-      justifyContent: 'center',
+      flex: 1, // Makes the container fill the entire screen (or available space).
+      justifyContent: 'center', // Vertically centers the modal in the screen.
+      // No `alignItems` ensures horizontal alignment depends on the modal's content or parent.
     },
+    
     formContainer: {
       width: '100%',
       padding: SHARED.padding,
-      backgroundColor: selectedTheme.fullBackgroundColor,
-      borderWidth: selectedTheme.boxBorderWidthSecondary,
-      borderColor: selectedTheme.lineBorderColor,
+      backgroundColor: myTheme.fullBackgroundColor,
+      borderWidth: myTheme.boxBorderWidth2nd,
+      borderColor: myTheme.lineBorderColor,
       borderRadius: SHARED.borderRadius,
       alignItems: 'center', // Center content horizontally if needed
       justifyContent: 'flex-start', // Start aligning content at the top
     },
-    rowsInside: {
-      width: '100%',
-      flexDirection: 'column',
-    },
+    // rowsInside: {
+    //   width: '100%',
+    //   flexDirection: 'column',
+    // },
     columnsInsideFlex: {
       flexDirection: 'row',
     },
@@ -174,7 +184,7 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     divider: {
       width: '100%', // Full width for the divider
       borderBottomWidth: 0.5, // Specify the width of the bottom border
-      borderColor: selectedTheme.lineBorderColor, // Color of the divider
+      borderColor: myTheme.lineBorderColor, // Color of the divider
     },
 
     rlPaddingS: {
@@ -296,39 +306,45 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     withBorder: {
       borderWidth: 1,
-      borderColor: selectedTheme.borderColorPrimary, // Theme-based border color
+      borderColor: myTheme.borderColor1st, // Theme-based border color
     },
 
+    
     XxSmallText: {
-      fontFamily: selectedTheme.bodyFont,
+      fontFamily: myTheme.bodyFont,
       fontSize: SHARED.fontXxS,
     },
 
     xSmallText: {
-      fontFamily: selectedTheme.bodyFont,
+      fontFamily: myTheme.bodyFont,
       fontSize: SHARED.fontXS,
     },
     smallText: {
-      fontFamily: selectedTheme.bodyFont,
+      fontFamily: myTheme.bodyFont,
       fontSize: SHARED.fontS,
     },
     mediumText: {
-      fontFamily: selectedTheme.bodyFont,
+      fontFamily: myTheme.bodyFont,
       fontSize: SHARED.fontM,
     },
 
+    slargeText: {
+      fontFamily: myTheme.headingFont,
+      fontSize: SHARED.fontLM,
+    },
+
     largeText: {
-      fontFamily: selectedTheme.headingFont,
+      fontFamily: myTheme.headingFont,
       fontSize: SHARED.fontL,
     },
 
     xLargeText: {
-      fontFamily: selectedTheme.headingFont,
+      fontFamily: myTheme.headingFont,
       fontSize: SHARED.fontXL,
     },
 
     XxLargeText: {
-      fontFamily: selectedTheme.headingFont,
+      fontFamily: myTheme.headingFont,
       fontSize: SHARED.fontXxL,
     },
 
@@ -340,7 +356,7 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     loader: {
       marginTop: normalizeHeight(30),
-      color: selectedTheme.loader,
+      color: myTheme.loader,
     },
 
   });

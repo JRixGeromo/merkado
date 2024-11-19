@@ -58,7 +58,7 @@ const CartScreen: React.FC = () => {
   const cartStyle = cartStyles(themeType);
   const commonStyle = commonStyles(themeType);
   const baseStyle = baseStyles(themeType);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   const [cart, setCart] = useState<CartItem[]>(cartItems);
@@ -92,7 +92,7 @@ const CartScreen: React.FC = () => {
       <Image source={item.image} style={cartStyle.cartItemImage} />
       <View style={baseStyle.lMarginL}>
         <Text
-          style={[baseStyle.mediumText, { color: selectedTheme.textPrimary }]}
+          style={[baseStyle.mediumText, { color: myTheme.text1st }]}
         >
           {item.name}
         </Text>
@@ -100,7 +100,7 @@ const CartScreen: React.FC = () => {
           style={[
             baseStyle.largeText,
             baseStyle.verticalSpacerXS,
-            { color: selectedTheme.textSecondary },
+            { color: myTheme.text2nd },
           ]}
         >
           ${item.price}
@@ -117,7 +117,7 @@ const CartScreen: React.FC = () => {
               baseStyle.largeText,
               baseStyle.lPaddingS,
               baseStyle.rPaddingS,
-              { color: selectedTheme.textSecondary },
+              { color: myTheme.text2nd },
             ]}
           >
             {item.quantity}
@@ -138,7 +138,7 @@ const CartScreen: React.FC = () => {
       style={[
         baseStyle.container,
         baseStyle.paddingAllS,
-        { backgroundColor: selectedTheme.fullBackgroundColor },
+        { backgroundColor: myTheme.fullBackgroundColor },
       ]}
     >
       <FlatList
@@ -151,12 +151,12 @@ const CartScreen: React.FC = () => {
         style={[baseStyle.columnsInside, { justifyContent: 'space-between' }]}
       >
         <Text
-          style={[baseStyle.xLargeText, { color: selectedTheme.textPrimary }]}
+          style={[baseStyle.xLargeText, { color: myTheme.text1st }]}
         >
           Total:
         </Text>
         <Text
-          style={[baseStyle.xLargeText, { color: selectedTheme.textPrimary }]}
+          style={[baseStyle.xLargeText, { color: myTheme.text1st }]}
         >
           ${calculateTotal()}
         </Text>
@@ -164,8 +164,8 @@ const CartScreen: React.FC = () => {
       <CustomButton
         title={t('Proceed to Checkout')}
         onPress={handleProceedToCheckout}
-        color={selectedTheme.buttonTextPrimary}
-        backgroundColor={selectedTheme.borderColorPrimary}
+        color={myTheme.buttonText1st}
+        backgroundColor={myTheme.borderColor1st}
         borderRadius={2} // You can set this dynamically too
         style={{
           marginLeft: 0,

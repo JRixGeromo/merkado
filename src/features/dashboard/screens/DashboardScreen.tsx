@@ -18,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
+import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -57,7 +58,7 @@ const VendorDashboard = () => {
   const dashStyle = dashStyles(themeType);
   const commonStyle = commonStyles(themeType);
   const baseStyle = baseStyles(themeType);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -96,91 +97,98 @@ const VendorDashboard = () => {
   ]);
 
   return (
+    <GradientBG>
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View
         style={[
           baseStyle.container,
           baseStyle.rlPaddingS,
-          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
         ]}
       >
         {/* Dashboard Metrics */}
-        <View style={[baseStyle.verticalSpacerM]}>
-          <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
-            <View style={[dashStyle.metricBox]}>
-              <Text style={dashStyle.largeText}>{t('Total Sales')}</Text>
-              <Text style={dashStyle.metricValue}>
-                ₱{dashboardMetrics.totalSales}
-              </Text>
+        
+          <View style={[baseStyle.columnsInside, baseStyle.tMarginS]}>
+            <View style={[baseStyle.cols_2, dashStyle.metricBox]}>
+              <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
+                <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>{t('Total Sales')}</Text>
+                <Text style={[baseStyle.mediumText, {color: myTheme.text2nd}]}>
+                  ₱{dashboardMetrics.totalSales}
+                </Text>
+              </View>
             </View>
-            <View style={[dashStyle.metricBox]}>
-              <Text style={dashStyle.largeText}>{t('Total Orders')}</Text>
-              <Text style={dashStyle.metricValue}>
+            <View style={[baseStyle.cols_2, dashStyle.metricBox]}>
+              <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
+              <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>{t('Total Orders')}</Text>
+              <Text style={[baseStyle.mediumText, {color: myTheme.text2nd}]}>
                 {dashboardMetrics.totalOrders}
               </Text>
             </View>
+            </View>
           </View>
           <View style={[baseStyle.columnsInside, baseStyle.verticalSpacerS]}>
-            <View style={[dashStyle.metricBox]}>
-              <Text style={dashStyle.largeText}>{t('Avg. Rating')}</Text>
-              <Text style={dashStyle.metricValue}>
+            <View style={[baseStyle.cols_2, dashStyle.metricBox]}>
+            <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
+              <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>{t('Avg. Rating')}</Text>
+              <Text style={[baseStyle.mediumText, {color: myTheme.text2nd}]}>
                 {dashboardMetrics.avgRating} ★
               </Text>
+              </View>
             </View>
-            <View style={[dashStyle.metricBox]}>
-              <Text style={dashStyle.largeText}>{t('Followers')}</Text>
-              <Text style={dashStyle.metricValue}>
+            <View style={[baseStyle.cols_2, dashStyle.metricBox]}>
+            <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
+              <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>{t('Followers')}</Text>
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>
                 {dashboardMetrics.followers}
               </Text>
+              </View>
             </View>
           </View>
-        </View>
+        
 
         {/* Reaction Metrics */}
-        <View style={{ marginTop: 20 }}>
-          {/* <Text style={baseStyle.largeText}>{t('Reactions')}</Text> */}
-          <View style={[baseStyle.columnsInside, { marginTop: 10 }]}>
+          <Text style={baseStyle.slargeText}>{t('Reactions')}</Text>
+          <View style={[baseStyle.columnsInside]}>
             <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
-              <IconLib.Heart size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={dashStyle.reactionValue}>
+            <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
+              <IconLib.Heart size={24} color={myTheme.iconColor2nd} />
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>
                 {reactionMetrics.hearts}
               </Text>
-              <Text style={dashStyle.reactionLabel}>{t('Hearts')}</Text>
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>{t('Hearts')}</Text>
+            </View>
             </View>
             <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
-              <IconLib.Share size={24} color={selectedTheme.iconColorPrimary} />
-              <Text style={dashStyle.reactionValue}>
+            <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
+              <IconLib.Share size={24} color={myTheme.iconColor2nd} />
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>
                 {reactionMetrics.shares}
               </Text>
-              <Text style={dashStyle.reactionLabel}>{t('Shares')}</Text>
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>{t('Shares')}</Text>
+            </View>
             </View>
             <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
+            <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
               <IconLib.Chat_O
                 size={24}
-                color={selectedTheme.iconColorPrimary}
+                color={myTheme.iconColor2nd}
               />
-              <Text style={dashStyle.reactionValue}>
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>
                 {reactionMetrics.comments}
               </Text>
-              <Text style={dashStyle.reactionLabel}>{t('Comments')}</Text>
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>{t('Comments')}</Text>
+            </View>
             </View>
           </View>
-        </View>
 
         {/* Recent Orders */}
         <View style={{ marginTop: 30 }}>
-          <Text style={baseStyle.largeText}>{t('Recent Orders')}</Text>
+          <Text style={baseStyle.slargeText}>{t('Recent Orders')}</Text>
           {recentOrders.map(order => (
-            <View key={order.id} style={dashStyle.orderBox}>
-              <Text style={dashStyle.orderText}>
+            <View key={order.id} style={[baseStyle.columnsInside, dashStyle.orderBox]}>
+              <Text style={[baseStyle.cols_2, {color: myTheme.text2nd}]}>
                 {order.customerName} - ₱{order.amount}
               </Text>
-              <Text
-                style={[
-                  dashStyle.orderStatus,
-                  { color: selectedTheme.textAccent },
-                ]}
-              >
+              <Text style={[baseStyle.cols_2, {textAlign: 'right', color: myTheme.text2nd}]}>
                 {order.status}
               </Text>
             </View>
@@ -189,26 +197,18 @@ const VendorDashboard = () => {
 
         {/* Customer Feedback */}
         <View style={{ marginTop: 30 }}>
-          <Text style={baseStyle.largeText}>{t('Customer Feedback')}</Text>
+          <Text style={baseStyle.slargeText}>{t('Customer Feedback')}</Text>
           {recentFeedback.map(feedback => (
             <View key={feedback.id} style={dashStyle.feedbackBox}>
-              <Text style={dashStyle.feedbackUser}>{feedback.user}</Text>
-              <Text style={dashStyle.feedbackContent}>{feedback.content}</Text>
-              <Text style={dashStyle.feedbackRating}>{feedback.rating} ★</Text>
+              <Text style={[baseStyle.smallText, {fontWeight: 'bold', color: myTheme.text2nd}]}>{feedback.user}</Text>
+              <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>{feedback.content}</Text>
+              <Text style={[baseStyle.xSmallText, {color: myTheme.text2nd}]}>{feedback.rating} ★</Text>
             </View>
           ))}
         </View>
-
-        {/* Quick Access to Live Show */}
-        {/* <TouchableOpacity
-          style={[baseStyle.liveShowButton, { backgroundColor: selectedTheme.buttonPrimary }]}
-          onPress={() => navigation.navigate('LiveShowScreen')}
-        >
-          <IconLib.Video size={20} color={selectedTheme.textLight} />
-          <Text style={dashStyle.liveShowText}>{t('Go Live')}</Text>
-        </TouchableOpacity> */}
       </View>
     </ScrollView>
+    </GradientBG>
   );
 };
 

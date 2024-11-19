@@ -11,7 +11,7 @@ import { theme } from '../../../styles/theme'; // Make sure this path is correct
 export const myProductStyles = (
   currentTheme: 'light' | 'dark' | 'femme',
 ) => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({});
 };

@@ -9,19 +9,19 @@ import { theme } from '../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
     splashContainer: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
     },
     splashText: {
       fontSize: SHARED.fontXxL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary,
+      color: myTheme.text1st,
       marginTop: normalizeHeight(10),
     },
     commentFormContainer: {
@@ -60,7 +60,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
 
     // Portrait
     contentBoxPortrait: {
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       width: normalizeWidth(120),
       height: normalizeHeight(210),
       marginRight: normalizeWidth(10),
@@ -68,9 +68,9 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       marginBottom: 0,
       justifyContent: 'space-between',
       alignItems: 'center',
-      borderColor: selectedTheme.lineBorderColorLight,
-      borderWidth: selectedTheme.boxBorderWidthSecondary,
-      borderRadius: SHARED.borderRadiusSecondary,
+      borderColor: myTheme.lineBorderColorLight,
+      borderWidth: myTheme.boxBorderWidth2nd,
+      borderRadius: SHARED.borderRadius2nd,
       overflow: 'hidden',
     },
     cardImageWrapper: {
@@ -111,27 +111,27 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     productName: {
       fontSize: SHARED.fontS,
-      color: selectedTheme.textSecondary,
-      fontFamily: selectedTheme.bodyFont,
+      color: myTheme.text2nd,
+      fontFamily: myTheme.bodyFont,
       fontWeight: 'bold',
       marginTop: normalizeHeight(3),
     },
     productPrice: {
       fontSize: SHARED.fontM,
-      color: selectedTheme.textHighlight,
-      fontFamily: selectedTheme.bodyFont,
+      color: myTheme.textHighlight,
+      fontFamily: myTheme.bodyFont,
       fontWeight: 'bold',
       marginTop: 0,
     },
     storeLocation: {
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textSecondary,
-      fontFamily: selectedTheme.bodyFontSlim,
+      color: myTheme.text2nd,
+      fontFamily: myTheme.bodyFontSlim,
     },
     modalTitle: {
       fontSize: SHARED.fontL,
       fontWeight: 'bold',
-      color: selectedTheme.textPrimary,
+      color: myTheme.text1st,
       marginBottom: 15,
     },
     inputContainer: {
@@ -139,7 +139,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'center',
       padding: normalizeHeight(2),
       borderRadius: SHARED.borderRadius,
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       borderWidth: 1,
       borderColor: '#ddd',
       width: '80%',
@@ -152,7 +152,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom: normalizeHeight(20),
       paddingLeft: normalizeWidth(20),
       paddingRight: normalizeWidth(20),
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
     },
     dropdownOption: {
       paddingTop: normalizeHeight(10),
@@ -160,10 +160,10 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.textPrimary,
+      borderColor: myTheme.text1st,
     },
     modalOverlay: {
-      backgroundColor: selectedTheme.modalOverlay,
+      backgroundColor: myTheme.modalOverlay,
     },
     overlay: {
       flex: 1,
@@ -173,11 +173,11 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     modalText: {
       fontSize: SHARED.fontL,
-      color: selectedTheme.textPrimary,
-      fontFamily: selectedTheme.bodyFont,
+      color: myTheme.text1st,
+      fontFamily: myTheme.bodyFont,
     },
     dropdownMenu: {
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       borderRadius: 10,
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(10),
@@ -195,11 +195,11 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'center',
       paddingVertical: normalizeHeight(10),
       borderBottomWidth: 1,
-      borderColor: selectedTheme.lineBorderColor,
+      borderColor: myTheme.lineBorderColor,
     },
     dropdownText: {
-      color: selectedTheme.textSecondary,
-      fontFamily: selectedTheme.bodyFont,
+      color: myTheme.text2nd,
+      fontFamily: myTheme.bodyFont,
       marginLeft: normalizeWidth(10),
     },
     slideModal: {
@@ -209,7 +209,7 @@ export const compStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       marginBottom: 0,
     },
     slideModalContent: {
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       padding: normalizeHeight(20),
       borderTopLeftRadius: normalizeHeight(15),
       borderTopRightRadius: normalizeHeight(15),

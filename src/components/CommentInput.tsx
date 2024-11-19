@@ -40,7 +40,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const handleSendComment = () => {
     if (comment.trim()) {
@@ -60,19 +60,19 @@ const CommentInput: React.FC<CommentInputProps> = ({
       style={[
         baseStyle.rowsInside,
         compStyle.commentFormContainer,
-        { backgroundColor: backgroundColor || selectedTheme.cardBackground }, // Use backgroundColor prop if provided
+        { backgroundColor: backgroundColor || myTheme.cardBackground }, // Use backgroundColor prop if provided
       ]}
     >
       <View
         style={[
           compStyle.inputWrapper,
-          { backgroundColor: selectedTheme.inputBackgroundColor },
+          { backgroundColor: myTheme.inputBackgroundColor },
         ]}
       >
         <TextInput
-          style={[compStyle.commentInput, { color: selectedTheme.textPrimary }]}
+          style={[compStyle.commentInput, { color: myTheme.text1st }]}
           placeholder={placeholder}
-          placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+          placeholderTextColor={myTheme.textPHolderInfo}
           value={comment}
           onChangeText={setComment}
           multiline={true}
@@ -82,7 +82,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
           style={compStyle.sendButton}
           onPress={handleSendComment}
         >
-          <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
+          <IconLib.Send_O size={24} color={myTheme.iconColor1st} />
         </TouchableOpacity>
       </View>
 
@@ -98,7 +98,7 @@ const CommentInput: React.FC<CommentInputProps> = ({
             onPress={() => setShowReactionBar(true)}
             style={compStyle.thumbsUpButton}
           >
-            <IconLib.ThumbsUp_O size={24} color={selectedTheme.iconColorGray} />
+            <IconLib.ThumbsUp_O size={24} color={myTheme.iconColorGray} />
           </TouchableOpacity>
         )}
 

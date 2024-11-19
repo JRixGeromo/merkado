@@ -59,11 +59,11 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   onPress,
 }) => {
   const theme = useAppSelector(state => state.theme.theme); // Get current theme from Redux
-  const selectedTheme = appTheme[theme];
+  const myTheme = appTheme[theme];
 
-  const buttonBackgroundColor = backgroundColor || selectedTheme.buttonPrimary;
-  const buttonTextColor = color || selectedTheme.textPrimary;
-  const buttonBorderColor = borderColor || selectedTheme.buttonBorderPrimary;
+  const buttonBackgroundColor = backgroundColor || myTheme.button1st;
+  const buttonTextColor = color || myTheme.text1st;
+  const buttonBorderColor = borderColor || myTheme.buttonBorder1st;
   const iconFinalColor = iconColor || buttonTextColor;
 
   return (

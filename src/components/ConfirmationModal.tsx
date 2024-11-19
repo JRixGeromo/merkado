@@ -31,7 +31,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   cancelButtonColor,
 }) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType);
 
@@ -46,7 +46,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       <View
         style={[
           compStyle.confimrationModalContent,
-          { backgroundColor: selectedTheme.cardBackground },
+          { backgroundColor: myTheme.cardBackground },
         ]}
       >
         {/* Optional Title */}
@@ -54,7 +54,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <Text
             style={[
               compStyle.confimrationModalTitle,
-              { color: selectedTheme.textPrimary },
+              { color: myTheme.text1st },
             ]}
           >
             {title}
@@ -65,7 +65,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <Text
           style={[
             compStyle.confimrationModalMessage,
-            { color: selectedTheme.textSecondary },
+            { color: myTheme.text2nd },
           ]}
         >
           {message}
@@ -82,8 +82,8 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <CustomButton
             title={cancelText}
             onPress={onClose}
-            backgroundColor={cancelButtonColor || selectedTheme.buttonDanger}
-            color={selectedTheme.buttonTextPrimary}
+            backgroundColor={cancelButtonColor || myTheme.buttonDanger}
+            color={myTheme.buttonText1st}
             //style={[compStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}
@@ -96,8 +96,8 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               onConfirm();
               onClose(); // Close the modal after confirming
             }}
-            backgroundColor={confirmButtonColor || selectedTheme.buttonPrimary}
-            color={selectedTheme.buttonTextDelete}
+            backgroundColor={confirmButtonColor || myTheme.button1st}
+            color={myTheme.buttonTextDelete}
             //style={[compStyle.confimrationModalButton]}
             textSize={14}
             borderRadius={0}

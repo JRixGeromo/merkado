@@ -179,7 +179,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
 
   const renderCategoryItem = ({

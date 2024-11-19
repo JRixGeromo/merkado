@@ -5,23 +5,23 @@ import { theme as appTheme } from '../../../styles/theme';
 
 const TransactionsScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   return (
     <View style={[styles.container]}>
-      <Text style={[styles.title, { color: selectedTheme.textPrimary }]}>
+      <Text style={[styles.title, { color: myTheme.text1st }]}>
         Transactions
       </Text>
       <View
         style={[
           styles.card,
-          { backgroundColor: selectedTheme.cardBackground },
+          { backgroundColor: myTheme.cardBackground },
         ]}
       >
-        <Text style={{ color: selectedTheme.textPrimary }}>
+        <Text style={{ color: myTheme.text1st }}>
           Order #12345
         </Text>
-        <Text style={{ color: selectedTheme.textSecondary }}>Delivered</Text>
+        <Text style={{ color: myTheme.text2nd }}>Delivered</Text>
       </View>
     </View>
   );

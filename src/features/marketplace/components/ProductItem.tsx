@@ -51,7 +51,7 @@ const ProductItem: React.FC<{
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const isFeatured = variant === 'featured';
   const { t } = useTranslation(); // Initialize translation
@@ -105,7 +105,7 @@ const ProductItem: React.FC<{
           style={marketStyle.iconOverlayContainer}
           onPress={onFullScreenPress}
         >
-          <IconLib.DotsMenu size={20} color={selectedTheme.textLight} />
+          <IconLib.DotsMenu size={20} color={myTheme.textLight} />
         </TouchableOpacity>
       
       {/* Rating and Likes */}
@@ -118,7 +118,7 @@ const ProductItem: React.FC<{
           <View style={[baseStyle.columnsInsideFlex, baseStyle.innerContainerCenter]}>
             <IconLib.Star size={14} color="gold"/>
             <Text
-              style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.XxSmallText, { color: myTheme.textBlur }]}
             >
               {rating}
             </Text>
@@ -135,12 +135,12 @@ const ProductItem: React.FC<{
             ) : (
               <IconLib.Heart_O
                 size={16}
-                color={selectedTheme.iconColorPrimary}
+                color={myTheme.iconColor1st}
               />
             )}
 
             <Text
-              style={[baseStyle.XxSmallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.XxSmallText, { color: myTheme.textBlur }]}
               numberOfLines={1}
               ellipsizeMode="tail"
             >
@@ -229,9 +229,9 @@ const ProductItem: React.FC<{
           <CustomButton
             title={""}
             onPress={() => console.log('Google Login Pressed')}
-            color={selectedTheme.textDark}
-            backgroundColor={selectedTheme.buttonPrimary}
-            borderRadius={SHARED.borderRadiusPrimary} // You can set this dynamically too
+            color={myTheme.textDark}
+            backgroundColor={myTheme.button1st}
+            borderRadius={SHARED.borderRadius1st} // You can set this dynamically too
             iconName={'Chat_O'}
             iconSize={16} // Font size of the text inside the button
             width={50}
@@ -245,9 +245,9 @@ const ProductItem: React.FC<{
           <CustomButton
             title={""}
             onPress={() => console.log('Google Login Pressed')}
-            color={selectedTheme.textDark}
-            backgroundColor={selectedTheme.buttonPrimary}
-            borderRadius={SHARED.borderRadiusPrimary} // You can set this dynamically too
+            color={myTheme.textDark}
+            backgroundColor={myTheme.button1st}
+            borderRadius={SHARED.borderRadius1st} // You can set this dynamically too
             iconName={'Cart_O'}
             iconSize={16} // Font size of the text inside the button
             width={50}

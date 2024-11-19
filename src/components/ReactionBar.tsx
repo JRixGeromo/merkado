@@ -21,7 +21,7 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
   const themeType = useAppSelector(state => state.theme.theme);
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   return (
     <ScrollView horizontal={true} contentContainerStyle={baseStyle.alignLeft}>

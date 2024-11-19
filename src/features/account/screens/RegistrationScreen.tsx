@@ -72,7 +72,7 @@ const RegistrationScreen = () => {
   const acctStyle = acctStyles(themeType); // This is fine
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
@@ -128,7 +128,7 @@ const RegistrationScreen = () => {
             style={[
               baseStyle.shadowedContainer,
               baseStyle.formContainer,
-              { backgroundColor: selectedTheme.cardBackground },
+              { backgroundColor: myTheme.cardBackground },
             ]}
           >
             <Image
@@ -199,7 +199,7 @@ const RegistrationScreen = () => {
               <View style={{ marginTop: 20, marginBottom: 20 }}>
                 <ActivityIndicator
                   size="large"
-                  color={selectedTheme.textPrimary}
+                  color={myTheme.text1st}
                   style={baseStyle.loader}
                 />
               </View>
@@ -209,8 +209,8 @@ const RegistrationScreen = () => {
               <CustomButton
                 title={t('register')}
                 onPress={handleRegister}
-                color={selectedTheme.buttonTextPrimary}
-                backgroundColor={selectedTheme.buttonPrimary}
+                color={myTheme.buttonText1st}
+                backgroundColor={myTheme.button1st}
                 borderRadius={2} // You can set this dynamically too
               />
             )}
@@ -226,7 +226,7 @@ const RegistrationScreen = () => {
                 style={[
                   baseStyle.smallText,
                   baseStyle.marginAllM,
-                  { color: selectedTheme.textSecondary },
+                  { color: myTheme.text2nd },
                 ]}
               >
                 {t('hasAccount')}{' '}

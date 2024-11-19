@@ -48,7 +48,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   return (
     <View style={[baseStyle.shadowedContainer, compStyle.contentBoxPortrait]}>
@@ -61,7 +61,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           {/* Replace with IconLib for the expand icon */}
           <IconLib.DotsMenu
             size={SHARED.fontL}
-            color={selectedTheme.textLight}
+            color={myTheme.textLight}
           />
         </TouchableOpacity>
 
@@ -70,7 +70,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           onPress={onFullScreenPress}
         >
           {/* Replace with IconLib for the expand icon */}
-          <IconLib.Video_O size={SHARED.fontL} color={selectedTheme.online} />
+          <IconLib.Video_O size={SHARED.fontL} color={myTheme.online} />
         </TouchableOpacity>
       </View>
 
@@ -102,7 +102,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
           <View style={[baseStyle.columnsInsideFlex, baseStyle.cols_2]}>
             <IconLib.Star size={16} color="gold" style={baseStyle.rMarginXS} />
             <Text
-              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.smallText, { color: myTheme.textBlur }]}
             >
               {rating}
             </Text>
@@ -121,12 +121,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
               ) : (
                 <IconLib.Heart_O
                   size={SHARED.fontXL}
-                  color={selectedTheme.iconColorPrimary}
+                  color={myTheme.iconColor1st}
                 />
               )}
             </TouchableOpacity>
             <Text
-              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.smallText, { color: myTheme.textBlur }]}
               numberOfLines={1}
               ellipsizeMode="tail"
             >
@@ -144,7 +144,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
             onPress={action.onPress}
             backgroundColor="transparent" // Assuming you want only the icon and no background
             iconName={action.iconName as keyof typeof IconLib} // Pass the icon name dynamically
-            iconColor={selectedTheme.buttonTextPrimary} // Set the icon color
+            iconColor={myTheme.buttonText1st} // Set the icon color
             iconSize={SHARED.fontL} // Set the icon size
             style={[baseStyle.cols_2, commonStyle.cardButton, action.buttonStyle]} // Apply the button styles
             borderRadius={0} // Default borderRadius is 15, can be overridden

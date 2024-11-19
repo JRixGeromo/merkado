@@ -25,7 +25,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const [menuVisible, setMenuVisible] = useState(false);
 
   const menuItems = [
@@ -118,7 +118,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   return (
     <>
       <TouchableOpacity onPress={() => setMenuVisible(true)}>
-        {renderIcon('DotsMenu', 24, selectedTheme.iconColorSecondary)}
+        {renderIcon('DotsMenu', 24, myTheme.iconColor2nd)}
       </TouchableOpacity>
 
       <Modal
@@ -148,7 +148,7 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
                     }}
                   >
                     {/* Use renderIcon to dynamically load the icon */}
-                    {renderIcon(item.icon, 20, selectedTheme.iconColorGray)}
+                    {renderIcon(item.icon, 20, myTheme.iconColorGray)}
                     <Text style={compStyle.dropdownText}>{item.label}</Text>
                   </TouchableOpacity>
                 ))}

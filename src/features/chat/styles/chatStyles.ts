@@ -9,7 +9,7 @@ import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const chatStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
     chatAvatar: {
@@ -17,11 +17,11 @@ export const chatStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       height: normalizeHeight(40),
       borderRadius: 25,
       borderWidth: 2,
-      borderColor: selectedTheme.textPrimary,
+      borderColor: myTheme.text1st,
     },
     avatarBar: {
       height: normalizeHeight(48),
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       flexDirection: 'row',
     },
     chatSendButton: {
@@ -29,7 +29,7 @@ export const chatStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     chatMessagesContainer: {
       position: 'relative',
-      backgroundColor: selectedTheme.cardBackground,
+      backgroundColor: myTheme.cardBackground,
       paddingTop: normalizeHeight(8),
       paddingBottom: normalizeHeight(8),
     },

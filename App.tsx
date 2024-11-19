@@ -97,20 +97,20 @@ const App = () => {
           }
           return null;
         },
-        tabBarActiveTintColor: selectedTheme.iconColorPrimary,
-        tabBarInactiveTintColor: selectedTheme.iconColorSecondary,
+        tabBarActiveTintColor: selectedTheme.iconColor1st,
+        tabBarInactiveTintColor: selectedTheme.iconColor2nd,
         tabBarStyle: [
           commonStyle.tabBarStyle,
           {
             borderTopWidth: 1,
-            borderTopColor: selectedTheme.headerBorderBottomColor,
+            borderTopColor: selectedTheme.headerBorderColor,
           },
         ],
         tabBarLabelStyle: commonStyle.tabBarLabelStyle,
         headerStyle: {
-          backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+          backgroundColor: selectedTheme.tabHeaderBGColor,
           borderBottomWidth: 0.3,
-          borderBottomColor: selectedTheme.headerBorderBottomColor,
+          borderBottomColor: selectedTheme.headerBorderColor,
         },
         //headerTitleStyle: commonStyle.screenHeaderTitle,
         headerTitle: () => (
@@ -127,7 +127,7 @@ const App = () => {
             <View style={{ position: 'relative' }}>
               <IconLib.Cart_O
                 size={20}
-                color={selectedTheme.iconColorSecondary}
+                color={selectedTheme.iconColor2nd}
                 onPress={() => navigation.navigate('CartScreen')}
                 style={commonStyle.headerIcon}
               />
@@ -156,7 +156,7 @@ const App = () => {
               onPress={() => navigation.navigate('FrontStoreScreen')}
               style={baseStyle.rMarginL}
             >
-              <IconLib.Store_O size={20} color={selectedTheme.iconColorSecondary} />
+              <IconLib.Store_O size={20} color={selectedTheme.iconColor2nd} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => navigation.navigate('AccountScreen')}
@@ -175,7 +175,7 @@ const App = () => {
               ) : (
                 <IconLib.Person_O
                   size={20}
-                  color={selectedTheme.iconColorSecondary}
+                  color={selectedTheme.iconColor2nd}
                 />
               )}
             </TouchableOpacity>
@@ -219,9 +219,9 @@ const App = () => {
           options={{
             headerTitle: 'Register',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen
@@ -230,7 +230,7 @@ const App = () => {
           options={{
             headerShown: false,
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
           }}
         />
@@ -240,9 +240,9 @@ const App = () => {
           options={{
             headerTitle: 'Details',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen
@@ -251,9 +251,9 @@ const App = () => {
           options={{
             headerTitle: 'FrontStore',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen
@@ -262,9 +262,9 @@ const App = () => {
           options={{
             headerTitle: 'Category Details',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen
@@ -273,9 +273,9 @@ const App = () => {
           options={{
             headerTitle: 'Products',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen
@@ -284,9 +284,9 @@ const App = () => {
           options={{
             headerTitle: 'Cart',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen
@@ -295,9 +295,9 @@ const App = () => {
           options={{
             headerTitle: 'Checkout',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
         <Stack.Screen name="AccountScreen" component={AccountScreen} />
@@ -307,9 +307,9 @@ const App = () => {
           options={{
             headerTitle: 'Product',
             headerStyle: {
-              backgroundColor: selectedTheme.tabHeaderBackgroundColor,
+              backgroundColor: selectedTheme.tabHeaderBGColor,
             },
-            headerTintColor: selectedTheme.textPrimary,
+            headerTintColor: selectedTheme.text1st,
           }}
         />
       </Stack.Navigator>

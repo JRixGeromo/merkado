@@ -52,16 +52,16 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
     return {
-      iconColor: iconColor || selectedTheme.iconColorPrimary,
-      textColor: textColor || selectedTheme.textSecondary,
+      iconColor: iconColor || myTheme.iconColor1st,
+      textColor: textColor || myTheme.text2nd,
       placeholderColor:
-        placeholderTextColor || selectedTheme.textPlaceHolderInfo,
-      inputBackgroundColor: selectedTheme.inputBackgroundColor,
+        placeholderTextColor || myTheme.textPHolderInfo,
+      inputBackgroundColor: myTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor]);
 

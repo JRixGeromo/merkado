@@ -47,7 +47,7 @@ const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here

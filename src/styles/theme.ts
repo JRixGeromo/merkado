@@ -3,9 +3,9 @@ export interface ThemeType {
   themeBG: string[] | string; // Allow lightBG to accept an array of strings
   /************************** */
   // Text
-  textPrimary: string;
-  textSecondary: string;
-  textPlaceHolderInfo: string;
+  text1st: string;
+  text2nd: string;
+  textPHolderInfo: string;
   textDark: string;
   textLight: string;
   textPriceBanner: string;
@@ -25,7 +25,7 @@ export interface ThemeType {
 
   /************************** */
   // Border
-  borderColorPrimary: string;
+  borderColor1st: string;
   borderColorGray: string;
   borderColorDark: string; // #343a40 (Light) / #e6e6e9 (Dark)
   borderColorLightGray: string;
@@ -37,8 +37,9 @@ export interface ThemeType {
   // Card and Background
   fullBackgroundColor: string;
   cardBackground: string;
-  fullContainerBackgroundColor: string; // #f7ede2 (Light) / #161a1d (Dark)
+  fullContainerBGColor: string; // #f7ede2 (Light) / #161a1d (Dark)
   badgeBackgroundColor: string;
+  lightBackgroundColor: string;
 
   // below are not in use
   // formBackgroundColorSecondary: string;     // #f7ede2 (Light) / #161a1d (Dark)
@@ -54,25 +55,25 @@ export interface ThemeType {
   /************************** */
   // Line, Button, and Button Border
   boxBorderWidth: number;
-  boxBorderWidthSecondary: number;
+  boxBorderWidth2nd: number;
   
   lineBorderColor: string;
   lineBorderColorLight: string;
   googleButtonColor: string;
   facebookButtonColor: string;
 
-  buttonPrimary: string;
-  buttonSecondary: string;
+  button1st: string;
+  button2nd: string;
   buttonInfo: string;
   buttonDanger: string;
   buttonCancel: string;
 
-  buttonBorderPrimary: string; // #4CAF50 (Light) / #4CAF50 (Dark)
+  buttonBorder1st: string; // #4CAF50 (Light) / #4CAF50 (Dark)
   buttonDark: string; // #495057 (Light) / #252422 (Dark)
   buttonBorderLight: string; // #ffffff (Light) / #ffffff (Dark)
   buttonClose: string; // #343a40 (Light) / #343a40 (Dark)
-  buttonTextPrimary: string;
-  buttonTextSecondary: string;
+  buttonText1st: string;
+  buttonText2nd: string;
   buttonTextDelete: string;
 
   // below are not in use
@@ -90,15 +91,15 @@ export interface ThemeType {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: string;
-  tabBarBackgroundColor: string;
-  headerBorderBottomColor: string;
+  tabHeaderBGColor: string;
+  tabBottomBGColor: string;
+  headerBorderColor: string;
   ///////////////////
 
   /************************** */
   // Icon
-  iconColorPrimary: string;
-  iconColorSecondary: string;
+  iconColor1st: string;
+  iconColor2nd: string;
   iconColorSmileys: string;
   iconColorGray: string;
   iconColorLight: string;
@@ -140,10 +141,10 @@ const lightTheme: ThemeType = {
   themeBG: ['#FFFFFF', '#ADD8E6'], // White to light blue gradient
   
   // Text
-  textPrimary: '#000000',
-  textSecondary: '#000000',
+  text1st: '#000000',
+  text2nd: '#6c757d',
 
-  textPlaceHolderInfo: '#9caea9',
+  textPHolderInfo: '#9caea9',
   textDark: '#343a40',
   textLight: '#ffffff',
   textPriceBanner: '#ffa737',
@@ -164,7 +165,7 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Border
-  borderColorPrimary: '#4CAF50',
+  borderColor1st: '#4CAF50',
   borderColorGray: '#d3d3d3',
   borderColorDark: '#343a40',
   borderColorLightGray: '#dddddd',
@@ -177,8 +178,9 @@ const lightTheme: ThemeType = {
   // Card and Background
   cardBackground: '#ffffff',
   fullBackgroundColor: '#ffffff',
-  fullContainerBackgroundColor: '#ffffff',
+  fullContainerBGColor: '#ffffff',
   badgeBackgroundColor: '#4CAF50',
+  lightBackgroundColor: '#ffffff',
 
   // below are not in use
   // formBackgroundColorPrimary: '#f7ede2',
@@ -194,23 +196,23 @@ const lightTheme: ThemeType = {
   /************************** */
   // Line, buttton and button border
   boxBorderWidth: 0,
-  boxBorderWidthSecondary: 0,
+  boxBorderWidth2nd: 1,
   lineBorderColor: '#cad2c5',
   lineBorderColorLight: '#788585',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#8d99ae',
 
-  buttonPrimary: '#cccccc',
-  buttonSecondary: '#ffffff',
+  button1st: '#cccccc',
+  button2nd: '#ffffff',
   buttonInfo: '#bee9e8',
   buttonDanger: '#ba181b',
   buttonCancel: '#e6e6ea',
-  buttonBorderPrimary: '#8ecae6',
+  buttonBorder1st: '#8ecae6',
   buttonDark: '#a5a5a5',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-  buttonTextPrimary: '#ffffff',
-  buttonTextSecondary: '#ffffff',
+  buttonText1st: '#ffffff',
+  buttonText2nd: '#ffffff',
   buttonTextDelete: '#ffffff',
 
   // below are not in use
@@ -228,15 +230,15 @@ const lightTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#ffffff',
-  tabBarBackgroundColor: '#ffffff',
-  headerBorderBottomColor: '#8d99ae',
+  tabHeaderBGColor: '#ffffff',
+  tabBottomBGColor: '#ffffff',
+  headerBorderColor: '#8d99ae',
   ///////////////////
 
   /************************** */
   // Tab
-  iconColorPrimary: '#262626',
-  iconColorSecondary: '#a5a5a5',
+  iconColor1st: '#262626',
+  iconColor2nd: '#a5a5a5',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',
@@ -278,9 +280,9 @@ const femmeTheme: ThemeType = {
   
   /************************** */
   // Text
-  textPrimary: '#ffffff', // Pink shade for primary text
-  textSecondary: '#000000', // Warm brown for secondary text
-  textPlaceHolderInfo: '#f8bbd0', // Light pink placeholder
+  text1st: '#ffffff', // Pink shade for primary text
+  text2nd: '#000000', // Warm brown for secondary text
+  textPHolderInfo: '#f8bbd0', // Light pink placeholder
   textDark: '#4e342e', // Deep brown for dark text
   textLight: '#ffffff',
   textPriceBanner: '#ffb74d', // Light orange for price highlight
@@ -300,7 +302,7 @@ const femmeTheme: ThemeType = {
 
   /************************** */
   // Border
-  borderColorPrimary: '#e91e63', // Pink primary border
+  borderColor1st: '#e91e63', // Pink primary border
   borderColorGray: '#d3d3d3', // Soft gray border
   borderColorDark: '#4e342e', // Dark brown border
   borderColorLightGray: '#dddddd',
@@ -313,8 +315,9 @@ const femmeTheme: ThemeType = {
   // Card and Background
   fullBackgroundColor: '#ffffff', // Very light peach background
   cardBackground: '#e4c1f9', // Light pink background for cards
-  fullContainerBackgroundColor: '#ffffff',
+  fullContainerBGColor: '#ffffff',
   badgeBackgroundColor: '#000000',
+  lightBackgroundColor: '#ffffff',
 
   // below are not in use
   // formBackgroundColorPrimary: '#ffe0b2',
@@ -330,24 +333,24 @@ const femmeTheme: ThemeType = {
   /************************** */
   // Line, Button, and Button Border
   boxBorderWidth: 0,
-  boxBorderWidthSecondary: 0,
+  boxBorderWidth2nd: 1,
   lineBorderColor: '#f8bbd0', // Light pink line
   lineBorderColorLight: '#000', // Light orange-pink line
   googleButtonColor: '#f06292', // Soft pink for Google button
   facebookButtonColor: '#8e24aa', // Purple for Facebook button
 
-  buttonPrimary: '#faf3dd', // Pink primary button
-  buttonSecondary: '#ffffff', // Very light pink for secondary button
+  button1st: '#faf3dd', // Pink primary button
+  button2nd: '#ffffff', // Very light pink for secondary button
   buttonInfo: '#ffdac6', // Purple for info button
   buttonDanger: '#d32f2f', // Red for danger button
   buttonCancel: '#ffebee', // Light pink for cancel button
 
-  buttonBorderPrimary: '#ffc2d1', // Pink for primary button border
+  buttonBorder1st: '#ffc2d1', // Pink for primary button border
   buttonDark: '#d6ccc2', // Dark brown button
   buttonBorderLight: '#ffffff', // White for light button border
   buttonClose: '#6d4c41', // Brown for close button
-  buttonTextPrimary: '#ffffff',
-  buttonTextSecondary: '#000000',
+  buttonText1st: '#ffffff',
+  buttonText2nd: '#000000',
   buttonTextDelete: '#ffffff',
 
   // below are not in use
@@ -365,15 +368,15 @@ const femmeTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#560bad', // Light orange tab header
-  tabBarBackgroundColor: '#560bad', // Light pink tab bar
-  headerBorderBottomColor: '#d7ccc8', // Beige for header border
+  tabHeaderBGColor: '#560bad', // Light orange tab header
+  tabBottomBGColor: '#560bad', // Light pink tab bar
+  headerBorderColor: '#d7ccc8', // Beige for header border
   ///////////////////
 
   /************************** */
   // Icon
-  iconColorPrimary: '#ffffff', // Pink icons
-  iconColorSecondary: '#a5a5a5', // Purple icons
+  iconColor1st: '#ffffff', // Pink icons
+  iconColor2nd: '#a5a5a5', // Purple icons
   iconColorSmileys: '#ffb74d', // Orange for smiley icons
   iconColorGray: '#252422', // Brown-gray icons
   iconColorLight: '#000000', // White icons
@@ -413,9 +416,9 @@ const darkTheme: ThemeType = {
   themeBG: '#000000',
   /************************** */
   // Text
-  textPrimary: '#7cb518',
-  textSecondary: '#dee2e6',
-  textPlaceHolderInfo: '#9999a1',
+  text1st: '#7cb518',
+  text2nd: '#dee2e6',
+  textPHolderInfo: '#9999a1',
   textDark: '#fff',
   textLight: '#ffffff',
   textPriceBanner: '#ffa737',
@@ -435,7 +438,7 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Border
-  borderColorPrimary: '#7cb518',
+  borderColor1st: '#7cb518',
   borderColorGray: '#353535',
   borderColorDark: '#e6e6e9',
   borderColorLightGray: '#373c42',
@@ -448,8 +451,9 @@ const darkTheme: ThemeType = {
   // Card and Background
   cardBackground: '#1b2021',
   fullBackgroundColor: '#111111',
-  fullContainerBackgroundColor: '#111111',
+  fullContainerBGColor: '#111111',
   badgeBackgroundColor: '#4CAF50',
+  lightBackgroundColor: '#ffffff',
 
   // below are not in use
   //formBackgroundColorSecondary: '#161a1d',
@@ -465,23 +469,23 @@ const darkTheme: ThemeType = {
   /************************** */
   // Line, button, and button border
   boxBorderWidth: 0,
-  boxBorderWidthSecondary: 0,
+  boxBorderWidth2nd: 0,
   lineBorderColor: '#4a4e69',
   lineBorderColorLight: '#9caea9',
   googleButtonColor: '#4285F4',
   facebookButtonColor: '#3b5998',
 
-  buttonPrimary: '#333d29',
-  buttonSecondary: '#212529',
+  button1st: '#333d29',
+  button2nd: '#212529',
   buttonInfo: '#184e77',
   buttonDanger: '#a50104',
   buttonCancel: '#e6e6ea',
-  buttonBorderPrimary: '#4CAF50',
+  buttonBorder1st: '#4CAF50',
   buttonDark: '#252422',
   buttonBorderLight: '#ffffff',
   buttonClose: '#343a40',
-  buttonTextPrimary: '#d9d9d9',
-  buttonTextSecondary: '#adb6c4',
+  buttonText1st: '#d9d9d9',
+  buttonText2nd: '#adb6c4',
   buttonTextDelete: '#ffffff',
 
   // below are not in use
@@ -500,15 +504,15 @@ const darkTheme: ThemeType = {
 
   /************************** */
   // Tab
-  tabHeaderBackgroundColor: '#222725',
-  tabBarBackgroundColor: '#222725',
-  headerBorderBottomColor: '#22333b',
+  tabHeaderBGColor: '#222725',
+  tabBottomBGColor: '#222725',
+  headerBorderColor: '#22333b',
   ///////////////////
 
   /************************** */
   // Icon
-  iconColorPrimary: '#7cb518',
-  iconColorSecondary: '#a5a5a5',
+  iconColor1st: '#7cb518',
+  iconColor2nd: '#a5a5a5',
   iconColorSmileys: '#fcbf49',
   iconColorGray: '#6c757d',
   iconColorLight: '#ced4da',

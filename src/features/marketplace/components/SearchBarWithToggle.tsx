@@ -33,7 +33,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
     const commonStyle = commonStyles(themeType); // This is fine
     const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
   
-    const selectedTheme = appTheme[themeType];
+    const myTheme = appTheme[themeType];
   
  
     const { t } = useTranslation(); // Initialize translation
@@ -44,7 +44,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
         <TextInputWithIcon
           placeholder={t('search')}
           iconName="Search_O" // Use IconLib
-          iconColor={selectedTheme.iconColorSecondary}
+          iconColor={myTheme.iconColor2nd}
           value={keyWord}
           onChangeText={onSearchChange}
           style={{ height: 42, width: "100%", paddingTop: 2 }}
@@ -64,7 +64,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
               activeView === 'featured' && commonStyle.activeIconText,
             ]}
           >
-            <IconLib.Star_O size={21} color={selectedTheme.iconColorGray} />
+            <IconLib.Star_O size={21} color={myTheme.iconColorGray} />
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -80,7 +80,7 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
               activeView === 'categories' && commonStyle.activeIconText,
             ]}
           >
-            <IconLib.Folder_O size={21} color={selectedTheme.iconColorGray} />
+            <IconLib.Folder_O size={21} color={myTheme.iconColorGray} />
           </Text>
         </TouchableOpacity>
       </View>

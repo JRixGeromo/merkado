@@ -28,7 +28,7 @@ const CustomIcon: React.FC<{
   iconType?: 'ion' | 'fa'; // Add the iconType prop to differentiate between Ionicons and FontAwesome
 }> = ({ name, size = 24, color, style = {}, onPress, iconType = 'ion' }) => {
   const themeType = useAppSelector(state => state.theme.theme);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const IconComponent = iconType === 'fa' ? IconFA : Icon;
 
@@ -39,7 +39,7 @@ const CustomIcon: React.FC<{
         <IconComponent
           name={name}
           size={normalizeFontSize(size)}
-          color={color || selectedTheme.iconColorGray} // Use theme color if not provided
+          color={color || myTheme.iconColorGray} // Use theme color if not provided
           style={style}
         />
       </TouchableOpacity>
@@ -51,7 +51,7 @@ const CustomIcon: React.FC<{
     <IconComponent
       name={name}
       size={normalizeFontSize(size)}
-      color={color || selectedTheme.iconColorGray} // Use theme color if not provided
+      color={color || myTheme.iconColorGray} // Use theme color if not provided
       style={style}
     />
   );

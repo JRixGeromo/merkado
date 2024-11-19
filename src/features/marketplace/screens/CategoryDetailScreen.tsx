@@ -36,7 +36,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const renderSubcategoryItem = ({
     item,

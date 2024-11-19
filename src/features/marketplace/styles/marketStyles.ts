@@ -9,7 +9,7 @@ import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
  
@@ -20,7 +20,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingVertical: normalizeHeight(10), // Ensure padding around the section
       borderTopWidth: 0.5, // Add top border
       borderBottomWidth: 0.5, // Add bottom border
-      borderColor: selectedTheme.borderColorGray, // Light gray border color
+      borderColor: myTheme.borderColorGray, // Light gray border color
     },
     liveSellingList: {
       paddingHorizontal: normalizeWidth(10),
@@ -39,8 +39,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       justifyContent: 'space-between',
       paddingHorizontal: normalizeWidth(15),
       paddingVertical: normalizeHeight(10),
-      borderBottomWidth: selectedTheme.boxBorderWidthSecondary,
-      borderBottomColor: selectedTheme.lineBorderColor,
+      borderBottomWidth: myTheme.boxBorderWidth2nd,
+      borderBottomColor: myTheme.lineBorderColor,
     },
     
     searchInput: {
@@ -56,13 +56,13 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom: normalizeHeight(5),
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
-      backgroundColor: selectedTheme.buttonSecondary,
-      borderRadius: SHARED.borderRadiusSecondary,
+      backgroundColor: myTheme.button2nd,
+      borderRadius: SHARED.borderRadius2nd,
       marginLeft:  normalizeWidth(5),
     },
 
     activeIconButton: {
-      backgroundColor: selectedTheme.buttonPrimary,
+      backgroundColor: myTheme.button1st,
     },
 
 
@@ -75,9 +75,9 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
-      backgroundColor: selectedTheme.cardBackground,
-      borderWidth: selectedTheme.boxBorderWidth,
-      borderColor: selectedTheme.borderColorGray,
+      backgroundColor: myTheme.cardBackground,
+      borderWidth: myTheme.boxBorderWidth,
+      borderColor: myTheme.borderColorGray,
     },
   
     featuredProductCard: {
@@ -100,7 +100,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'center', // Centers the Image horizontally
       width: '100%',
       height: normalizeHeight(80),
-      backgroundColor: selectedTheme.buttonBorderPrimary, // Background color for the wrapper
+      backgroundColor: myTheme.buttonBorder1st, // Background color for the wrapper
       borderRadius: SHARED.borderRadius, 
     },
     productImage: {
@@ -125,7 +125,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       width: normalizeWidth(25),
       height: normalizeHeight(25),
       backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent background
-      borderRadius: SHARED.borderRadiusPrimary, 
+      borderRadius: SHARED.borderRadius1st, 
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -135,7 +135,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     threeDotsText: {
       fontSize: SHARED.fontL,
-      color: selectedTheme.textLight,
+      color: myTheme.textLight,
       fontWeight: 'bold',
     },
     actionIcons: {
@@ -161,9 +161,9 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
-      backgroundColor: selectedTheme.cardBackground,
-      borderWidth: selectedTheme.boxBorderWidth,
-      borderColor: selectedTheme.borderColorGray,
+      backgroundColor: myTheme.cardBackground,
+      borderWidth: myTheme.boxBorderWidth,
+      borderColor: myTheme.borderColorGray,
     },
     videoIconContainer: {
       position: 'absolute',
@@ -176,17 +176,17 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       right: 0,
       width: normalizeWidth(7),
       height: normalizeHeight(7),
-      backgroundColor: selectedTheme.onlineDot,
+      backgroundColor: myTheme.onlineDot,
       borderRadius: 4,
       borderWidth: 1,
-      borderColor:  selectedTheme.onlineDotBorder,
+      borderColor:  myTheme.onlineDotBorder,
     },
     liveIconWrapper: {
       justifyContent: 'center', // Centers the Image vertically
       alignItems: 'center', // Centers the Image horizontally
       width: normalizeWidth(45),
       height:  normalizeHeight(45),
-      backgroundColor: selectedTheme.buttonBorderPrimary,
+      backgroundColor: myTheme.buttonBorder1st,
       borderRadius: 50, // Optional: Makes the wrapper circular if width and height are equal
     },
     liveSellingImage: {
@@ -202,17 +202,19 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     liveSellingName: {
       fontSize: SHARED.fontS,
       fontWeight: 'bold',
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
     },
     liveSellingTitle: {
       fontSize: SHARED.fontXS,
-      color: selectedTheme.textBlur,
+      color: myTheme.textBlur,
     },
 
 
     // CategoryCard
     categoryCard: {
       flex: 1,
+      alignItems: 'center',
+      justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
       marginBottom: normalizeHeight(10),
       marginLeft: normalizeWidth(10),
@@ -221,11 +223,9 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom: normalizeHeight(15),
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
-      backgroundColor: selectedTheme.cardBackground,
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      borderWidth: selectedTheme.boxBorderWidth,
-      borderColor: selectedTheme.borderColorGray,
+      backgroundColor: myTheme.cardBackground,
+      borderWidth: myTheme.boxBorderWidth,
+      borderColor: myTheme.borderColorGray,
     },
     categoryImage: {
       width: normalizeWidth(140),
@@ -240,13 +240,13 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     categoryName: {
       fontSize: SHARED.fontM,
       fontWeight: 'bold',
-      color: selectedTheme.textSecondary,
+      color: myTheme.text2nd,
       marginBottom: normalizeHeight(5),
       textAlign: 'center',
     },
     categoryDescription: {
       fontSize: SHARED.fontS,
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
       textAlign: 'center',
       marginBottom:  normalizeHeight(10),
       lineHeight:  normalizeHeight(16),
@@ -268,10 +268,10 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
       marginVertical: normalizeHeight(8),
-      borderRadius: SHARED.borderRadiusSecondary,
-      backgroundColor: selectedTheme.cardBackground,
-      borderWidth: selectedTheme.boxBorderWidth,
-      borderColor: selectedTheme.borderColorGray,
+      borderRadius: SHARED.borderRadius2nd,
+      backgroundColor: myTheme.cardBackground,
+      borderWidth: myTheme.boxBorderWidth,
+      borderColor: myTheme.borderColorGray,
     },
 
     subcategoryImage: {
@@ -286,11 +286,11 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     subcategoryName: {
       fontSize: SHARED.fontM,
       fontWeight: 'bold',
-      color: selectedTheme.textSecondary,
+      color: myTheme.text2nd,
     },
     subcategoryDescription: {
       fontSize: SHARED.fontS,
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
       marginTop: normalizeWidth(2),
     },
     productCountBadge: {
@@ -328,13 +328,13 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       width: '100%',
       height: normalizeHeight(200),
       backgroundColor: "red",
-      borderRadius: SHARED.borderRadiusSecondary, // Rounded corners
+      borderRadius: SHARED.borderRadius2nd, // Rounded corners
       overflow: 'hidden', // Ensures child elements are clipped
     },
     bannerContentImage: {
       width: '100%',
       height: '100%',
-      borderRadius: SHARED.borderRadiusSecondary, // Rounded corners for the image
+      borderRadius: SHARED.borderRadius2nd, // Rounded corners for the image
       resizeMode: 'cover', // Ensures the image fills the container while maintaining aspect ratio
     },
     
@@ -347,8 +347,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(10),
       paddingRight: normalizeWidth(10),
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      borderWidth: selectedTheme.boxBorderWidth,
-      borderColor: selectedTheme.borderColorDark,
+      borderWidth: myTheme.boxBorderWidth,
+      borderColor: myTheme.borderColorDark,
       borderRadius: 5,
       zIndex: 2,
     },
@@ -360,7 +360,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
 
     selectedReactionText: {
       fontSize: SHARED.fontXxL,
-      color: selectedTheme.textGray,
+      color: myTheme.textGray,
     },
 
     reactionBarSection: {
@@ -382,8 +382,8 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingLeft: normalizeWidth(15),
       paddingRight: normalizeWidth(15),
       borderRadius: SHARED.borderRadius,
-      borderColor: selectedTheme.lineBorderColor,
-      borderWidth: selectedTheme.boxBorderWidthSecondary,
+      borderColor: myTheme.lineBorderColor,
+      borderWidth: myTheme.boxBorderWidth2nd,
       marginBottom: normalizeHeight(10),
       position: 'relative',
     },

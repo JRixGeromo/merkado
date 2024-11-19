@@ -39,7 +39,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   return (
     <View
@@ -58,7 +58,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
           <Text
             style={[
               baseStyle.mediumText,
-              { color: selectedTheme.textSecondary, fontWeight: 'bold' },
+              { color: myTheme.text2nd, fontWeight: 'bold' },
             ]}
             numberOfLines={1}
             ellipsizeMode="tail"
@@ -68,7 +68,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
           <Text
             style={[
               baseStyle.smallText,
-              { color: selectedTheme.textSecondary },
+              { color: myTheme.text2nd },
             ]}
             numberOfLines={1}
             ellipsizeMode="tail"
@@ -82,7 +82,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
               ellipsizeMode="tail"
               style={[
                 baseStyle.smallText,
-                { color: selectedTheme.textSecondary },
+                { color: myTheme.text2nd },
               ]}
             >
               Price:₱{price} | Sale:₱{price} | Qty:230
@@ -107,9 +107,9 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
                 width={action.width}
                 onPress={action.onPress}
                 iconName={action.iconName as keyof typeof IconLib}
-                iconColor={selectedTheme.buttonTextPrimary}
+                iconColor={myTheme.buttonText1st}
                 iconSize={SHARED.fontL}
-                color={selectedTheme.buttonTextPrimary}
+                color={myTheme.buttonText1st}
                 style={[
                   commonStyle.cardButton,
                   action.buttonStyle,

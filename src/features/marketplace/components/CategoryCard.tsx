@@ -35,10 +35,10 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item, index, onPress }) => 
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   return (
-    <TouchableOpacity style={[marketStyle.categoryCard,baseStyle.shadowedContainer]} onPress={onPress}>
+    <TouchableOpacity style={[marketStyle.categoryCard, baseStyle.shadowedContainer]} onPress={onPress}>
       <Image
         source={{ uri: `https://picsum.photos/200/200?random=${index + 1}` }}
         style={marketStyle.categoryImage}

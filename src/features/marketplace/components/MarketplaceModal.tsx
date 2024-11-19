@@ -47,12 +47,12 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   // Render each item in the list
   const renderListItem = ({ item }: { item: string }) => (
     <View style={commonStyle.listItem}>
-      <Text style={{ color: selectedTheme.textSecondary }}>{item}</Text>
+      <Text style={{ color: myTheme.text2nd }}>{item}</Text>
     </View>
   );
 
@@ -84,7 +84,7 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
         style={[
           baseStyle.container,
           baseStyle.paddingAllS,
-          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+          { backgroundColor: myTheme.fullContainerBGColor },
         ]}
       >
         <Text style={commonStyle.modalTitle}>{t('Search in merkado by')}</Text>
@@ -105,12 +105,12 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
             <CustomButton
               title={item.label}
               onPress={() => setActiveSection(item.key as any)}
-              backgroundColor={selectedTheme.buttonPrimary} // Use theme for close button color
+              backgroundColor={myTheme.button1st} // Use theme for close button color
               style={[commonStyle.searchButton, { marginHorizontal: 10 }]} // You can pass an array of styles
               borderRadius={20} // Set borderRadius
-              color={selectedTheme.buttonTextPrimary}
+              color={myTheme.buttonText1st}
               textSize={normalizeFontSize(12)} // Custom text size
-              borderColor={selectedTheme.buttonBorderLight}
+              borderColor={myTheme.buttonBorderLight}
             />
           )}
           keyExtractor={item => item.key}
@@ -130,9 +130,9 @@ const MarketplaceModal: React.FC<MarketplaceModalProps> = ({
         <CustomButton
           title={t('Close')}
           onPress={onClose}
-          backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
+          backgroundColor={myTheme.buttonClose} // Use theme for close button color
           borderRadius={2} // You can set this dynamically too
-          color={selectedTheme.buttonTextPrimary}
+          color={myTheme.buttonText1st}
           style={{
             marginLeft: 0,
             marginRight: 0,

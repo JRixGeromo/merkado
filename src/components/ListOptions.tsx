@@ -58,18 +58,18 @@ const ListOptions: React.FC<ListOptionsProps> = ({
   const [addNewModalVisible, setAddNewModalVisible] = useState(false);
   const [newOption, setNewOption] = useState('');
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {
     return {
-      iconColor: iconColor || selectedTheme.iconColorPrimary,
-      textColor: textColor || selectedTheme.textSecondary,
+      iconColor: iconColor || myTheme.iconColor1st,
+      textColor: textColor || myTheme.text2nd,
       placeholderColor:
-        placeholderTextColor || selectedTheme.textPlaceHolderInfo,
+        placeholderTextColor || myTheme.textPHolderInfo,
       inputBackgroundColor:
-        customBackground || selectedTheme.inputBackgroundColor,
+        customBackground || myTheme.inputBackgroundColor,
     };
   }, [iconColor, textColor, placeholderTextColor]);
 
@@ -170,7 +170,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
           <View
             style={[
               compStyle.modalContent,
-              { backgroundColor: selectedTheme.cardBackground },
+              { backgroundColor: myTheme.cardBackground },
             ]}
           >
             {options.length > 0 ? (
@@ -183,7 +183,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
                   }}
                   style={[
                     compStyle.dropdownOption,
-                    { borderColor: selectedTheme.borderColorGray },
+                    { borderColor: myTheme.borderColorGray },
                   ]}
                 >
                   <Text style={[compStyle.modalText]}>{option.label}</Text>
@@ -202,9 +202,9 @@ const ListOptions: React.FC<ListOptionsProps> = ({
             <CustomButton
               title={t('Close')}
               onPress={() => setShowModal(false)}
-              backgroundColor={selectedTheme.buttonClose} // Use theme for close button color
+              backgroundColor={myTheme.buttonClose} // Use theme for close button color
               borderRadius={2} // You can set this dynamically too
-              color={selectedTheme.buttonTextPrimary}
+              color={myTheme.buttonText1st}
             />
           </View>
         </View>
@@ -228,7 +228,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
           <View
             style={[
               compStyle.modalContent,
-              { backgroundColor: selectedTheme.cardBackground },
+              { backgroundColor: myTheme.cardBackground },
             ]}
           >
             <Text style={[compStyle.modalText, { marginBottom: 10 }]}>
@@ -239,20 +239,20 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               value={newOption}
               onChangeText={setNewOption}
               style={[baseStyle.input, { marginBottom: 10 }]}
-              placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+              placeholderTextColor={myTheme.textPHolderInfo}
             />
             <CustomButton
               title={t('Add')}
               onPress={handleAddNewOption}
-              backgroundColor={selectedTheme.buttonPrimary}
-              color={selectedTheme.buttonTextPrimary}
+              backgroundColor={myTheme.button1st}
+              color={myTheme.buttonText1st}
               borderRadius={2}
             />
             <CustomButton
               title={t('Cancel')}
               onPress={() => setAddNewModalVisible(false)}
-              backgroundColor={selectedTheme.buttonClose}
-              color={selectedTheme.buttonTextPrimary}
+              backgroundColor={myTheme.buttonClose}
+              color={myTheme.buttonText1st}
               borderRadius={2}
               style={{ marginTop: 10 }}
             />

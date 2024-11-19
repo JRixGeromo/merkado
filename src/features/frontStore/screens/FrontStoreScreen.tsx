@@ -54,7 +54,7 @@ const FrontStoreScreen = () => {
   const commonStyle = commonStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
@@ -268,7 +268,7 @@ const FrontStoreScreen = () => {
         style={[
           baseStyle.container,
           baseStyle.rlPaddingS,
-          { backgroundColor: selectedTheme.fullContainerBackgroundColor },
+          { backgroundColor: myTheme.fullContainerBGColor },
         ]}
       >
         {/* Vendor Header */}
@@ -300,12 +300,12 @@ const FrontStoreScreen = () => {
             style={baseStyle.rMarginS}
             onPress={toggleModal}
           >
-            <IconLib.Menu size={24} color={selectedTheme.iconColorGray} />
+            <IconLib.Menu size={24} color={myTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
             style={commonStyle.searchInput}
             placeholder="Search"
-            placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+            placeholderTextColor={myTheme.textPHolderInfo}
           />
         </View> */}
 
@@ -327,7 +327,7 @@ const FrontStoreScreen = () => {
         {/* Categories */}
         <View style={baseStyle.verticalSpacerM}>
           <Text
-            style={[baseStyle.largeText, { color: selectedTheme.textPrimary }]}
+            style={[baseStyle.largeText, { color: myTheme.text1st }]}
           >
             {t('Categories')}
           </Text>
@@ -352,7 +352,7 @@ const FrontStoreScreen = () => {
           <Text
             style={[
               baseStyle.largeText,
-              { color: selectedTheme.textSecondary },
+              { color: myTheme.text2nd },
             ]}
           >
             {t('spotlightOffers')}
@@ -376,7 +376,7 @@ const FrontStoreScreen = () => {
           <Text
             style={[
               baseStyle.largeText,
-              { color: selectedTheme.textSecondary },
+              { color: myTheme.text2nd },
             ]}
           >
             {t('Featured Stores')}
@@ -396,7 +396,7 @@ const FrontStoreScreen = () => {
           <Text
             style={[
               baseStyle.largeText,
-              { color: selectedTheme.textSecondary },
+              { color: myTheme.text2nd },
             ]}
           >
             {t('Featured Products')}
@@ -414,7 +414,7 @@ const FrontStoreScreen = () => {
         {/* Customer Reviews */}
         <View style={baseStyle.verticalSpacerM}>
           <Text
-            style={[baseStyle.largeText, { color: selectedTheme.textPrimary }]}
+            style={[baseStyle.largeText, { color: myTheme.text1st }]}
           >
             {t('Customer Reviews')}
           </Text>

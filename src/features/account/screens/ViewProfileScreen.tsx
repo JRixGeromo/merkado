@@ -9,7 +9,7 @@ const ViewProfileScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const { t } = useTranslation();
   const commonStyle = commonStyles(theme);
-  const selectedTheme = appTheme[theme];
+  const myTheme = appTheme[theme];
 
   const profileData = {
     firstName: 'John',

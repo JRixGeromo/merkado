@@ -24,7 +24,7 @@ const SplashScreen = () => {
   const theme = useAppSelector(state => state.theme.theme) as 'light' | 'dark'; // Explicitly define the type
   const compStyle = compStyles(theme); // Dynamically create styles based on the theme
   const baseStyle = baseStyles(theme); // Dynamically create styles based on the theme
-  const selectedTheme = appTheme[theme]; // Access the current theme (light or dark)
+  const myTheme = appTheme[theme]; // Access the current theme (light or dark)
   const fadeAnim = new Animated.Value(0); // Create an animated value for fade-in
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const SplashScreen = () => {
       {/* Custom loader */}
       <ActivityIndicator
         size="large"
-        color={selectedTheme.textPrimary} // Use primary color directly from the theme
+        color={myTheme.text1st} // Use primary color directly from the theme
         style={baseStyle.loader}
       />
     </View>

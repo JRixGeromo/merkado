@@ -50,7 +50,7 @@ const DetailsScreen: React.FC = () => {
   const marketStyle = marketStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
 
@@ -136,7 +136,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     baseStyle.mediumText,
-                    { color: selectedTheme.textSecondary },
+                    { color: myTheme.text2nd },
                   ]}
                 >
                   ON SALE! 50% off
@@ -153,7 +153,7 @@ const DetailsScreen: React.FC = () => {
               <Text
                 style={[
                   baseStyle.xLargeText,
-                  { color: selectedTheme.textPriceBanner },
+                  { color: myTheme.textPriceBanner },
                 ]}
               >
                 {item.price}
@@ -185,7 +185,7 @@ const DetailsScreen: React.FC = () => {
             ]}
           >
             <Text
-              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.smallText, { color: myTheme.textBlur }]}
             >
               46 {t('comments')}
             </Text>
@@ -197,7 +197,7 @@ const DetailsScreen: React.FC = () => {
             <Text
               style={[
                 baseStyle.mediumText,
-                { color: selectedTheme.textPrimary },
+                { color: myTheme.text1st },
               ]}
             >
               {item.name}
@@ -211,7 +211,7 @@ const DetailsScreen: React.FC = () => {
           >
             <IconLib.Star size={20} color="gold" />
             <Text
-              style={[baseStyle.smallText, { color: selectedTheme.textBlur }]}
+              style={[baseStyle.smallText, { color: myTheme.textBlur }]}
             >
               {' '}
               {item.rating}
@@ -225,7 +225,7 @@ const DetailsScreen: React.FC = () => {
               <Text
                 style={[
                   baseStyle.smallText,
-                  { color: selectedTheme.textSecondary },
+                  { color: myTheme.text2nd },
                 ]}
               >
                 {item.description}
@@ -236,7 +236,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     baseStyle.smallText,
-                    { color: selectedTheme.textSecondary },
+                    { color: myTheme.text2nd },
                   ]}
                 >
                   {item.location}
@@ -252,7 +252,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     baseStyle.smallText,
-                    { color: selectedTheme.textBlur },
+                    { color: myTheme.textBlur },
                   ]}
                 >
                   {item.distance}
@@ -268,7 +268,7 @@ const DetailsScreen: React.FC = () => {
               <Text
                 style={[
                   baseStyle.smallText,
-                  { color: selectedTheme.textGray },
+                  { color: myTheme.textGray },
                 ]}
               >
                 {item.description}
@@ -279,7 +279,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     baseStyle.smallText,
-                    { color: selectedTheme.textGray },
+                    { color: myTheme.textGray },
                   ]}
                 >
                   {item.location}
@@ -295,7 +295,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     baseStyle.smallText,
-                    { color: selectedTheme.textGray },
+                    { color: myTheme.textGray },
                   ]}
                 >
                   {item.distance}
@@ -319,8 +319,8 @@ const DetailsScreen: React.FC = () => {
                   }}
                   title={t('Buy')} // Text inside the button
                   onPress={handleBuy} // Function to handle the press event
-                  color={selectedTheme.buttonTextPrimary} // Text color, using theme values
-                  backgroundColor={selectedTheme.buttonPrimary} // Button background color, using theme values
+                  color={myTheme.buttonText1st} // Text color, using theme values
+                  backgroundColor={myTheme.button1st} // Button background color, using theme values
                   borderRadius={2} // Set the border radius for rounded corners
                   iconName="Cart_O" // Icon from IconLib (Cart icon)
                   iconSize={SHARED.fontXxL} // Size of the Cart icon
@@ -339,8 +339,8 @@ const DetailsScreen: React.FC = () => {
                   }}
                   title={t('Follow')} // Text inside the button
                   onPress={handleFollow} // Function to handle the press event
-                  color={selectedTheme.buttonTextPrimary} // Text color, using theme values
-                  backgroundColor={selectedTheme.buttonInfo} // Button background color, using theme values
+                  color={myTheme.buttonText1st} // Text color, using theme values
+                  backgroundColor={myTheme.buttonInfo} // Button background color, using theme values
                   borderRadius={2} // Set the border radius for rounded corners
                   iconName="PersonAdd" // Icon from IconLib (Cart icon)
                   iconSize={SHARED.fontXxL} // Size of the Cart icon
@@ -360,21 +360,21 @@ const DetailsScreen: React.FC = () => {
             <TouchableOpacity onPress={() => setShowReactions(!showReactions)}>
               <IconLib.ThumbsUp_O
                 size={22}
-                color={selectedTheme.iconColorGray}
+                color={myTheme.iconColorGray}
                 style={baseStyle.rPaddingL}
               />
             </TouchableOpacity>
             <TouchableOpacity>
               <IconLib.Chat_O
                 size={22}
-                color={selectedTheme.iconColorGray}
+                color={myTheme.iconColorGray}
                 style={baseStyle.rPaddingL}
               />
             </TouchableOpacity>
             <TouchableOpacity>
               <IconLib.Share_O
                 size={22}
-                color={selectedTheme.iconColorGray}
+                color={myTheme.iconColorGray}
                 style={baseStyle.rPaddingL}
               />
             </TouchableOpacity>
@@ -385,7 +385,7 @@ const DetailsScreen: React.FC = () => {
             >
               <IconLib.Store_O
                 size={22}
-                color={selectedTheme.iconColorGray}
+                color={myTheme.iconColorGray}
               />
             </TouchableOpacity>
           </View>
@@ -406,7 +406,7 @@ const DetailsScreen: React.FC = () => {
           <View
             style={[
               baseStyle.shadowedContainer,
-              { borderColor: selectedTheme.lineBorderColor },
+              { borderColor: myTheme.lineBorderColor },
             ]}
           >
             <CommentInput
@@ -439,7 +439,7 @@ const DetailsScreen: React.FC = () => {
               style={[
                 baseStyle.shadowedContainer,
                 marketStyle.commentContainer,
-                { backgroundColor: selectedTheme.cardBackground },
+                { backgroundColor: myTheme.cardBackground },
               ]}
             >
               <View
@@ -458,7 +458,7 @@ const DetailsScreen: React.FC = () => {
                 <Text
                   style={[
                     baseStyle.smallText,
-                    { color: selectedTheme.textDark, marginLeft: 5 },
+                    { color: myTheme.textDark, marginLeft: 5 },
                   ]}
                 >
                   {comment.user}
@@ -470,7 +470,7 @@ const DetailsScreen: React.FC = () => {
                   style={[
                     marketStyle.commentTextWrapper,
                     baseStyle.smallText,
-                    { color: selectedTheme.textSecondary },
+                    { color: myTheme.text2nd },
                   ]}
                 >
                   {comment.text}
@@ -490,7 +490,7 @@ const DetailsScreen: React.FC = () => {
                   <Text
                     style={[
                       baseStyle.xSmallText,
-                      { color: selectedTheme.textBlur, marginTop: 3 },
+                      { color: myTheme.textBlur, marginTop: 3 },
                     ]}
                   >
                     {dayjs(comment.time).fromNow()}
@@ -499,7 +499,7 @@ const DetailsScreen: React.FC = () => {
                     style={[
                       baseStyle.xSmallText,
                       baseStyle.lPaddingS,
-                      { color: selectedTheme.textBlur },
+                      { color: myTheme.textBlur },
                     ]}
                   >
                     |
@@ -511,7 +511,7 @@ const DetailsScreen: React.FC = () => {
                     <Text
                       style={[
                         baseStyle.xSmallText,
-                        { color: selectedTheme.textBlur, marginTop: 3 },
+                        { color: myTheme.textBlur, marginTop: 3 },
                       ]}
                     >
                       Like
@@ -544,14 +544,14 @@ const DetailsScreen: React.FC = () => {
                     style={marketStyle.userImage}
                   />
                   <Text
-                    style={{ color: selectedTheme.textSecondary, marginTop: 5 }}
+                    style={{ color: myTheme.text2nd, marginTop: 5 }}
                   >
                     {reply}
                   </Text>
                   <Text
                     style={[
                       baseStyle.xSmallText,
-                      { color: selectedTheme.textBlur, marginTop: 3 },
+                      { color: myTheme.textBlur, marginTop: 3 },
                     ]}
                   >
                     {dayjs(comment.time).fromNow()}
@@ -567,7 +567,7 @@ const DetailsScreen: React.FC = () => {
                     onAddReaction={handleAddReaction}
                     reactions={reactions}
                     placeholder={'Write your reply...'}
-                    backgroundColor={selectedTheme.cardBackground}
+                    backgroundColor={myTheme.cardBackground}
                   />
                 </View>
               )}
@@ -576,11 +576,11 @@ const DetailsScreen: React.FC = () => {
               <CustomButton
                 title={'Reply'} // No text, as you're only displaying an icon
                 onPress={() => handleReplyToggle(comment.id)}
-                backgroundColor={selectedTheme.buttonDark} // Assuming you want only the icon and no background
+                backgroundColor={myTheme.buttonDark} // Assuming you want only the icon and no background
                 width={50} // Default width is auto, can be overridden
-                color={selectedTheme.buttonTextSecondary} // Set the icon color
+                color={myTheme.buttonText2nd} // Set the icon color
                 borderRadius={0} // Default borderRadius is 15, can be overridden
-                //borderColor={selectedTheme.lineBorderColor}
+                //borderColor={myTheme.lineBorderColor}
                 textSize={12} // Default text size, can be overridden
                 style={{
                   marginTop: 5,

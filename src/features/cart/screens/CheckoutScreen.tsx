@@ -18,7 +18,7 @@ const CheckoutScreen: React.FC = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
   const themeType = useAppSelector(state => state.theme.theme);
   const baseStyle = baseStyles(themeType);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   // Handle Checkout process here
@@ -31,14 +31,14 @@ const CheckoutScreen: React.FC = () => {
     <View
       style={[
         baseStyle.container,
-        { backgroundColor: selectedTheme.fullBackgroundColor },
+        { backgroundColor: myTheme.fullBackgroundColor },
       ]}
     >
       <CustomButton
         title={t('Proceed to Checkout')}
         onPress={handlePurchase}
-        color={selectedTheme.buttonTextPrimary}
-        backgroundColor={selectedTheme.borderColorPrimary}
+        color={myTheme.buttonText1st}
+        backgroundColor={myTheme.borderColor1st}
         borderRadius={2} // You can set this dynamically too
         style={{
           marginLeft: 0,

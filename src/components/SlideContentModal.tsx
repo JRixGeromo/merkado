@@ -24,7 +24,7 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
 
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
 
   return (
     <Modal
@@ -43,7 +43,7 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({
           onPress={onClose}
         >
           <Text
-            style={[baseStyle.largeText, { color: selectedTheme.textGray }]}
+            style={[baseStyle.largeText, { color: myTheme.textGray }]}
           >
             X
           </Text>

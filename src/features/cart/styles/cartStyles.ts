@@ -9,7 +9,7 @@ import { theme } from '../../../styles/theme'; // Make sure this path is correct
 
 // Dynamically generated styles based on theme
 export const cartStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
-  const selectedTheme = theme[currentTheme]; // Dynamically select light or dark theme
+  const myTheme = theme[currentTheme]; // Dynamically select light or dark theme
 
   return StyleSheet.create({
     cartItemImage: {

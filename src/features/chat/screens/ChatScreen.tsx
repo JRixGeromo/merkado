@@ -41,7 +41,7 @@ const ChatScreen = () => {
   const chatStyle = chatStyles(themeType);
   const baseStyle = baseStyles(themeType);
   const commonStyle = commonStyles(themeType);
-  const selectedTheme = appTheme[themeType];
+  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   const [message, setMessage] = useState('');
@@ -234,7 +234,7 @@ const ChatScreen = () => {
         <View
           style={[
             chatStyle.chatMessagesContainer,
-            { borderTopColor: selectedTheme.lineBorderColor, borderWidth: selectedTheme.boxBorderWidth },
+            { borderTopColor: myTheme.lineBorderColor, borderWidth: myTheme.boxBorderWidth },
           ]}
         >
           <View
@@ -251,12 +251,12 @@ const ChatScreen = () => {
               <TouchableOpacity onPress={() => setShowReactions(true)}>
                 <IconLib.ThumbsUp_O
                   size={24}
-                  color={selectedTheme.iconColorGray}
+                  color={myTheme.iconColorGray}
                 />
               </TouchableOpacity>
             )}
             <TouchableOpacity onPress={takePhoto} style={{ marginLeft: 10 }}>
-              <IconLib.Camera_O size={24} color={selectedTheme.iconColorGray} />
+              <IconLib.Camera_O size={24} color={myTheme.iconColorGray} />
             </TouchableOpacity>
           </View>
 
@@ -270,18 +270,18 @@ const ChatScreen = () => {
           <View
             style={[
               chatStyle.chatInputContainer,
-              { backgroundColor: selectedTheme.inputBackgroundColor },
+              { backgroundColor: myTheme.inputBackgroundColor },
             ]}
           >
             <TextInput
               value={message}
               onChangeText={setMessage}
               placeholder={t('type here ...')}
-              placeholderTextColor={selectedTheme.textPlaceHolderInfo}
+              placeholderTextColor={myTheme.textPHolderInfo}
               style={[
                 commonStyle.input,
                 baseStyle.mediumText,
-                { flex: 1, color: selectedTheme.textPrimary },
+                { flex: 1, color: myTheme.text1st },
               ]}
               onFocus={() => setShowReactions(false)} // Hide smileys when input is focused
             />
@@ -289,7 +289,7 @@ const ChatScreen = () => {
               onPress={sendMessage}
               style={chatStyle.chatSendButton}
             >
-              <IconLib.Send_O size={24} color={selectedTheme.iconColorPrimary} />
+              <IconLib.Send_O size={24} color={myTheme.iconColor1st} />
             </TouchableOpacity>
           </View>
         </View>
