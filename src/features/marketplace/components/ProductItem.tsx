@@ -165,7 +165,7 @@ const ProductItem: React.FC<{
     >
       {product.isNew && (
         <View style={commonStyle.newBadgeContainer}>
-          <Text style={commonStyle.newBadgeText}> New </Text>
+          <Text style={[baseStyle.XxSmallText,  {color: myTheme.textLight}]}> New </Text>
         </View>
       )}
       {/* Product Info */}
@@ -192,7 +192,7 @@ const ProductItem: React.FC<{
           </>  
         )}
         
-        <Text numberOfLines={1} ellipsizeMode="tail" style={[commonStyle.productName, {textAlign: 'justify'}]}>
+        <Text numberOfLines={1} ellipsizeMode="tail" style={[baseStyle.mediumText, {color: myTheme.text2nd, fontWeight: 'bold'}]}>
           {product.name}
         </Text>
         

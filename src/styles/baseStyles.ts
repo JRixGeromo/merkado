@@ -30,13 +30,14 @@ export const SHARED = {
     radius: 0,
   },
   fontXxS: normalizeFontSize(8),
-  fontXS: normalizeFontSize(10),
-  fontS: normalizeFontSize(12),
-  fontSM: normalizeFontSize(13),
-  fontM: normalizeFontSize(14),
-  fontLM: normalizeFontSize(15),
-  fontL: normalizeFontSize(16),
-  fontXL: normalizeFontSize(18),
+  fontXS: normalizeFontSize(9),
+  fontS: normalizeFontSize(10),
+  fontSM: normalizeFontSize(11),
+  fontM: normalizeFontSize(12),
+  fontLM: normalizeFontSize(13),
+  fontSL: normalizeFontSize(14),
+  fontL: normalizeFontSize(15),
+  fontXL: normalizeFontSize(16),
   fontXxL: normalizeFontSize(20),
   fontXxxL: normalizeFontSize(30),
   fontBig: normalizeFontSize(40),
@@ -323,14 +324,25 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       fontFamily: myTheme.bodyFont,
       fontSize: SHARED.fontS,
     },
+
+    sMediumText: {
+      fontFamily: myTheme.bodyFont,
+      fontSize: SHARED.fontSM,
+    },
+    
     mediumText: {
       fontFamily: myTheme.bodyFont,
       fontSize: SHARED.fontM,
     },
 
-    slargeText: {
+    lMediumText: {
       fontFamily: myTheme.headingFont,
       fontSize: SHARED.fontLM,
+    },
+
+    slargeText: {
+      fontFamily: myTheme.headingFont,
+      fontSize: SHARED.fontSL,
     },
 
     largeText: {

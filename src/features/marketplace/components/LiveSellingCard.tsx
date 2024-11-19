@@ -34,9 +34,10 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
       style={[
         baseStyle.shadowedContainer,
         marketStyle.liveSellingCard,
+        baseStyle.innerContainerCenter
       ]}
     >
-      <View style={[baseStyle.innerContainerCenter, marketStyle.videoIconContainer]}>
+      <View style={[marketStyle.videoIconContainer]}>
         <Ionicons name="videocam-outline" size={20} color={myTheme.online} />
         <View style={marketStyle.redDot} />
       </View>
@@ -44,8 +45,7 @@ const LiveSellingCard: React.FC<LiveSellingCardProps> = ({ item, onPress }) => {
         <Image source={{ uri: item.profileImage }} style={marketStyle.liveSellingImage} />
       </View>
       <View style={marketStyle.liveSellingInfo}>
-        <Text style={marketStyle.liveSellingName}>{item.name}</Text>
-        {/* <Text style={marketStyle.liveSellingTitle}>{item.liveTitle}</Text> */}
+        <Text style={[baseStyle.smallText, {color: myTheme.text2nd}]}>{item.name}</Text>
       </View>
     </TouchableOpacity>
   );

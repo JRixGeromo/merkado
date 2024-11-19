@@ -44,7 +44,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     },
     
     searchInput: {
-      flex: 1,
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(10),
       paddingLeft: normalizeWidth(0),
@@ -88,9 +87,9 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     postedProductCard: {
       marginHorizontal: 0,
     },
+    
     productInfo: {
       flex: 1,
-      //paddingRight: normalizeWidth(10),
       alignItems: 'flex-start', // Ensures child elements are aligned to the top-left
       justifyContent: 'flex-start', // Forces content to start at the top
     },
@@ -154,7 +153,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
 
     // LiveSellingCard
     liveSellingCard: {
-      alignItems: 'center',
       marginRight: normalizeWidth(15),
       marginVertical: normalizeHeight(8),
       paddingTop: normalizeHeight(20),
