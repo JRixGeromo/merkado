@@ -16,21 +16,21 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // MarketPlaceScreen
     liveSellingContainer: {
       marginBottom: normalizeHeight(20), // Add spacing from the section below
-      marginLeft: normalizeWidth(5), // Add spacing from the section below
+      marginLeft: 0, // Add spacing from the section below
       paddingVertical: normalizeHeight(10), // Ensure padding around the section
       borderTopWidth: 0.5, // Add top border
       borderBottomWidth: 0.5, // Add bottom border
       borderColor: myTheme.borderColorGray, // Light gray border color
     },
-    liveSellingList: {
-      paddingHorizontal: normalizeWidth(10),
-    },
-    featuredList: {
-      paddingHorizontal: normalizeWidth(5),
-    },
+    // liveSellingList: {
+    //   paddingHorizontal: normalizeWidth(10),
+    // },
+    // featuredList: {
+    //   paddingHorizontal: normalizeWidth(5),
+    // },
     recentlyPostedContainer: {
       marginTop: normalizeHeight(10),
-      marginHorizontal: normalizeWidth(4),
+      //marginHorizontal: normalizeWidth(4),
     },
 
     // SearchBarWithToggle 
@@ -47,7 +47,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       flex: 1,
       paddingTop: normalizeHeight(10),
       paddingBottom: normalizeHeight(10),
-      paddingLeft: normalizeWidth(15),
+      paddingLeft: normalizeWidth(0),
       paddingRight: normalizeWidth(15),
     },
 
@@ -83,7 +83,7 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     featuredProductCard: {
       width: normalizeWidth(SHARED.halfScreen),
       marginRight:  normalizeWidth(15),
-      marginLeft:  normalizeWidth(4),
+      //marginLeft:  normalizeWidth(4),
     },
     postedProductCard: {
       marginHorizontal: 0,

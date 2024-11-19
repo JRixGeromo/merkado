@@ -130,9 +130,9 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingBottom:  normalizeHeight(40),
     },
 
-    featuredContainer: {
-      marginHorizontal: normalizeWidth(5),
-    },
+    // featuredContainer: {
+    //   marginHorizontal: normalizeWidth(5),
+    // },
 
     newBadgeContainer: {
       position: 'absolute',
@@ -166,13 +166,13 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       flexWrap: 'wrap',
       textAlign: 'center',
     },
-    sectionHeader: {
-      fontSize: SHARED.fontL,
-      fontWeight: 'bold',
-      color: myTheme.text2nd,
-      marginBottom: normalizeHeight(10),
-      marginLeft: normalizeWidth(10),
-    },
+    // sectionHeader: {
+    //   fontSize: SHARED.fontL,
+    //   fontWeight: 'bold',
+    //   color: myTheme.text2nd,
+    //   marginBottom: normalizeHeight(10),
+    //   marginLeft: normalizeWidth(10),
+    // },
     productName: { fontSize: SHARED.fontSM, fontWeight: 'bold', color: myTheme.text2nd },
     productDescription: { fontSize: SHARED.fontS, color: myTheme.textGray, marginVertical: normalizeHeight(2) },
     vendorInfo: { fontSize: SHARED.fontXxS, color: myTheme.textGray, marginVertical: normalizeHeight(2) },

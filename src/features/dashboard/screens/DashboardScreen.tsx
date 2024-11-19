@@ -146,7 +146,7 @@ const VendorDashboard = () => {
         
 
         {/* Reaction Metrics */}
-          <Text style={baseStyle.slargeText}>{t('Reactions')}</Text>
+          <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>{t('Reactions')}</Text>
           <View style={[baseStyle.columnsInside]}>
             <View style={[baseStyle.cols_3, dashStyle.metricBox]}>
             <View style={[dashStyle.metricBoxInner, baseStyle.alignAllItems]}>
@@ -182,7 +182,7 @@ const VendorDashboard = () => {
 
         {/* Recent Orders */}
         <View style={{ marginTop: 30 }}>
-          <Text style={baseStyle.slargeText}>{t('Recent Orders')}</Text>
+          <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>{t('Recent Orders')}</Text>
           {recentOrders.map(order => (
             <View key={order.id} style={[baseStyle.columnsInside, dashStyle.orderBox]}>
               <Text style={[baseStyle.cols_2, {color: myTheme.text2nd}]}>

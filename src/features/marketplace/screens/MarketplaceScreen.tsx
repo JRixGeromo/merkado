@@ -200,7 +200,12 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
 
   return (
     <GradientBG>
-      <View style={baseStyle.container}>
+      <View 
+        style={[
+          baseStyle.container,
+          baseStyle.rlPaddingS,
+        ]}
+      >
         {/* Search Bar and Toggle Icons */}
         <SearchBarWithToggle
           keyWord={keyword}
@@ -212,7 +217,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
 
         {/* Live Selling Section */}
         <View style={marketStyle.liveSellingContainer}>
-          <Text style={commonStyle.sectionHeader}>Currently Live Selling</Text>
+          <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>Currently Live Selling</Text>
           <FlatList
             data={liveSellingUsers}
             horizontal
@@ -227,8 +232,8 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
         {activeView === 'featured' ? (
           <ScrollView contentContainerStyle={commonStyle.scrollViewContent}>
             {/* Featured Products Section */}
-            <View style={commonStyle.featuredContainer}>
-              <Text style={commonStyle.sectionHeader}>Featured Products</Text>
+            <View>
+              <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>Featured Products</Text>
               <FlatList
                 data={featuredProducts}
                 horizontal
@@ -244,13 +249,13 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
                 )}
                 keyExtractor={item => item.id}
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={marketStyle.featuredList}
+                //contentContainerStyle={marketStyle.featuredList}
               />
             </View>
 
             {/* Recently Posted Products Section */}
             <View style={marketStyle.recentlyPostedContainer}>
-              <Text style={commonStyle.sectionHeader}>Recently Posted Products</Text>
+              <Text style={[baseStyle.slargeText, {color: myTheme.text2nd}]}>Recently Posted Products</Text>
               <FlatList
                 data={recentlyPostedProducts}
                 renderItem={({ item }) => (
@@ -265,7 +270,7 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
                 )}
                 keyExtractor={item => item.id}
                 scrollEnabled={false} // Disable scrolling for inner FlatList
-                contentContainerStyle={commonStyle.recentlyPostedList}
+                //contentContainerStyle={commonStyle.recentlyPostedList}
               />
             </View>
           </ScrollView>
