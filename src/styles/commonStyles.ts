@@ -173,40 +173,21 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   marginBottom: normalizeHeight(10),
     //   marginLeft: normalizeWidth(10),
     // },
-    productName: { fontSize: SHARED.fontSM, fontWeight: 'bold', color: myTheme.text2nd },
-    productDescription: { fontSize: SHARED.fontS, color: myTheme.textGray, marginVertical: normalizeHeight(2) },
-    vendorInfo: { fontSize: SHARED.fontXxS, color: myTheme.textGray, marginVertical: normalizeHeight(2) },
-    headerTitle: { 
-      fontSize: SHARED.fontXxL, fontWeight: 'bold', color: myTheme.text2nd, 
-    },
+    
     priceRow: { alignItems: 'center', marginRight: normalizeWidth(10), marginTop: normalizeHeight(4),  marginBottom: normalizeHeight(4) },
     
-    discountedPrice: {
-      fontSize: SHARED.fontS,
-      fontWeight: 'bold', 
-      color: myTheme.text2nd,
-      marginRight: normalizeWidth(10),
-    },
     originalPrice: {
-      fontSize: SHARED.fontXS,
-      color: myTheme.textGray,
       textDecorationLine: 'line-through',
-      marginRight: normalizeWidth(10),
+      marginRight: normalizeWidth(5),
+      marginLeft: normalizeWidth(5),
     },
     discountBadge: {
       backgroundColor: myTheme.buttonDanger,
-      color: myTheme.textLight,
       paddingHorizontal: normalizeWidth(5),
-      fontSize: SHARED.fontXxS,
       borderRadius: SHARED.borderRadius1st, 
       fontWeight: 'bold',
     },
 
-    description: {
-      fontSize: SHARED.fontM,
-      color: myTheme.textGray,
-      textAlign: 'center',
-    },
     recentlyPostedList: {
       paddingHorizontal: normalizeWidth(10),
     },

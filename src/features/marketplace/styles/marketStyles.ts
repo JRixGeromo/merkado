@@ -141,7 +141,6 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       justifyContent: 'space-between',
       marginTop: normalizeHeight(10),
     },
-
     
     buttonRowWidth: {
       width: "100%", 

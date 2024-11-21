@@ -196,27 +196,28 @@ const ProductItem: React.FC<{
           {product.name}
         </Text>
         {/* ///////////////////////////////////////// continue here */}
+
         { !isFeatured && product.description && 
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
-          style={commonStyle.productDescription}
+          style={[baseStyle.mediumText]}
         >
           {product.description}
         </Text>
         }
  
-        <Text style={commonStyle.vendorInfo}>{`${product.region}`}</Text>
+        <Text style={[baseStyle.XxSmallText, {color: myTheme.text2nd}]}>{`${product.region}`}</Text>
 
         <View style={[baseStyle.columnsInsideFlex, commonStyle.priceRow]}>
-          <Text style={commonStyle.discountedPrice}>
+          <Text style={[baseStyle.sMediumText, {color: myTheme.text2nd}]}>
             {product.discountedPrice}/kg
           </Text>
           {product.price !== product.discountedPrice && (
-            <Text style={commonStyle.originalPrice}>{product.price}</Text>
+            <Text style={[baseStyle.sMediumText, commonStyle.originalPrice, {color: myTheme.textGray}]}>{product.price}</Text>
           )}
           {product.discount && (
-            <Text style={commonStyle.discountBadge}>-{product.discount}</Text>
+            <Text style={[baseStyle.xSmallText, commonStyle.discountBadge, {color: myTheme.textLight,}]}>-{product.discount}</Text>
           )}
         </View>
         <View
