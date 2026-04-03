@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -26,11 +25,10 @@ import CartScreen from './src/features/cart/screens/CartScreen';
 import CheckoutScreen from './src/features/cart/screens/CheckoutScreen';
 import TransactionsScreen from './src/features/transactions/screens/TransactionsScreen';
 import AccountScreen from './src/features/account/screens/AccountScreen';
-import DropdownMenu from './src/components/DropdownMenu';
 import IconLib from './src/components/IconLib';
+import { HeaderTitle, HeaderRight } from './src/components/navigation/TabHeader';
 import { RootStackParamList, RootTabParamList } from './src/navigationTypes';
 import { commonStyles } from './src/styles/commonStyles';
-import { baseStyles } from './src/styles/baseStyles';
 import { theme as appTheme } from './src/styles/theme';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -39,11 +37,7 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const themeType = useAppSelector(state => state.theme.theme);
-  const user = useAppSelector(state => state.auth.user); // Adjusted to access user under auth
-  //const cartCount = useAppSelector(state => state.cart.count); // Assuming cart count is in state.cart.count
-  const cartCount = 2; // Assuming cart count is in state.cart.count
   const commonStyle = commonStyles(themeType);
-  const baseStyle = baseStyles(themeType);
   const selectedTheme = appTheme[themeType];
   const dispatch = useAppDispatch();
 
@@ -60,129 +54,64 @@ const App = () => {
 
   const MainTabs = () => (
     <Tab.Navigator
-      screenOptions={({ route, navigation }) => ({
-        tabBarIcon: ({ focused, color }) => {
-          const iconSize = 22; // Set your desired icon size here
+      screenOptions={({ route, navigation }) => {
+        return {
+          tabBarIcon: ({ focused, color }) => {
+            const iconSize = 22; // Set your desired icon size here
 
-          if (route.name === 'Dashboard') {
-            return focused ? (
-              <IconLib.Dashboard size={iconSize} color={color} />
-            ) : (
-              <IconLib.Dashboard_O size={iconSize} color={color} />
-            );
-          } else if (route.name === 'Marketplace') {
-            return focused ? (
-              <IconLib.Marketplace size={iconSize} color={color} />
-            ) : (
-              <IconLib.Marketplace_O size={iconSize} color={color} />
-            );
-          } else if (route.name === 'My Products') {
-            return focused ? (
-              <IconLib.Products size={iconSize} color={color} />
-            ) : (
-              <IconLib.Products_O size={iconSize} color={color} />
-            );
-          } else if (route.name === 'Chat') {
-            return focused ? (
-              <IconLib.Chat size={iconSize} color={color} />
-            ) : (
-              <IconLib.Chat_O size={iconSize} color={color} />
-            );
-          } else if (route.name === 'Transactions') {
-            return focused ? (
-              <IconLib.Transactions size={iconSize} color={color} />
-            ) : (
-              <IconLib.Transactions_O size={iconSize} color={color} />
-            );
-          }
-          return null;
-        },
-        tabBarActiveTintColor: selectedTheme.iconColor1st,
-        tabBarInactiveTintColor: selectedTheme.iconColor2nd,
-        tabBarStyle: [
-          commonStyle.tabBarStyle,
-          {
-            borderTopWidth: 1,
-            borderTopColor: selectedTheme.headerBorderColor,
-          },
-        ],
-        tabBarLabelStyle: commonStyle.tabBarLabelStyle,
-        headerStyle: {
-          backgroundColor: selectedTheme.tabHeaderBGColor,
-          borderBottomWidth: 0.3,
-          borderBottomColor: selectedTheme.headerBorderColor,
-        },
-        //headerTitleStyle: commonStyle.screenHeaderTitle,
-        headerTitle: () => (
-          <View style={commonStyle.tabHeaderContainer}>
-            <Image
-              source={require('./assets/logo.png')}
-              style={commonStyle.headerLogo}
-            />
-            <Text style={commonStyle.screenHeaderTitle}>{route.name}</Text>
-          </View>
-        ),
-        headerRight: () => (
-          <View style={commonStyle.headerRightContainer}>
-            <View style={{ position: 'relative' }}>
-              <IconLib.Cart_O
-                size={20}
-                color={selectedTheme.iconColor2nd}
-                onPress={() => navigation.navigate('CartScreen')}
-                style={commonStyle.headerIcon}
-              />
-              {cartCount > 0 && (
-                <View
-                  style={{
-                    position: 'absolute',
-                    top: -7,
-                    right: 15,
-                    backgroundColor: 'red',
-                    borderRadius: 10,
-                    paddingHorizontal: 5,
-                    paddingVertical: 2,
-                  }}
-                >
-                  <Text
-                    style={{ color: 'white', fontSize: 8, fontWeight: 'bold' }}
-                  >
-                    {cartCount}
-                  </Text>
-                </View>
-              )}
-            </View>
-            {/* Front Store Icon */}
-            <TouchableOpacity
-              onPress={() => navigation.navigate('FrontStoreScreen')}
-              style={baseStyle.rMarginL}
-            >
-              <IconLib.Store_O size={20} color={selectedTheme.iconColor2nd} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('AccountScreen')}
-              style={baseStyle.rMarginL}
-            >
-              {user?.avatar ? (
-                <Image
-                  source={{ uri: user.avatar }}
-                  style={{
-                    width: 35,
-                    height: 35,
-                    borderRadius: 17.5,
-                    marginRight: 10,
-                  }}
-                />
+            if (route.name === 'Dashboard') {
+              return focused ? (
+                <IconLib.Dashboard size={iconSize} color={color} />
               ) : (
-                <IconLib.Person_O
-                  size={20}
-                  color={selectedTheme.iconColor2nd}
-                />
-              )}
-            </TouchableOpacity>
-            <DropdownMenu navigation={navigation} />
-          </View>
-        ),
-      })}
+                <IconLib.Dashboard_O size={iconSize} color={color} />
+              );
+            } else if (route.name === 'Marketplace') {
+              return focused ? (
+                <IconLib.Marketplace size={iconSize} color={color} />
+              ) : (
+                <IconLib.Marketplace_O size={iconSize} color={color} />
+              );
+            } else if (route.name === 'My Products') {
+              return focused ? (
+                <IconLib.Products size={iconSize} color={color} />
+              ) : (
+                <IconLib.Products_O size={iconSize} color={color} />
+              );
+            } else if (route.name === 'Chat') {
+              return focused ? (
+                <IconLib.Chat size={iconSize} color={color} />
+              ) : (
+                <IconLib.Chat_O size={iconSize} color={color} />
+              );
+            } else if (route.name === 'Transactions') {
+              return focused ? (
+                <IconLib.Transactions size={iconSize} color={color} />
+              ) : (
+                <IconLib.Transactions_O size={iconSize} color={color} />
+              );
+            }
+            return null;
+          },
+          tabBarActiveTintColor: selectedTheme.iconColor1st,
+          tabBarInactiveTintColor: selectedTheme.iconColor2nd,
+          tabBarStyle: [
+            commonStyle.tabBarStyle,
+            {
+              borderTopWidth: 1,
+              borderTopColor: selectedTheme.headerBorderColor,
+            },
+          ],
+          tabBarLabelStyle: commonStyle.tabBarLabelStyle,
+          headerStyle: {
+            backgroundColor: selectedTheme.tabHeaderBGColor,
+            borderBottomWidth: 0.3,
+            borderBottomColor: selectedTheme.headerBorderColor,
+          },
+          //headerTitleStyle: commonStyle.screenHeaderTitle,
+          headerTitle: () => <HeaderTitle route={route} />,
+          headerRight: () => <HeaderRight navigation={navigation} />,
+        };
+      }}
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Marketplace" component={MarketplaceScreen} />

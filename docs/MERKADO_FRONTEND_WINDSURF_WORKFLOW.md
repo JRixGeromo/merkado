@@ -2,36 +2,79 @@
 
 ## Purpose
 
-This document defines the full Windsurf workflow for reviewing and refactoring the Merkado frontend using a low-cost, high-control approach.
+This document defines the full Windsurf workflow for reviewing and refactoring the Merkado frontend using your actual setup.
 
-This project workflow is designed to:
+This workflow is designed to:
 - preserve current behavior
 - avoid broad risky rewrites
 - reduce token usage and cost
 - use the free model effectively
 - use the stronger model only where needed
 - keep work structured in small safe slices
+- match your real Windsurf configuration
 
 This is the standard workflow for this project.
 
 ---
 
-# Project Context
+# Actual Setup for This Project
 
-Merkado frontend is a large React Native codebase with:
-- central app setup in `App.tsx` 
-- Redux store in `src/store` 
-- Apollo client in `src/graphql` 
-- shared types in `src/types.ts` and `src/navigationTypes.ts` 
-- feature folders under `src/features` 
-- shared UI in `src/components` 
-- shared styles in `src/styles` 
+This project uses the following instruction layers:
 
-Because this codebase is large, refactoring should **not** begin with a broad rewrite.
+## 1. Global Windsurf Rules
+Your global Windsurf rules live here:
 
-The correct approach is:
+`C:\Users\jrixg\.codeium\windsurf\memories\global_rules.md` 
 
-**review → plan → implement one slice → audit → fix leftovers → next slice**
+These contain broad, reusable rules across all projects.
+
+Examples:
+- make minimal, targeted changes
+- do not modify unrelated files
+- follow existing structure and conventions
+- keep business logic out of UI
+- write maintainable code
+- update tests if needed
+- do not introduce breaking changes without clearly stating them
+
+## 2. Project AGENTS.md
+Merkado should have a project-level file here:
+
+`AGENTS.md` 
+
+This contains Merkado-specific guidance:
+- project goal
+- refactor workflow
+- high-priority areas
+- risky areas
+- implementation expectations
+- expected output after each slice
+
+## 3. Project Workflow Document
+This file:
+
+`MERKADO_FRONTEND_WINDSURF_WORKFLOW.md` 
+
+This is the long-form project playbook for:
+- workflow stages
+- prompt templates
+- slice order
+- audits
+- leftover fixes
+- next-slice planning
+
+---
+
+# Recommended Project File Structure
+
+Inside the Merkado frontend repo, use:
+
+```text
+merkado-frontend/
+├─ AGENTS.md
+├─ docs/
+│  └─ MERKADO_FRONTEND_WINDSURF_WORKFLOW.md
+```
 
 ---
 
