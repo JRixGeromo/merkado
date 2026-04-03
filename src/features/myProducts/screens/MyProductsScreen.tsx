@@ -7,12 +7,10 @@ import {
   Text,
   Image,
 } from 'react-native';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useTheme } from '../../../hooks/useTheme';
 import { myProductStyles } from '../styles/myProductStyles';
 import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { commonStyles } from '../../../styles/commonStyles';
-import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
 import SlideContentModal from '../../../components/SlideContentModal';
 import ConfirmationModal from '../../../components/ConfirmationModal';

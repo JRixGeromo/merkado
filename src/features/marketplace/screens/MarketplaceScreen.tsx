@@ -18,9 +18,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useTheme } from '../../../hooks/useTheme';
-import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';

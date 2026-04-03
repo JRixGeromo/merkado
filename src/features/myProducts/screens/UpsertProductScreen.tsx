@@ -15,8 +15,6 @@ import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import ListOptions from '../../../components/ListOptions';
 import { myProductStyles } from '../styles/myProductStyles';
 import { baseStyles, SHARED } from '../../../styles/baseStyles';
-import { theme as appTheme } from '../../../styles/theme';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useTheme } from '../../../hooks/useTheme';
 
 type ProductData = {

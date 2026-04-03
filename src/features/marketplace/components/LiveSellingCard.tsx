@@ -2,9 +2,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useTheme } from '../../../hooks/useTheme';
-import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp

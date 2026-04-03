@@ -14,12 +14,10 @@ import {
   normalizeWidth,
 } from '../../../utils/responsive'; // Import responsive utilities
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useTheme } from '../../../hooks/useTheme';
 import ReactionBar from '../../../components/ReactionBar';
 import CommentInput from '../../../components/CommentInput';
 import CustomButton from '../../../components/CustomButton';
-import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { useTranslation } from 'react-i18next';

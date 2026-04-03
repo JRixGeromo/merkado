@@ -1,11 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { useAppSelector } from '../../../hooks/reduxHooks';
-import { theme as appTheme } from '../../../styles/theme';
 import { useTheme } from '../../../hooks/useTheme';
 
 const TransactionsScreen = () => {
-  const { themeType, myTheme } = useTheme();
+  const { myTheme } = useTheme();
 
   return (
     <View style={[styles.container]}>
