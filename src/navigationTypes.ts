@@ -25,6 +25,7 @@ export type RootStackParamList = {
   FollowersScreen: undefined;
   SocialAccountsScreen: undefined;
   HelpCenterScreen: undefined;
+  LogoutScreen: undefined;
   DetailsScreen: { item: Store | Product; type: 'store' | 'product' };
   CartScreen: undefined;
   CheckoutScreen: undefined;

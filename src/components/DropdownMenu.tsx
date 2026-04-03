@@ -20,6 +20,29 @@ type DropdownMenuProps = {
   navigation: StackNavigationProp<RootStackParamList>;
 };
 
+type MenuAction = 
+  | 'AccountScreen'
+  | 'ProductCategoriesScreen'
+  | 'MyProductsScreen'
+  | 'FavoritesScreen'
+  | 'LiveShowsScreen'
+  | 'OfflineShowsScreen'
+  | 'MarketingCampaignsScreen'
+  | 'ManageVendorsScreen'
+  | 'WishesScreen'
+  | 'RatingsReviewsScreen'
+  | 'ReactionsScreen'
+  | 'FollowersScreen'
+  | 'SocialAccountsScreen'
+  | 'HelpCenterScreen'
+  | 'LogoutScreen';
+
+interface MenuItem {
+  label: string;
+  icon: keyof typeof IconLib;
+  action: MenuAction;
+}
+
 const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
@@ -28,81 +51,81 @@ const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
   const myTheme = appTheme[themeType];
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       label: 'Account Setting',
       icon: 'Cog_O', // Use the predefined key for Cog icon in IconLib
-      action: 'AccountScreen' as keyof RootStackParamList,
+      action: 'AccountScreen',
     },
     {
       label: 'Product Categories',
       icon: 'List_O', // Use the predefined key for List icon in IconLib
-      action: 'ProductCategoriesScreen' as keyof RootStackParamList,
+      action: 'ProductCategoriesScreen',
     },
     {
       label: 'My Products',
       icon: 'Products_O', // Use the predefined key for Products icon in IconLib
-      action: 'MyProductsScreen' as keyof RootStackParamList,
+      action: 'MyProductsScreen',
     },
     {
       label: 'Favorites',
       icon: 'Heart_O', // Use the predefined key for Heart icon in IconLib
-      action: 'FavoritesScreen' as keyof RootStackParamList,
+      action: 'FavoritesScreen',
     },
     {
       label: 'Live Shows',
       icon: 'Video_O', // Use the predefined key for Video icon in IconLib
-      action: 'LiveShowsScreen' as keyof RootStackParamList,
+      action: 'LiveShowsScreen',
     },
     {
       label: 'Offline Shows',
       icon: 'Calendar_O', // Use the predefined key for Calendar icon in IconLib
-      action: 'OfflineShowsScreen' as keyof RootStackParamList,
+      action: 'OfflineShowsScreen',
     },
     {
       label: 'Marketing Campaigns',
       icon: 'Megaphone_O', // Use the predefined key for Megaphone icon in IconLib
-      action: 'MarketingCampaignsScreen' as keyof RootStackParamList,
+      action: 'MarketingCampaignsScreen',
     },
     {
       label: 'Manage Vendors',
       icon: 'Marketplace_O', // Use the predefined key for Marketplace icon in IconLib
-      action: 'ManageVendorsScreen' as keyof RootStackParamList,
+      action: 'ManageVendorsScreen',
     },
     {
       label: 'Wishes',
       icon: 'Heart_O', // Use the predefined key for Heart icon in IconLib
-      action: 'WishesScreen' as keyof RootStackParamList,
+      action: 'WishesScreen',
     },
     {
       label: 'Ratings & Reviews',
       icon: 'Star_O', // Use the predefined key for Star icon in IconLib
-      action: 'RatingsReviewsScreen' as keyof RootStackParamList,
+      action: 'RatingsReviewsScreen',
     },
     {
       label: 'Reactions',
       icon: 'ThumbsUp_O', // Use the predefined key for ThumbsUp icon in IconLib
-      action: 'ReactionsScreen' as keyof RootStackParamList,
+      action: 'ReactionsScreen',
     },
     {
       label: 'Followers',
       icon: 'People_O', // Use the predefined key for People icon in IconLib
-      action: 'FollowersScreen' as keyof RootStackParamList,
+      action: 'FollowersScreen',
     },
     {
       label: 'Social Accounts',
       icon: 'FBLogo_O', // Use the predefined key for Facebook Logo icon in IconLib
-      action: 'SocialAccountsScreen' as keyof RootStackParamList,
+      action: 'SocialAccountsScreen',
     },
     {
       label: 'Help Center',
       icon: 'Help_O', // Use the predefined key for Help icon in IconLib
-      action: 'HelpCenterScreen' as keyof RootStackParamList,
+      action: 'HelpCenterScreen',
     },
     {
       label: 'Logout',
       icon: 'Logout_O', // Use the predefined key for Logout icon in IconLib
-      action: 'LogoutScreen' as keyof RootStackParamList,
+      action: 'LogoutScreen',
     },
   ];
   // Function to render the icons dynamically
