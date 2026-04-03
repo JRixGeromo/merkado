@@ -8,6 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
+import { useTheme } from '../hooks/useTheme';
 import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
 import { compStyles } from './styles/componentStyles'; // Import your style
@@ -51,16 +52,12 @@ const ListOptions: React.FC<ListOptionsProps> = ({
   showIcon = true, // Show the icon by default
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const compStyle = compStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-  const commonStyle = commonStyles(themeType);
 
   // Inside the component
   const [addNewModalVisible, setAddNewModalVisible] = useState(false);
   const [newOption, setNewOption] = useState('');
-
-  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   // Memoize the theme-based styles
