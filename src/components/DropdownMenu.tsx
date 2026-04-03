@@ -12,6 +12,7 @@ import { compStyles } from './styles/componentStyles'; // Import your style
 import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useAppSelector } from '../hooks/reduxHooks';
+import { useTheme } from '../hooks/useTheme';
 
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigationTypes';
@@ -44,11 +45,8 @@ interface MenuItem {
 }
 
 const DropdownMenu = ({ navigation }: DropdownMenuProps) => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, baseStyle, myTheme } = useTheme();
   const compStyle = compStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
   const [menuVisible, setMenuVisible] = useState(false);
 
   const menuItems: MenuItem[] = [

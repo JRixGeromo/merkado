@@ -1,11 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { TextInput, View, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { compStyles } from './styles/componentStyles'; // Import your style
-import { commonStyles } from '../styles/commonStyles';
-import { baseStyles } from '../styles/baseStyles';
-import { theme as appTheme } from '../styles/theme';
+import { useTheme } from '../hooks/useTheme';
 import { normalizeFontSize, normalizeHeight } from '../utils/responsive';
-import { useAppSelector } from '../hooks/reduxHooks'; // Import your redux selector for theme
 import IconLib from './IconLib'; // Import your custom Icon library
 
 interface TextInputWithIconProps {
@@ -47,12 +44,8 @@ const TextInputWithIcon: React.FC<TextInputWithIconProps> = ({
   keyboardType = 'default',
   multiline = false,
 }) => {
-  const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
+  const { themeType, commonStyle, myTheme } = useTheme();
   const compStyle = compStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
 
   // Memoize the theme-based styles
   const themeBasedStyles = useMemo(() => {

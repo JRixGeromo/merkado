@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { useAppSelector } from '../hooks/reduxHooks';
+import { useTheme } from '../hooks/useTheme';
 import { compStyles } from './styles/componentStyles'; // Import your style
 import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
@@ -20,11 +21,8 @@ const SlideContentModal: React.FC<SlideContentModalProps> = ({
   title,
   children,
 }) => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, baseStyle, myTheme } = useTheme();
   const compStyle = compStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
 
   return (
     <Modal

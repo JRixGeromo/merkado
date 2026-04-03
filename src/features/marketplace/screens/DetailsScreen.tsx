@@ -15,6 +15,7 @@ import {
 } from '../../../utils/responsive'; // Import responsive utilities
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import ReactionBar from '../../../components/ReactionBar';
 import CommentInput from '../../../components/CommentInput';
 import CustomButton from '../../../components/CustomButton';
@@ -46,11 +47,8 @@ const DetailsScreen: React.FC = () => {
   const route = useRoute<DetailsScreenRouteProp>();
   const { item, type } = route.params;
 
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, baseStyle, myTheme } = useTheme();
   const marketStyle = marketStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
 
   const navigation = useNavigation<NavigationProp>(); // Ensure proper type for navigation
 

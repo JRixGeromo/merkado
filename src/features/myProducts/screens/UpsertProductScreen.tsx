@@ -17,6 +17,7 @@ import { myProductStyles } from '../styles/myProductStyles';
 import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 
 type ProductData = {
   id?: string;
@@ -40,10 +41,8 @@ interface UpsertProductScreenProps {
 const UpsertProductScreen: React.FC<UpsertProductScreenProps> = ({
   product,
 }) => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, baseStyle, myTheme } = useTheme();
   const myProductStyle = myProductStyles(themeType);
-  const baseStyle = baseStyles(themeType);
-  const myTheme = appTheme[themeType];
 
   // Initialize states conditionally based on product prop
   const [name, setName] = useState(product?.name || '');
