@@ -196,6 +196,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       paddingHorizontal: normalizeWidth(10),
       paddingTop: normalizeHeight(10),
     },
+
+    categoriesContainer: {
+      paddingHorizontal: normalizeWidth(10),
+      paddingVertical: normalizeHeight(5),
+    },
     activeIconText: {
       color: myTheme.textLight,
     },
