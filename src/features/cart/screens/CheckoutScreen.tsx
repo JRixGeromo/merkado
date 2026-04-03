@@ -2,12 +2,10 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
 import { baseStyles } from '../../../styles/baseStyles';
-import { theme as appTheme } from '../../../styles/theme';
 import { useTranslation } from 'react-i18next';
 
 import CustomButton from '../../../components/CustomButton';
 import IconLib from '../../../components/IconLib';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 import { useTheme } from '../../../hooks/useTheme';
 
 import { useNavigation } from '@react-navigation/native';
