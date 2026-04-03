@@ -4,6 +4,7 @@ import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import CustomButton from '../../../components/CustomButton';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { commonStyles } from '../../../styles/commonStyles';
+import { baseStyles } from '../../../styles/baseStyles';
 import { useTranslation } from 'react-i18next';
 import { theme as appTheme } from '../../../styles/theme';
 
@@ -11,6 +12,7 @@ const EditProfileScreen = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const { t } = useTranslation();
   const commonStyle = commonStyles(theme);
+  const baseStyle = baseStyles(theme);
   const myTheme = appTheme[theme];
 
   const [firstName, setFirstName] = useState('John');
@@ -23,7 +25,7 @@ const EditProfileScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <View style={commonStyle.container}>
+      <View style={baseStyle.container}>
       </View>
     </ScrollView>
   );

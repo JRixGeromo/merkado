@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { gql } from '@apollo/client';
 import client from '../../graphql/apolloClient'; // Ensure you have Apollo Client set up
 
-// Define the type for a product
-type Product = {
+// Define the type for a product item returned by this slice query
+type ProductQueryItem = {
   id: string;
   name: string;
   price: number;
@@ -12,7 +12,7 @@ type Product = {
 
 // Define the type for the product state
 type ProductState = {
-  products: Product[];
+  products: ProductQueryItem[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 };
@@ -59,7 +59,7 @@ const productSlice = createSlice({
       })
       .addCase(
         fetchProducts.fulfilled,
-        (state, action: PayloadAction<Product[]>) => {
+        (state, action: PayloadAction<ProductQueryItem[]>) => {
           state.status = 'succeeded';
           state.products = action.payload; // Store the fetched products in the state
         },

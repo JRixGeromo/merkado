@@ -68,7 +68,7 @@ const AccountScreen = () => {
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
         {/* Account Information Card */}
-        <View style={commonStyle.innerContainer}>
+        <View style={baseStyle.container}>
           {/* <View style={acctStyle.card}>
             <View style={acctStyle.cardHeader}>
               <Icon
@@ -110,7 +110,7 @@ const AccountScreen = () => {
           </View> */}
 
           {/* Preferences Card */}
-          <View style={commonStyle.card}>
+          <View style={acctStyle.languageContainer}>
             <View style={acctStyle.cardHeader}>
               <Icon
                 name="settings-outline"
