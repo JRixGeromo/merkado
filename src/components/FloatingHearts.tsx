@@ -2,11 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import {
   View,
   Animated,
-  Easing,
   Text,
   StyleSheet,
   Dimensions,
 } from 'react-native';
+import {
+  createFloatingAnimationSequence,
+  createFloatingInterpolations,
+} from './floatingAnimationHelpers';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -20,17 +23,7 @@ const FloatingHearts = () => {
 
   useEffect(() => {
     const animate = (animatedValue: Animated.Value, delay: number) => {
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(animatedValue, {
-            toValue: 1,
-            duration: 3000,
-            easing: Easing.linear,
-            useNativeDriver: true,
-          }),
-          Animated.delay(60000), // Pause for 60 seconds between loops
-        ]),
-      ).start();
+      Animated.loop(createFloatingAnimationSequence(animatedValue)).start();
     };
 
     animatedValues.forEach((animatedValue, index) => {
@@ -41,20 +34,10 @@ const FloatingHearts = () => {
   return (
     <View style={StyleSheet.absoluteFill}>
       {animatedValues.map((animatedValue, index) => {
-        const translateY = animatedValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: [200, -200], // Float up from bottom to top
-        });
-
-        const translateX = animatedValue.interpolate({
-          inputRange: [0, 1],
-          outputRange: [index % 2 === 0 ? -50 : 50, index % 2 === 0 ? 50 : -50], // Slight horizontal sway
-        });
-
-        const opacity = animatedValue.interpolate({
-          inputRange: [0, 0.5, 1],
-          outputRange: [0, 1, 0], // Fade in and out
-        });
+        const { translateY, translateX, opacity } = createFloatingInterpolations(
+          animatedValue,
+          index,
+        );
 
         return (
           <Animated.View
