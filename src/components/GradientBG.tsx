@@ -1,11 +1,11 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { StyleSheet, View } from 'react-native';
-import { useAppSelector } from '../hooks/reduxHooks';
 import { theme as appTheme } from '../styles/theme';
+import { useTheme } from '../hooks/useTheme';
 
 const GradientBG: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType } = useTheme();
   const background = appTheme[themeType].themeBG;
 
   // Check if background is a gradient (array) or solid color (string)

@@ -10,11 +10,8 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import { chatStyles } from '../styles/chatStyles'; // Import your style
-import { commonStyles } from '../../../styles/commonStyles';
-import { baseStyles } from '../../../styles/baseStyles';
-import { theme as appTheme } from '../../../styles/theme';
 import IconLib from '../../../components/IconLib';
 import { useTranslation } from 'react-i18next';
 import ReactionBar from '../../../components/ReactionBar'; // Assuming ReactionBar is imported
@@ -37,11 +34,8 @@ type Avatar = {
 };
 
 const ChatScreen = () => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const chatStyle = chatStyles(themeType);
-  const baseStyle = baseStyles(themeType);
-  const commonStyle = commonStyles(themeType);
-  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   const [message, setMessage] = useState('');

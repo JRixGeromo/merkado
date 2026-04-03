@@ -1,8 +1,6 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
-import { baseStyles } from '../styles/baseStyles';
-import { theme as appTheme } from '../styles/theme';
+import { useTheme } from '../hooks/useTheme';
 
 interface Reaction {
   emoji: string;
@@ -18,10 +16,7 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
   reactions,
   onReactionPress,
 }) => {
-  const themeType = useAppSelector(state => state.theme.theme);
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
+  const { themeType, baseStyle, myTheme } = useTheme();
 
   return (
     <ScrollView horizontal={true} contentContainerStyle={baseStyle.alignLeft}>
