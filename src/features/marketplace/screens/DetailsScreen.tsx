@@ -380,7 +380,7 @@ const DetailsScreen: React.FC = () => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate('FrontStoreScreen', { vendorId: 1 })
+                navigation.navigate('FrontStoreScreen')
               }
             >
               <IconLib.Store_O
