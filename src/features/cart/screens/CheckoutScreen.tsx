@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import CustomButton from '../../../components/CustomButton';
 import IconLib from '../../../components/IconLib';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
@@ -16,9 +17,7 @@ import { RootStackParamList } from '../../../navigationTypes'; // Import RootSta
 const CheckoutScreen: React.FC = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
-  const themeType = useAppSelector(state => state.theme.theme);
-  const baseStyle = baseStyles(themeType);
-  const myTheme = appTheme[themeType];
+  const { themeType, baseStyle, myTheme } = useTheme();
   const { t } = useTranslation();
 
   // Handle Checkout process here

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import { theme as appTheme } from '../../../styles/theme';
 import { dashStyles } from '../styles/dashStyles'; // Import your style
 import { commonStyles } from '../../../styles/commonStyles'; // Import your style
@@ -54,11 +55,8 @@ export type Store = {
 };
 
 const VendorDashboard = () => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const dashStyle = dashStyles(themeType);
-  const commonStyle = commonStyles(themeType);
-  const baseStyle = baseStyles(themeType);
-  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
