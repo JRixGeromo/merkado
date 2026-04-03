@@ -9,6 +9,7 @@ import { compStyles } from './styles/componentStyles'; // Import your style
 import { RootStackParamList } from '../navigationTypes';
 import { theme as appTheme } from '../styles/theme'; // Import your theme for direct use
 import { baseStyles } from '../styles/baseStyles';
+import { commonStyles } from '../styles/commonStyles';
 
 type SplashScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -24,6 +25,7 @@ const SplashScreen = () => {
   const theme = useAppSelector(state => state.theme.theme) as 'light' | 'dark'; // Explicitly define the type
   const compStyle = compStyles(theme); // Dynamically create styles based on the theme
   const baseStyle = baseStyles(theme); // Dynamically create styles based on the theme
+  const commonStyle = commonStyles(theme);
   const myTheme = appTheme[theme]; // Access the current theme (light or dark)
   const fadeAnim = new Animated.Value(0); // Create an animated value for fade-in
 
@@ -57,7 +59,7 @@ const SplashScreen = () => {
       >
         <Image
           source={require('../../assets/logo.png')} // Logo path
-          style={baseStyle.logo}
+          style={commonStyle.logo}
         />
         <Text style={compStyle.splashText}>Welcome to Merkado</Text>
       </Animated.View>

@@ -12,6 +12,7 @@ import { normalizeFontSize } from '../utils/responsive';
 import IconLib from './IconLib'; // Ensure this is the correct path to IconLib
 import { compStyles } from './styles/componentStyles'; // Import your style
 import { baseStyles } from '../styles/baseStyles';
+import { commonStyles } from '../styles/commonStyles';
 import { theme as appTheme } from '../styles/theme';
 import { useTranslation } from 'react-i18next'; // Import translation hook
 import CustomButton from './CustomButton'; // Import your CustomButton component
@@ -53,6 +54,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
   const themeType = useAppSelector(state => state.theme.theme);
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
+  const commonStyle = commonStyles(themeType);
 
   // Inside the component
   const [addNewModalVisible, setAddNewModalVisible] = useState(false);
@@ -238,7 +240,7 @@ const ListOptions: React.FC<ListOptionsProps> = ({
               placeholder={t('New Option')}
               value={newOption}
               onChangeText={setNewOption}
-              style={[baseStyle.input, { marginBottom: 10 }]}
+              style={[commonStyle.input, { marginBottom: 10 }]}
               placeholderTextColor={myTheme.textPHolderInfo}
             />
             <CustomButton

@@ -22,9 +22,9 @@ export const marketStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       borderBottomWidth: 0.5, // Add bottom border
       borderColor: myTheme.borderColorGray, // Light gray border color
     },
-    // liveSellingList: {
-    //   paddingHorizontal: normalizeWidth(10),
-    // },
+    liveSellingList: {
+      paddingHorizontal: normalizeWidth(10),
+    },
     // featuredList: {
     //   paddingHorizontal: normalizeWidth(5),
     // },
