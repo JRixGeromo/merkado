@@ -9,6 +9,7 @@ import {
 import IconLib from '../../../components/IconLib'; // Use IconLib here
 import TextInputWithIcon from '../../../components/TextInputWithIcon';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
@@ -28,14 +29,9 @@ const SearchBarWithToggle: React.FC<SearchBarWithToggleProps> = ({
   setActiveView,
   onSearchChange,
 }) => {
-    const themeType = useAppSelector(state => state.theme.theme);
+    const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
     const marketStyle = marketStyles(themeType); // This is fine
-    const commonStyle = commonStyles(themeType); // This is fine
-    const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-  
-    const myTheme = appTheme[themeType];
-  
- 
+
     const { t } = useTranslation(); // Initialize translation
 
   return (

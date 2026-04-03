@@ -11,13 +11,10 @@ import {
 import { normalizeHeight } from '../../../utils/responsive'; // Assuming you have responsive utilities
 
 import { cartStyles } from '../styles/cartStyles'; // Import your style
-import { commonStyles } from '../../../styles/commonStyles';
-import { baseStyles } from '../../../styles/baseStyles';
-import { theme as appTheme } from '../../../styles/theme';
+import { useTheme } from '../../../hooks/useTheme';
 import { useTranslation } from 'react-i18next';
 import CustomButton from '../../../components/CustomButton';
 import IconLib from '../../../components/IconLib';
-import { useAppSelector } from '../../../hooks/reduxHooks';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
@@ -54,11 +51,8 @@ const cartItems: CartItem[] = [
 const CartScreen: React.FC = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const cartStyle = cartStyles(themeType);
-  const commonStyle = commonStyles(themeType);
-  const baseStyle = baseStyles(themeType);
-  const myTheme = appTheme[themeType];
   const { t } = useTranslation();
 
   const [cart, setCart] = useState<CartItem[]>(cartItems);

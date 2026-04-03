@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { toggleTheme } from '../../../store/slices/themeSlice';
 import CustomButton from '../../../components/CustomButton';
 import ListOptions from '../../../components/ListOptions'; // Import Dropdown component
+import { useTheme } from '../../../hooks/useTheme';
 import { acctStyles } from '../styles/accountStyles'; // Import your style
 import { commonStyles } from '../../../styles/commonStyles'; // Import your style
 import { baseStyles } from '../../../styles/baseStyles';
@@ -20,12 +21,8 @@ const AccountScreen = () => {
   const dispatch = useAppDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const acctStyle = acctStyles(themeType); // This is fine
-  const commonStyle = commonStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
 
   const { t, i18n } = useTranslation();
 

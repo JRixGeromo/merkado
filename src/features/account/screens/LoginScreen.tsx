@@ -18,6 +18,7 @@ import { commonStyles } from '../../../styles/commonStyles'; // Import your styl
 import { baseStyles } from '../../../styles/baseStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import IconLib from '../../../components/IconLib'; // Import IconLib here
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../../navigationTypes';
@@ -49,11 +50,8 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('password123');
   const [loading, setLoading] = useState(false); // Add loading state
 
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const acctStyle = acctStyles(themeType); // This is fine
-  const commonStyle = commonStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-  const myTheme = appTheme[themeType];
 
   const dispatch = useAppDispatch(); // Get dispatch for Redux actions
 

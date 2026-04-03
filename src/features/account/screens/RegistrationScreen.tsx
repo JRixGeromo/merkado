@@ -16,10 +16,8 @@ import DateAndTimePicker from '../../../components/DateAndTimePicker';
 import ListOptions from '../../../components/ListOptions';
 
 import { acctStyles } from '../styles/accountStyles'; // Import your style
-import { commonStyles } from '../../../styles/commonStyles'; // Import your style
-import { baseStyles } from '../../../styles/baseStyles';
 import { SHARED } from '../../../styles/baseStyles';
-import { theme as appTheme } from '../../../styles/theme';
+import { useTheme } from '../../../hooks/useTheme';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -68,11 +66,8 @@ const RegistrationScreen = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation();
 
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const acctStyle = acctStyles(themeType); // This is fine
-  const commonStyle = commonStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-  const myTheme = appTheme[themeType];
 
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 

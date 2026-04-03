@@ -8,6 +8,7 @@ import {
   Image,
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import { myProductStyles } from '../styles/myProductStyles';
 import { baseStyles, SHARED } from '../../../styles/baseStyles';
 import { commonStyles } from '../../../styles/commonStyles';
@@ -31,11 +32,8 @@ export type Product = {
 };
 
 const MyProductsScreen = () => {
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const myProductStyle = myProductStyles(themeType);
-  const baseStyle = baseStyles(themeType);
-  const commonStyle = commonStyles(themeType);
-  const myTheme = appTheme[themeType];
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
