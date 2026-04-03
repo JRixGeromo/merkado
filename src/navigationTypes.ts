@@ -1,15 +1,4 @@
-import { Product, Store } from './types'; // Import the shared types
-
-type Subcategory = {
-  name: string;
-  description: string;
-};
-
-type Category = {
-  name: string;
-  description: string;
-  subcategories: Subcategory[];
-};
+import { Product, Store, Category, Subcategory } from './types'; // Import the shared types
 
 export type RootStackParamList = {
   SplashScreen: undefined;

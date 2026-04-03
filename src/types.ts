@@ -24,4 +24,14 @@ export type Product = {
     distance: string;
     location: string;
   };
-  
+
+  export type Subcategory = {
+    name: string;
+    description: string;
+  };
+
+  export type Category = {
+    name: string;
+    description: string;
+    subcategories: Subcategory[];
+  };

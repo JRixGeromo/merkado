@@ -408,11 +408,11 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   height: '100%',
     //   resizeMode: 'cover',
     // },
-    // promoImage: {
-    //   width: '100%',
-    //   height: normalizeHeight(100),
-    //   resizeMode: 'cover',
-    // },
+    promoImage: {
+      width: '100%',
+      height: normalizeHeight(100),
+      resizeMode: 'cover',
+    },
     // goFullScreenButton: {
     //   position: 'absolute',
     //   top: normalizeHeight(2),
@@ -463,27 +463,27 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   color: myTheme.text2nd,
     //   fontFamily: myTheme.headingFont,
     // },
-    // modalTitle: {
-    //   fontSize: SHARED.fontL,
-    //   fontWeight: 'bold',
-    //   color: myTheme.text1st,
-    //   marginBottom: 15,
-    // },
-    // listItem: {
-    //   paddingTop: normalizeHeight(10),
-    //   paddingBottom: normalizeHeight(10),
-    //   paddingLeft: normalizeWidth(10),
-    //   paddingRight: normalizeWidth(10),
-    //   borderBottomColor: myTheme.lineBorderColor,
-    //   borderBottomWidth: 1,
-    // },
-    // searchButton: {
-    //   paddingTop: normalizeHeight(4),
-    //   paddingBottom: normalizeHeight(4),
-    //   paddingLeft: normalizeWidth(8),
-    //   paddingRight: normalizeWidth(8),
-    //   height: normalizeHeight(30),
-    // },
+    modalTitle: {
+      fontSize: SHARED.fontL,
+      fontWeight: 'bold',
+      color: myTheme.text1st,
+      marginBottom: 15,
+    },
+    listItem: {
+      paddingTop: normalizeHeight(10),
+      paddingBottom: normalizeHeight(10),
+      paddingLeft: normalizeWidth(10),
+      paddingRight: normalizeWidth(10),
+      borderBottomColor: myTheme.lineBorderColor,
+      borderBottomWidth: 1,
+    },
+    searchButton: {
+      paddingTop: normalizeHeight(4),
+      paddingBottom: normalizeHeight(4),
+      paddingLeft: normalizeWidth(8),
+      paddingRight: normalizeWidth(8),
+      height: normalizeHeight(30),
+    },
     // inputContainer: {
     //   flexDirection: 'row',
     //   alignItems: 'center',
@@ -586,12 +586,12 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   resizeMode: 'contain',
     //   marginBottom: normalizeHeight(20),
     // },
-    // headerTitle: {
-    //   fontSize: SHARED.fontXxL,
-    //   fontFamily: myTheme.headingFont,
-    //   color: myTheme.text1st,
-    //   marginBottom: normalizeHeight(20),
-    // },
+    headerTitle: {
+      fontSize: SHARED.fontXxL,
+      fontFamily: myTheme.headingFont,
+      color: myTheme.text1st,
+      marginBottom: normalizeHeight(20),
+    },
     // linkText: {
     //   fontSize: SHARED.fontM,
     //   fontFamily: myTheme.bodyFont,
@@ -654,18 +654,18 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // headerIcon: {
     //   marginRight: normalizeWidth(20),
     // },
-    // chatButton: {
-    //   backgroundColor: myTheme.buttonDark,
-    // },
-    // cartButton: {
-    //   backgroundColor: myTheme.button1st,
-    // },
+    chatButton: {
+      backgroundColor: myTheme.buttonDark,
+    },
+    cartButton: {
+      backgroundColor: myTheme.button1st,
+    },
     // commentButton: {
     //   backgroundColor: myTheme.buttonInfo,
     // },
-    // followButton: {
-    //   backgroundColor: myTheme.buttonInfo,
-    // },
+    followButton: {
+      backgroundColor: myTheme.buttonInfo,
+    },
     // cardHeader: {
     //   flexDirection: 'row',
     //   alignItems: 'center',
@@ -712,10 +712,10 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   color: myTheme.text1st,
     //   marginTop: normalizeHeight(10),
     // },
-    // slide: {
-    //   borderRadius: SHARED.borderRadius2nd,
-    //   overflow: 'hidden',
-    // },
+    slide: {
+      borderRadius: SHARED.borderRadius2nd,
+      overflow: 'hidden',
+    },
     // reactionBar: {
     //   flexDirection: 'row',
     //   justifyContent: 'flex-start',
@@ -957,23 +957,23 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   flexDirection: 'row',
     //   paddingVertical: 10,
     // },
-    // vendorInfo: {
-    //   marginLeft: 10,
-    //   flex: 1,
-    // },
-    // vendorName: {
-    //   fontSize: 18,
-    //   fontWeight: 'bold',
-    //   color: '#333',
-    // },
-    // vendorLocation: {
-    //   color: '#666',
-    //   fontSize: 14,
-    // },
-    // vendorStats: {
-    //   color: '#666',
-    //   fontSize: 12,
-    // },
+    vendorInfo: {
+      marginLeft: 10,
+      flex: 1,
+    },
+    vendorName: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#333',
+    },
+    vendorLocation: {
+      color: '#666',
+      fontSize: 14,
+    },
+    vendorStats: {
+      color: '#666',
+      fontSize: 12,
+    },
 
     // followButtonText: {
     //   color: '#FFF',
@@ -983,49 +983,49 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     // iconMargin: {
     //   marginLeft: 10,
     // },
-    // bannerImage: {
-    //   width: '90%',
-    //   height: 150,
-    //   borderRadius: 10,
-    //   marginRight: 10,
-    // },
-    // categoryCard: {
-    //   backgroundColor: '#f2f2f2',
-    //   paddingHorizontal: 15,
-    //   paddingVertical: 10,
-    //   borderRadius: 20,
-    //   marginHorizontal: 5,
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    // },
-    // categoryText: {
-    //   color: '#333',
-    //   fontSize: 14,
-    // },
+    bannerImage: {
+      width: '90%',
+      height: 150,
+      borderRadius: 10,
+      marginRight: 10,
+    },
+    categoryCard: {
+      backgroundColor: '#f2f2f2',
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      borderRadius: 20,
+      marginHorizontal: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    categoryText: {
+      color: '#333',
+      fontSize: 14,
+    },
 
     // productCard: {
     //   marginRight: 10,
     //   width: 150,
     // },
-    // reviewBox: {
-    //   backgroundColor: '#f9f9f9',
-    //   padding: 10,
-    //   borderRadius: 8,
-    //   marginVertical: 5,
-    // },
-    // reviewUser: {
-    //   fontWeight: 'bold',
-    //   color: '#333',
-    // },
-    // reviewContent: {
-    //   color: '#555',
-    //   fontSize: 14,
-    //   marginVertical: 5,
-    // },
-    // reviewRating: {
-    //   color: '#FFC107',
-    //   fontSize: 14,
-    // },
+    reviewBox: {
+      backgroundColor: '#f9f9f9',
+      padding: 10,
+      borderRadius: 8,
+      marginVertical: 5,
+    },
+    reviewUser: {
+      fontWeight: 'bold',
+      color: '#333',
+    },
+    reviewContent: {
+      color: '#555',
+      fontSize: 14,
+      marginVertical: 5,
+    },
+    reviewRating: {
+      color: '#FFC107',
+      fontSize: 14,
+    },
     // header: {
     //   flexDirection: 'row',
     //   alignItems: 'center',
@@ -1080,23 +1080,23 @@ export const commonStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
     //   marginLeft: 5,
     // },
 
-    // bannerWrapper: {
-    //   position: 'relative',
-    //   width: '100%',
-    //   height: 200,
-    //   marginBottom: 20,
-    // },
+    bannerWrapper: {
+      position: 'relative',
+      width: '100%',
+      height: 200,
+      marginBottom: 20,
+    },
 
     // // Profile picture in the lower left corner of the banner
-    // profilePicture: {
-    //   position: 'absolute',
-    //   bottom: 10,
-    //   left: 10,
-    //   width: 60,
-    //   height: 60,
-    //   borderRadius: 30,
-    //   borderWidth: 2,
-    //   borderColor: 'white',
-    // },
+    profilePicture: {
+      position: 'absolute',
+      bottom: 10,
+      left: 10,
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+      borderWidth: 2,
+      borderColor: 'white',
+    },
   });
 };

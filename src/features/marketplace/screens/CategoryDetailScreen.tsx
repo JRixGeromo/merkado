@@ -90,7 +90,7 @@ const CategoryDetailScreen: React.FC<CategoryDetailScreenProps> = ({
           style={marketStyle.headerImage}
         /> */}
         <Text style={commonStyle.headerTitle}>{category.name}</Text>
-        <Text style={commonStyle.description}>{category.description}</Text>
+        <Text style={commonStyle.detailText}>{category.description}</Text>
       </View>
 
       {/* Subcategories List */}
