@@ -108,10 +108,10 @@ export const baseStyles = (currentTheme: 'light' | 'dark' | 'femme') => {
       alignItems: 'center', // Center content horizontally if needed
       justifyContent: 'flex-start', // Start aligning content at the top
     },
-    // rowsInside: {
-    //   width: '100%',
-    //   flexDirection: 'column',
-    // },
+    rowsInside: {
+      width: '100%',
+      flexDirection: 'column',
+    },
     columnsInsideFlex: {
       flexDirection: 'row',
     },

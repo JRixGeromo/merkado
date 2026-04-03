@@ -10,6 +10,7 @@ import {
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { myProductStyles } from '../styles/myProductStyles';
 import { baseStyles, SHARED } from '../../../styles/baseStyles';
+import { commonStyles } from '../../../styles/commonStyles';
 import { theme as appTheme } from '../../../styles/theme';
 import ContentCardWide from '../../../components/ContentCardWide';
 import SlideContentModal from '../../../components/SlideContentModal';
@@ -33,6 +34,7 @@ const MyProductsScreen = () => {
   const themeType = useAppSelector(state => state.theme.theme);
   const myProductStyle = myProductStyles(themeType);
   const baseStyle = baseStyles(themeType);
+  const commonStyle = commonStyles(themeType);
   const myTheme = appTheme[themeType];
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -108,7 +110,7 @@ const MyProductsScreen = () => {
           width: '100%',
           textSize: 12,
           onPress: () => handleDeleteProduct(item),
-          buttonStyle: baseStyle.cardButton,
+          buttonStyle: commonStyle.cardButton,
         },
         {
           iconName: 'Create_O',
@@ -117,7 +119,7 @@ const MyProductsScreen = () => {
           width: '100%',
           textSize: 12,
           onPress: () => console.log('Edit Pressed'),
-          buttonStyle: baseStyle.cardButton,
+          buttonStyle: commonStyle.cardButton,
         },
         {
           iconName: 'View_O',
@@ -126,7 +128,7 @@ const MyProductsScreen = () => {
           width: '100%',
           textSize: 12,
           onPress: () => handleViewProduct(item),
-          buttonStyle: baseStyle.cardButton,
+          buttonStyle: commonStyle.cardButton,
         },
       ]}
     />
@@ -145,7 +147,7 @@ const MyProductsScreen = () => {
       <View style={[baseStyle.columnsInside, baseStyle.alignAllItems]}>
         <View
           style={[
-            baseStyle.searchContainer,
+            commonStyle.searchContainer,
             baseStyle.columnsInside,
             baseStyle.cols_80,
           ]}
@@ -154,7 +156,7 @@ const MyProductsScreen = () => {
             <IconLib.Menu size={24} color={myTheme.iconColorGray} />
           </TouchableOpacity>
           <TextInput
-            style={baseStyle.searchInput}
+            style={commonStyle.searchInput}
             placeholder="Search Products"
             placeholderTextColor={myTheme.textPHolderInfo}
             value={searchTerm}
@@ -173,7 +175,7 @@ const MyProductsScreen = () => {
             iconColor={myTheme.buttonText1st}
             iconSize={SHARED.fontXL}
             color={myTheme.buttonText1st}
-            style={baseStyle.cardButton}
+            style={commonStyle.cardButton}
             borderRadius={0}
           />
         </View>
@@ -201,7 +203,7 @@ const MyProductsScreen = () => {
           <View>
             <Image
               source={{ uri: selectedProduct.imageUrl }}
-              style={baseStyle.slideModalImage}
+              style={commonStyle.slideModalImage}
             />
             <Text
               style={[
