@@ -1,13 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { useAppSelector } from '../../../hooks/reduxHooks';
-import { commonStyles } from '../../../styles/commonStyles';
-import { baseStyles } from '../../../styles/baseStyles';
+import { useTheme } from '../../../hooks/useTheme';
 
 const OrdersScreen = () => {
-  const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType);
-  const baseStyle = baseStyles(themeType);
+  const { themeType, commonStyle, baseStyle } = useTheme();
 
   return (
     <View style={baseStyle.container}>
