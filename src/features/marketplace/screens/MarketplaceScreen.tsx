@@ -19,6 +19,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
 import { commonStyles } from '../../../styles/commonStyles';
@@ -174,12 +175,8 @@ const MarketplaceScreen: React.FC<MarketplaceScreenProps> = ({
   
   const [keyword, setKeyword] = useState<string>(''); // Ensure it's initialized as a string
 
-  const themeType = useAppSelector(state => state.theme.theme);
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const marketStyle = marketStyles(themeType); // This is fine
-  const commonStyle = commonStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
 
 
   const renderCategoryItem = ({

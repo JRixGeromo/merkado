@@ -11,13 +11,13 @@ import {
   TextInput,
 } from 'react-native';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { useTheme } from '../../../hooks/useTheme';
 import { commonStyles } from '../../../styles/commonStyles';
 import { baseStyles } from '../../../styles/baseStyles';
 import MarketplaceModal from '../../marketplace/components/MarketplaceModal'; // Import reusable modal component
 import ContentCard from '../../../components/ContentCard';
 import Carousel from 'react-native-snap-carousel';
 import { useTranslation } from 'react-i18next'; // Import the translation hook
-import { theme as appTheme } from '../../../styles/theme';
 import IconLib from '../../../components/IconLib'; // Import IconLib
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'; // Use NativeStackNavigationProp
@@ -50,11 +50,7 @@ export type Store = {
 };
 
 const FrontStoreScreen = () => {
-  const themeType = useAppSelector(state => state.theme.theme);
-  const commonStyle = commonStyles(themeType); // This is fine
-  const baseStyle = baseStyles(themeType); // Rename this to avoid conflict
-
-  const myTheme = appTheme[themeType];
+  const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>(); // Correct the type here
