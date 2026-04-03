@@ -3,8 +3,6 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
-  Text,
 } from 'react-native';
 import { useAppSelector } from '../hooks/reduxHooks';
 import ReactionBar from './ReactionBar'; // Import the reusable ReactionBar component
@@ -12,11 +10,7 @@ import { compStyles } from './styles/componentStyles'; // Import your style
 import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import IconLib from './IconLib'; // Import IconLib for icons
-
-interface Reaction {
-  emoji: string;
-  label: string;
-}
+import { Reaction } from './types/reactionTypes';
 
 interface CommentInputProps {
   onSend: (comment: string) => void;

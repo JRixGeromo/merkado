@@ -1,32 +1,25 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { useAppSelector } from '../hooks/reduxHooks'; // Hook to access the theme from Redux
 import { compStyles } from './styles/componentStyles'; // Import your style
 import { commonStyles } from '../styles/commonStyles';
 import { useTheme } from '../hooks/useTheme';
-import { baseStyles, SHARED } from '../styles/baseStyles';
-import { theme as appTheme } from '../styles/theme';
+import { SHARED } from '../styles/baseStyles';
 import IconLib from './IconLib'; // Import IconLib for icons
 import CustomButton from './CustomButton';
+import {
+  SharedCardButtonActionBase,
+  SharedContentCardBaseProps,
+} from './types/contentCardTypes';
 
-interface ContentCardProps {
-  type: 'store' | 'product' | 'featured' | 'onSale'; // Define types of items
-  imageUrl: string;
-  name: string;
+interface ContentCardProps extends SharedContentCardBaseProps {
   distance: string;
-  description: string | null;
-  price?: number;
   location?: string;
   rating: number;
   likes: number;
   isLiked: boolean;
   onFullScreenPress: () => void;
   onLikePress: () => void;
-  buttonActions: {
-    iconName: string;
-    onPress: () => void;
-    buttonStyle: object;
-  }[];
+  buttonActions: SharedCardButtonActionBase[];
 }
 
 const ContentCard: React.FC<ContentCardProps> = ({

@@ -1,4 +1,6 @@
-export const reactions = [
+import type { Reaction } from '../components/types/reactionTypes';
+
+export const reactions: Reaction[] = [
   { emoji: '❤️', label: 'LOVE' },
   { emoji: '😃', label: 'HAPPY' },
   { emoji: '😮', label: 'WOW' },

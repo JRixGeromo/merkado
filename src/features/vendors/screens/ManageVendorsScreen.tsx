@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { useTheme } from '../../../hooks/useTheme';
 
 const ManageVendorsScreen = () => {
-  const { themeType, commonStyle, baseStyle } = useTheme();
+  const { commonStyle, baseStyle } = useTheme();
 
   return (
     <View style={baseStyle.container}>

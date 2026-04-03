@@ -1,11 +1,7 @@
 import React from 'react';
-import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { ScrollView, TouchableOpacity, Text } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
-
-interface Reaction {
-  emoji: string;
-  label: string;
-}
+import { Reaction } from './types/reactionTypes';
 
 interface ReactionBarProps {
   reactions: Reaction[];
@@ -16,7 +12,7 @@ const ReactionBar: React.FC<ReactionBarProps> = ({
   reactions,
   onReactionPress,
 }) => {
-  const { themeType, baseStyle, myTheme } = useTheme();
+  const { baseStyle } = useTheme();
 
   return (
     <ScrollView horizontal={true} contentContainerStyle={baseStyle.alignLeft}>

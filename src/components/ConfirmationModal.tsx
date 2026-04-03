@@ -7,6 +7,11 @@ import { baseStyles } from '../styles/baseStyles';
 import { theme as appTheme } from '../styles/theme';
 import CustomButton from './CustomButton'; // Import CustomButton
 
+const MODAL_BACKDROP_OPACITY = 0.3;
+const BUTTON_ROW_MARGIN_TOP = 20;
+const MODAL_BUTTON_TEXT_SIZE = 14;
+const MODAL_BUTTON_BORDER_RADIUS = 0;
+
 interface ConfirmationModalProps {
   visible: boolean;
   onClose: () => void;
@@ -35,13 +40,18 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   const compStyle = compStyles(themeType); // This is fine
   const baseStyle = baseStyles(themeType);
 
+  const handleConfirmPress = () => {
+    onConfirm();
+    onClose();
+  };
+
   return (
     <Modal
       isVisible={visible}
       onBackdropPress={onClose}
       onBackButtonPress={onClose}
       style={compStyle.centeredConfimrationModal}
-      backdropOpacity={0.3}
+      backdropOpacity={MODAL_BACKDROP_OPACITY}
     >
       <View
         style={[
@@ -75,7 +85,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <View
           style={[
             baseStyle.columnsInside,
-            { justifyContent: 'space-between', marginTop: 20 },
+            { justifyContent: 'space-between', marginTop: BUTTON_ROW_MARGIN_TOP },
           ]}
         >
           {/* Cancel Button */}
@@ -84,23 +94,18 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             onPress={onClose}
             backgroundColor={cancelButtonColor || myTheme.buttonDanger}
             color={myTheme.buttonText1st}
-            //style={[compStyle.confimrationModalButton]}
-            textSize={14}
-            borderRadius={0}
+            textSize={MODAL_BUTTON_TEXT_SIZE}
+            borderRadius={MODAL_BUTTON_BORDER_RADIUS}
           />
 
           {/* Confirm Button */}
           <CustomButton
             title={confirmText}
-            onPress={() => {
-              onConfirm();
-              onClose(); // Close the modal after confirming
-            }}
+            onPress={handleConfirmPress}
             backgroundColor={confirmButtonColor || myTheme.button1st}
             color={myTheme.buttonTextDelete}
-            //style={[compStyle.confimrationModalButton]}
-            textSize={14}
-            borderRadius={0}
+            textSize={MODAL_BUTTON_TEXT_SIZE}
+            borderRadius={MODAL_BUTTON_BORDER_RADIUS}
           />
         </View>
       </View>

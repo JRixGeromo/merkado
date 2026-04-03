@@ -1,15 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import ProductItem from '../components/ProductItem'; // Import ProductItem
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
-import { useAppSelector } from '../../../hooks/reduxHooks';
+import { Product } from '../../../types';
 import { useTheme } from '../../../hooks/useTheme';
-import { theme as appTheme } from '../../../styles/theme';
 import { marketStyles } from '../styles/marketStyles';
-import { commonStyles } from '../../../styles/commonStyles';
-import { baseStyles } from '../../../styles/baseStyles';
 import GradientBG from '../../../components/GradientBG'; // Gradient background wrapper
 
 import { useNavigation } from '@react-navigation/native'; // Import the navigation hook
@@ -20,25 +17,6 @@ type ProductsScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'ProductsScreen'
 >;
-
-type Product = {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  discountedPrice: string;
-  imageUrl: string;
-  isNew: boolean;
-  isPopular: boolean;
-  discount: string;
-  vendor: string;
-  region: string;
-  distance?: string; // Optional
-  location?: string; // Optional
-  rating?: number;
-  likes?: number;
-  onSale?: boolean;
-};
 
 const ProductsScreen: React.FC<ProductsScreenProps> = ({ route }) => {
   const { subcategory } = route.params;
