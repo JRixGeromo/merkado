@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Switch, Text, StyleSheet } from 'react-native';
 import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
-import { toggleTheme } from '../../../reducers/themeReducer';
+import { toggleTheme } from '../../../store/slices/themeSlice';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { commonStyles } from '../../../styles/commonStyles';
 import { useNavigation } from '@react-navigation/native';
