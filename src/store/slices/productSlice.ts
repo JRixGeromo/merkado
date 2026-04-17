@@ -83,6 +83,8 @@ const GET_PRODUCTS = gql`
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
+    // Clear cache and fetch fresh data
+    await client.clearStore();
     const response = await client.query({
       query: GET_PRODUCTS,
       fetchPolicy: 'network-only',
