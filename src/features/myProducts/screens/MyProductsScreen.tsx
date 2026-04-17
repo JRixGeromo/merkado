@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   FlatList,
@@ -6,6 +6,7 @@ import {
   TextInput,
   Text,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import { useTheme } from '../../../hooks/useTheme';
 import { myProductStyles } from '../styles/myProductStyles';
@@ -19,49 +20,22 @@ import CustomButton from '../../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigationTypes';
-
-export type Product = {
-  id: string;
-  name: string;
-  description: string | null;
-  price: number;
-  imageUrl: string;
-  onSale: boolean;
-};
+import { useAppSelector, useAppDispatch } from '../../../hooks/reduxHooks';
+import { fetchProducts, deleteProduct, Product } from '../../../store/slices/productSlice';
 
 const MyProductsScreen = () => {
   const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const myProductStyle = myProductStyles(themeType);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const dispatch = useAppDispatch();
+  const { products, status, error } = useAppSelector(state => state.products);
 
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: '1',
-      name: 'Beef Boneless Beef Boneless Beef Boneless Beef Boneless Beef Boneless',
-      description:
-        'High quality boneless beef. High quality boneless beef. High quality boneless beef.',
-      price: 500,
-      imageUrl: 'https://picsum.photos/100/100?random=1',
-      onSale: true,
-    },
-    {
-      id: '2',
-      name: 'Dried Fish Boneless',
-      description: 'High quality boneless dried fish.',
-      price: 200,
-      imageUrl: 'https://picsum.photos/100/100?random=2',
-      onSale: true,
-    },
-    {
-      id: '3',
-      name: 'Pork Skin',
-      description: 'High quality pork skin.',
-      price: 520,
-      imageUrl: 'https://picsum.photos/100/100?random=3',
-      onSale: true,
-    },
-  ]);
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, status]);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -75,15 +49,14 @@ const MyProductsScreen = () => {
 
   const confirmDeletion = () => {
     if (selectedProduct) {
-      console.log(`Deleting product: ${selectedProduct.name}`);
-      setProducts(products.filter(p => p.id !== selectedProduct.id));
+      dispatch(deleteProduct(parseInt(selectedProduct.id, 10)));
       setSelectedProduct(null);
       setConfirmVisible(false);
     }
   };
 
   const handleProduct = () => {
-    navigation.navigate('UpsertProductScreen');
+    navigation.navigate('UpsertProductScreen' as any);
   };
 
   const handleViewProduct = (product: Product) => {
@@ -94,9 +67,9 @@ const MyProductsScreen = () => {
   const renderProductItem = ({ item }: { item: Product }) => (
     <ContentCardWide
       type="product"
-      imageUrl={item.imageUrl}
+      imageUrl={''}
       name={item.name}
-      description={item.description}
+      description={item.longDescription}
       price={item.price}
       buttonActions={[
         {
@@ -114,7 +87,7 @@ const MyProductsScreen = () => {
           backgroundColor: myTheme.button1st,
           width: '100%',
           textSize: 12,
-          onPress: () => console.log('Edit Pressed'),
+          onPress: () => navigation.navigate('UpsertProductScreen', { product: item }),
           buttonStyle: commonStyle.cardButton,
         },
         {
@@ -130,7 +103,37 @@ const MyProductsScreen = () => {
     />
   );
 
+  // Show loading indicator
+if (status === 'loading') {
   return (
+    <View style={[baseStyle.container, baseStyle.alignAllItems, { justifyContent: 'center' }]}>
+      <ActivityIndicator size="large" color={myTheme.button1st} />
+      <Text style={[baseStyle.mediumText, { color: myTheme.text2nd, marginTop: 10 }]}>
+        Loading products...
+      </Text>
+    </View>
+  );
+}
+
+// Show error state
+if (status === 'failed') {
+  return (
+    <View style={[baseStyle.container, baseStyle.alignAllItems, { justifyContent: 'center' }]}>
+      <Text style={[baseStyle.mediumText, { color: myTheme.buttonDanger }]}>
+        Error: {error}
+      </Text>
+      <CustomButton
+        title="Retry"
+        onPress={() => dispatch(fetchProducts())}
+        backgroundColor={myTheme.button1st}
+        color={myTheme.buttonText1st}
+        style={{ marginTop: 20 }}
+      />
+    </View>
+  );
+}
+
+return (
     <View
       style={[
         baseStyle.container,
@@ -197,10 +200,6 @@ const MyProductsScreen = () => {
       >
         {selectedProduct && (
           <View>
-            <Image
-              source={{ uri: selectedProduct.imageUrl }}
-              style={commonStyle.slideModalImage}
-            />
             <Text
               style={[
                 baseStyle.smallText,
@@ -215,7 +214,7 @@ const MyProductsScreen = () => {
                 { color: myTheme.text2nd },
               ]}
             >
-              Description: {selectedProduct.description}
+              Stock: {selectedProduct.stock}
             </Text>
             <Text
               style={[
@@ -223,7 +222,31 @@ const MyProductsScreen = () => {
                 { color: myTheme.text2nd },
               ]}
             >
-              On Sale: {selectedProduct.onSale ? 'Yes' : 'No'}
+              Description: {selectedProduct.longDescription || 'No description'}
+            </Text>
+            <Text
+              style={[
+                baseStyle.smallText,
+                { color: myTheme.text2nd },
+              ]}
+            >
+              Sale Price: {selectedProduct.salePrice ? `₱${selectedProduct.salePrice}` : 'N/A'}
+            </Text>
+            <Text
+              style={[
+                baseStyle.smallText,
+                { color: myTheme.text2nd },
+              ]}
+            >
+              Vendor: {selectedProduct.vendor?.businessName || 'N/A'}
+            </Text>
+            <Text
+              style={[
+                baseStyle.smallText,
+                { color: myTheme.text2nd },
+              ]}
+            >
+              Featured: {selectedProduct.isFeatured ? 'Yes' : 'No'}
             </Text>
           </View>
         )}

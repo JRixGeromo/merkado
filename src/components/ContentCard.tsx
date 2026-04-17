@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { compStyles } from './styles/componentStyles'; // Import your style
 import { commonStyles } from '../styles/commonStyles';
@@ -38,12 +38,30 @@ const ContentCard: React.FC<ContentCardProps> = ({
   buttonActions,
 }) => {
   const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
-  const compStyle = compStyles(themeType); // This is fine
+  const compStyle = compStyles(themeType);
+  const [imageError, setImageError] = useState(false);
+
+  const renderImage = () => {
+    if (!imageUrl || imageError) {
+      return (
+        <View style={[compStyle.productImage, { backgroundColor: '#f0f0f0', justifyContent: 'center', alignItems: 'center' }]}>
+          <Text style={{ color: '#999', fontSize: 10 }}>No Image</Text>
+        </View>
+      );
+    }
+    return (
+      <Image
+        source={{ uri: imageUrl }}
+        style={compStyle.productImage}
+        onError={() => setImageError(true)}
+      />
+    );
+  };
 
   return (
     <View style={[baseStyle.shadowedContainer, compStyle.contentBoxPortrait]}>
       <View style={compStyle.cardImageWrapper}>
-        <Image source={{ uri: imageUrl }} style={compStyle.productImage} />
+        {renderImage()}
         <TouchableOpacity
           style={compStyle.goFullScreenButton}
           onPress={onFullScreenPress}

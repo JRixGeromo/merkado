@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text } from 'react-native';
 import { compStyles } from './styles/componentStyles'; // Import your style
 import { commonStyles } from '../styles/commonStyles';
@@ -31,6 +31,30 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
 }) => {
   const { themeType, commonStyle, baseStyle, myTheme } = useTheme();
   const compStyle = compStyles(themeType); // This is fine
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  const renderImage = () => {
+    // If there's no imageUrl or there was an error, show a placeholder
+    if (!imageUrl || !imageUrl.trim() || imageError) {
+      return (
+        <View style={[compStyle.contentImage, { backgroundColor: '#f0f0f0', justifyContent: 'center', alignItems: 'center' }]}>
+          <Text style={{ color: '#999', fontSize: 12, textAlign: 'center' }}>No Image</Text>
+        </View>
+      );
+    }
+
+    return (
+      <Image 
+        source={{ uri: imageUrl }} 
+        style={compStyle.contentImage} 
+        onError={handleImageError}
+      />
+    );
+  };
 
   return (
     <View
@@ -41,7 +65,7 @@ const ContentCardWide: React.FC<ContentCardWideProps> = ({
       ]}
     >
       <View style={[compStyle.contentImage, baseStyle.cols_25]}>
-        <Image source={{ uri: imageUrl }} style={compStyle.contentImage} />
+        {renderImage()}
       </View>
 
       <View style={[baseStyle.cols_75]}>

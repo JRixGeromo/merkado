@@ -1,4 +1,5 @@
 import { Product, Store, Category, Subcategory } from './types'; // Import the shared types
+import { Product as ReduxProduct } from './store/slices/productSlice'; // Import Redux Product type
 
 export type RootStackParamList = {
   SplashScreen: undefined;
@@ -12,7 +13,7 @@ export type RootStackParamList = {
   PaymentMethodsScreen: undefined;
   ProductCategoriesScreen: undefined;
   MyProductsScreen: undefined;
-  UpsertProductScreen: undefined;
+  UpsertProductScreen: { product?: ReduxProduct };
   OrdersScreen: undefined;
   FavoritesScreen: undefined;
   LiveShowsScreen: undefined;

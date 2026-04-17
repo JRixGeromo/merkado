@@ -139,10 +139,17 @@ const DetailsScreen: React.FC = () => {
                 </Text>
               </View>
             )}
-          <Image
-            source={{ uri: item.imageUrl }}
-            style={marketStyle.bannerContentImage}
-          />
+          {item.imageUrl ? (
+            <Image
+              source={{ uri: item.imageUrl }}
+              style={marketStyle.bannerContentImage}
+              onError={() => {}}
+            />
+          ) : (
+            <View style={[marketStyle.bannerContentImage, { backgroundColor: '#f0f0f0', justifyContent: 'center', alignItems: 'center' }]}>
+              <Text style={{ color: '#999', fontSize: 14 }}>No Image</Text>
+            </View>
+          )}
 
           {type === 'product' && (
             <View style={marketStyle.priceContainer}>
