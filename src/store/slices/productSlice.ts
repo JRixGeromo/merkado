@@ -82,14 +82,25 @@ const GET_PRODUCTS = gql`
 // Async thunk to fetch products
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
-    // Clear cache and fetch fresh data
-    await client.clearStore();
-    const response = await client.query({
-      query: GET_PRODUCTS,
-      fetchPolicy: 'network-only',
-    });
-    return response.data.products;
+  async (_, { rejectWithValue }) => {
+    try {
+      // Clear cache and fetch fresh data
+      await client.clearStore();
+      const response = await client.query({
+        query: GET_PRODUCTS,
+        fetchPolicy: 'network-only',
+        errorPolicy: 'all',
+      });
+      
+      if (response.errors && response.errors.length > 0) {
+        return rejectWithValue(response.errors[0].message);
+      }
+      
+      return response.data.products;
+    } catch (error: any) {
+      console.error('Error fetching products:', error);
+      return rejectWithValue(error.message || 'Failed to fetch products');
+    }
   },
 );
 

@@ -32,10 +32,8 @@ const MyProductsScreen = () => {
   const { products, status, error } = useAppSelector(state => state.products);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchProducts());
-    }
-  }, [dispatch, status]);
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -57,6 +55,10 @@ const MyProductsScreen = () => {
 
   const handleProduct = () => {
     navigation.navigate('UpsertProductScreen' as any);
+  };
+
+  const handleRefresh = () => {
+    dispatch(fetchProducts());
   };
 
   const handleViewProduct = (product: Product) => {
@@ -178,19 +180,56 @@ return (
             borderRadius={0}
           />
         </View>
+        <View style={[baseStyle.cols_5, baseStyle.lPaddingL]}>
+          <CustomButton
+            title=""
+            textSize={12}
+            backgroundColor={myTheme.buttonInfo}
+            width="100%"
+            onPress={handleRefresh}
+            iconName="Store" // Use existing icon instead of Refresh
+            iconColor={myTheme.buttonInfo}
+            iconSize={SHARED.fontXL}
+            color={myTheme.buttonInfo}
+            style={commonStyle.cardButton}
+            borderRadius={0}
+            disabled={status === 'loading' as any}
+          />
+        </View>
       </View>
       <View style={baseStyle.verticalSpacerM} />
       {/* Product List */}
-      <FlatList
-        data={products.filter(product =>
-          product.name.toLowerCase().includes(searchTerm.toLowerCase()),
-        )}
-        //data={products} // Temporarily use this without filtering
-        keyExtractor={item => item.id}
-        renderItem={renderProductItem}
-        contentContainerStyle={baseStyle.flatListPaddingTop}
-        showsVerticalScrollIndicator={false}
-      />
+      {products.length === 0 && status !== 'loading' as any ? (
+        <View style={[baseStyle.container, baseStyle.alignAllItems, { justifyContent: 'center', flex: 1 }]}>
+          <Text style={[baseStyle.mediumText, { color: myTheme.text2nd }]}>
+            No products found
+          </Text>
+          <CustomButton
+            title="Refresh"
+            onPress={handleRefresh}
+            backgroundColor={myTheme.button1st}
+            color={myTheme.buttonText1st}
+            style={{ marginTop: 20 }}
+          />
+        </View>
+      ) : (
+        <FlatList
+          data={products.filter(product =>
+            product.name.toLowerCase().includes(searchTerm.toLowerCase()),
+          )}
+          keyExtractor={item => item.id}
+          renderItem={renderProductItem}
+          contentContainerStyle={baseStyle.flatListPaddingTop}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <View style={[baseStyle.container, baseStyle.alignAllItems, { justifyContent: 'center', paddingVertical: 50 }]}>
+              <Text style={[baseStyle.mediumText, { color: myTheme.text2nd }]}>
+                No products match your search
+              </Text>
+            </View>
+          )}
+        />
+      )}
 
       {/* Slide-up Modal for Viewing Product */}
       <SlideContentModal
