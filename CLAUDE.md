@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Start Here
+
+Before making any changes, read the baseline docs in `docs/`. They exist so you do not have to re-derive project context from scratch.
+
+| Doc | Read when |
+|---|---|
+| `docs/00_PROJECT_BASELINE.md` | Starting any session — folder map, file index |
+| `docs/01_APP_BUSINESS_OVERVIEW.md` | Unsure what a feature is for or who uses it |
+| `docs/02_TECH_STACK.md` | Adding/changing a dependency or tool |
+| `docs/03_ARCHITECTURE_OVERVIEW.md` | Working on navigation, providers, Redux, or shared components |
+| `docs/04_APP_FLOWS.md` | Working on a user-facing screen or flow |
+| `docs/05_DATA_AND_API_FLOW.md` | Working on GraphQL, Redux state, or backend communication |
+| `docs/06_DEVELOPMENT_WORKFLOW.md` | Running, building, or configuring the app locally |
+| `docs/07_AI_ASSISTANT_WORKFLOW.md` | Before implementing anything — patterns, safety levels, reporting format |
+
+Detailed project knowledge lives in `docs/`. This file is a short operating guide only — do not expand it with information that belongs there.
+
 ## Commands
 
 ```bash
